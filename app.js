@@ -1,0 +1,215 @@
+document.addEventListener("DOMContentLoaded", () => {
+    const chapterList = document.getElementById("chapter-list");
+    const taskContainer = document.getElementById("task-container");
+
+    // --- UKESPLAN LOGIKK ---
+    const ukesplan = {
+        34: { kapId: null, underkap: null, tekst: "Uke 34 - Tirsdag: Grilling og oppstart. Torsdag: Strandheim." },
+        35: { kapId: "kap1", underkap: "1A", tekst: "Uke 35 - Tirsdag: Kapittel 1A. Torsdag: Kapittel 1B/1D." },
+        36: { kapId: "kap1", underkap: "1E", tekst: "Uke 36 - Tirsdag: Osloprøve. Torsdag: Kapittel 1E." },
+        37: { kapId: "kap2", underkap: "2B", tekst: "Uke 37 - Tirsdag: Kapittel 2B. Torsdag: Kapittel 2C." },
+        38: { kapId: "kap2", underkap: "2D", tekst: "Uke 38 - Tirsdag: Kapittel 2D. Torsdag: Kapittel 2E/F." },
+        39: { kapId: "kap2", underkap: "2F", tekst: "Uke 39 - Tirsdag: Kapittel 2F. Torsdag: Prøve." },
+        40: { kapId: null, underkap: null, tekst: "Uke 40 - Høstferie! Slapp av og lad batteriene." },
+        41: { kapId: "kap3", underkap: "3A", tekst: "Uke 41 - Tirsdag: Kapittel 3A. Torsdag: Kapittel 3B/3C." },
+        42: { kapId: "kap3", underkap: "3C", tekst: "Uke 42 - Tirsdag: Kapittel 3C/3D. Torsdag: Kapittel 3D." },
+        43: { kapId: "kap3", underkap: "3E", tekst: "Uke 43 - Tirsdag: Kapittel 3E. Torsdag: Prøve." },
+        44: { kapId: "kap3", underkap: "3F", tekst: "Uke 44 - Tirsdag: Kapittel 3F. Torsdag: OD-dag." },
+        45: { kapId: "kap3", underkap: "3G", tekst: "Uke 45 - Tirsdag: Kapittel 3G. Torsdag: Kapittel 3G." },
+        46: { kapId: "kap4", underkap: "4A", tekst: "Uke 46 - Tirsdag: Kapittel 4A. Torsdag: Kapittel 4A." },
+        47: { kapId: "kap4", underkap: "4B", tekst: "Uke 47 - Tirsdag: Kapittel 4B. Torsdag: Prøve." },
+        48: { kapId: "kap4", underkap: "4C", tekst: "Uke 48 - Tirsdag: Kapittel 4C. Torsdag: Kapittel 4D." },
+        49: { kapId: "kap4", underkap: "4E", tekst: "Uke 49 - Tirsdag: Kapittel 4E. Torsdag: Kapittel 4F." },
+        50: { kapId: "kap4", underkap: "4G", tekst: "Uke 50 - Tirsdag: Kapittel 4G. Torsdag: Kapittel 4G/4H." },
+        51: { kapId: "kap4", underkap: "4H", tekst: "Uke 51 - Tirsdag: Kapittel 4H. Torsdag: Juleavslutning / siste skoledag." }
+    };
+
+    // Definerer hvilken oppgave-ID hvert underkapittel starter på
+    const delkapittelStart = {
+        "1A": "1.11", "1B": "1.28", "1C": "1.37", "1D": "1.54", "1E": "1.74", "1F": "1.88",
+        "2A": "2.1", "2B": "2.4", "2C": "2.7", "2D": "2.10", "2E": "2.12", "2F": "2.15",
+        "3A": "3.1", "3B": "3.4", "3C": "3.7", "3D": "3.11", "3E": "3.14", "3F": "3.15F", "3G": "3.18",
+        "4A": "4.0", "4B": "4.8", "4C": "4.17", "4D": "4.23", "4E": "4.31", "4F": "4.37", "4G": "4.44", "4H": "4.50"
+    };
+
+    function getWeekNumber(d) {
+        d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+        d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay()||7));
+        const yearStart = new Date(Date.UTC(d.getUTCFullYear(),0,1));
+        return Math.ceil(( ( (d - yearStart) / 86400000) + 1)/7);
+    }
+
+    const currWeek = getWeekNumber(new Date());
+    
+    // Håndter Banner på skjermen
+    const banner = document.getElementById("ukesplan-banner");
+    const weekNumEl = document.getElementById("week-number");
+    const weekTextEl = document.getElementById("week-text");
+    const weekBtn = document.getElementById("week-link-btn");
+
+    if (ukesplan[currWeek]) {
+        banner.classList.remove("hidden");
+        weekNumEl.textContent = currWeek;
+        weekTextEl.textContent = ukesplan[currWeek].tekst;
+        
+        if (ukesplan[currWeek].kapId) {
+            weekBtn.style.display = "block";
+            weekBtn.onclick = () => scrollToSubchapter(ukesplan[currWeek].kapId, ukesplan[currWeek].underkap);
+        } else {
+            weekBtn.style.display = "none";
+        }
+    } else if (currWeek < 34) {
+        banner.classList.remove("hidden");
+        weekNumEl.textContent = currWeek;
+        weekTextEl.textContent = "Velkommen! Undervisningen for Matematikk 1T starter i uke 34.";
+        weekBtn.style.display = "none";
+    }
+
+    function scrollToSubchapter(kapId, subKap) {
+        const chapterBtns = document.querySelectorAll(".chapter-btn");
+        const targetBtn = Array.from(chapterBtns).find(btn => btn.getAttribute("data-id") === kapId);
+        if (targetBtn && !targetBtn.classList.contains("active")) {
+            targetBtn.click();
+        }
+
+        const taskId = delkapittelStart[subKap];
+        if (taskId) {
+            setTimeout(() => {
+                const taskEl = document.getElementById(`task-${taskId}`);
+                if (taskEl) {
+                    taskEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    taskEl.style.boxShadow = "0 0 40px rgba(34, 211, 238, 0.9)";
+                    taskEl.style.borderColor = "var(--primary)";
+                    taskEl.style.transform = "scale(1.02)";
+                    
+                    setTimeout(() => {
+                        taskEl.style.boxShadow = "";
+                        taskEl.style.borderColor = "";
+                        taskEl.style.transform = "";
+                    }, 2500);
+                }
+            }, 100);
+        }
+    }
+
+    // --- BYGGING AV KAPITTELMENY OG OPPGAVER ---
+    fagsok.forEach((kapittel) => {
+        const li = document.createElement("li");
+        const btn = document.createElement("button");
+        btn.className = "chapter-btn";
+        btn.textContent = kapittel.tittel;
+        btn.setAttribute("data-id", kapittel.id);
+        btn.onclick = () => loadChapter(kapittel.id, btn);
+        
+        li.appendChild(btn);
+        chapterList.appendChild(li);
+    });
+
+    function loadChapter(kapittelId, activeBtn) {
+        document.querySelectorAll(".chapter-btn").forEach(btn => btn.classList.remove("active"));
+        activeBtn.classList.add("active");
+
+        const kapData = fagsok.find(k => k.id === kapittelId);
+        if (!kapData) return;
+
+        taskContainer.innerHTML = `<h2>${kapData.tittel}</h2>`;
+
+        kapData.oppgaver.forEach((oppgave) => {
+            const article = document.createElement("article");
+            article.className = "task-card";
+            article.id = `task-${oppgave.id}`; 
+            
+            let html = `<h3 class="task-title">${oppgave.tittel}</h3>`;
+            html += `<p>${oppgave.tekst}</p>`;
+            
+            if (oppgave.bilde) {
+                html += `<img src="${oppgave.bilde}" alt="Figur til ${oppgave.tittel}" class="task-image">`;
+            }
+
+            // Bygger knappene og innholdet for Hint og Fasit skjult under hver oppgave
+            html += `
+                <div class="task-buttons">
+                    <button class="hint-btn" onclick="toggleHint('hint-${oppgave.id}')">Vis hint 💡</button>
+                    <button class="hint-btn fasit-btn" onclick="toggleSolution('fasit-${oppgave.id}')">Fasit ${oppgave.id} 📝</button>
+                </div>
+                <div id="hint-${oppgave.id}" class="hint-content">
+                    ${oppgave.hint}
+                </div>
+                <div id="fasit-${oppgave.id}" class="solution-content">
+                    <strong>Løsningsforslag:</strong><br><br>
+                    ${oppgave.fasit}
+                </div>
+            `;
+            
+            article.innerHTML = html;
+            taskContainer.appendChild(article);
+        });
+    }
+
+    // --- NAVIGASJON MELLOM FANER ---
+    let programmeringLastet = false;
+
+    document.querySelectorAll(".nav-btn").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
+            e.target.classList.add("active");
+
+            const target = e.target.getAttribute("data-target");
+            
+            if (target === "programmering") {
+                document.getElementById("oppgaver-view").classList.add("hidden");
+                document.getElementById("programmering-view").classList.remove("hidden");
+                
+                // Generer oppgavene kun første gang fanen åpnes
+                if (!programmeringLastet) {
+                    loadProgrammering();
+                    programmeringLastet = true;
+                }
+            } else if (target === "oppgaver") {
+                document.getElementById("programmering-view").classList.add("hidden");
+                document.getElementById("oppgaver-view").classList.remove("hidden");
+            }
+        });
+    });
+
+    function loadProgrammering() {
+        const progContainer = document.getElementById("prog-task-container");
+        
+        programmeringData.forEach((oppgave) => {
+            const article = document.createElement("article");
+            article.className = "task-card";
+            article.id = `prog-task-${oppgave.id}`; 
+            
+            let html = `<h3 class="task-title">${oppgave.tittel}</h3>`;
+            html += `<p>${oppgave.tekst}</p>`;
+            
+            html += `
+                <div class="task-buttons">
+                    <button class="hint-btn" onclick="toggleHint('hint-${oppgave.id}')">Vis hint 💡</button>
+                    <button class="hint-btn fasit-btn" onclick="toggleSolution('fasit-${oppgave.id}')">Fasit 📝</button>
+                </div>
+                <div id="hint-${oppgave.id}" class="hint-content">
+                    ${oppgave.hint}
+                </div>
+                <div id="fasit-${oppgave.id}" class="solution-content">
+                    <strong>Løsningsforslag:</strong><br><br>
+                    ${oppgave.fasit}
+                </div>
+            `;
+            
+            article.innerHTML = html;
+            progContainer.appendChild(article);
+        });
+    }
+}); // Her slutter document.addEventListener("DOMContentLoaded", () => {
+
+// Funksjoner for å toggle Hint og Fasit (Må ligge globalt)
+function toggleHint(hintId) {
+    const hintDiv = document.getElementById(hintId);
+    hintDiv.classList.toggle("visible");
+}
+
+window.toggleSolution = function(fasitId) {
+    const fasitDiv = document.getElementById(fasitId);
+    fasitDiv.classList.toggle("visible");
+}

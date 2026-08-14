@@ -1,0 +1,333 @@
+:root {
+    --bg-deep: #020617; /* Dyp, mørk romfarge */
+    --card-bg: rgba(30, 41, 59, 0.6); /* Frostet glass-effekt */
+    --card-border: rgba(255, 255, 255, 0.1);
+    --primary: #22d3ee; /* Cyan/blå glød */
+    --secondary: #8b5cf6; /* Lilla glød */
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --hint-bg: rgba(245, 158, 11, 0.1);
+    --hint-border: #f59e0b;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Animert og dyp bakgrunn */
+body {
+    background-color: var(--bg-deep);
+    background-image: 
+        radial-gradient(circle at 15% 50%, rgba(34, 211, 238, 0.08), transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.08), transparent 25%);
+    background-attachment: fixed;
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Navigasjon */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(2, 6, 23, 0.8);
+    backdrop-filter: blur(12px);
+    padding: 1rem 2rem;
+    border-bottom: 1px solid var(--card-border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 900;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    color: var(--text-muted);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.nav-btn:hover, .nav-btn.active {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(34, 211, 238, 0.5);
+}
+
+.profile-btn {
+    border: 1px solid var(--primary);
+    border-radius: 20px;
+    padding: 0.4rem 1.2rem;
+    box-shadow: 0 0 15px rgba(34, 211, 238, 0.2);
+}
+
+/* Layout */
+#app-content {
+    display: flex;
+    max-width: 1200px;
+    margin: 3rem auto;
+    gap: 2.5rem;
+    padding: 0 1.5rem;
+}
+
+/* Sidemeny (Glassmorphism) */
+.sidebar {
+    width: 280px;
+    background: var(--card-bg);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--card-border);
+    padding: 1.5rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    align-self: flex-start;
+    position: sticky;
+    top: 100px;
+}
+
+.sidebar h3 {
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    color: #fff;
+    border-bottom: 1px solid var(--card-border);
+    padding-bottom: 0.5rem;
+}
+
+#chapter-list {
+    list-style: none;
+}
+
+.chapter-btn {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 0.8rem 1rem;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: var(--text-muted);
+    transition: all 0.2s ease;
+    margin-bottom: 0.5rem;
+}
+
+.chapter-btn:hover, .chapter-btn.active {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    border-left: 3px solid var(--primary);
+    box-shadow: inset 5px 0 15px rgba(34, 211, 238, 0.1);
+}
+
+/* Hovedinnhold */
+.content-area {
+    flex: 1;
+}
+
+/* Oppgavekort (3D og Hover-effekter) */
+.task-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--card-border);
+    padding: 2.5rem;
+    border-radius: 16px;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    transform: translateY(0);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+}
+
+.task-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(34, 211, 238, 0.15);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.task-title {
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 15px rgba(34, 211, 238, 0.3);
+}
+
+.task-image {
+    max-width: 100%;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Glødende knapper */
+/* Container for knappene */
+.task-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+}
+
+/* Glødende knapper */
+.hint-btn {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+    transition: all 0.3s ease;
+    margin-top: 0;
+}
+
+.hint-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(34, 211, 238, 0.6);
+}
+
+.fasit-btn {
+    background: linear-gradient(135deg, #10b981, #059669);
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+.fasit-btn:hover {
+    box-shadow: 0 0 25px rgba(16, 185, 129, 0.6);
+}
+
+/* Styling for innhold (Hint og Fasit) */
+.hint-content, .solution-content {
+    display: none;
+    padding: 1.2rem;
+    margin-top: 1.2rem;
+    border-radius: 0 8px 8px 0;
+}
+
+.hint-content {
+    background-color: var(--hint-bg);
+    border-left: 4px solid var(--hint-border);
+    color: #fcd34d;
+    font-style: italic;
+}
+
+.solution-content {
+    background-color: rgba(16, 185, 129, 0.1);
+    border-left: 4px solid #34d399;
+    color: #e2e8f0;
+    font-style: normal;
+}
+
+.solution-content strong {
+    color: #6ee7b7;
+    font-size: 1.1rem;
+}
+
+.hint-content.visible, .solution-content.visible {
+    display: block;
+    animation: fadeIn 0.4s ease forwards;
+}
+
+.hidden {
+    display: none !important;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+/* Ukeplan Banner */
+#ukesplan-banner {
+    background: linear-gradient(135deg, rgba(34, 211, 238, 0.1), rgba(139, 92, 246, 0.1));
+    border: 1px solid var(--primary);
+    border-radius: 16px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), inset 0 0 20px rgba(34, 211, 238, 0.05);
+}
+
+.banner-content {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.week-badge {
+    background: var(--primary);
+    color: #000;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-weight: 900;
+    font-size: 1.2rem;
+    box-shadow: 0 0 15px rgba(34, 211, 238, 0.6);
+}
+
+#week-text {
+    font-size: 1.1rem;
+    color: var(--text-main);
+    flex: 1;
+    font-weight: 500;
+}
+
+#week-link-btn {
+    margin-top: 0;
+    white-space: nowrap;
+}
+/* Layout for visninger */
+.view-section {
+    display: flex;
+    width: 100%;
+    gap: 2.5rem;
+}
+
+.view-section.hidden {
+    display: none !important;
+}
+
+.content-area.full-width {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Styling av kodeblokker i Python-stil */
+pre {
+    background-color: #0f172a;
+    padding: 1.2rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #38bdf8;
+    overflow-x: auto;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 1.5rem 0;
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+code {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    color: #7dd3fc;
+}
+
+/* Fjerner bakgrunn på inline-code som ligger inni en pre-blokk */
+pre code {
+    background-color: transparent;
+    padding: 0;
+    color: #38bdf8;
+}

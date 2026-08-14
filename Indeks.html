@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matematikk 1T - Utforskende Læring</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">Math 1T</div>
+        <nav>
+            <button class="nav-btn active" data-target="oppgaver">Oppgaver</button>
+            <button class="nav-btn" data-target="programmering">Programmering</button>
+            <button class="nav-btn" data-target="ressurser">Ressurser</button>
+            <button class="nav-btn profile-btn" data-target="profil">Min Profil</button>
+        </nav>
+    </header>
+
+    <!-- 3D Parallax Bakgrunn -->
+    <div class="parallax-bg">
+        <div class="parallax-layer parallax-back"></div>
+        <div class="parallax-layer parallax-mid"></div>
+        <div class="parallax-layer parallax-front"></div>
+    </div>
+
+    <main id="app-content">
+        <!-- VISNING: KAPITTEL-OPPGAVER -->
+        <div id="oppgaver-view" class="view-section">
+            <aside class="sidebar" id="sidebar">
+                <h3>Kapitler</h3>
+                <ul id="chapter-list">
+                    <!-- Genereres dynamisk via JavaScript -->
+                </ul>
+            </aside>
+
+            <section class="content-area">
+                <!-- Ukeplan-banner -->
+                <div id="ukesplan-banner" class="hidden">
+                    <div class="banner-content">
+                        <span class="week-badge">Uke <span id="week-number"></span></span>
+                        <p id="week-text"></p>
+                        <button id="week-link-btn" class="hint-btn">Gå til ukens oppgaver</button>
+                    </div>
+                </div>
+
+                <div id="task-container">
+                    <h2>Velkommen til Matematikk 1T</h2>
+                    <p>Velg et kapittel i menyen for å starte. Husk at læring skjer best når du prøver selv før du sjekker fasit!</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- VISNING: PROGRAMMERING -->
+        <div id="programmering-view" class="view-section hidden">
+            <section class="content-area full-width">
+                <div id="prog-header" style="text-align: center; margin-bottom: 2rem;">
+                    <h2 style="color: var(--primary); font-size: 2.5rem; margin-bottom: 1rem;">Programmering</h2>
+                    <p>Her lærer du å lese, forstå og skrive kode knyttet til matematikk 1T. Oppgavene starter med det grunnleggende og bygger seg oppover.</p>
+                </div>
+                <div id="prog-task-container">
+                    <!-- Programmeringsoppgaver genereres her via JavaScript -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
