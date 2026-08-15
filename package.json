@@ -1,0 +1,9 @@
+{
+  "name": "matteguiden",
+  "version": "1.0.0",
+  "description": "Matematikk 1T – Utforskende Læring",
+  "private": true,
+  "scripts": {
+    "build": "node build.js && node scripts/prepare-dist.js"
+  }
+}
