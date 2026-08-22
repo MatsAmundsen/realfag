@@ -62,6 +62,22 @@ const fagsok = [
                         "bilde": null,
                         "hint": "Tenk på realistiske høyder. Hva er den laveste og den høyeste høyden som gir mening i den virkelige verden?",
                         "fasit": "Vi skal sette opp et intervall $[a, b]$ der $a$ er laveste forventede høyde og $b$ er høyeste forventede høyde i centimeter.<br><br>Nedre grense ($a$): En fornuftig nedre grense kan være rundt $150$ cm (det finnes få voksne menn lavere enn dette, selv om det er mulig).<br><br>Øvre grense ($b$): En fornuftig øvre grense kan anslås til rundt $220$ cm (svært få eller ingen er høyere enn dette i Norge).<br><br>Siden personer kan ha nøyaktig disse høydene, bruker vi lukkede parenteser for å inkludere grensene i intervallet. <br><br>*(Merk: Dette er et estimat. Alle logiske og realistiske anslag for ytterpunktene godtas som riktig svar i denne typen oppgaver).*<br><br><strong>Svar:</strong> Et fornuftig intervall er $[150, 220]$"
+                    },
+                    {
+                        "id": "1.17",
+                        "tittel": "Oppgave 1.17",
+                        "tekst": "<strong>a)</strong> Regn ut absoluttverdien: $|-5|$<br><br><strong>b)</strong> Regn ut: $|-3| + |4|$<br><br><strong>c)</strong> Regn ut: $|2 - 7|$",
+                        "bilde": null,
+                        "hint": "Absoluttverdien $|x|$ betyr avstanden fra $0$ til $x$ på tallinjen. Avstander er alltid positive.",
+                        "fasit": "<strong>a)</strong><br>$|-5|$ betyr avstanden fra $0$ til $-5$ på tallinjen.<br>Avstanden er $5$.<br><br><strong>Svar:</strong> $5$<br><br><strong>b)</strong><br>$|-3| + |4|$<br>$= 3 + 4$ (vi gjør om absoluttverdiene til positive tall)<br>$= 7$<br><br><strong>Svar:</strong> $7$<br><br><strong>c)</strong><br>$|2 - 7|$<br>$= |-5|$ (vi regner ut uttrykket inni absoluttverditegnet først)<br>$= 5$<br><br><strong>Svar:</strong> $5$"
+                    },
+                    {
+                        "id": "1.18",
+                        "tittel": "Oppgave 1.18",
+                        "tekst": "Løs likningen: $|x - 2| = 5$",
+                        "bilde": null,
+                        "hint": "Siden absoluttverdien er $5$, kan uttrykket inni ($x - 2$) være enten $5$ eller $-5$.",
+                        "fasit": "Vi skal løse $|x - 2| = 5$.<br>Dette gir to muligheter for uttrykket inni:<br>1) $x - 2 = 5$<br>2) $x - 2 = -5$<br><br>Vi løser begge:<br>1) $x - 2 = 5 \\implies x = 5 + 2 \\implies x = 7$<br>2) $x - 2 = -5 \\implies x = -5 + 2 \\implies x = -3$<br><br><strong>Svar:</strong> Løsningene er $x = 7$ og $x = -3$."
                     }
                 ]
             },
@@ -162,6 +178,30 @@ const fagsok = [
                         "bilde": null,
                         "hint": "Husk at to minustegn rett etter hverandre blir til pluss.",
                         "fasit": "Vi skal regne ut $-5 - (-6) - 16$<br><br>$-5 - (-6) - 16$<br><br>$-5 + 6 - 16$ (løs opp parentesen: minus foran minus blir pluss, $-(-6) = +6$)<br><br>$1 - 16$ (regn fra venstre mot høyre: $-5 + 6 = 1$)<br><br>$-15$ (utfør siste subtraksjon: $1 - 16 = -15$)<br><br><strong>Svar:</strong> $-15$"
+                    },
+                    {
+                        "id": "1.43",
+                        "tittel": "Oppgave 1.43",
+                        "tekst": "<strong>a)</strong> Primtallsfaktoriser tallene $12$ og $18$.<br><br><strong>b)</strong> Bruk primtallsfaktoriseringen til å finne minste felles multiplum (MFM) for $12$ og $18$.",
+                        "bilde": null,
+                        "hint": "For å finne minste felles multiplum, tar du med alle primfaktorene som forekommer flest ganger i ett av tallene.",
+                        "fasit": "<strong>a)</strong><br>Faktorisering av $12$:<br>$12 = 2 \\cdot 6 = 2 \\cdot 2 \\cdot 3$<br><br>Faktorisering av $18$:<br>$18 = 2 \\cdot 9 = 2 \\cdot 3 \\cdot 3$<br><br><strong>Svar:</strong> $12 = 2 \\cdot 2 \\cdot 3$ og $18 = 2 \\cdot 3 \\cdot 3$.<br><br><strong>b)</strong><br>For å finne MFM ser vi på hvor mange ganger hver primfaktor forekommer *maksimalt* i ett tall.<br>- Tallet $2$ forekommer to ganger i faktoriseringen av $12$.<br>- Tallet $3$ forekommer to ganger i faktoriseringen av $18$.<br><br>MFM blir dermed å gange disse sammen:<br>$MFM = 2 \\cdot 2 \\cdot 3 \\cdot 3 = 4 \\cdot 9 = 36$<br><br><strong>Svar:</strong> Minste felles multiplum er $36$."
+                    },
+                    {
+                        "id": "1.44",
+                        "tittel": "Oppgave 1.44",
+                        "tekst": "Regn ut og forkort svaret så mye som mulig:<br>$\frac{5}{12} + \frac{1}{18}$",
+                        "bilde": null,
+                        "hint": "Bruk minste felles multiplum (MFM) for $12$ og $18$ som du fant i forrige oppgave, for å finne fellesnevneren.",
+                        "fasit": "Vi skal regne ut $\frac{5}{12} + \frac{1}{18}$.<br><br>Fra forrige oppgave vet vi at minste felles multiplum (fellesnevneren) for $12$ og $18$ er $36$.<br>Vi må utvide begge brøkene slik at nevneren blir $36$:<br>- For den første brøken må vi gange med $3$ ($12 \\cdot 3 = 36$).<br>- For den andre brøken må vi gange med $2$ ($18 \\cdot 2 = 36$).<br><br>$\frac{5 \\cdot 3}{12 \\cdot 3} + \frac{1 \\cdot 2}{18 \\cdot 2}$<br><br>$= \frac{15}{36} + \frac{2}{36}$<br><br>$= \frac{15 + 2}{36}$<br><br>$= \frac{17}{36}$<br><br>Tallet $17$ er et primtall og deler ikke $36$, så brøken kan ikke forkortes mer.<br><br><strong>Svar:</strong> $\frac{17}{36}$"
+                    },
+                    {
+                        "id": "1.45",
+                        "tittel": "Oppgave 1.45",
+                        "tekst": "Regn ut:<br><strong>a)</strong> $\frac{3}{4} \\cdot \frac{2}{5}$<br><br><strong>b)</strong> $\frac{4}{7} : \frac{2}{3}$",
+                        "bilde": null,
+                        "hint": "Når vi ganger brøker, ganger vi teller med teller og nevner med nevner. <br>Når vi deler brøker, snur vi den bakerste brøken på hodet og ganger i stedet.",
+                        "fasit": "<strong>a)</strong><br>Vi ganger teller med teller og nevner med nevner:<br>$\frac{3 \\cdot 2}{4 \\cdot 5}$<br>$= \frac{6}{20}$<br><br>Vi forkorter brøken ved å dele på $2$ oppe og nede:<br>$= \frac{3}{10}$<br><br><strong>Svar:</strong> $\frac{3}{10}$<br><br><strong>b)</strong><br>For å dele to brøker, ganger vi den første med den omvendte av den andre:<br>$\frac{4}{7} \\cdot \frac{3}{2}$<br><br>Ganger teller og nevner:<br>$= \frac{4 \\cdot 3}{7 \\cdot 2}$<br>$= \frac{12}{14}$<br><br>Vi forkorter brøken ved å dele på $2$ oppe og nede:<br>$= \frac{6}{7}$<br><br><strong>Svar:</strong> $\frac{6}{7}$"
                     }
                 ]
             },
@@ -216,6 +256,22 @@ const fagsok = [
                         "bilde": null,
                         "hint": "Bruk regelen for multiplikasjon av potenser baklengs for å splitte opp $4^{x+1}$ til $4^x \\cdot 4^1$.<br>Da kan du faktorisere ut $4^x$.",
                         "fasit": "Vi skal bevise at $4^{x+1} - 4^x = 3 \\cdot 4^x$. Vi starter med venstre side (V.S) og viser at den er lik høyre side (H.S).<br><br><strong>V.S:</strong><br>$4^{x+1} - 4^x$<br><br>$= (4^x \\cdot 4^1) - 4^x$ (bruker potensregelen $a^{n+m} = a^n \\cdot a^m$ til å splitte opp det første leddet)<br><br>$= 4 \\cdot 4^x - 1 \\cdot 4^x$ (omorganiserer litt og gjør det tydelig at vi har fire $4^x$ og trekker fra én $4^x$)<br><br>$= 4^x \\cdot (4 - 1)$ (faktoriserer ut felles faktor, $4^x$)<br><br>$= 4^x \\cdot 3$ (regner ut parentesen)<br><br>$= 3 \\cdot 4^x$ (bytter rekkefølge på faktorene)<br><br>Dette er nøyaktig det som står på høyre side av ligningen.<br><br>V.S $=$ H.S<br><br><strong>Svar:</strong> Beviset er fullført, ligningen stemmer."
+                    },
+                    {
+                        "id": "1.60",
+                        "tittel": "Oppgave 1.60",
+                        "tekst": "Regn ut og skriv svaret så enkelt som mulig:<br><strong>a)</strong> $\\sqrt{2} \\cdot \\sqrt{8}$<br><br><strong>b)</strong> $\frac{\\sqrt{50}}{\\sqrt{2}}$",
+                        "bilde": null,
+                        "hint": "Bruk rotreglene: $\\sqrt{a} \\cdot \\sqrt{b} = \\sqrt{a \\cdot b}$ og $\frac{\\sqrt{a}}{\\sqrt{b}} = \\sqrt{\frac{a}{b}}$.",
+                        "fasit": "<strong>a)</strong><br>Vi bruker regelen for multiplikasjon av røtter:<br>$\\sqrt{2} \\cdot \\sqrt{8}$<br>$= \\sqrt{2 \\cdot 8}$<br>$= \\sqrt{16}$<br>$= 4$<br><br><strong>Svar:</strong> $4$<br><br><strong>b)</strong><br>Vi bruker regelen for divisjon av røtter:<br>$\frac{\\sqrt{50}}{\\sqrt{2}}$<br>$= \\sqrt{\frac{50}{2}}$<br>$= \\sqrt{25}$<br>$= 5$<br><br><strong>Svar:</strong> $5$"
+                    },
+                    {
+                        "id": "1.61",
+                        "tittel": "Oppgave 1.61",
+                        "tekst": "Forenkle uttrykket: $\\sqrt{72}$",
+                        "bilde": null,
+                        "hint": "Prøv å skrive $72$ som et produkt av et kvadrattall og et annet tall. Kvadratallene er $1, 4, 9, 16, 25, 36, \\dots$",
+                        "fasit": "Vi skal skrive $\\sqrt{72}$ så enkelt som mulig. Vi leter etter det største kvadrattallet som går opp i $72$.<br>Vi vet at $72 = 36 \\cdot 2$, og $36$ er et kvadrattall.<br><br>$\\sqrt{72} = \\sqrt{36 \\cdot 2}$<br><br>Vi kan splitte roten opp:<br>$= \\sqrt{36} \\cdot \\sqrt{2}$<br><br>Siden $\\sqrt{36} = 6$, får vi:<br>$= 6\\sqrt{2}$<br><br><strong>Svar:</strong> $6\\sqrt{2}$"
                     }
                 ]
             },
@@ -270,6 +326,22 @@ const fagsok = [
                         "bilde": null,
                         "hint": "Bruk formelen for tid: $t = \\frac{s}{v}$ (tid = strekning delt på fart).",
                         "fasit": "Vi skal finne tiden ($t$) lyset bruker, gitt strekningen ($s$) og farten ($v$).<br><br>Formelen for tid er:<br>$$ t = \\frac{s}{v} $$<br><br>Vi setter inn de oppgitte verdiene ($s = 1.5 \\cdot 10^{11}$ m og $v = 3.0 \\cdot 10^8$ m/s):<br><br>$$ t = \\frac{1.5 \\cdot 10^{11}}{3.0 \\cdot 10^8} $$<br><br>$$= \\frac{1.5}{3.0} \\cdot \\frac{10^{11}}{10^8} $$ (skiller tall og potenser for å regne ut hver for seg)<br><br>$$= 0.5 \\cdot 10^{11 - 8} $$ (utfører divisjonen $1.5 / 3.0 = 0.5$ og bruker potensregelen $\\frac{a^n}{a^m} = a^{n-m}$)<br><br>$$= 0.5 \\cdot 10^3 $$ (forenkler eksponenten)<br><br>Dette gir oss svaret på standardform hvis vi vil:<br>$0.5 \\cdot 10^3 = 5 \\cdot 10^{-1} \\cdot 10^3 = 5 \\cdot 10^2$<br><br>Eller som et vanlig desimaltall:<br>$0.5 \\cdot 10^3 = 0.5 \\cdot 1000 = 500$<br><br><strong>Svar:</strong> Lyset bruker $500$ sekunder.<br>$"
+                    },
+                    {
+                        "id": "1.80",
+                        "tittel": "Oppgave 1.80",
+                        "tekst": "Hvor mange gjeldende siffer har disse tallene?<br><strong>a)</strong> $4.50$<br><strong>b)</strong> $0.007$<br><strong>c)</strong> $1.002$",
+                        "bilde": null,
+                        "hint": "Nuller på slutten av et desimaltall teller som gjeldende siffer. Nuller foran det første tallet over null teller *ikke*.",
+                        "fasit": "<strong>a)</strong><br>$4.50$ har tre siffer, og siden nullen står på slutten av et desimaltall betyr det at tallet er målt med en nøyaktighet på to desimaler. Nullen er derfor gjeldende.<br><strong>Svar:</strong> 3 gjeldende siffer.<br><br><strong>b)</strong><br>$0.007$ har bare ett tall som ikke er null. Nullene foran 7-tallet angir bare størrelsesordenen, og teller ikke som gjeldende siffer.<br><strong>Svar:</strong> 1 gjeldende siffer.<br><br><strong>c)</strong><br>$1.002$ har tall på begge sider av nullene. Nuller mellom to gjeldende siffer er alltid gjeldende. <br><strong>Svar:</strong> 4 gjeldende siffer."
+                    },
+                    {
+                        "id": "1.81",
+                        "tittel": "Oppgave 1.81",
+                        "tekst": "Du måler lengden av et rom til $4.3$ meter, og bredden til $3.25$ meter. <br>Regn ut arealet og oppgi svaret med riktig antall gjeldende siffer.",
+                        "bilde": null,
+                        "hint": "Ved multiplikasjon skal svaret ha like mange gjeldende siffer som det tallet i regnestykket som har *færrest* gjeldende siffer.",
+                        "fasit": "Arealet av et rektangel er lengde ganger bredde:<br>$A = 4.3 \text{ m} \\cdot 3.25 \text{ m} = 13.975 \text{ m}^2$<br><br>Nå må vi runde av svaret. Regelen for multiplikasjon sier at svaret ikke kan oppgis med større nøyaktighet (flere gjeldende siffer) enn den mest unøyaktige faktoren.<br>- $4.3$ har <strong>2</strong> gjeldende siffer.<br>- $3.25$ har <strong>3</strong> gjeldende siffer.<br><br>Dette betyr at svaret vårt kun kan ha <strong>2</strong> gjeldende siffer.<br>Vi runder av $13.975$ til to siffer, noe som gir $14$.<br><br><strong>Svar:</strong> Arealet er $14 \text{ m}^2$."
                     }
                 ]
             },
