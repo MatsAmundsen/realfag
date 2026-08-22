@@ -211,6 +211,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("oppgaver-view").classList.add("hidden");
         document.getElementById("programmering-view").classList.add("hidden");
         document.getElementById("ressurser-view").classList.add("hidden");
+        document.getElementById("search-view").classList.add("hidden");
 
         // Vis riktig view og last innhold
         if (mainView === "programmering") {
@@ -225,6 +226,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 loadRessurser();
                 ressurserLastet = true;
             }
+        } else if (mainView === "sok") {
+            document.getElementById("search-view").classList.remove("hidden");
+            loadSearchResults(subView ? decodeURIComponent(subView) : "");
         } else {
             // Standard: Oppgaver
             document.getElementById("oppgaver-view").classList.remove("hidden");
@@ -353,6 +357,127 @@ document.addEventListener("DOMContentLoaded", () => {
             progContainer.appendChild(article);
         });
     }
+    // --- SØKEFUNKSJON ---
+    const searchInput = document.getElementById("global-search");
+    
+    if (searchInput) {
+        searchInput.addEventListener("keyup", (e) => {
+            if (e.key === "Enter") {
+                const query = e.target.value.trim();
+                if (query.length > 0) {
+                    window.location.hash = "sok/" + encodeURIComponent(query);
+                }
+            }
+        });
+    }
+
+    function loadSearchResults(query) {
+        const container = document.getElementById("search-results-container");
+        const statusEl = document.getElementById("search-status");
+        if (!container || !statusEl) return;
+        
+        container.innerHTML = ""; // Tøm tidligere søk
+        
+        // Oppdater tekst i søkefeltet dersom vi navigerte via lenke
+        if (searchInput && searchInput.value !== query) {
+            searchInput.value = query;
+        }
+        
+        if (!query) {
+            statusEl.textContent = "Skriv noe i søkefeltet og trykk Enter for å søke.";
+            return;
+        }
+
+        const lowerQuery = query.toLowerCase();
+        let matchCount = 0;
+        
+        statusEl.textContent = `Søker etter "${query}"...`;
+        
+        // Hjelpefunksjon for å bygge oppgave-kort i søkeresultat
+        const buildTaskHTML = (oppgave, contextName, kapId) => {
+            const article = document.createElement("article");
+            article.className = "task-card";
+            let html = `<h4 style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem;">${contextName}</h4>`;
+            html += `<h3 class="task-title">${oppgave.tittel}</h3>`;
+            html += `<p>${oppgave.tekst}</p>`;
+            
+            if (oppgave.bilde) {
+                html += `<img src="${oppgave.bilde}" class="task-image" alt="Figur">`;
+            }
+
+            html += `
+                <div class="task-buttons">
+                    <button class="hint-btn" onclick="toggleHint('search-hint-${oppgave.id}')">Vis hint 💡</button>
+                    <button class="hint-btn fasit-btn" onclick="toggleSolution('search-fasit-${oppgave.id}')">Fasit 📝</button>
+                    ${kapId ? `<button class="hint-btn" style="background: var(--card-bg); border: 1px solid var(--primary);" onclick="window.location.hash='oppgaver/${kapId}'">Gå til kapittel</button>` : ""}
+                </div>
+                <div id="search-hint-${oppgave.id}" class="hint-content">${oppgave.hint}</div>
+                <div id="search-fasit-${oppgave.id}" class="solution-content"><strong>Løsningsforslag:</strong><br><br>${oppgave.fasit}</div>
+            `;
+            
+            article.innerHTML = html;
+            container.appendChild(article);
+            matchCount++;
+        };
+
+        // 1. Søk i vanlig pensum (fagsok)
+        if (typeof fagsok !== 'undefined') {
+            fagsok.forEach(kap => {
+                kap.delkapitler.forEach(delkap => {
+                    delkap.oppgaver.forEach(oppgave => {
+                        const searchStr = `${oppgave.tittel} ${oppgave.tekst} ${oppgave.hint} ${oppgave.fasit}`.toLowerCase();
+                        if (searchStr.includes(lowerQuery)) {
+                            buildTaskHTML(oppgave, `Matematikk 1T > ${kap.tittel} > ${delkap.tittel}`, kap.id);
+                        }
+                    });
+                });
+            });
+        }
+
+        // 2. Søk i programmering (programmeringData)
+        if (typeof programmeringData !== 'undefined') {
+            programmeringData.forEach(oppgave => {
+                const searchStr = `${oppgave.tittel} ${oppgave.tekst} ${oppgave.hint} ${oppgave.fasit}`.toLowerCase();
+                if (searchStr.includes(lowerQuery)) {
+                    buildTaskHTML(oppgave, `Programmering`, null);
+                }
+            });
+        }
+
+        // 3. Søk i fagstoff
+        if (typeof fagstoff !== 'undefined') {
+            fagstoff.forEach(tema => {
+                const searchStr = `${tema.tittel} ${tema.html}`.toLowerCase();
+                if (searchStr.includes(lowerQuery)) {
+                    const article = document.createElement("article");
+                    article.className = "task-card fagstoff-article";
+                    article.innerHTML = `<h4 style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem;">Fagbibliotek</h4>
+                                         <h3 class="task-title" style="margin-bottom: 1rem;">${tema.tittel}</h3>
+                                         <div class="fagstoff-content">${tema.html}</div>`;
+                    container.appendChild(article);
+                    matchCount++;
+                }
+            });
+        }
+
+        // Oppdater status
+        if (matchCount === 0) {
+            statusEl.textContent = `Fant ingen treff for "${query}".`;
+        } else {
+            statusEl.textContent = `Fant ${matchCount} treff for "${query}".`;
+        }
+        
+        // Re-render KaTeX
+        if (typeof renderMathInElement === 'function') {
+            renderMathInElement(container, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false}
+                ]
+            });
+        }
+    }
+
 }); // Her slutter document.addEventListener("DOMContentLoaded", () => {
 
 // Funksjoner for å toggle Hint og Fasit (Må ligge globalt)

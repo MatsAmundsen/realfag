@@ -13,6 +13,9 @@
 <body>
     <header class="navbar">
         <div class="logo">Matteguiden 1T</div>
+        <div class="search-bar">
+            <input type="text" id="global-search" placeholder="Søk i oppgaver og ressurser..." autocomplete="off">
+        </div>
         <nav>
             <button class="nav-btn active" data-target="oppgaver">Oppgaver</button>
             <button class="nav-btn" data-target="programmering">Programmering</button>
@@ -81,6 +84,18 @@
                 </div>
                 <div id="ressurser-container">
                     <!-- Fagstoff genereres her via JavaScript -->
+                </div>
+            </section>
+        </div>
+        <!-- VISNING: SØKERESULTATER -->
+        <div id="search-view" class="view-section hidden">
+            <section class="content-area full-width">
+                <div id="search-header" style="text-align: center; margin-bottom: 2rem;">
+                    <h2 style="color: var(--primary); font-size: 2.5rem; margin-bottom: 1rem;">Søkeresultater</h2>
+                    <p id="search-status">Skriv noe i søkefeltet for å finne oppgaver, fagstoff eller kode...</p>
+                </div>
+                <div id="search-results-container">
+                    <!-- Resultater fylles inn her via app.js -->
                 </div>
             </section>
         </div>
