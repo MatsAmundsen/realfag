@@ -165,6 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // --- NAVIGASJON MELLOM FANER ---
+    window.goToRessurser = function() { document.querySelector("[data-target='ressurser']").click(); window.scrollTo(0,0); };
     let programmeringLastet = false;
     let ressurserLastet = false;
 
