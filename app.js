@@ -1,4 +1,27 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // --- TEMA (Dark/Light Mode) ---
+    const themeToggleBtn = document.getElementById("theme-toggle");
+    const currentTheme = localStorage.getItem("theme") || "dark";
+    
+    if (currentTheme === "light") {
+        document.body.setAttribute("data-theme", "light");
+        if (themeToggleBtn) themeToggleBtn.textContent = "🌙";
+    }
+
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener("click", () => {
+            if (document.body.getAttribute("data-theme") === "light") {
+                document.body.removeAttribute("data-theme");
+                themeToggleBtn.textContent = "☀️";
+                localStorage.setItem("theme", "dark");
+            } else {
+                document.body.setAttribute("data-theme", "light");
+                themeToggleBtn.textContent = "🌙";
+                localStorage.setItem("theme", "light");
+            }
+        });
+    }
+
     const chapterList = document.getElementById("chapter-list");
     const taskContainer = document.getElementById("task-container");
 
