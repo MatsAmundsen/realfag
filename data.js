@@ -332,26 +332,26 @@ const fagsok = [
                     {
                         "id": "2.1",
                         "tittel": "Oppgave 2.1",
-                        "tekst": "Forenkle følgende uttrykk ved å trekke sammen like ledd:<br>a) 1 + 2x + 3 - 3x<br>b) 4x + 3y - 2x + 5y<br>c) 4(-x + 4)",
+                        "tekst": "Forenkle følgende uttrykk ved å trekke sammen like ledd:<br><br><strong>a)</strong> $1 + 2x + 3 - 3x$<br><br><strong>b)</strong> $4x + 3y - 2x + 5y$<br><br><strong>c)</strong> $4(-x + 4)$",
                         "bilde": null,
-                        "hint": "Samle alle x-ene for seg og tallene for seg. Når det er et tall foran en parentes, må det ganges inn med alle leddene inni.",
-                        "fasit": "a) 1 + 2x + 3 - 3x = -x + 4<br>b) 4x + 3y - 2x + 5y = 2x + 8y<br>c) 4(-x + 4) = -4x + 16"
+                        "hint": "Samle alle $x$-ene for seg og tallene for seg. Når det er et tall foran en parentes, må det ganges inn med alle leddene inni.",
+                        "fasit": "<strong>a)</strong><br>Vi skal forenkle $1 + 2x + 3 - 3x$<br><br>$1 + 2x + 3 - 3x$<br><br>$= 2x - 3x + 1 + 3$ (samle like ledd)<br><br>$= -x + 4$ (trekk sammen)<br><br><strong>Svar:</strong> $-x + 4$<br><br><strong>b)</strong><br>Vi skal forenkle $4x + 3y - 2x + 5y$<br><br>$4x + 3y - 2x + 5y$<br><br>$= 4x - 2x + 3y + 5y$ (samle like ledd)<br><br>$= 2x + 8y$ (trekk sammen)<br><br><strong>Svar:</strong> $2x + 8y$<br><br><strong>c)</strong><br>Vi skal forenkle $4(-x + 4)$<br><br>$4(-x + 4)$<br><br>$= 4 \\cdot (-x) + 4 \\cdot 4$ (multipliser $4$ med begge ledd inni parentesen)<br><br>$= -4x + 16$ (regn ut)<br><br><strong>Svar:</strong> $-4x + 16$"
                     },
                     {
                         "id": "2.2",
                         "tittel": "Oppgave 2.2",
-                        "tekst": "Løs opp parentesene og trekk sammen:<br>a) 3(a - 2) - 2(a + 4)<br>b) 5(b⁴ - 3a) + 10<br>c) Finn feilen i 2x(x - 3) = 2x² - 3. Hva er riktig svar?",
+                        "tekst": "Løs opp parentesene og trekk sammen:<br><br><strong>a)</strong> $3(a - 2) - 2(a + 4)$<br><br><strong>b)</strong> $5(b^4 - 3a) + 10$<br><br><strong>c)</strong> Finn feilen i $2x(x - 3) = 2x^2 - 3$. Hva er riktig svar?",
                         "bilde": null,
                         "hint": "Husk fortegnsreglene (minus og pluss blir minus).",
-                        "fasit": "a) 3a - 6 - 2a - 8 = a - 14<br>b) 5b⁴ - 15a + 10<br>c) Feilen er at 2x kun er multiplisert med x, og ikke med -3. Riktig svar: 2x(x - 3) = 2x² - 6x."
+                        "fasit": "<strong>a)</strong><br>Vi skal løse opp parentesene og trekke sammen:<br><br>$3(a - 2) - 2(a + 4)$<br><br>$= 3 \\cdot a - 3 \\cdot 2 - 2 \\cdot a - 2 \\cdot 4$ (gange inn i parentesene)<br><br>$= 3a - 6 - 2a - 8$ (regne ut produktene)<br><br>$= 3a - 2a - 6 - 8$ (samle like ledd)<br><br>$= a - 14$ (trekke sammen)<br><br><strong>Svar:</strong> $a - 14$<br><br><strong>b)</strong><br>Vi skal løse opp parentesene og trekke sammen:<br><br>$5(b^4 - 3a) + 10$<br><br>$= 5 \\cdot b^4 - 5 \\cdot 3a + 10$ (gange inn i parentesen)<br><br>$= 5b^4 - 15a + 10$ (regne ut produktene)<br><br><strong>Svar:</strong> $5b^4 - 15a + 10$<br><br><strong>c)</strong><br>Ligningen som er oppgitt er: $2x(x - 3) = 2x^2 - 3$<br><br>Feilen er at $2x$ kun er multiplisert med $x$, og ikke med $-3$. <br><br>Riktig utregning:<br><br>$2x(x - 3)$<br><br>$= 2x \\cdot x - 2x \\cdot 3$ (multipliser $2x$ med hvert ledd inni parentesen)<br><br>$= 2x^2 - 6x$<br><br><strong>Svar:</strong> Feilen er at det mangler å multiplisere med $-3$. Riktig svar er $2x^2 - 6x$"
                     },
                     {
                         "id": "2.3",
                         "tittel": "Oppgave 2.3",
-                        "tekst": "Løs opp parentesene og trekk sammen:<br>(3x - 1)(2x + 4) - (x + 2)(x - 2)",
+                        "tekst": "Løs opp parentesene og trekk sammen:<br><br>$(3x - 1)(2x + 4) - (x + 2)(x - 2)$",
                         "bilde": null,
                         "hint": "Bruk konjugatsetningen for den andre parentesen. Husk at minustegnet foran parentesen snur fortegnet på innholdet når parentesen fjernes.",
-                        "fasit": "(3x - 1)(2x + 4) - (x + 2)(x - 2)<br>= (6x² + 12x - 2x - 4) - (x² - 4)<br>= 6x² + 10x - 4 - x² + 4<br>= 5x² + 10x"
+                        "fasit": "Vi skal løse opp og trekke sammen:<br><br>$(3x - 1)(2x + 4) - (x + 2)(x - 2)$<br><br>Først ganger vi ut de to første parentesene:<br>$(3x \\cdot 2x + 3x \\cdot 4 - 1 \\cdot 2x - 1 \\cdot 4)$<br>$= (6x^2 + 12x - 2x - 4)$<br>$= (6x^2 + 10x - 4)$ (gange ut og forenkle)<br><br>Så regner vi ut det siste leddet ved å bruke konjugatsetningen $(a + b)(a - b) = a^2 - b^2$:<br>$(x + 2)(x - 2)$<br>$= (x^2 - 2^2)$<br>$= (x^2 - 4)$<br><br>Sett det hele sammen med minustegnet mellom:<br>$(6x^2 + 10x - 4) - (x^2 - 4)$<br><br>$= 6x^2 + 10x - 4 - x^2 + 4$ (hev parentesene, husk å snu fortegn etter minus)<br><br>$= 6x^2 - x^2 + 10x - 4 + 4$ (samle like ledd)<br><br>$= 5x^2 + 10x$ (trekk sammen)<br><br><strong>Svar:</strong> $5x^2 + 10x$"
                     }
                 ]
             },
@@ -362,26 +362,26 @@ const fagsok = [
                     {
                         "id": "2.4",
                         "tittel": "Oppgave 2.4",
-                        "tekst": "a) Skriv ned alle kvadratsetningene.<br>b) Vis med eksempel de ulike kvadratsetningene.",
+                        "tekst": "<strong>a)</strong> Skriv ned alle kvadratsetningene.<br><br><strong>b)</strong> Vis med eksempel de ulike kvadratsetningene.",
                         "bilde": null,
                         "hint": "Det finnes to kvadratsetninger og én konjugatsetning.",
-                        "fasit": "1. kvadratsetning: (a + b)² = a² + 2ab + b²<br>Eksempel: (x + 3)² = x² + 6x + 9<br><br>2. kvadratsetning: (a - b)² = a² - 2ab + b²<br>Eksempel: (x - 4)² = x² - 8x + 16<br><br>3. kvadratsetning (Konjugatsetningen): (a + b)(a - b) = a² - b²<br>Eksempel: (x + 5)(x - 5) = x² - 25"
+                        "fasit": "<strong>a)</strong><br><br>Første kvadratsetning:<br>$(a + b)^2 = a^2 + 2ab + b^2$<br><br>Andre kvadratsetning:<br>$(a - b)^2 = a^2 - 2ab + b^2$<br><br>Tredje kvadratsetning (Konjugatsetningen):<br>$(a + b)(a - b) = a^2 - b^2$<br><br><strong>b)</strong><br><br>Første kvadratsetning:<br>Eksempel med $(x + 3)^2$:<br>$(x + 3)^2 = x^2 + 2 \\cdot x \\cdot 3 + 3^2$<br><strong>Svar:</strong> $x^2 + 6x + 9$<br><br>Andre kvadratsetning:<br>Eksempel med $(x - 4)^2$:<br>$(x - 4)^2 = x^2 - 2 \\cdot x \\cdot 4 + 4^2$<br><strong>Svar:</strong> $x^2 - 8x + 16$<br><br>Tredje kvadratsetning (Konjugatsetningen):<br>Eksempel med $(x + 5)(x - 5)$:<br>$(x + 5)(x - 5) = x^2 - 5^2$<br><strong>Svar:</strong> $x^2 - 25$"
                     },
                     {
                         "id": "2.5",
                         "tittel": "Oppgave 2.5",
-                        "tekst": "Bruk kvadratsetningene til å regne ut eksakt:<br>a) (v + 5)²<br>b) (3a - 2)²<br>c) (4y + 3)(4y - 3)",
+                        "tekst": "Bruk kvadratsetningene til å regne ut eksakt:<br><br><strong>a)</strong> $(v + 5)^2$<br><br><strong>b)</strong> $(3a - 2)^2$<br><br><strong>c)</strong> $(4y + 3)(4y - 3)$",
                         "bilde": null,
                         "hint": "Oppgave c er konjugatsetningen. Den gir deg differansen mellom to kvadrater.",
-                        "fasit": "a) (v + 5)² = v² + 10v + 25<br>b) (3a - 2)² = 9a² - 12a + 4<br>c) (4y + 3)(4y - 3) = 16y² - 9"
+                        "fasit": "<strong>a)</strong><br>Vi bruker 1. kvadratsetning: $(a + b)^2 = a^2 + 2ab + b^2$<br>Her er $a = v$ og $b = 5$.<br><br>$(v + 5)^2 = v^2 + 2 \\cdot v \\cdot 5 + 5^2$ (setter inn i formelen)<br>$v^2 + 10v + 25$ (forenkler)<br><br><strong>Svar:</strong> $v^2 + 10v + 25$<br><br><strong>b)</strong><br>Vi bruker 2. kvadratsetning: $(a - b)^2 = a^2 - 2ab + b^2$<br>Her er $a = 3a$ og $b = 2$.<br><br>$(3a - 2)^2 = (3a)^2 - 2 \\cdot (3a) \\cdot 2 + 2^2$ (setter inn i formelen)<br>$9a^2 - 12a + 4$ (forenkler og passer på at både $3$ og $a$ kvadreres)<br><br><strong>Svar:</strong> $9a^2 - 12a + 4$<br><br><strong>c)</strong><br>Vi bruker 3. kvadratsetning (konjugatsetningen): $(a + b)(a - b) = a^2 - b^2$<br>Her er $a = 4y$ og $b = 3$.<br><br>$(4y + 3)(4y - 3) = (4y)^2 - 3^2$ (setter inn i formelen)<br>$16y^2 - 9$ (forenkler og passer på at både $4$ og $y$ kvadreres)<br><br><strong>Svar:</strong> $16y^2 - 9$"
                     },
                     {
                         "id": "2.6",
                         "tittel": "Oppgave 2.6",
-                        "tekst": "a) (√10 + b)(√10 - b)<br>b) -(v + 5)² + (v - 5)²<br>c) (b² + a³)²",
+                        "tekst": "Regn ut og forenkle:<br><br><strong>a)</strong> $(\\sqrt{10} + b)(\\sqrt{10} - b)$<br><br><strong>b)</strong> $-(v + 5)^2 + (v - 5)^2$<br><br><strong>c)</strong> $(b^2 + a^3)^2$",
                         "bilde": null,
                         "hint": "Kvadratroten av 10 ganget med kvadratroten av 10 er bare 10.",
-                        "fasit": "a) (√10 + b)(√10 - b) = 10 - b²<br>b) -(v + 5)² + (v - 5)² = -(v² + 10v + 25) + (v² - 10v + 25) = -v² - 10v - 25 + v² - 10v + 25 = -20v<br>c) (b² + a³)² = (b²)² + 2(b²)(a³) + (a³)² = b⁴ + 2a³b² + a⁶"
+                        "fasit": "<strong>a)</strong><br>Vi bruker 3. kvadratsetning (konjugatsetningen): $(a + b)(a - b) = a^2 - b^2$<br>Her er $a = \\sqrt{10}$ og $b = b$.<br><br>$(\\sqrt{10} + b)(\\sqrt{10} - b) = (\\sqrt{10})^2 - b^2$ (setter inn i formelen)<br>$10 - b^2$ (siden $(\\sqrt{10})^2 = 10$)<br><br><strong>Svar:</strong> $10 - b^2$<br><br><strong>b)</strong><br>Vi løser hvert ledd for seg med kvadratsetningene.<br>For første ledd bruker vi 1. kvadratsetning, for det andre bruker vi 2. kvadratsetning.<br><br>$-(v + 5)^2 + (v - 5)^2$<br>$-(v^2 + 2 \\cdot v \\cdot 5 + 5^2) + (v^2 - 2 \\cdot v \\cdot 5 + 5^2)$ (bruker kvadratsetningene, beholder parentesene)<br>$-(v^2 + 10v + 25) + (v^2 - 10v + 25)$ (forenkler inni parentesene)<br>$-v^2 - 10v - 25 + v^2 - 10v + 25$ (løser opp parentesene, endrer fortegn på det første uttrykket)<br>$-10v - 10v$ (alle andre ledd kansellerer hverandre: $-v^2 + v^2 = 0$ og $-25 + 25 = 0$)<br>$-20v$ (legger sammen)<br><br><strong>Svar:</strong> $-20v$<br><br><strong>c)</strong><br>Vi bruker 1. kvadratsetning: $(a + b)^2 = a^2 + 2ab + b^2$<br>Her er første ledd $b^2$ og andre ledd $a^3$.<br><br>$(b^2 + a^3)^2 = (b^2)^2 + 2 \\cdot (b^2) \\cdot (a^3) + (a^3)^2$ (setter inn i formelen)<br>$b^{2 \\cdot 2} + 2a^3b^2 + a^{3 \\cdot 2}$ (bruker potensregelen $(x^n)^m = x^{n \\cdot m}$)<br>$b^4 + 2a^3b^2 + a^6$ (forenkler)<br><br><strong>Svar:</strong> $b^4 + 2a^3b^2 + a^6$"
                     }
                 ]
             },
@@ -392,26 +392,26 @@ const fagsok = [
                     {
                         "id": "2.7",
                         "tittel": "Oppgave 2.7",
-                        "tekst": "Faktoriser:<br>a) 4<br>b) 36<br>c) 16a²<br>d) πx + 2π",
+                        "tekst": "Faktoriser:<br><br><strong>a)</strong> $4$<br><br><strong>b)</strong> $36$<br><br><strong>c)</strong> $16a^2$<br><br><strong>d)</strong> $\\pi x + 2\\pi$",
                         "bilde": null,
                         "hint": "Bryt tallene helt ned til sine minste byggesteiner (primtall).",
-                        "fasit": "a) 4 = 2 · 2<br>b) 36 = 2 · 2 · 3 · 3 (eller 6²)<br>c) 16a² = 4 · 4 · a · a = 2 · 2 · 2 · 2 · a · a<br>d) πx + 2π = π(x + 2)"
+                        "fasit": "<strong>a)</strong><br>Vi skal faktorisere $4$.<br><br>$4 = 2 \\cdot 2$ (primtallsfaktorisering)<br><br><strong>Svar:</strong> $2 \\cdot 2$<br><br><strong>b)</strong><br>Vi skal faktorisere $36$.<br><br>$36 = 6 \\cdot 6$ (finne to faktorer)<br><br>$6 \\cdot 6 = (2 \\cdot 3) \\cdot (2 \\cdot 3)$ (bryte ned til primtall)<br><br>$2 \\cdot 2 \\cdot 3 \\cdot 3$ (sortere faktorene)<br><br><strong>Svar:</strong> $2 \\cdot 2 \\cdot 3 \\cdot 3$<br><br><strong>c)</strong><br>Vi skal faktorisere $16a^2$.<br><br>$16a^2 = 16 \\cdot a^2$ (skille tall og variabler)<br><br>$16 \\cdot a^2 = 4 \\cdot 4 \\cdot a \\cdot a$ (faktorisere 16 til $4 \\cdot 4$ og $a^2$ til $a \\cdot a$)<br><br>$4 \\cdot 4 \\cdot a \\cdot a = 2 \\cdot 2 \\cdot 2 \\cdot 2 \\cdot a \\cdot a$ (primtallsfaktorisere 4 til $2 \\cdot 2$)<br><br><strong>Svar:</strong> $2 \\cdot 2 \\cdot 2 \\cdot 2 \\cdot a \\cdot a$<br><br><strong>d)</strong><br>Vi skal faktorisere $\\pi x + 2\\pi$.<br><br>$\\pi x + 2\\pi$<br><br>$\\pi \\cdot x + 2 \\cdot \\pi$ (skrive ut leddene med gangetegn)<br><br>$\\pi(x + 2)$ (sette den felles faktoren $\\pi$ utenfor parentes)<br><br><strong>Svar:</strong> $\\pi(x + 2)$"
                     },
                     {
                         "id": "2.8",
                         "tittel": "Oppgave 2.8",
-                        "tekst": "Faktoriser ved å sette felles faktor utenfor parentes:<br>a) Vis at √20 - √5 = √5<br>b) 15x² - 5x<br>c) 8a²b + 12ab²<br>d) Vis at √12 + √16 = 2(√3 + 2)",
+                        "tekst": "Faktoriser ved å sette felles faktor utenfor parentes:<br><br><strong>a)</strong> Vis at $\\sqrt{20} - \\sqrt{5} = \\sqrt{5}$<br><br><strong>b)</strong> $15x^2 - 5x$<br><br><strong>c)</strong> $8a^2b + 12ab^2$<br><br><strong>d)</strong> Vis at $\\sqrt{12} + \\sqrt{16} = 2(\\sqrt{3} + 2)$",
                         "bilde": null,
                         "hint": "Finn det største tallet og de variablene som finnes i begge ledd.",
-                        "fasit": "a) √20 = √(4·5) = 2√5. Vi får 2√5 - √5 = √5.<br>b) 15x² - 5x = 5x(3x - 1)<br>c) 8a²b + 12ab² = 4ab(2a + 3b)<br>d) √12 = 2√3. √16 = 4. 2√3 + 4 = 2(√3 + 2)."
+                        "fasit": "<strong>a)</strong><br>Vi skal vise at $\\sqrt{20} - \\sqrt{5} = \\sqrt{5}$.<br><br>$\\sqrt{20} - \\sqrt{5}$ (starter med venstre side)<br><br>$\\sqrt{4 \\cdot 5} - \\sqrt{5}$ (faktoriserer 20 til $4 \\cdot 5$)<br><br>$\\sqrt{4} \\cdot \\sqrt{5} - \\sqrt{5}$ (deler opp roten)<br><br>$2\\sqrt{5} - \\sqrt{5}$ (siden $\\sqrt{4} = 2$)<br><br>$(2 - 1)\\sqrt{5}$ (trekker sammen like røtter ved å faktorisere ut $\\sqrt{5}$)<br><br>$1\\sqrt{5} = \\sqrt{5}$ (forenkler)<br><br><strong>Svar:</strong> Vi har vist at $\\sqrt{20} - \\sqrt{5} = \\sqrt{5}$.<br><br><strong>b)</strong><br>Vi skal faktorisere $15x^2 - 5x$.<br><br>$15x^2 - 5x$<br><br>$5 \\cdot 3 \\cdot x \\cdot x - 5 \\cdot x$ (faktoriserer hvert ledd for å se felles faktorer)<br><br>$5x(3x - 1)$ (setter felles faktor $5x$ utenfor parentes)<br><br><strong>Svar:</strong> $5x(3x - 1)$<br><br><strong>c)</strong><br>Vi skal faktorisere $8a^2b + 12ab^2$.<br><br>$8a^2b + 12ab^2$<br><br>$4 \\cdot 2 \\cdot a \\cdot a \\cdot b + 4 \\cdot 3 \\cdot a \\cdot b \\cdot b$ (faktoriserer ut største felles divisor for tall og ut variabler)<br><br>$4ab(2a + 3b)$ (setter felles faktor $4ab$ utenfor parentes)<br><br><strong>Svar:</strong> $4ab(2a + 3b)$<br><br><strong>d)</strong><br>Vi skal vise at $\\sqrt{12} + \\sqrt{16} = 2(\\sqrt{3} + 2)$.<br><br>$\\sqrt{12} + \\sqrt{16}$ (starter med venstre side)<br><br>$\\sqrt{4 \\cdot 3} + 4$ (faktoriserer 12, og løser $\\sqrt{16} = 4$)<br><br>$\\sqrt{4} \\cdot \\sqrt{3} + 4$ (deler opp roten av 12)<br><br>$2\\sqrt{3} + 4$ (siden $\\sqrt{4} = 2$)<br><br>$2\\sqrt{3} + 2 \\cdot 2$ (skriver 4 som $2 \\cdot 2$ for å se felles faktor)<br><br>$2(\\sqrt{3} + 2)$ (setter felles faktor 2 utenfor parentes)<br><br><strong>Svar:</strong> Vi har vist at $\\sqrt{12} + \\sqrt{16} = 2(\\sqrt{3} + 2)$."
                     },
                     {
                         "id": "2.9",
                         "tittel": "Oppgave 2.9",
                         "tekst": "Forklar om summen av to partall er et oddetall eller partall. Vis med eksempel.",
                         "bilde": null,
-                        "hint": "Husk at ethvert tall som kan deles på 2 er et partall.",
-                        "fasit": "Svar: Summen av to partall er alltid et partall.<br>Forklaring: Et partall kan skrives som 2n, og et annet partall kan skrives som 2m. Legger vi dem sammen får vi 2n + 2m = 2(n + m). Siden 2 kan settes utenfor en parentes som en faktor, er tallet alltid delelig på 2, og dermed et partall.<br>Eksempel: 4 + 8 = 12."
+                        "hint": "Husk at ethvert tall som kan deles på $2$ er et partall, og kan skrives på formen $2n$.",
+                        "fasit": "Vi skal vise om summen av to vilkårlige partall blir et partall eller oddetall.<br><br><strong>Generelt bevis:</strong><br><br>Et partall er definert som et heltall som er delelig med $2$. Derfor kan et partall skrives som $2n$ der $n$ er et heltall.<br><br>La $2n$ og $2m$ være to partall, der $n$ og $m$ er heltall.<br><br>$2n + 2m$ (summen av de to partallene)<br><br>$2(n + m)$ (setter felles faktor $2$ utenfor parentes)<br><br>La $k = n + m$. Siden summen av to heltall er et nytt heltall, er $k$ et heltall.<br><br>$2k$ (uttrykket kan da skrives som $2k$)<br><br>Siden summen kan skrives som $2$ ganger et heltall, må summen være delelig på $2$. Dermed er summen av to partall alltid et partall.<br><br><strong>Eksempel:</strong><br><br>$4 + 8$ (vi velger to partall)<br><br>$12$ (summerer tallene)<br><br>$2 \\cdot 6$ ($12$ kan deles på $2$ og er derfor et partall)<br><br><strong>Svar:</strong> Summen av to partall er alltid et partall."
                     }
                 ]
             },
@@ -422,18 +422,18 @@ const fagsok = [
                     {
                         "id": "2.10",
                         "tittel": "Oppgave 2.10",
-                        "tekst": "Faktoriser uttrykkene:<br>a) x² + 10x + 25<br>b) 9y² - 16<br>c) a² - 2a<br>d) Hvilket tall mangler for at uttrykket skal bli et fullstendig kvadrat? x² + 8x + ___",
+                        "tekst": "Faktoriser uttrykkene:<br><strong>a)</strong> $x^2 + 10x + 25$<br><br><strong>b)</strong> $9y^2 - 16$<br><br><strong>c)</strong> $a^2 - 2a$<br><br><strong>d)</strong> Hvilket tall mangler for at uttrykket skal bli et fullstendig kvadrat? $x^2 + 8x + \\dots$",
                         "bilde": null,
-                        "hint": "For d), ta halvparten av tallet foran x, og opphøy det i andre.",
-                        "fasit": "a) x² + 10x + 25 = (x + 5)²<br>b) 9y² - 16 = (3y + 4)(3y - 4)<br>c) a² - 2a = a(a - 2)<br>d) Vi tar halvparten av tallet foran x, og kvadrerer det: (8/2)² = 4² = 16. Tallet som mangler er 16."
+                        "hint": "For <strong>d)</strong>, ta halvparten av tallet foran $x$, og opphøy det i andre.",
+                        "fasit": "<strong>a)</strong><br>Vi skal faktorisere uttrykket $x^2 + 10x + 25$.<br>Vi ser om dette passer med første kvadratsetning, som er $a^2 + 2ab + b^2 = (a + b)^2$.<br>Her er første ledd $x^2$, så $a = x$.<br>Siste ledd er $25$, så $b^2 = 25 \\rightarrow b = 5$.<br>Vi sjekker det midterste leddet: $2ab = 2 \\cdot x \\cdot 5 = 10x$. Dette stemmer overens med uttrykket vårt.<br>Dermed kan vi skrive uttrykket som $(x + 5)^2$.<br><br><strong>Svar:</strong> $(x + 5)^2$<br><br><strong>b)</strong><br>Vi skal faktorisere uttrykket $9y^2 - 16$.<br>Dette er en differanse mellom to kvadrater, så vi kan bruke konjugatsetningen: $a^2 - b^2 = (a + b)(a - b)$.<br>Første ledd er $9y^2$, som kan skrives som $(3y)^2$. Altså er $a = 3y$.<br>Andre ledd er $16$, som er $4^2$. Altså er $b = 4$.<br>Vi setter inn i konjugatsetningen og får $(3y + 4)(3y - 4)$.<br><br><strong>Svar:</strong> $(3y + 4)(3y - 4)$<br><br><strong>c)</strong><br>Vi skal faktorisere uttrykket $a^2 - 2a$.<br>Her er det felles faktorer i begge leddene.<br>Første ledd består av $a \\cdot a$, og andre ledd er $2 \\cdot a$.<br>Vi kan trekke $a$ utenfor en parentes:<br>$a(a - 2)$<br><br><strong>Svar:</strong> $a(a - 2)$<br><br><strong>d)</strong><br>Vi har uttrykket $x^2 + 8x + \\dots$ og skal gjøre det til et fullstendig kvadrat.<br>Dette skal passe med første kvadratsetning: $a^2 + 2ab + b^2 = (a + b)^2$.<br>Her er $a = x$. Da må midtleddet $2xb = 8x$.<br>Vi finner $b$ ved å dele på $2x$:<br>$b = \\frac{8x}{2x} = 4$<br>Det manglende tallet er siste ledd, som skal være $b^2$.<br>Vi regner ut: $b^2 = 4^2 = 16$.<br><br><strong>Svar:</strong> $16$"
                     },
                     {
                         "id": "2.11",
                         "tittel": "Oppgave 2.11",
-                        "tekst": "Faktoriser hvis det er mulig:<br>a) -b + 63/7<br>b) a² - 6a - 12<br>c) 15 - 10v + v²",
+                        "tekst": "Faktoriser hvis det er mulig:<br><strong>a)</strong> $-b + \\frac{63}{7}$<br><br><strong>b)</strong> $a^2 - 6a - 12$<br><br><strong>c)</strong> $15 - 10v + v^2$",
                         "bilde": null,
                         "hint": "Husk at fullstendige kvadrater krever at siste tall er kvadratet av halve det midterste tallet.",
-                        "fasit": "a) -b + 63/7 = -b + 9 (Kan ikke faktoriseres mer).<br>b) a² - 6a - 12 : Kan ikke faktoriseres med heltall fordi -12 ikke passer inn i et fullstendig kvadrat (det burde vært +9).<br>c) Omskrevet: v² - 10v + 15. Kan ikke faktoriseres med heltall, siden 15 ikke er lik (10/2)²."
+                        "fasit": "<strong>a)</strong><br>Vi skal faktorisere uttrykket $-b + \\frac{63}{7}$.<br>Først forenkler vi brøken, siden $63$ delt på $7$ er $9$:<br>$-b + 9$<br>Dette uttrykket har ingen felles faktorer, og det passer ikke med noen av kvadratsetningene. Derfor kan det ikke faktoriseres videre.<br><br><strong>Svar:</strong> Kan ikke faktoriseres utover $-b + 9$<br><br><strong>b)</strong><br>Vi skal faktorisere uttrykket $a^2 - 6a - 12$.<br>Vi sjekker om det kan være et fullstendig kvadrat. Da måtte vi brukt andre kvadratsetning: $a^2 - 2ab + b^2$.<br>Midtleddet er $-6a$, noe som betyr at $2b = 6 \\rightarrow b = 3$.<br>Da burde det siste leddet vært $b^2 = 3^2 = 9$.<br>I stedet for $9$, er siste ledd $-12$. Uttrykket er derfor ikke et fullstendig kvadrat.<br>Siden vi heller ikke lett kan finne to heltall som har produkt $-12$ og sum $-6$, kan ikke uttrykket faktoriseres med heltall.<br><br><strong>Svar:</strong> Kan ikke faktoriseres<br><br><strong>c)</strong><br>Vi skal faktorisere uttrykket $15 - 10v + v^2$.<br>Først omskriver vi uttrykket slik at vi får potenser av $v$ i synkende rekkefølge:<br>$v^2 - 10v + 15$<br>Vi sjekker om dette kan være et fullstendig kvadrat ved å bruke andre kvadratsetning.<br>Her er midtleddet $-10v$, så vi tar halvparten av dette for å finne $b$: $\\frac{10}{2} = 5$.<br>Kvadratet av dette tallet er $5^2 = 25$.<br>Siden det siste leddet i uttrykket vårt er $15$ og ikke $25$, er ikke uttrykket et fullstendig kvadrat.<br>Vi finner heller ikke to heltall som gir produkt $15$ og sum $-10$.<br><br><strong>Svar:</strong> Kan ikke faktoriseres"
                     }
                 ]
             },
@@ -444,26 +444,26 @@ const fagsok = [
                     {
                         "id": "2.12",
                         "tittel": "Oppgave 2.12",
-                        "tekst": "Sett tallene i stigende rekkefølge: -14/7, 2.5, 1/2, 3/4, √1, √25, 12/5",
+                        "tekst": "Sett tallene i stigende rekkefølge: $-\\frac{14}{7}$, $2.5$, $\\frac{1}{2}$, $\\frac{3}{4}$, $\\sqrt{1}$, $\\sqrt{25}$, $\\frac{12}{5}$",
                         "bilde": null,
                         "hint": "Gjør alt om til desimaltall før du begynner å sortere dem.",
-                        "fasit": "Gjort om til desimal: -2, 2.5, 0.5, 0.75, 1, 5, 2.4.<br>Stigende rekkefølge: -14/7, 1/2, 3/4, √1, 12/5, 2.5, √25."
+                        "fasit": "Vi gjør først alle tallene om til desimaltall for å enklere kunne sammenligne dem:<br><br>$-\\frac{14}{7} = -2$<br><br>$2.5 = 2.5$<br><br>$\\frac{1}{2} = 0.5$<br><br>$\\frac{3}{4} = 0.75$<br><br>$\\sqrt{1} = 1$<br><br>$\\sqrt{25} = 5$<br><br>$\\frac{12}{5} = \\frac{24}{10} = 2.4$<br><br>Nå kan vi sortere desimaltallene i stigende rekkefølge (fra minst til størst):<br>$-2 < 0.5 < 0.75 < 1 < 2.4 < 2.5 < 5$<br><br>Til slutt bytter vi tilbake til de opprinnelige formene.<br><br><strong>Svar:</strong> $-\\frac{14}{7}$, $\\frac{1}{2}$, $\\frac{3}{4}$, $\\sqrt{1}$, $\\frac{12}{5}$, $2.5$, $\\sqrt{25}$"
                     },
                     {
                         "id": "2.13",
                         "tittel": "Oppgave 2.13",
-                        "tekst": "Hvis det er mulig, forkort brøkene:<br>a) (10a - 5)/5<br>b) (12 - 6v)/(6v)<br>c) (36 - a²)/(6 + a)",
+                        "tekst": "Hvis det er mulig, forkort brøkene:<br><br><strong>a)</strong> $\\frac{10a - 5}{5}$<br><br><strong>b)</strong> $\\frac{12 - 6v}{6v}$<br><br><strong>c)</strong> $\\frac{36 - a^2}{6 + a}$",
                         "bilde": null,
                         "hint": "Faktoriser teller (sett utenfor parentes) før du stryker noe mot nevner.",
-                        "fasit": "a) (10a - 5)/5 = 5(2a - 1)/5 = 2a - 1<br>b) (12 - 6v)/6v = 6(2 - v)/6v = (2 - v)/v<br>c) (36 - a²)/(6 + a) = (6 - a)(6 + a)/(6 + a) = 6 - a"
+                        "fasit": "<strong>a)</strong><br>Vi skal forkorte brøken $\\frac{10a - 5}{5}$<br><br>$\\frac{10a - 5}{5}$<br><br>$\\rightarrow \\frac{5(2a - 1)}{5}$ (faktoriser ut 5 i telleren)<br><br>$\\rightarrow 2a - 1$ (stryk 5 i teller mot 5 i nevner)<br><br><strong>Svar:</strong> $2a - 1$<br><br><strong>b)</strong><br>Vi skal forkorte brøken $\\frac{12 - 6v}{6v}$<br><br>$\\frac{12 - 6v}{6v}$<br><br>$\\rightarrow \\frac{6(2 - v)}{6v}$ (faktoriser ut 6 i telleren)<br><br>$\\rightarrow \\frac{2 - v}{v}$ (stryk 6 i teller mot 6 i nevner)<br><br><strong>Svar:</strong> $\\frac{2 - v}{v}$<br><br><strong>c)</strong><br>Vi skal forkorte brøken $\\frac{36 - a^2}{6 + a}$<br><br>$\\frac{36 - a^2}{6 + a}$<br><br>$\\rightarrow \\frac{6^2 - a^2}{6 + a}$ (skriv 36 som $6^2$)<br><br>$\\rightarrow \\frac{(6 - a)(6 + a)}{6 + a}$ (bruk tredje kvadratsetning $x^2 - y^2 = (x-y)(x+y)$)<br><br>$\\rightarrow 6 - a$ (stryk $6 + a$ i teller mot $6 + a$ i nevner)<br><br><strong>Svar:</strong> $6 - a$"
                     },
                     {
                         "id": "2.14",
                         "tittel": "Oppgave 2.14",
-                        "tekst": "Trekk sammen og forkort mest mulig:<br>a) 2x/3 + (x - 1)/4<br>b) (1/b²) * (3b/6)<br>c) (2 - z)/6 + (3 + z)/2<br>d) (3/4b) / (2/4)<br>e) 2/(b + 4) - (2b - 8)/(b² - 16) + 4",
+                        "tekst": "Trekk sammen og forkort mest mulig:<br><br><strong>a)</strong> $\\frac{2x}{3} + \\frac{x - 1}{4}$<br><br><strong>b)</strong> $\\frac{1}{b^2} \\cdot \\frac{3b}{6}$<br><br><strong>c)</strong> $\\frac{2 - z}{6} + \\frac{3 + z}{2}$<br><br><strong>d)</strong> $\\frac{\\frac{3}{4b}}{\\frac{2}{4}}$<br><br><strong>e)</strong> $\\frac{2}{b + 4} - \\frac{2b - 8}{b^2 - 16} + 4$",
                         "bilde": null,
                         "hint": "Ved addisjon av brøk, finn fellesnevner. Ved divisjon av brøk, snu den siste brøken på hodet og multipliser.",
-                        "fasit": "a) Fellesnevner 12: (8x + 3x - 3)/12 = (11x - 3)/12<br>b) 3b / 6b² = 1 / 2b<br>c) Fellesnevner 6: (2 - z + 9 + 3z)/6 = (2z + 11)/6<br>d) Snu og gang: (3/4b) * (4/2) = 12/8b = 3/2b<br>e) (2b - 8)/(b² - 16) = 2(b - 4)/((b-4)(b+4)) = 2/(b+4). Regnestykket blir da 2/(b+4) - 2/(b+4) + 4 = 4."
+                        "fasit": "<strong>a)</strong><br>Vi skal trekke sammen $\\frac{2x}{3} + \\frac{x - 1}{4}$<br><br>Fellesnevner for 3 og 4 er 12.<br><br>$\\frac{2x \\cdot 4}{3 \\cdot 4} + \\frac{(x - 1) \\cdot 3}{4 \\cdot 3}$ (utvid begge brøkene for å få fellesnevner)<br><br>$\\rightarrow \\frac{8x}{12} + \\frac{3x - 3}{12}$ (gang ut i tellerne)<br><br>$\\rightarrow \\frac{8x + 3x - 3}{12}$ (sett på felles brøkstrek)<br><br>$\\rightarrow \\frac{11x - 3}{12}$ (trekk sammen like ledd i telleren)<br><br><strong>Svar:</strong> $\\frac{11x - 3}{12}$<br><br><strong>b)</strong><br>Vi skal regne ut $\\frac{1}{b^2} \\cdot \\frac{3b}{6}$<br><br>$\\frac{1 \\cdot 3b}{b^2 \\cdot 6}$ (gang teller med teller og nevner med nevner)<br><br>$\\rightarrow \\frac{3b}{6b^2}$ (trekk sammen)<br><br>$\\rightarrow \\frac{3 \\cdot b}{2 \\cdot 3 \\cdot b \\cdot b}$ (faktoriser teller og nevner)<br><br>$\\rightarrow \\frac{1}{2b}$ (stryk 3 og $b$ i teller og nevner)<br><br><strong>Svar:</strong> $\\frac{1}{2b}$<br><br><strong>c)</strong><br>Vi skal trekke sammen $\\frac{2 - z}{6} + \\frac{3 + z}{2}$<br><br>Fellesnevner for 6 og 2 er 6.<br><br>$\\frac{2 - z}{6} + \\frac{(3 + z) \\cdot 3}{2 \\cdot 3}$ (utvid den andre brøken med 3 for å få fellesnevner 6)<br><br>$\\rightarrow \\frac{2 - z}{6} + \\frac{9 + 3z}{6}$ (gang ut parentesen)<br><br>$\\rightarrow \\frac{2 - z + 9 + 3z}{6}$ (sett på felles brøkstrek)<br><br>$\\rightarrow \\frac{2z + 11}{6}$ (trekk sammen like ledd)<br><br><strong>Svar:</strong> $\\frac{2z + 11}{6}$<br><br><strong>d)</strong><br>Vi skal regne ut $\\frac{\\frac{3}{4b}}{\\frac{2}{4}}$<br><br>$\\frac{3}{4b} \\cdot \\frac{4}{2}$ (når vi deler på en brøk, snur vi den på hodet og multipliserer)<br><br>$\\rightarrow \\frac{3 \\cdot 4}{4b \\cdot 2}$ (gang teller med teller og nevner med nevner)<br><br>$\\rightarrow \\frac{12}{8b}$ (trekk sammen)<br><br>$\\rightarrow \\frac{3 \\cdot 4}{2b \\cdot 4}$ (faktoriser for å finne felles faktorer)<br><br>$\\rightarrow \\frac{3}{2b}$ (stryk 4 i teller og nevner)<br><br><strong>Svar:</strong> $\\frac{3}{2b}$<br><br><strong>e)</strong><br>Vi skal trekke sammen $\\frac{2}{b + 4} - \\frac{2b - 8}{b^2 - 16} + 4$<br><br>Vi starter med å forenkle den midterste brøken:<br>$\\frac{2b - 8}{b^2 - 16}$<br><br>$\\rightarrow \\frac{2(b - 4)}{(b - 4)(b + 4)}$ (faktoriser ut 2 i teller, bruk tredje kvadratsetning i nevner)<br><br>$\\rightarrow \\frac{2}{b + 4}$ (stryk $b - 4$ oppe og nede)<br><br>Nå setter vi dette inn i det opprinnelige uttrykket:<br>$\\frac{2}{b + 4} - \\frac{2}{b + 4} + 4$<br><br>$\\rightarrow 0 + 4 = 4$ (de to første brøkene er like og opphever hverandre)<br><br><strong>Svar:</strong> $4$"
                     }
                 ]
             },
@@ -474,18 +474,18 @@ const fagsok = [
                     {
                         "id": "2.15",
                         "tittel": "Oppgave 2.15 (Formelregning)",
-                        "tekst": "I en rettvinklet trekant er arealet A. Grunnlinjen er dobbelt så lang som høyden h.<br>a) Sett opp en formel for A uttrykt ved h.<br>b) Gjør om formelen slik at h står alene på den ene siden av likhetstegnet.",
+                        "tekst": "I en rettvinklet trekant er arealet $A$. Grunnlinjen er dobbelt så lang som høyden $h$.<br><br><strong>a)</strong> Sett opp en formel for $A$ uttrykt ved $h$.<br><br><strong>b)</strong> Gjør om formelen slik at $h$ står alene på den ene siden av likhetstegnet.",
                         "bilde": null,
-                        "hint": "Arealet av en trekant er (grunnlinje * høyde) / 2.",
-                        "fasit": "a) A = (g · h) / 2. Siden g = 2h, får vi A = (2h · h) / 2 = 2h² / 2 = h².<br>b) Siden A = h², tar vi kvadratroten: h = √A."
+                        "hint": "Arealet av en trekant er $\\frac{\\text{grunnlinje} \\cdot \\text{høyde}}{2}$.",
+                        "fasit": "<strong>a)</strong><br>Arealet av en trekant er gitt ved formelen:<br>$A = \\frac{g \\cdot h}{2}$<br><br>Vi vet at grunnlinjen $g$ er dobbelt så lang som høyden $h$:<br>$g = 2h$<br><br>Vi setter dette inn i formelen for arealet:<br>$A = \\frac{2h \\cdot h}{2}$ (erstatter $g$ med $2h$)<br><br>$A = \\frac{2h^2}{2}$ (ganger ut telleren)<br><br>$A = h^2$ (forkorter brøken ved å dele på $2$)<br><br><strong>Svar:</strong> $A = h^2$<br><br><strong>b)</strong><br>Vi tar utgangspunkt i svaret fra forrige oppgave:<br>$A = h^2$<br><br>For å få $h$ alene må vi ta kvadratroten på begge sider:<br>$\\sqrt{A} = \\sqrt{h^2}$<br><br>$\\sqrt{A} = h$<br><br>$h = \\sqrt{A}$ (bytter om på sidene)<br><br><strong>Svar:</strong> $h = \\sqrt{A}$"
                     },
                     {
                         "id": "2.16",
                         "tittel": "Oppgave 2.16 (Sekskanttall)",
-                        "tekst": "Figuren viser de fire første sentrerte sekskanttallene, C1, C2, C3 og C4.<br>a) Finn det femte sentrerte sekskanttallet, C5.<br>b) En formel er C_n = 3n² - 3n + 1. Vis at formelen stemmer for de fire første.<br>c) Bruk formelen til å bestemme sentrert sekskanttall nummer 10.",
+                        "tekst": "Figuren viser de fire første sentrerte sekskanttallene, $C_1, C_2, C_3$ og $C_4$.<br><br><strong>a)</strong> Finn det femte sentrerte sekskanttallet, $C_5$.<br><br><strong>b)</strong> En formel er $C_n = 3n^2 - 3n + 1$. Vis at formelen stemmer for de fire første.<br><br><strong>c)</strong> Bruk formelen til å bestemme sentrert sekskanttall nummer $10$.",
                         "bilde": "Bilde2.16.png",
-                        "hint": "Se på økningen. Fra 1 til 7 er det +6. Fra 7 til 19 er det +12.",
-                        "fasit": "a) Økningen er +6, +12, +18. For C5 legger vi til 18 + 6 = 24 prikker på C4 (37). C5 = 37 + 24 = 61.<br>b) Tester formelen for n=1: 3(1)² - 3(1) + 1 = 1. n=2: 3(4) - 6 + 1 = 7. n=3: 3(9) - 9 + 1 = 19. n=4: 3(16) - 12 + 1 = 37.<br>c) C10 = 3(10)² - 3(10) + 1 = 300 - 30 + 1 = 271."
+                        "hint": "Se på økningen mellom hvert tall. Fra det første ($1$) til det andre ($7$) er økningen $+6$. Fra det andre ($7$) til det tredje ($19$) er økningen $+12$. Ser du et mønster?",
+                        "fasit": "<strong>a)</strong><br>Vi finner først tallene for de fire første:<br>$C_1 = 1$<br>$C_2 = 7$<br>$C_3 = 19$<br>$C_4 = 37$<br><br>Vi ser på økningen mellom hvert ledd:<br>$7 - 1 = 6$ (økning fra 1. til 2. ledd)<br>$19 - 7 = 12$ (økning fra 2. til 3. ledd)<br>$37 - 19 = 18$ (økning fra 3. til 4. ledd)<br><br>Økningen er $6$-gangen: $6, 12, 18$. Neste økning må derfor være $24$.<br><br>Vi legger $24$ til det fjerde tallet:<br>$C_5 = 37 + 24$<br><br>$C_5 = 61$<br><br><strong>Svar:</strong> $C_5 = 61$<br><br><strong>b)</strong><br>Vi tester formelen $C_n = 3n^2 - 3n + 1$ for $n = 1, 2, 3, 4$:<br><br>For $n = 1$:<br>$C_1 = 3 \\cdot 1^2 - 3 \\cdot 1 + 1$<br>$C_1 = 3 \\cdot 1 - 3 + 1 = 1$ (stemmer overens med første tall)<br><br>For $n = 2$:<br>$C_2 = 3 \\cdot 2^2 - 3 \\cdot 2 + 1$<br>$C_2 = 3 \\cdot 4 - 6 + 1$<br>$C_2 = 12 - 6 + 1 = 7$ (stemmer overens med andre tall)<br><br>For $n = 3$:<br>$C_3 = 3 \\cdot 3^2 - 3 \\cdot 3 + 1$<br>$C_3 = 3 \\cdot 9 - 9 + 1$<br>$C_3 = 27 - 9 + 1 = 19$ (stemmer overens med tredje tall)<br><br>For $n = 4$:<br>$C_4 = 3 \\cdot 4^2 - 3 \\cdot 4 + 1$<br>$C_4 = 3 \\cdot 16 - 12 + 1$<br>$C_4 = 48 - 12 + 1 = 37$ (stemmer overens med fjerde tall)<br><br><strong>Svar:</strong> Formelen stemmer for alle de fire første tallene.<br><br><strong>c)</strong><br>Vi skal finne tall nummer 10, altså $C_{10}$. Vi setter inn $n = 10$ i formelen:<br><br>$C_{10} = 3 \\cdot 10^2 - 3 \\cdot 10 + 1$<br><br>$C_{10} = 3 \\cdot 100 - 30 + 1$ (regner ut potens og ganging)<br><br>$C_{10} = 300 - 30 + 1$ (ganger ut parentesen)<br><br>$C_{10} = 270 + 1$ (trekker fra)<br><br>$C_{10} = 271$<br><br><strong>Svar:</strong> $C_{10} = 271$"
                     }
                 ]
             }
