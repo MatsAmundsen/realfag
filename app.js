@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.className = "chapter-btn";
         btn.textContent = kapittel.tittel;
         btn.setAttribute("data-id", kapittel.id);
-        btn.onclick = () => loadChapter(kapittel.id, btn);
+        btn.onclick = () => { window.location.hash = "oppgaver/" + kapittel.id; };
         
         li.appendChild(btn);
         chapterList.appendChild(li);
@@ -189,40 +189,67 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // --- NAVIGASJON MELLOM FANER ---
-    window.goToRessurser = function() { document.querySelector("[data-target='ressurser']").click(); window.scrollTo(0,0); };
+    // --- NAVIGASJON MELLOM FANER (URL ROUTING) ---
+    window.goToRessurser = function() { window.location.hash = "ressurser"; window.scrollTo(0,0); };
     let programmeringLastet = false;
     let ressurserLastet = false;
 
-    document.querySelectorAll(".nav-btn").forEach(btn => {
-        btn.addEventListener("click", (e) => {
-            document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
-            e.target.classList.add("active");
+    function handleRoute() {
+        let hash = window.location.hash.substring(1);
+        if (!hash) hash = "oppgaver";
+        
+        const parts = hash.split("/");
+        const mainView = parts[0];
+        const subView = parts[1];
 
+        // Oppdater knapper i hovedmeny
+        document.querySelectorAll(".navbar .nav-btn").forEach(b => b.classList.remove("active"));
+        const activeNavBtn = document.querySelector(`.navbar .nav-btn[data-target='${mainView}']`);
+        if (activeNavBtn) activeNavBtn.classList.add("active");
+
+        // Skjul alle views først
+        document.getElementById("oppgaver-view").classList.add("hidden");
+        document.getElementById("programmering-view").classList.add("hidden");
+        document.getElementById("ressurser-view").classList.add("hidden");
+
+        // Vis riktig view og last innhold
+        if (mainView === "programmering") {
+            document.getElementById("programmering-view").classList.remove("hidden");
+            if (!programmeringLastet) {
+                loadProgrammering();
+                programmeringLastet = true;
+            }
+        } else if (mainView === "ressurser") {
+            document.getElementById("ressurser-view").classList.remove("hidden");
+            if (!ressurserLastet) {
+                loadRessurser();
+                ressurserLastet = true;
+            }
+        } else {
+            // Standard: Oppgaver
+            document.getElementById("oppgaver-view").classList.remove("hidden");
+            if (subView) {
+                const chapBtn = document.querySelector(`.chapter-btn[data-id='${subView}']`);
+                if (chapBtn) loadChapter(subView, chapBtn);
+            }
+        }
+    }
+
+    // Lytt på endringer i URL
+    window.addEventListener("hashchange", handleRoute);
+
+    // Oppdater hovedmenyen til å endre hash
+    document.querySelectorAll(".navbar .nav-btn").forEach(btn => {
+        btn.addEventListener("click", (e) => {
             const target = e.target.getAttribute("data-target");
-            
-            // Skjul alle views først
-            document.getElementById("oppgaver-view").classList.add("hidden");
-            document.getElementById("programmering-view").classList.add("hidden");
-            document.getElementById("ressurser-view").classList.add("hidden");
-            
-            if (target === "programmering") {
-                document.getElementById("programmering-view").classList.remove("hidden");
-                if (!programmeringLastet) {
-                    loadProgrammering();
-                    programmeringLastet = true;
-                }
-            } else if (target === "oppgaver") {
-                document.getElementById("oppgaver-view").classList.remove("hidden");
-            } else if (target === "ressurser") {
-                document.getElementById("ressurser-view").classList.remove("hidden");
-                if (!ressurserLastet) {
-                    loadRessurser();
-                    ressurserLastet = true;
-                }
+            if (target) {
+                window.location.hash = target;
             }
         });
     });
+
+    // Kaller funksjonen en gang ved oppstart for å lese eksisterende URL
+    setTimeout(handleRoute, 50);
 
     function loadRessurser() {
         const container = document.getElementById("ressurser-container");
