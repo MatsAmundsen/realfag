@@ -30,16 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    fetch('data.json')
-        .then(res => res.json())
-        .then(data => {
-            window.fagsok = data.fagsok || [];
-            window.fagstoff = data.fagstoff || [];
-            window.programmeringData = data.programmeringData || [];
-            
-            initApp();
-        })
-        .catch(err => console.error("Error loading data.json:", err));
+    initApp();
 
     function initApp() {
         const chapterList = document.getElementById("chapter-list");
@@ -374,6 +365,11 @@ document.addEventListener("DOMContentLoaded", () => {
     function loadProgrammering() {
         const progContainer = document.getElementById("prog-task-container");
         
+        if (typeof programmeringData === 'undefined') {
+            progContainer.innerHTML = "<p>Ingen programmeringsoppgaver funnet.</p>";
+            return;
+        }
+
         programmeringData.forEach((oppgave) => {
             const article = document.createElement("article");
             article.className = "task-card";

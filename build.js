@@ -281,14 +281,14 @@ function build() {
         console.log(`✓ Fant ${fagstoff.length} fagstoff-dokumenter`);
     }
 
-    const OUTPUT_JSON = path.join(__dirname, 'data.json');
-    const dataObj = {
-        fagsok: fagsok,
-        fagstoff: fagstoff
-    };
-    fs.writeFileSync(OUTPUT_JSON, JSON.stringify(dataObj, null, 4));
+    // Generer data.js med både fagsok (oppgaver) og fagstoff
+    const OUTPUT_JS = path.join(__dirname, 'data.js');
+    const jsContent = 
+        `window.fagsok = ${JSON.stringify(fagsok, null, 4)};\n\n` +
+        `window.fagstoff = ${JSON.stringify(fagstoff, null, 4)};\n`;
+    fs.writeFileSync(OUTPUT_JS, jsContent);
 
-    console.log(`\n✓ Genererte data.json`);
+    console.log(`\n✓ Genererte data.js`);
     console.log(`  ${fagsok.length} kapitler, ${totalOppgaver} oppgaver totalt`);
 }
 
