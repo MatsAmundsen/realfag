@@ -152,7 +152,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // --- BYGGING AV KAPITTELMENY OG OPPGAVER ---
-    fagsok.forEach((kapittel) => {
+    if (typeof window.fagsok !== 'undefined') {
+        window.fagsok.forEach((kapittel) => {
         const li = document.createElement("li");
         const btn = document.createElement("button");
         btn.className = "chapter-btn";
@@ -162,13 +163,15 @@ document.addEventListener("DOMContentLoaded", () => {
         
         li.appendChild(btn);
         chapterList.appendChild(li);
-    });
+        });
+    }
 
     function loadChapter(kapittelId, activeBtn) {
         document.querySelectorAll(".chapter-btn").forEach(btn => btn.classList.remove("active"));
         activeBtn.classList.add("active");
 
-        const kapData = fagsok.find(k => k.id === kapittelId);
+        if (typeof window.fagsok === 'undefined') return;
+        const kapData = window.fagsok.find(k => k.id === kapittelId);
         if (!kapData) return;
 
         taskContainer.innerHTML = `<h2>${kapData.tittel}</h2>`;
@@ -269,6 +272,13 @@ document.addEventListener("DOMContentLoaded", () => {
             if (subView) {
                 const chapBtn = document.querySelector(`.chapter-btn[data-id='${subView}']`);
                 if (chapBtn) loadChapter(subView, chapBtn);
+            } else {
+                // Last inn første kapittel som standard
+                const firstChapterBtn = document.querySelector(".chapter-btn");
+                if (firstChapterBtn) {
+                    const firstId = firstChapterBtn.getAttribute("data-id");
+                    loadChapter(firstId, firstChapterBtn);
+                }
             }
         }
     }
@@ -292,7 +302,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function loadRessurser() {
         const container = document.getElementById("ressurser-container");
         container.innerHTML = "";
-        if (typeof fagstoff !== 'undefined' && fagstoff.length > 0) {
+        if (typeof window.fagstoff !== 'undefined' && window.fagstoff.length > 0) {
             
             // Lag knapperad
             const nav = document.createElement("div");
@@ -305,7 +315,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // Lag innholdscontainer
             const contentArea = document.createElement("div");
             
-            fagstoff.forEach((tema, index) => {
+            window.fagstoff.forEach((tema, index) => {
                 const btn = document.createElement("button");
                 btn.className = "nav-btn";
                 // Style knappen slik at den ligner de andre fanene, men kanskje litt mindre
@@ -365,12 +375,12 @@ document.addEventListener("DOMContentLoaded", () => {
     function loadProgrammering() {
         const progContainer = document.getElementById("prog-task-container");
         
-        if (typeof programmeringData === 'undefined') {
+        if (typeof window.programmeringData === 'undefined') {
             progContainer.innerHTML = "<p>Ingen programmeringsoppgaver funnet.</p>";
             return;
         }
 
-        programmeringData.forEach((oppgave) => {
+        window.programmeringData.forEach((oppgave) => {
             const article = document.createElement("article");
             article.className = "task-card";
             article.id = `prog-task-${oppgave.id}`; 
@@ -460,8 +470,8 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
         // 1. Søk i vanlig pensum (fagsok)
-        if (typeof fagsok !== 'undefined') {
-            fagsok.forEach(kap => {
+        if (typeof window.fagsok !== 'undefined') {
+            window.fagsok.forEach(kap => {
                 kap.delkapitler.forEach(delkap => {
                     delkap.oppgaver.forEach(oppgave => {
                         const searchStr = `${oppgave.tittel} ${oppgave.tekst} ${oppgave.hint} ${oppgave.fasit}`.toLowerCase();
@@ -473,9 +483,9 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
 
-        // 2. Søk i programmering (programmeringData)
-        if (typeof programmeringData !== 'undefined') {
-            programmeringData.forEach(oppgave => {
+        // 2. Søk i programmering
+        if (typeof window.programmeringData !== 'undefined') {
+            window.programmeringData.forEach(oppgave => {
                 const searchStr = `${oppgave.tittel} ${oppgave.tekst} ${oppgave.hint} ${oppgave.fasit}`.toLowerCase();
                 if (searchStr.includes(lowerQuery)) {
                     buildTaskHTML(oppgave, `Programmering`, null);
@@ -484,8 +494,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // 3. Søk i fagstoff
-        if (typeof fagstoff !== 'undefined') {
-            fagstoff.forEach(tema => {
+        if (typeof window.fagstoff !== 'undefined') {
+            window.fagstoff.forEach(tema => {
                 const searchStr = `${tema.tittel} ${tema.html}`.toLowerCase();
                 if (searchStr.includes(lowerQuery)) {
                     const article = document.createElement("article");
