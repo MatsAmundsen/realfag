@@ -114,40 +114,59 @@ document.addEventListener("DOMContentLoaded", () => {
 
         taskContainer.innerHTML = `<h2>${kapData.tittel}</h2>`;
 
-        kapData.oppgaver.forEach((oppgave) => {
-            const article = document.createElement("article");
-            article.className = "task-card";
-            article.id = `task-${oppgave.id}`; 
-            
-            let html = `<h3 class="task-title">${oppgave.tittel}</h3>`;
-            html += `<p>${oppgave.tekst}</p>`;
-            
-            if (oppgave.bilde) {
-                html += `<img src="${oppgave.bilde}" alt="Figur til ${oppgave.tittel}" class="task-image">`;
-            }
+        kapData.delkapitler.forEach((delkap) => {
+            // Legg til en overskrift for hvert delkapittel
+            const delkapHeader = document.createElement("div");
+            delkapHeader.className = "delkapittel-header";
+            delkapHeader.innerHTML = `<h3 style="margin-top: 2rem; color: var(--primary); border-bottom: 2px solid var(--border); padding-bottom: 0.5rem;">${delkap.tittel}</h3>`;
+            taskContainer.appendChild(delkapHeader);
 
-            // Bygger knappene og innholdet for Hint og Fasit skjult under hver oppgave
-            html += `
-                <div class="task-buttons">
-                    <button class="hint-btn" onclick="toggleHint('hint-${oppgave.id}')">Vis hint 💡</button>
-                    <button class="hint-btn fasit-btn" onclick="toggleSolution('fasit-${oppgave.id}')">Fasit ${oppgave.id} 📝</button>
-                </div>
-                <div id="hint-${oppgave.id}" class="hint-content">
-                    ${oppgave.hint}
-                </div>
-                <div id="fasit-${oppgave.id}" class="solution-content">
-                    <strong>Løsningsforslag:</strong><br><br>
-                    ${oppgave.fasit}
-                </div>
-            `;
-            
-            article.innerHTML = html;
-            taskContainer.appendChild(article);
+            delkap.oppgaver.forEach((oppgave) => {
+                const article = document.createElement("article");
+                article.className = "task-card";
+                article.id = `task-${oppgave.id}`; 
+                
+                let html = `<h3 class="task-title">${oppgave.tittel}</h3>`;
+                html += `<p>${oppgave.tekst}</p>`;
+                
+                if (oppgave.bilde) {
+                    html += `<img src="${oppgave.bilde}" alt="Figur til ${oppgave.tittel}" class="task-image">`;
+                }
+
+                // Bygger knappene og innholdet for Hint og Fasit skjult under hver oppgave
+                html += `
+                    <div class="task-buttons">
+                        <button class="hint-btn" onclick="toggleHint('hint-${oppgave.id}')">Vis hint 💡</button>
+                        <button class="hint-btn fasit-btn" onclick="toggleSolution('fasit-${oppgave.id}')">Fasit ${oppgave.id} 📝</button>
+                    </div>
+                    <div id="hint-${oppgave.id}" class="hint-content">
+                        ${oppgave.hint}
+                    </div>
+                    <div id="fasit-${oppgave.id}" class="solution-content">
+                        <strong>Løsningsforslag:</strong><br><br>
+                        ${oppgave.fasit}
+                    </div>
+                `;
+                
+                article.innerHTML = html;
+                taskContainer.appendChild(article);
+            });
         });
+
+        // Re-render KaTeX for nytt innhold
+        if (typeof renderMathInElement === 'function') {
+            renderMathInElement(taskContainer, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false}
+                ]
+            });
+        }
     }
 
     // --- NAVIGASJON MELLOM FANER ---
     let programmeringLastet = false;
+    let ressurserLastet = false;
 
     document.querySelectorAll(".nav-btn").forEach(btn => {
         btn.addEventListener("click", (e) => {
@@ -156,21 +175,47 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const target = e.target.getAttribute("data-target");
             
+            // Skjul alle views først
+            document.getElementById("oppgaver-view").classList.add("hidden");
+            document.getElementById("programmering-view").classList.add("hidden");
+            document.getElementById("ressurser-view").classList.add("hidden");
+            
             if (target === "programmering") {
-                document.getElementById("oppgaver-view").classList.add("hidden");
                 document.getElementById("programmering-view").classList.remove("hidden");
-                
-                // Generer oppgavene kun første gang fanen åpnes
                 if (!programmeringLastet) {
                     loadProgrammering();
                     programmeringLastet = true;
                 }
             } else if (target === "oppgaver") {
-                document.getElementById("programmering-view").classList.add("hidden");
                 document.getElementById("oppgaver-view").classList.remove("hidden");
+            } else if (target === "ressurser") {
+                document.getElementById("ressurser-view").classList.remove("hidden");
+                if (!ressurserLastet) {
+                    loadRessurser();
+                    ressurserLastet = true;
+                }
             }
         });
     });
+
+    function loadRessurser() {
+        const container = document.getElementById("ressurser-container");
+        if (typeof fagstoff !== 'undefined') {
+            fagstoff.forEach((tema) => {
+                const article = document.createElement("article");
+                article.className = "task-card";
+                article.style.marginBottom = "2rem"; // Ekstra luft mellom temaene
+                
+                let html = `<h3 class="task-title">${tema.tittel}</h3>`;
+                html += `<div class="fagstoff-content">${tema.html}</div>`;
+                
+                article.innerHTML = html;
+                container.appendChild(article);
+            });
+        } else {
+            container.innerHTML = "<p>Ingen ressurser funnet.</p>";
+        }
+    }
 
     function loadProgrammering() {
         const progContainer = document.getElementById("prog-task-container");

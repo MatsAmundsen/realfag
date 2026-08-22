@@ -62,6 +62,48 @@ function markdownToHtml(md) {
     // Bold **...** → <strong>...</strong>
     html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
 
+    // Overskrifter
+    html = html.replace(/^### (.*$)/gim, '<h4>$1</h4>');
+    html = html.replace(/^## (.*$)/gim, '<h3>$1</h3>');
+    html = html.replace(/^# (.*$)/gim, '<h3 style="margin-top:1.5rem; color:var(--text-light); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem;">$1</h3>');
+
+    // Bilder ![alt](src) → <img>
+    html = html.replace(/!\[([^\]]*)\]\(([^\)]+)\)/g, '<img src="$2" alt="$1" class="task-image" style="max-width:100%; border-radius:8px; margin:1rem 0;">');
+
+    // Markdown-lenker [tekst](url)
+    html = html.replace(/\[([^\]]+)\]\((https?:\/\/[^\)]+)\)/g, '<a href="$2" target="_blank" style="color:var(--primary); text-decoration:underline; font-weight:bold;">$1</a>');
+
+    // Rå URLer (https://...) som ikke er i en a-tag allerede
+    html = html.replace(/(^|[^"'])(https?:\/\/[^\s<]+)/g, '$1<a href="$2" target="_blank" style="color:var(--primary); text-decoration:underline;">$2</a>');
+
+    // Markdown-tabeller
+    html = html.replace(/(?:^|\n)((?:\|.*\|\n?)+)/g, (match, tableBlock) => {
+        let rows = tableBlock.trim().split('\n');
+        let tableHtml = '<table style="width:100%; border-collapse:collapse; margin:1rem 0; text-align:left;">';
+        
+        rows.forEach((row, i) => {
+            // Hopp over separator-raden (---|---)
+            if (row.match(/^\|[\s\-\|]+\|$/)) return;
+            
+            let cells = row.split('|').map(c => c.trim());
+            // Fjern første og siste tomme celle fra splittingen
+            if (cells[0] === '') cells.shift();
+            if (cells[cells.length - 1] === '') cells.pop();
+            
+            tableHtml += '<tr>';
+            cells.forEach(cell => {
+                if (i === 0) {
+                    tableHtml += `<th style="border:1px solid var(--border); padding:0.75rem; background:rgba(255,255,255,0.05);">${cell}</th>`;
+                } else {
+                    tableHtml += `<td style="border:1px solid var(--border); padding:0.75rem;">${cell}</td>`;
+                }
+            });
+            tableHtml += '</tr>';
+        });
+        tableHtml += '</table>';
+        return tableHtml;
+    });
+
     // Newlines → <br>
     html = html.replace(/\n/g, '<br>');
 
@@ -154,7 +196,7 @@ function build() {
         process.exit(1);
     }
 
-    // Finn alle kapittelmapper (sortert)
+    // --- Bygg oppgaver ---
     const kapDirs = fs.readdirSync(OPPGAVER_DIR)
         .filter(name => {
             const fullPath = path.join(OPPGAVER_DIR, name);
@@ -169,43 +211,80 @@ function build() {
         const dirPath = path.join(OPPGAVER_DIR, dirName);
         const kapInfo = readKapittelInfo(dirPath);
 
-        // Finn alle .md-filer (ekskluder _-filer)
-        const mdFiles = fs.readdirSync(dirPath)
-            .filter(f => f.endsWith('.md') && !f.startsWith('_'))
+        const delkapDirs = fs.readdirSync(dirPath)
+            .filter(name => fs.statSync(path.join(dirPath, name)).isDirectory())
             .sort(naturalSort);
 
-        const oppgaver = [];
+        const delkapitler = [];
+        let oppgaverIKapittel = 0;
 
-        for (const mdFile of mdFiles) {
-            const filePath = path.join(dirPath, mdFile);
-            const content = fs.readFileSync(filePath, 'utf-8');
-            const { meta, body } = parseFrontmatter(content);
-            const sections = parseSections(body);
+        for (const delkapName of delkapDirs) {
+            const delkapPath = path.join(dirPath, delkapName);
+            const mdFiles = fs.readdirSync(delkapPath)
+                .filter(f => f.endsWith('.md'))
+                .sort(naturalSort);
 
-            const oppgave = {
-                id: meta.id || mdFile.replace('.md', ''),
-                tittel: meta.tittel || `Oppgave ${meta.id || mdFile.replace('.md', '')}`,
-                tekst: markdownToHtml(sections.tekst),
-                bilde: meta.bilde || null,
-                hint: markdownToHtml(sections.hint),
-                fasit: markdownToHtml(sections.fasit),
-            };
+            const oppgaver = [];
 
-            oppgaver.push(oppgave);
+            for (const mdFile of mdFiles) {
+                const filePath = path.join(delkapPath, mdFile);
+                const content = fs.readFileSync(filePath, 'utf-8');
+                const { meta, body } = parseFrontmatter(content);
+                const sections = parseSections(body);
+
+                oppgaver.push({
+                    id: meta.id || mdFile.replace('.md', ''),
+                    tittel: meta.tittel || `Oppgave ${meta.id || mdFile.replace('.md', '')}`,
+                    tekst: markdownToHtml(sections.tekst),
+                    bilde: meta.bilde || null,
+                    hint: markdownToHtml(sections.hint),
+                    fasit: markdownToHtml(sections.fasit),
+                });
+            }
+
+            if (oppgaver.length > 0) {
+                delkapitler.push({
+                    id: delkapName,
+                    tittel: `Delkapittel ${delkapName}`,
+                    oppgaver: oppgaver
+                });
+                oppgaverIKapittel += oppgaver.length;
+            }
         }
 
         fagsok.push({
             id: kapInfo.id,
             tittel: kapInfo.tittel,
-            oppgaver: oppgaver,
+            delkapitler: delkapitler,
         });
 
-        totalOppgaver += oppgaver.length;
-        console.log(`✓ ${kapInfo.tittel}: ${oppgaver.length} oppgaver`);
+        totalOppgaver += oppgaverIKapittel;
+        console.log(`✓ ${kapInfo.tittel}: ${delkapitler.length} delkapitler, ${oppgaverIKapittel} oppgaver`);
     }
 
-    // Generer data.js
-    const jsContent = `const fagsok = ${JSON.stringify(fagsok, null, 4)};\n`;
+    // --- Bygg fagstoff ---
+    const FAGSTOFF_DIR = path.join(__dirname, 'fagstoff');
+    const fagstoff = [];
+    if (fs.existsSync(FAGSTOFF_DIR)) {
+        const mdFiles = fs.readdirSync(FAGSTOFF_DIR).filter(f => f.endsWith('.md')).sort(naturalSort);
+        for (const mdFile of mdFiles) {
+            const filePath = path.join(FAGSTOFF_DIR, mdFile);
+            const content = fs.readFileSync(filePath, 'utf-8');
+            const { meta, body } = parseFrontmatter(content);
+            
+            fagstoff.push({
+                id: mdFile.replace('.md', ''),
+                tittel: meta.tittel || mdFile.replace('.md', ''),
+                html: markdownToHtml(body)
+            });
+        }
+        console.log(`✓ Fant ${fagstoff.length} fagstoff-dokumenter`);
+    }
+
+    // Generer data.js med både fagsok (oppgaver) og fagstoff
+    const jsContent = 
+        `const fagsok = ${JSON.stringify(fagsok, null, 4)};\n\n` +
+        `const fagstoff = ${JSON.stringify(fagstoff, null, 4)};\n`;
     fs.writeFileSync(OUTPUT_FILE, jsContent);
 
     console.log(`\n✓ Genererte ${OUTPUT_FILE}`);

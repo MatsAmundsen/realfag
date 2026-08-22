@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matematikk 1T - Utforskende Læring</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true},{left: '$', right: '$', display: false}]});"></script>
 </head>
 <body>
     <header class="navbar">
@@ -60,6 +64,19 @@
                 </div>
                 <div id="prog-task-container">
                     <!-- Programmeringsoppgaver genereres her via JavaScript -->
+                </div>
+            </section>
+        </div>
+
+        <!-- VISNING: RESSURSER (FAGSTOFF) -->
+        <div id="ressurser-view" class="view-section hidden">
+            <section class="content-area full-width">
+                <div id="ressurser-header" style="text-align: center; margin-bottom: 2rem;">
+                    <h2 style="color: var(--primary); font-size: 2.5rem; margin-bottom: 1rem;">Ressurser & Fagstoff</h2>
+                    <p>Her finner du lenker, videoer og forklaringer til de ulike temaene i faget.</p>
+                </div>
+                <div id="ressurser-container">
+                    <!-- Fagstoff genereres her via JavaScript -->
                 </div>
             </section>
         </div>
