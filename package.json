@@ -5,5 +5,8 @@
   "private": true,
   "scripts": {
     "build": "node build.js && node scripts/prepare-dist.js"
+  },
+  "dependencies": {
+    "jsdom": "^30.0.1"
   }
 }

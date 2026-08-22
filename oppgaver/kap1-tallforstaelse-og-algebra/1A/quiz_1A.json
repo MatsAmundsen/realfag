@@ -1,0 +1,14 @@
+[
+  {
+    "sporsmal": "Hvilket av disse tallene er et rasjonalt tall?",
+    "alternativer": ["$\\pi$", "$\\sqrt{2}$", "$\\frac{3}{4}$"],
+    "riktigSvar": 2,
+    "forklaring": "Et rasjonalt tall kan skrives som en brøk med heltall. $\\frac{3}{4}$ er allerede en brøk."
+  },
+  {
+    "sporsmal": "Er tallet 5 et naturlig tall?",
+    "alternativer": ["Ja", "Nei"],
+    "riktigSvar": 0,
+    "forklaring": "Naturlige tall ($\\mathbb{N}$) er de positive heltallene $1, 2, 3, 4, 5...$"
+  }
+]

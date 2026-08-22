@@ -195,24 +195,79 @@ document.addEventListener("DOMContentLoaded", () => {
                     html += `<img src="${oppgave.bilde}" alt="Figur til ${oppgave.tittel}" class="task-image">`;
                 }
 
+                let fasitHtml = "";
+                let fasitKnapp = "";
+
+                if (oppgave.fasitSteg && oppgave.fasitSteg.length > 0) {
+                    fasitKnapp = `<button class="hint-btn fasit-btn" onclick="toggleSolution('fasit-${oppgave.id}')">Vis fasit (Steg 1) 📝</button>`;
+                    fasitHtml = `<div id="fasit-${oppgave.id}" class="solution-content"><strong>Løsningsforslag:</strong><br><br>`;
+                    
+                    oppgave.fasitSteg.forEach((steg, index) => {
+                        const stegId = `steg-${oppgave.id}-${index}`;
+                        const nesteStegId = `steg-${oppgave.id}-${index+1}`;
+                        const isFirst = index === 0;
+                        const isLast = index === oppgave.fasitSteg.length - 1;
+                        
+                        fasitHtml += `<div id="${stegId}" style="display: ${isFirst ? 'block' : 'none'}; margin-top: 0.5rem; padding-bottom: 0.5rem;">`;
+                        fasitHtml += steg;
+                        if (!isLast) {
+                            fasitHtml += `<br><button class="hint-btn" style="margin-top:0.5rem;" onclick="document.getElementById('${nesteStegId}').style.display='block'; this.style.display='none';">Vis neste steg ⬇️</button>`;
+                        }
+                        fasitHtml += `</div>`;
+                    });
+                    
+                    fasitHtml += `</div>`;
+                } else if (oppgave.fasit) {
+                    fasitKnapp = `<button class="hint-btn fasit-btn" onclick="toggleSolution('fasit-${oppgave.id}')">Fasit ${oppgave.id} 📝</button>`;
+                    fasitHtml = `<div id="fasit-${oppgave.id}" class="solution-content"><strong>Løsningsforslag:</strong><br><br>${oppgave.fasit}</div>`;
+                }
+
                 // Bygger knappene og innholdet for Hint og Fasit skjult under hver oppgave
                 html += `
                     <div class="task-buttons">
                         <button class="hint-btn" onclick="toggleHint('hint-${oppgave.id}')">Vis hint 💡</button>
-                        <button class="hint-btn fasit-btn" onclick="toggleSolution('fasit-${oppgave.id}')">Fasit ${oppgave.id} 📝</button>
+                        ${fasitKnapp}
                     </div>
                     <div id="hint-${oppgave.id}" class="hint-content">
                         ${oppgave.hint}
                     </div>
-                    <div id="fasit-${oppgave.id}" class="solution-content">
-                        <strong>Løsningsforslag:</strong><br><br>
-                        ${oppgave.fasit}
-                    </div>
+                    ${fasitHtml}
                 `;
                 
                 article.innerHTML = html;
                 taskContainer.appendChild(article);
             });
+
+            // Sjekk om det finnes en quiz for delkapittelet
+            if (delkap.quiz && delkap.quiz.length > 0) {
+                const quizContainer = document.createElement("div");
+                quizContainer.className = "quiz-container task-card";
+                quizContainer.style.marginTop = "2rem";
+                quizContainer.style.background = "rgba(139, 92, 246, 0.05)";
+                quizContainer.style.borderColor = "var(--secondary)";
+                
+                let quizHtml = `<h3 style="color: var(--secondary);"><span style="font-size: 1.2rem;">🧠</span> Test deg selv i ${delkap.tittel}!</h3>`;
+                quizHtml += `<div class="quiz-questions">`;
+                
+                delkap.quiz.forEach((q, qIndex) => {
+                    const qId = `quiz-${kapittelId}-${delkap.id}-${qIndex}`;
+                    quizHtml += `<div class="quiz-question" style="margin-top: 1.5rem;">`;
+                    quizHtml += `<p style="font-weight: bold; margin-bottom: 0.5rem;">${qIndex + 1}. ${q.sporsmal}</p>`;
+                    quizHtml += `<div class="quiz-options" style="display: flex; flex-direction: column; gap: 0.5rem;">`;
+                    
+                    q.alternativer.forEach((alt, aIndex) => {
+                        quizHtml += `<button class="hint-btn quiz-opt-btn" id="${qId}-opt-${aIndex}" onclick="checkQuizAnswer('${qId}', ${aIndex}, ${q.riktigSvar}, '${encodeURIComponent(q.forklaring)}')">${alt}</button>`;
+                    });
+                    
+                    quizHtml += `</div>`;
+                    quizHtml += `<div id="${qId}-feedback" style="margin-top: 1rem; padding: 1rem; border-radius: 8px; display: none;"></div>`;
+                    quizHtml += `</div>`;
+                });
+                
+                quizHtml += `</div>`;
+                quizContainer.innerHTML = quizHtml;
+                taskContainer.appendChild(quizContainer);
+            }
         });
 
         // Re-render KaTeX for nytt innhold
@@ -454,14 +509,38 @@ document.addEventListener("DOMContentLoaded", () => {
                 html += `<img src="${oppgave.bilde}" class="task-image" alt="Figur">`;
             }
 
+            let fasitHtml = "";
+            let fasitKnapp = "";
+
+            if (oppgave.fasitSteg && oppgave.fasitSteg.length > 0) {
+                fasitKnapp = `<button class="hint-btn fasit-btn" onclick="toggleSolution('search-fasit-${oppgave.id}')">Vis fasit (Steg 1) 📝</button>`;
+                fasitHtml = `<div id="search-fasit-${oppgave.id}" class="solution-content"><strong>Løsningsforslag:</strong><br><br>`;
+                oppgave.fasitSteg.forEach((steg, index) => {
+                    const stegId = `search-steg-${oppgave.id}-${index}`;
+                    const nesteStegId = `search-steg-${oppgave.id}-${index+1}`;
+                    const isFirst = index === 0;
+                    const isLast = index === oppgave.fasitSteg.length - 1;
+                    fasitHtml += `<div id="${stegId}" style="display: ${isFirst ? 'block' : 'none'}; margin-top: 0.5rem; padding-bottom: 0.5rem;">`;
+                    fasitHtml += steg;
+                    if (!isLast) {
+                        fasitHtml += `<br><button class="hint-btn" style="margin-top:0.5rem;" onclick="document.getElementById('${nesteStegId}').style.display='block'; this.style.display='none';">Vis neste steg ⬇️</button>`;
+                    }
+                    fasitHtml += `</div>`;
+                });
+                fasitHtml += `</div>`;
+            } else if (oppgave.fasit) {
+                fasitKnapp = `<button class="hint-btn fasit-btn" onclick="toggleSolution('search-fasit-${oppgave.id}')">Fasit 📝</button>`;
+                fasitHtml = `<div id="search-fasit-${oppgave.id}" class="solution-content"><strong>Løsningsforslag:</strong><br><br>${oppgave.fasit}</div>`;
+            }
+
             html += `
                 <div class="task-buttons">
                     <button class="hint-btn" onclick="toggleHint('search-hint-${oppgave.id}')">Vis hint 💡</button>
-                    <button class="hint-btn fasit-btn" onclick="toggleSolution('search-fasit-${oppgave.id}')">Fasit 📝</button>
+                    ${fasitKnapp}
                     ${kapId ? `<button class="hint-btn" style="background: var(--card-bg); border: 1px solid var(--primary);" onclick="window.location.hash='oppgaver/${kapId}'">Gå til kapittel</button>` : ""}
                 </div>
                 <div id="search-hint-${oppgave.id}" class="hint-content">${oppgave.hint}</div>
-                <div id="search-fasit-${oppgave.id}" class="solution-content"><strong>Løsningsforslag:</strong><br><br>${oppgave.fasit}</div>
+                ${fasitHtml}
             `;
             
             article.innerHTML = html;
@@ -539,4 +618,47 @@ function toggleHint(hintId) {
 window.toggleSolution = function(fasitId) {
     const fasitDiv = document.getElementById(fasitId);
     fasitDiv.classList.toggle("visible");
+}
+window.checkQuizAnswer = function(qId, selectedIndex, correctIndex, explanationEncoded) {
+    const isCorrect = selectedIndex === correctIndex;
+    const feedbackDiv = document.getElementById(`${qId}-feedback`);
+    
+    // Disable all options for this question and highlight them
+    const allBtns = document.querySelectorAll(`[id^="${qId}-opt-"]`);
+    allBtns.forEach((btn, index) => {
+        btn.disabled = true;
+        btn.style.cursor = "default";
+        
+        if (index === correctIndex) {
+            btn.style.background = "rgba(16, 185, 129, 0.2)"; // green tint
+            btn.style.borderColor = "#10b981";
+            btn.style.color = "var(--text-main)";
+        } else if (index === selectedIndex && !isCorrect) {
+            btn.style.background = "rgba(239, 68, 68, 0.2)"; // red tint
+            btn.style.borderColor = "#ef4444";
+            btn.style.color = "var(--text-main)";
+        } else {
+            btn.style.opacity = "0.5";
+        }
+    });
+    
+    feedbackDiv.style.display = "block";
+    
+    let feedbackHtml = isCorrect 
+        ? `<div style="color: #10b981; font-weight: bold; margin-bottom: 0.5rem;">🎉 Riktig!</div>`
+        : `<div style="color: #ef4444; font-weight: bold; margin-bottom: 0.5rem;">❌ Ikke helt riktig.</div>`;
+        
+    feedbackHtml += `<p>${decodeURIComponent(explanationEncoded)}</p>`;
+    
+    feedbackDiv.innerHTML = feedbackHtml;
+    
+    // Re-render KaTeX in feedback just in case
+    if (typeof renderMathInElement === 'function') {
+        renderMathInElement(feedbackDiv, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false}
+            ]
+        });
+    }
 }

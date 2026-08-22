@@ -232,21 +232,45 @@ function build() {
                 const { meta, body } = parseFrontmatter(content);
                 const sections = parseSections(body);
 
+                // Håndter steg-for-steg løsninger
+                let fasitSteg = null;
+                let fasitHtml = null;
+                if (sections.fasit) {
+                    if (sections.fasit.includes('[STEG]')) {
+                        fasitSteg = sections.fasit.split('[STEG]').map(s => markdownToHtml(s.trim()));
+                    } else {
+                        fasitHtml = markdownToHtml(sections.fasit);
+                    }
+                }
+
                 oppgaver.push({
                     id: meta.id || mdFile.replace('.md', ''),
                     tittel: meta.tittel || `Oppgave ${meta.id || mdFile.replace('.md', '')}`,
                     tekst: markdownToHtml(sections.tekst),
                     bilde: meta.bilde || null,
                     hint: markdownToHtml(sections.hint),
-                    fasit: markdownToHtml(sections.fasit),
+                    fasit: fasitHtml,
+                    fasitSteg: fasitSteg
                 });
             }
 
-            if (oppgaver.length > 0) {
+            // Sjekk etter quiz for dette delkapittelet
+            let quiz = null;
+            const quizPath = path.join(delkapPath, `quiz_${delkapName}.json`);
+            if (fs.existsSync(quizPath)) {
+                try {
+                    quiz = JSON.parse(fs.readFileSync(quizPath, 'utf-8'));
+                } catch (e) {
+                    console.error(`Feil ved lesing av quiz for ${delkapName}:`, e);
+                }
+            }
+
+            if (oppgaver.length > 0 || quiz) {
                 delkapitler.push({
                     id: delkapName,
                     tittel: `Delkapittel ${delkapName}`,
-                    oppgaver: oppgaver
+                    oppgaver: oppgaver,
+                    quiz: quiz
                 });
                 oppgaverIKapittel += oppgaver.length;
             }
