@@ -201,23 +201,77 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function loadRessurser() {
         const container = document.getElementById("ressurser-container");
-        if (typeof fagstoff !== 'undefined') {
-            fagstoff.forEach((tema) => {
+        container.innerHTML = "";
+        if (typeof fagstoff !== 'undefined' && fagstoff.length > 0) {
+            
+            // Lag knapperad
+            const nav = document.createElement("div");
+            nav.style.display = "flex";
+            nav.style.gap = "1rem";
+            nav.style.justifyContent = "center";
+            nav.style.flexWrap = "wrap";
+            nav.style.marginBottom = "2rem";
+            
+            // Lag innholdscontainer
+            const contentArea = document.createElement("div");
+            
+            fagstoff.forEach((tema, index) => {
+                const btn = document.createElement("button");
+                btn.className = "nav-btn";
+                // Style knappen slik at den ligner de andre fanene, men kanskje litt mindre
+                btn.style.padding = "10px 20px";
+                btn.style.borderRadius = "8px";
+                btn.style.border = "none";
+                btn.style.cursor = "pointer";
+                btn.style.fontWeight = "bold";
+                btn.style.backgroundColor = index === 0 ? "var(--primary)" : "var(--card-bg)";
+                btn.style.color = index === 0 ? "white" : "var(--text-light)";
+                
+                // Bruk tittel, men rens bort "Fagbibliotek: " for knappen
+                let shortTitle = tema.tittel.replace("Fagbibliotek: ", "");
+                btn.textContent = shortTitle;
+                
+                // Artikkel for innhold
                 const article = document.createElement("article");
-                article.className = "task-card";
-                article.style.marginBottom = "2rem"; // Ekstra luft mellom temaene
+                article.className = "task-card fagstoff-article";
+                article.style.display = index === 0 ? "block" : "none";
+                article.innerHTML = `<h3 class="task-title" style="margin-bottom: 1rem;">${tema.tittel}</h3><div class="fagstoff-content">${tema.html}</div>`;
                 
-                let html = `<h3 class="task-title">${tema.tittel}</h3>`;
-                html += `<div class="fagstoff-content">${tema.html}</div>`;
+                btn.addEventListener("click", () => {
+                    // Reset buttons
+                    Array.from(nav.children).forEach(b => {
+                        b.style.backgroundColor = "var(--card-bg)";
+                        b.style.color = "var(--text-light)";
+                    });
+                    btn.style.backgroundColor = "var(--primary)";
+                    btn.style.color = "white";
+                    
+                    // Skjul alle artikler
+                    Array.from(contentArea.children).forEach(a => a.style.display = "none");
+                    article.style.display = "block";
+                });
                 
-                article.innerHTML = html;
-                container.appendChild(article);
+                nav.appendChild(btn);
+                contentArea.appendChild(article);
             });
+            
+            container.appendChild(nav);
+            container.appendChild(contentArea);
+            
+            // Render KaTeX for alt innhold i ressurser
+            if (typeof renderMathInElement === 'function') {
+                renderMathInElement(container, {
+                    delimiters: [
+                        {left: '$$', right: '$$', display: true},
+                        {left: '$', right: '$', display: false}
+                    ]
+                });
+            }
+            
         } else {
             container.innerHTML = "<p>Ingen ressurser funnet.</p>";
         }
     }
-
     function loadProgrammering() {
         const progContainer = document.getElementById("prog-task-container");
         
