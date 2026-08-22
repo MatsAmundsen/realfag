@@ -250,7 +250,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 btn.style.cursor = "pointer";
                 btn.style.fontWeight = "bold";
                 btn.style.backgroundColor = index === 0 ? "var(--primary)" : "var(--card-bg)";
-                btn.style.color = index === 0 ? "white" : "var(--text-light)";
+                btn.style.color = index === 0 ? "white" : "var(--text-main)";
                 
                 // Bruk tittel, men rens bort "Fagbibliotek: " for knappen
                 let shortTitle = tema.tittel.replace("Fagbibliotek: ", "");
@@ -266,7 +266,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     // Reset buttons
                     Array.from(nav.children).forEach(b => {
                         b.style.backgroundColor = "var(--card-bg)";
-                        b.style.color = "var(--text-light)";
+                        b.style.color = "var(--text-main)";
                     });
                     btn.style.backgroundColor = "var(--primary)";
                     btn.style.color = "white";
