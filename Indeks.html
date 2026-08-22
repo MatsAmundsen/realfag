@@ -12,7 +12,7 @@
 </head>
 <body>
     <header class="navbar">
-        <div class="logo">Math 1T</div>
+        <div class="logo">Matteguiden 1T</div>
         <nav>
             <button class="nav-btn active" data-target="oppgaver">Oppgaver</button>
             <button class="nav-btn" data-target="programmering">Programmering</button>
@@ -42,7 +42,11 @@
                 <!-- Ukeplan-banner -->
                 <div id="ukesplan-banner" class="hidden">
                     <div class="banner-content">
-                        <span class="week-badge">Uke <span id="week-number"></span></span>
+                        <div class="week-nav" style="display: flex; align-items: center; gap: 0.5rem;">
+                            <button id="prev-week-btn" style="background: none; border: none; color: var(--primary); font-size: 1.5rem; cursor: pointer; padding: 0 0.5rem; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">&lt;</button>
+                            <span class="week-badge">Uke <span id="week-number"></span></span>
+                            <button id="next-week-btn" style="background: none; border: none; color: var(--primary); font-size: 1.5rem; cursor: pointer; padding: 0 0.5rem; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">&gt;</button>
+                        </div>
                         <p id="week-text"></p>
                         <button id="week-link-btn" class="hint-btn">Gå til ukens oppgaver</button>
                     </div>

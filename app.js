@@ -40,29 +40,54 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const currWeek = getWeekNumber(new Date());
+    let displayedWeek = currWeek;
     
     // Håndter Banner på skjermen
     const banner = document.getElementById("ukesplan-banner");
     const weekNumEl = document.getElementById("week-number");
     const weekTextEl = document.getElementById("week-text");
     const weekBtn = document.getElementById("week-link-btn");
+    const prevWeekBtn = document.getElementById("prev-week-btn");
+    const nextWeekBtn = document.getElementById("next-week-btn");
 
-    if (ukesplan[currWeek]) {
+    function updateBanner(week) {
         banner.classList.remove("hidden");
-        weekNumEl.textContent = currWeek;
-        weekTextEl.textContent = ukesplan[currWeek].tekst;
+        weekNumEl.textContent = week;
         
-        if (ukesplan[currWeek].kapId) {
-            weekBtn.style.display = "block";
-            weekBtn.onclick = () => scrollToSubchapter(ukesplan[currWeek].kapId, ukesplan[currWeek].underkap);
+        if (ukesplan[week]) {
+            weekTextEl.textContent = ukesplan[week].tekst;
+            if (ukesplan[week].kapId) {
+                weekBtn.style.display = "block";
+                weekBtn.onclick = () => scrollToSubchapter(ukesplan[week].kapId, ukesplan[week].underkap);
+            } else {
+                weekBtn.style.display = "none";
+            }
+        } else if (week < 34) {
+            weekTextEl.textContent = "Velkommen! Undervisningen for Matematikk 1T starter i uke 34.";
+            weekBtn.style.display = "none";
         } else {
+            weekTextEl.textContent = "Ingen plan lagt inn for denne uken.";
             weekBtn.style.display = "none";
         }
-    } else if (currWeek < 34) {
-        banner.classList.remove("hidden");
-        weekNumEl.textContent = currWeek;
-        weekTextEl.textContent = "Velkommen! Undervisningen for Matematikk 1T starter i uke 34.";
-        weekBtn.style.display = "none";
+        
+        if (prevWeekBtn) prevWeekBtn.style.visibility = (week > 33) ? "visible" : "hidden";
+        if (nextWeekBtn) nextWeekBtn.style.visibility = (week < 52) ? "visible" : "hidden";
+    }
+
+    updateBanner(displayedWeek);
+
+    if (prevWeekBtn) {
+        prevWeekBtn.addEventListener("click", () => {
+            displayedWeek--;
+            updateBanner(displayedWeek);
+        });
+    }
+
+    if (nextWeekBtn) {
+        nextWeekBtn.addEventListener("click", () => {
+            displayedWeek++;
+            updateBanner(displayedWeek);
+        });
     }
 
     function scrollToSubchapter(kapId, subKap) {
