@@ -22,8 +22,20 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    const chapterList = document.getElementById("chapter-list");
-    const taskContainer = document.getElementById("task-container");
+    fetch('data.json')
+        .then(res => res.json())
+        .then(data => {
+            window.fagsok = data.fagsok || [];
+            window.fagstoff = data.fagstoff || [];
+            window.programmeringData = data.programmeringData || [];
+            
+            initApp();
+        })
+        .catch(err => console.error("Error loading data.json:", err));
+
+    function initApp() {
+        const chapterList = document.getElementById("chapter-list");
+        const taskContainer = document.getElementById("task-container");
 
     // --- UKESPLAN LOGIKK ---
     const ukesplan = {
@@ -501,6 +513,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    } // Slutt på initApp
 }); // Her slutter document.addEventListener("DOMContentLoaded", () => {
 
 // Funksjoner for å toggle Hint og Fasit (Må ligge globalt)

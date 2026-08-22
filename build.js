@@ -281,13 +281,14 @@ function build() {
         console.log(`✓ Fant ${fagstoff.length} fagstoff-dokumenter`);
     }
 
-    // Generer data.js med både fagsok (oppgaver) og fagstoff
-    const jsContent = 
-        `const fagsok = ${JSON.stringify(fagsok, null, 4)};\n\n` +
-        `const fagstoff = ${JSON.stringify(fagstoff, null, 4)};\n`;
-    fs.writeFileSync(OUTPUT_FILE, jsContent);
+    const OUTPUT_JSON = path.join(__dirname, 'data.json');
+    const dataObj = {
+        fagsok: fagsok,
+        fagstoff: fagstoff
+    };
+    fs.writeFileSync(OUTPUT_JSON, JSON.stringify(dataObj, null, 4));
 
-    console.log(`\n✓ Genererte ${OUTPUT_FILE}`);
+    console.log(`\n✓ Genererte data.json`);
     console.log(`  ${fagsok.length} kapitler, ${totalOppgaver} oppgaver totalt`);
 }
 
