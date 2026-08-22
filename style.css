@@ -119,6 +119,12 @@ body {
     text-shadow: 0 0 10px rgba(34, 211, 238, 0.5);
 }
 
+.search-bar {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
 .search-bar input {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--card-border);
@@ -127,15 +133,31 @@ body {
     border-radius: 20px;
     outline: none;
     font-size: 0.95rem;
-    width: 250px;
+    width: 200px;
     transition: all 0.3s ease;
 }
 
 .search-bar input:focus {
-    width: 300px;
+    width: 250px;
     border-color: var(--primary);
     box-shadow: 0 0 15px rgba(34, 211, 238, 0.2);
     background: rgba(255, 255, 255, 0.1);
+}
+
+#search-btn {
+    background: var(--primary);
+    color: var(--bg-deep);
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#search-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(34, 211, 238, 0.5);
 }
 
 .profile-btn {

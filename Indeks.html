@@ -13,9 +13,10 @@
 <body>
     <header class="navbar">
         <div class="logo">Matteguiden 1T</div>
-        <div class="search-bar">
-            <input type="text" id="global-search" placeholder="Søk i oppgaver og ressurser..." autocomplete="off">
-        </div>
+        <form class="search-bar" id="search-form" action="javascript:void(0);">
+            <input type="search" id="global-search" placeholder="Søk i oppgaver..." autocomplete="off">
+            <button type="submit" id="search-btn">Søk</button>
+        </form>
         <nav>
             <button class="nav-btn active" data-target="oppgaver">Oppgaver</button>
             <button class="nav-btn" data-target="programmering">Programmering</button>

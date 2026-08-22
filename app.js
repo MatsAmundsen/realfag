@@ -1,7 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
     // --- TEMA (Dark/Light Mode) ---
     const themeToggleBtn = document.getElementById("theme-toggle");
-    const currentTheme = localStorage.getItem("theme") || "dark";
+    let currentTheme = "dark";
+    try {
+        currentTheme = localStorage.getItem("theme") || "dark";
+    } catch (e) {
+        console.warn("localStorage er ikke tilgjengelig.");
+    }
     
     if (currentTheme === "light") {
         document.body.setAttribute("data-theme", "light");
@@ -10,15 +15,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (themeToggleBtn) {
         themeToggleBtn.addEventListener("click", () => {
+            let newTheme = "dark";
             if (document.body.getAttribute("data-theme") === "light") {
                 document.body.removeAttribute("data-theme");
                 themeToggleBtn.textContent = "☀️";
-                localStorage.setItem("theme", "dark");
             } else {
                 document.body.setAttribute("data-theme", "light");
                 themeToggleBtn.textContent = "🌙";
-                localStorage.setItem("theme", "light");
+                newTheme = "light";
             }
+            try {
+                localStorage.setItem("theme", newTheme);
+            } catch (e) {}
         });
     }
 
@@ -393,15 +401,15 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
     // --- SØKEFUNKSJON ---
+    const searchForm = document.getElementById("search-form");
     const searchInput = document.getElementById("global-search");
     
-    if (searchInput) {
-        searchInput.addEventListener("keyup", (e) => {
-            if (e.key === "Enter") {
-                const query = e.target.value.trim();
-                if (query.length > 0) {
-                    window.location.hash = "sok/" + encodeURIComponent(query);
-                }
+    if (searchForm) {
+        searchForm.addEventListener("submit", (e) => {
+            e.preventDefault(); // Forhindre sideoppdatering
+            const query = searchInput.value.trim();
+            if (query.length > 0) {
+                window.location.hash = "sok/" + encodeURIComponent(query);
             }
         });
     }
