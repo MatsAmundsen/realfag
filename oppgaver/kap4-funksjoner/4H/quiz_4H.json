@@ -1,0 +1,112 @@
+[
+  {
+    "sporsmal": "Hva er grunnleggende sant om ekstremalpunkter? (Spørsmål 1)",
+    "alternativer": [
+      "Det beskriver en fundamental egenskap ved ekstremalpunkter.",
+      "Vet ikke.",
+      "Noe helt annet.",
+      "Det betyr at funksjonen alltid er 0."
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Dette viser forståelse for ekstremalpunkter."
+  },
+  {
+    "sporsmal": "Hva er grunnleggende sant om ekstremalpunkter? (Spørsmål 2)",
+    "alternativer": [
+      "Det betyr at funksjonen alltid er 0.",
+      "Vet ikke.",
+      "Noe helt annet.",
+      "Det beskriver en fundamental egenskap ved ekstremalpunkter."
+    ],
+    "riktigSvar": 3,
+    "forklaring": "Dette viser forståelse for ekstremalpunkter."
+  },
+  {
+    "sporsmal": "Hva er grunnleggende sant om ekstremalpunkter? (Spørsmål 3)",
+    "alternativer": [
+      "Det beskriver en fundamental egenskap ved ekstremalpunkter.",
+      "Det betyr at funksjonen alltid er 0.",
+      "Vet ikke.",
+      "Noe helt annet."
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Dette viser forståelse for ekstremalpunkter."
+  },
+  {
+    "sporsmal": "Hva er grunnleggende sant om ekstremalpunkter? (Spørsmål 4)",
+    "alternativer": [
+      "Det beskriver en fundamental egenskap ved ekstremalpunkter.",
+      "Det betyr at funksjonen alltid er 0.",
+      "Vet ikke.",
+      "Noe helt annet."
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Dette viser forståelse for ekstremalpunkter."
+  },
+  {
+    "sporsmal": "Gitt en funksjon $f(x)$ for ekstremalpunkter, regn ut verdien. (Spørsmål 5)",
+    "alternativer": [
+      "Svaret er umulig å finne.",
+      "Noe helt annet.",
+      "Svaret kan utledes fra formelen for ekstremalpunkter.",
+      "Vet ikke."
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Dette viser forståelse for ekstremalpunkter."
+  },
+  {
+    "sporsmal": "Gitt en funksjon $f(x)$ for ekstremalpunkter, regn ut verdien. (Spørsmål 6)",
+    "alternativer": [
+      "Vet ikke.",
+      "Svaret er umulig å finne.",
+      "Noe helt annet.",
+      "Svaret kan utledes fra formelen for ekstremalpunkter."
+    ],
+    "riktigSvar": 3,
+    "forklaring": "Dette viser forståelse for ekstremalpunkter."
+  },
+  {
+    "sporsmal": "Gitt en funksjon $f(x)$ for ekstremalpunkter, regn ut verdien. (Spørsmål 7)",
+    "alternativer": [
+      "Svaret er umulig å finne.",
+      "Vet ikke.",
+      "Noe helt annet.",
+      "Svaret kan utledes fra formelen for ekstremalpunkter."
+    ],
+    "riktigSvar": 3,
+    "forklaring": "Dette viser forståelse for ekstremalpunkter."
+  },
+  {
+    "sporsmal": "Gitt en funksjon $f(x)$ for ekstremalpunkter, regn ut verdien. (Spørsmål 8)",
+    "alternativer": [
+      "Svaret er umulig å finne.",
+      "Svaret kan utledes fra formelen for ekstremalpunkter.",
+      "Noe helt annet.",
+      "Vet ikke."
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Dette viser forståelse for ekstremalpunkter."
+  },
+  {
+    "sporsmal": "En elev gjør en vanlig feil med ekstremalpunkter. Hva er feilen? (Spørsmål 9)",
+    "alternativer": [
+      "Noe helt annet.",
+      "Vet ikke.",
+      "Eleven gjør ingen feil.",
+      "Eleven glemmer en viktig detalj om ekstremalpunkter."
+    ],
+    "riktigSvar": 3,
+    "forklaring": "Dette viser forståelse for ekstremalpunkter."
+  },
+  {
+    "sporsmal": "En elev gjør en vanlig feil med ekstremalpunkter. Hva er feilen? (Spørsmål 10)",
+    "alternativer": [
+      "Eleven glemmer en viktig detalj om ekstremalpunkter.",
+      "Noe helt annet.",
+      "Vet ikke.",
+      "Eleven gjør ingen feil."
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Dette viser forståelse for ekstremalpunkter."
+  }
+]

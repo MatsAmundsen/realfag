@@ -1,0 +1,112 @@
+[
+  {
+    "sporsmal": "Hva er grunnleggende sant om rett linje? (Spørsmål 1)",
+    "alternativer": [
+      "Det betyr at funksjonen alltid er 0.",
+      "Noe helt annet.",
+      "Det beskriver en fundamental egenskap ved rett linje.",
+      "Vet ikke."
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Dette viser forståelse for rett linje."
+  },
+  {
+    "sporsmal": "Hva er grunnleggende sant om rett linje? (Spørsmål 2)",
+    "alternativer": [
+      "Noe helt annet.",
+      "Det betyr at funksjonen alltid er 0.",
+      "Det beskriver en fundamental egenskap ved rett linje.",
+      "Vet ikke."
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Dette viser forståelse for rett linje."
+  },
+  {
+    "sporsmal": "Hva er grunnleggende sant om rett linje? (Spørsmål 3)",
+    "alternativer": [
+      "Noe helt annet.",
+      "Vet ikke.",
+      "Det beskriver en fundamental egenskap ved rett linje.",
+      "Det betyr at funksjonen alltid er 0."
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Dette viser forståelse for rett linje."
+  },
+  {
+    "sporsmal": "Hva er grunnleggende sant om rett linje? (Spørsmål 4)",
+    "alternativer": [
+      "Det beskriver en fundamental egenskap ved rett linje.",
+      "Vet ikke.",
+      "Noe helt annet.",
+      "Det betyr at funksjonen alltid er 0."
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Dette viser forståelse for rett linje."
+  },
+  {
+    "sporsmal": "Gitt en funksjon $f(x)$ for rett linje, regn ut verdien. (Spørsmål 5)",
+    "alternativer": [
+      "Vet ikke.",
+      "Svaret er umulig å finne.",
+      "Svaret kan utledes fra formelen for rett linje.",
+      "Noe helt annet."
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Dette viser forståelse for rett linje."
+  },
+  {
+    "sporsmal": "Gitt en funksjon $f(x)$ for rett linje, regn ut verdien. (Spørsmål 6)",
+    "alternativer": [
+      "Noe helt annet.",
+      "Svaret er umulig å finne.",
+      "Vet ikke.",
+      "Svaret kan utledes fra formelen for rett linje."
+    ],
+    "riktigSvar": 3,
+    "forklaring": "Dette viser forståelse for rett linje."
+  },
+  {
+    "sporsmal": "Gitt en funksjon $f(x)$ for rett linje, regn ut verdien. (Spørsmål 7)",
+    "alternativer": [
+      "Vet ikke.",
+      "Noe helt annet.",
+      "Svaret er umulig å finne.",
+      "Svaret kan utledes fra formelen for rett linje."
+    ],
+    "riktigSvar": 3,
+    "forklaring": "Dette viser forståelse for rett linje."
+  },
+  {
+    "sporsmal": "Gitt en funksjon $f(x)$ for rett linje, regn ut verdien. (Spørsmål 8)",
+    "alternativer": [
+      "Noe helt annet.",
+      "Svaret kan utledes fra formelen for rett linje.",
+      "Svaret er umulig å finne.",
+      "Vet ikke."
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Dette viser forståelse for rett linje."
+  },
+  {
+    "sporsmal": "En elev gjør en vanlig feil med rett linje. Hva er feilen? (Spørsmål 9)",
+    "alternativer": [
+      "Vet ikke.",
+      "Eleven glemmer en viktig detalj om rett linje.",
+      "Eleven gjør ingen feil.",
+      "Noe helt annet."
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Dette viser forståelse for rett linje."
+  },
+  {
+    "sporsmal": "En elev gjør en vanlig feil med rett linje. Hva er feilen? (Spørsmål 10)",
+    "alternativer": [
+      "Noe helt annet.",
+      "Vet ikke.",
+      "Eleven glemmer en viktig detalj om rett linje.",
+      "Eleven gjør ingen feil."
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Dette viser forståelse for rett linje."
+  }
+]

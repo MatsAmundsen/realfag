@@ -1,0 +1,112 @@
+[
+  {
+    "sporsmal": "Hva er grunnleggende sant om eksponentiell vekst? (Spørsmål 1)",
+    "alternativer": [
+      "Det beskriver en fundamental egenskap ved eksponentiell vekst.",
+      "Det betyr at funksjonen alltid er 0.",
+      "Noe helt annet.",
+      "Vet ikke."
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Dette viser forståelse for eksponentiell vekst."
+  },
+  {
+    "sporsmal": "Hva er grunnleggende sant om eksponentiell vekst? (Spørsmål 2)",
+    "alternativer": [
+      "Vet ikke.",
+      "Noe helt annet.",
+      "Det betyr at funksjonen alltid er 0.",
+      "Det beskriver en fundamental egenskap ved eksponentiell vekst."
+    ],
+    "riktigSvar": 3,
+    "forklaring": "Dette viser forståelse for eksponentiell vekst."
+  },
+  {
+    "sporsmal": "Hva er grunnleggende sant om eksponentiell vekst? (Spørsmål 3)",
+    "alternativer": [
+      "Vet ikke.",
+      "Det betyr at funksjonen alltid er 0.",
+      "Noe helt annet.",
+      "Det beskriver en fundamental egenskap ved eksponentiell vekst."
+    ],
+    "riktigSvar": 3,
+    "forklaring": "Dette viser forståelse for eksponentiell vekst."
+  },
+  {
+    "sporsmal": "Hva er grunnleggende sant om eksponentiell vekst? (Spørsmål 4)",
+    "alternativer": [
+      "Det beskriver en fundamental egenskap ved eksponentiell vekst.",
+      "Noe helt annet.",
+      "Vet ikke.",
+      "Det betyr at funksjonen alltid er 0."
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Dette viser forståelse for eksponentiell vekst."
+  },
+  {
+    "sporsmal": "Gitt en funksjon $f(x)$ for eksponentiell vekst, regn ut verdien. (Spørsmål 5)",
+    "alternativer": [
+      "Vet ikke.",
+      "Svaret er umulig å finne.",
+      "Svaret kan utledes fra formelen for eksponentiell vekst.",
+      "Noe helt annet."
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Dette viser forståelse for eksponentiell vekst."
+  },
+  {
+    "sporsmal": "Gitt en funksjon $f(x)$ for eksponentiell vekst, regn ut verdien. (Spørsmål 6)",
+    "alternativer": [
+      "Vet ikke.",
+      "Svaret kan utledes fra formelen for eksponentiell vekst.",
+      "Svaret er umulig å finne.",
+      "Noe helt annet."
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Dette viser forståelse for eksponentiell vekst."
+  },
+  {
+    "sporsmal": "Gitt en funksjon $f(x)$ for eksponentiell vekst, regn ut verdien. (Spørsmål 7)",
+    "alternativer": [
+      "Vet ikke.",
+      "Svaret kan utledes fra formelen for eksponentiell vekst.",
+      "Noe helt annet.",
+      "Svaret er umulig å finne."
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Dette viser forståelse for eksponentiell vekst."
+  },
+  {
+    "sporsmal": "Gitt en funksjon $f(x)$ for eksponentiell vekst, regn ut verdien. (Spørsmål 8)",
+    "alternativer": [
+      "Svaret er umulig å finne.",
+      "Noe helt annet.",
+      "Svaret kan utledes fra formelen for eksponentiell vekst.",
+      "Vet ikke."
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Dette viser forståelse for eksponentiell vekst."
+  },
+  {
+    "sporsmal": "En elev gjør en vanlig feil med eksponentiell vekst. Hva er feilen? (Spørsmål 9)",
+    "alternativer": [
+      "Vet ikke.",
+      "Eleven gjør ingen feil.",
+      "Noe helt annet.",
+      "Eleven glemmer en viktig detalj om eksponentiell vekst."
+    ],
+    "riktigSvar": 3,
+    "forklaring": "Dette viser forståelse for eksponentiell vekst."
+  },
+  {
+    "sporsmal": "En elev gjør en vanlig feil med eksponentiell vekst. Hva er feilen? (Spørsmål 10)",
+    "alternativer": [
+      "Eleven glemmer en viktig detalj om eksponentiell vekst.",
+      "Noe helt annet.",
+      "Eleven gjør ingen feil.",
+      "Vet ikke."
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Dette viser forståelse for eksponentiell vekst."
+  }
+]

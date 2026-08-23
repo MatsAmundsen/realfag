@@ -1,0 +1,134 @@
+[
+  {
+    "sporsmal": "Hva er $x^3 \\cdot x^4$ forenklet?",
+    "alternativer": [
+      "$x^{12}$",
+      "$x^7$",
+      "$x^{-1}$",
+      "$2x^7$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Ved multiplikasjon av potenser med samme grunntall adderer vi eksponentene: $3 + 4 = 7$."
+  },
+  {
+    "sporsmal": "Hva er $(x^2)^3$?",
+    "alternativer": [
+      "$x^5$",
+      "$x^6$",
+      "$x^8$",
+      "$x^23$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Når vi opphøyer en potens i en ny eksponent, multipliserer vi eksponentene: $2 \\cdot 3 = 6$."
+  },
+  {
+    "sporsmal": "Hva betyr $x^{-2}$?",
+    "alternativer": [
+      "$-x^2$",
+      "$-2x$",
+      "$\\frac{1}{x^2}$",
+      "$\\frac{2}{x}$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "En negativ eksponent betyr at vi tar den inverse (1 delt på potensen): $x^{-n} = \\frac{1}{x^n}$."
+  },
+  {
+    "sporsmal": "Hva er verdien av $5^0$?",
+    "alternativer": [
+      "0",
+      "1",
+      "5",
+      "Udefinert"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Alle tall (unntatt null) opphøyd i null er lik 1."
+  },
+  {
+    "sporsmal": "I hvilken rekkefølge skal operasjonene utføres i uttrykket $2 + 3 \\cdot 4^2$?",
+    "alternativer": [
+      "Addisjon, multiplikasjon, potens",
+      "Potens, multiplikasjon, addisjon",
+      "Multiplikasjon, addisjon, potens",
+      "Potens, addisjon, multiplikasjon"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Regnerekkefølgen er: parenteser, potenser, multiplikasjon/divisjon, og til slutt addisjon/subtraksjon."
+  },
+  {
+    "sporsmal": "Regn ut: $3 + 2 \\cdot (5 - 2)^2$.",
+    "alternativer": [
+      "45",
+      "21",
+      "39",
+      "11"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Parentes først: $5-2=3$. Så potens: $3^2=9$. Så multiplikasjon: $2 \\cdot 9=18$. Til slutt addisjon: $3+18=21$."
+  },
+  {
+    "sporsmal": "Hva blir $\\frac{y^5}{y^2}$?",
+    "alternativer": [
+      "$y^{10}$",
+      "$y^{2.5}$",
+      "$y^3$",
+      "$y^7$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Ved divisjon av potenser med samme grunntall subtraherer vi eksponentene: $5 - 2 = 3$."
+  },
+  {
+    "sporsmal": "Forenkle $(2x^3)^2$.",
+    "alternativer": [
+      "$2x^5$",
+      "$4x^5$",
+      "$4x^6$",
+      "$2x^6$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Eksponenten skal virke på alle faktorene i parentesen: $2^2 \\cdot (x^3)^2 = 4 \\cdot x^6$."
+  },
+  {
+    "sporsmal": "Hvilket av disse uttrykkene er ikke lik de andre?",
+    "alternativer": [
+      "$\\frac{1}{x^3}$",
+      "$x^{-3}$",
+      "$x^2 \\cdot x^{-5}$",
+      "$-3x$"
+    ],
+    "riktigSvar": 3,
+    "forklaring": "De tre første uttrykkene er alle likeverdige måter å skrive $\\frac{1}{x^3}$ på. $-3x$ er et helt annet uttrykk."
+  },
+  {
+    "sporsmal": "Regn ut $4^{-1} \\cdot 2^3$.",
+    "alternativer": [
+      "2",
+      "4",
+      "$-8$",
+      "$\\frac{1}{8}$"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "$4^{-1} = \\frac{1}{4}$. Og $2^3 = 8$. Da får vi $\\frac{1}{4} \\cdot 8 = 2$."
+  },
+  {
+    "sporsmal": "Forenkle uttrykket $\\frac{a^3 \\cdot a^{-5}}{a^{-2}}$.",
+    "alternativer": [
+      "$a^{-4}$",
+      "$a^0 = 1$",
+      "$a^{-2}$",
+      "$a^4$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Teller blir $3 + (-5) = -2$. Divisjon med $a^{-2}$ betyr subtraksjon: $-2 - (-2) = 0$. $a^0 = 1$."
+  },
+  {
+    "sporsmal": "Hvorfor er $(-3)^2$ forskjellig fra $-3^2$?",
+    "alternativer": [
+      "De er ikke forskjellige, begge blir 9",
+      "Den ene er 9, den andre er -9",
+      "Parenteser betyr at man skal multiplisere med -1",
+      "Den ene er positiv, men vi kan ikke bestemme den andre"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "$(-3)^2$ betyr $(-3) \\cdot (-3) = 9$. Uttrykket $-3^2$ betyr $-(3 \\cdot 3) = -9$, fordi potensen regnes ut før minustegnet."
+  }
+]

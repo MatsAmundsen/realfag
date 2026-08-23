@@ -1,0 +1,145 @@
+[
+  {
+    "sporsmal": "Hva er en rasjonal likning?",
+    "alternativer": [
+      "En likning der den ukjente (for eksempel $x$) befinner seg i nevneren",
+      "En likning som bare har rasjonale tall som løsning",
+      "En likning der det er brøker, men bare tall i nevner",
+      "En likning der $x$ er opphøyd i andre potens"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "En rasjonal likning (eller brøklikning) er en likning der den ukjente står i en eller flere nevnere."
+  },
+  {
+    "sporsmal": "Hvilken regel er helt grunnleggende når vi jobber med brøker?",
+    "alternativer": [
+      "Man kan ikke ha negative tall i teller",
+      "Man kan ikke dele på null (nevner kan ikke være null)",
+      "Brøker må alltid forkortes før man legger dem sammen",
+      "Man må alltid ha fellesnevner selv når man ganger"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Det er umulig å dele på null. Derfor må vi alltid passe på at uttrykket i nevneren aldri blir lik null for den verdien av $x$ vi finner."
+  },
+  {
+    "sporsmal": "Hva betyr uttrykket 'definisjonsmengde' i forbindelse med rasjonale likninger?",
+    "alternativer": [
+      "Alle tall som likningen kan ganges med",
+      "De verdiene $x$ faktisk har (selve svaret)",
+      "Alle verdier av $x$ som vi har lov til å sette inn (altså at nevneren ikke blir null)",
+      "Mengden av alle brøker som finnes i oppgaven"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Definisjonsmengden er de verdiene for $x$ der uttrykket er gyldig. Hvis $x=2$ gjør at vi deler på null, er ikke $x=2$ med i definisjonsmengden."
+  },
+  {
+    "sporsmal": "Hva er definisjonsmengden for likningen $\\frac{5}{x-3} = 2$?",
+    "alternativer": [
+      "Alle tall unntatt $0$",
+      "Alle tall unntatt $3$",
+      "Alle tall unntatt $-3$",
+      "Alle tall"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Nevneren er $x-3$. Settes denne til null får vi $x-3 = 0$, altså $x=3$. Hvis $x=3$, deler vi på null. Definisjonsmengden er derfor alle tall der $x \\neq 3$."
+  },
+  {
+    "sporsmal": "Hva er det vanligste første steget når du løser en rasjonal likning?",
+    "alternativer": [
+      "Finne fellesnevneren og gange alle ledd med den",
+      "Flytte alt over på én side av likhetstegnet",
+      "Dele på fellesnevneren",
+      "Snu alle brøkene på hodet"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Akkurat som med vanlige brøklikninger, er den enkleste metoden å multiplisere alle ledd med fellesnevneren. Da kan vi forkorte bort alle nevnerne og vi står igjen med en likning uten brøk."
+  },
+  {
+    "sporsmal": "Finn fellesnevner for brøkene i likningen $\\frac{1}{x} + \\frac{2}{x+1} = 5$.",
+    "alternativer": [
+      "$x + (x+1)$",
+      "$x(x+1)$",
+      "$x^2 + 1$",
+      "Det finnes ingen fellesnevner"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "For å finne en fellesnevner for to ulike uttrykk (som $x$ og $x+1$), ganger vi dem med hverandre: fellesnevneren er $x(x+1)$."
+  },
+  {
+    "sporsmal": "Løs likningen $\\frac{4}{x} = 2$.",
+    "alternativer": [
+      "$x = 2$",
+      "$x = 8$",
+      "$x = 0.5$",
+      "$x = 4$"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Ganger vi med $x$ på begge sider (vi forutsetter $x \\neq 0$), får vi $4 = 2x$. Deler vi på $2$, får vi $x=2$."
+  },
+  {
+    "sporsmal": "Løs likningen $\\frac{6}{x-1} = 3$.",
+    "alternativer": [
+      "$x = 1$",
+      "$x = 2$",
+      "$x = 3$",
+      "$x = -1$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Forutsetter $x \\neq 1$. Ganger vi med $(x-1)$ på begge sider, får vi $6 = 3(x-1)$. Vi deler på $3$, som gir $2 = x - 1$. Da er $x = 3$."
+  },
+  {
+    "sporsmal": "Hva er en 'falsk løsning' i rasjonale likninger?",
+    "alternativer": [
+      "Et svar du får hvis du har regnet feil",
+      "Et svar som læreren sier er feil",
+      "Et tall man kommer fram til ved regning, men som gir null i en nevner i den opprinnelige likningen",
+      "Et negativt tall som svar"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Når vi ganger med fellesnevneren, kan vi introdusere løsninger som ikke er lov (fordi de gjør at den opprinnelige nevneren blir null). Dette kalles falske løsninger."
+  },
+  {
+    "sporsmal": "Du løser $\\frac{x^2}{x-2} = \\frac{4}{x-2}$. Etter å ha ganget med $(x-2)$, får du $x^2 = 4$, som gir $x = 2$ og $x = -2$. Hva er riktig svar?",
+    "alternativer": [
+      "Både $x = 2$ og $x = -2$",
+      "Bare $x = -2$",
+      "Bare $x = 2$",
+      "Ingen løsning"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Nevneren er $x-2$. Hvis $x=2$, blir nevneren null, så $x=2$ er en falsk løsning (ikke med i definisjonsmengden). Derfor er den eneste gyldige løsningen $x = -2$."
+  },
+  {
+    "sporsmal": "Hva betyr symbolet $L = \\emptyset$?",
+    "alternativer": [
+      "Løsningen er $0$",
+      "Løsningen er uendelig",
+      "Løsningsmengden er tom, det finnes ingen løsning",
+      "Løsningen er en sirkel"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Tegnet $\\emptyset$ betyr 'den tomme mengden'. $L = \\emptyset$ er det matematisk korrekte måten å skrive at likningen ikke har noen gyldige løsninger."
+  },
+  {
+    "sporsmal": "Løs $\\frac{1}{x} + \\frac{1}{2x} = 3$.",
+    "alternativer": [
+      "$x = 2$",
+      "$x = 0.5$",
+      "$x = 1.5$",
+      "$x = 1$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Fellesnevner er $2x$. Vi ganger alle ledd med $2x$. Da får vi $2 + 1 = 6x$. Dette gir $3 = 6x$, og deler vi på $6$ får vi $x = \\frac{3}{6} = 0.5$."
+  },
+  {
+    "sporsmal": "Hvorfor kan man ikke dele på $x$ på begge sider for å løse $x^2 = x$?",
+    "alternativer": [
+      "Fordi man får brøker",
+      "Fordi det er for vanskelig",
+      "Fordi hvis $x=0$, deler vi på null, og da mister vi løsningen $x=0$",
+      "Det er helt lov, man mister ingen løsninger"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Når man deler på $x$, antar man at $x \\neq 0$. Men $x=0$ er en løsning til $x^2 = x$. Isteden bør man flytte over: $x^2 - x = 0$, og faktorisere $x(x-1)=0$."
+  }
+]

@@ -1,0 +1,156 @@
+[
+  {
+    "sporsmal": "Hva innebærer \"formelregning\"?",
+    "alternativer": [
+      "Å alltid bytte ut alle bokstavene med tall",
+      "Å snu om på en formel for å få en bestemt variabel alene på den ene siden av likhetstegnet",
+      "Å sette prøve på svaret",
+      "Å tegne grafen til formelen"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Formelregning (eller å isolere en variabel) handler om å bruke vanlige likningsregler for å skrive om en formel slik at den størrelsen du ønsker å finne, står alene."
+  },
+  {
+    "sporsmal": "Hvilke regler gjelder når vi skal isolere en variabel i en formel?",
+    "alternativer": [
+      "Helt andre regler enn for vanlige likninger",
+      "Man kan bare flytte på variabler, ikke tall",
+      "Nøyaktig de samme reglene som når vi løser vanlige likninger",
+      "Man må alltid kvadrere begge sider"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Når vi snur på formler, bruker vi akkurat de samme reglene som for å løse likninger (f.eks. legge til like mye på begge sider, dele eller gange med samme tall på begge sider)."
+  },
+  {
+    "sporsmal": "Gitt formelen for strekning ved konstant fart: $s = v \\cdot t$. Hvordan ser formelen ut hvis vi løser den med hensyn på tiden $t$?",
+    "alternativer": [
+      "$t = s \\cdot v$",
+      "$t = \\frac{v}{s}$",
+      "$t = s - v$",
+      "$t = \\frac{s}{v}$"
+    ],
+    "riktigSvar": 3,
+    "forklaring": "For å få $t$ alene, må vi dele på $v$ på begge sider. Det gir $\\frac{s}{v} = \\frac{v \\cdot t}{v}$, som forenkles til $t = \\frac{s}{v}$."
+  },
+  {
+    "sporsmal": "Gitt formelen for omkretsen av en sirkel: $O = 2\\pi r$. Hva blir formelen løst med hensyn på radius $r$?",
+    "alternativer": [
+      "$r = O - 2\\pi$",
+      "$r = \\frac{O}{2\\pi}$",
+      "$r = 2\\pi O$",
+      "$r = \\frac{2\\pi}{O}$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Vi deler på $2\\pi$ på begge sider for å isolere $r$. Da får vi $r = \\frac{O}{2\\pi}$."
+  },
+  {
+    "sporsmal": "Formelen for arealet av et rektangel er $A = l \\cdot b$. Isolér bredden $b$.",
+    "alternativer": [
+      "$b = A - l$",
+      "$b = A \\cdot l$",
+      "$b = \\frac{l}{A}$",
+      "$b = \\frac{A}{l}$"
+    ],
+    "riktigSvar": 3,
+    "forklaring": "Deler på $l$ på begge sider av likhetstegnet. Da får vi $b = \\frac{A}{l}$."
+  },
+  {
+    "sporsmal": "Isolér høyden $h$ i formelen for arealet av en trekant: $A = \\frac{g \\cdot h}{2}$",
+    "alternativer": [
+      "$h = 2A - g$",
+      "$h = \\frac{2A}{g}$",
+      "$h = \\frac{A}{2g}$",
+      "$h = 2Ag$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Først ganger vi med $2$ på begge sider for å fjerne brøken: $2A = g \\cdot h$. Deretter deler vi på $g$: $h = \\frac{2A}{g}$."
+  },
+  {
+    "sporsmal": "Newtons andre lov sier at $F = m \\cdot a$. Isolér massen $m$.",
+    "alternativer": [
+      "$m = \\frac{F}{a}$",
+      "$m = \\frac{a}{F}$",
+      "$m = F \\cdot a$",
+      "$m = F - a$"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Vi deler på akselerasjonen $a$ på begge sider: $m = \\frac{F}{a}$."
+  },
+  {
+    "sporsmal": "Formelen for volumet av et prisme er $V = G \\cdot h$. Hvis vi løser for grunnflaten $G$, får vi:",
+    "alternativer": [
+      "$G = V - h$",
+      "$G = V \\cdot h$",
+      "$G = \\frac{V}{h}$",
+      "$G = \\frac{h}{V}$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Vi isolerer $G$ ved å dele på $h$ på begge sider. Dermed er $G = \\frac{V}{h}$."
+  },
+  {
+    "sporsmal": "Formelen for den kinetiske energien er $E_k = \\frac{1}{2} m v^2$. Hvordan isolerer vi massen $m$?",
+    "alternativer": [
+      "$m = \\frac{E_k}{2v^2}$",
+      "$m = \\frac{2E_k}{v^2}$",
+      "$m = 2E_k - v^2$",
+      "$m = \\sqrt{\\frac{2E_k}{v}}$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Først ganger vi med $2$ for å få bort brøken: $2E_k = m v^2$. Så deler vi på $v^2$ på begge sider: $m = \\frac{2E_k}{v^2}$."
+  },
+  {
+    "sporsmal": "Gitt formelen for kinetisk energi $E_k = \\frac{1}{2} m v^2$. Hva er riktig uttrykk for farten $v$?",
+    "alternativer": [
+      "$v = \\frac{2E_k}{m}$",
+      "$v = \\sqrt{\\frac{2E_k}{m}}$",
+      "$v = \\sqrt{\\frac{E_k}{2m}}$",
+      "$v = \\frac{\\sqrt{2E_k}}{m}$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Ganger vi med $2$ får vi $2E_k = m v^2$. Deler på $m$ gir $\\frac{2E_k}{m} = v^2$. For å finne $v$, tar vi kvadratroten: $v = \\pm \\sqrt{\\frac{2E_k}{m}}$. I fysikken velger vi positiv fart, så $v = \\sqrt{\\frac{2E_k}{m}}$."
+  },
+  {
+    "sporsmal": "En elev skal isolere $x$ i formelen $y = a x + b$. Eleven skriver: $x = \\frac{y}{a} - b$. Hva er feil med dette?",
+    "alternativer": [
+      "Eleven delte på $a$ før hen flyttet over $b$",
+      "Eleven byttet ikke fortegn på $b$",
+      "Man kan ikke ha to ukjente i samme formel",
+      "Det er ikke noe feil, svaret er riktig"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Når man deler på $a$ må man dele *hele* den andre siden på $a$. Riktig rekkefølge er å først trekke fra $b$, slik at vi får $y - b = a x$. Deretter deler vi alt på $a$, noe som gir $x = \\frac{y - b}{a}$."
+  },
+  {
+    "sporsmal": "Volumet av en sylinder er gitt ved $V = \\pi r^2 h$. Isolér høyden $h$.",
+    "alternativer": [
+      "$h = \\frac{V}{\\pi r^2}$",
+      "$h = \\sqrt{\\frac{V}{\\pi r}}$",
+      "$h = V - \\pi r^2$",
+      "$h = \\frac{V r^2}{\\pi}$"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Vi får $h$ alene ved å dele på det som ganges med $h$, nemlig $\\pi r^2$. Det gir $h = \\frac{V}{\\pi r^2}$."
+  },
+  {
+    "sporsmal": "Gitt formelen for overflateareal av en kule: $A = 4\\pi r^2$. Isolér $r$.",
+    "alternativer": [
+      "$r = \\frac{A}{4\\pi}$",
+      "$r = \\sqrt{\\frac{A}{4\\pi}}$",
+      "$r = \\frac{\\sqrt{A}}{4\\pi}$",
+      "$r = 4\\pi \\sqrt{A}$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Først deler vi på $4\\pi$, så $r^2 = \\frac{A}{4\\pi}$. Deretter tar vi kvadratroten av begge sider: $r = \\sqrt{\\frac{A}{4\\pi}}$."
+  },
+  {
+    "sporsmal": "Celsius ($C$) og Fahrenheit ($F$) har sammenhengen: $F = \\frac{9}{5}C + 32$. Hvordan isolerer vi $C$?",
+    "alternativer": [
+      "$C = \\frac{5}{9}(F - 32)$",
+      "$C = \\frac{5}{9}F - 32$",
+      "$C = \\frac{9}{5}(F - 32)$",
+      "$C = F - 32 - \\frac{9}{5}$"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Først trekker vi fra $32$ og får $F - 32 = \\frac{9}{5}C$. For å få $C$ alene, ganger vi med $\\frac{5}{9}$ på begge sider. Husk parentes! Da får vi $C = \\frac{5}{9}(F - 32)$."
+  }
+]

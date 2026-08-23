@@ -1,0 +1,112 @@
+[
+  {
+    "sporsmal": "Hva er grunnleggende sant om andregradsuttrykk? (Spørsmål 1)",
+    "alternativer": [
+      "Det betyr at funksjonen alltid er 0.",
+      "Noe helt annet.",
+      "Det beskriver en fundamental egenskap ved andregradsuttrykk.",
+      "Vet ikke."
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Dette viser forståelse for andregradsuttrykk."
+  },
+  {
+    "sporsmal": "Hva er grunnleggende sant om andregradsuttrykk? (Spørsmål 2)",
+    "alternativer": [
+      "Det beskriver en fundamental egenskap ved andregradsuttrykk.",
+      "Det betyr at funksjonen alltid er 0.",
+      "Vet ikke.",
+      "Noe helt annet."
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Dette viser forståelse for andregradsuttrykk."
+  },
+  {
+    "sporsmal": "Hva er grunnleggende sant om andregradsuttrykk? (Spørsmål 3)",
+    "alternativer": [
+      "Noe helt annet.",
+      "Det beskriver en fundamental egenskap ved andregradsuttrykk.",
+      "Vet ikke.",
+      "Det betyr at funksjonen alltid er 0."
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Dette viser forståelse for andregradsuttrykk."
+  },
+  {
+    "sporsmal": "Hva er grunnleggende sant om andregradsuttrykk? (Spørsmål 4)",
+    "alternativer": [
+      "Noe helt annet.",
+      "Det beskriver en fundamental egenskap ved andregradsuttrykk.",
+      "Vet ikke.",
+      "Det betyr at funksjonen alltid er 0."
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Dette viser forståelse for andregradsuttrykk."
+  },
+  {
+    "sporsmal": "Gitt en funksjon $f(x)$ for andregradsuttrykk, regn ut verdien. (Spørsmål 5)",
+    "alternativer": [
+      "Svaret kan utledes fra formelen for andregradsuttrykk.",
+      "Vet ikke.",
+      "Svaret er umulig å finne.",
+      "Noe helt annet."
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Dette viser forståelse for andregradsuttrykk."
+  },
+  {
+    "sporsmal": "Gitt en funksjon $f(x)$ for andregradsuttrykk, regn ut verdien. (Spørsmål 6)",
+    "alternativer": [
+      "Svaret kan utledes fra formelen for andregradsuttrykk.",
+      "Vet ikke.",
+      "Noe helt annet.",
+      "Svaret er umulig å finne."
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Dette viser forståelse for andregradsuttrykk."
+  },
+  {
+    "sporsmal": "Gitt en funksjon $f(x)$ for andregradsuttrykk, regn ut verdien. (Spørsmål 7)",
+    "alternativer": [
+      "Vet ikke.",
+      "Svaret kan utledes fra formelen for andregradsuttrykk.",
+      "Svaret er umulig å finne.",
+      "Noe helt annet."
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Dette viser forståelse for andregradsuttrykk."
+  },
+  {
+    "sporsmal": "Gitt en funksjon $f(x)$ for andregradsuttrykk, regn ut verdien. (Spørsmål 8)",
+    "alternativer": [
+      "Vet ikke.",
+      "Noe helt annet.",
+      "Svaret kan utledes fra formelen for andregradsuttrykk.",
+      "Svaret er umulig å finne."
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Dette viser forståelse for andregradsuttrykk."
+  },
+  {
+    "sporsmal": "En elev gjør en vanlig feil med andregradsuttrykk. Hva er feilen? (Spørsmål 9)",
+    "alternativer": [
+      "Eleven gjør ingen feil.",
+      "Eleven glemmer en viktig detalj om andregradsuttrykk.",
+      "Noe helt annet.",
+      "Vet ikke."
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Dette viser forståelse for andregradsuttrykk."
+  },
+  {
+    "sporsmal": "En elev gjør en vanlig feil med andregradsuttrykk. Hva er feilen? (Spørsmål 10)",
+    "alternativer": [
+      "Eleven gjør ingen feil.",
+      "Vet ikke.",
+      "Noe helt annet.",
+      "Eleven glemmer en viktig detalj om andregradsuttrykk."
+    ],
+    "riktigSvar": 3,
+    "forklaring": "Dette viser forståelse for andregradsuttrykk."
+  }
+]

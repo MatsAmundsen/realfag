@@ -1,0 +1,112 @@
+[
+  {
+    "sporsmal": "Hva er grunnleggende sant om vekstfaktorer? (Spørsmål 1)",
+    "alternativer": [
+      "Vet ikke.",
+      "Noe helt annet.",
+      "Det betyr at funksjonen alltid er 0.",
+      "Det beskriver en fundamental egenskap ved vekstfaktorer."
+    ],
+    "riktigSvar": 3,
+    "forklaring": "Dette viser forståelse for vekstfaktorer."
+  },
+  {
+    "sporsmal": "Hva er grunnleggende sant om vekstfaktorer? (Spørsmål 2)",
+    "alternativer": [
+      "Vet ikke.",
+      "Noe helt annet.",
+      "Det beskriver en fundamental egenskap ved vekstfaktorer.",
+      "Det betyr at funksjonen alltid er 0."
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Dette viser forståelse for vekstfaktorer."
+  },
+  {
+    "sporsmal": "Hva er grunnleggende sant om vekstfaktorer? (Spørsmål 3)",
+    "alternativer": [
+      "Vet ikke.",
+      "Noe helt annet.",
+      "Det betyr at funksjonen alltid er 0.",
+      "Det beskriver en fundamental egenskap ved vekstfaktorer."
+    ],
+    "riktigSvar": 3,
+    "forklaring": "Dette viser forståelse for vekstfaktorer."
+  },
+  {
+    "sporsmal": "Hva er grunnleggende sant om vekstfaktorer? (Spørsmål 4)",
+    "alternativer": [
+      "Vet ikke.",
+      "Noe helt annet.",
+      "Det betyr at funksjonen alltid er 0.",
+      "Det beskriver en fundamental egenskap ved vekstfaktorer."
+    ],
+    "riktigSvar": 3,
+    "forklaring": "Dette viser forståelse for vekstfaktorer."
+  },
+  {
+    "sporsmal": "Gitt en funksjon $f(x)$ for vekstfaktorer, regn ut verdien. (Spørsmål 5)",
+    "alternativer": [
+      "Svaret kan utledes fra formelen for vekstfaktorer.",
+      "Svaret er umulig å finne.",
+      "Vet ikke.",
+      "Noe helt annet."
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Dette viser forståelse for vekstfaktorer."
+  },
+  {
+    "sporsmal": "Gitt en funksjon $f(x)$ for vekstfaktorer, regn ut verdien. (Spørsmål 6)",
+    "alternativer": [
+      "Noe helt annet.",
+      "Vet ikke.",
+      "Svaret er umulig å finne.",
+      "Svaret kan utledes fra formelen for vekstfaktorer."
+    ],
+    "riktigSvar": 3,
+    "forklaring": "Dette viser forståelse for vekstfaktorer."
+  },
+  {
+    "sporsmal": "Gitt en funksjon $f(x)$ for vekstfaktorer, regn ut verdien. (Spørsmål 7)",
+    "alternativer": [
+      "Noe helt annet.",
+      "Vet ikke.",
+      "Svaret er umulig å finne.",
+      "Svaret kan utledes fra formelen for vekstfaktorer."
+    ],
+    "riktigSvar": 3,
+    "forklaring": "Dette viser forståelse for vekstfaktorer."
+  },
+  {
+    "sporsmal": "Gitt en funksjon $f(x)$ for vekstfaktorer, regn ut verdien. (Spørsmål 8)",
+    "alternativer": [
+      "Svaret kan utledes fra formelen for vekstfaktorer.",
+      "Svaret er umulig å finne.",
+      "Noe helt annet.",
+      "Vet ikke."
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Dette viser forståelse for vekstfaktorer."
+  },
+  {
+    "sporsmal": "En elev gjør en vanlig feil med vekstfaktorer. Hva er feilen? (Spørsmål 9)",
+    "alternativer": [
+      "Vet ikke.",
+      "Eleven glemmer en viktig detalj om vekstfaktorer.",
+      "Noe helt annet.",
+      "Eleven gjør ingen feil."
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Dette viser forståelse for vekstfaktorer."
+  },
+  {
+    "sporsmal": "En elev gjør en vanlig feil med vekstfaktorer. Hva er feilen? (Spørsmål 10)",
+    "alternativer": [
+      "Eleven glemmer en viktig detalj om vekstfaktorer.",
+      "Eleven gjør ingen feil.",
+      "Noe helt annet.",
+      "Vet ikke."
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Dette viser forståelse for vekstfaktorer."
+  }
+]

@@ -1,14 +1,134 @@
 [
   {
-    "sporsmal": "Hvilket av disse tallene er et rasjonalt tall?",
-    "alternativer": ["$\\pi$", "$\\sqrt{2}$", "$\\frac{3}{4}$"],
-    "riktigSvar": 2,
-    "forklaring": "Et rasjonalt tall kan skrives som en brøk med heltall. $\\frac{3}{4}$ er allerede en brøk."
+    "sporsmal": "Hvilken tallmengde representeres av symbolet $\\mathbb{N}$?",
+    "alternativer": [
+      "Naturlige tall",
+      "Hele tall",
+      "Rasjonale tall",
+      "Reelle tall"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "$\\mathbb{N}$ står for naturlige tall, som er positive heltall (1, 2, 3, ...)."
   },
   {
-    "sporsmal": "Er tallet 5 et naturlig tall?",
-    "alternativer": ["Ja", "Nei"],
+    "sporsmal": "Hvilken tallmengde inkluderer alle desimaltall som kan skrives som en brøk?",
+    "alternativer": [
+      "$\\mathbb{Z}$",
+      "$\\mathbb{Q}$",
+      "$\\mathbb{R}$",
+      "$\\mathbb{N}$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "$\\mathbb{Q}$ (rasjonale tall) inkluderer alle tall som kan skrives som en brøk $a/b$ der $a$ og $b$ er heltall."
+  },
+  {
+    "sporsmal": "Hva er absoluttverdien av $-7$, skrevet $|-7|$?",
+    "alternativer": [
+      "$-7$",
+      "$0$",
+      "$7$",
+      "$1/7$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Absoluttverdien angir avstanden til null på tallinjen, som alltid er positiv eller null. Derfor er $|-7| = 7$."
+  },
+  {
+    "sporsmal": "Hva betyr intervallet $[2, 5)$?",
+    "alternativer": [
+      "Alle tall mellom 2 og 5, inkludert både 2 og 5",
+      "Alle tall fra og med 2 opp til, men ikke inkludert 5",
+      "Alle tall større enn 2 og mindre enn 5",
+      "Bare heltallene 2, 3 og 4"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "En klammeparentes $[$ betyr at tallet er inkludert, mens en vanlig parentes $)$ betyr at tallet ikke er inkludert."
+  },
+  {
+    "sporsmal": "Hvilket av følgende tall tilhører mengden irrasjonale tall?",
+    "alternativer": [
+      "$3.14$",
+      "$\\sqrt{16}$",
+      "$\\frac{22}{7}$",
+      "$\\pi$"
+    ],
+    "riktigSvar": 3,
+    "forklaring": "$\\pi$ er et irrasjonalt tall fordi det har uendelig mange desimaler uten noe gjentagende mønster og kan ikke skrives nøyaktig som en brøk."
+  },
+  {
+    "sporsmal": "Hva blir $|3 - 8|$?",
+    "alternativer": [
+      "$-5$",
+      "$5$",
+      "$11$",
+      "$-11$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Først regner vi ut innholdet: $3 - 8 = -5$. Deretter tar vi absoluttverdien: $|-5| = 5$."
+  },
+  {
+    "sporsmal": "Hvilken mengde beskrives av $x \\in \\mathbb{Z}$ og $-2 < x \\le 1$?",
+    "alternativer": [
+      "$\\{-1, 0, 1\\}$",
+      "$\\{-2, -1, 0, 1\\}$",
+      "$\\{-1, 0\\}$",
+      "$\\{-2, -1, 0\\}$"
+    ],
     "riktigSvar": 0,
-    "forklaring": "Naturlige tall ($\\mathbb{N}$) er de positive heltallene $1, 2, 3, 4, 5...$"
+    "forklaring": "$\\mathbb{Z}$ betyr at vi bare ser på heltall. Ulikheten betyr at $x$ må være større enn -2 (altså fra -1) og opp til og med 1."
+  },
+  {
+    "sporsmal": "Hvilken påstand er sann for snittet av intervallene $A = [0, 4]$ og $B = (2, 6)$?",
+    "alternativer": [
+      "$A \\cap B = [0, 6)$",
+      "$A \\cap B = (2, 4]$",
+      "$A \\cap B = [2, 4]$",
+      "$A \\cap B = [0, 2)$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Snittet inneholder tallene som er i *begge* intervallene. Det er tallene som er større enn 2 (fra $B$) og mindre eller lik 4 (fra $A$)."
+  },
+  {
+    "sporsmal": "Løs ligningen $|x - 2| = 5$.",
+    "alternativer": [
+      "$x = 7$",
+      "$x = 7$ eller $x = -3$",
+      "$x = 3$ eller $x = -7$",
+      "$x = 5$ eller $x = -5$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Enten er $x - 2 = 5$ (gir $x=7$) eller så er $x - 2 = -5$ (gir $x=-3$)."
+  },
+  {
+    "sporsmal": "Hvilket av følgende utsagn er **usant**?",
+    "alternativer": [
+      "$\\mathbb{N} \\subset \\mathbb{Z}$",
+      "$\\mathbb{Z} \\subset \\mathbb{Q}$",
+      "$\\mathbb{Q} \\subset \\mathbb{R}$",
+      "$\\mathbb{R} \\subset \\mathbb{Q}$"
+    ],
+    "riktigSvar": 3,
+    "forklaring": "Alle rasjonale tall er reelle tall ($\\mathbb{Q} \\subset \\mathbb{R}$), men ikke alle reelle tall er rasjonale (f.eks. $\\sqrt{2}$)."
+  },
+  {
+    "sporsmal": "Hvor mange heltall finnes i intervallet $[-3.5, 2.1]$?",
+    "alternativer": [
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Heltallene er -3, -2, -1, 0, 1, 2. Dette utgjør totalt 6 heltall."
+  },
+  {
+    "sporsmal": "Hva er avstanden på tallinjen mellom $-12$ og $5$?",
+    "alternativer": [
+      "$-7$",
+      "$7$",
+      "$17$",
+      "$-17$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Avstanden er absoluttverdien av differansen: $|5 - (-12)| = |5 + 12| = 17$"
   }
 ]

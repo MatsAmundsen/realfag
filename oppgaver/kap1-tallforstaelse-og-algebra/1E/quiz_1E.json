@@ -1,0 +1,123 @@
+[
+  {
+    "sporsmal": "Hva er formatet for et tall skrevet på standardform?",
+    "alternativer": [
+      "$a \\cdot 10^n$, hvor $1 \\le a < 10$",
+      "$a \\cdot 10^n$, hvor $0 \\le a < 100$",
+      "$a + 10^n$, hvor $a$ er et desimaltall",
+      "$a \\cdot n^{10}$"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Standardform (eller vitenskapelig notasjon) krever et tall foran potensen som er 1 eller større, men strengt mindre enn 10."
+  },
+  {
+    "sporsmal": "Hvordan skrives 4500 på standardform?",
+    "alternativer": [
+      "$45 \\cdot 10^2$",
+      "$4.5 \\cdot 10^3$",
+      "$0.45 \\cdot 10^4$",
+      "$4.5 \\cdot 10^{-3}$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Vi flytter kommaet tre plasser til venstre, så eksponenten til 10 blir 3."
+  },
+  {
+    "sporsmal": "Hva representerer $3.2 \\cdot 10^{-4}$?",
+    "alternativer": [
+      "$32000$",
+      "$0.00032$",
+      "$0.000032$",
+      "$-32000$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Eksponenten -4 betyr at kommaet skal flyttes 4 plasser til venstre. Det gir 0.00032."
+  },
+  {
+    "sporsmal": "Skriv 0.0056 på standardform.",
+    "alternativer": [
+      "$5.6 \\cdot 10^{-3}$",
+      "$56 \\cdot 10^{-4}$",
+      "$5.6 \\cdot 10^3$",
+      "$0.56 \\cdot 10^{-2}$"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "For å få et tall mellom 1 og 10 må vi flytte kommaet 3 plasser til høyre. Dette gir en negativ eksponent -3."
+  },
+  {
+    "sporsmal": "Regn ut $(2 \\cdot 10^4) \\cdot (3 \\cdot 10^5)$.",
+    "alternativer": [
+      "$5 \\cdot 10^9$",
+      "$6 \\cdot 10^9$",
+      "$6 \\cdot 10^{20}$",
+      "$5 \\cdot 10^{20}$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Multipliser tallene og potensene hver for seg: $2 \\cdot 3 = 6$ og $10^4 \\cdot 10^5 = 10^{4+5} = 10^9$."
+  },
+  {
+    "sporsmal": "Regn ut $\\frac{8 \\cdot 10^7}{2 \\cdot 10^3}$.",
+    "alternativer": [
+      "$4 \\cdot 10^4$",
+      "$6 \\cdot 10^4$",
+      "$4 \\cdot 10^{10}$",
+      "$16 \\cdot 10^4$"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Divider tallene og potensene: $8 / 2 = 4$ og $10^7 / 10^3 = 10^{7-3} = 10^4$."
+  },
+  {
+    "sporsmal": "Gjør om $450 \\cdot 10^3$ til riktig standardform.",
+    "alternativer": [
+      "$4.5 \\cdot 10^3$",
+      "$4.5 \\cdot 10^5$",
+      "$45 \\cdot 10^4$",
+      "$4.5 \\cdot 10^1$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Tallet $450$ er ikke mellom 1 og 10. $450 = 4.5 \\cdot 10^2$. Dermed får vi $4.5 \\cdot 10^2 \\cdot 10^3 = 4.5 \\cdot 10^5$."
+  },
+  {
+    "sporsmal": "Hvilket tall er størst?",
+    "alternativer": [
+      "$9.9 \\cdot 10^4$",
+      "$1.2 \\cdot 10^5$",
+      "$5.0 \\cdot 10^4$",
+      "$8.7 \\cdot 10^3$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Tallet med den høyeste positive eksponenten er størst, forutsatt at alle er på standardform. $10^5$ representerer hundretusener, mens $10^4$ bare er titusener."
+  },
+  {
+    "sporsmal": "En datamaskin regner ut 3 milliarder operasjoner per sekund. Skrevet på standardform er dette:",
+    "alternativer": [
+      "$3 \\cdot 10^6$",
+      "$3 \\cdot 10^9$",
+      "$3 \\cdot 10^{12}$",
+      "$300 \\cdot 10^7$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "En milliard har 9 nuller, altså $1 000 000 000 = 10^9$."
+  },
+  {
+    "sporsmal": "Regn ut $(5 \\cdot 10^4) + (3 \\cdot 10^3)$.",
+    "alternativer": [
+      "$8 \\cdot 10^7$",
+      "$5.3 \\cdot 10^4$",
+      "$8 \\cdot 10^4$",
+      "$5.3 \\cdot 10^3$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "For å legge sammen tall på standardform må de ha samme eksponent. $3 \\cdot 10^3 = 0.3 \\cdot 10^4$. Da får vi $(5 + 0.3) \\cdot 10^4 = 5.3 \\cdot 10^4$."
+  },
+  {
+    "sporsmal": "Hvis et lysår er ca $9.46 \\cdot 10^{15}$ meter, og en stjerne er 100 lysår unna, hvor mange meter er det?",
+    "alternativer": [
+      "$9.46 \\cdot 10^{13}$",
+      "$9.46 \\cdot 10^{17}$",
+      "$94.6 \\cdot 10^{15}$",
+      "$0.946 \\cdot 10^{18}$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Å gange med 100 er det samme som å gange med $10^2$. Da adderer vi 2 til eksponenten: $15 + 2 = 17$"
+  }
+]

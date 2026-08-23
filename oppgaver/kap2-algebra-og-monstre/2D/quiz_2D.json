@@ -1,0 +1,123 @@
+[
+  {
+    "sporsmal": "Hva er et fullstendig kvadrat?",
+    "alternativer": [
+      "Et tall som ender på 0",
+      "Et uttrykk som kan skrives på formen $(a+b)^2$ eller $(a-b)^2$",
+      "Et uttrykk som inneholder to variabler",
+      "Et tall som er delelig med 4"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Et fullstendig kvadrat er et uttrykk (eller et tall) som er resultatet av å kvadrere noe, f.eks. $(a+b)^2 = a^2 + 2ab + b^2$."
+  },
+  {
+    "sporsmal": "For at $x^2 + px + q$ skal være et fullstendig kvadrat, hva er sammenhengen mellom $p$ og $q$?",
+    "alternativer": [
+      "$q = p^2$",
+      "$q = p / 2$",
+      "$q = (p/2)^2$",
+      "$p = q^2$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "I $(x+b)^2 = x^2 + 2bx + b^2$ ser vi at koeffisienten foran x er $p=2b$ og konstantleddet er $q=b^2$. Siden $b = p/2$, må $q = (p/2)^2$."
+  },
+  {
+    "sporsmal": "Er $x^2 + 6x + 9$ et fullstendig kvadrat?",
+    "alternativer": [
+      "Nei, det kan ikke faktoriseres",
+      "Ja, det er lik $(x+6)^2$",
+      "Ja, det er lik $(x+3)^2$",
+      "Ja, det er lik $(x+9)^2$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Ja, fordi halvparten av 6 er 3, og $3^2 = 9$. Det stemmer med $(x+3)^2$."
+  },
+  {
+    "sporsmal": "Hvilket tall mangler for at $x^2 + 10x + \\dots$ skal bli et fullstendig kvadrat?",
+    "alternativer": [
+      "$10$",
+      "$20$",
+      "$25$",
+      "$100$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Vi tar halvparten av tallet foran $x$ (10/2 = 5) og opphøyer i andre: $5^2 = 25$."
+  },
+  {
+    "sporsmal": "Faktoriser $y^2 - 8y + 16$.",
+    "alternativer": [
+      "$(y - 8)^2$",
+      "$(y + 4)^2$",
+      "$(y - 4)^2$",
+      "$(y - 4)(y + 4)$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Her bruker vi 2. kvadratsetning. Halvparten av $-8$ er $-4$, og $(-4)^2 = 16$. Det blir $(y - 4)^2$."
+  },
+  {
+    "sporsmal": "Faktoriser $4x^2 + 12x + 9$.",
+    "alternativer": [
+      "$(2x + 3)^2$",
+      "$(4x + 3)^2$",
+      "$(2x + 9)^2$",
+      "$(x + 3)^2$"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Dette er et fullstendig kvadrat. Kvadratroten av $4x^2$ er $2x$, og kvadratroten av $9$ er $3$. Sjekker midtleddet: $2 \\cdot 2x \\cdot 3 = 12x$. Det stemmer: $(2x + 3)^2$."
+  },
+  {
+    "sporsmal": "Er $x^2 + 12x + 30$ et fullstendig kvadrat?",
+    "alternativer": [
+      "Ja, det er lik $(x+6)^2$",
+      "Nei, fordi $6^2$ er 36, ikke 30",
+      "Ja, det er lik $(x+12)^2$",
+      "Nei, fordi 12 ikke kan deles på 2"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "For å være et fullstendig kvadrat måtte siste ledd vært $(\\frac{12}{2})^2 = 6^2 = 36$. Siden leddet er 30, er det ikke et fullstendig kvadrat."
+  },
+  {
+    "sporsmal": "Hvilket ledd mangler for at uttrykket skal bli et fullstendig kvadrat? $x^2 - 14x + \\dots$",
+    "alternativer": [
+      "$-49$",
+      "$49$",
+      "$7$",
+      "$-7$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Halvparten av $-14$ er $-7$. Opphøyer vi dette i andre får vi $(-7)^2 = 49$. Husk at det siste leddet i et fullstendig kvadrat alltid er positivt!"
+  },
+  {
+    "sporsmal": "Hvilket uttrykk må du legge til for å fullføre kvadratet i $x^2 + 6x$?",
+    "alternativer": [
+      "$6$",
+      "$3$",
+      "$9$",
+      "$-9$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "For å fullføre kvadratet, legger vi til $(\\frac{6}{2})^2 = 3^2 = 9$. Uttrykket blir $x^2 + 6x + 9$, som er $(x+3)^2$."
+  },
+  {
+    "sporsmal": "En elev skal faktorisere $x^2 - 10x + 25$ og får svaret $(x + 5)^2$. Hva er feilen?",
+    "alternativer": [
+      "Det skulle vært $x^2 + 5^2$",
+      "De glemte at midtleddet er negativt, svaret skal være $(x - 5)^2$",
+      "Det er ikke noe feil, svaret er riktig",
+      "De skulle brukt konjugatsetningen"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Siden midtleddet er negativt ($-10x$), må vi bruke 2. kvadratsetning. Riktig svar er $(x - 5)^2$."
+  },
+  {
+    "sporsmal": "Hvilket ledd mangler her: $9x^2 + \\dots + 25y^2$ for at uttrykket skal være et fullstendig kvadrat?",
+    "alternativer": [
+      "$15xy$",
+      "$30xy$",
+      "$34xy$",
+      "$45xy$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Vi tar kvadratroten av første og siste ledd: $\\sqrt{9x^2}=3x$ og $\\sqrt{25y^2}=5y$. Midtleddet må være $2 \\cdot 3x \\cdot 5y = 30xy$."
+  }
+]

@@ -1,0 +1,134 @@
+[
+  {
+    "sporsmal": "Hva brukes Euklids algoritme til?",
+    "alternativer": [
+      "Å finne minste felles multiplum",
+      "Å finne største felles faktor",
+      "Å løse andregradsligninger",
+      "Å finne primtallsfaktorer"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Euklids algoritme er en effektiv metode for å finne den største felles faktoren (SFF) for to tall."
+  },
+  {
+    "sporsmal": "Hva er minste felles multiplum (MFM) av 4 og 6?",
+    "alternativer": [
+      "2",
+      "10",
+      "12",
+      "24"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Gangen for 4: 4, 8, 12, 16... Gangen for 6: 6, 12, 18... Det minste felles multiplumet er 12."
+  },
+  {
+    "sporsmal": "Hvordan regner man ut $\\frac{2}{3} + \\frac{1}{4}$?",
+    "alternativer": [
+      "$\\frac{3}{7}$",
+      "$\\frac{2}{12}$",
+      "$\\frac{11}{12}$",
+      "$\\frac{8}{3}$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Vi må finne fellesnevner, som er 12. $\\frac{2 \\cdot 4}{3 \\cdot 4} + \\frac{1 \\cdot 3}{4 \\cdot 3} = \\frac{8}{12} + \\frac{3}{12} = \\frac{11}{12}$."
+  },
+  {
+    "sporsmal": "Hva er største felles faktor (SFF) for 18 og 24?",
+    "alternativer": [
+      "2",
+      "3",
+      "6",
+      "72"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Begge tallene kan deles på 6 ($6 \\cdot 3 = 18$ og $6 \\cdot 4 = 24$), og det finnes ingen større felles faktor."
+  },
+  {
+    "sporsmal": "Hvordan multipliserer man to brøker?",
+    "alternativer": [
+      "Ved å finne fellesnevner først",
+      "Teller med teller og nevner med nevner",
+      "Kryssmultiplisering",
+      "Snu den ene brøken og legg sammen"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Når man multipliserer brøker, ganger man rett over: $\\frac{a}{b} \\cdot \\frac{c}{d} = \\frac{a \\cdot c}{b \\cdot d}$."
+  },
+  {
+    "sporsmal": "Regn ut: $\\frac{3}{5} \\div \\frac{2}{7}$",
+    "alternativer": [
+      "$\\frac{6}{35}$",
+      "$\\frac{21}{10}$",
+      "$\\frac{10}{21}$",
+      "$\\frac{5}{12}$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Å dele på en brøk er det samme som å gange med den omvendte: $\\frac{3}{5} \\cdot \\frac{7}{2} = \\frac{21}{10}$."
+  },
+  {
+    "sporsmal": "Hva gjør vi i første steg av Euklids algoritme for å finne SFF(60, 24)?",
+    "alternativer": [
+      "Deler 60 på 24 og finner resten",
+      "Ganger 60 med 24",
+      "Trekker 24 fra 60",
+      "Finner felles multiplum for 60 og 24"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Algoritmen starter med å utføre divisjonen med rest: $60 = 2 \\cdot 24 + 12$. Resten er 12."
+  },
+  {
+    "sporsmal": "Hvis SFF(a, b) = 3 og MFM(a, b) = 60, hva er produktet $a \\cdot b$?",
+    "alternativer": [
+      "20",
+      "63",
+      "180",
+      "Kan ikke bestemmes"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Det finnes en regel som sier at $a \\cdot b = SFF(a,b) \\cdot MFM(a,b)$. Dermed er produktet $3 \\cdot 60 = 180$."
+  },
+  {
+    "sporsmal": "Forenkle brøkuttrykket $\\frac{x^2 - 4}{x - 2}$.",
+    "alternativer": [
+      "$x - 2$",
+      "$x + 2$",
+      "$x^2 - 2$",
+      "$x$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Telleren kan faktoriseres med konjugatsetningen (tredje kvadratsetning): $(x-2)(x+2)$. Når vi forkorter bort $(x-2)$, står vi igjen med $x+2$."
+  },
+  {
+    "sporsmal": "Løs ligningen $\\frac{x}{3} - \\frac{x}{4} = 2$.",
+    "alternativer": [
+      "$x = 12$",
+      "$x = 24$",
+      "$x = 2$",
+      "$x = 6$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Multipliser alle ledd med fellesnevneren 12: $4x - 3x = 24$, som gir $x = 24$."
+  },
+  {
+    "sporsmal": "Hvilken brøk er størst: $\\frac{5}{7}$ eller $\\frac{7}{10}$?",
+    "alternativer": [
+      "$\\frac{5}{7}$",
+      "$\\frac{7}{10}$",
+      "De er like store",
+      "Kan ikke bestemmes"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Vi kan utvide til fellesnevner 70: $\\frac{50}{70}$ mot $\\frac{49}{70}$. Dermed er $\\frac{5}{7}$ størst."
+  },
+  {
+    "sporsmal": "Hvis du bruker Euklids algoritme på 252 og 105, hva blir siste ikke-null rest?",
+    "alternativer": [
+      "7",
+      "21",
+      "42",
+      "63"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "$252 = 2 \\cdot 105 + 42$. Deretter $105 = 2 \\cdot 42 + 21$. Til slutt $42 = 2 \\cdot 21 + 0$. Siste ikke-null rest er 21, som da er SFF."
+  }
+]

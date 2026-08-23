@@ -1,0 +1,167 @@
+[
+  {
+    "sporsmal": "Hva er målet når vi løser en likning?",
+    "alternativer": [
+      "Å finne ut hvilken verdi av den ukjente som gjør at venstre og høyre side blir like",
+      "Å gjøre venstre side større enn høyre side",
+      "Å fjerne alle tall slik at bare bokstaver står igjen",
+      "Å alltid få svaret $x = 0$"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Når vi løser en likning prøver vi å finne verdien (eller verdiene) til den ukjente (for eksempel $x$) som gjør at uttrykkene på begge sider av likhetstegnet er nøyaktig like store."
+  },
+  {
+    "sporsmal": "Hva vil det si å sette prøve på svaret?",
+    "alternativer": [
+      "Å sjekke at fasiten bak i boka er riktig",
+      "Å sette inn verdien vi fant for $x$ og sjekke at venstre side er lik høyre side (V.S. = H.S.)",
+      "Å gjette hva svaret er før man regner",
+      "Å løse likningen på to forskjellige måter for å se om man får det samme"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Å sette prøve på svaret betyr at vi erstatter den ukjente (f.eks. $x$) i den opprinnelige likningen med tallet vi har regnet oss fram til. Hvis vi har regnet riktig, vil vi få samme tall på begge sider av likhetstegnet."
+  },
+  {
+    "sporsmal": "Hvilken regel gjelder når vi flytter et ledd fra den ene siden av likhetstegnet til den andre?",
+    "alternativer": [
+      "Leddets fortegn beholdes",
+      "Leddets fortegn byttes (pluss blir minus, minus blir pluss)",
+      "Man må alltid gange leddet med $-1$",
+      "Man kan bare flytte tall, ikke bokstaver"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Når vi 'flytter over' et ledd, er det en snarvei for å legge til (eller trekke fra) det samme leddet på begge sider. Dermed bytter leddet fortegn når det bytter side."
+  },
+  {
+    "sporsmal": "Hva er riktig første steg for å løse $x - 5 = 12$?",
+    "alternativer": [
+      "Trekke $5$ fra på begge sider",
+      "Legge til $5$ på begge sider",
+      "Dele på $5$ på begge sider",
+      "Gange med $5$ på begge sider"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "For å få $x$ alene må vi fjerne $-5$. Det gjør vi ved å utføre den motsatte regneoperasjonen, altså å legge til $5$ på begge sider. ($x - 5 + 5 = 12 + 5$)."
+  },
+  {
+    "sporsmal": "Løs likningen: $2x = 10$",
+    "alternativer": [
+      "$x = 5$",
+      "$x = 8$",
+      "$x = 12$",
+      "$x = 20$"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Vi deler på $2$ på begge sider for å få $x$ alene. $x = \\frac{10}{2} = 5$."
+  },
+  {
+    "sporsmal": "Løs likningen: $x + 4 = 11$",
+    "alternativer": [
+      "$x = 6$",
+      "$x = 7$",
+      "$x = 15$",
+      "$x = 44$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Vi flytter $4$ over til høyre side og bytter fortegn: $x = 11 - 4 = 7$."
+  },
+  {
+    "sporsmal": "Løs likningen: $3x - 2 = 13$",
+    "alternativer": [
+      "$x = 3$",
+      "$x = 5$",
+      "$x = 11$",
+      "$x = 15$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Først flytter vi over $-2$ og bytter fortegn: $3x = 13 + 2$. Dette gir $3x = 15$. Til slutt deler vi på $3$: $x = \\frac{15}{3} = 5$."
+  },
+  {
+    "sporsmal": "Løs likningen: $5x = 2x + 12$",
+    "alternativer": [
+      "$x = 3$",
+      "$x = 4$",
+      "$x = 12$",
+      "$x = \\frac{12}{7}$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Vi samler $x$-ene på venstre side: $5x - 2x = 12$. Dette gir $3x = 12$. Til slutt deler vi på $3$: $x = 4$."
+  },
+  {
+    "sporsmal": "I et rektangel er lengden dobbelt så stor som bredden. Omkretsen er $30$ cm. Hvis vi kaller bredden for $x$, hvilken likning beskriver dette?",
+    "alternativer": [
+      "$x + 2x = 30$",
+      "$x \\cdot 2x = 30$",
+      "$2 \\cdot x + 2 \\cdot 2x = 30$",
+      "$\\frac{1}{2}x + x = 30$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Omkretsen av et rektangel er summen av alle fire sidene, eller $2 \\cdot \\text{bredde} + 2 \\cdot \\text{lengde}$. Bredden er $x$, og lengden er $2x$. Da blir formelen: $2 \\cdot x + 2 \\cdot (2x) = 30$."
+  },
+  {
+    "sporsmal": "Kari løser likningen $4x - 6 = 2x + 4$. Hennes første linje er $4x + 2x = 4 + 6$. Hvilken feil har hun gjort?",
+    "alternativer": [
+      "Hun har flyttet $-6$ feil",
+      "Hun glemte å bytte fortegn på $2x$ da hun flyttet den over",
+      "Hun skulle ha delt på $4$ med en gang",
+      "Hun har regnet $4 + 6$ feil"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Når hun flytter $2x$ fra høyre til venstre side av likhetstegnet, må fortegnet endres til $-2x$. Riktig linje er $4x - 2x = 4 + 6$."
+  },
+  {
+    "sporsmal": "Du har funnet ut at $x=3$ er løsningen på $4x - 1 = 3x + 2$. Du skal nå sette prøve. Hva blir V.S. og H.S.?",
+    "alternativer": [
+      "V.S. = 11, H.S. = 11",
+      "V.S. = 12, H.S. = 11",
+      "V.S. = 3, H.S. = 3",
+      "V.S. = 13, H.S. = 11"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Venstre side (V.S.): $4 \\cdot 3 - 1 = 12 - 1 = 11$. Høyre side (H.S.): $3 \\cdot 3 + 2 = 9 + 2 = 11$. Siden V.S. = H.S., er $x=3$ riktig løsning."
+  },
+  {
+    "sporsmal": "Pål er $4$ år eldre enn Espen. Til sammen er de $28$ år. Hvis Espen er $x$ år, hva blir løsningen for $x$?",
+    "alternativer": [
+      "$x = 12$",
+      "$x = 14$",
+      "$x = 16$",
+      "$x = 24$"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Likningen blir: $x + (x + 4) = 28$. Dette gir $2x + 4 = 28$, som videre gir $2x = 24$ og dermed $x = 12$. Espen er $12$ år (og Pål er $16$ år)."
+  },
+  {
+    "sporsmal": "Hvilken av disse likningene har **ingen** løsning?",
+    "alternativer": [
+      "$2x = 0$",
+      "$x + 2 = x + 3$",
+      "$x - x = 0$",
+      "$2x + 2 = 2(x + 1)$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Likningen $x + 2 = x + 3$ kan forenkles til $2 = 3$ (hvis vi trekker $x$ fra på begge sider). Dette er en selvmotsigelse, og derfor har likningen ingen løsning."
+  },
+  {
+    "sporsmal": "Løs likningen: $\\frac{x}{2} + \\frac{x}{3} = 5$",
+    "alternativer": [
+      "$x = 1$",
+      "$x = 5$",
+      "$x = 6$",
+      "$x = 30$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Vi multipliserer alle ledd med fellesnevneren $6$: $6 \\cdot \\frac{x}{2} + 6 \\cdot \\frac{x}{3} = 6 \\cdot 5$. Dette gir $3x + 2x = 30$, altså $5x = 30$, som gir $x = 6$."
+  },
+  {
+    "sporsmal": "Løs for $x$: $3(2x - 4) - 2(x + 1) = 4x - 14$",
+    "alternativer": [
+      "Ingen løsning",
+      "$x = 0$",
+      "$x = 2$",
+      "Alle tall er løsninger (identitet)"
+    ],
+    "riktigSvar": 3,
+    "forklaring": "Ganger ut parentesene: $6x - 12 - 2x - 2 = 4x - 14$. Forenkler venstre side: $4x - 14 = 4x - 14$. Siden venstre og høyre side er nøyaktig like, vil likningen stemme for alle verdier av $x$."
+  }
+]

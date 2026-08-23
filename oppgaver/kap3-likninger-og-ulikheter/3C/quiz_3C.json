@@ -1,0 +1,156 @@
+[
+  {
+    "sporsmal": "Hva kjennetegner en andregradslikning?",
+    "alternativer": [
+      "Den har to ukjente, for eksempel $x$ og $y$",
+      "Den høyeste eksponenten til den ukjente er 2, for eksempel $x^2$",
+      "Den har alltid nøyaktig to ledd",
+      "Man må gjøre operasjonen i to steg"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "En andregradslikning er en likning hvor den ukjente (vanligvis $x$) er opphøyd i andre potens ($x^2$), og ingen høyere potens."
+  },
+  {
+    "sporsmal": "Hvor mange løsninger har likningen $x^2 = 9$?",
+    "alternativer": [
+      "Ingen løsninger",
+      "Én løsning: $x = 3$",
+      "To løsninger: $x = 3$ og $x = -3$",
+      "To løsninger: $x = 9$ og $x = -9$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Siden både $3 \\cdot 3 = 9$ og $(-3) \\cdot (-3) = 9$, har likningen de to løsningene $x = 3$ og $x = -3$."
+  },
+  {
+    "sporsmal": "Hva er løsningen(e) på likningen $x^2 = -4$?",
+    "alternativer": [
+      "$x = 2$",
+      "$x = -2$",
+      "$x = 2$ og $x = -2$",
+      "Ingen reelle løsninger"
+    ],
+    "riktigSvar": 3,
+    "forklaring": "Et tall ganget med seg selv (uansett om det er positivt eller negativt) blir alltid positivt (eller null). Det finnes derfor ingen reelle tall som opphøyd i andre gir $-4$."
+  },
+  {
+    "sporsmal": "Løs likningen $2x^2 = 50$",
+    "alternativer": [
+      "$x = 25$ og $x = -25$",
+      "$x = 5$ og $x = -5$",
+      "$x = 5$",
+      "$x = 10$ og $x = -10$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Deler vi på $2$ på begge sider, får vi $x^2 = 25$. Tar vi kvadratroten, får vi løsningene $x = 5$ og $x = -5$."
+  },
+  {
+    "sporsmal": "Hva går 'produktregelen' ut på?",
+    "alternativer": [
+      "Når man ganger to tall, blir svaret alltid større",
+      "Hvis et produkt av to faktorer er $0$, må minst én av faktorene være $0$",
+      "Man må alltid gange ut parenteser før man løser en likning",
+      "Summen av to nullpunkter er lik produktet av dem"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Produktregelen (eller nullproduktregelen) sier at $a \\cdot b = 0$ hvis og bare hvis $a = 0$ eller $b = 0$. Dette er en svært nyttig regel når vi skal løse likninger på faktorisert form."
+  },
+  {
+    "sporsmal": "Løs likningen $(x - 2)(x + 4) = 0$",
+    "alternativer": [
+      "$x = -2$ og $x = 4$",
+      "$x = 2$ og $x = -4$",
+      "$x = 0$",
+      "$x = 2$ og $x = 4$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Ifølge produktregelen må enten $x - 2 = 0$ eller $x + 4 = 0$. Det betyr at enten er $x = 2$, eller så er $x = -4$."
+  },
+  {
+    "sporsmal": "Hvordan faktoriserer man uttrykket $x^2 - 5x$?",
+    "alternativer": [
+      "$(x - 5)(x + 5)$",
+      "$(x - 2,5)^2$",
+      "$x(x - 5)$",
+      "Man kan ikke faktorisere det"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Begge leddene ($x^2$ og $-5x$) inneholder fellesfaktoren $x$. Vi setter $x$ utenfor en parentes: $x(x - 5)$."
+  },
+  {
+    "sporsmal": "Bruk faktorisering til å løse likningen $x^2 - 7x = 0$",
+    "alternativer": [
+      "$x = 7$",
+      "$x = 0$ og $x = 7$",
+      "$x = 1$ og $x = -7$",
+      "$x = -7$ og $x = 0$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Faktoriserer venstre side til $x(x - 7) = 0$. Ved hjelp av produktregelen får vi da at enten $x = 0$ eller $x - 7 = 0$ (som gir $x = 7$)."
+  },
+  {
+    "sporsmal": "Løs likningen $3x^2 + 12x = 0$",
+    "alternativer": [
+      "$x = 0$ og $x = -4$",
+      "$x = 0$ og $x = 4$",
+      "$x = 3$ og $x = -12$",
+      "$x = -4$"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Felles faktor er $3x$. Vi faktoriserer: $3x(x + 4) = 0$. Av produktregelen får vi $3x = 0$ ($x = 0$) eller $x + 4 = 0$ ($x = -4$)."
+  },
+  {
+    "sporsmal": "Per løser $(x-1)(x-2) = 2$ ved å sette $x-1 = 2$ eller $x-2 = 2$. Hva er galt?",
+    "alternativer": [
+      "Han burde satt dem lik 1 istedenfor",
+      "Produktregelen gjelder bare når produktet er lik $0$, ikke $2$",
+      "Han har regnet feil på minus og pluss",
+      "Metoden er riktig, men han får feil svar på slutten"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Produktregelen gjelder utelukkende for $0$. Hvis et produkt er $2$, kan faktorene være f.eks $1 \\cdot 2$, $-1 \\cdot -2$, $4 \\cdot 0,5$ osv. For å løse denne må man gange ut og flytte alt til én side."
+  },
+  {
+    "sporsmal": "Løs likningen $(2x - 4)(x + 5) = 0$",
+    "alternativer": [
+      "$x = 4$ og $x = -5$",
+      "$x = -2$ og $x = 5$",
+      "$x = 2$ og $x = -5$",
+      "$x = 2$ og $x = 5$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Produktregelen gir $2x - 4 = 0$ eller $x + 5 = 0$. Løser vi den første, får vi $2x = 4$ og $x = 2$. Løser vi den andre, får vi $x = -5$."
+  },
+  {
+    "sporsmal": "Løs likningen $(x-3)^2 = 16$",
+    "alternativer": [
+      "$x = 7$",
+      "$x = 7$ og $x = -1$",
+      "$x = 19$ og $x = -13$",
+      "$x = 5$ og $x = -5$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Vi tar kvadratroten på begge sider. Det gir $x - 3 = 4$ eller $x - 3 = -4$. Løser vi disse, får vi $x = 7$ og $x = -1$."
+  },
+  {
+    "sporsmal": "Løs likningen $x^2 - x = 0$. En elev deler på $x$ på begge sider og får $x - 1 = 0$, altså $x=1$. Har eleven funnet alle løsninger?",
+    "alternativer": [
+      "Ja, dette er en perfekt metode.",
+      "Nei, ved å dele på $x$ mister man løsningen $x = 0$. Man må faktorisere i stedet.",
+      "Nei, man skulle flyttet over $-x$ og tatt kvadratroten i stedet.",
+      "Ja, men svaret skal egentlig være $-1$."
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Når man deler på $x$, antar man at $x$ ikke er $0$. Men $x=0$ er en løsning på likningen. Derfor må man faktorisere til $x(x-1) = 0$."
+  },
+  {
+    "sporsmal": "Hva er felles faktor i uttrykket $4x^2 - 8x$?",
+    "alternativer": [
+      "$4$",
+      "$x$",
+      "$4x$",
+      "$2x$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Begge leddene kan deles på $4$, og begge har minst én $x$. Derfor er fellesfaktoren $4x$. Uttrykket kan skrives som $4x(x - 2)$."
+  }
+]

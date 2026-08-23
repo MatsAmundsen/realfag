@@ -1,0 +1,123 @@
+[
+  {
+    "sporsmal": "Hva betyr symbolet $\\Rightarrow$?",
+    "alternativer": [
+      "Ekvivalens",
+      "Implikasjon",
+      "Ikke lik",
+      "Tilnærmet lik"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Symbolet $\\Rightarrow$ leses som 'medfører' og kalles implikasjon. Det betyr at hvis det første utsagnet er sant, så må det andre også være sant."
+  },
+  {
+    "sporsmal": "Hva betyr symbolet $\\Leftrightarrow$?",
+    "alternativer": [
+      "Implikasjon",
+      "Ekvivalens",
+      "Uendelig",
+      "Snitt"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Symbolet $\\Leftrightarrow$ leses som 'er ekvivalent med'. Det betyr at begge utsagnene betyr nøyaktig det samme (implikasjonen går begge veier)."
+  },
+  {
+    "sporsmal": "Hvis utsagn P er 'x = 3' og utsagn Q er '$x^2 = 9$', hvilken relasjon er riktig?",
+    "alternativer": [
+      "P $\\Rightarrow$ Q",
+      "Q $\\Rightarrow$ P",
+      "P $\\Leftrightarrow$ Q",
+      "Ingen av delene"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Hvis x=3, må $x^2=9$. Men hvis $x^2=9$, kan x også være -3. Derfor går implikasjonen bare én vei fra P til Q."
+  },
+  {
+    "sporsmal": "Hva er et moteksempel?",
+    "alternativer": [
+      "Et bevis for at noe alltid stemmer",
+      "Et eksempel som viser at en påstand er falsk",
+      "En motsatt påstand",
+      "En logisk feilslutning"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "For å bevise at en generell påstand er falsk, holder det å finne ett tilfelle der den ikke stemmer. Dette kalles et moteksempel."
+  },
+  {
+    "sporsmal": "Finn moteksempelet til påstanden: 'Alle primtall er oddetall'.",
+    "alternativer": [
+      "1",
+      "2",
+      "3",
+      "9"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Tallet 2 er et primtall, men det er et partall (ikke et oddetall). Derfor motbeviser det påstanden."
+  },
+  {
+    "sporsmal": "Hvilken av disse påstandene er ekvivalente ($P \\Leftrightarrow Q$)?",
+    "alternativer": [
+      "P: En figur er et rektangel. Q: Figuren er et kvadrat.",
+      "P: $x = 2$. Q: $3x = 6$.",
+      "P: $x > 0$. Q: $x^2 > 0$.",
+      "P: x er et partall. Q: x kan deles på 4."
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Hvis $x=2$ er $3x=6$, og hvis $3x=6$ må $x=2$. De betyr det samme og er ekvivalente."
+  },
+  {
+    "sporsmal": "Hva kalles det når vi starter med en påstand, utfører logiske steg, og ender med en konklusjon?",
+    "alternativer": [
+      "Moteksempel",
+      "Ekvivalens",
+      "Direkte bevis",
+      "Induksjon"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Et direkte bevis går ut på å vise at $A \\Rightarrow B$ ved å bruke logiske steg og kjente regler fra A til B."
+  },
+  {
+    "sporsmal": "Vurder: P: 'Du er i Oslo'. Q: 'Du er i Norge'. Hva er sant?",
+    "alternativer": [
+      "P $\\Rightarrow$ Q",
+      "Q $\\Rightarrow$ P",
+      "P $\\Leftrightarrow$ Q",
+      "P $\\cap$ Q"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Hvis du er i Oslo, er du i Norge (P $\\Rightarrow$ Q). Du kan være i Norge uten å være i Oslo (f.eks. i Bergen), så Q $\\Rightarrow$ P er feil."
+  },
+  {
+    "sporsmal": "Hva betyr uttrykket 'Hvis A, så B' i matematikk?",
+    "alternativer": [
+      "A og B er alltid sanne samtidig",
+      "B er en forutsetning for A",
+      "A $\\Rightarrow$ B",
+      "A $\\Leftrightarrow$ B"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "'Hvis A, så B' er den vanlige måten å lese en implikasjon A $\\Rightarrow$ B på i dagligtale."
+  },
+  {
+    "sporsmal": "Hvilken logisk slutning kan trekkes hvis vi vet at P $\\Rightarrow$ Q, og at P er usann?",
+    "alternativer": [
+      "Q er også usann",
+      "Q er sann",
+      "Ingen konklusjon kan trekkes om Q",
+      "Q må være et primtall"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Hvis P er falsk, gir ikke implikasjonen P $\\Rightarrow$ Q oss noen informasjon om Q. (F.eks: 'Hvis det regner, blir bakken våt'. Bakken kan bli våt av andre grunner, selv om det ikke regner)."
+  },
+  {
+    "sporsmal": "I et bevis for at 'summen av to partall er et partall', hva er et lurt sted å starte?",
+    "alternativer": [
+      "Prøv med tallene 2 og 4",
+      "Skriv de to partallene som $2n$ og $2m$",
+      "Vis at summen kan deles på 3",
+      "Bruk et moteksempel"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "For å føre et generelt bevis, må vi definere to vilkårlige partall ved hjelp av heltall (n og m), f.eks. $2n$ og $2m$"
+  }
+]

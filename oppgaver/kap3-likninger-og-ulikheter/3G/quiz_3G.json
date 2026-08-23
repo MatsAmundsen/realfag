@@ -1,0 +1,112 @@
+[
+  {
+    "sporsmal": "Hva er polynomdivisjon?",
+    "alternativer": [
+      "En metode for å gange to polynomer med hverandre",
+      "En metode for å dele et polynom på et annet polynom",
+      "En metode for å tegne grafen til et polynom",
+      "En metode for å finne den deriverte av et polynom"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Akkurat som vi kan dele et tall på et annet ved hjelp av langdivisjon, kan vi dele et helt polynom (f.eks. $x^2 + 3x + 2$) på et annet polynom (f.eks. $x+1$)."
+  },
+  {
+    "sporsmal": "Hva sier polynomdivisjons-teoremet (restteoremet)?",
+    "alternativer": [
+      "Når vi deler et polynom $P(x)$ på $(x - a)$, er resten lik $P(a)$",
+      "Resten er alltid 0",
+      "Man kan ikke dele polynomer uten rest",
+      "Hvis $P(x)$ er et polynom, er roten alltid 0"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Restteoremet forteller oss at for å finne ut hva resten blir når vi deler på $(x-a)$, trenger vi bare å sette inn $x=a$ i selve polynomet."
+  },
+  {
+    "sporsmal": "Hvis $P(1) = 0$, hva vet du da helt sikkert om polynomet $P(x)$?",
+    "alternativer": [
+      "At det ikke kan faktoriseres",
+      "At $x-1$ er en faktor i $P(x)$",
+      "At $x+1$ er en faktor i $P(x)$",
+      "At resten blir 1 hvis man deler på $x$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Hvis vi får 0 når vi setter inn $x=1$, betyr det at resten er 0 hvis vi deler på $x-1$. Dermed sier vi at $x-1$ går opp i, eller er en faktor i, $P(x)$."
+  },
+  {
+    "sporsmal": "Du utfører divisjonen $(x^2 - 4x + 4) : (x-2)$. Hva blir svaret?",
+    "alternativer": [
+      "$x+2$",
+      "$x-2$",
+      "$x-4$",
+      "$x^2$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Kvadratsetningen forteller oss at $(x-2)^2 = x^2 - 4x + 4$. Så hvis vi deler dette på $(x-2)$, står vi igjen med en $(x-2)$."
+  },
+  {
+    "sporsmal": "Utfør polynomdivisjonen $(x^2 - 5x + 6) : (x-2)$.",
+    "alternativer": [
+      "$x-3$",
+      "$x+3$",
+      "$x-2$",
+      "$x^2 - 3$"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Siden $x^2 - 5x + 6$ kan faktoriseres til $(x-2)(x-3)$, vil divisjon med $x-2$ gi resultatet $x-3$ uten rest."
+  },
+  {
+    "sporsmal": "Hvordan finner man det første leddet i svaret når man deler $x^3 + 2x^2 - x - 2$ på $x-1$?",
+    "alternativer": [
+      "Man deler det laveste leddet i telleren med det laveste i nevneren",
+      "Man deler det høyeste leddet ($x^3$) med det høyeste leddet i divisor ($x$)",
+      "Man gjetter seg frem",
+      "Man setter inn $x=1$ i polynomet"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Hovedprinsippet for divisjonen er alltid å se på leddet med den høyeste potensen først. $x^3 : x = x^2$. Da er $x^2$ det første leddet i kvotienten."
+  },
+  {
+    "sporsmal": "Gitt polynomet $P(x) = x^3 - 2x^2 + 5x + 1$. Finn resten når dette deles på $(x+1)$.",
+    "alternativer": [
+      "Resten er $-7$",
+      "Resten er $5$",
+      "Resten er $0$",
+      "Resten er $9$"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Vi bruker restteoremet og setter inn $x = -1$. $P(-1) = (-1)^3 - 2(-1)^2 + 5(-1) + 1 = -1 - 2 - 5 + 1 = -7$. Resten er $-7$."
+  },
+  {
+    "sporsmal": "Du får oppgitt et tredjegradspolynom $x^3 - x^2 - 4x + 4$. Hvordan går du frem for å finne den første roten når du skal faktorisere det?",
+    "alternativer": [
+      "Bruk ABC-formelen på hele uttrykket",
+      "Prøv deg fram med enkle heltall (f.eks. $1, -1, 2, -2$) i funksjonen til du får $0$",
+      "Del på $x$ direkte",
+      "Man kan ikke finne roten uten datamaskin"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "En vanlig metode er å tippe en rot ved å prøve små heltall (prøvemetoden). Setter vi inn $x=1$ her, får vi $1-1-4+4=0$. Da vet vi at $x-1$ er en faktor!"
+  },
+  {
+    "sporsmal": "Hvorfor kan fullstendig faktorisering av et tredjegradspolynom iblant bare ende opp med én førstegradsfaktor og én andregradsfaktor (f.eks. $(x-1)(x^2+x+1)$)?",
+    "alternativer": [
+      "Fordi vi ikke gadd å dele mer",
+      "Fordi ABC-formelen brukt på andregradsfaktoren kanskje gir en negativ diskriminant",
+      "Fordi alle tredjegradspolynomer bare har én løsning",
+      "Det stemmer ikke, det må alltid bli tre faktorer"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Etter første polynomdivisjon står vi igjen med et andregradsuttrykk. Hvis dette uttrykket ikke har noen reelle røtter (diskriminant $< 0$), kan det ikke faktoriseres videre med reelle tall."
+  },
+  {
+    "sporsmal": "Et fjerdegradspolynom har røttene $x=1, x=2, x=3$ og $x=4$. Kan uttrykket for polynomet starte med $-5x^4$?",
+    "alternativer": [
+      "Nei, det må starte med $x^4$",
+      "Ja, det kan skrives som $-5(x-1)(x-2)(x-3)(x-4)$",
+      "Ja, men da er ikke røttene de samme lenger",
+      "Nei, fjerdegradspolynomer kan ikke ha fire røtter"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Faktoriseringsregelen er $a(x-x_1)(x-x_2)...$. Faktoren $a$ (her $-5$) kan være hva som helst, og endrer ikke hvor funksjonen krysser x-aksen (røttene)."
+  }
+]

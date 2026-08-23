@@ -1,0 +1,123 @@
+[
+  {
+    "sporsmal": "Hva er en formel?",
+    "alternativer": [
+      "En ligning der alle tallene er kjente",
+      "En regel skrevet med matematiske symboler som viser en sammenheng",
+      "Et regnestykke med bare én bokstav",
+      "Et tallmønster"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "En formel uttrykker en regel eller sammenheng matematisk, som $A = g \\cdot h$ for arealet av et rektangel."
+  },
+  {
+    "sporsmal": "Arealet av et rektangel er $A = l \\cdot b$. Gjør om formelen slik at $b$ står alene.",
+    "alternativer": [
+      "$b = A \\cdot l$",
+      "$b = A - l$",
+      "$b = \\frac{A}{l}$",
+      "$b = \\frac{l}{A}$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "For å få $b$ alene, må vi dele på $l$ på begge sider: $\\frac{A}{l} = \\frac{l \\cdot b}{l} \\Rightarrow b = \\frac{A}{l}$."
+  },
+  {
+    "sporsmal": "Formelen for omkrets av en sirkel er $O = 2\\pi r$. Hva blir formelen for radius $r$?",
+    "alternativer": [
+      "$r = \\frac{O}{2\\pi}$",
+      "$r = \\frac{2\\pi}{O}$",
+      "$r = O - 2\\pi$",
+      "$r = O \\cdot 2\\pi$"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Vi deler på $2\\pi$ på begge sider av likhetstegnet: $r = \\frac{O}{2\\pi}$."
+  },
+  {
+    "sporsmal": "En følge er gitt ved $1, 4, 9, 16, \\dots$. Hva kalles disse tallene?",
+    "alternativer": [
+      "Trekanttall",
+      "Kvadrattall",
+      "Kubikktall",
+      "Sirkeltall"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Dette er kvadrattall fordi de er formet ved $1^2, 2^2, 3^2, 4^2$."
+  },
+  {
+    "sporsmal": "Hva er det neste tallet i følgen $2, 4, 6, 8, \\dots$?",
+    "alternativer": [
+      "$9$",
+      "$10$",
+      "$12$",
+      "$14$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Dette er følgen av partall, som øker med 2 for hvert ledd. Det neste er $8 + 2 = 10$."
+  },
+  {
+    "sporsmal": "Formelen for et trekanttall er $T_n = \\frac{n(n+1)}{2}$. Hva er det fjerde trekanttallet, $T_4$?",
+    "alternativer": [
+      "$6$",
+      "$8$",
+      "$10$",
+      "$12$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Vi setter inn $n=4$: $T_4 = \\frac{4(4+1)}{2} = \\frac{4 \\cdot 5}{2} = \\frac{20}{2} = 10$."
+  },
+  {
+    "sporsmal": "Gitt formelen for kinetisk energi: $E_k = \\frac{1}{2}mv^2$. Hvordan gjør du om formelen for å finne massen $m$?",
+    "alternativer": [
+      "$m = \\frac{2E_k}{v^2}$",
+      "$m = \\frac{E_k}{2v^2}$",
+      "$m = 2E_k - v^2$",
+      "$m = \\sqrt{\\frac{2E_k}{v}}$"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Gang med 2 på begge sider: $2E_k = mv^2$. Del så på $v^2$ på begge sider: $m = \\frac{2E_k}{v^2}$."
+  },
+  {
+    "sporsmal": "Gitt formelen $v = v_0 + at$. Isoler $t$.",
+    "alternativer": [
+      "$t = \\frac{v}{v_0 + a}$",
+      "$t = v - v_0 - a$",
+      "$t = \\frac{v - v_0}{a}$",
+      "$t = a(v - v_0)$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Først trekker vi fra $v_0$: $v - v_0 = at$. Deretter deler vi på $a$: $t = \\frac{v - v_0}{a}$."
+  },
+  {
+    "sporsmal": "Hva kjennetegner sentrerte sekskanttall rent geometrisk?",
+    "alternativer": [
+      "De kan legges som sekskanter med ett punkt i midten, og ringer av prikker rundt",
+      "De er alltid et multiplum av 6",
+      "De kan alltid deles på 3",
+      "De danner en terning"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Sentrerte sekskanttall (som 1, 7, 19, 37) bygges opp med et punkt i midten, og sekskanter rundt med økende størrelse."
+  },
+  {
+    "sporsmal": "Volumet av en sylinder er $V = \\pi r^2 h$. Hvilken formel gir radiusen $r$?",
+    "alternativer": [
+      "$r = \\frac{V}{\\pi h}$",
+      "$r = \\sqrt{\\frac{V}{\\pi h}}$",
+      "$r = \\frac{\\sqrt{V}}{\\pi h}$",
+      "$r = \\pi h \\sqrt{V}$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Vi deler først på $\\pi h$ for å få $r^2 = \\frac{V}{\\pi h}$. Deretter tar vi kvadratroten på begge sider: $r = \\sqrt{\\frac{V}{\\pi h}}$."
+  },
+  {
+    "sporsmal": "Følgen er gitt ved formelen $a_n = n^2 - n$. Hva blir forskjellen mellom $a_4$ og $a_3$?",
+    "alternativer": [
+      "$6$",
+      "$8$",
+      "$12$",
+      "$4$"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Regner ut $a_4 = 4^2 - 4 = 12$ og $a_3 = 3^2 - 3 = 6$. Forskjellen er $12 - 6 = 6$."
+  }
+]

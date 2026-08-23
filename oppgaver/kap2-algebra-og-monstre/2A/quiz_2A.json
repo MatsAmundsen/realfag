@@ -1,0 +1,167 @@
+[
+  {
+    "sporsmal": "Hva er riktig fremgangsmåte for å regne ut uttrykket $2(x + 3)$?",
+    "alternativer": [
+      "Multiplisere 2 bare med x",
+      "Multiplisere 2 bare med 3",
+      "Multiplisere 2 med både x og 3",
+      "Addere 2 til både x og 3"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Ifølge distributiv lov må faktoren utenfor parentesen multipliseres med alle ledd inni parentesen: $2(x+3) = 2x + 6$."
+  },
+  {
+    "sporsmal": "Hva skjer med fortegnene inni parentesen når vi løser opp en parentes med et minustegn foran, for eksempel $-(a - b)$?",
+    "alternativer": [
+      "Alle fortegnene forblir de samme",
+      "Alle fortegnene inni parentesen byttes",
+      "Bare det første leddet bytter fortegn",
+      "Parentesen forsvinner og minustegnet strykes"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Et minustegn foran en parentes tilsvarer å gange med -1. Derfor bytter alle leddene inni parentesen fortegn: $-(a - b) = -a + b$."
+  },
+  {
+    "sporsmal": "Hvilke av disse er 'like ledd' som kan trekkes sammen?",
+    "alternativer": [
+      "$2x$ og $3y$",
+      "$4x^2$ og $5x$",
+      "$-3ab$ og $7ab$",
+      "$x$ og $2$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Like ledd har nøyaktig de samme variablene med de samme eksponentene. Derfor er $-3ab$ og $7ab$ like ledd og kan trekkes sammen til $4ab$."
+  },
+  {
+    "sporsmal": "Hvordan multipliserer man to parenteser med hverandre, for eksempel $(a+b)(c+d)$?",
+    "alternativer": [
+      "Man ganger $a$ med $c$ og $b$ med $d$",
+      "Man legger sammen alle leddene",
+      "Hvert ledd i den første parentesen multipliseres med hvert ledd i den andre",
+      "Man ganger $a$ med $d$ og $b$ med $c$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Når to parenteser skal multipliseres, må hvert ledd i den ene ganges med hvert ledd i den andre: $ac + ad + bc + bd$."
+  },
+  {
+    "sporsmal": "Trekk sammen uttrykket: $3x + 2y - x + 4y$",
+    "alternativer": [
+      "$2x + 6y$",
+      "$4x + 6y$",
+      "$8xy$",
+      "$2x + 2y$"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Vi samler de like leddene: $3x - x = 2x$, og $2y + 4y = 6y$. Svaret blir $2x + 6y$."
+  },
+  {
+    "sporsmal": "Løs opp parentesen: $-3(2a - 4)$",
+    "alternativer": [
+      "$-6a - 12$",
+      "$-6a - 4$",
+      "$-6a + 12$",
+      "$-5a + 1$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Vi multipliserer $-3$ med begge leddene: $-3 \\cdot 2a = -6a$, og $-3 \\cdot (-4) = +12$. Svaret blir $-6a + 12$."
+  },
+  {
+    "sporsmal": "Regn ut og forenkle: $2(x - 1) - (x + 3)$",
+    "alternativer": [
+      "$x - 5$",
+      "$x + 2$",
+      "$3x + 1$",
+      "$x - 1$"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Første parentes: $2x - 2$. Andre parentes (husk å bytte fortegn!): $-x - 3$. Trekker sammen: $2x - x - 2 - 3 = x - 5$."
+  },
+  {
+    "sporsmal": "Regn ut: $(x + 2)(x + 3)$",
+    "alternativer": [
+      "$x^2 + 5$",
+      "$x^2 + 6$",
+      "$x^2 + 5x + 6$",
+      "$2x + 5$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Ganger ut: $x \\cdot x + x \\cdot 3 + 2 \\cdot x + 2 \\cdot 3 = x^2 + 3x + 2x + 6 = x^2 + 5x + 6$."
+  },
+  {
+    "sporsmal": "Forenkle uttrykket: $4a(2 - a)$",
+    "alternativer": [
+      "$8a - a$",
+      "$8a - 4a^2$",
+      "$8a - a^2$",
+      "$4a^2 - 8a$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Multipliser $4a$ med begge leddene i parentesen: $4a \\cdot 2 = 8a$, og $4a \\cdot (-a) = -4a^2$. Svaret er $8a - 4a^2$."
+  },
+  {
+    "sporsmal": "En elev har regnet ut $x - 2(x - 4) = x - 2x - 8 = -x - 8$. Hvilken feil har eleven gjort?",
+    "alternativer": [
+      "Regnet $x - 2x$ feil",
+      "Glemt å gange $-2$ med $-4$",
+      "Gått surr i variablene",
+      "Gangen minus og minus feil og fått minus istedenfor pluss"
+    ],
+    "riktigSvar": 3,
+    "forklaring": "Når $-2$ ganges med $-4$, blir det $+8$. Eleven har skrevet $-8$. Riktig svar er $-x + 8$."
+  },
+  {
+    "sporsmal": "Hvilket av følgende uttrykk er IKKE lik de andre?",
+    "alternativer": [
+      "$2(x - 1) + 2$",
+      "$2x$",
+      "$x + x$",
+      "$2(x + 1)$"
+    ],
+    "riktigSvar": 3,
+    "forklaring": "$2(x - 1) + 2 = 2x - 2 + 2 = 2x$. $x + x = 2x$. Men $2(x + 1) = 2x + 2$, så den er ulik de tre andre."
+  },
+  {
+    "sporsmal": "Hva er resultatet når du trekker $(a - b)$ fra $(a + b)$?",
+    "alternativer": [
+      "$0$",
+      "$2a$",
+      "$2b$",
+      "$2a + 2b$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Vi setter opp regnestykket: $(a + b) - (a - b) = a + b - a + b = 2b$."
+  },
+  {
+    "sporsmal": "Finn feilen: $(x-1)(x-2) = x^2 - x - 2x - 2 = x^2 - 3x - 2$",
+    "alternativer": [
+      "$-1 \\cdot (-2)$ er $+2$, ikke $-2$",
+      "$x \\cdot x$ er $2x$, ikke $x^2$",
+      "Man kan ikke trekke sammen $-x$ og $-2x$",
+      "Det er ingen feil, utregningen er riktig"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Når vi ganger $-1$ og $-2$, får vi $+2$. Riktig utregning er $x^2 - x - 2x + 2 = x^2 - 3x + 2$."
+  },
+  {
+    "sporsmal": "Forenkle uttrykket: $(2x - y)(x + 2y) - 2x(x - y)$",
+    "alternativer": [
+      "$3xy - 2y^2$",
+      "$5xy - 2y^2$",
+      "$-2y^2$",
+      "$5xy + y^2$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Første del: $2x^2 + 4xy - xy - 2y^2 = 2x^2 + 3xy - 2y^2$. Andre del: $-2x^2 + 2xy$. Samlet: $2x^2 + 3xy - 2y^2 - 2x^2 + 2xy = 5xy - 2y^2$."
+  },
+  {
+    "sporsmal": "Gitt uttrykket $a(b - c) - b(a - c) + c(a - b)$. Hva blir dette hvis vi trekker det sammen?",
+    "alternativer": [
+      "$abc$",
+      "$0$",
+      "$2ac - 2bc$",
+      "$-2bc$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Ganger ut: $ab - ac - ba + bc + ca - cb$. Samler like ledd: $(ab - ba) + (-ac + ca) + (bc - cb) = 0 + 0 + 0 = 0$."
+  }
+]

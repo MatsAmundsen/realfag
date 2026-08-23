@@ -1,0 +1,134 @@
+[
+  {
+    "sporsmal": "Hva er en proporsjon?",
+    "alternativer": [
+      "En likning der to brøker er satt lik hverandre, f.eks. $\\frac{a}{b} = \\frac{c}{d}$",
+      "En funksjon som krysser origo",
+      "Et annet ord for en andregradslikning",
+      "En brøk som ikke kan forkortes"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "En proporsjon er et utsagn om at to forhold (brøker) er like store."
+  },
+  {
+    "sporsmal": "Hvordan fungerer 'kryssmultiplikasjon' for proporsjonen $\\frac{a}{b} = \\frac{c}{d}$?",
+    "alternativer": [
+      "Man ganger tellerne sammen: $a \\cdot c = b \\cdot d$",
+      "Man ganger over kors slik at $a \\cdot d = b \\cdot c$",
+      "Man bytter om på $b$ og $c$",
+      "Man legger sammen $a+d$ og $b+c$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Kryssmultiplikasjon går ut på å gange teller på venstre side med nevner på høyre side, og sette dette lik nevner på venstre side ganget med teller på høyre side: $a \\cdot d = b \\cdot c$. Dette er en snarvei for å gange begge sider med fellesnevneren $bd$."
+  },
+  {
+    "sporsmal": "Bruk kryssmultiplikasjon på likningen $\\frac{x}{3} = \\frac{4}{6}$. Hva blir likningen etter kryssmultiplisering?",
+    "alternativer": [
+      "$6x = 12$",
+      "$3x = 24$",
+      "$x = 2$",
+      "$4x = 18$"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Vi ganger over kors: $x \\cdot 6 = 3 \\cdot 4$. Dette forenkles til $6x = 12$."
+  },
+  {
+    "sporsmal": "Løs proporsjonen $\\frac{2}{x} = \\frac{5}{10}$.",
+    "alternativer": [
+      "$x = 2$",
+      "$x = 4$",
+      "$x = 5$",
+      "$x = 10$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Kryssmultiplikasjon gir $2 \\cdot 10 = 5 \\cdot x$. Da er $20 = 5x$, og deler vi på $5$ får vi $x = 4$."
+  },
+  {
+    "sporsmal": "Løs likningen $\\frac{x+1}{2} = \\frac{3}{x}$. (Husk at $x \\neq 0$)",
+    "alternativer": [
+      "$x = -2$ og $x = 3$",
+      "$x = 2$ og $x = -3$",
+      "$x = 1$ og $x = 6$",
+      "Bare $x = 2$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Kryssmultiplikasjon gir $x(x+1) = 2 \\cdot 3$, som blir $x^2 + x = 6$. Flytter vi over får vi $x^2 + x - 6 = 0$. ABC-formelen (eller faktorisering) gir røttene $x = 2$ og $x = -3$."
+  },
+  {
+    "sporsmal": "Hva er hovedideen bak å løse en ulikhet med nullpunktmetoden (også kalt fortegnsskjema)?",
+    "alternativer": [
+      "Man setter alt lik 0, faktoriserer uttrykket, og undersøker fortegnet til hver faktor på en tallinje",
+      "Man ganger med 0 for å fjerne alle tall",
+      "Man kryssmultipliserer ulikheten",
+      "Man gjetter på et tall til man treffer 0"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Nullpunktmetoden handler om å samle alt på én side (slik at man har $0$ på andre siden), faktorisere uttrykket, og sette opp et fortegnsskjema for faktorene for å se hvor hele uttrykket er positivt eller negativt."
+  },
+  {
+    "sporsmal": "For å løse $x^2 - 4 > 0$, faktoriserer du til $(x-2)(x+2) > 0$. Hva viser fortegnsskjemaet at løsningen er?",
+    "alternativer": [
+      "$x > 2$",
+      "$-2 < x < 2$",
+      "$x < -2$ eller $x > 2$",
+      "$x = -2$ og $x = 2$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Uttrykket har nullpunkter i $x=-2$ og $x=2$. Siden det er en parabel som 'smiler' (positivt $x^2$-ledd), er grafen over x-aksen (positiv) før $-2$ og etter $2$. Løsningen er $x < -2 \\cup x > 2$."
+  },
+  {
+    "sporsmal": "Hva skjer med ulikhetstegnet hvis vi deler eller ganger med et negativt tall på begge sider av en ulikhet?",
+    "alternativer": [
+      "Ingenting, ulikhetstegnet forblir det samme",
+      "Ulikhetstegnet snus",
+      "Ulikhetstegnet blir til et likhetstegn",
+      "Det er ikke lov å dele en ulikhet med et negativt tall"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Når vi multipliserer eller dividerer med et negativt tall, snur ulikheten. For eksempel blir $-2x > 4$ til $x < -2$ etter at vi har delt på $-2$."
+  },
+  {
+    "sporsmal": "Løs ulikheten $2x - 6 < 0$.",
+    "alternativer": [
+      "$x > 3$",
+      "$x < 3$",
+      "$x = 3$",
+      "$x < -3$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Vi flytter over $-6$ og får $2x < 6$. Deler på $2$ og får $x < 3$."
+  },
+  {
+    "sporsmal": "Løs ulikheten $-3x > 12$.",
+    "alternativer": [
+      "$x > -4$",
+      "$x < 4$",
+      "$x < -4$",
+      "$x > 4$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Vi deler på $-3$. Da må vi huske å snu ulikhetstegnet. Svaret blir $x < -4$."
+  },
+  {
+    "sporsmal": "Du skal løse $\\frac{x-1}{x+3} \\geq 0$. Hvorfor kan du ikke bare gange begge sider med $(x+3)$?",
+    "alternativer": [
+      "Fordi 0 ganger $(x+3)$ ikke er lov",
+      "Fordi vi ikke vet om $(x+3)$ er positivt eller negativt, og derfor vet vi ikke om vi må snu ulikhetstegnet",
+      "Fordi da blir nevneren borte, og det er ikke lov",
+      "Man kan gange med $(x+3)$, det er en helt grei metode"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "I en ulikhet må tegnet snus hvis vi ganger med et negativt tall. Siden vi ikke vet om $x+3$ er positivt eller negativt (det avhenger av $x$), er det tryggest å bruke fortegnsskjema."
+  },
+  {
+    "sporsmal": "Hvis et uttrykk har faktoren $(x-3)^2$, hvordan vil fortegnslinjen se ut i et fortegnsskjema?",
+    "alternativer": [
+      "Stiplet (negativ) før 3, og hel (positiv) etter 3",
+      "Hel (positiv) overalt",
+      "Hel (positiv) før 3, null i 3, og hel (positiv) etter 3",
+      "Den er stiplet overalt"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Et tall opphøyd i andre blir aldri negativt. Linjen vil være hel, unntatt akkurat i punktet $x=3$ hvor den er 0."
+  }
+]

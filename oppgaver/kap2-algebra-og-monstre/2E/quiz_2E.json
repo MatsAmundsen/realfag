@@ -1,0 +1,123 @@
+[
+  {
+    "sporsmal": "Hva er et rasjonalt uttrykk?",
+    "alternativer": [
+      "Et uttrykk som bare inneholder rasjonale tall",
+      "En brøk der teller og/eller nevner inneholder variabler",
+      "Et uttrykk som alltid gir et heltall som svar",
+      "Et uttrykk uten brøkstrek"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Et rasjonalt uttrykk er en brøk der teller, nevner, eller begge, er uttrykk som inneholder variabler."
+  },
+  {
+    "sporsmal": "Hva er den viktigste regelen for forkorting av brøker?",
+    "alternativer": [
+      "Man kan stryke like ledd over og under brøkstreken",
+      "Man kan bare forkorte faktorer (gange), ikke ledd (pluss/minus)",
+      "Man må alltid finne fellesnevner først",
+      "Man kan fjerne den minste variabelen"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Den vanligste feilen er å stryke ledd som er addert eller subtrahert. Du må alltid faktorisere først, og bare stryke faktorer som ganges med resten av telleren/nevneren."
+  },
+  {
+    "sporsmal": "Kan uttrykket $\\frac{x + 2}{2}$ forkortes til $x + 1$?",
+    "alternativer": [
+      "Ja, fordi vi kan stryke 2 mot 2",
+      "Nei, fordi 2 er et ledd, ikke en faktor for hele telleren",
+      "Ja, men bare hvis x er et partall",
+      "Nei, det blir bare $x$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Siden telleren er en sum ($x + 2$), kan vi ikke forkorte brøken. Vi kan derimot dele opp brøken til $\\frac{x}{2} + \\frac{2}{2} = \\frac{x}{2} + 1$, men det er ikke en forkorting."
+  },
+  {
+    "sporsmal": "Forkort brøken $\\frac{3x - 9}{3}$.",
+    "alternativer": [
+      "$x - 9$",
+      "$3x - 3$",
+      "$x - 3$",
+      "$x$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Først faktoriserer vi telleren: $3(x - 3)$. Deretter kan vi stryke 3 i teller og nevner, og står igjen med $x - 3$."
+  },
+  {
+    "sporsmal": "Hvordan finner man fellesnevner for brøkene $\\frac{1}{2x}$ og $\\frac{1}{3x}$?",
+    "alternativer": [
+      "Man legger sammen nevnerne: $5x$",
+      "Man finner det minste uttrykket begge går opp i: $6x$",
+      "Man ganger nevnerne sammen: $6x^2$",
+      "Man stryker $x$-ene, så fellesnevner er $6$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Minste felles multiplum for 2 og 3 er 6. Begge inneholder $x$. Derfor er minste fellesnevner $6x$."
+  },
+  {
+    "sporsmal": "Hvilken av disse er riktig utvidet form av $\\frac{2}{x}$ med faktoren $(x+1)$?",
+    "alternativer": [
+      "$\\frac{2(x+1)}{x(x+1)}$",
+      "$\\frac{2 + x + 1}{x + x + 1}$",
+      "$\\frac{2x+1}{x^2+1}$",
+      "$\\frac{2x+2}{x+1}$"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Når vi utvider en brøk, ganger vi både teller og nevner med samme uttrykk. Her blir det $\\frac{2 \\cdot (x+1)}{x \\cdot (x+1)}$."
+  },
+  {
+    "sporsmal": "Faktoriser og forkort brøken $\\frac{x^2 - 4}{x - 2}$.",
+    "alternativer": [
+      "$x + 2$",
+      "$x - 2$",
+      "$x - 4$",
+      "$x$"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Telleren er en differanse av to kvadrater: $(x - 2)(x + 2)$. Da kan vi stryke faktoren $(x - 2)$ i teller mot nevner. Svaret er $x + 2$."
+  },
+  {
+    "sporsmal": "Regn ut $\\frac{2}{x} \\cdot \\frac{x^2}{4}$.",
+    "alternativer": [
+      "$\\frac{x}{2}$",
+      "$\\frac{2x}{4}$",
+      "$\\frac{x^2}{2x}$",
+      "$\\frac{2+x^2}{x+4}$"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Multipliser teller med teller og nevner med nevner: $\\frac{2x^2}{4x}$. Deler vi teller og nevner med $2x$, får vi $\\frac{x}{2}$."
+  },
+  {
+    "sporsmal": "Regn ut $\\frac{3}{y} \\div \\frac{6}{y^2}$.",
+    "alternativer": [
+      "$\\frac{18}{y^3}$",
+      "$\\frac{y}{2}$",
+      "$\\frac{2}{y}$",
+      "$\\frac{1}{2y}$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Vi snur den andre brøken og ganger: $\\frac{3}{y} \\cdot \\frac{y^2}{6} = \\frac{3y^2}{6y}$. Forkorter vi med $3y$, får vi $\\frac{y}{2}$."
+  },
+  {
+    "sporsmal": "En elev skal trekke sammen $\\frac{4}{x} - \\frac{x - 2}{x}$. Svaret eleven får er $\\frac{4 - x - 2}{x} = \\frac{2 - x}{x}$. Hva er feilen?",
+    "alternativer": [
+      "Eleven skulle ha funnet en annen fellesnevner",
+      "Eleven glemte å sette parentes rundt $x - 2$ da de trakk det fra",
+      "Eleven har summert istedenfor å subtrahere",
+      "Det er ikke mulig å trekke sammen disse to"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Når vi setter brøkene på felles brøkstrek med minus foran, må minustegnet gjelde hele telleren: $\\frac{4 - (x - 2)}{x} = \\frac{4 - x + 2}{x} = \\frac{6 - x}{x}$."
+  },
+  {
+    "sporsmal": "Trekk sammen: $\\frac{x}{x-1} + \\frac{1}{1-x}$.",
+    "alternativer": [
+      "$\\frac{x+1}{x-1}$",
+      "$1$",
+      "$\\frac{x+1}{0}$",
+      "$-1$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Legg merke til at $1 - x = -(x - 1)$. Hvis vi endrer fortegnet på den andre brøken, får vi $\\frac{x}{x-1} - \\frac{1}{x-1} = \\frac{x-1}{x-1} = 1$."
+  }
+]

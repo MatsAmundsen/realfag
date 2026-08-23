@@ -1,0 +1,134 @@
+[
+  {
+    "sporsmal": "Hva er et primtall?",
+    "alternativer": [
+      "Et tall som bare kan deles på 1 og seg selv",
+      "Et oddetall",
+      "Et tall som kan deles på 2",
+      "Et tall med mer enn to faktorer"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Et primtall er et naturlig tall større enn 1, som kun er delelig med 1 og seg selv."
+  },
+  {
+    "sporsmal": "Hva er de første kvadrattallene?",
+    "alternativer": [
+      "1, 2, 3, 4, 5",
+      "1, 4, 9, 16, 25",
+      "2, 4, 6, 8, 10",
+      "1, 8, 27, 64, 125"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Kvadrattall får vi ved å opphøye heltall i andre: $1^2=1, 2^2=4, 3^2=9$ osv."
+  },
+  {
+    "sporsmal": "Hvilket av disse tallene er et kubikktall?",
+    "alternativer": [
+      "16",
+      "27",
+      "36",
+      "100"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Et kubikktall er et tall opphøyd i tredje. $3^3 = 3 \\cdot 3 \\cdot 3 = 27$."
+  },
+  {
+    "sporsmal": "Hva er det minste primtallet?",
+    "alternativer": [
+      "0",
+      "1",
+      "2",
+      "3"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "2 er det minste primtallet (og det eneste jevne primtallet). 1 regnes ikke som et primtall."
+  },
+  {
+    "sporsmal": "Finn neste tall i rekken: 2, 5, 10, 17, 26, ...",
+    "alternativer": [
+      "35",
+      "36",
+      "37",
+      "38"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Differansene mellom tallene er 3, 5, 7, 9. Neste differanse er 11. $26 + 11 = 37$. (Dette er $n^2 + 1$)."
+  },
+  {
+    "sporsmal": "Hvilket mønster følger trekanttallene?",
+    "alternativer": [
+      "$n^2$",
+      "$\\frac{n(n+1)}{2}$",
+      "$2n - 1$",
+      "$n^3$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Trekanttallene (1, 3, 6, 10...) er summen av de første $n$ naturlige tallene, gitt ved formelen $\\frac{n(n+1)}{2}$."
+  },
+  {
+    "sporsmal": "Er 51 et primtall?",
+    "alternativer": [
+      "Ja, det ender på 1",
+      "Nei, det kan deles på 3",
+      "Nei, det kan deles på 7",
+      "Ja, det har bare 2 faktorer"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Tverrsummen av 51 er $5+1=6$, som er delelig med 3. Derfor er 51 delelig med 3 ($3 \\cdot 17 = 51$)."
+  },
+  {
+    "sporsmal": "Hva er det sjette kvadrattallet?",
+    "alternativer": [
+      "25",
+      "30",
+      "36",
+      "49"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Det sjette kvadrattallet er $6^2 = 36$."
+  },
+  {
+    "sporsmal": "Hvordan uttrykkes summen av de $n$ første oddetallene?",
+    "alternativer": [
+      "$2n$",
+      "$n^2$",
+      "$\\frac{n(n+1)}{2}$",
+      "$n^3$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Summen av de første $n$ oddetallene danner alltid et kvadrattall $n^2$. F.eks: $1+3=4=2^2$, $1+3+5=9=3^2$."
+  },
+  {
+    "sporsmal": "Hvor mange primtall finnes mellom 10 og 20?",
+    "alternativer": [
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Primtallene mellom 10 og 20 er 11, 13, 17 og 19. Totalt 4 primtall."
+  },
+  {
+    "sporsmal": "Hvilket av følgende utsagn om figurtall er sant?",
+    "alternativer": [
+      "Summen av to påfølgende trekanttall er alltid et kubikktall",
+      "Summen av to påfølgende trekanttall er alltid et kvadrattall",
+      "Alle kvadrattall er partall",
+      "Trekanttallene danner en aritmetisk rekke"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Hvis man setter sammen to påfølgende trekanter av prikker, danner de et kvadrat. For eksempel $T_2 + T_3 = 3 + 6 = 9 = 3^2$."
+  },
+  {
+    "sporsmal": "Hvilket uttrykk gir det $n$-te rektangeltallet (hvis de første er 2, 6, 12, 20...)?",
+    "alternativer": [
+      "$n(n+1)$",
+      "$2n$",
+      "$n^2+1$",
+      "$n^2-1$"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Rektangeltallene er gitt ved $n(n+1)$, siden $1\\cdot 2 = 2$, $2\\cdot 3 = 6$, $3\\cdot 4 = 12$ osv."
+  }
+]

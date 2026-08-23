@@ -1,0 +1,145 @@
+[
+  {
+    "sporsmal": "Hva er 1. kvadratsetning?",
+    "alternativer": [
+      "$(a + b)^2 = a^2 + b^2$",
+      "$(a + b)^2 = a^2 + 2ab + b^2$",
+      "$(a - b)^2 = a^2 - 2ab + b^2$",
+      "$(a + b)(a - b) = a^2 - b^2$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "1. kvadratsetning brukes når vi har summen av to tall opphøyd i andre: $(a + b)^2 = a^2 + 2ab + b^2$."
+  },
+  {
+    "sporsmal": "Hvilken setning kalles også 'Konjugatsetningen'?",
+    "alternativer": [
+      "1. kvadratsetning",
+      "2. kvadratsetning",
+      "3. kvadratsetning",
+      "Pytagoras læresetning"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "3. kvadratsetning, $(a+b)(a-b) = a^2 - b^2$, kalles konjugatsetningen fordi parentesene er konjugerte (like bortsett fra fortegnet)."
+  },
+  {
+    "sporsmal": "Hva er 2. kvadratsetning?",
+    "alternativer": [
+      "$(a - b)^2 = a^2 - b^2$",
+      "$(a - b)^2 = a^2 + 2ab + b^2$",
+      "$(a - b)^2 = a^2 - 2ab + b^2$",
+      "$(a - b)^2 = a^2 - 2ab - b^2$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "2. kvadratsetning er $(a - b)^2 = a^2 - 2ab + b^2$. Legg merke til at $b^2$ alltid er positiv, fordi $(-b) \\cdot (-b) = b^2$."
+  },
+  {
+    "sporsmal": "Regn ut med 1. kvadratsetning: $(x + 4)^2$",
+    "alternativer": [
+      "$x^2 + 16$",
+      "$x^2 + 4x + 16$",
+      "$x^2 + 8x + 16$",
+      "$x^2 + 8x + 8$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Vi bruker $(a+b)^2 = a^2 + 2ab + b^2$. Her blir det $x^2 + 2 \\cdot x \\cdot 4 + 4^2 = x^2 + 8x + 16$."
+  },
+  {
+    "sporsmal": "Regn ut med 2. kvadratsetning: $(y - 3)^2$",
+    "alternativer": [
+      "$y^2 - 9$",
+      "$y^2 - 6y + 9$",
+      "$y^2 - 3y + 9$",
+      "$y^2 - 6y - 9$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Vi bruker $(a-b)^2 = a^2 - 2ab + b^2$. Her blir det $y^2 - 2 \\cdot y \\cdot 3 + 3^2 = y^2 - 6y + 9$."
+  },
+  {
+    "sporsmal": "Regn ut med 3. kvadratsetning (konjugatsetningen): $(x + 5)(x - 5)$",
+    "alternativer": [
+      "$x^2 - 10$",
+      "$x^2 + 25$",
+      "$x^2 - 25$",
+      "$x^2 - 10x - 25$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Vi bruker $(a+b)(a-b) = a^2 - b^2$. Her blir det $x^2 - 5^2 = x^2 - 25$."
+  },
+  {
+    "sporsmal": "Regn ut: $(2a + 1)^2$",
+    "alternativer": [
+      "$4a^2 + 1$",
+      "$4a^2 + 4a + 1$",
+      "$2a^2 + 4a + 1$",
+      "$4a^2 + 2a + 1$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Vi må huske å kvadrere hele det første leddet: $(2a)^2 = 4a^2$. Det dobbelte produktet er $2 \\cdot 2a \\cdot 1 = 4a$. Til slutt $1^2 = 1$. Svaret er $4a^2 + 4a + 1$."
+  },
+  {
+    "sporsmal": "Regn ut: $(3x - 2y)^2$",
+    "alternativer": [
+      "$9x^2 - 12xy + 4y^2$",
+      "$9x^2 - 6xy + 4y^2$",
+      "$9x^2 - 4y^2$",
+      "$3x^2 - 12xy + 2y^2$"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Kvadratet av $3x$ er $9x^2$. Kvadratet av $-2y$ er $4y^2$. Det dobbelte produktet er $2 \\cdot 3x \\cdot 2y = 12xy$. Uttrykket blir da $9x^2 - 12xy + 4y^2$."
+  },
+  {
+    "sporsmal": "Bruk konjugatsetningen til å regne ut $21 \\cdot 19$ på en smart måte.",
+    "alternativer": [
+      "$20^2 + 1^2 = 401$",
+      "$20^2 - 1^2 = 399$",
+      "$21^2 - 2^2 = 437$",
+      "$400$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Vi kan skrive regnestykket som $(20 + 1)(20 - 1)$. Med konjugatsetningen blir dette $20^2 - 1^2 = 400 - 1 = 399$."
+  },
+  {
+    "sporsmal": "En elev påstår at $(a + b)^2 = a^2 + b^2$. Hvordan kan du overbevise eleven om at dette er feil?",
+    "alternativer": [
+      "Vise at regelen bare gjelder for minus",
+      "Sette inn tall, for eksempel $a=2, b=3$, og vise at $25 \\neq 13$",
+      "Si at mattelæreren har bestemt det",
+      "Forklare at de har glemt å gange med 2"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Å sette inn tall er en glimrende måte å motbevise en algebraisk påstand. $(2+3)^2 = 5^2 = 25$, mens $2^2 + 3^2 = 4 + 9 = 13$. Feilen skyldes at man glemmer det dobbelte produktet $2ab$ (som her er $2 \\cdot 2 \\cdot 3 = 12$)."
+  },
+  {
+    "sporsmal": "Regn ut og forenkle: $(x + 2)^2 - (x - 2)^2$",
+    "alternativer": [
+      "$8x$",
+      "$2x^2 + 8$",
+      "$0$",
+      "$4x$"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Første del: $x^2 + 4x + 4$. Andre del: $x^2 - 4x + 4$. Trekker vi den andre fra den første: $(x^2 + 4x + 4) - (x^2 - 4x + 4) = x^2 + 4x + 4 - x^2 + 4x - 4 = 8x$."
+  },
+  {
+    "sporsmal": "Regn ut uttrykket: $(\\sqrt{x} + \\sqrt{y})(\\sqrt{x} - \\sqrt{y})$",
+    "alternativer": [
+      "$x - y$",
+      "$\\sqrt{x} - \\sqrt{y}$",
+      "$x + y$",
+      "$x^2 - y^2$"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Dette er konjugatsetningen. Vi får $(\\sqrt{x})^2 - (\\sqrt{y})^2 = x - y$."
+  },
+  {
+    "sporsmal": "Forenkle: $(2x^2 + 3y^3)^2$",
+    "alternativer": [
+      "$4x^4 + 9y^6$",
+      "$4x^4 + 6x^2y^3 + 9y^6$",
+      "$4x^4 + 12x^2y^3 + 9y^6$",
+      "$2x^4 + 12x^2y^3 + 3y^6$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Første ledd: $(2x^2)^2 = 4x^4$. Andre ledd: $(3y^3)^2 = 9y^6$. Dobbelt produkt: $2 \\cdot 2x^2 \\cdot 3y^3 = 12x^2y^3$. Svaret er $4x^4 + 12x^2y^3 + 9y^6$."
+  }
+]
