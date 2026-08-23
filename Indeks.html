@@ -12,6 +12,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
         onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true},{left: '$', right: '$', display: false}]});"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
 </head>
 <body>
@@ -32,6 +33,7 @@
             <button class="nav-btn active" data-target="oppgaver">Oppgaver</button>
             <button class="nav-btn" data-target="programmering">Programmering</button>
             <button class="nav-btn" data-target="ressurser">Ressurser</button>
+            <button class="nav-btn" data-target="kunnskapskart">Kunnskapskart 🗺️</button>
             <button class="nav-btn theme-btn" id="theme-toggle" aria-label="Bytt tema">
                 <span class="theme-icon">&#x2600;&#xFE0F;</span>
             </button>
@@ -126,6 +128,95 @@
             </section>
         </div>
 
+        
+        <!-- KUNNSKAPSKART -->
+        <div id="kunnskapskart-view" class="view-section hidden">
+            <section class="content-area full-width">
+                <div class="view-header">
+                    <h2>🗺️ Kunnskapskart for 1T</h2>
+                    <p>Klikk på et kapittel for å se det detaljerte tankekartet. Trykk på oversiktskartet for å åpne det i fullskjerm.</p>
+                </div>
+
+                <!-- FARGELEGENDE -->
+                <div class="km-legend">
+                    <span class="km-legend-label">Fargeforklaring:</span>
+                    <span class="km-pill km-pill-1">📘 Kap 1 – Grunnkunnskap</span>
+                    <span class="km-pill km-pill-2">🟢 Kap 2 – Algebra</span>
+                    <span class="km-pill km-pill-3">🟡 Kap 3 – Likninger</span>
+                    <span class="km-pill km-pill-4">🟣 Kap 4 – Funksjoner</span>
+                </div>
+
+                <!-- HELHETSBILDE – KLIKKBAR THUMBNAIL -->
+                <div class="km-overview-card" onclick="openMapModal('global')" title="Trykk for å åpne i fullskjerm">
+                    <div class="km-overview-header">
+                        <span>🔗 Helhetsbilde – Slik henger alt sammen</span>
+                        <span class="km-expand-hint">🔍 Klikk for fullskjerm</span>
+                    </div>
+                    <div id="global-mermaid-container" class="km-overview-inner">
+                        <!-- Genereres av JS -->
+                    </div>
+                </div>
+
+                <!-- 4 KAPITTELKORT -->
+                <div class="km-chapters-grid">
+
+                    <!-- KAP 1 -->
+                    <div class="km-chapter-card km-card-1 clickable-card" onclick="openMapModal('kap1')" title="Trykk for fullskjerm">
+                        <div class="km-card-header km-header-1">
+                            <h3>📘 Kapittel 1</h3>
+                            <p>Tallforståelse og Algebra</p>
+                        </div>
+                        <p class="km-card-desc">⚠️ Fundamentet! Mangler du dette vil du slite i alle andre kapitler.</p>
+                        <div id="kap1-mermaid-container" class="km-mermaid-area"></div>
+                    </div>
+
+                    <!-- KAP 2 -->
+                    <div class="km-chapter-card km-card-2 clickable-card" onclick="openMapModal('kap2')" title="Trykk for fullskjerm">
+                        <div class="km-card-header km-header-2">
+                            <h3>🟢 Kapittel 2</h3>
+                            <p>Algebra og mønstre</p>
+                        </div>
+                        <p class="km-card-desc">Bygger direkte på Kap 1. Her lærer du å manipulere og forenkle uttrykk.</p>
+                        <div id="kap2-mermaid-container" class="km-mermaid-area"></div>
+                    </div>
+
+                    <!-- KAP 3 -->
+                    <div class="km-chapter-card km-card-3 clickable-card" onclick="openMapModal('kap3')" title="Trykk for fullskjerm">
+                        <div class="km-card-header km-header-3">
+                            <h3>🟡 Kapittel 3</h3>
+                            <p>Likninger og ulikheter</p>
+                        </div>
+                        <p class="km-card-desc">Krever solid algebra fra Kap 2. Her løser du likninger med ulike metoder.</p>
+                        <div id="kap3-mermaid-container" class="km-mermaid-area"></div>
+                    </div>
+
+                    <!-- KAP 4 -->
+                    <div class="km-chapter-card km-card-4 clickable-card" onclick="openMapModal('kap4')" title="Trykk for fullskjerm">
+                        <div class="km-card-header km-header-4">
+                            <h3>🟣 Kapittel 4</h3>
+                            <p>Funksjoner</p>
+                        </div>
+                        <p class="km-card-desc">Det store bildet. Bygger på alt fra Kap 1–3. Eksamensfavoritt!</p>
+                        <div id="kap4-mermaid-container" class="km-mermaid-area"></div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+
+        <!-- FULLSKJERM MODAL FOR HELHETSBILDE -->
+        <div id="map-modal-overlay" class="map-modal-overlay hidden" onclick="closeMapModal()">
+            <div class="map-modal-panel" onclick="event.stopPropagation()">
+                <div class="map-modal-header">
+                    <span>🔗 Helhetsbilde – Slik henger alt sammen i 1T</span>
+                    <button class="quiz-close-btn" onclick="closeMapModal()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                    </button>
+                </div>
+                <div id="modal-mermaid-container" class="map-modal-body"></div>
+            </div>
+        </div>
+
         <!-- SØKERESULTATER -->
         <div id="search-view" class="view-section hidden">
             <section class="content-area full-width">
@@ -175,7 +266,7 @@
         <span class="quiz-fab-badge" id="quiz-fab-badge"></span>
     </button>
 
-    <script src="data.js?v=8"></script>
-    <script src="app.js?v=8"></script>
+    <script src="data.js?v=19"></script>
+    <script src="app.js?v=19"></script>
 </body>
 </html>

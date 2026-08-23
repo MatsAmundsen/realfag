@@ -14,6 +14,11 @@ window.toggleHint = function(hintId) {
     if (el) el.classList.toggle('visible');
 };
 
+
+window.goToRessurser = function() {
+    navigateTo('ressurser');
+};
+
 window.toggleSolution = function(fasitId) {
     const el = document.getElementById(fasitId);
     if (el) el.classList.toggle('visible');
@@ -354,7 +359,7 @@ function renderKaTeX(el) {
 }
 
 // ── Oppgave-builder ────────────────────────────────────────────
-function buildTaskCard(oppgave, contextLabel, index = 0, total = 1) {
+function buildTaskCard(oppgave, contextLabel, index = 0, total = 1, subId = null, idPrefix = "std-") {
     const article = document.createElement('article');
     
     // Heuristikk for vanskelighetsgrad basert på plassering i delkapittelet
@@ -374,7 +379,7 @@ function buildTaskCard(oppgave, contextLabel, index = 0, total = 1) {
     }
 
     article.className = `task-card ${lvlClass}`;
-    article.id = `task-${oppgave.id}`;
+    article.id = `${idPrefix}task-${oppgave.id}`;
 
     let html = `
         <div class="task-card-header">
@@ -393,12 +398,12 @@ function buildTaskCard(oppgave, contextLabel, index = 0, total = 1) {
     let fasitHtml  = '';
 
     if (oppgave.fasitSteg && oppgave.fasitSteg.length > 0) {
-        fasitKnapp = `<button class="hint-btn fasit-btn" onclick="toggleSolution('fasit-${oppgave.id}')">Vis fasit (Steg 1) 📝</button>`;
-        fasitHtml  = `<div id="fasit-${oppgave.id}" class="solution-content steg-container">`;
+        fasitKnapp = `<button class="hint-btn fasit-btn" onclick="toggleSolution('${idPrefix}fasit-${oppgave.id}')">Vis fasit (Steg 1) 📝</button>`;
+        fasitHtml  = `<div id="${idPrefix}fasit-${oppgave.id}" class="solution-content steg-container">`;
         
         oppgave.fasitSteg.forEach((steg, i) => {
-            const sid  = `steg-${oppgave.id}-${i}`;
-            const nsid = `steg-${oppgave.id}-${i + 1}`;
+            const sid  = `${idPrefix}steg-${oppgave.id}-${i}`;
+            const nsid = `${idPrefix}steg-${oppgave.id}-${i + 1}`;
             const isFirst = i === 0;
             const isLast  = i === oppgave.fasitSteg.length - 1;
             
@@ -416,16 +421,24 @@ function buildTaskCard(oppgave, contextLabel, index = 0, total = 1) {
         });
         fasitHtml += `</div>`;
     } else if (oppgave.fasit) {
-        fasitKnapp = `<button class="hint-btn fasit-btn" onclick="toggleSolution('fasit-${oppgave.id}')">Fasit 📝</button>`;
-        fasitHtml  = `<div id="fasit-${oppgave.id}" class="solution-content"><strong>Løsningsforslag:</strong><br><br>${oppgave.fasit}</div>`;
+        fasitKnapp = `<button class="hint-btn fasit-btn" onclick="toggleSolution('${idPrefix}fasit-${oppgave.id}')">Fasit 📝</button>`;
+        fasitHtml  = `<div id="${idPrefix}fasit-${oppgave.id}" class="solution-content"><strong>Løsningsforslag:</strong><br><br>${oppgave.fasit}</div>`;
     }
 
     html += `
         <div class="task-action-bar">
-            <button class="hint-btn" onclick="toggleHint('hint-${oppgave.id}')">Vis hint 💡</button>
+            ${(function(){
+                // subId sendes nå direkte inn som argument 5 i funksjonen!
+                if (subId && typeof prereqMap !== 'undefined' && prereqMap[subId]) {
+                    return `<button class="hint-btn prereq-btn" onclick="togglePrereqInline(this, '${idPrefix}prereq-${oppgave.id}', '${subId}')" style="background: var(--primary-subtle); color: var(--primary-dark); border-color: var(--primary-light);">Hva må jeg kunne? 🗺️</button>`;
+                }
+                return '';
+            })()}
+            <button class="hint-btn" onclick="toggleHint('${idPrefix}hint-${oppgave.id}')">Vis hint 💡</button>
             ${fasitKnapp}
         </div>
-        <div id="hint-${oppgave.id}" class="hint-content">${oppgave.hint}</div>
+        <div id="${idPrefix}prereq-${oppgave.id}" class="prereq-inline-container" style="display:none;"></div>
+        <div id="${idPrefix}hint-${oppgave.id}" class="hint-content">${oppgave.hint}</div>
         ${fasitHtml}
     `;
 
@@ -486,7 +499,7 @@ function loadSubchapter(kapId, subId) {
 
     // Render tasks
     dkData.oppgaver.forEach((oppgave, idx) => {
-        taskContainer.appendChild(buildTaskCard(oppgave, null, idx, dkData.oppgaver.length));
+        taskContainer.appendChild(buildTaskCard(oppgave, null, idx, dkData.oppgaver.length, dkData.id, "std-"));
     });
 
     setActiveQuiz(dkData.quiz, dkData.tittel);
@@ -616,7 +629,7 @@ function loadProgrammering() {
         return;
     }
     window.programmeringData.forEach((oppgave, idx) => {
-        const article = buildTaskCard(oppgave, null, idx, window.programmeringData.length);
+        const article = buildTaskCard(oppgave, null, idx, window.programmeringData.length, null, "prog-");
         article.id = `prog-task-${oppgave.id}`;
         container.appendChild(article);
     });
@@ -644,7 +657,7 @@ function loadSearchResults(query) {
             kap.delkapitler.forEach(dk => {
                 dk.oppgaver.forEach(opp => {
                     if (`${opp.tittel} ${opp.tekst} ${opp.hint} ${opp.fasit}`.toLowerCase().includes(lq)) {
-                        const card = buildTaskCard(opp, `${kap.tittel} › ${dk.tittel}`);
+                        const card = buildTaskCard(opp, `${kap.tittel} › ${dk.tittel}`, 0, 1, dk.id, "search-");
                         // Add link to go to subchapter
                         const btnArea = card.querySelector('.task-buttons');
                         if (btnArea) {
@@ -661,7 +674,7 @@ function loadSearchResults(query) {
     if (typeof window.programmeringData !== 'undefined') {
         window.programmeringData.forEach(opp => {
             if (`${opp.tittel} ${opp.tekst} ${opp.hint} ${opp.fasit}`.toLowerCase().includes(lq)) {
-                container.appendChild(buildTaskCard(opp, 'Programmering'));
+                container.appendChild(buildTaskCard(opp, 'Programmering', 0, 1, null, 'search-'));
                 count++;
             }
         });
@@ -714,6 +727,9 @@ function handleRoute() {
     } else if (mainView === 'programmering') {
         showView('programmering-view');
         if (!progLastet) { loadProgrammering(); progLastet = true; }
+    } else if (mainView === 'kunnskapskart') {
+        showView('kunnskapskart-view');
+        renderGlobalMap();
     } else if (mainView === 'ressurser') {
         showView('ressurser-view');
         if (!ressurserLastet) { loadRessurser(); ressurserLastet = true; }
@@ -741,8 +757,432 @@ function handleRoute() {
     }
 }
 
+
+// ── Mermaid Kart Data & Logikk ──────────────────────────────
+// ────────────────────────────────────────────────────────────────
+// KUNNSKAPSKART GRAFER
+// ────────────────────────────────────────────────────────────────
+
+// Forenklet helhetsbilde (thumbnail + modal)
+const globalMermaidGraph = `
+flowchart LR
+    classDef c1 fill:#2563eb,color:#fff,stroke:#1d4ed8,rx:8;
+    classDef c2 fill:#16a34a,color:#fff,stroke:#15803d,rx:8;
+    classDef c3 fill:#ca8a04,color:#fff,stroke:#a16207,rx:8;
+    classDef c4 fill:#9333ea,color:#fff,stroke:#7e22ce,rx:8;
+    classDef topp fill:#dc2626,color:#fff,stroke:#991b1b,rx:8;
+
+    K1["📘 KAP 1<br>Grunnkunnskap"]:::c1
+    K2["🟢 KAP 2<br>Algebra"]:::c2
+    K3["🟡 KAP 3<br>Likninger"]:::c3
+    K4["🟣 KAP 4<br>Funksjoner"]:::c4
+    EX["🏆 Eksamen"]:::topp
+
+    K1 --> K2 --> K3 --> K4 --> EX
+    K1 -.-> K3
+    K2 -.-> K4
+`;
+
+// KAP 1 – Detaljert
+const kap1Graph = `
+flowchart LR
+    classDef grunnlag fill:#dbeafe,color:#1e3a8a,stroke:#3b82f6,stroke-width:2px,font-weight:bold;
+    classDef verktoy fill:#eff6ff,color:#1e40af,stroke:#60a5fa,stroke-width:1px;
+    classDef advarsel fill:#fef3c7,color:#92400e,stroke:#f59e0b,stroke-width:2px;
+
+    subgraph A ["📐 Tallmengder & Tallforståelse (1A)"]
+        direction TB
+        N["Naturlige tall ℕ"]:::grunnlag
+        Z2["Hele tall ℤ"]:::grunnlag
+        Q["Rasjonale tall ℚ"]:::grunnlag
+        R["Reelle tall ℝ"]:::grunnlag
+        I["Irrasjonale tall"]:::verktoy
+        IV["Intervaller og mengder"]:::verktoy
+        ABS["Absoluttverdi |x|"]:::verktoy
+        N --> Z2 --> Q --> R
+        I --> R
+        Q --> IV
+        Q --> ABS
+    end
+
+    subgraph B ["🔢 Tallmønstre & Spesialtall (1B)"]
+        direction TB
+        PRIM["Primtall"]:::grunnlag
+        KV["Kvadrattall 1,4,9,16..."]:::grunnlag
+        KUB["Kubikktall 1,8,27..."]:::grunnlag
+        FIG["Figurtall"]:::verktoy
+        PRIM --> FIG
+        KV --> FIG
+        KUB --> FIG
+    end
+
+    subgraph C ["➗ Brøk & Euklid (1C)"]
+        direction TB
+        SFF["Største felles faktor (SFF)"]:::grunnlag
+        MFM["Minste felles multiplum (MFM)"]:::grunnlag
+        BROK["Brøkregning + forkorting"]:::grunnlag
+        FN["Fellesnevner"]:::verktoy
+        SFF --> BROK
+        MFM --> FN
+        BROK --> FN
+    end
+
+    subgraph D ["⚡ Potensregler (1D)"]
+        direction TB
+        P1["aᵐ · aⁿ = aᵐ⁺ⁿ"]:::grunnlag
+        P2["(aᵐ)ⁿ = aᵐⁿ"]:::grunnlag
+        P3["a⁻ⁿ = 1/aⁿ"]:::grunnlag
+        P4["a⁰ = 1"]:::grunnlag
+        STD["Standardform a · 10ⁿ"]:::verktoy
+        P1 & P2 & P3 & P4 --> STD
+    end
+
+    subgraph F ["🧠 Logikk & Bevis (1F)"]
+        direction TB
+        IMP["Implikasjon ⇒"]:::grunnlag
+        EKV["Ekvivalens ⟺"]:::grunnlag
+        MOT["Moteksempel"]:::verktoy
+        BEVIS["Direkte bevis"]:::verktoy
+        IMP --> MOT
+        EKV --> BEVIS
+    end
+
+    ADVARSEL["⚠️ Mangler du dette?<br>Du vil slite i KAP 2, 3 og 4!"]:::advarsel
+
+    A --> ADVARSEL
+    B --> ADVARSEL
+    C --> ADVARSEL
+    D --> ADVARSEL
+    F --> ADVARSEL
+`;
+
+// KAP 2 – Detaljert
+const kap2Graph = `
+flowchart TD
+    classDef grunnlag fill:#dcfce7,color:#14532d,stroke:#22c55e,stroke-width:2px,font-weight:bold;
+    classDef verktoy fill:#f0fdf4,color:#166534,stroke:#86efac,stroke-width:1px;
+    classDef krever fill:#fef9c3,color:#713f12,stroke:#fde047,stroke-width:2px;
+
+    subgraph A ["🔡 2A – Bokstavregning"]
+        direction TB
+        BA["Samle like ledd"]:::grunnlag
+        BB["Distributiv lov:<br>a(b+c) = ab+ac"]:::grunnlag
+        BC["To parenteser:<br>(a+b)(c+d)"]:::grunnlag
+        BA --> BB --> BC
+    end
+
+    subgraph B ["📐 2B – Kvadratsetningene"]
+        direction TB
+        K1["1. kvset:<br>(a+b)² = a²+2ab+b²"]:::grunnlag
+        K2["2. kvset:<br>(a-b)² = a²-2ab+b²"]:::grunnlag
+        K3["3. kvset:<br>(a+b)(a-b) = a²-b²"]:::grunnlag
+    end
+
+    subgraph C ["🔍 2C – Faktorisering"]
+        direction TB
+        F1["Felles faktor utenfor"]:::grunnlag
+        F2["Kvadratsetning baklengs"]:::grunnlag
+        F3["Rotforenkling"]:::verktoy
+        F1 & F2 --> F3
+    end
+
+    subgraph D ["✅ 2D – Fullstendige kvadrater"]
+        direction TB
+        D1["Baklengs 1. kvset"]:::grunnlag
+        D2["Fullføre kvadratet"]:::grunnlag
+        D1 --> D2
+    end
+
+    subgraph E ["➗ 2E – Rasjonale uttrykk"]
+        direction TB
+        E1["Forkorting av brøkuttrykk"]:::grunnlag
+        E2["Fellesnevner med variabler"]:::grunnlag
+        E1 --> E2
+    end
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+
+    KREV["🔗 Trengs i Kap 3:<br>Likninger og ABC-formelen"]:::krever
+    E --> KREV
+`;
+
+// KAP 3 – Detaljert
+const kap3Graph = `
+flowchart TD
+    classDef grunnlag fill:#fef9c3,color:#713f12,stroke:#eab308,stroke-width:2px,font-weight:bold;
+    classDef verktoy fill:#fefce8,color:#78350f,stroke:#fde047,stroke-width:1px;
+    classDef krever fill:#f3e8ff,color:#581c87,stroke:#d8b4fe,stroke-width:2px;
+
+    subgraph A ["📏 3A – Førstegradslikninger"]
+        direction TB
+        A1["ax + b = cx + d"]:::grunnlag
+        A2["Prøve på svaret<br>(V.S. = H.S.)"]:::verktoy
+        A3["Tekstoppgaver"]:::verktoy
+        A1 --> A2 & A3
+    end
+
+    subgraph CD ["🧮 3C/3D – Andregradslikninger"]
+        direction TB
+        C1["Produktregelen:\nab = 0"]:::grunnlag
+        C2["x² = k → x = ±√k"]:::grunnlag
+        D1["ABC-formelen:<br>x = (-b ± √D) / 2a"]:::grunnlag
+        D2["Diskriminant:<br>D = b²-4ac"]:::verktoy
+        C1 & C2 --> D1
+        D1 --> D2
+    end
+
+    subgraph EF ["⚖️ 3E/3F – Rasjonale & Nullpunkt"]
+        direction TB
+        E1["Rasjonale likninger:<br>Definisjonsmengde"]:::grunnlag
+        E2["Falske løsninger"]:::verktoy
+        F1["Nullpunktmetoden"]:::grunnlag
+        F2["Proporsjoner &<br>Kryssmultiplikasjon"]:::verktoy
+        E1 --> E2
+        F1 --> F2
+    end
+
+    subgraph G ["🔬 3G – Tredjegradslikninger"]
+        direction TB
+        G1["Nullpunktsetningen:<br>finn én x₁"]:::grunnlag
+        G2["Polynomdivisjon:<br>P(x) ÷ (x - x₁)"]:::grunnlag
+        G3["Løs andregradspolynomet<br>med ABC-formelen"]:::grunnlag
+        G1 --> G2 --> G3
+    end
+
+    KREV["🔗 Trengs i Kap 4:<br>Funksjoner og drøfting"]:::krever
+    CD --> KREV
+    G --> KREV
+`;
+
+// KAP 4 – Detaljert
+const kap4Graph = `
+flowchart TD
+    classDef grunnlag fill:#f3e8ff,color:#581c87,stroke:#a855f7,stroke-width:2px,font-weight:bold;
+    classDef verktoy fill:#faf5ff,color:#6b21a8,stroke:#d8b4fe,stroke-width:1px;
+    classDef topp fill:#dc2626,color:#fff,stroke:#991b1b,stroke-width:3px,font-weight:bold;
+
+    subgraph AB ["📈 4A/4B – Funksjoner & Lineære"]
+        direction TB
+        A1["Funksjonsbegrepet:\nDf og Vf"]:::grunnlag
+        A2["Nullpunkter: f(x) = 0"]:::grunnlag
+        B1["f(x) = ax + b\nStigningstall a"]:::grunnlag
+        B2["Topunktsformel:<br>a = (y₂-y₁)/(x₂-x₁)"]:::verktoy
+        A1 --> B1 --> B2
+        A2 --> B1
+    end
+
+    subgraph CD ["🔄 4C/4D – Andregrads & Rasjonale"]
+        direction TB
+        C1["Parabel: f(x) = ax²+bx+c"]:::grunnlag
+        C2["Symmetriakse:<br>x = -b/2a"]:::verktoy
+        C3["Toppunktsform:<br>f(x) = a(x-x₀)²+y₀"]:::verktoy
+        D1["Rasjonale:<br>f(x) = P(x)/Q(x)"]:::grunnlag
+        D2["Asymptoter:<br>loddrett og vannrett"]:::verktoy
+        C1 --> C2 & C3
+        C1 --> D1 --> D2
+    end
+
+    subgraph EF ["📊 4E/4F – Potens & Eksponential"]
+        direction TB
+        E1["f(x) = axᵇ<br>Vekstfaktorer"]:::grunnlag
+        F1["f(x) = a·bˣ<br>Halveringstid"]:::grunnlag
+        F2["Logaritmer:<br>log og ln"]:::verktoy
+        E1 & F1 --> F2
+    end
+
+    subgraph GH ["🔬 4G/4H – Derivasjon & Drøfting"]
+        direction TB
+        G1["Gjennomsnittlig vekstfart:<br>∆y/∆x"]:::grunnlag
+        G2["Momentan vekstfart:<br>f'(x) = lim(∆x→0)"]:::grunnlag
+        H1["Derivasjonsregler:<br>xⁿ → nxⁿ⁻¹"]:::grunnlag
+        H2["Fortegnsskjema for f'(x)"]:::verktoy
+        H3["Ekstremalpunkter:<br>min/maks"]:::verktoy
+        G1 --> G2 --> H1 --> H2 --> H3
+    end
+
+    EX["🏆 EKSAMEN<br>Funksjonsdrøfting"]:::topp
+    GH --> EX
+    CD --> GH
+    EF --> GH
+`;
+
+// Modal – detaljert helhetsbilde
+const modalMermaidGraph = `
+flowchart TD
+    classDef c1h fill:#2563eb,color:#fff,stroke:#1d4ed8,stroke-width:2px;
+    classDef c1 fill:#dbeafe,color:#1e3a8a,stroke:#60a5fa;
+    classDef c2h fill:#16a34a,color:#fff,stroke:#15803d,stroke-width:2px;
+    classDef c2 fill:#dcfce7,color:#14532d,stroke:#4ade80;
+    classDef c3h fill:#ca8a04,color:#fff,stroke:#a16207,stroke-width:2px;
+    classDef c3 fill:#fef9c3,color:#713f12,stroke:#facc15;
+    classDef c4h fill:#9333ea,color:#fff,stroke:#7e22ce,stroke-width:2px;
+    classDef c4 fill:#f3e8ff,color:#581c87,stroke:#c084fc;
+    classDef topp fill:#dc2626,color:#fff,stroke:#991b1b,stroke-width:3px;
+
+    subgraph SK1 [📘 KAP 1 - Grunnkunnskap]
+        direction TB
+        1A["Tallmengder"]:::c1
+        1C["Brøk, SFF, MFM"]:::c1
+        1D["Potensregler"]:::c1
+        1F["Logikk & Bevis"]:::c1
+    end
+
+    subgraph SK2 [🟢 KAP 2 - Algebra]
+        direction TB
+        2A["Bokstavregning"]:::c2
+        2B["Kvadratsetninger"]:::c2
+        2C["Faktorisering"]:::c2
+        2D["Fullstendige kvadrater"]:::c2
+        2E["Rasjonale uttrykk"]:::c2
+    end
+
+    subgraph SK3 [🟡 KAP 3 - Likninger]
+        direction TB
+        3A["Førstegradslikninger"]:::c3
+        3D["ABC-formelen"]:::c3
+        3G["Tredjegradslikninger<br>& Polynomdivisjon"]:::c3
+    end
+
+    subgraph SK4 [🟣 KAP 4 - Funksjoner]
+        direction TB
+        4B["Lineære funksjoner"]:::c4
+        4C["Andregradsfunksjoner"]:::c4
+        4H["Funksjonsdrøfting f'(x)"]:::c4
+    end
+
+    EX["🏆 EKSAMEN"]:::topp
+
+    1A --> 2A
+    1C --> 2A
+    1D --> 2A
+    1F -.->|tenkning| 3G
+    2A --> 2B & 3A
+    2B --> 2C & 3D
+    2C --> 3D & 3G
+    2D --> 3D
+    2E --> 3D
+    3A --> 4B
+    3D --> 3G & 4C
+    3G --> 4H
+    4B --> 4H
+    4C --> 4H
+    4H --> EX
+`;
+
+const prereqMap = {
+    '1D': {
+        title: "Potenser og Standardform",
+        graph: `flowchart TD\n classDef main fill:#4f46e5,color:#fff,stroke:#312e81,stroke-width:2px;\n classDef step fill:#fef08a,color:#854d0e,stroke:#ca8a04,stroke-width:2px;\n classDef basic fill:#f3f4f6,color:#374151,stroke:#9ca3af;\n A[Gjentatt Multiplikasjon]:::basic --> Z{Potensregning}:::main\n B[Tallmengder]:::basic --> Z`
+    },
+    '2B': {
+        title: "Kvadratsetninger",
+        graph: `flowchart TD\n classDef main fill:#4f46e5,color:#fff,stroke:#312e81,stroke-width:2px;\n classDef step fill:#fef08a,color:#854d0e,stroke:#ca8a04,stroke-width:2px;\n classDef basic fill:#f3f4f6,color:#374151,stroke:#9ca3af;\n A[Bokstavregning]:::basic --> Z{Kvadratsetninger}:::main\n B[Potensregning]:::basic --> Z\n C[Parentesregning]:::step --> Z`
+    },
+    '2C': {
+        title: "Faktorisering",
+        graph: `flowchart TD\n classDef main fill:#4f46e5,color:#fff,stroke:#312e81,stroke-width:2px;\n classDef step fill:#fef08a,color:#854d0e,stroke:#ca8a04,stroke-width:2px;\n classDef basic fill:#f3f4f6,color:#374151,stroke:#9ca3af;\n A[Felles faktor utenfor parentes]:::step --> Z{Faktorisering}:::main\n B[Kvadratsetningene baklengs]:::step --> Z`
+    },
+    '3D': {
+        title: "ABC-formelen",
+        graph: `flowchart TD\n classDef main fill:#4f46e5,color:#fff,stroke:#312e81,stroke-width:2px;\n classDef step fill:#fef08a,color:#854d0e,stroke:#ca8a04,stroke-width:2px;\n classDef basic fill:#f3f4f6,color:#374151,stroke:#9ca3af;\n A[Kvadratrøtter]:::basic --> Z{ABC-formelen}:::main\n B[Faktorisering 2. grad]:::step --> Z\n C[Kvadratsetninger]:::step --> Z`
+    },
+    '3G': {
+        title: "Tredjegradslikninger",
+        graph: `flowchart TD\n classDef main fill:#4f46e5,color:#fff,stroke:#312e81,stroke-width:2px;\n classDef step fill:#fef08a,color:#854d0e,stroke:#ca8a04,stroke-width:2px;\n classDef basic fill:#f3f4f6,color:#374151,stroke:#9ca3af;\n A[Grunnleggende Algebra]:::basic --> D(Nullpunktsetningen):::step\n A --> E(Polynomdivisjon):::step\n B[ABC-formelen]:::step --> F(Løse rest-polynomet):::step\n D -->|Finner første x| E\n E -->|Gir andregradspolynom| Z{Tredjegradslikninger}:::main\n F -->|Løser rest| Z`
+    },
+    '4C': {
+        title: "Andregradsfunksjoner",
+        graph: `flowchart TD\n classDef main fill:#4f46e5,color:#fff,stroke:#312e81,stroke-width:2px;\n classDef step fill:#fef08a,color:#854d0e,stroke:#ca8a04,stroke-width:2px;\n classDef basic fill:#f3f4f6,color:#374151,stroke:#9ca3af;\n A[Koordinatsystemet]:::basic --> Z{Andregradsfunksjoner}:::main\n B[Symmetriakse & Toppunkt]:::step --> Z\n C[ABC-formelen]:::step -->|Finner nullpunkter| Z`
+    },
+    '4H': {
+        title: "Funksjonsdrøfting",
+        graph: `flowchart TD\n classDef main fill:#4f46e5,color:#fff,stroke:#312e81,stroke-width:2px;\n classDef step fill:#fef08a,color:#854d0e,stroke:#ca8a04,stroke-width:2px;\n classDef basic fill:#f3f4f6,color:#374151,stroke:#9ca3af;\n A[Stigningstall]:::basic --> D(Momentan vekstfart):::step\n B[Polynomregning]:::basic --> E(Derivasjonsregler):::step\n C[Faktorisering]:::step --> F(Fortegnsskjema):::step\n D --> E\n E -->|Finner f'(x)| Z{Funksjonsdrøfting}:::main\n F -->|Finner bunn/topp-punkt| Z`
+    }
+};
+
+window.togglePrereqInline = async function(btn, containerId, subId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    
+    if (container.style.display === 'block') {
+        container.style.display = 'none';
+        btn.innerHTML = 'Hva må jeg kunne? 🗺️';
+    } else {
+        container.style.display = 'block';
+        btn.innerHTML = 'Skjul kart 🗺️';
+        if (!container.dataset.rendered) {
+            const data = prereqMap[subId];
+            container.innerHTML = '<h4 style="margin-top:0; color:var(--text-muted);">Byggeklosser for ' + data.title + '</h4><div class="mermaid">' + data.graph + '</div>';
+            try {
+                await mermaid.run({ nodes: container.querySelectorAll('.mermaid') });
+                container.dataset.rendered = 'true';
+            } catch(e) { console.error(e); }
+        }
+    }
+};
+
+async function renderOneGraph(containerId, graphStr) {
+    const el = document.getElementById(containerId);
+    if (!el || el.dataset.rendered) return;
+    el.innerHTML = '<div class="mermaid">' + graphStr + '</div>';
+    try {
+        await mermaid.run({ nodes: el.querySelectorAll('.mermaid') });
+        el.dataset.rendered = 'true';
+    } catch(e) { console.error('Mermaid error in ' + containerId, e); }
+}
+
+function renderGlobalMap() {
+    renderOneGraph('global-mermaid-container', globalMermaidGraph);
+    renderOneGraph('kap1-mermaid-container', kap1Graph);
+    renderOneGraph('kap2-mermaid-container', kap2Graph);
+    renderOneGraph('kap3-mermaid-container', kap3Graph);
+    renderOneGraph('kap4-mermaid-container', kap4Graph);
+}
+
+window.openMapModal = async function(type = 'global') {
+    const overlay = document.getElementById('map-modal-overlay');
+    const modalContainer = document.getElementById('modal-mermaid-container');
+    if (!overlay || !modalContainer) return;
+    
+    overlay.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    
+    // Determine which graph to show
+    let graphToRender = modalMermaidGraph;
+    let titleText = '🔗 Helhetsbilde – Slik henger alt sammen i 1T';
+    if (type === 'kap1') { graphToRender = kap1Graph; titleText = '📘 Kapittel 1 – Detaljert tankekart'; }
+    if (type === 'kap2') { graphToRender = kap2Graph; titleText = '🟢 Kapittel 2 – Detaljert tankekart'; }
+    if (type === 'kap3') { graphToRender = kap3Graph; titleText = '🟡 Kapittel 3 – Detaljert tankekart'; }
+    if (type === 'kap4') { graphToRender = kap4Graph; titleText = '🟣 Kapittel 4 – Detaljert tankekart'; }
+    
+    const headerSpan = overlay.querySelector('.map-modal-header span');
+    if (headerSpan) headerSpan.innerText = titleText;
+    
+    // Always re-render when switching to ensure correct graph is shown
+    modalContainer.innerHTML = '<div class="mermaid">' + graphToRender + '</div>';
+    try {
+        // Need to wait slightly for the DOM to update before running mermaid
+        setTimeout(async () => {
+            try {
+                await mermaid.run({ nodes: modalContainer.querySelectorAll('.mermaid') });
+            } catch(e) { console.error(e); }
+        }, 10);
+    } catch(e) { console.error(e); }
+};
+
+window.closeMapModal = function() {
+    const overlay = document.getElementById('map-modal-overlay');
+    if (overlay) overlay.classList.add('hidden');
+    document.body.style.overflow = '';
+};
+
+
 // ── DOMContentLoaded ──────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
+    if (typeof mermaid !== 'undefined') mermaid.initialize({ startOnLoad: false, theme: 'default' });
 
     
     // Hamburger meny logikk

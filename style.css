@@ -1507,3 +1507,180 @@ pre code { background: none; padding: 0; color: inherit; }
     .quiz-overlay { width: 100vw; }
     .banner-content { flex-direction: column; gap: 1rem; }
 }
+
+/* ============================================================
+   KUNNSKAPSKART & INLINE
+   ============================================================ */
+.prereq-inline-container {
+    margin-top: 1rem;
+    padding: 1.5rem;
+    background: var(--bg-surface);
+    border: 2px dashed var(--primary-subtle);
+    border-radius: var(--radius-md);
+    overflow-x: auto;
+    text-align: center;
+    display: none;
+    animation: fadeSlideDown 0.3s ease-out;
+}
+.prereq-inline-container h4 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: var(--text-muted);
+}
+
+/* ============================================================
+   KUNNSKAPSKART - Chapter Cards & Modal
+   ============================================================ */
+.km-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+    padding: 1.25rem;
+    background: var(--bg-surface);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    align-items: center;
+}
+.km-legend-label { font-weight: 700; color: var(--text-muted); }
+.km-pill { padding: 0.3rem 0.9rem; border-radius: 99px; font-size: 0.85rem; font-weight: 600; }
+.km-pill-1 { background:#dbeafe; color:#1e3a8a; border:1px solid #93c5fd; }
+.km-pill-2 { background:#dcfce7; color:#14532d; border:1px solid #86efac; }
+.km-pill-3 { background:#fef9c3; color:#713f12; border:1px solid #fde047; }
+.km-pill-4 { background:#f3e8ff; color:#581c87; border:1px solid #d8b4fe; }
+
+/* Klikkbart oversiktskort */
+.km-overview-card {
+    cursor: pointer;
+    border: 2px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: 2rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.km-overview-card:hover {
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 4px var(--primary-subtle);
+}
+.km-overview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.9rem 1.25rem;
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border);
+    font-weight: 600;
+    color: var(--text-main);
+}
+.km-expand-hint {
+    font-size: 0.8rem;
+    color: var(--primary-light);
+    font-weight: 500;
+}
+.km-overview-inner {
+    padding: 1.5rem;
+    background: var(--card-bg);
+    overflow-x: auto;
+    text-align: center;
+    max-height: 320px;
+    overflow-y: hidden;
+    pointer-events: none; /* prevent svg links intercepting click */
+}
+
+/* 4-kolonne grid for kapitelkort */
+.km-chapters-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+@media (max-width: 900px) { .km-chapters-grid { grid-template-columns: 1fr; } }
+
+.km-chapter-card {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 2px solid transparent;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.km-chapter-card:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+
+.km-card-1 { border-color: #93c5fd; }
+.km-card-2 { border-color: #86efac; }
+.km-card-3 { border-color: #fde047; }
+.km-card-4 { border-color: #d8b4fe; }
+
+.km-card-header { padding: 1.25rem 1.5rem 1rem; }
+.km-card-header h3 { margin: 0 0 0.25rem; font-size: 1.2rem; }
+.km-card-header p  { margin: 0; font-size: 0.85rem; opacity: 0.85; }
+
+.km-header-1 { background: linear-gradient(135deg, #2563eb, #3b82f6); color: #fff; }
+.km-header-2 { background: linear-gradient(135deg, #16a34a, #22c55e); color: #fff; }
+.km-header-3 { background: linear-gradient(135deg, #ca8a04, #eab308); color: #fff; }
+.km-header-4 { background: linear-gradient(135deg, #9333ea, #a855f7); color: #fff; }
+
+.km-card-desc {
+    margin: 0;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border);
+}
+.km-mermaid-area {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    overflow-x: auto;
+    text-align: center;
+    min-height: 200px;
+}
+
+/* Fullskjerm Modal */
+.map-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.65);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.2s ease;
+}
+.map-modal-overlay.hidden { display: none; }
+.map-modal-panel {
+    background: var(--bg-surface);
+    border-radius: var(--radius-lg);
+    width: 95vw;
+    max-width: 1400px;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 25px 80px rgba(0,0,0,0.4);
+}
+.map-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text-main);
+    flex-shrink: 0;
+}
+.map-modal-body {
+    flex: 1;
+    overflow: auto;
+    padding: 2rem;
+    text-align: center;
+    background: var(--card-bg);
+}
+.clickable-card {
+    cursor: pointer;
+}
+.clickable-card:hover {
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    transform: translateY(-4px);
+}
