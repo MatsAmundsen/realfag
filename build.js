@@ -299,7 +299,8 @@ function build() {
             fagstoff.push({
                 id: mdFile.replace('.md', ''),
                 tittel: meta.tittel || mdFile.replace('.md', ''),
-                html: markdownToHtml(body)
+                src: meta.src || undefined,
+                html: meta.src ? "" : markdownToHtml(body)
             });
         }
         console.log(`✓ Fant ${fagstoff.length} fagstoff-dokumenter`);
