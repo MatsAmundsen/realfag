@@ -71,7 +71,7 @@ window.fagsok = [
                         "hint": "Absoluttverdi betyr avstanden til null på tallinjen, uavhengig av fortegn.",
                         "fasit": null,
                         "fasitSteg": [
-                            "<strong>a)</strong> <br>Likningen $|x| = 12$ forteller oss at avstanden fra $x$ til $0$ på tallinjen er nøyaktig $12$.<br><br>Man kan gå $12$ skritt til høyre for null: $x = 12$<br><br>Man kan gå $12$ skritt til venstre for null: $x = -12$<br><br><strong>Svar:</strong> De mulige verdiene er $x = 12$ og $x = -12$",
+                            "<strong>a)</strong> <br>Ligningen $|x| = 12$ forteller oss at avstanden fra $x$ til $0$ på tallinjen er nøyaktig $12$.<br><br>Man kan gå $12$ skritt til høyre for null: $x = 12$<br><br>Man kan gå $12$ skritt til venstre for null: $x = -12$<br><br><strong>Svar:</strong> De mulige verdiene er $x = 12$ og $x = -12$",
                             "<strong>b)</strong> <br>Oppgaven sier at $x \\notin \\mathbb{N}$ (det vil si at $x$ er \"ikke et element i\" de naturlige tallene). <br>De naturlige tallene er de positive heltallene ($1, 2, 3, ...$).<br><br>Vi sjekker de to alternativene vi fant i oppgave a:<br><br>$x = 12 \\rightarrow$ dette er et positivt heltall (tilhører $\\mathbb{N}$)<br><br>$x = -12 \\rightarrow$ dette er et negativt tall (tilhører *ikke* $\\mathbb{N}$)<br><br>Siden $x$ ikke kan være i $\\mathbb{N}$, må det være det negative alternativet.<br><br><strong>Svar:</strong> $x = -12$"
                         ],
                         "starter": ""
@@ -220,7 +220,7 @@ window.fagsok = [
                         "forklaring": "Snittet inneholder tallene som er i *begge* intervallene. Det er tallene som er større enn 2 (fra $B$) og mindre eller lik 4 (fra $A$)."
                     },
                     {
-                        "sporsmal": "Løs likningen $|x - 2| = 5$.",
+                        "sporsmal": "Løs ligningen $|x - 2| = 5$.",
                         "alternativer": [
                             "$x = 7$",
                             "$x = 7$ eller $x = -3$",
@@ -325,7 +325,7 @@ window.fagsok = [
                     {
                         "id": "1.32",
                         "tittel": "Oppgave 1.32",
-                        "tekst": "<button onclick=\"window.goToRessurser()\" style=\"background-color: #10b981; box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2); transition: all 0.2s; color: white; padding: 5px 10px; border-radius: 5px; border: none; cursor: pointer; margin-bottom: 15px; font-weight: bold;\">📚 Lær rot-regler i Fagbiblioteket</button><br><br>Skriv så enkelt som mulig: $\\sqrt{45} - \\sqrt{20}$",
+                        "tekst": "<button type=\"button\" class=\"hint-btn ressurs-link-btn\" onclick=\"window.location.hash='ressurser/kvadratrotter'\">📚 Lær rot-regler i Fagbiblioteket</button><br><br>Skriv så enkelt som mulig: $\\sqrt{45} - \\sqrt{20}$",
                         "bilde": null,
                         "hint": "Skriv $45$ og $20$ som produkt av to tall, der det ene tallet er et kvadrattall (f.eks. $9$ eller $4$).",
                         "fasit": null,
@@ -569,26 +569,26 @@ window.fagsok = [
                     {
                         "id": "1.44",
                         "tittel": "Oppgave 1.44",
-                        "tekst": "<button onclick=\"window.goToRessurser()\" style=\"background-color: #10b981; box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2); transition: all 0.2s; color: white; padding: 5px 10px; border-radius: 5px; border: none; cursor: pointer; margin-bottom: 15px; font-weight: bold;\">📚 Lær brøkregning i Fagbiblioteket</button><br><br>Regn ut og forkort svaret så mye som mulig:<br>$\frac{5}{12} + \frac{1}{18}$",
+                        "tekst": "<button type=\"button\" class=\"hint-btn ressurs-link-btn\" onclick=\"window.location.hash='ressurser/brokregning'\">📚 Lær brøkregning i Fagbiblioteket</button><br><br>Regn ut og forkort svaret så mye som mulig:<br>$\\frac{5}{12} + \\frac{1}{18}$",
                         "bilde": null,
                         "hint": "Bruk minste felles multiplum (MFM) for $12$ og $18$ som du fant i forrige oppgave, for å finne fellesnevneren.",
                         "fasit": null,
                         "fasitSteg": [
-                            "Vi skal regne ut $\frac{5}{12} + \frac{1}{18}$.<br><br>Fra forrige oppgave vet vi at minste felles multiplum (fellesnevneren) for $12$ og $18$ er $36$.<br>Vi må utvide begge brøkene slik at nevneren blir $36$:<br>- For den første brøken må vi gange med $3$ ($12 \\cdot 3 = 36$).<br>- For den andre brøken må vi gange med $2$ ($18 \\cdot 2 = 36$).<br><br>$\frac{5 \\cdot 3}{12 \\cdot 3} + \frac{1 \\cdot 2}{18 \\cdot 2}$<br><br>$= \frac{15}{36} + \frac{2}{36}$",
-                            "$= \frac{15 + 2}{36}$<br><br>$= \frac{17}{36}$<br><br>Tallet $17$ er et primtall og deler ikke $36$, så brøken kan ikke forkortes mer.<br><br><strong>Svar:</strong> $\frac{17}{36}$"
+                            "Vi skal regne ut $\\frac{5}{12} + \\frac{1}{18}$.<br><br>Fra forrige oppgave vet vi at minste felles multiplum (fellesnevneren) for $12$ og $18$ er $36$.<br>Vi må utvide begge brøkene slik at nevneren blir $36$:<br>- For den første brøken må vi gange med $3$ ($12 \\cdot 3 = 36$).<br>- For den andre brøken må vi gange med $2$ ($18 \\cdot 2 = 36$).<br><br>$\\frac{5 \\cdot 3}{12 \\cdot 3} + \\frac{1 \\cdot 2}{18 \\cdot 2}$<br><br>$= \\frac{15}{36} + \\frac{2}{36}$",
+                            "$= \\frac{15 + 2}{36}$<br><br>$= \\frac{17}{36}$<br><br>Tallet $17$ er et primtall og deler ikke $36$, så brøken kan ikke forkortes mer.<br><br><strong>Svar:</strong> $\\frac{17}{36}$"
                         ],
                         "starter": ""
                     },
                     {
                         "id": "1.45",
                         "tittel": "Oppgave 1.45",
-                        "tekst": "<button onclick=\"window.goToRessurser()\" style=\"background-color: #10b981; box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2); transition: all 0.2s; color: white; padding: 5px 10px; border-radius: 5px; border: none; cursor: pointer; margin-bottom: 15px; font-weight: bold;\">📚 Lær brøkregning i Fagbiblioteket</button><br><br>Regn ut:<br><strong>a)</strong> $\frac{3}{4} \\cdot \frac{2}{5}$<br><br><strong>b)</strong> $\frac{4}{7} : \frac{2}{3}$",
+                        "tekst": "<button type=\"button\" class=\"hint-btn ressurs-link-btn\" onclick=\"window.location.hash='ressurser/brokregning'\">📚 Lær brøkregning i Fagbiblioteket</button><br><br>Regn ut:<br><strong>a)</strong> $\\frac{3}{4} \\cdot \\frac{2}{5}$<br><br><strong>b)</strong> $\\frac{4}{7} : \\frac{2}{3}$",
                         "bilde": null,
                         "hint": "Når vi ganger brøker, ganger vi teller med teller og nevner med nevner. <br>Når vi deler brøker, snur vi den bakerste brøken på hodet og ganger i stedet.",
                         "fasit": null,
                         "fasitSteg": [
-                            "<strong>a)</strong><br>Vi ganger teller med teller og nevner med nevner:<br>$\frac{3 \\cdot 2}{4 \\cdot 5}$<br>$= \frac{6}{20}$<br><br>Vi forkorter brøken ved å dele på $2$ oppe og nede:<br>$= \frac{3}{10}$<br><br><strong>Svar:</strong> $\frac{3}{10}$",
-                            "<strong>b)</strong><br>For å dele to brøker, ganger vi den første med den omvendte av den andre:<br>$\frac{4}{7} \\cdot \frac{3}{2}$<br><br>Ganger teller og nevner:<br>$= \frac{4 \\cdot 3}{7 \\cdot 2}$<br>$= \frac{12}{14}$<br><br>Vi forkorter brøken ved å dele på $2$ oppe og nede:<br>$= \frac{6}{7}$<br><br><strong>Svar:</strong> $\frac{6}{7}$"
+                            "<strong>a)</strong><br>Vi ganger teller med teller og nevner med nevner:<br>$\\frac{3 \\cdot 2}{4 \\cdot 5}$<br>$= \\frac{6}{20}$<br><br>Vi forkorter brøken ved å dele på $2$ oppe og nede:<br>$= \\frac{3}{10}$<br><br><strong>Svar:</strong> $\\frac{3}{10}$",
+                            "<strong>b)</strong><br>For å dele to brøker, ganger vi den første med den omvendte av den andre:<br>$\\frac{4}{7} \\cdot \\frac{3}{2}$<br><br>Ganger teller og nevner:<br>$= \\frac{4 \\cdot 3}{7 \\cdot 2}$<br>$= \\frac{12}{14}$<br><br>Vi forkorter brøken ved å dele på $2$ oppe og nede:<br>$= \\frac{6}{7}$<br><br><strong>Svar:</strong> $\\frac{6}{7}$"
                         ],
                         "starter": ""
                     }
@@ -599,7 +599,7 @@ window.fagsok = [
                         "alternativer": [
                             "Å finne minste felles multiplum",
                             "Å finne største felles faktor",
-                            "Å løse andregradslikninger",
+                            "Å løse andregradsligninger",
                             "Å finne primtallsfaktorer"
                         ],
                         "riktigSvar": 1,
@@ -694,7 +694,7 @@ window.fagsok = [
                         "forklaring": "Telleren kan faktoriseres med konjugatsetningen (tredje kvadratsetning): $(x-2)(x+2)$. Når vi forkorter bort $(x-2)$, står vi igjen med $x+2$."
                     },
                     {
-                        "sporsmal": "Løs likningen $\\frac{x}{3} - \\frac{x}{4} = 2$.",
+                        "sporsmal": "Løs ligningen $\\frac{x}{3} - \\frac{x}{4} = 2$.",
                         "alternativer": [
                             "$x = 12$",
                             "$x = 24$",
@@ -800,33 +800,33 @@ window.fagsok = [
                     {
                         "id": "1.59",
                         "tittel": "Oppgave 1.59",
-                        "tekst": "Bruk potensreglene til å bevise algebraisk at likningen stemmer: <br>$4^{x+1} - 4^x = 3 \\cdot 4^x$",
+                        "tekst": "Bruk potensreglene til å bevise algebraisk at ligningen stemmer: <br>$4^{x+1} - 4^x = 3 \\cdot 4^x$",
                         "bilde": null,
                         "hint": "Bruk regelen for multiplikasjon av potenser baklengs for å splitte opp $4^{x+1}$ til $4^x \\cdot 4^1$.<br>Da kan du faktorisere ut $4^x$.",
                         "fasit": null,
                         "fasitSteg": [
                             "Vi skal bevise at $4^{x+1} - 4^x = 3 \\cdot 4^x$. Vi starter med venstre side (V.S) og viser at den er lik høyre side (H.S).<br><br><strong>V.S:</strong><br>$4^{x+1} - 4^x$<br><br>$= (4^x \\cdot 4^1) - 4^x$ (bruker potensregelen $a^{n+m} = a^n \\cdot a^m$ til å splitte opp det første leddet)<br><br>$= 4 \\cdot 4^x - 1 \\cdot 4^x$ (omorganiserer litt og gjør det tydelig at vi har fire $4^x$ og trekker fra én $4^x$)<br><br>$= 4^x \\cdot (4 - 1)$ (faktoriserer ut felles faktor, $4^x$)",
-                            "$= 4^x \\cdot 3$ (regner ut parentesen)<br><br>$= 3 \\cdot 4^x$ (bytter rekkefølge på faktorene)<br><br>Dette er nøyaktig det som står på høyre side av likningen.<br><br>V.S $=$ H.S<br><br><strong>Svar:</strong> Beviset er fullført, likningen stemmer."
+                            "$= 4^x \\cdot 3$ (regner ut parentesen)<br><br>$= 3 \\cdot 4^x$ (bytter rekkefølge på faktorene)<br><br>Dette er nøyaktig det som står på høyre side av ligningen.<br><br>V.S $=$ H.S<br><br><strong>Svar:</strong> Beviset er fullført, ligningen stemmer."
                         ],
                         "starter": ""
                     },
                     {
                         "id": "1.60",
                         "tittel": "Oppgave 1.60",
-                        "tekst": "<button onclick=\"window.goToRessurser()\" style=\"background-color: #10b981; box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2); transition: all 0.2s; color: white; padding: 5px 10px; border-radius: 5px; border: none; cursor: pointer; margin-bottom: 15px; font-weight: bold;\">📚 Lær rot-regler i Fagbiblioteket</button><br><br>Regn ut og skriv svaret så enkelt som mulig:<br><strong>a)</strong> $\\sqrt{2} \\cdot \\sqrt{8}$<br><br><strong>b)</strong> $\frac{\\sqrt{50}}{\\sqrt{2}}$",
+                        "tekst": "<button type=\"button\" class=\"hint-btn ressurs-link-btn\" onclick=\"window.location.hash='ressurser/kvadratrotter'\">📚 Lær rot-regler i Fagbiblioteket</button><br><br>Regn ut og skriv svaret så enkelt som mulig:<br><strong>a)</strong> $\\sqrt{2} \\cdot \\sqrt{8}$<br><br><strong>b)</strong> $\\frac{\\sqrt{50}}{\\sqrt{2}}$",
                         "bilde": null,
-                        "hint": "Bruk rotreglene: $\\sqrt{a} \\cdot \\sqrt{b} = \\sqrt{a \\cdot b}$ og $\frac{\\sqrt{a}}{\\sqrt{b}} = \\sqrt{\frac{a}{b}}$.",
+                        "hint": "Bruk rotreglene: $\\sqrt{a} \\cdot \\sqrt{b} = \\sqrt{a \\cdot b}$ og $\\frac{\\sqrt{a}}{\\sqrt{b}} = \\sqrt{\\frac{a}{b}}$.",
                         "fasit": null,
                         "fasitSteg": [
                             "<strong>a)</strong><br>Vi bruker regelen for multiplikasjon av røtter:<br>$\\sqrt{2} \\cdot \\sqrt{8}$<br>$= \\sqrt{2 \\cdot 8}$<br>$= \\sqrt{16}$<br>$= 4$<br><br><strong>Svar:</strong> $4$",
-                            "<strong>b)</strong><br>Vi bruker regelen for divisjon av røtter:<br>$\frac{\\sqrt{50}}{\\sqrt{2}}$<br>$= \\sqrt{\frac{50}{2}}$<br>$= \\sqrt{25}$<br>$= 5$<br><br><strong>Svar:</strong> $5$"
+                            "<strong>b)</strong><br>Vi bruker regelen for divisjon av røtter:<br>$\\frac{\\sqrt{50}}{\\sqrt{2}}$<br>$= \\sqrt{\\frac{50}{2}}$<br>$= \\sqrt{25}$<br>$= 5$<br><br><strong>Svar:</strong> $5$"
                         ],
                         "starter": ""
                     },
                     {
                         "id": "1.61",
                         "tittel": "Oppgave 1.61",
-                        "tekst": "<button onclick=\"window.goToRessurser()\" style=\"background-color: #10b981; box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2); transition: all 0.2s; color: white; padding: 5px 10px; border-radius: 5px; border: none; cursor: pointer; margin-bottom: 15px; font-weight: bold;\">📚 Lær rot-regler i Fagbiblioteket</button><br><br>Forenkle uttrykket: $\\sqrt{72}$",
+                        "tekst": "<button type=\"button\" class=\"hint-btn ressurs-link-btn\" onclick=\"window.location.hash='ressurser/kvadratrotter'\">📚 Lær rot-regler i Fagbiblioteket</button><br><br>Forenkle uttrykket: $\\sqrt{72}$",
                         "bilde": null,
                         "hint": "Prøv å skrive $72$ som et produkt av et kvadrattall og et annet tall. Kvadratallene er $1, 4, 9, 16, 25, 36, \\dots$",
                         "fasit": null,
@@ -1076,8 +1076,8 @@ window.fagsok = [
                         "hint": "Ved multiplikasjon skal svaret ha like mange gjeldende siffer som det tallet i regnestykket som har *færrest* gjeldende siffer.",
                         "fasit": null,
                         "fasitSteg": [
-                            "Arealet av et rektangel er lengde ganger bredde:<br>$A = 4.3 \text{ m} \\cdot 3.25 \text{ m} = 13.975 \text{ m}^2$<br><br>Nå må vi runde av svaret. Regelen for multiplikasjon sier at svaret ikke kan oppgis med større nøyaktighet (flere gjeldende siffer) enn den mest unøyaktige faktoren.<br>- $4.3$ har <strong>2</strong> gjeldende siffer.<br>- $3.25$ har <strong>3</strong> gjeldende siffer.",
-                            "Dette betyr at svaret vårt kun kan ha <strong>2</strong> gjeldende siffer.<br>Vi runder av $13.975$ til to siffer, noe som gir $14$.<br><br><strong>Svar:</strong> Arealet er $14 \text{ m}^2$."
+                            "Arealet av et rektangel er lengde ganger bredde:<br>$A = 4.3 \\text{ m} \\cdot 3.25 \\text{ m} = 13.975 \\text{ m}^2$<br><br>Nå må vi runde av svaret. Regelen for multiplikasjon sier at svaret ikke kan oppgis med større nøyaktighet (flere gjeldende siffer) enn den mest unøyaktige faktoren.<br>- $4.3$ har <strong>2</strong> gjeldende siffer.<br>- $3.25$ har <strong>3</strong> gjeldende siffer.",
+                            "Dette betyr at svaret vårt kun kan ha <strong>2</strong> gjeldende siffer.<br>Vi runder av $13.975$ til to siffer, noe som gir $14$.<br><br><strong>Svar:</strong> Arealet er $14 \\text{ m}^2$."
                         ],
                         "starter": ""
                     }
@@ -1523,7 +1523,7 @@ window.fagsok = [
                         "fasitSteg": [
                             "<strong>a)</strong><br>$0{,}00048 = 4{,}8 \\cdot 10^{-4}$<br>(komma flyttes $4$ plasser til høyre)<br><br><strong>Svar:</strong> $4{,}8 \\cdot 10^{-4}$",
                             "<strong>b)</strong><br>$4{,}0 \\cdot 10^5 = 40 \\cdot 10^4$<br><br>$40 \\cdot 10^4 + 3{,}0 \\cdot 10^4 = 43 \\cdot 10^4 = 4{,}3 \\cdot 10^5$<br><br><strong>Svar:</strong> $4{,}3 \\cdot 10^5$",
-                            "<strong>c)</strong><br>$6 \\cdot 10^{-2} = 0{,}06$<br><br>Altså $6 \\cdot 10^{-2} = 0{,}06$<br><br><strong>Svar:</strong> $=$"
+                            "<strong>c)</strong><br>$6 \\cdot 10^{-2} = 0{,}06$<br><br>Altså $6 \\cdot 10^{-2} = 0{,}06$<br><br><strong>Svar:</strong> $="
                         ],
                         "starter": ""
                     },
@@ -1562,7 +1562,7 @@ window.fagsok = [
     },
     {
         "id": "kap2",
-        "tittel": "Kapittel 2: Algebra og mønstre",
+        "tittel": "Kapittel 2: Algebra og Mønstre",
         "delkapitler": [
             {
                 "id": "2A",
@@ -1592,7 +1592,7 @@ window.fagsok = [
                         "fasitSteg": [
                             "<strong>a)</strong><br>Vi skal løse opp parentesene og trekke sammen:<br><br>$3(a - 2) - 2(a + 4)$<br><br>$= 3 \\cdot a - 3 \\cdot 2 - 2 \\cdot a - 2 \\cdot 4$ (gange inn i parentesene)<br><br>$= 3a - 6 - 2a - 8$ (regne ut produktene)<br><br>$= 3a - 2a - 6 - 8$ (samle like ledd)<br><br>$= a - 14$ (trekke sammen)<br><br><strong>Svar:</strong> $a - 14$",
                             "<strong>b)</strong><br>Vi skal løse opp parentesene og trekke sammen:<br><br>$5(b^4 - 3a) + 10$<br><br>$= 5 \\cdot b^4 - 5 \\cdot 3a + 10$ (gange inn i parentesen)<br><br>$= 5b^4 - 15a + 10$ (regne ut produktene)<br><br><strong>Svar:</strong> $5b^4 - 15a + 10$",
-                            "<strong>c)</strong><br>Likningen som er oppgitt er: $2x(x - 3) = 2x^2 - 3$<br><br>Feilen er at $2x$ kun er multiplisert med $x$, og ikke med $-3$. <br><br>Riktig utregning:<br><br>$2x(x - 3)$<br><br>$= 2x \\cdot x - 2x \\cdot 3$ (multipliser $2x$ med hvert ledd inni parentesen)<br><br>$= 2x^2 - 6x$<br><br><strong>Svar:</strong> Feilen er at det mangler å multiplisere med $-3$. Riktig svar er $2x^2 - 6x$"
+                            "<strong>c)</strong><br>Ligningen som er oppgitt er: $2x(x - 3) = 2x^2 - 3$<br><br>Feilen er at $2x$ kun er multiplisert med $x$, og ikke med $-3$. <br><br>Riktig utregning:<br><br>$2x(x - 3)$<br><br>$= 2x \\cdot x - 2x \\cdot 3$ (multipliser $2x$ med hvert ledd inni parentesen)<br><br>$= 2x^2 - 6x$<br><br><strong>Svar:</strong> Feilen er at det mangler å multiplisere med $-3$. Riktig svar er $2x^2 - 6x$"
                         ],
                         "starter": ""
                     },
@@ -2524,7 +2524,7 @@ window.fagsok = [
                     {
                         "sporsmal": "Hva er en formel?",
                         "alternativer": [
-                            "En likning der alle tallene er kjente",
+                            "En ligning der alle tallene er kjente",
                             "En regel skrevet med matematiske symboler som viser en sammenheng",
                             "Et regnestykke med bare én bokstav",
                             "Et tallmønster"
@@ -2766,7 +2766,7 @@ window.fagsok = [
                         "fasitSteg": [
                             "<strong>a)</strong><br>$\\dfrac{10x - 15}{5} = \\dfrac{5(2x - 3)}{5} = 2x - 3$<br><br><strong>Svar:</strong> $2x - 3$",
                             "<strong>b)</strong><br>Fellesnevner $3x$:<br>$\\dfrac{1}{x} = \\dfrac{3}{3x}$<br><br>$\\dfrac{3}{3x} + \\dfrac{4}{3x} = \\dfrac{7}{3x}$<br><br><strong>Svar:</strong> $\\dfrac{7}{3x}$",
-                            "<strong>c)</strong><br>Feilen er at eleven deler bare $4$ i telleren på $4$, men lar $x$ stå urørt. Man kan ikke forkorte ett ledd i en sum.<br><br>Riktig:<br>$\\dfrac{x + 4}{4} = \\dfrac{x}{4} + \\dfrac{4}{4} = \\dfrac{x}{4} + 1$<br><br>Moteksempel: Hvis $x = 0$, venstre side $\\dfrac{4}{4} = 1$, høyre side $0 + 1 = 1$ (tilfeldig like). Hvis $x = 4$: venstre $\\dfrac{8}{4} = 2$, elevens svar $4 + 1 = 5$ — ikke like.<br><br><strong>Svar:</strong> Feil fordi man ikke kan forkorte ledd i en sum. Riktig: $\\dfrac{x}{4} + 1$."
+                            "<strong>c)</strong><br>Feilen er at eleven deler bare $4$ i telleren på $4$, men lar $x$ stå urørt. Man kan ikke forkorte ett ledd i en sum.<br><br>Riktig:<br>$\\dfrac{x + 4}{4} = \\dfrac{x}{4} + \\dfrac{4}{4} = \\dfrac{x}{4} + 1$<br><br>Moteksempel: Hvis $x = 4$: venstre $\\dfrac{8}{4} = 2$, elevens svar $4 + 1 = 5$ — ikke like.<br><br><strong>Svar:</strong> Feil fordi man ikke kan forkorte ledd i en sum. Riktig: $\\dfrac{x}{4} + 1$."
                         ],
                         "starter": ""
                     },
@@ -2805,7 +2805,7 @@ window.fagsok = [
     },
     {
         "id": "kap3",
-        "tittel": "Kapittel 3: Likninger og ulikheter",
+        "tittel": "Kapittel 3: Likninger og Ulikheter",
         "delkapitler": [
             {
                 "id": "3A",
@@ -3854,11 +3854,11 @@ window.fagsok = [
                         "tittel": "Oppgave 3.17",
                         "tekst": "Avgjør når disse matematiske uttrykkene er sanne:<br><br><strong>a)</strong> $\\frac{a}{5} = \\frac{3}{10}$<br><br><strong>b)</strong> $\\frac{10}{2b} = \\frac{4}{5}$",
                         "bilde": null,
-                        "hint": "Bruk kryssmultiplikasjon for å løse likningene.",
+                        "hint": "Bruk kryssmultiplikasjon for å løse ligningene.",
                         "fasit": null,
                         "fasitSteg": [
-                            "<strong>a)</strong><br>Vi løser likningen for $a$:<br><br>$\\frac{a}{5} = \\frac{3}{10}$<br><br>$a \\cdot 10 = 3 \\cdot 5$ (kryssmultipliserer)<br><br>$10a = 15$ (regner ut høyre side)<br><br>$a = \\frac{15}{10}$ (deler på $10$ på begge sider)<br><br>$a = 1.5$<br><br><strong>Svar:</strong> $a = 1.5$",
-                            "<strong>b)</strong><br>Vi løser likningen for $b$:<br><br>$\\frac{10}{2b} = \\frac{4}{5}$<br><br>$10 \\cdot 5 = 4 \\cdot 2b$ (kryssmultipliserer)<br><br>$50 = 8b$ (forenkler begge sider)<br><br>$b = \\frac{50}{8}$ (deler på $8$ på begge sider)<br><br>$b = 6.25$<br><br><strong>Svar:</strong> $b = 6.25$"
+                            "<strong>a)</strong><br>Vi løser ligningen for $a$:<br><br>$\\frac{a}{5} = \\frac{3}{10}$<br><br>$a \\cdot 10 = 3 \\cdot 5$ (kryssmultipliserer)<br><br>$10a = 15$ (regner ut høyre side)<br><br>$a = \\frac{15}{10}$ (deler på $10$ på begge sider)<br><br>$a = 1.5$<br><br><strong>Svar:</strong> $a = 1.5$",
+                            "<strong>b)</strong><br>Vi løser ligningen for $b$:<br><br>$\\frac{10}{2b} = \\frac{4}{5}$<br><br>$10 \\cdot 5 = 4 \\cdot 2b$ (kryssmultipliserer)<br><br>$50 = 8b$ (forenkler begge sider)<br><br>$b = \\frac{50}{8}$ (deler på $8$ på begge sider)<br><br>$b = 6.25$<br><br><strong>Svar:</strong> $b = 6.25$"
                         ],
                         "starter": ""
                     },
@@ -4300,7 +4300,7 @@ window.fagsok = [
                         "fasitSteg": [
                             "<strong>a)</strong><br>Vi setter $x = 8$ inn i funksjonen.<br><br>$p(8) = 5 - \\sqrt{2 \\cdot 8}$ (setter inn for $x$)<br>$p(8) = 5 - \\sqrt{16}$ (regner ut produktet under roten)<br>$p(8) = 5 - 4 = 1$ (tar kvadratroten og subtraherer)",
                             "<strong>Svar:</strong> $p(8) = 1$.",
-                            "<strong>b)</strong><br>Vi setter funksjonsuttrykket lik $3$.<br><br>$5 - \\sqrt{2x} = 3$<br>$5 - 3 = \\sqrt{2x}$ (flytter roten til høyre og tall til venstre)<br>$2 = \\sqrt{2x}$ (forenkler venstre side)<br>$2^2 = (\\sqrt{2x})^2$ (kvadrerer begge sider for å fjerne rottegnet)<br>$4 = 2x$ (deler på 2)<br>$x = \\frac{4}{2} = 2$<br><br><strong>Prøve:</strong> Vi setter $x = 2$ inn i den opprinnelige likningen:<br>$p(2) = 5 - \\sqrt{2 \\cdot 2} = 5 - 2 = 3$. Løsningen stemmer!",
+                            "<strong>b)</strong><br>Vi setter funksjonsuttrykket lik $3$.<br><br>$5 - \\sqrt{2x} = 3$<br>$5 - 3 = \\sqrt{2x}$ (flytter roten til høyre og tall til venstre)<br>$2 = \\sqrt{2x}$ (forenkler venstre side)<br>$2^2 = (\\sqrt{2x})^2$ (kvadrerer begge sider for å fjerne rottegnet)<br>$4 = 2x$ (deler på 2)<br>$x = \\frac{4}{2} = 2$<br><br><strong>Prøve:</strong> Vi setter $x = 2$ inn i den opprinnelige ligningen:<br>$p(2) = 5 - \\sqrt{2 \\cdot 2} = 5 - 2 = 3$. Løsningen stemmer!",
                             "<strong>Svar:</strong> $x = 2$.",
                             "<strong>c)</strong><br><strong>Definisjonsmengde ($D_p$):</strong> <br>Uttrykket under rottegnet kan ikke være negativt fordi vi ikke kan ta kvadratroten av negative tall (i reelle tall).<br>$2x \\ge 0$<br>$x \\ge 0$ (deler på 2)<br><br><strong>Verdimengde ($V_p$):</strong> <br>Rottegnet $\\sqrt{2x}$ gir alltid et positivt svar (eller null).<br>Dermed trekker vi alltid noe positivt (eller null) fra tallet $5$.<br>Den aller største verdien for $p(x)$ skjer når rot-leddet er så lite som mulig (som er $0$).<br>Da får vi $p(x) = 5 - 0 = 5$. For alle andre verdier av $x > 0$ vil $p(x)$ være mindre enn $5$, og synke uendelig mot negative verdier.",
                             "<strong>Svar:</strong> Definisjonsmengden er $D_p = [0, \\rightarrow\\rangle$ og verdimengden er $V_p = \\langle\\leftarrow, 5]$."
@@ -5234,7 +5234,7 @@ window.fagsok = [
                         "fasitSteg": [
                             "<strong>a)</strong><br>Vi setter $x = 5$ inn i formelen.<br><br>$A(5) = 3.14 \\cdot 5^{1.9}$<br><br>$A(5) \\approx 66.8$ (regn ut produktet)",
                             "<strong>Svar:</strong> Arealet er $66.8 \\text{ km}^2$.",
-                            "<strong>b)</strong><br>Vi setter $A(x) = 100$ inn i likningen og løser for $x$.<br><br>$3.14 \\cdot x^{1.9} = 100$<br><br>$x^{1.9} = \\frac{100}{3.14}$ (del begge sider på $3.14$)<br><br>$x = \\left(\\frac{100}{3.14}\\right)^{\\frac{1}{1.9}}$ (opphøy i invers brøk)<br><br>$x \\approx 6.13 \\text{ km}$",
+                            "<strong>b)</strong><br>Vi setter $A(x) = 100$ inn i ligningen og løser for $x$.<br><br>$3.14 \\cdot x^{1.9} = 100$<br><br>$x^{1.9} = \\frac{100}{3.14}$ (del begge sider på $3.14$)<br><br>$x = \\left(\\frac{100}{3.14}\\right)^{\\frac{1}{1.9}}$ (opphøy i invers brøk)<br><br>$x \\approx 6.13 \\text{ km}$",
                             "<strong>Svar:</strong> Radiusen er $6.13 \\text{ km}$.",
                             "<strong>c)</strong><br>Når radiusen $x$ øker med $15\\%$, multipliseres den med vekstfaktoren $1.15$.<br>Siden arealet er proporsjonalt med $x^{1.9}$, må vekstfaktoren for arealet være $1.15^{1.9}$.<br><br>Vekstfaktor $= 1.15^{1.9} \\approx 1.304$<br><br>Dette gir en økning på $30.4\\%$.",
                             "<strong>Svar:</strong> Arealet øker med $30.4\\%$."
@@ -6282,4 +6282,4 @@ window.programmeringData = [
     }
 ];
 
-window.ASSET_VERSION = "4640ef55af";
+window.ASSET_VERSION = "6208bb6dd4";

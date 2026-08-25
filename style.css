@@ -728,6 +728,10 @@ code, pre, .katex {
     box-shadow: 0 4px 12px var(--primary-glow);
 }
 
+.ressurs-link-btn {
+    margin-bottom: 0.85rem;
+}
+
 .fasit-btn {
     background: var(--accent-subtle);
     color: var(--accent);
