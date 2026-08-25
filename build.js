@@ -20,7 +20,7 @@ const path = require('path');
 const OPPGAVER_DIR = path.join(__dirname, 'oppgaver');
 const OUTPUT_FILE = path.join(__dirname, 'data.js');
 
-// ─── YAML frontmatter parser (enkel) ────────────────────────
+// ─── YAML frontmatter parser (enkel) ────────────────────────────────────────
 
 function parseFrontmatter(content) {
     const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/);
@@ -46,7 +46,7 @@ function parseFrontmatter(content) {
     return { meta, body: match[2] };
 }
 
-// ─── Markdown → HTML (enkel konverter) ──────────────────────
+// ─── Markdown → HTML (enkel konverter) ──────────────────────────────────────
 
 function markdownToHtml(md) {
     if (!md) return '';
@@ -116,12 +116,12 @@ function markdownToHtml(md) {
 
 function escapeHtml(str) {
     return str
-        .replace(/&/g, '&')
-        .replace(/</g, '<')
-        .replace(/>/g, '>');
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
 }
 
-// ─── Splitt Markdown-body i seksjoner ───────────────────────
+// ─── Splitt Markdown-body i seksjoner ───────────────────────────────────────
 
 function parseSections(body) {
     // Splitt på ## overskrifter
@@ -150,7 +150,7 @@ function parseSections(body) {
     return { tekst, hint, fasit, starter };
 }
 
-// ─── Les kapittelinfo fra _kapittel.yml ─────────────────────
+// ─── Les kapittelinfo fra _kapittel.yml ─────────────────────────────────────
 
 function readKapittelInfo(dirPath) {
     const ymlPath = path.join(dirPath, '_kapittel.yml');
@@ -176,7 +176,7 @@ function readKapittelInfo(dirPath) {
     return info;
 }
 
-// ─── Naturlig sortering av oppgave-IDer ───────────────────────
+// ─── Naturlig sortering av oppgave-IDer ─────────────────────────────────────
 
 function naturalSort(a, b) {
     const re = /(\d+)|(\D+)/g;
@@ -226,7 +226,7 @@ function parseOppgaveFile(filePath) {
     };
 }
 
-// ─── Hovedlogikk ────────────────────────────
+// ─── Hovedlogikk ────────────────────────────────────────────────────────────
 
 function build() {
     if (!fs.existsSync(OPPGAVER_DIR)) {
