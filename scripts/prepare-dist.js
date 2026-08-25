@@ -37,6 +37,28 @@ for (const [src, dest] of Object.entries(files)) {
     }
 }
 
+const versionSrc = path.join(ROOT, 'version.json');
+if (fs.existsSync(versionSrc)) {
+    fs.copyFileSync(versionSrc, path.join(DIST, 'version.json'));
+    console.log('  ✓ version.json → dist/version.json');
+}
+
+function copyDir(src, dest) {
+    fs.mkdirSync(dest, { recursive: true });
+    for (const name of fs.readdirSync(src)) {
+        const from = path.join(src, name);
+        const to = path.join(dest, name);
+        if (fs.statSync(from).isDirectory()) copyDir(from, to);
+        else fs.copyFileSync(from, to);
+    }
+}
+
+const fagstoffSrc = path.join(ROOT, 'fagstoff');
+if (fs.existsSync(fagstoffSrc)) {
+    copyDir(fagstoffSrc, path.join(DIST, 'fagstoff'));
+    console.log('  ✓ fagstoff/ → dist/fagstoff/');
+}
+
 // Kopier alle bilder (png, jpg, svg)
 const imageExts = ['.png', '.jpg', '.jpeg', '.svg', '.gif', '.webp'];
 for (const file of fs.readdirSync(ROOT)) {
