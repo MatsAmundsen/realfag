@@ -1,1 +1,51 @@
-PLACEHOLDER_WILL_BE_REPLACED
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <title>Matteguiden 1T – Utforskende Læring</title>
+    <script>
+    (function () {
+        // Cache-busting: legg til versjon på alle lokale script/css
+        const v = "36b092b3f7";
+        document.write('<link rel="stylesheet" href="style.css?v=' + v + '">');
+        document.write('<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"><\/script>');
+        document.write('<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">');
+        document.write('<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"><\/script>');
+        document.write('<script src="data.js?v=' + v + '"><\/script>');
+        document.write('<script src="app.js?v=' + v + '"><\/script>');
+    })();
+    </script>
+    <style>
+        /* Minimal fallback hvis CSS ikke laster */
+        body { font-family: system-ui, sans-serif; margin: 0; background: #0f172a; color: #e2e8f0; }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <header class="site-header">
+            <div class="header-inner">
+                <a href="#" class="logo" data-nav="home">Matteguiden <span>1T</span></a>
+                <nav class="main-nav" id="mainNav">
+                    <a href="#" data-nav="home" class="nav-link active">Hjem</a>
+                    <a href="#" data-nav="kapitler" class="nav-link">Kapitler</a>
+                    <a href="#" data-nav="programmering" class="nav-link">Programmering</a>
+                    <a href="#" data-nav="ressurser" class="nav-link">Ressurser</a>
+                    <a href="#" data-nav="fremgang" class="nav-link">Min fremgang</a>
+                </nav>
+                <button id="themeToggle" class="theme-btn" title="Bytt tema" aria-label="Bytt tema">🌙</button>
+                <button id="menuToggle" class="menu-btn" aria-label="Meny">☰</button>
+            </div>
+        </header>
+
+        <main id="mainContent" class="main-content">
+            <!-- Dynamisk innhold lastes her -->
+        </main>
+
+        <footer class="site-footer">
+            <p>Matteguiden 1T · Utforskende læring · Lokal progresjon lagres i nettleseren</p>
+        </footer>
+    </div>
+</body>
+</html>
