@@ -3,24 +3,24 @@ tittel: "Fagbibliotek: Videoer"
 ---
 Her finner du utvalgte videoer til de ulike temaene i faget.
 
-## Temaer kapittel 1 
+## Temaer i kapittel 1
 
 **Regnerekkefølge, parenteser, potenser og kvadratrøtter, multiplikasjon og divisjon, addisjon og subtraksjon**
 - https://www.youtube.com/watch?v=HCvi7QZBoGE
 - https://www.youtube.com/watch?v=ypG5Ab-bMnY
 
-**Absolutt verdi**
+**Absoluttverdi**
 - https://www.youtube.com/watch?v=BIh3qDceX3Q
 
-**Rasjonelle tall, irrasjonelle tall, naturlig tall, reelle tall og intervaller, Tegnsetting**
+**Rasjonelle tall, irrasjonelle tall, naturlige tall, reelle tall, intervaller og tegnsetting**
 - https://www.youtube.com/watch?v=4ey3raG716U
 - https://www.youtube.com/watch?v=X4HiQJiQ6Xw
 
-**Kvadrattall, rektangel tall, trekanttall, hustall- tallmønstre**
+**Kvadrattall, rektangeltall, trekanttall, hustall og tallmønstre**
 - https://www.youtube.com/watch?v=Pm1Z8GJFqPw
 - https://www.youtube.com/watch?v=lEgYrvKDFN0
 
-**Primtall og primtallfaktorisering**
+**Primtall og primtallsfaktorisering**
 - https://www.youtube.com/watch?v=iMmTOV6rKqg
 - https://www.youtube.com/watch?v=tPz8Q1DIQ48
 
@@ -35,10 +35,10 @@ Her finner du utvalgte videoer til de ulike temaene i faget.
 **Potenser, regneregler for potenser, negative eksponenter og eksponent lik null**
 - https://www.youtube.com/watch?v=daQqN2aB7is
 
-**Standardform, prefikser**
+**Standardform og prefikser**
 - https://www.youtube.com/watch?v=SSb_IddmrdE
 
-**Implikasjon og ekvivalen**
+**Implikasjon og ekvivalens**
 - https://www.youtube.com/watch?v=lnB4y3IyCRQ
 
 **Direkte bevis**
@@ -47,8 +47,7 @@ Her finner du utvalgte videoer til de ulike temaene i faget.
 **Indirekte bevis**
 - https://www.youtube.com/watch?v=fLeV0JMmBbU
 
-
-## Temaer for kapittel 2
+## Temaer i kapittel 2
 
 **Regning med bokstavuttrykk**
 - https://www.youtube.com/watch?v=PA7Q18hLK0E
@@ -69,7 +68,7 @@ Her finner du utvalgte videoer til de ulike temaene i faget.
 **Faktorisering med kvadratsetninger**
 - https://www.youtube.com/watch?v=OmjOo1a4pLA&list=PLuwGvcVZCuI08jK2OYQoLsEggtO4ehM2z&index=5
 
-**Utvide brøk, Addisjon og subtraksjon med brøk, Ganging og deling med brøk**
+**Utvide brøk, addisjon og subtraksjon med brøk, multiplikasjon og divisjon med brøk**
 - https://www.youtube.com/watch?v=2foqFiSTRPc
 - https://www.youtube.com/watch?v=OJ5HuprEHQw
 - https://www.youtube.com/watch?v=p2SeSghAyEE
@@ -81,54 +80,52 @@ Her finner du utvalgte videoer til de ulike temaene i faget.
 **Bruk av tekst for å lage formel**
 - https://www.youtube.com/watch?v=scwkoWmWDBY
 
-**Formelregning - sette tall inn i formler og endre på formelen**
+**Formelregning – sette tall inn i formler og endre formelen**
 - https://www.youtube.com/watch?v=LCyd253ucAg
 
 **Formler og logikk for figurtall**
 - https://www.youtube.com/watch?v=f4v7perY_0o
 - https://www.youtube.com/watch?v=bDZ7JL4ZUzY
 
-
-## Temaer for kapittel 3
+## Temaer i kapittel 3
 
 Følgende temaer vil få videoforklaringer:
-- Lineære ligning
+- Lineære likninger
 - Identitet
-- Hva er en likning
+- Hva er en likning?
 - Fra tekst til likning
 - Bruk av formler for å finne ukjent variabel
-- Snu på formel
-- Andregradslikning, ABC og produktregelen
+- Snu på formelen
+- Andregradslikning, ABC-formelen og produktregelen
 - Antall løsninger på en andregradslikning
-- Praktisk bruk av andregradslikning
-- Bevis for ABC -formel
+- Praktisk bruk av andregradslikninger
+- Bevis for ABC-formelen
 - Ekvivalens
 - Rasjonale likninger
 - Proporsjoner
-- Nullpunktfaktorisering og finne nullpunkt
+- Nullpunktsfaktorisering og finne nullpunkt
 - Andregradspolynom og lineære faktorer
 - Polynomdivisjon
 - Sammenheng mellom polynomdivisjon og nullpunktsfaktorisering
 - Polynomdivisjon med rest
 - Tredjegradspolynomer
 
-
-## Temaer for kapittel 4
+## Temaer i kapittel 4
 
 Følgende temaer vil få videoforklaringer:
-- Koordinatsystem, x- og y-akse, nullpunkter og ekstremalpunkter
-- Hva er funksjoner
+- Koordinatsystem, $x$- og $y$-akse, nullpunkter og ekstremalpunkter
+- Hva er en funksjon?
 - Definisjonsmengde og verdimengde
 - Topp- og bunnpunkt
-- Lineærfunksjon og form
-- Ettpunktsformel
-- Polynomfunksjon og form
+- Lineære funksjoner og form
+- Ettpunktsformelen
+- Polynomfunksjoner og form
 - Gjenkjenne første-, andre- og tredjegradsfunksjoner
 - Rasjonale funksjoner og asymptoter
 - Potensfunksjoner og form
 - Eksponentialfunksjoner og form
 - Gjennomsnittlig og momentan vekst
-- Hva forteller vekstfart oss
+- Hva forteller vekstfarten oss?
 - Den deriverte
 - Derivasjon og hva den kan fortelle oss
 - Fortegn til den deriverte
