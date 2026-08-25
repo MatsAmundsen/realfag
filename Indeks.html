@@ -98,49 +98,202 @@
         </div>
 
         <!-- KAPITTEL-OPPGAVER -->
-        <div id="oppgaver-view" class="view-section" style="display:none">
-            <aside id="sidebar" class="sidebar">
+        <div id="oppgaver-view" class="view-section hidden">
+            <div id="sidebar-backdrop" class="sidebar-backdrop"></div>
+            <aside class="sidebar" id="sidebar">
                 <div class="sidebar-header">
-                    <h2>Kapitler</h2>
-                    <div id="sidebar-progress" class="sidebar-progress"></div>
+                    <h3>Kapitler</h3>
+                    <button class="sidebar-home-btn" onclick="navigateTo('home')" title="Til forsiden">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    </button>
                 </div>
-                <nav id="kapittel-nav" class="kapittel-nav"></nav>
+                <div class="sidebar-progress" id="sidebar-progress">
+                    <div class="sidebar-progress-top">
+                        <span>Din progresjon</span>
+                        <span id="sidebar-progress-pct">0 %</span>
+                    </div>
+                    <div class="progress-track"><div class="progress-fill" id="sidebar-progress-fill"></div></div>
+                    <div class="sidebar-streak is-empty" id="sidebar-streak">Ingen aktiv rekke ennå</div>
+                </div>
+                <ul id="chapter-list"></ul>
             </aside>
-            <div id="oppgave-content" class="oppgave-content">
-                <div id="oppgave-list"></div>
-            </div>
+            <section class="content-area">
+                <nav class="breadcrumb" id="breadcrumb" aria-label="Navigasjon"></nav>
+                <div id="ukesplan-banner" class="hidden">
+                    <div class="banner-content">
+                        <div class="week-nav">
+                            <button id="prev-week-btn" class="week-nav-btn">&#8249;</button>
+                            <span class="week-badge">Uke <span id="week-number"></span></span>
+                            <button id="next-week-btn" class="week-nav-btn">&#8250;</button>
+                        </div>
+                        <p id="week-text"></p>
+                        <button id="week-link-btn" class="btn-primary">Gå til ukens oppgaver</button>
+                    </div>
+                </div>
+                <div id="task-container"></div>
+            </section>
         </div>
 
         <!-- PROGRAMMERING -->
-        <div id="programmering-view" class="view-section" style="display:none">
-            <div class="prog-header">
-                <h1>Programmering</h1>
-                <p>15 oppgaver fra grunnleggende print til løkker og if-tester. Bruk kodeskriveren under hver oppgave.</p>
-            </div>
-            <div id="prog-list" class="prog-list"></div>
+        <div id="programmering-view" class="view-section hidden">
+            <section class="content-area full-width">
+                <div class="view-header">
+                    <h2>Programmering</h2>
+                    <p>15 oppgaver i Python: fra print og variabler til if, for, while og tekstoppgaver.</p>
+                </div>
+                <div id="prog-task-container"></div>
+            </section>
         </div>
 
         <!-- RESSURSER -->
-        <div id="ressurser-view" class="view-section" style="display:none">
-            <div class="ressurs-tabs">
-                <button class="ressurs-tab active" data-ressurs="brok">Brøkregning</button>
-                <button class="ressurs-tab" data-ressurs="kvadratrot">Kvadratrøtter</button>
-                <button class="ressurs-tab" data-ressurs="programmering">Programmering</button>
-                <button class="ressurs-tab" data-ressurs="videoer">Fagvideoer</button>
-            </div>
-            <div id="ressurs-content" class="ressurs-content"></div>
+        <div id="ressurser-view" class="view-section hidden">
+            <section class="content-area full-width">
+                <div class="view-header">
+                    <h2>Ressurser og fagstoff</h2>
+                    <p>Lenker, forklaringer og videoer til de ulike temaene.</p>
+                </div>
+                <div id="ressurser-container"></div>
+            </section>
         </div>
 
         <!-- KUNNSKAPSKART -->
-        <div id="kunnskapskart-view" class="view-section" style="display:none">
-            <div class="kart-header">
-                <h1>Kunnskapskart</h1>
-                <p>Oversikt over sammenhenger i 1T-matematikk.</p>
+        <div id="kunnskapskart-view" class="view-section hidden">
+            <section class="content-area full-width">
+                <div class="view-header">
+                    <h2>Kunnskapskart for 1T</h2>
+                    <p>Klikk på et kapittel for å se det detaljerte tankekartet. Klikk på oversiktskartet for å åpne det i fullskjerm.</p>
+                </div>
+
+                <!-- FARGELEGENDE -->
+                <div class="km-legend">
+                    <span class="km-legend-label">Fargeforklaring:</span>
+                    <span class="km-pill km-pill-1">📘 Kap 1 – Grunnkunnskap</span>
+                    <span class="km-pill km-pill-2">🟢 Kap 2 – Algebra</span>
+                    <span class="km-pill km-pill-3">🟡 Kap 3 – Likninger</span>
+                    <span class="km-pill km-pill-4">🟣 Kap 4 – Funksjoner</span>
+                </div>
+
+                <!-- HELHETSBILDE – KLIKKBAR THUMBNAIL -->
+                <div class="km-overview-card" onclick="openMapModal('global')" title="Klikk for å åpne i fullskjerm">
+                    <div class="km-overview-header">
+                        <span>🔗 Helhetsbilde – slik henger alt sammen</span>
+                        <span class="km-expand-hint">🔍 Klikk for fullskjerm</span>
+                    </div>
+                    <div id="global-mermaid-container" class="km-overview-inner">
+                        <!-- Genereres av JS -->
+                    </div>
+                </div>
+
+                <!-- 4 KAPITTELKORT -->
+                <div class="km-chapters-grid">
+
+                    <!-- KAP 1 -->
+                    <div class="km-chapter-card km-card-1 clickable-card" onclick="openMapModal('kap1')" title="Klikk for fullskjerm">
+                        <div class="km-card-header km-header-1">
+                            <h3>📘 Kapittel 1</h3>
+                            <p>Tallforståelse og algebra</p>
+                        </div>
+                        <p class="km-card-desc">⚠️ Fundamentet! Mangler du dette, vil du slite i alle andre kapitler.</p>
+                        <div id="kap1-mermaid-container" class="km-mermaid-area"></div>
+                    </div>
+
+                    <!-- KAP 2 -->
+                    <div class="km-chapter-card km-card-2 clickable-card" onclick="openMapModal('kap2')" title="Klikk for fullskjerm">
+                        <div class="km-card-header km-header-2">
+                            <h3>🟢 Kapittel 2</h3>
+                            <p>Algebra og mønstre</p>
+                        </div>
+                        <p class="km-card-desc">Bygger direkte på kapittel 1. Her lærer du å manipulere og forenkle uttrykk.</p>
+                        <div id="kap2-mermaid-container" class="km-mermaid-area"></div>
+                    </div>
+
+                    <!-- KAP 3 -->
+                    <div class="km-chapter-card km-card-3 clickable-card" onclick="openMapModal('kap3')" title="Klikk for fullskjerm">
+                        <div class="km-card-header km-header-3">
+                            <h3>🟡 Kapittel 3</h3>
+                            <p>Likninger og ulikheter</p>
+                        </div>
+                        <p class="km-card-desc">Krever solid algebra fra kapittel 2. Her løser du likninger med ulike metoder.</p>
+                        <div id="kap3-mermaid-container" class="km-mermaid-area"></div>
+                    </div>
+
+                    <!-- KAP 4 -->
+                    <div class="km-chapter-card km-card-4 clickable-card" onclick="openMapModal('kap4')" title="Klikk for fullskjerm">
+                        <div class="km-card-header km-header-4">
+                            <h3>🟣 Kapittel 4</h3>
+                            <p>Funksjoner</p>
+                        </div>
+                        <p class="km-card-desc">Det store bildet. Bygger på alt fra kapittel 1–3. Eksamensfavoritt!</p>
+                        <div id="kap4-mermaid-container" class="km-mermaid-area"></div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+
+        <!-- FULLSKJERM MODAL FOR HELHETSBILDE -->
+        <div id="map-modal-overlay" class="map-modal-overlay hidden" onclick="closeMapModal()">
+            <div class="map-modal-panel" onclick="event.stopPropagation()">
+                <div class="map-modal-header">
+                    <span>🔗 Helhetsbilde – slik henger alt sammen i 1T</span>
+                    <button class="quiz-close-btn" onclick="closeMapModal()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                    </button>
+                </div>
+                <div id="modal-mermaid-container" class="map-modal-body"></div>
             </div>
-            <div id="mermaid-kart" class="mermaid-kart"></div>
+        </div>
+
+        <!-- SØKERESULTATER -->
+        <div id="search-view" class="view-section hidden">
+            <section class="content-area full-width">
+                <div class="view-header">
+                    <h2>Søkeresultater</h2>
+                    <p id="search-status">Skriv noe i søkefeltet for å finne oppgaver.</p>
+                </div>
+                <div id="search-results-container"></div>
+            </section>
         </div>
 
     </main>
+
+    <!-- QUIZ OVERLAY -->
+    <div id="quiz-overlay" class="quiz-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="quiz-overlay-title">
+        <div class="quiz-panel">
+            <div class="quiz-panel-header">
+                <div class="quiz-panel-meta">
+                    <span class="quiz-panel-label">Test deg selv</span>
+                    <h2 id="quiz-overlay-title" class="quiz-panel-title"></h2>
+                </div>
+                <button class="quiz-close-btn" onclick="closeQuizOverlay()" aria-label="Lukk quiz">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                </button>
+            </div>
+            <div class="quiz-progress-bar-wrap">
+                <div class="quiz-progress-bar" id="quiz-progress-bar"></div>
+            </div>
+            <div class="quiz-progress-text" id="quiz-progress-text"></div>
+            <div class="quiz-panel-body" id="quiz-panel-body"></div>
+            <div class="quiz-panel-footer">
+                <div class="quiz-level-legend">
+                    <span class="level-dot green"></span>Grunnleggende
+                    <span class="level-dot yellow"></span>Anvendelse
+                    <span class="level-dot red"></span>Analyse
+                    <span class="level-dot star"></span>Utfordring
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="quiz-backdrop" class="quiz-backdrop hidden" onclick="closeQuizOverlay()"></div>
+
+    <!-- Flytende Quiz-knapp -->
+    <button id="quiz-fab" class="quiz-fab hidden" onclick="openQuizOverlay()" aria-label="Åpne quiz">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><circle cx="12" cy="12" r="10"/><path d="M12 17h.01"/></svg>
+        <span>Quiz</span>
+        <span class="quiz-fab-badge" id="quiz-fab-badge"></span>
+    </button>
+
+    <div id="badge-toast" class="badge-toast hidden" role="status" aria-live="polite"></div>
 
     <script src="data.js?v=36b092b3f7"></script>
     <script src="app.js?v=36b092b3f7"></script>
