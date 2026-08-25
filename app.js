@@ -7,6 +7,8 @@ let currentQuizData = null;
 let currentQuizIndex = 0;
 let currentQuizScore = 0;
 let currentQuizTitle = '';
+let currentKapId = null;
+let currentSubId = null;
 
 // ── Hjelpefunksjoner (globale, brukes av onclick-attributter) ─
 window.toggleHint = function(hintId) {
@@ -110,7 +112,11 @@ let destroyHeroCanvas = null;
 // ── Forsiden ──────────────────────────────────────────────────
 function loadHomePage() {
     const cardsEl = document.getElementById('home-chapter-cards');
-    if (!cardsEl || cardsEl.dataset.loaded) return;
+    if (!cardsEl) return;
+    if (cardsEl.dataset.loaded) {
+        refreshProgressUI();
+        return;
+    }
     cardsEl.dataset.loaded = '1';
 
     const icons = ['🔢', '🔣', '⚖️', '📈'];
@@ -134,9 +140,12 @@ function loadHomePage() {
                     <span>📋 ${kap.delkapitler.length} delkapitler</span>
                     <span>✏️ ${oppgaveCount} oppgaver</span>
                 </div>
+                <div class="chapter-card-progress">
+                    <div class="progress-track"><div class="progress-fill" data-kap-fill="${kap.id}"></div></div>
+                    <span class="chapter-card-progress-label" data-kap-label="${kap.id}">0 / ${oppgaveCount} · 0 %</span>
+                </div>
             `;
             card.onclick = () => {
-                // Gå til første delkapittel
                 if (kap.delkapitler.length) {
                     window.location.hash = `oppgaver/${kap.id}/${kap.delkapitler[0].id}`;
                 } else {
@@ -148,6 +157,7 @@ function loadHomePage() {
     }
 
     loadRecentActivity();
+    refreshProgressUI();
 
     setTimeout(() => {
         destroyHeroCanvas = initHeroCanvas();
@@ -184,6 +194,388 @@ function saveRecentActivity(kapId, subId, kapTittel, delkapTittel) {
     recent.unshift({ kapId, subId, kapTittel, delkapTittel });
     if (recent.length > 5) recent = recent.slice(0, 5);
     try { localStorage.setItem('reel_recent', JSON.stringify(recent)); } catch(e) {}
+}
+
+// ── Progresjon (fase 1 + 2) ──────────────────────────────────
+const PROGRESS_KEY = 'reel_progress';
+
+const BADGE_META = {
+    first_task:   { title: 'Første oppgave',      desc: 'Du markerte din første oppgave som ferdig.' },
+    first_sub:    { title: 'Første delkapittel',  desc: 'Et helt delkapittel er fullført.' },
+    ten_tasks:    { title: '10 oppgaver',         desc: 'Du har fullført 10 oppgaver.' },
+    fifty_tasks:  { title: '50 oppgaver',         desc: '50 oppgaver i boka — solid innsats.' },
+    kap_kap1:     { title: 'Kapittel 1 ferdig',   desc: 'Hele kapittel 1 er merket ferdig.' },
+    kap_kap2:     { title: 'Kapittel 2 ferdig',   desc: 'Hele kapittel 2 er merket ferdig.' },
+    kap_kap3:     { title: 'Kapittel 3 ferdig',   desc: 'Hele kapittel 3 er merket ferdig.' },
+    kap_kap4:     { title: 'Kapittel 4 ferdig',   desc: 'Hele kapittel 4 er merket ferdig.' },
+    oving_kap1:   { title: 'Øveprøve kap. 1',     desc: 'Du har gått gjennom øveprøven i kapittel 1.' },
+    oving_kap2:   { title: 'Øveprøve kap. 2',     desc: 'Du har gått gjennom øveprøven i kapittel 2.' },
+    quiz_perfect: { title: 'Perfekt quiz',        desc: '100 % på en quiz. Sterkt!' },
+    streak_3:     { title: '3-dagers rekke',      desc: 'Tre dager på rad med aktivitet.' },
+    streak_7:     { title: 'Ukesrekke',           desc: 'Sju dager på rad. Imponerende disiplin.' }
+};
+
+function emptyProgress() {
+    return {
+        tasks: {},
+        quizzes: {},
+        streak: { lastDate: null, count: 0 },
+        badges: {},
+        lastActivityAt: null
+    };
+}
+
+function loadProgress() {
+    try {
+        const raw = JSON.parse(localStorage.getItem(PROGRESS_KEY) || 'null');
+        if (!raw || typeof raw !== 'object') return emptyProgress();
+        return {
+            tasks: raw.tasks || {},
+            quizzes: raw.quizzes || {},
+            streak: raw.streak || { lastDate: null, count: 0 },
+            badges: raw.badges || {},
+            lastActivityAt: raw.lastActivityAt || null
+        };
+    } catch (e) {
+        return emptyProgress();
+    }
+}
+
+function saveProgress(p) {
+    try { localStorage.setItem(PROGRESS_KEY, JSON.stringify(p)); } catch (e) {}
+}
+
+function pad2(n) { return String(n).padStart(2, '0'); }
+
+function toISODate(d) {
+    return `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`;
+}
+
+function todayISO() { return toISODate(new Date()); }
+
+function yesterdayISO() {
+    const d = new Date();
+    d.setDate(d.getDate() - 1);
+    return toISODate(d);
+}
+
+function touchStreak(p) {
+    const today = todayISO();
+    if (p.streak.lastDate === today) {
+        p.lastActivityAt = Date.now();
+        return;
+    }
+    if (p.streak.lastDate === yesterdayISO()) p.streak.count += 1;
+    else p.streak.count = 1;
+    p.streak.lastDate = today;
+    p.lastActivityAt = Date.now();
+}
+
+function taskKey(kapId, subId, oppgaveId) {
+    if (!kapId || kapId === 'prog') return `prog/${oppgaveId}`;
+    return `${kapId}/${subId}/${oppgaveId}`;
+}
+
+function isTaskDone(kapId, subId, oppgaveId, p) {
+    p = p || loadProgress();
+    return !!p.tasks[taskKey(kapId, subId, oppgaveId)];
+}
+
+function countSubchapter(kap, dk, p) {
+    const total = dk.oppgaver.length;
+    const done = dk.oppgaver.filter(o => p.tasks[taskKey(kap.id, dk.id, o.id)]).length;
+    return { done, total, pct: total ? Math.round((done / total) * 100) : 0 };
+}
+
+function countChapter(kap, p) {
+    let done = 0, total = 0;
+    kap.delkapitler.forEach(dk => {
+        const c = countSubchapter(kap, dk, p);
+        done += c.done;
+        total += c.total;
+    });
+    return { done, total, pct: total ? Math.round((done / total) * 100) : 0 };
+}
+
+function countAll(p) {
+    let done = 0, total = 0;
+    if (typeof window.fagsok !== 'undefined') {
+        window.fagsok.forEach(kap => {
+            const c = countChapter(kap, p);
+            done += c.done;
+            total += c.total;
+        });
+    }
+    if (typeof window.programmeringData !== 'undefined') {
+        window.programmeringData.forEach(o => {
+            total += 1;
+            if (p.tasks[taskKey('prog', null, o.id)]) done += 1;
+        });
+    }
+    return { done, total, pct: total ? Math.round((done / total) * 100) : 0 };
+}
+
+function isOvingDelkap(dk) {
+    return dk.id === '1OP' || dk.id === '2OP' || (dk.tittel && dk.tittel.indexOf('Øveprøve') !== -1);
+}
+
+function evaluateBadges(p) {
+    const newly = [];
+    function unlock(id) {
+        if (BADGE_META[id] && !p.badges[id]) {
+            p.badges[id] = Date.now();
+            newly.push(id);
+        }
+    }
+    const all = countAll(p);
+    if (all.done >= 1) unlock('first_task');
+    if (all.done >= 10) unlock('ten_tasks');
+    if (all.done >= 50) unlock('fifty_tasks');
+    if (p.streak.count >= 3) unlock('streak_3');
+    if (p.streak.count >= 7) unlock('streak_7');
+
+    if (typeof window.fagsok !== 'undefined') {
+        let anySubDone = false;
+        window.fagsok.forEach(kap => {
+            const ch = countChapter(kap, p);
+            if (ch.total && ch.done === ch.total) unlock('kap_' + kap.id);
+            kap.delkapitler.forEach(dk => {
+                const sub = countSubchapter(kap, dk, p);
+                if (sub.total && sub.done === sub.total) {
+                    anySubDone = true;
+                    if (isOvingDelkap(dk)) unlock('oving_' + kap.id);
+                }
+            });
+        });
+        if (anySubDone) unlock('first_sub');
+    }
+    Object.keys(p.quizzes).forEach(k => {
+        const q = p.quizzes[k];
+        if (q && q.total > 0 && q.best === q.total) unlock('quiz_perfect');
+    });
+    return newly;
+}
+
+function showBadgeToast(ids) {
+    const el = document.getElementById('badge-toast');
+    if (!el || !ids.length) return;
+    const items = ids.map(id => BADGE_META[id]).filter(Boolean);
+    if (!items.length) return;
+    el.innerHTML = items.map(b => `
+        <div class="badge-toast-item">
+            <div class="badge-toast-mark" aria-hidden="true">★</div>
+            <div>
+                <strong>${b.title}</strong>
+                <span>${b.desc}</span>
+            </div>
+        </div>
+    `).join('');
+    el.classList.remove('hidden');
+    requestAnimationFrame(() => el.classList.add('show'));
+    clearTimeout(showBadgeToast._t);
+    showBadgeToast._t = setTimeout(() => {
+        el.classList.remove('show');
+        setTimeout(() => el.classList.add('hidden'), 280);
+    }, 4200);
+}
+
+function applyTaskDoneState(article, done) {
+    if (!article) return;
+    article.classList.toggle('task-done', done);
+    const btn = article.querySelector('.done-btn');
+    if (btn) {
+        btn.classList.toggle('done-active', done);
+        btn.textContent = done ? 'Ferdig ✓' : 'Marker som ferdig';
+        btn.setAttribute('aria-pressed', done ? 'true' : 'false');
+    }
+}
+
+window.toggleTaskDone = function(kapId, subId, oppgaveId, btn) {
+    const p = loadProgress();
+    const k = taskKey(kapId, subId, oppgaveId);
+    const nowDone = !p.tasks[k];
+    if (nowDone) {
+        p.tasks[k] = Date.now();
+        touchStreak(p);
+    } else {
+        delete p.tasks[k];
+    }
+    const newBadges = evaluateBadges(p);
+    saveProgress(p);
+    applyTaskDoneState(btn ? btn.closest('.task-card') : null, nowDone);
+    refreshProgressUI();
+    if (nowDone && newBadges.length) showBadgeToast(newBadges);
+};
+
+function saveQuizScore(score, total) {
+    if (!currentKapId || !currentSubId || !total) return { isRecord: false, best: score };
+    const p = loadProgress();
+    const k = `${currentKapId}/${currentSubId}`;
+    const prev = p.quizzes[k] || { best: 0, total: total, last: 0 };
+    const isRecord = score > (prev.best || 0);
+    p.quizzes[k] = {
+        best: Math.max(prev.best || 0, score),
+        total: total,
+        last: score,
+        at: Date.now()
+    };
+    touchStreak(p);
+    const newBadges = evaluateBadges(p);
+    saveProgress(p);
+    refreshProgressUI();
+    if (newBadges.length) showBadgeToast(newBadges);
+    return { isRecord, best: p.quizzes[k].best };
+}
+
+window.resetProgress = function() {
+    if (!confirm('Nullstille all progresjon på denne enheten? Dette kan ikke angres.')) return;
+    saveProgress(emptyProgress());
+    document.querySelectorAll('.task-card').forEach(card => applyTaskDoneState(card, false));
+    refreshProgressUI();
+};
+
+function refreshProgressUI() {
+    const p = loadProgress();
+    const all = countAll(p);
+
+    const overallPct = document.getElementById('sidebar-progress-pct');
+    const overallFill = document.getElementById('sidebar-progress-fill');
+    const streakEl = document.getElementById('sidebar-streak');
+    if (overallPct) overallPct.textContent = all.pct + ' %';
+    if (overallFill) overallFill.style.width = all.pct + '%';
+    if (streakEl) {
+        if (p.streak.count > 0 && p.streak.lastDate === todayISO()) {
+            streakEl.textContent = p.streak.count === 1 ? '1 dag i rekke' : p.streak.count + ' dager i rekke';
+            streakEl.classList.remove('is-empty');
+        } else if (p.streak.count > 0 && p.streak.lastDate === yesterdayISO()) {
+            streakEl.textContent = 'Rekke: ' + p.streak.count + ' — fortsett i dag';
+            streakEl.classList.remove('is-empty');
+        } else {
+            streakEl.textContent = 'Ingen aktiv rekke ennå';
+            streakEl.classList.add('is-empty');
+        }
+    }
+
+    if (typeof window.fagsok !== 'undefined') {
+        window.fagsok.forEach(kap => {
+            const ch = countChapter(kap, p);
+            document.querySelectorAll(`[data-kap-fill="${kap.id}"]`).forEach(el => {
+                el.style.width = ch.pct + '%';
+            });
+            document.querySelectorAll(`[data-kap-label="${kap.id}"]`).forEach(el => {
+                el.textContent = ch.done + ' / ' + ch.total + ' · ' + ch.pct + ' %';
+            });
+            document.querySelectorAll(`[data-kap-pct="${kap.id}"]`).forEach(el => {
+                el.textContent = ch.pct ? ch.pct + '%' : '';
+                el.classList.toggle('is-complete', ch.total > 0 && ch.done === ch.total);
+            });
+            kap.delkapitler.forEach(dk => {
+                const sub = countSubchapter(kap, dk, p);
+                const key = kap.id + '/' + dk.id;
+                document.querySelectorAll(`[data-sub-fill="${key}"]`).forEach(el => {
+                    el.style.width = sub.pct + '%';
+                    el.classList.toggle('is-complete', sub.total > 0 && sub.done === sub.total);
+                });
+                document.querySelectorAll(`[data-sub-meta="${key}"]`).forEach(el => {
+                    el.textContent = sub.done + '/' + sub.total;
+                    el.classList.toggle('is-complete', sub.total > 0 && sub.done === sub.total);
+                });
+                const quiz = p.quizzes[key];
+                document.querySelectorAll(`[data-sub-quiz="${key}"]`).forEach(el => {
+                    if (quiz && quiz.total) {
+                        el.textContent = 'Quiz-rekord ' + quiz.best + '/' + quiz.total;
+                        el.hidden = false;
+                    } else {
+                        el.textContent = '';
+                        el.hidden = true;
+                    }
+                });
+            });
+        });
+    }
+
+    const strip = document.getElementById('sub-progress-strip');
+    if (strip && currentKapId && currentSubId && typeof window.fagsok !== 'undefined') {
+        const kap = window.fagsok.find(k => k.id === currentKapId);
+        const dk = kap && kap.delkapitler.find(d => d.id === currentSubId);
+        if (dk) {
+            const sub = countSubchapter(kap, dk, p);
+            const fill = strip.querySelector('.progress-fill');
+            const label = strip.querySelector('.sub-progress-copy');
+            if (fill) fill.style.width = sub.pct + '%';
+            if (label) label.textContent = sub.done + ' av ' + sub.total + ' oppgaver ferdig';
+        }
+    }
+
+    renderHomeProgressDashboard(p, all);
+}
+
+function renderHomeProgressDashboard(p, all) {
+    const body = document.getElementById('home-progress-body');
+    if (!body) return;
+    p = p || loadProgress();
+    all = all || countAll(p);
+
+    const badgeIds = Object.keys(BADGE_META);
+    const unlocked = badgeIds.filter(id => p.badges[id]);
+    const locked = badgeIds.filter(id => !p.badges[id]);
+
+    let chapterRows = '';
+    if (typeof window.fagsok !== 'undefined') {
+        chapterRows = window.fagsok.map(kap => {
+            const ch = countChapter(kap, p);
+            return `
+                <button type="button" class="progress-kap-row" onclick="window.location.hash='oppgaver/${kap.id}'">
+                    <div class="progress-kap-row-top">
+                        <span>${kap.tittel}</span>
+                        <span>${ch.done}/${ch.total}</span>
+                    </div>
+                    <div class="progress-track"><div class="progress-fill" style="width:${ch.pct}%"></div></div>
+                </button>`;
+        }).join('');
+    }
+
+    const streakLine = p.streak.count > 0
+        ? (p.streak.lastDate === todayISO()
+            ? `${p.streak.count} dag${p.streak.count === 1 ? '' : 'er'} på rad`
+            : `Rekke på ${p.streak.count} — åpne en oppgave i dag for å fortsette`)
+        : 'Merk en oppgave som ferdig for å starte en rekke';
+
+    body.innerHTML = `
+        <div class="progress-hero">
+            <div class="progress-hero-main">
+                <div class="progress-hero-label">Totalt fullført</div>
+                <div class="progress-hero-pct">${all.pct}%</div>
+                <div class="progress-track lg"><div class="progress-fill" style="width:${all.pct}%"></div></div>
+                <div class="progress-hero-meta">${all.done} av ${all.total} oppgaver</div>
+            </div>
+            <div class="progress-hero-side">
+                <div class="progress-stat">
+                    <span class="progress-stat-label">Rekke</span>
+                    <span class="progress-stat-value">${p.streak.count || 0}</span>
+                    <span class="progress-stat-note">${streakLine}</span>
+                </div>
+                <div class="progress-stat">
+                    <span class="progress-stat-label">Merker</span>
+                    <span class="progress-stat-value">${unlocked.length}/${badgeIds.length}</span>
+                    <span class="progress-stat-note">${unlocked.length ? 'Samlet underveis' : 'Låses opp mens du jobber'}</span>
+                </div>
+            </div>
+        </div>
+        <div class="progress-kap-list">${chapterRows}</div>
+        <h3 class="progress-subhead">Merker</h3>
+        <div class="badge-grid">
+            ${unlocked.map(id => {
+                const b = BADGE_META[id];
+                return `<div class="badge-card unlocked"><strong>${b.title}</strong><span>${b.desc}</span></div>`;
+            }).join('')}
+            ${locked.map(id => {
+                const b = BADGE_META[id];
+                return `<div class="badge-card locked"><strong>${b.title}</strong><span>${b.desc}</span></div>`;
+            }).join('')}
+        </div>
+        <button type="button" class="progress-reset" onclick="resetProgress()">Nullstill progresjon</button>
+    `;
 }
 
 // ── Navigasjon (global) ───────────────────────────────────────
@@ -313,11 +705,20 @@ function renderQuizResult(total) {
     else if (pct >= 70) emoji = '🎉';
     else if (pct >= 50) emoji = '👍';
 
+    const rec = saveQuizScore(currentQuizScore, total);
+    let recordLine = '';
+    if (rec.isRecord && rec.best > 0) {
+        recordLine = `<div class="quiz-record is-new">Ny rekord: ${rec.best}/${total}</div>`;
+    } else if (rec.best > 0) {
+        recordLine = `<div class="quiz-record">Beste så langt: ${rec.best}/${total}</div>`;
+    }
+
     body.innerHTML = `
         <div class="quiz-result">
             <span class="quiz-result-emoji">${emoji}</span>
             <div class="quiz-result-score">${currentQuizScore}/${total}</div>
             <div class="quiz-result-text">Du fikk ${pct}% riktig!</div>
+            ${recordLine}
             <button class="quiz-restart-btn" onclick="restartQuiz()">Prøv igjen 🔄</button>
         </div>
     `;
@@ -331,9 +732,11 @@ window.restartQuiz = function() {
     renderQuizQuestion();
 };
 
-function setActiveQuiz(quizData, title) {
+function setActiveQuiz(quizData, title, kapId, subId) {
     currentQuizData  = quizData;
     currentQuizTitle = title;
+    if (kapId) currentKapId = kapId;
+    if (subId) currentSubId = subId;
 
     const fab   = document.getElementById('quiz-fab');
     const badge = document.getElementById('quiz-fab-badge');
@@ -359,7 +762,94 @@ function renderKaTeX(el) {
 }
 
 // ── Oppgave-builder ────────────────────────────────────────────
-function buildTaskCard(oppgave, contextLabel, index = 0, total = 1, subId = null, idPrefix = "std-") {
+function escapeHtmlText(str) {
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+}
+
+function buildPlaygroundHtml(id, starter) {
+    return `
+        <div class="py-play" data-play-id="${id}">
+            <div class="py-play-bar">
+                <span class="py-play-label">Kodeskriver · Python</span>
+                <button type="button" class="hint-btn py-run-btn" data-run="${id}">Kjør ▶</button>
+            </div>
+            <textarea id="${id}-code" class="py-code" spellcheck="false" autocapitalize="off">${escapeHtmlText(starter)}</textarea>
+            <pre id="${id}-out" class="py-out">Trykk Kjør for å se utskrift.</pre>
+        </div>`;
+}
+
+const PYODIDE_INDEX = 'https://cdn.jsdelivr.net/pyodide/v0.26.4/full/';
+let pyodidePromise = null;
+
+function loadPyodideRuntime() {
+    if (pyodidePromise) return pyodidePromise;
+    pyodidePromise = (async () => {
+        if (typeof loadPyodide !== 'function') {
+            await new Promise((resolve, reject) => {
+                const s = document.createElement('script');
+                s.src = PYODIDE_INDEX + 'pyodide.js';
+                s.onload = resolve;
+                s.onerror = () => reject(new Error('Klarte ikke å laste Python. Sjekk nettilkoblingen.'));
+                document.head.appendChild(s);
+            });
+        }
+        return loadPyodide({ indexURL: PYODIDE_INDEX });
+    })();
+    return pyodidePromise;
+}
+
+window.runPythonEditor = async function (id) {
+    const ta = document.getElementById(id + '-code');
+    const out = document.getElementById(id + '-out');
+    if (!ta || !out) return;
+    out.classList.remove('py-out-err');
+    out.textContent = 'Laster Python … (første gang kan ta noen sekunder)';
+    let buffer = '';
+    try {
+        const py = await loadPyodideRuntime();
+        out.textContent = 'Kjører …';
+        py.setStdout({ batched: (s) => { buffer += s; } });
+        py.setStderr({ batched: (s) => { buffer += s; } });
+        py.setStdin({
+            stdin: () => {
+                const v = window.prompt('Programmet kaller input():');
+                return v === null ? '' : v + '\n';
+            }
+        });
+        const timed = new Promise((_, rej) =>
+            setTimeout(() => rej(new Error('Koden kjørte for lenge. Sjekk at while-løkken stopper.')), 8000)
+        );
+        await Promise.race([py.runPythonAsync(ta.value), timed]);
+        out.textContent = buffer.trimEnd() === '' ? '(ingen utskrift — husk print(...))' : buffer;
+    } catch (err) {
+        out.classList.add('py-out-err');
+        const msg = err && err.message ? err.message : String(err);
+        out.textContent = (buffer ? buffer + '\n' : '') + msg;
+    }
+};
+
+document.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-run]');
+    if (btn) {
+        e.preventDefault();
+        window.runPythonEditor(btn.getAttribute('data-run'));
+    }
+});
+
+document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Tab' || !e.target.classList.contains('py-code')) return;
+    e.preventDefault();
+    const ta = e.target;
+    const s = ta.selectionStart;
+    const end = ta.selectionEnd;
+    ta.value = ta.value.slice(0, s) + '    ' + ta.value.slice(end);
+    ta.selectionStart = ta.selectionEnd = s + 4;
+});
+
+function buildTaskCard(oppgave, contextLabel, index = 0, total = 1, subId = null, idPrefix = "std-", kapId = null) {
     const article = document.createElement('article');
     
     // Heuristikk for vanskelighetsgrad basert på plassering i delkapittelet
@@ -380,17 +870,25 @@ function buildTaskCard(oppgave, contextLabel, index = 0, total = 1, subId = null
 
     article.className = `task-card ${lvlClass}`;
     article.id = `${idPrefix}task-${oppgave.id}`;
+    article.dataset.taskKey = taskKey(kapId, subId, oppgave.id);
+
+    const done = isTaskDone(kapId, subId, oppgave.id);
+    if (done) article.classList.add('task-done');
 
     let html = `
         <div class="task-card-header">
             ${contextLabel ? `<span class="task-context">${contextLabel}</span>` : '<span></span>'}
-            <span class="task-badge ${lvlClass}">${lvlIcon} Nivå ${lvlClass.split('-')[1]}: ${lvlLabel}</span>
+            <div class="task-header-right">
+                <span class="task-done-pill">Ferdig</span>
+                <span class="task-badge ${lvlClass}">${lvlIcon} Nivå ${lvlClass.split('-')[1]}: ${lvlLabel}</span>
+            </div>
         </div>
         <h3 class="task-title">${oppgave.tittel}</h3>
         <div class="task-content">
             ${oppgave.tekst}
             ${oppgave.bilde ? `<img src="${oppgave.bilde}" alt="Figur til ${oppgave.tittel}" class="task-image">` : ''}
         </div>
+        ${(idPrefix === 'prog-' || oppgave.starter) ? buildPlaygroundHtml(`${idPrefix}play-${oppgave.id}`, oppgave.starter || '') : ''}
     `;
 
     // Fasit HTML
@@ -428,7 +926,6 @@ function buildTaskCard(oppgave, contextLabel, index = 0, total = 1, subId = null
     html += `
         <div class="task-action-bar">
             ${(function(){
-                // subId sendes nå direkte inn som argument 5 i funksjonen!
                 if (subId && typeof prereqMap !== 'undefined' && prereqMap[subId]) {
                     return `<button class="hint-btn prereq-btn" onclick="togglePrereqInline(this, '${idPrefix}prereq-${oppgave.id}', '${subId}')" style="background: var(--primary-subtle); color: var(--primary-dark); border-color: var(--primary-light);">Hva må jeg kunne? 🗺️</button>`;
                 }
@@ -436,6 +933,7 @@ function buildTaskCard(oppgave, contextLabel, index = 0, total = 1, subId = null
             })()}
             <button class="hint-btn" onclick="toggleHint('${idPrefix}hint-${oppgave.id}')">Vis hint 💡</button>
             ${fasitKnapp}
+            <button class="hint-btn done-btn${done ? ' done-active' : ''}" aria-pressed="${done ? 'true' : 'false'}" onclick="toggleTaskDone('${kapId || ''}','${subId || ''}','${oppgave.id}', this)">${done ? 'Ferdig ✓' : 'Marker som ferdig'}</button>
         </div>
         <div id="${idPrefix}prereq-${oppgave.id}" class="prereq-inline-container" style="display:none;"></div>
         <div id="${idPrefix}hint-${oppgave.id}" class="hint-content">${oppgave.hint}</div>
@@ -453,6 +951,9 @@ function loadSubchapter(kapId, subId) {
     if (!kapData) return;
     const dkData = kapData.delkapitler.find(d => d.id === subId);
     if (!dkData) return;
+
+    currentKapId = kapId;
+    currentSubId = subId;
 
     // Sidebar UI - Trekkspill og Aktiv state
     document.querySelectorAll('.subchapter-btn').forEach(b => b.classList.remove('active'));
@@ -493,19 +994,27 @@ function loadSubchapter(kapId, subId) {
         <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
             <h2 style="font-size:2.2rem;color:var(--text-main);margin:0;">${dkData.tittel}</h2>
             ${dkData.quiz && dkData.quiz.length ? `<button class="hint-btn" style="flex-shrink:0;font-size:0.85rem;" onclick="setActiveQuizAndOpen(${JSON.stringify(dkData.quiz).replace(/"/g, '&quot;')}, '${dkData.tittel.replace(/'/g, "\\'")}')">🧠 Quiz (${dkData.quiz.length} spm)</button>` : ''}
+
+            ${videoPanelHtml(subId)}
+        </div>
+        <div class="sub-progress-strip" id="sub-progress-strip">
+            <div class="sub-progress-copy">0 av ${dkData.oppgaver.length} oppgaver ferdig</div>
+            <div class="progress-track"><div class="progress-fill"></div></div>
+            <div class="sub-quiz-best" data-sub-quiz="${kapId}/${subId}" hidden></div>
         </div>
     `;
     taskContainer.appendChild(header);
 
     // Render tasks
     dkData.oppgaver.forEach((oppgave, idx) => {
-        taskContainer.appendChild(buildTaskCard(oppgave, null, idx, dkData.oppgaver.length, dkData.id, "std-"));
+        taskContainer.appendChild(buildTaskCard(oppgave, null, idx, dkData.oppgaver.length, dkData.id, "std-", kapId));
     });
 
-    setActiveQuiz(dkData.quiz, dkData.tittel);
+    setActiveQuiz(dkData.quiz, dkData.tittel, kapId, subId);
 
     renderKaTeX(taskContainer);
     updateBanner(displayedWeek);
+    refreshProgressUI();
     
     // Smooth scroll to top of content
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -515,6 +1024,75 @@ window.setActiveQuizAndOpen = function(quizData, title) {
     setActiveQuiz(quizData, title);
     window.openQuizOverlay();
 };
+
+const VIDEO_BY_SUB = {
+    '1A': [
+        { tittel: 'Regnerekkefølge og parenteser', url: 'https://www.youtube.com/watch?v=HCvi7QZBoGE' },
+        { tittel: 'Tallmengder og intervaller', url: 'https://www.youtube.com/watch?v=4ey3raG716U' }
+    ],
+    '1B': [
+        { tittel: 'Figurtall og mønstre', url: 'https://www.youtube.com/watch?v=Pm1Z8GJFqPw' }
+    ],
+    '1C': [
+        { tittel: 'Primtall og faktorisering', url: 'https://www.youtube.com/watch?v=iMmTOV6rKqg' }
+    ],
+    '1D': [
+        { tittel: 'Brøkregning', url: 'https://www.youtube.com/watch?v=2foqFiSTRPc' }
+    ],
+    '1E': [
+        { tittel: 'Kvadratrøtter', url: 'https://www.youtube.com/watch?v=NRx60-H6ZY0' },
+        { tittel: 'Potenser', url: 'https://www.youtube.com/watch?v=daQqN2aB7is' },
+        { tittel: 'Standardform', url: 'https://www.youtube.com/watch?v=SSb_IddmrdE' }
+    ],
+    '1F': [
+        { tittel: 'Implikasjon og ekvivalens', url: 'https://www.youtube.com/watch?v=lnB4y3IyCRQ' }
+    ],
+    '1OP': [
+        { tittel: 'Regnerekkefølge', url: 'https://www.youtube.com/watch?v=HCvi7QZBoGE' },
+        { tittel: 'Kvadratrøtter', url: 'https://www.youtube.com/watch?v=NRx60-H6ZY0' }
+    ],
+    '2A': [
+        { tittel: 'Regning med bokstavuttrykk', url: 'https://www.youtube.com/watch?v=PA7Q18hLK0E' }
+    ],
+    '2B': [
+        { tittel: 'Første kvadratsetning', url: 'https://www.youtube.com/watch?v=LgDQ29AAfEM' }
+    ],
+    '2C': [
+        { tittel: 'Andre kvadratsetning', url: 'https://www.youtube.com/watch?v=vKmPyzXwm_A' }
+    ],
+    '2D': [
+        { tittel: 'Tredje kvadratsetning', url: 'https://www.youtube.com/watch?v=isqqIJYcnB0' }
+    ],
+    '2E': [
+        { tittel: 'Faktorisering med kvadratsetninger', url: 'https://www.youtube.com/watch?v=OmjOo1a4pLA' }
+    ],
+    '2F': [
+        { tittel: 'Formelregning', url: 'https://www.youtube.com/watch?v=LCyd253ucAg' }
+    ]
+};
+
+window.toggleSubVideos = function() {
+    const panel = document.getElementById('sub-video-panel');
+    if (!panel) return;
+    const open = panel.hasAttribute('hidden');
+    if (open) panel.removeAttribute('hidden');
+    else panel.setAttribute('hidden', '');
+};
+
+function videoPanelHtml(subId) {
+    const list = VIDEO_BY_SUB[subId];
+    if (!list || !list.length) return '';
+    const items = list.map(v =>
+        `<a class="sub-video-link" href="${v.url}" target="_blank" rel="noopener noreferrer">${v.tittel}</a>`
+    ).join('');
+    return `
+        <button type="button" class="hint-btn sub-video-btn" onclick="toggleSubVideos()">Videoer (${list.length})</button>
+        <div id="sub-video-panel" class="sub-video-panel" hidden>
+            <p>Korte gjennomganger til dette delkapittelet. Åpnes i YouTube (fungerer fint på mobil).</p>
+            ${items}
+            <button type="button" class="sub-video-all" onclick="window.location.hash='ressurser'">Alle fagvideoer</button>
+        </div>`;
+}
 
 // ── Ukesplan ───────────────────────────────────────────────────
 const ukesplan = {
@@ -582,6 +1160,26 @@ function updateBanner(week) {
 
 // ── Load ressurser ────────────────────────────────────────────
 let ressurserLastet = false;
+function extractFagstoffHtml(raw) {
+    if (!raw) return '';
+    if (typeof DOMParser === 'undefined') {
+        return raw.replace(/<style[\s\S]*?<\/style>/gi, '');
+    }
+    const doc = new DOMParser().parseFromString(raw, 'text/html');
+    doc.querySelectorAll('style, script').forEach(n => n.remove());
+    const inner = doc.querySelector('.container') || doc.body;
+    return inner ? inner.innerHTML : raw;
+}
+
+function scrollFagstoffTarget(root, id) {
+    if (!id) return;
+    const scope = root || document;
+    let target = null;
+    try { target = scope.querySelector('#' + CSS.escape(id)); } catch (e) {}
+    if (!target) target = document.getElementById(id);
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
 async function loadRessurser() {
     const container = document.getElementById('ressurser-container');
     container.innerHTML = '';
@@ -593,26 +1191,31 @@ async function loadRessurser() {
     for (const tema of window.fagstoff) {
         if (tema.src && !tema._loaded) {
             try {
-                const res = await fetch(tema.src);
+                const version = window.ASSET_VERSION || '';
+                const sep = tema.src.includes('?') ? '&' : '?';
+                const url = version ? `${tema.src}${sep}v=${encodeURIComponent(version)}` : tema.src;
+                const res = await fetch(url, { cache: 'no-store' });
                 if (res.ok) {
-                    tema.html = await res.text();
+                    tema.html = extractFagstoffHtml(await res.text());
                     tema._loaded = true;
                 }
             } catch (err) {
                 tema.html = '<p>Kunne ikke laste fagstoffet.</p>';
             }
+        } else if (tema.html && /<style[\s\S]*?:root/i.test(tema.html)) {
+            tema.html = extractFagstoffHtml(tema.html);
         }
     }
 
     const nav = document.createElement('div');
     nav.className = 'ressurs-tabs';
-    nav.style.cssText = 'display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem;';
     const contentArea = document.createElement('div');
 
     window.fagstoff.forEach((tema, i) => {
         const btn = document.createElement('button');
-        btn.className = 'hint-btn';
-        if (i === 0) btn.style.cssText = 'background:var(--primary);color:#fff;';
+        btn.type = 'button';
+        btn.className = 'ressurs-tab' + (i === 0 ? ' active' : '');
+        btn.dataset.fagId = tema.id;
         btn.textContent = tema.tittel.replace('Fagbibliotek: ', '');
 
         const article = document.createElement('article');
@@ -622,8 +1225,8 @@ async function loadRessurser() {
         article.innerHTML = `<h3 class="task-title" style="margin-bottom:1rem">${tema.tittel}</h3><div class="fagstoff-content">${tema.html || ''}</div>`;
 
         btn.addEventListener('click', () => {
-            nav.querySelectorAll('button').forEach(b => { b.style.background = ''; b.style.color = ''; });
-            btn.style.cssText = 'background:var(--primary);color:#fff;';
+            nav.querySelectorAll('.ressurs-tab').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
             contentArea.querySelectorAll('article').forEach(a => a.style.display = 'none');
             article.style.display = 'block';
             renderKaTeX(article);
@@ -636,12 +1239,31 @@ async function loadRessurser() {
     container.appendChild(nav);
     container.appendChild(contentArea);
     container.addEventListener('click', (e) => {
-        const jump = e.target.closest('[data-brok-scroll]');
-        if (!jump) return;
-        const target = document.getElementById(jump.getAttribute('data-brok-scroll'));
-        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const jump = e.target.closest('[data-fag-scroll], [data-brok-scroll]');
+        const hashLink = e.target.closest('.fagstoff-content a[href^="#"]');
+        if (!jump && !hashLink) return;
+        e.preventDefault();
+        e.stopPropagation();
+        const id = jump
+            ? (jump.getAttribute('data-fag-scroll') || jump.getAttribute('data-brok-scroll'))
+            : (hashLink.getAttribute('href') || '').replace(/^#/, '');
+        scrollFagstoffTarget(e.target.closest('article') || container, id);
     });
     renderKaTeX(container);
+}
+
+function activateRessursTab(id) {
+    if (!id) return;
+    const nav = document.querySelector('.ressurs-tabs');
+    if (!nav) return;
+    const btn = nav.querySelector(`.ressurs-tab[data-fag-id="${id}"]`);
+    const article = document.querySelector(`article.fagstoff-article[data-fag-id="${id}"]`);
+    if (!btn || !article) return;
+    nav.querySelectorAll('.ressurs-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('article.fagstoff-article').forEach(a => a.style.display = 'none');
+    article.style.display = 'block';
+    renderKaTeX(article);
 }
 
 // ── Load programmering ────────────────────────────────────────
@@ -652,8 +1274,12 @@ function loadProgrammering() {
         container.innerHTML = '<p>Ingen programmeringsoppgaver funnet.</p>';
         return;
     }
+    container.innerHTML = `
+        <p class="prog-intro">Start med P.01 og jobb deg oppover. Trenger du oppslag i syntaks?
+        <button type="button" class="hint-btn" onclick="window.location.hash='ressurser/programmering'">Åpne programmeringsressursen</button></p>
+    `;
     window.programmeringData.forEach((oppgave, idx) => {
-        const article = buildTaskCard(oppgave, null, idx, window.programmeringData.length, null, "prog-");
+        const article = buildTaskCard(oppgave, null, idx, window.programmeringData.length, null, "prog-", "prog");
         article.id = `prog-task-${oppgave.id}`;
         container.appendChild(article);
     });
@@ -670,7 +1296,7 @@ function loadSearchResults(query) {
     const inp = document.getElementById('global-search');
     if (inp && inp.value !== query) inp.value = query;
 
-    if (!query) { statusEl.textContent = 'Skriv noe i søkefeltet og trykk Enter.'; return; }
+    if (!query) { statusEl.textContent = 'Skriv noe i søkefeltet for å finne oppgaver.'; return; }
 
     const lq = query.toLowerCase();
     let count = 0;
@@ -681,7 +1307,7 @@ function loadSearchResults(query) {
             kap.delkapitler.forEach(dk => {
                 dk.oppgaver.forEach(opp => {
                     if (`${opp.tittel} ${opp.tekst} ${opp.hint} ${opp.fasit}`.toLowerCase().includes(lq)) {
-                        const card = buildTaskCard(opp, `${kap.tittel} › ${dk.tittel}`, 0, 1, dk.id, "search-");
+                        const card = buildTaskCard(opp, `${kap.tittel} › ${dk.tittel}`, 0, 1, dk.id, "search-", kap.id);
                         // Add link to go to subchapter
                         const btnArea = card.querySelector('.task-buttons');
                         if (btnArea) {
@@ -698,7 +1324,7 @@ function loadSearchResults(query) {
     if (typeof window.programmeringData !== 'undefined') {
         window.programmeringData.forEach(opp => {
             if (`${opp.tittel} ${opp.tekst} ${opp.hint} ${opp.fasit}`.toLowerCase().includes(lq)) {
-                container.appendChild(buildTaskCard(opp, 'Programmering', 0, 1, null, 'search-'));
+                container.appendChild(buildTaskCard(opp, 'Programmering', 0, 1, null, 'search-', 'prog'));
                 count++;
             }
         });
@@ -722,7 +1348,7 @@ function loadSearchResults(query) {
 
 // ── Router ────────────────────────────────────────────────────
 function showView(id) {
-    ['home-view', 'oppgaver-view', 'programmering-view', 'ressurser-view', 'search-view'].forEach(v => {
+    ['home-view', 'oppgaver-view', 'programmering-view', 'ressurser-view', 'search-view', 'kunnskapskart-view'].forEach(v => {
         document.getElementById(v)?.classList.add('hidden');
     });
     document.getElementById(id)?.classList.remove('hidden');
@@ -756,7 +1382,12 @@ function handleRoute() {
         renderGlobalMap();
     } else if (mainView === 'ressurser') {
         showView('ressurser-view');
-        if (!ressurserLastet) { loadRessurser(); ressurserLastet = true; }
+        const openTab = () => { if (kapId) activateRessursTab(kapId); };
+        if (!ressurserLastet) {
+            loadRessurser().then(() => { ressurserLastet = true; openTab(); });
+        } else {
+            openTab();
+        }
     } else if (mainView === 'sok') {
         showView('search-view');
         loadSearchResults(kapId ? decodeURIComponent(kapId) : '');
@@ -1099,7 +1730,7 @@ flowchart TD
 const prereqMap = {
     '1D': {
         title: "Potenser og Standardform",
-        graph: `flowchart TD\n classDef main fill:#4f46e5,color:#fff,stroke:#312e81,stroke-width:2px;\n classDef step fill:#fef08a,color:#854d0e,stroke:#ca8a04,stroke-width:2px;\n classDef basic fill:#f3f4f6,color:#374151,stroke:#9ca3af;\n A[Gjentatt Multiplikasjon]:::basic --> Z{Potensregning}:::main\n B[Tallmengder]:::basic --> Z`
+        graph: `flowchart TD\n classDef main fill:#4f46e5,color:#fff,stroke:#312e81,stroke-width:2px;\n classDef step fill:#fef08a,color:#854d0e,stroke:#ca8a04,stroke-width:2px;\n classDef basic fill:#f3f4f6,color:#374151,stroke:#9ca3af;\n A[Gjentatt multiplikasjon]:::basic --> Z{Potensregning}:::main\n B[Tallmengder]:::basic --> Z`
     },
     '2B': {
         title: "Kvadratsetninger",
@@ -1115,11 +1746,11 @@ const prereqMap = {
     },
     '3G': {
         title: "Tredjegradslikninger",
-        graph: `flowchart TD\n classDef main fill:#4f46e5,color:#fff,stroke:#312e81,stroke-width:2px;\n classDef step fill:#fef08a,color:#854d0e,stroke:#ca8a04,stroke-width:2px;\n classDef basic fill:#f3f4f6,color:#374151,stroke:#9ca3af;\n A[Grunnleggende Algebra]:::basic --> D(Nullpunktsetningen):::step\n A --> E(Polynomdivisjon):::step\n B[ABC-formelen]:::step --> F(Løse rest-polynomet):::step\n D -->|Finner første x| E\n E -->|Gir andregradspolynom| Z{Tredjegradslikninger}:::main\n F -->|Løser rest| Z`
+        graph: `flowchart TD\n classDef main fill:#4f46e5,color:#fff,stroke:#312e81,stroke-width:2px;\n classDef step fill:#fef08a,color:#854d0e,stroke:#ca8a04,stroke-width:2px;\n classDef basic fill:#f3f4f6,color:#374151,stroke:#9ca3af;\n A[Grunnleggende algebra]:::basic --> D(Nullpunktsetningen):::step\n A --> E(Polynomdivisjon):::step\n B[ABC-formelen]:::step --> F(Løse restpolynomet):::step\n D -->|Finner første x| E\n E -->|Gir andregradspolynom| Z{Tredjegradslikninger}:::main\n F -->|Løser rest| Z`
     },
     '4C': {
         title: "Andregradsfunksjoner",
-        graph: `flowchart TD\n classDef main fill:#4f46e5,color:#fff,stroke:#312e81,stroke-width:2px;\n classDef step fill:#fef08a,color:#854d0e,stroke:#ca8a04,stroke-width:2px;\n classDef basic fill:#f3f4f6,color:#374151,stroke:#9ca3af;\n A[Koordinatsystemet]:::basic --> Z{Andregradsfunksjoner}:::main\n B[Symmetriakse & Toppunkt]:::step --> Z\n C[ABC-formelen]:::step -->|Finner nullpunkter| Z`
+        graph: `flowchart TD\n classDef main fill:#4f46e5,color:#fff,stroke:#312e81,stroke-width:2px;\n classDef step fill:#fef08a,color:#854d0e,stroke:#ca8a04,stroke-width:2px;\n classDef basic fill:#f3f4f6,color:#374151,stroke:#9ca3af;\n A[Koordinatsystemet]:::basic --> Z{Andregradsfunksjoner}:::main\n B[Symmetriakse og toppunkt]:::step --> Z\n C[ABC-formelen]:::step -->|Finner nullpunkter| Z`
     },
     '4H': {
         title: "Funksjonsdrøfting",
@@ -1274,9 +1905,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const btn = document.createElement('button');
             btn.className = 'chapter-btn';
             btn.innerHTML = `
-                <div style="display:flex;align-items:center;gap:0.6rem">
-                    <span class="chapter-btn-icon">${icons[i] || '📐'}</span>${kap.tittel}
+                <div class="chapter-btn-main">
+                    <span class="chapter-btn-icon">${icons[i] || '📐'}</span>
+                    <span class="chapter-btn-title">${kap.tittel}</span>
                 </div>
+                <span class="chapter-btn-pct" data-kap-pct="${kap.id}"></span>
                 <span class="chapter-chevron">▶</span>
             `;
             
@@ -1288,12 +1921,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 const subBtn = document.createElement('button');
                 subBtn.className = 'subchapter-btn';
                 subBtn.setAttribute('data-id', `${kap.id}/${dk.id}`);
-                subBtn.textContent = dk.tittel;
+                subBtn.innerHTML = `
+                    <span class="subchapter-btn-title">${dk.tittel}</span>
+                    <span class="subchapter-btn-meta" data-sub-meta="${kap.id}/${dk.id}">0/${dk.oppgaver.length}</span>
+                `;
                 subBtn.onclick = (e) => {
                     e.stopPropagation();
                     window.location.hash = `oppgaver/${kap.id}/${dk.id}`;
                 };
+                const track = document.createElement('div');
+                track.className = 'sub-progress-track';
+                track.innerHTML = `<div class="sub-progress-fill" data-sub-fill="${kap.id}/${dk.id}"></div>`;
                 subLi.appendChild(subBtn);
+                subLi.appendChild(track);
                 subList.appendChild(subLi);
             });
             
@@ -1310,6 +1950,7 @@ document.addEventListener('DOMContentLoaded', () => {
             group.appendChild(subList);
             chapterList.appendChild(group);
         });
+        refreshProgressUI();
     }
 
     // Nav-knapper
