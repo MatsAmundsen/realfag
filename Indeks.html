@@ -2,7 +2,7 @@
 <html lang="no">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <title>Matteguiden 1T – Utforskende Læring</title>
     <script>
@@ -23,7 +23,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=6208bb6dd4">
+    <link rel="stylesheet" href="style.css?v=241471261f">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
@@ -47,9 +47,9 @@
         </form>
         <nav>
             <button class="nav-btn active" data-target="oppgaver">Oppgaver</button>
-            <button class="nav-btn" data-target="programmering">Programmering</button>
+            <button class="nav-btn" data-target="programmering"><span class="nav-label-full">Programmering</span><span class="nav-label-short">Kode</span></button>
             <button class="nav-btn" data-target="ressurser">Ressurser</button>
-            <button class="nav-btn" data-target="kunnskapskart">Kunnskapskart 🗺️</button>
+            <button class="nav-btn" data-target="kunnskapskart"><span class="nav-label-full">Kunnskapskart</span><span class="nav-label-short">Kart</span></button>
             <button class="nav-btn theme-btn" id="theme-toggle" aria-label="Bytt tema">
                 <span class="theme-icon">&#x2600;&#xFE0F;</span>
             </button>
@@ -295,7 +295,7 @@
 
     <div id="badge-toast" class="badge-toast hidden" role="status" aria-live="polite"></div>
 
-    <script src="data.js?v=6208bb6dd4"></script>
-    <script src="app.js?v=6208bb6dd4"></script>
+    <script src="data.js?v=241471261f"></script>
+    <script src="app.js?v=241471261f"></script>
 </body>
 </html>
