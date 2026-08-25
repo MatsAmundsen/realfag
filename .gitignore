@@ -1,5 +1,37 @@
-.idea/
+# Avhengigheter og bygg
 node_modules/
+.tanstack/
+.vercel/
+dist/
+.output/
+.nitro/
+
+# Miljø og logger
+.env
+.env.*
+!.env.example
+*.log
+preview.log
+
+# Editor / OS
+.idea/
 .DS_Store
 Index2.rtf
-dist/
+
+# Lokale kopier som ikke hører hjemme i repoet
+attachments/
+artifacts/
+screenshots/
+kart-smoke*.mjs
+.node_modules.lock
+startup.sh
+AGENTS.md
+AGENTS.project.md
+
+# Plattform-intern
+public/__grok/
+.grok/skills/
+.grok/references/
+.grok/status/
+.grok/preview.log
+.grok/*.png

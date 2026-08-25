@@ -1,0 +1,23 @@
+@import "tailwindcss";
+@import "katex/dist/katex.min.css";
+@import "./matteguiden.css";
+
+@theme {
+  --color-bg: #0a0f1e;
+  --color-surface: #111827;
+  --color-fg: #e2e8f0;
+  --color-muted: #64748b;
+  --color-primary: #6366f1;
+  --color-accent: #34d399;
+  --color-border: rgba(255, 255, 255, 0.07);
+  --radius: 14px;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-display: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}

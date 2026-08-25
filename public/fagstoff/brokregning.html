@@ -1,0 +1,189 @@
+<p class="brok-lead">Fra det helt grunnleggende til algebraiske brøker. Trykk på et kort for å hoppe til temaet.</p>
+
+<nav class="brok-overview" aria-label="Hoppe til tema">
+  <button type="button" class="brok-nav-card" data-fag-scroll="brok-hva-er-brok"><span>1</span>Hva er en brøk?</button>
+  <button type="button" class="brok-nav-card" data-fag-scroll="brok-grunnregler"><span>2</span>Grunnregler</button>
+  <button type="button" class="brok-nav-card" data-fag-scroll="brok-addisjon"><span>3</span>+ og −</button>
+  <button type="button" class="brok-nav-card" data-fag-scroll="brok-multiplikasjon"><span>4</span>×</button>
+  <button type="button" class="brok-nav-card" data-fag-scroll="brok-divisjon"><span>5</span>÷</button>
+  <button type="button" class="brok-nav-card" data-fag-scroll="brok-algebra"><span>6</span>Algebra</button>
+  <button type="button" class="brok-nav-card" data-fag-scroll="brok-sjekkliste"><span>✓</span>Sjekkliste</button>
+</nav>
+
+<section class="brok-section" id="brok-hva-er-brok">
+  <div class="brok-section-head">
+    <div class="brok-num">1</div>
+    <h4>Hva er en brøk?</h4>
+  </div>
+  <p>En <strong>brøk</strong> viser et delingsforhold mellom to tall.</p>
+  <ul class="brok-list">
+    <li><strong>Telleren</strong> (oppe) = hvor mange deler vi har</li>
+    <li><strong>Nevneren</strong> (nede) = hvor mange like store deler helheten er delt i</li>
+  </ul>
+  <div class="brok-visual">
+    <figure>
+      <svg class="frac-svg" viewBox="0 0 100 100" width="130" aria-hidden="true">
+        <circle cx="50" cy="50" r="45" class="brok-empty"/>
+        <path d="M50 50 L50 5 A45 45 0 0 1 95 50 Z" class="brok-filled"/>
+        <path d="M50 50 L95 50 A45 45 0 0 1 50 95 Z" class="brok-filled"/>
+        <path d="M50 50 L50 95 A45 45 0 0 1 5 50 Z" class="brok-filled"/>
+        <circle cx="50" cy="50" r="45" fill="none" class="brok-ring"/>
+        <line x1="50" y1="50" x2="50" y2="5" class="brok-gridline"/>
+        <line x1="50" y1="50" x2="95" y2="50" class="brok-gridline"/>
+        <line x1="50" y1="50" x2="50" y2="95" class="brok-gridline"/>
+        <line x1="50" y1="50" x2="5" y2="50" class="brok-gridline"/>
+      </svg>
+      <figcaption><strong>3/4</strong></figcaption>
+    </figure>
+    <figure>
+      <svg viewBox="0 0 120 36" width="150" aria-hidden="true">
+        <rect x="0" y="4" width="22" height="28" class="brok-filled" rx="3"/>
+        <rect x="24" y="4" width="22" height="28" class="brok-filled" rx="3"/>
+        <rect x="48" y="4" width="22" height="28" class="brok-empty" rx="3"/>
+        <rect x="72" y="4" width="22" height="28" class="brok-empty" rx="3"/>
+        <rect x="96" y="4" width="22" height="28" class="brok-empty" rx="3"/>
+      </svg>
+      <figcaption><strong>2/5</strong></figcaption>
+    </figure>
+  </div>
+  <div class="brok-box brok-box-example">
+    <strong>Eksempler fra hverdagen:</strong><br>
+    2 av 8 kakestykker → $\dfrac{2}{8}$ ·
+    3 av 5 elever → $\dfrac{3}{5}$ ·
+    halvparten → $\dfrac{1}{2}$
+  </div>
+  <h5>Viktige begreper</h5>
+  <ul class="brok-list">
+    <li><strong>Ekte brøk</strong> – teller < nevner ($\frac{2}{5}$)</li>
+    <li><strong>Uekte brøk</strong> – teller ≥ nevner ($\frac{7}{4}$)</li>
+    <li><strong>Blandet tall</strong> – heltall + brøk ($1\frac{3}{4}$)</li>
+  </ul>
+</section>
+
+<section class="brok-section" id="brok-grunnregler">
+  <div class="brok-section-head">
+    <div class="brok-num">2</div>
+    <h4>Grunnleggende regler</h4>
+  </div>
+  <h5>A. Utviding</h5>
+  <p>Gange teller og nevner med <strong>samme tall</strong> (verdien endres ikke).</p>
+  <div class="brok-math">$\dfrac{2}{3} = \dfrac{2\cdot 4}{3\cdot 4} = \dfrac{8}{12}$</div>
+  <h5>B. Forkorting</h5>
+  <p>Dele teller og nevner på samme tall.</p>
+  <div class="brok-math">$\dfrac{8}{12} = \dfrac{8\div 4}{12\div 4} = \dfrac{2}{3}$</div>
+  <div class="brok-box brok-box-tip">
+    <strong>Husk!</strong> Utviding og forkorting endrer bare utseendet, ikke verdien.
+  </div>
+</section>
+
+<section class="brok-section" id="brok-addisjon">
+  <div class="brok-section-head">
+    <div class="brok-num">3</div>
+    <h4>Addisjon og subtraksjon</h4>
+  </div>
+  <p><strong>Regel:</strong> Brøkene må ha <strong>samme nevner</strong>.</p>
+  <h5>Samme nevner</h5>
+  <div class="brok-box brok-box-example">
+    <div class="brok-math">$\dfrac{2}{5} + \dfrac{1}{5} = \dfrac{3}{5}$</div>
+  </div>
+  <h5>Ulik nevner</h5>
+  <ol class="brok-list">
+    <li>Finn fellesnevner</li>
+    <li>Utvid begge brøkene</li>
+    <li>Regn tellerne</li>
+  </ol>
+  <div class="brok-box brok-box-example">
+    <p><strong>$\frac{1}{3} + \frac{1}{4}$</strong> (fellesnevner = 12)</p>
+    <div class="brok-math">$\dfrac{4}{12} + \dfrac{3}{12} = \dfrac{7}{12}$</div>
+    <div class="brok-visual">
+      <figure>
+        <svg viewBox="0 0 120 28" width="130" aria-hidden="true">
+          <rect x="0" y="4" width="40" height="20" class="brok-filled" rx="2"/>
+          <rect x="40" y="4" width="40" height="20" class="brok-empty" rx="2"/>
+          <rect x="80" y="4" width="40" height="20" class="brok-empty" rx="2"/>
+        </svg>
+        <figcaption>1/3</figcaption>
+      </figure>
+      <span class="brok-eq">+</span>
+      <figure>
+        <svg viewBox="0 0 120 28" width="130" aria-hidden="true">
+          <rect x="0" y="4" width="30" height="20" class="brok-filled" rx="2"/>
+          <rect x="30" y="4" width="30" height="20" class="brok-empty" rx="2"/>
+          <rect x="60" y="4" width="30" height="20" class="brok-empty" rx="2"/>
+          <rect x="90" y="4" width="30" height="20" class="brok-empty" rx="2"/>
+        </svg>
+        <figcaption>1/4</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="brok-section" id="brok-multiplikasjon">
+  <div class="brok-section-head">
+    <div class="brok-num">4</div>
+    <h4>Multiplikasjon</h4>
+  </div>
+  <p><strong>Regel:</strong> Gang teller med teller og nevner med nevner. Ingen fellesnevner nødvendig.</p>
+  <div class="brok-math">$\dfrac{a}{b} \cdot \dfrac{c}{d} = \dfrac{ac}{bd}$</div>
+  <div class="brok-box brok-box-example">
+    <div class="brok-math">$\dfrac{2}{3} \cdot \dfrac{4}{5} = \dfrac{8}{15}$</div>
+    <div class="brok-math">$\dfrac{3}{4} \cdot \dfrac{2}{9} = \dfrac{1}{6}$</div>
+  </div>
+  <div class="brok-box brok-box-tip">
+    <strong>Tips:</strong> Forkort gjerne på kryss før du ganger – det blir enklere.
+  </div>
+</section>
+
+<section class="brok-section" id="brok-divisjon">
+  <div class="brok-section-head">
+    <div class="brok-num">5</div>
+    <h4>Divisjon</h4>
+  </div>
+  <p><strong>Regel:</strong> Snu den <strong>siste</strong> brøken og bytt til ganging.</p>
+  <div class="brok-math">$\dfrac{a}{b} : \dfrac{c}{d} = \dfrac{a}{b} \cdot \dfrac{d}{c}$</div>
+  <div class="brok-box brok-box-example">
+    <div class="brok-math">$\dfrac{3}{4} : \dfrac{2}{5} = \dfrac{3}{4} \cdot \dfrac{5}{2} = \dfrac{15}{8}$</div>
+  </div>
+  <div class="brok-box brok-box-ok">
+    <strong>Hvorfor?</strong> Å dele på en brøk er det samme som å spørre: «Hvor mange ganger går den opp?»
+  </div>
+</section>
+
+<section class="brok-section" id="brok-algebra">
+  <div class="brok-section-head">
+    <div class="brok-num">6</div>
+    <h4>Algebraiske brøker</h4>
+  </div>
+  <p>Samme regler gjelder når vi har bokstaver i stedet for tall.</p>
+  <div class="brok-box brok-box-example">
+    <strong>Multiplikasjon:</strong>
+    <div class="brok-math">$\dfrac{x}{3} \cdot \dfrac{2}{y} = \dfrac{2x}{3y}$</div>
+  </div>
+  <div class="brok-box brok-box-example">
+    <strong>Addisjon:</strong>
+    <div class="brok-math">$\dfrac{1}{x} + \dfrac{2}{y} = \dfrac{y + 2x}{xy}$</div>
+  </div>
+  <div class="brok-box brok-box-example">
+    <strong>Divisjon:</strong>
+    <div class="brok-math">$\dfrac{2x}{5} : \dfrac{y}{3} = \dfrac{6x}{5y}$</div>
+  </div>
+</section>
+
+<section class="brok-section" id="brok-sjekkliste">
+  <div class="brok-section-head">
+    <div class="brok-num">✓</div>
+    <h4>Hurtigsjekkliste</h4>
+  </div>
+  <div class="brok-table-wrap">
+    <table class="brok-table">
+      <thead>
+        <tr><th>Operasjon</th><th>Hva gjør du?</th><th>Fellesnevner?</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>+ / −</td><td>Finn fellesnevner → utvid → regn</td><td><strong>Ja</strong></td></tr>
+        <tr><td>×</td><td>Gang teller × teller, nevner × nevner</td><td>Nei</td></tr>
+        <tr><td>÷</td><td>Snu siste brøk og gang</td><td>Nei</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>

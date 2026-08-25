@@ -1,0 +1,263 @@
+<p class="brok-lead">Dette er en innføring i programmering fra null. Du trenger ikke kunne kode fra før. Les kortene i rekkefølge, og prøv eksemplene i kodeskriveren nederst — og i oppgavene under fanen Programmering.</p>
+
+<nav class="brok-overview" aria-label="Hoppe til tema">
+  <button type="button" class="brok-nav-card" data-fag-scroll="prog-start"><span>1</span>Hva er det?</button>
+  <button type="button" class="brok-nav-card" data-fag-scroll="prog-print"><span>2</span>print</button>
+  <button type="button" class="brok-nav-card" data-fag-scroll="prog-var"><span>3</span>Variabler</button>
+  <button type="button" class="brok-nav-card" data-fag-scroll="prog-if"><span>4</span>if / else</button>
+  <button type="button" class="brok-nav-card" data-fag-scroll="prog-for"><span>5</span>Løkker</button>
+  <button type="button" class="brok-nav-card" data-fag-scroll="prog-feil"><span>6</span>Feil</button>
+  <button type="button" class="brok-nav-card" data-fag-scroll="prog-sjekkliste"><span>✓</span>Sjekkliste</button>
+</nav>
+
+<section class="brok-section" id="prog-start">
+  <div class="brok-section-head">
+    <div class="brok-num">1</div>
+    <h4>Hva er programmering?</h4>
+  </div>
+  <p>Et <strong>program</strong> er en oppskrift. Du skriver instruksjoner, og datamaskinen utfører dem <em>nøyaktig</em> i den rekkefølgen du har skrevet — linje for linje, ovenfra og ned.</p>
+  <p>Forskjellen fra en matoppskrift: datamaskinen gjetter aldri. Glemmer du et komma, eller skriver <code>Print</code> i stedet for <code>print</code>, stopper den og sier ifra. Det er ikke «dumt» — det betyr at språket er strengt, så vi kan stole på det.</p>
+  <div class="brok-visual">
+    <figure>
+      <svg viewBox="0 0 240 150" width="240" aria-hidden="true">
+        <rect x="20" y="8" width="200" height="26" class="brok-filled" rx="6"/>
+        <text x="120" y="26" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">Du skriver koden</text>
+        <path d="M120 34 L120 48" class="brok-gridline"/>
+        <rect x="20" y="48" width="200" height="26" class="brok-accent" rx="6"/>
+        <text x="120" y="66" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">Python oversetter</text>
+        <path d="M120 74 L120 88" class="brok-gridline"/>
+        <rect x="20" y="88" width="200" height="26" rx="6" class="brok-empty"/>
+        <text x="120" y="106" text-anchor="middle" class="rot-svg-text" font-size="12" font-weight="700">Datamaskinen utfører</text>
+        <path d="M120 114 L120 128" class="brok-gridline"/>
+        <text x="120" y="144" text-anchor="middle" class="rot-svg-text" font-size="12">Utskrift / svar på skjermen</text>
+      </svg>
+      <figcaption>Fra tekst du skriver, til noe som skjer</figcaption>
+    </figure>
+  </div>
+  <h5>Hvorfor Python?</h5>
+  <p>I 1T bruker vi språket <strong>Python</strong>. Det er laget for å være lesbart: <code>print("Hei")</code> betyr akkurat «skriv ut Hei». Samme ideer (variabler, if, løkker) finnes i andre språk, så det du lærer her, tar du med deg videre.</p>
+  <div class="brok-box brok-box-example">
+    <strong>Tre regler å ha i bakhodet:</strong>
+    <ol class="brok-list">
+      <li>Koden kjører <strong>ovenfra og ned</strong>, én linje om gangen.</li>
+      <li>Python skiller på store og små bokstaver. <code>Print</code> er ikke det samme som <code>print</code>.</li>
+      <li><strong>Innrykk</strong> (mellomrom foran linjen) viser hva som hører sammen. Vanligvis 4 mellomrom.</li>
+    </ol>
+  </div>
+</section>
+
+<section class="brok-section" id="prog-print">
+  <div class="brok-section-head">
+    <div class="brok-num">2</div>
+    <h4>print — vis noe på skjermen</h4>
+  </div>
+  <p><code>print</code> er den første kommandoen du trenger. Den tar det som står i parentesen og viser det som <strong>utskrift</strong>.</p>
+  <pre class="prog-code"><code>print("Hei, 1T!")
+print(2 + 5)</code></pre>
+  <p>Hermetegn <code>" "</code> (eller <code>' '</code>) betyr <strong>tekst</strong>. Python skal ikke regne på teksten, bare vise den. Uten hermetegn betyr det et <strong>regnestykke</strong> eller et <strong>navn</strong> (en variabel).</p>
+  <div class="brok-box brok-box-example">
+    <code>print("2+5")</code> skriver bokstavelig <code>2+5</code>.<br>
+    <code>print(2+5)</code> regner først, og skriver <code>7</code>.
+  </div>
+  <div class="brok-box brok-box-tip">
+    <strong>Vanlig nybegynnerfeil:</strong> <code>print(Hei)</code> uten hermetegn. Da leter Python etter en variabel som heter Hei. Finnes den ikke, får du <code>NameError</code>.
+  </div>
+</section>
+
+<section class="brok-section" id="prog-var">
+  <div class="brok-section-head">
+    <div class="brok-num">3</div>
+    <h4>Variabler, typer og input</h4>
+  </div>
+  <p>En <strong>variabel</strong> er en merkelapp på en verdi. Tenk en eske med navn på. Du putter noe i esken med <code>=</code>, og henter det frem ved å bruke navnet.</p>
+  <pre class="prog-code"><code>navn = "Nora"
+alder = 16
+print(navn)
+print(alder + 1)</code></pre>
+  <p>Etter første linje inneholder esken <code>navn</code> teksten Nora. Etter andre linje inneholder <code>alder</code> tallet 16. Siste linje skriver 17 — vi endrer ikke esken, vi bare bruker verdien i et regnestykke.</p>
+  <h5>Ulike typer verdier</h5>
+  <div class="brok-table-wrap">
+    <table class="brok-table">
+      <thead><tr><th>Type</th><th>Eksempel</th><th>Når bruker du den?</th></tr></thead>
+      <tbody>
+        <tr><td><code>int</code></td><td><code>7</code></td><td>Hele tall (antall, alder)</td></tr>
+        <tr><td><code>float</code></td><td><code>3.5</code></td><td>Desimaltall (mål, gjennomsnitt)</td></tr>
+        <tr><td><code>str</code></td><td><code>"hei"</code></td><td>Tekst</td></tr>
+        <tr><td><code>bool</code></td><td><code>True</code> / <code>False</code></td><td>Sant eller usant (vilkår)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <h5>Regneoperatorer</h5>
+  <div class="brok-table-wrap">
+    <table class="brok-table">
+      <thead><tr><th>Tegn</th><th>Betydning</th><th>Eksempel</th></tr></thead>
+      <tbody>
+        <tr><td><code>+</code> <code>-</code> <code>*</code> <code>/</code></td><td>pluss, minus, gange, dele</td><td><code>8 / 2</code> → <code>4.0</code></td></tr>
+        <tr><td><code>**</code></td><td>potens</td><td><code>2 ** 5</code> → <code>32</code></td></tr>
+        <tr><td><code>//</code></td><td>heltallsdivisjon</td><td><code>17 // 5</code> → <code>3</code></td></tr>
+        <tr><td><code>%</code></td><td>rest (modulo)</td><td><code>17 % 5</code> → <code>2</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><code>%</code> er viktig: <code>n % 2 == 0</code> betyr «n er partall» (ingen rest når du deler på 2).</p>
+  <h5>input — spør brukeren</h5>
+  <p><code>input()</code> leser det noen skriver, men svaret er <strong>alltid tekst</strong>. Skal du regne med tallet, pakk det inn i <code>int()</code> eller <code>float()</code>.</p>
+  <pre class="prog-code"><code>n = int(input("Skriv et tall: "))
+print(n * 2)</code></pre>
+  <div class="brok-box brok-box-tip">
+    Uten <code>int</code>: <code>"4" * 2</code> blir <code>"44"</code> (tekst gjentas), ikke 8. Det er derfor P.04 i oppgavene er en klassisk felle.
+  </div>
+  <h5>f-streng — sette verdier inn i tekst</h5>
+  <pre class="prog-code"><code>navn = "Mats"
+print(f"Jeg heter {navn}.")</code></pre>
+  <p>Bokstaven <code>f</code> foran hermetegnene betyr at <code>{navn}</code> byttes ut med innholdet i variabelen.</p>
+</section>
+
+<section class="brok-section" id="prog-if">
+  <div class="brok-section-head">
+    <div class="brok-num">4</div>
+    <h4>Vilkår: if, elif og else</h4>
+  </div>
+  <p>Et <strong>vilkår</strong> er et spørsmål med ja/nei-svar: «Er alderen minst 18?» I koden skriver vi det med sammenligninger. Svaret er <code>True</code> (sant) eller <code>False</code> (usant).</p>
+  <div class="brok-table-wrap">
+    <table class="brok-table">
+      <thead><tr><th>Skriv</th><th>Betyr</th></tr></thead>
+      <tbody>
+        <tr><td><code>==</code></td><td>er lik (to likhetstegn! Ett <code>=</code> betyr «lagre i variabel»)</td></tr>
+        <tr><td><code>!=</code></td><td>er ikke lik</td></tr>
+        <tr><td><code><</code> <code><=</code> <code>></code> <code>>=</code></td><td>mindre / minst / større / høyst</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><code>if</code> kjører koden under <strong>bare hvis</strong> vilkåret er sant. <code>else</code> er «ellers». <code>elif</code> («else if») er neste spørsmål, hvis det første var usant.</p>
+  <div class="brok-visual">
+    <figure>
+      <svg viewBox="0 0 260 170" width="260" aria-hidden="true">
+        <rect x="70" y="8" width="120" height="28" class="brok-filled" rx="6"/>
+        <text x="130" y="27" text-anchor="middle" fill="#fff" font-size="12">if poeng ≥ 90</text>
+        <path d="M130 36 L130 48 M130 48 L90 48 L90 58 M130 48 L170 48 L170 58" class="brok-gridline"/>
+        <rect x="20" y="58" width="90" height="28" class="brok-accent" rx="6"/>
+        <text x="65" y="77" text-anchor="middle" fill="#fff" font-size="11">sant → A</text>
+        <rect x="150" y="58" width="90" height="28" rx="6" class="brok-empty"/>
+        <text x="195" y="77" text-anchor="middle" class="rot-svg-text" font-size="11">usant → elif</text>
+        <path d="M195 86 L195 100" class="brok-gridline"/>
+        <rect x="140" y="100" width="110" height="28" class="brok-filled" rx="6"/>
+        <text x="195" y="119" text-anchor="middle" fill="#fff" font-size="11">elif ≥ 80 → B</text>
+        <path d="M195 128 L195 142" class="brok-gridline"/>
+        <rect x="140" y="142" width="110" height="24" rx="6" class="brok-empty"/>
+        <text x="195" y="158" text-anchor="middle" class="rot-svg-text" font-size="11">else → C</text>
+      </svg>
+      <figcaption>Python tar første treff og hopper over resten</figcaption>
+    </figure>
+  </div>
+  <pre class="prog-code"><code>poeng = 85
+if poeng >= 90:
+    print("A")
+elif poeng >= 80:
+    print("B")
+else:
+    print("C eller lavere")</code></pre>
+  <p>Her er 85 ikke ≥ 90, men ≥ 80, så utskriften blir <code>B</code>. Rekkefølgen er viktig: sjekk den <strong>strengeste</strong> grensen først (90 før 80). Ellers ville 95 også truffet «minst 80».</p>
+  <div class="brok-box brok-box-ok">
+    <strong>Innrykk er selve blokken.</strong> Alt som er rykket inn under <code>if</code>, hører til den. Linjer uten innrykk kjører alltid, etterpå.
+  </div>
+</section>
+
+<section class="brok-section" id="prog-for">
+  <div class="brok-section-head">
+    <div class="brok-num">5</div>
+    <h4>Løkker: for og while</h4>
+  </div>
+  <p>En <strong>løkke</strong> gjentar de samme linjene flere ganger, så du slipper å kopiere kode.</p>
+  <h5>for — kjent antall ganger</h5>
+  <p><code>range(5)</code> gir tallene 0, 1, 2, 3, 4 (fem tall, starter på 0). <code>range(1, 6)</code> gir 1 til 5 — stopptallet er <em>ikke</em> med.</p>
+  <div class="brok-visual">
+    <figure>
+      <svg viewBox="0 0 240 70" width="240" aria-hidden="true">
+        <rect x="8" y="18" width="40" height="36" class="brok-filled" rx="4"/><text x="28" y="41" text-anchor="middle" fill="#fff" font-size="12">0</text>
+        <rect x="56" y="18" width="40" height="36" class="brok-filled" rx="4"/><text x="76" y="41" text-anchor="middle" fill="#fff" font-size="12">1</text>
+        <rect x="104" y="18" width="40" height="36" class="brok-filled" rx="4"/><text x="124" y="41" text-anchor="middle" fill="#fff" font-size="12">2</text>
+        <rect x="152" y="18" width="40" height="36" class="brok-empty" rx="4"/><text x="172" y="41" text-anchor="middle" class="rot-svg-text" font-size="12">3</text>
+        <rect x="200" y="18" width="32" height="36" class="brok-empty" rx="4"/><text x="216" y="41" text-anchor="middle" class="rot-svg-text" font-size="12">…</text>
+      </svg>
+      <figcaption>Én runde per verdi i range</figcaption>
+    </figure>
+  </div>
+  <pre class="prog-code"><code>for i in range(1, 6):
+    print(i * i)</code></pre>
+  <p>Dette skriver kvadrattallene 1, 4, 9, 16, 25. Variabelen <code>i</code> får en ny verdi hver runde.</p>
+  <h5>while — så lenge noe er sant</h5>
+  <p>Bruk <code>while</code> når du ikke vet på forhånd hvor mange runder det blir: «fortsett til saldoen er minst 500».</p>
+  <pre class="prog-code"><code>n = 3
+while n > 0:
+    print(n)
+    n = n - 1</code></pre>
+  <p>Første runde: n er 3 (sant, skriv 3, trekk fra 1). Så 2, så 1. Når n blir 0, er vilkåret usant, og løkken stopper.</p>
+  <div class="brok-box brok-box-tip">
+    <strong>Evig løkke:</strong> Glemmer du å endre <code>n</code> inni løkken, blir vilkåret alltid sant. Programmet henger. Stopp og rett koden. I kodeskriveren her stoppes lange kjøringer automatisk.
+  </div>
+  <h5>Løkke + if</h5>
+  <p>Inne i en løkke kan du stille spørsmål til hvert tall:</p>
+  <pre class="prog-code"><code>for n in range(1, 8):
+    if n % 2 == 0:
+        print(n)</code></pre>
+  <p>Skriver partallene 2, 4, 6.</p>
+</section>
+
+<section class="brok-section" id="prog-feil">
+  <div class="brok-section-head">
+    <div class="brok-num">6</div>
+    <h4>Når noe går galt</h4>
+  </div>
+  <p>Feilmeldinger er hjelp, ikke straff. Les den nederste linjen først.</p>
+  <div class="brok-table-wrap">
+    <table class="brok-table">
+      <thead><tr><th>Melding</th><th>Typisk årsak</th></tr></thead>
+      <tbody>
+        <tr><td><code>SyntaxError</code></td><td>Skrivefeil: glemt kolon etter <code>if</code>, glemt parentes, feil innrykk</td></tr>
+        <tr><td><code>NameError</code></td><td>Navn som ikke finnes — ofte glemt hermetegn, eller variabelen er ikke laget ennå</td></tr>
+        <tr><td><code>TypeError</code></td><td>Feil type, f.eks. å plusse tall med tekst uten å konvertere</td></tr>
+        <tr><td><code>IndentationError</code></td><td>Innrykk som ikke stemmer (miks av tab og mellomrom, eller glemt innrykk)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="brok-box brok-box-example">
+    <strong>Sjekkliste når koden ikke kjører:</strong> kolon etter <code>if</code>/<code>for</code>/<code>while</code>? Fire mellomrom på linjene inni? Hermetegn i par? <code>==</code> når du sammenligner?
+  </div>
+</section>
+
+<section class="brok-section" id="prog-sjekkliste">
+  <div class="brok-section-head">
+    <div class="brok-num">✓</div>
+    <h4>Hurtigsjekkliste</h4>
+  </div>
+  <div class="brok-table-wrap">
+    <table class="brok-table">
+      <thead><tr><th>Du vil …</th><th>Bruk</th></tr></thead>
+      <tbody>
+        <tr><td>Vise noe på skjermen</td><td><code>print(...)</code></td></tr>
+        <tr><td>Lagre en verdi</td><td><code>x = 7</code></td></tr>
+        <tr><td>Regne med det brukeren skriver</td><td><code>int(input(...))</code></td></tr>
+        <tr><td>Ett vilkår</td><td><code>if</code> / <code>else</code></td></tr>
+        <tr><td>Flere vilkår</td><td><code>if</code> / <code>elif</code> / <code>else</code></td></tr>
+        <tr><td>Kjent antall ganger</td><td><code>for ... in range(...)</code></td></tr>
+        <tr><td>Så lenge noe er sant</td><td><code>while</code></td></tr>
+        <tr><td>Er n partall?</td><td><code>n % 2 == 0</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="brok-box brok-box-ok">
+    Oppgavene under <strong>Programmering</strong> følger denne rekkefølgen. Hver oppgave har et <strong>kodeskriver</strong> der du kan kjøre Python rett i nettleseren.
+  </div>
+  <h5>Prøv selv her</h5>
+  <p>Skriv Python under og trykk Kjør. Første gang lastes Python — det kan ta noen sekunder.</p>
+  <div class="py-play" data-play-id="fag-prog-try">
+    <div class="py-play-bar">
+      <span class="py-play-label">Kodeskriver · Python</span>
+      <button type="button" class="hint-btn py-run-btn" data-run="fag-prog-try">Kjør ▶</button>
+    </div>
+    <textarea id="fag-prog-try-code" class="py-code" spellcheck="false" autocapitalize="off">print("Hei, 1T!")
+print(2 + 5)</textarea>
+    <pre id="fag-prog-try-out" class="py-out">Trykk Kjør for å se utskrift.</pre>
+  </div>
+</section>
