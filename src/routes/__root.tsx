@@ -33,6 +33,7 @@ export const Route = createRootRoute({
         content: "Læringsressurs for vg1 matematikk 1T: oppgaver, quiz, øveprøver og eksamensarkiv.",
       },
       { name: "theme-color", content: "#0a0f1e" },
+      { name: "mg-build", content: "2026-08-26-tallmengder" },
     ],
     links: [
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },

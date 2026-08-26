@@ -8,12 +8,19 @@ export const Route = createFileRoute("/ressurser")({ component: RessurserPage })
 function RessurserPage() {
   const [tab, setTab] = useState(fagstoff[0]?.id || "brokregning");
   const current = fagstoff.find((f) => f.id === tab) || fagstoff[0];
-  const [html, setHtml] = useState("");
+  const [html, setHtml] = useState(current?.html || "");
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (!current) return;
     let cancelled = false;
+    if (current.html) {
+      setHtml(current.html);
+      setLoading(false);
+      return () => {
+        cancelled = true;
+      };
+    }
     if (current.src) {
       setLoading(true);
       fetch(current.src)

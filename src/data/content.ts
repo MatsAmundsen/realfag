@@ -2,6 +2,10 @@ import { fagsok as rawFagsok, fagstoff as rawFagstoff, programmeringData as rawP
 import type { Fagstoff, Kapittel, Oppgave } from "./types";
 import { EXTRA, SUB_TITLES } from "./extra-tasks";
 import { KAP3_OVEPROVE } from "./kap3-oveprove";
+import tallmengderHtml from "../../public/fagstoff/tallmengder.html?raw";
+import brokregningHtml from "../../public/fagstoff/brokregning.html?raw";
+import kvadratrotterHtml from "../../public/fagstoff/kvadratrotter.html?raw";
+import programmeringHtml from "../../public/fagstoff/programmering.html?raw";
 
 export const fagsok = (rawFagsok as Kapittel[]).map((kap) => {
   const delkapitler = kap.delkapitler.map((dk) => ({
@@ -24,7 +28,16 @@ export const fagsok = (rawFagsok as Kapittel[]).map((kap) => {
   }
   return { ...kap, delkapitler };
 });
-export const fagstoff = rawFagstoff as Fagstoff[];
+export const fagstoff = (rawFagstoff as Fagstoff[]).map((f) => {
+  const inline: Record<string, string> = {
+    tallmengder: tallmengderHtml,
+    brokregning: brokregningHtml,
+    kvadratrotter: kvadratrotterHtml,
+    programmering: programmeringHtml,
+  };
+  if (inline[f.id]) return { ...f, html: inline[f.id], src: undefined };
+  return f;
+});
 export const programmeringData = rawProg as Oppgave[];
 
 export const CHAPTER_META: Record<
