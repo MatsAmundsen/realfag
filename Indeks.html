@@ -283,45 +283,26 @@
 
     <div id="badge-toast" class="badge-toast hidden" role="status" aria-live="polite"></div>
 
+    <script src="data.js?v=d1eb5c83d7"></script>
+    <script src="app.js?v=d1eb5c83d7"></script>
     <script>
     (function () {
-        function bust(path, ver) {
-            return path.split('?')[0] + '?v=' + encodeURIComponent(ver);
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.getRegistrations().then(function (regs) {
+                regs.forEach(function (r) { r.unregister(); });
+            });
         }
-        function boot(ver) {
-            ver = ver || window.__MG_BUILD;
-            window.ASSET_VERSION = ver;
-            var css = document.getElementById('mg-css');
-            if (css) css.href = bust('style.css', ver);
-            function add(src, onload) {
-                var s = document.createElement('script');
-                s.src = bust(src, ver);
-                if (onload) s.onload = onload;
-                document.body.appendChild(s);
-            }
-            add('data.js', function () { add('app.js'); });
-            if (location.protocol === 'file:') return;
-            try {
-                var url = new URL(location.href);
-                if (url.searchParams.get('_v') !== ver) {
-                    url.searchParams.set('_v', ver);
-                    history.replaceState(null, '', url.toString());
-                }
-            } catch (e) {}
-            if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register(bust('sw.js', ver)).catch(function () {});
-            }
-        }
-        if (location.protocol === 'file:') {
-            boot(window.__MG_BUILD);
-            return;
-        }
+        if (location.protocol === 'file:') return;
         fetch('version.json?t=' + Date.now(), { cache: 'no-store' })
             .then(function (r) { return r.ok ? r.json() : null; })
             .then(function (info) {
-                boot(info && info.version ? info.version : window.__MG_BUILD);
+                if (!info || !info.version) return;
+                var url = new URL(location.href);
+                if (url.searchParams.get('_v') === info.version) return;
+                url.searchParams.set('_v', info.version);
+                location.replace(url.toString());
             })
-            .catch(function () { boot(window.__MG_BUILD); });
+            .catch(function () {});
     })();
     </script>
 </body>
