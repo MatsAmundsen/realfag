@@ -1882,6 +1882,51 @@ pre code { background: none; padding: 0; color: inherit; }
     background: var(--primary-subtle);
 }
 
+.brok-svg-text {
+    fill: var(--text-main);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.brok-svg-muted {
+    fill: var(--text-muted);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.brok-svg-on-fill {
+    fill: #fff;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.tm-fill-n { fill: var(--primary); }
+.tm-fill-z { fill: var(--primary); fill-opacity: 0.22; }
+.tm-fill-q { fill: var(--accent); fill-opacity: 0.16; }
+.tm-fill-r { fill: var(--text-faint); fill-opacity: 0.35; }
+.tm-stroke-z { stroke: var(--primary-light); stroke-width: 1.4; }
+.tm-stroke-q { stroke: var(--accent); stroke-width: 1.4; }
+.tm-stroke-r { stroke: var(--text-muted); stroke-width: 1.6; }
+.tm-axis {
+    stroke: var(--text-muted);
+    stroke-width: 2;
+    fill: none;
+}
+.tm-axis-fill { fill: var(--text-muted); }
+.tm-dot-closed { fill: var(--primary); }
+.tm-dot-accent { fill: var(--accent); }
+.tm-dot-open {
+    fill: var(--bg-elevated);
+    stroke: var(--primary);
+    stroke-width: 2.5;
+}
+.tm-interval-line {
+    stroke: var(--primary);
+    stroke-width: 6;
+    fill: none;
+    stroke-linecap: round;
+}
+.tm-interval-accent {
+    stroke: var(--accent);
+    stroke-width: 6;
+    fill: none;
+    stroke-linecap: round;
+}
+
 @media (max-width: 640px) {
     .brok-overview {
         grid-template-columns: repeat(2, 1fr);

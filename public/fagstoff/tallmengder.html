@@ -1,0 +1,383 @@
+<p class="brok-lead">Tallmengdene forteller <strong>hvilken type tall</strong> vi snakker om. Trykk på et kort for å hoppe til temaet.</p>
+
+<nav class="brok-overview" aria-label="Hoppe til tema">
+  <button type="button" class="brok-nav-card" data-fag-scroll="tm-oversikt"><span>1</span>Oversikt</button>
+  <button type="button" class="brok-nav-card" data-fag-scroll="tm-n"><span>2</span>ℕ</button>
+  <button type="button" class="brok-nav-card" data-fag-scroll="tm-z"><span>3</span>ℤ</button>
+  <button type="button" class="brok-nav-card" data-fag-scroll="tm-q"><span>4</span>ℚ</button>
+  <button type="button" class="brok-nav-card" data-fag-scroll="tm-irr"><span>5</span>Irrasjonale</button>
+  <button type="button" class="brok-nav-card" data-fag-scroll="tm-r"><span>6</span>ℝ</button>
+  <button type="button" class="brok-nav-card" data-fag-scroll="tm-element"><span>7</span>∈ / ∉</button>
+  <button type="button" class="brok-nav-card" data-fag-scroll="tm-intervall"><span>8</span>Intervaller</button>
+  <button type="button" class="brok-nav-card" data-fag-scroll="tm-abs"><span>9</span>$|x|$</button>
+  <button type="button" class="brok-nav-card" data-fag-scroll="tm-sjekkliste"><span>✓</span>Sjekkliste</button>
+</nav>
+
+<section class="brok-section" id="tm-oversikt">
+  <div class="brok-section-head">
+    <div class="brok-num">1</div>
+    <h4>Oversikt</h4>
+  </div>
+  <p>Mengdene ligger inni hverandre. Hvert nytt skall tar med <strong>flere</strong> tall:</p>
+  <div class="brok-math">$\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R}$</div>
+  <p>$\subset$ betyr «er en delmengde av». Alle naturlige tall er hele tall, alle hele tall er rasjonale, og alle rasjonale tall er reelle.</p>
+  <div class="brok-visual">
+    <figure style="width:100%;max-width:640px">
+      <svg viewBox="0 0 640 268" width="100%" role="img" aria-label="Nøstede tallmengder N inne i Z inne i Q inne i R">
+        <rect x="12" y="10" width="616" height="248" rx="18" class="tm-fill-r tm-stroke-r"/>
+        <rect x="12" y="10" width="430" height="248" rx="16" class="tm-fill-q tm-stroke-q"/>
+        <rect x="12" y="10" width="278" height="248" rx="14" class="tm-fill-z tm-stroke-z"/>
+        <rect x="12" y="10" width="148" height="248" rx="12" class="tm-fill-n"/>
+        <text x="86" y="42" text-anchor="middle" class="brok-svg-on-fill" font-size="18" font-weight="800">ℕ</text>
+        <text x="86" y="64" text-anchor="middle" class="brok-svg-on-fill" font-size="11">naturlige</text>
+        <text x="86" y="140" text-anchor="middle" class="brok-svg-on-fill" font-size="13">1, 2, 3, …</text>
+        <text x="213" y="42" text-anchor="middle" class="brok-svg-text" font-size="18" font-weight="800">ℤ</text>
+        <text x="213" y="64" text-anchor="middle" class="brok-svg-muted" font-size="11">hele tall</text>
+        <text x="213" y="140" text-anchor="middle" class="brok-svg-text" font-size="13">…, −1, 0</text>
+        <text x="354" y="42" text-anchor="middle" class="brok-svg-text" font-size="18" font-weight="800">ℚ</text>
+        <text x="354" y="64" text-anchor="middle" class="brok-svg-muted" font-size="11">rasjonale</text>
+        <text x="354" y="132" text-anchor="middle" class="brok-svg-text" font-size="13">½, −¾</text>
+        <text x="354" y="152" text-anchor="middle" class="brok-svg-text" font-size="13">0,333…</text>
+        <text x="534" y="42" text-anchor="middle" class="brok-svg-text" font-size="18" font-weight="800">ℝ</text>
+        <text x="534" y="64" text-anchor="middle" class="brok-svg-muted" font-size="11">reelle</text>
+        <text x="534" y="128" text-anchor="middle" class="brok-svg-text" font-size="13">√2, π</text>
+        <text x="534" y="148" text-anchor="middle" class="brok-svg-muted" font-size="11">(irrasjonale)</text>
+      </svg>
+      <figcaption>Hvert skall utvider mengden. Irrasjonale tall ligger i $\mathbb{R}$, men utenfor $\mathbb{Q}$.</figcaption>
+    </figure>
+  </div>
+  <div class="brok-box brok-box-ok">
+    <strong>Husk:</strong> $\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R}$. Det motsatte er usant: $\mathbb{R} \not\subset \mathbb{Q}$.
+  </div>
+</section>
+
+<section class="brok-section" id="tm-n">
+  <div class="brok-section-head">
+    <div class="brok-num">2</div>
+    <h4>Naturlige tall $\mathbb{N}$</h4>
+  </div>
+  <p>De naturlige tallene er <strong>tellingstallene</strong> — positive heltall:</p>
+  <div class="brok-math">$\mathbb{N} = \{1, 2, 3, 4, \ldots\}$</div>
+  <div class="brok-visual">
+    <figure style="width:100%;max-width:520px">
+      <svg viewBox="0 0 520 90" width="100%" aria-hidden="true">
+        <line x1="20" y1="40" x2="500" y2="40" class="tm-axis"/>
+        <polygon points="500,40 486,34 486,46" class="tm-axis-fill"/>
+        <g class="brok-svg-muted" font-size="11" text-anchor="middle">
+          <text x="70" y="78">0</text>
+          <text x="140" y="78">1</text>
+          <text x="210" y="78">2</text>
+          <text x="280" y="78">3</text>
+          <text x="350" y="78">4</text>
+          <text x="420" y="78">5</text>
+        </g>
+        <circle cx="70" cy="40" r="5" class="tm-dot-open"/>
+        <circle cx="140" cy="40" r="6" class="tm-dot-closed"/>
+        <circle cx="210" cy="40" r="6" class="tm-dot-closed"/>
+        <circle cx="280" cy="40" r="6" class="tm-dot-closed"/>
+        <circle cx="350" cy="40" r="6" class="tm-dot-closed"/>
+        <circle cx="420" cy="40" r="6" class="tm-dot-closed"/>
+      </svg>
+      <figcaption>$0$ er <strong>ikke</strong> med i $\mathbb{N}$ slik vi bruker det i 1T.</figcaption>
+    </figure>
+  </div>
+  <ul class="brok-list">
+    <li>Eksempler: $1$, $17$, $\sqrt{16}=4$</li>
+    <li>Ikke med: $0$, $-3$, $\dfrac{1}{2}$</li>
+  </ul>
+  <div class="brok-box brok-box-tip">
+    <strong>Null?</strong> Noen bøker tar med $0$ i $\mathbb{N}$. I 1T bruker vi $\mathbb{N} = \{1,2,3,\ldots\}$. Når $0$ skal være med, skriver vi $\mathbb{N}_0 = \{0,1,2,\ldots\}$.
+  </div>
+</section>
+
+<section class="brok-section" id="tm-z">
+  <div class="brok-section-head">
+    <div class="brok-num">3</div>
+    <h4>Hele tall $\mathbb{Z}$</h4>
+  </div>
+  <p>Hele tall tar med <strong>null og de negative</strong>:</p>
+  <div class="brok-math">$\mathbb{Z} = \{\ldots, -3, -2, -1, 0, 1, 2, 3, \ldots\}$</div>
+  <div class="brok-visual">
+    <figure style="width:100%;max-width:560px">
+      <svg viewBox="0 0 560 90" width="100%" aria-hidden="true">
+        <line x1="16" y1="40" x2="544" y2="40" class="tm-axis"/>
+        <polygon points="16,40 30,34 30,46" class="tm-axis-fill"/>
+        <polygon points="544,40 530,34 530,46" class="tm-axis-fill"/>
+        <g class="brok-svg-muted" font-size="11" text-anchor="middle">
+          <text x="70" y="78">−3</text>
+          <text x="140" y="78">−2</text>
+          <text x="210" y="78">−1</text>
+          <text x="280" y="78">0</text>
+          <text x="350" y="78">1</text>
+          <text x="420" y="78">2</text>
+          <text x="490" y="78">3</text>
+        </g>
+        <circle cx="70" cy="40" r="6" class="tm-dot-closed"/>
+        <circle cx="140" cy="40" r="6" class="tm-dot-closed"/>
+        <circle cx="210" cy="40" r="6" class="tm-dot-closed"/>
+        <circle cx="280" cy="40" r="7" class="tm-dot-accent"/>
+        <circle cx="350" cy="40" r="6" class="tm-dot-closed"/>
+        <circle cx="420" cy="40" r="6" class="tm-dot-closed"/>
+        <circle cx="490" cy="40" r="6" class="tm-dot-closed"/>
+      </svg>
+      <figcaption>Hele tallinja av prikker — men fortsatt bare heltall, ikke brøker.</figcaption>
+    </figure>
+  </div>
+  <div class="brok-box brok-box-example">
+    $\mathbb{N} \subset \mathbb{Z}$: alle naturlige tall er hele tall, men $-5 \in \mathbb{Z}$ og $-5 \notin \mathbb{N}$.
+  </div>
+</section>
+
+<section class="brok-section" id="tm-q">
+  <div class="brok-section-head">
+    <div class="brok-num">4</div>
+    <h4>Rasjonale tall $\mathbb{Q}$</h4>
+  </div>
+  <p>Et tall er rasjonalt hvis det kan skrives som brøk av <strong>to heltall</strong>:</p>
+  <div class="brok-math">$\mathbb{Q} = \left\{\dfrac{a}{b} \mid a \in \mathbb{Z},\ b \in \mathbb{Z},\ b \neq 0\right\}$</div>
+  <h5>Slik kjenner du dem igjen</h5>
+  <ul class="brok-list">
+    <li>Alle heltall: $-5 = \dfrac{-5}{1}$</li>
+    <li>Vanlige brøker: $\dfrac{3}{4}$, $-\dfrac{1}{2}$</li>
+    <li>Endelige desimaler: $4{,}2 = \dfrac{21}{5}$</li>
+    <li>Uendelige <strong>periodiske</strong> desimaler: $0{,}333\ldots = \dfrac{1}{3}$</li>
+  </ul>
+  <div class="brok-box brok-box-example">
+    <strong>Fra 1A:</strong> $-5$, $\sqrt{16}=4$, $\dfrac{3}{4}$ og $0{,}333\ldots$ er rasjonale. $\pi$ og $\sqrt{7}$ er det ikke.
+  </div>
+  <div class="brok-box brok-box-tip">
+    <strong>Fallgruve:</strong> $3{,}14$ er rasjonalt, men det er <em>ikke</em> $\pi$. $\dfrac{22}{7}$ er en tilnærming til $\pi$, ikke $\pi$ selv.
+  </div>
+</section>
+
+<section class="brok-section" id="tm-irr">
+  <div class="brok-section-head">
+    <div class="brok-num">5</div>
+    <h4>Irrasjonale tall</h4>
+  </div>
+  <p>Irrasjonale tall <strong>kan ikke</strong> skrives som brøk $\dfrac{a}{b}$ av to heltall. Desimalutviklingen er uendelig og <strong>uten periode</strong>.</p>
+  <div class="brok-visual">
+    <figure>
+      <svg viewBox="0 0 240 88" width="220" aria-hidden="true">
+        <rect x="8" y="18" width="224" height="52" rx="10" class="tm-fill-q tm-stroke-q"/>
+        <text x="120" y="40" text-anchor="middle" class="brok-svg-text" font-size="13" font-weight="700">0,333333…</text>
+        <text x="120" y="58" text-anchor="middle" class="brok-svg-muted" font-size="11">periode 3 → rasjonalt</text>
+      </svg>
+      <figcaption>$0{,}\overline{3} = \dfrac{1}{3} \in \mathbb{Q}$</figcaption>
+    </figure>
+    <span class="brok-eq">≠</span>
+    <figure>
+      <svg viewBox="0 0 240 88" width="220" aria-hidden="true">
+        <rect x="8" y="18" width="224" height="52" rx="10" class="tm-fill-r tm-stroke-r"/>
+        <text x="120" y="40" text-anchor="middle" class="brok-svg-text" font-size="13" font-weight="700">3,141592…</text>
+        <text x="120" y="58" text-anchor="middle" class="brok-svg-muted" font-size="11">ingen periode → irrasjonalt</text>
+      </svg>
+      <figcaption>$\pi \notin \mathbb{Q}$</figcaption>
+    </figure>
+  </div>
+  <ul class="brok-list">
+    <li>Klassikere: $\pi$, $e$, $\sqrt{2}$, $\sqrt{7}$</li>
+    <li>$\sqrt{n}$ er irrasjonal når $n$ <strong>ikke</strong> er et perfekt kvadrat</li>
+    <li>$\sqrt{16}=4$ er <strong>rasjonal</strong> (og til og med naturlig)</li>
+  </ul>
+  <div class="brok-box brok-box-ok">
+    Irrasjonale tall = alle reelle tall som <strong>ikke</strong> er rasjonale: $\mathbb{R} \setminus \mathbb{Q}$.
+  </div>
+</section>
+
+<section class="brok-section" id="tm-r">
+  <div class="brok-section-head">
+    <div class="brok-num">6</div>
+    <h4>Reelle tall $\mathbb{R}$</h4>
+  </div>
+  <p>De reelle tallene er <strong>hele tallinja</strong> — rasjonale og irrasjonale samlet.</p>
+  <div class="brok-math">$\mathbb{R} = \mathbb{Q} \cup \{\text{irrasjonale tall}\}$</div>
+  <div class="brok-visual">
+    <figure style="width:100%;max-width:580px">
+      <svg viewBox="0 0 580 110" width="100%" aria-hidden="true">
+        <line x1="16" y1="48" x2="564" y2="48" class="tm-axis"/>
+        <polygon points="16,48 30,42 30,54" class="tm-axis-fill"/>
+        <polygon points="564,48 550,42 550,54" class="tm-axis-fill"/>
+        <circle cx="80" cy="48" r="5" class="tm-dot-closed"/>
+        <circle cx="200" cy="48" r="5" class="tm-dot-closed"/>
+        <circle cx="290" cy="48" r="5" class="tm-dot-accent"/>
+        <circle cx="380" cy="48" r="5" class="tm-dot-closed"/>
+        <circle cx="470" cy="48" r="5" class="tm-dot-closed"/>
+        <g class="brok-svg-text" font-size="12" text-anchor="middle">
+          <text x="80" y="78">−2</text>
+          <text x="200" y="78">0</text>
+          <text x="290" y="78">½</text>
+          <text x="380" y="78">√2</text>
+          <text x="470" y="78">π</text>
+        </g>
+        <text x="80" y="24" text-anchor="middle" class="brok-svg-muted" font-size="10">ℤ</text>
+        <text x="200" y="24" text-anchor="middle" class="brok-svg-muted" font-size="10">ℤ</text>
+        <text x="290" y="24" text-anchor="middle" class="brok-svg-muted" font-size="10">ℚ</text>
+        <text x="380" y="24" text-anchor="middle" class="brok-svg-muted" font-size="10">irrasjonal</text>
+        <text x="470" y="24" text-anchor="middle" class="brok-svg-muted" font-size="10">irrasjonal</text>
+      </svg>
+      <figcaption>Alle disse punktene ligger i $\mathbb{R}$.</figcaption>
+    </figure>
+  </div>
+  <div class="brok-box brok-box-tip">
+    Utenfor $\mathbb{R}$ finnes blant annet komplekse tall $\mathbb{C}$. Det tar vi ikke i 1T.
+  </div>
+</section>
+
+<section class="brok-section" id="tm-element">
+  <div class="brok-section-head">
+    <div class="brok-num">7</div>
+    <h4>Element i og ikke element i</h4>
+  </div>
+  <p>Vi bruker $\in$ og $\notin$ for å si om et <strong>tall</strong> ligger i en mengde.</p>
+  <div class="brok-table-wrap">
+    <table class="brok-table">
+      <thead>
+        <tr><th>Symbol</th><th>Leses</th><th>Betydning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>$a \in A$</td><td>«$a$ er element i $A$»</td><td>$a$ tilhører mengden $A$</td></tr>
+        <tr><td>$a \notin A$</td><td>«$a$ er ikke element i $A$»</td><td>$a$ tilhører ikke $A$</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="brok-box brok-box-example">
+    <div class="brok-math">$4{,}2 \in \mathbb{Q}$ fordi $4{,}2 = \dfrac{21}{5}$</div>
+    <div class="brok-math">$-3 \notin \mathbb{N}$ fordi $-3$ ikke er et positivt heltall</div>
+    <div class="brok-math">$\sqrt{2} \in \mathbb{R}$ og $\sqrt{2} \notin \mathbb{Q}$</div>
+  </div>
+  <h5>Mengdekrøll og vilkår</h5>
+  <p>Krøllparenteser $\{\ \}$ lister opp elementene, eller beskriver dem med en regel:</p>
+  <ul class="brok-list">
+    <li>$\{2, 4, 6, 8\}$ — partall under $10$</li>
+    <li>$\{x \in \mathbb{N} \mid x \lt 10\}$ — alle naturlige tall mindre enn $10$</li>
+  </ul>
+  <div class="brok-box brok-box-tip">
+    <strong>Ikke bland:</strong> $\in$ er for <em>elementer</em> ($5 \in \mathbb{N}$). $\subset$ er for <em>mengder</em> ($\mathbb{N} \subset \mathbb{Z}$).
+  </div>
+</section>
+
+<section class="brok-section" id="tm-intervall">
+  <div class="brok-section-head">
+    <div class="brok-num">8</div>
+    <h4>Intervaller</h4>
+  </div>
+  <p>Et intervall er alle reelle tall mellom to grenser. Parentesen forteller om endepunktet er <strong>med</strong> eller <strong>ikke</strong>.</p>
+  <div class="brok-table-wrap">
+    <table class="brok-table">
+      <thead>
+        <tr><th>Notasjon</th><th>Ulikhet</th><th>Endepunkt</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>$[a, b]$</td><td>$a \le x \le b$</td><td>begge med</td></tr>
+        <tr><td>$\langle a, b \rangle$ eller $(a, b)$</td><td>$a \lt x \lt b$</td><td>ingen med</td></tr>
+        <tr><td>$[a, b\rangle$ eller $[a, b)$</td><td>$a \le x \lt b$</td><td>bare $a$ med</td></tr>
+        <tr><td>$\langle a, b]$ eller $(a, b]$</td><td>$a \lt x \le b$</td><td>bare $b$ med</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>I 1T brukes ofte vinkelparentes $\langle\ \rangle$ for åpen ende. Vanlig parentes $(\ )$ betyr det samme.</p>
+  <div class="brok-visual">
+    <figure style="width:100%;max-width:560px">
+      <svg viewBox="0 0 560 100" width="100%" aria-label="Intervallet fra og med -2 til men ikke med 8">
+        <line x1="24" y1="48" x2="536" y2="48" class="tm-axis"/>
+        <line x1="80" y1="48" x2="470" y2="48" class="tm-interval-line"/>
+        <circle cx="80" cy="48" r="8" class="tm-dot-closed"/>
+        <circle cx="470" cy="48" r="8" class="tm-dot-open"/>
+        <g class="brok-svg-muted" font-size="12" text-anchor="middle">
+          <text x="80" y="80">−2</text>
+          <text x="210" y="80">0</text>
+          <text x="340" y="80">4</text>
+          <text x="470" y="80">8</text>
+        </g>
+        <text x="275" y="28" text-anchor="middle" class="brok-svg-text" font-size="13" font-weight="700">[−2, 8⟩</text>
+      </svg>
+      <figcaption>Fylt prikk = inkludert. Åpen prikk = ikke inkludert. $-2 \le x \lt 8$.</figcaption>
+    </figure>
+  </div>
+  <div class="brok-box brok-box-example">
+    $-2 \le x \lt 8$ skrives $x \in [-2, 8\rangle$.
+  </div>
+  <h5>Snitt og union</h5>
+  <ul class="brok-list">
+    <li>$A \cap B$ — tall som ligger i <strong>begge</strong></li>
+    <li>$A \cup B$ — tall som ligger i <strong>minst én</strong> av dem</li>
+  </ul>
+  <div class="brok-box brok-box-example">
+    $[0, 4] \cap (2, 6) = (2, 4]$
+  </div>
+  <div class="brok-box brok-box-tip">
+    Et intervall er <strong>ikke</strong> det samme som en liste av heltall. $[-3{,}5,\ 2{,}1]$ inneholder uendelig mange reelle tall, men bare heltallene $-3,-2,-1,0,1,2$.
+  </div>
+</section>
+
+<section class="brok-section" id="tm-abs">
+  <div class="brok-section-head">
+    <div class="brok-num">9</div>
+    <h4>Absoluttverdi $|x|$</h4>
+  </div>
+  <p>$|x|$ er <strong>avstanden</strong> fra $x$ til $0$ på tallinja. Avstand er aldri negativ.</p>
+  <p>$|x| = x$ når $x \ge 0$, og $|x| = -x$ når $x \lt 0$.</p>
+  <div class="brok-visual">
+    <figure style="width:100%;max-width:520px">
+      <svg viewBox="0 0 520 110" width="100%" aria-hidden="true">
+        <line x1="20" y1="56" x2="500" y2="56" class="tm-axis"/>
+        <polygon points="20,56 34,50 34,62" class="tm-axis-fill"/>
+        <polygon points="500,56 486,50 486,62" class="tm-axis-fill"/>
+        <circle cx="260" cy="56" r="5" class="tm-dot-accent"/>
+        <circle cx="80" cy="56" r="6" class="tm-dot-closed"/>
+        <circle cx="440" cy="56" r="6" class="tm-dot-closed"/>
+        <line x1="80" y1="40" x2="260" y2="40" class="tm-interval-line"/>
+        <line x1="260" y1="40" x2="440" y2="40" class="tm-interval-accent"/>
+        <text x="260" y="92" text-anchor="middle" class="brok-svg-muted" font-size="12">0</text>
+        <text x="80" y="92" text-anchor="middle" class="brok-svg-text" font-size="12">−7</text>
+        <text x="440" y="92" text-anchor="middle" class="brok-svg-text" font-size="12">7</text>
+        <text x="170" y="28" text-anchor="middle" class="brok-svg-muted" font-size="11">avstand 7</text>
+        <text x="350" y="28" text-anchor="middle" class="brok-svg-muted" font-size="11">avstand 7</text>
+      </svg>
+      <figcaption>$|-7| = 7$ og $|7| = 7$. Samme avstand til origo.</figcaption>
+    </figure>
+  </div>
+  <h5>Likninger med absoluttverdi</h5>
+  <p>$|x| = a$ (når $a \gt 0$) har <strong>to</strong> løsninger: $x = a$ eller $x = -a$.</p>
+  <p>$|x - c| = r$ betyr «avstand fra $c$ er $r$»:</p>
+  <div class="brok-box brok-box-example">
+    $|x - 2| = 5$ gir $x = 7$ eller $x = -3$.
+  </div>
+  <div class="brok-box brok-box-ok">
+    Regn først inni, deretter absoluttverdi: $|3-8| = |-5| = 5$.
+  </div>
+</section>
+
+<section class="brok-section" id="tm-sjekkliste">
+  <div class="brok-section-head">
+    <div class="brok-num">✓</div>
+    <h4>Hurtigsjekkliste</h4>
+  </div>
+  <h5>Hvilken mengde?</h5>
+  <ol class="brok-list">
+    <li>Heltall og positivt (ikke $0$)? → $\mathbb{N}$</li>
+    <li>Heltall (også $0$ eller negativt)? → $\mathbb{Z}$</li>
+    <li>Kan skrives som brøk $a/b$? → $\mathbb{Q}$</li>
+    <li>På tallinja, men ikke brøk? → irrasjonal, likevel i $\mathbb{R}$</li>
+  </ol>
+  <div class="brok-table-wrap">
+    <table class="brok-table">
+      <thead>
+        <tr><th>Tall</th><th>ℕ</th><th>ℤ</th><th>ℚ</th><th>ℝ</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>$4$</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+        <tr><td>$0$</td><td>✗</td><td>✓</td><td>✓</td><td>✓</td></tr>
+        <tr><td>$-3$</td><td>✗</td><td>✓</td><td>✓</td><td>✓</td></tr>
+        <tr><td>$\frac{3}{4}$</td><td>✗</td><td>✗</td><td>✓</td><td>✓</td></tr>
+        <tr><td>$\sqrt{16}$</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+        <tr><td>$\sqrt{2}$</td><td>✗</td><td>✗</td><td>✗</td><td>✓</td></tr>
+        <tr><td>$\pi$</td><td>✗</td><td>✗</td><td>✗</td><td>✓</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="brok-box brok-box-tip">
+    <strong>Før prøven:</strong> $\sqrt{16}=4 \in \mathbb{N}$. $3{,}14 \neq \pi$. $0 \notin \mathbb{N}$. $\in$ for tall, $\subset$ for mengder. Fylt prikk = med i intervallet.
+  </div>
+</section>

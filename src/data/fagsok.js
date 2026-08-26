@@ -6076,6 +6076,12 @@ export const fagsok = [
 
 export const fagstoff = [
     {
+        "id": "tallmengder",
+        "tittel": "Fagbibliotek: Tallmengder",
+        "src": "/fagstoff/tallmengder.html",
+        "html": ""
+    },
+    {
         "id": "brokregning",
         "tittel": "Fagbibliotek: Brøkregning",
         "src": "/fagstoff/brokregning.html",
