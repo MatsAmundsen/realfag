@@ -71,7 +71,7 @@ window.fagsok = [
                         "hint": "Absoluttverdi betyr avstanden til null på tallinjen, uavhengig av fortegn.",
                         "fasit": null,
                         "fasitSteg": [
-                            "<strong>a)</strong> <br>Ligningen $|x| = 12$ forteller oss at avstanden fra $x$ til $0$ på tallinjen er nøyaktig $12$.<br><br>Man kan gå $12$ skritt til høyre for null: $x = 12$<br><br>Man kan gå $12$ skritt til venstre for null: $x = -12$<br><br><strong>Svar:</strong> De mulige verdiene er $x = 12$ og $x = -12$",
+                            "<strong>a)</strong> <br>Likningen $|x| = 12$ forteller oss at avstanden fra $x$ til $0$ på tallinjen er nøyaktig $12$.<br><br>Man kan gå $12$ skritt til høyre for null: $x = 12$<br><br>Man kan gå $12$ skritt til venstre for null: $x = -12$<br><br><strong>Svar:</strong> De mulige verdiene er $x = 12$ og $x = -12$",
                             "<strong>b)</strong> <br>Oppgaven sier at $x \\notin \\mathbb{N}$ (det vil si at $x$ er \"ikke et element i\" de naturlige tallene). <br>De naturlige tallene er de positive heltallene ($1, 2, 3, ...$).<br><br>Vi sjekker de to alternativene vi fant i oppgave a:<br><br>$x = 12 \\rightarrow$ dette er et positivt heltall (tilhører $\\mathbb{N}$)<br><br>$x = -12 \\rightarrow$ dette er et negativt tall (tilhører *ikke* $\\mathbb{N}$)<br><br>Siden $x$ ikke kan være i $\\mathbb{N}$, må det være det negative alternativet.<br><br><strong>Svar:</strong> $x = -12$"
                         ],
                         "starter": ""
@@ -220,7 +220,7 @@ window.fagsok = [
                         "forklaring": "Snittet inneholder tallene som er i *begge* intervallene. Det er tallene som er større enn 2 (fra $B$) og mindre eller lik 4 (fra $A$)."
                     },
                     {
-                        "sporsmal": "Løs ligningen $|x - 2| = 5$.",
+                        "sporsmal": "Løs likningen $|x - 2| = 5$.",
                         "alternativer": [
                             "$x = 7$",
                             "$x = 7$ eller $x = -3$",
@@ -325,7 +325,7 @@ window.fagsok = [
                     {
                         "id": "1.32",
                         "tittel": "Oppgave 1.32",
-                        "tekst": "<button type=\"button\" class=\"hint-btn ressurs-link-btn\" onclick=\"window.location.hash='ressurser/kvadratrotter'\">📚 Lær rot-regler i Fagbiblioteket</button><br><br>Skriv så enkelt som mulig: $\\sqrt{45} - \\sqrt{20}$",
+                        "tekst": "<button onclick=\"window.goToRessurser()\" style=\"background-color: #10b981; box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2); transition: all 0.2s; color: white; padding: 5px 10px; border-radius: 5px; border: none; cursor: pointer; margin-bottom: 15px; font-weight: bold;\">📚 Lær rot-regler i Fagbiblioteket</button><br><br>Skriv så enkelt som mulig: $\\sqrt{45} - \\sqrt{20}$",
                         "bilde": null,
                         "hint": "Skriv $45$ og $20$ som produkt av to tall, der det ene tallet er et kvadrattall (f.eks. $9$ eller $4$).",
                         "fasit": null,
@@ -569,138 +569,26 @@ window.fagsok = [
                     {
                         "id": "1.44",
                         "tittel": "Oppgave 1.44",
-                        "tekst": "<button type=\"button\" class=\"hint-btn ressurs-link-btn\" onclick=\"window.location.hash='ressurser/brokregning'\">📚 Lær brøkregning i Fagbiblioteket</button><br><br>Regn ut og forkort svaret så mye som mulig:<br>$\\frac{5}{12} + \\frac{1}{18}$",
+                        "tekst": "<button onclick=\"window.goToRessurser()\" style=\"background-color: #10b981; box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2); transition: all 0.2s; color: white; padding: 5px 10px; border-radius: 5px; border: none; cursor: pointer; margin-bottom: 15px; font-weight: bold;\">📚 Lær brøkregning i Fagbiblioteket</button><br><br>Regn ut og forkort svaret så mye som mulig:<br>$\frac{5}{12} + \frac{1}{18}$",
                         "bilde": null,
                         "hint": "Bruk minste felles multiplum (MFM) for $12$ og $18$ som du fant i forrige oppgave, for å finne fellesnevneren.",
                         "fasit": null,
                         "fasitSteg": [
-                            "Vi skal regne ut $\\frac{5}{12} + \\frac{1}{18}$.<br><br>Fra forrige oppgave vet vi at minste felles multiplum (fellesnevneren) for $12$ og $18$ er $36$.<br>Vi må utvide begge brøkene slik at nevneren blir $36$:<br>- For den første brøken må vi gange med $3$ ($12 \\cdot 3 = 36$).<br>- For den andre brøken må vi gange med $2$ ($18 \\cdot 2 = 36$).<br><br>$\\frac{5 \\cdot 3}{12 \\cdot 3} + \\frac{1 \\cdot 2}{18 \\cdot 2}$<br><br>$= \\frac{15}{36} + \\frac{2}{36}$",
-                            "$= \\frac{15 + 2}{36}$<br><br>$= \\frac{17}{36}$<br><br>Tallet $17$ er et primtall og deler ikke $36$, så brøken kan ikke forkortes mer.<br><br><strong>Svar:</strong> $\\frac{17}{36}$"
+                            "Vi skal regne ut $\frac{5}{12} + \frac{1}{18}$.<br><br>Fra forrige oppgave vet vi at minste felles multiplum (fellesnevneren) for $12$ og $18$ er $36$.<br>Vi må utvide begge brøkene slik at nevneren blir $36$:<br>- For den første brøken må vi gange med $3$ ($12 \\cdot 3 = 36$).<br>- For den andre brøken må vi gange med $2$ ($18 \\cdot 2 = 36$).<br><br>$\frac{5 \\cdot 3}{12 \\cdot 3} + \frac{1 \\cdot 2}{18 \\cdot 2}$<br><br>$= \frac{15}{36} + \frac{2}{36}$",
+                            "$= \frac{15 + 2}{36}$<br><br>$= \frac{17}{36}$<br><br>Tallet $17$ er et primtall og deler ikke $36$, så brøken kan ikke forkortes mer.<br><br><strong>Svar:</strong> $\frac{17}{36}$"
                         ],
                         "starter": ""
                     },
                     {
                         "id": "1.45",
                         "tittel": "Oppgave 1.45",
-                        "tekst": "<button type=\"button\" class=\"hint-btn ressurs-link-btn\" onclick=\"window.location.hash='ressurser/brokregning'\">📚 Lær brøkregning i Fagbiblioteket</button><br><br>Regn ut:<br><strong>a)</strong> $\\frac{3}{4} \\cdot \\frac{2}{5}$<br><br><strong>b)</strong> $\\frac{4}{7} : \\frac{2}{3}$",
+                        "tekst": "<button onclick=\"window.goToRessurser()\" style=\"background-color: #10b981; box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2); transition: all 0.2s; color: white; padding: 5px 10px; border-radius: 5px; border: none; cursor: pointer; margin-bottom: 15px; font-weight: bold;\">📚 Lær brøkregning i Fagbiblioteket</button><br><br>Regn ut:<br><strong>a)</strong> $\frac{3}{4} \\cdot \frac{2}{5}$<br><br><strong>b)</strong> $\frac{4}{7} : \frac{2}{3}$",
                         "bilde": null,
                         "hint": "Når vi ganger brøker, ganger vi teller med teller og nevner med nevner. <br>Når vi deler brøker, snur vi den bakerste brøken på hodet og ganger i stedet.",
                         "fasit": null,
                         "fasitSteg": [
-                            "<strong>a)</strong><br>Vi ganger teller med teller og nevner med nevner:<br>$\\frac{3 \\cdot 2}{4 \\cdot 5}$<br>$= \\frac{6}{20}$<br><br>Vi forkorter brøken ved å dele på $2$ oppe og nede:<br>$= \\frac{3}{10}$<br><br><strong>Svar:</strong> $\\frac{3}{10}$",
-                            "<strong>b)</strong><br>For å dele to brøker, ganger vi den første med den omvendte av den andre:<br>$\\frac{4}{7} \\cdot \\frac{3}{2}$<br><br>Ganger teller og nevner:<br>$= \\frac{4 \\cdot 3}{7 \\cdot 2}$<br>$= \\frac{12}{14}$<br><br>Vi forkorter brøken ved å dele på $2$ oppe og nede:<br>$= \\frac{6}{7}$<br><br><strong>Svar:</strong> $\\frac{6}{7}$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "1.46",
-                        "tittel": "Oppgave 1.46",
-                        "tekst": "<button type=\"button\" class=\"hint-btn ressurs-link-btn\" onclick=\"window.location.hash='ressurser/brokregning'\">📚 Lær brøkregning i Fagbiblioteket</button><br><br>Forkort brøkene så langt som mulig:<br><br><strong>a)</strong> $\\frac{4}{12}$<br><br><strong>b)</strong> $\\frac{18}{24}$<br><br><strong>c)</strong> $\\frac{15}{25}$",
-                        "bilde": null,
-                        "hint": "Del teller og nevner på samme tall (største felles faktor).",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>SFF for $4$ og $12$ er $4$: $\\frac{4}{12} = \\frac{1}{3}$<br><br><strong>Svar:</strong> $\\frac{1}{3}$",
-                            "<strong>b)</strong><br>SFF for $18$ og $24$ er $6$: $\\frac{18}{24} = \\frac{3}{4}$<br><br><strong>Svar:</strong> $\\frac{3}{4}$",
-                            "<strong>c)</strong><br>SFF for $15$ og $25$ er $5$: $\\frac{15}{25} = \\frac{3}{5}$<br><br><strong>Svar:</strong> $\\frac{3}{5}$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "1.47",
-                        "tittel": "Oppgave 1.47",
-                        "tekst": "Regn ut. Forkort svaret hvis det går:<br><br><strong>a)</strong> $\\frac{2}{7} + \\frac{3}{7}$<br><br><strong>b)</strong> $\\frac{5}{8} - \\frac{1}{8}$<br><br><strong>c)</strong> $\\frac{1}{5} + \\frac{3}{5} + \\frac{1}{5}$",
-                        "bilde": null,
-                        "hint": "Når nevnerne er like, plusser eller trekker du fra tellerne og beholder nevneren.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$\\frac{2+3}{7} = \\frac{5}{7}$<br><br><strong>Svar:</strong> $\\frac{5}{7}$",
-                            "<strong>b)</strong><br>$\\frac{5-1}{8} = \\frac{4}{8} = \\frac{1}{2}$<br><br><strong>Svar:</strong> $\\frac{1}{2}$",
-                            "<strong>c)</strong><br>$\\frac{1+3+1}{5} = \\frac{5}{5} = 1$<br><br><strong>Svar:</strong> $1$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "1.48",
-                        "tittel": "Oppgave 1.48",
-                        "tekst": "Regn ut. Finn fellesnevner først:<br><br><strong>a)</strong> $\\frac{1}{2} + \\frac{1}{3}$<br><br><strong>b)</strong> $\\frac{2}{5} + \\frac{1}{10}$<br><br><strong>c)</strong> $\\frac{1}{4} + \\frac{2}{3}$",
-                        "bilde": null,
-                        "hint": "Fellesnevner er minste felles multiplum av nevnerne. Utvid hver brøk slik at nevneren blir den samme.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>Fellesnevner $6$: $\\frac{3}{6} + \\frac{2}{6} = \\frac{5}{6}$<br><br><strong>Svar:</strong> $\\frac{5}{6}$",
-                            "<strong>b)</strong><br>Fellesnevner $10$: $\\frac{4}{10} + \\frac{1}{10} = \\frac{5}{10} = \\frac{1}{2}$<br><br><strong>Svar:</strong> $\\frac{1}{2}$",
-                            "<strong>c)</strong><br>Fellesnevner $12$: $\\frac{3}{12} + \\frac{8}{12} = \\frac{11}{12}$<br><br><strong>Svar:</strong> $\\frac{11}{12}$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "1.49",
-                        "tittel": "Oppgave 1.49",
-                        "tekst": "Regn ut:<br><br><strong>a)</strong> $\\frac{3}{4} - \\frac{1}{6}$<br><br><strong>b)</strong> $\\frac{5}{6} - \\frac{1}{2}$<br><br><strong>c)</strong> $1 - \\frac{3}{8}$",
-                        "bilde": null,
-                        "hint": "Samme metode som addisjon: fellesnevner, så trekk tellerne fra hverandre. $1 = \\frac{8}{8}$ i <strong>c)</strong>.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>Fellesnevner $12$: $\\frac{9}{12} - \\frac{2}{12} = \\frac{7}{12}$<br><br><strong>Svar:</strong> $\\frac{7}{12}$",
-                            "<strong>b)</strong><br>Fellesnevner $6$: $\\frac{5}{6} - \\frac{3}{6} = \\frac{2}{6} = \\frac{1}{3}$<br><br><strong>Svar:</strong> $\\frac{1}{3}$",
-                            "<strong>c)</strong><br>$1 = \\frac{8}{8}$, så $\\frac{8}{8} - \\frac{3}{8} = \\frac{5}{8}$<br><br><strong>Svar:</strong> $\\frac{5}{8}$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "1.50",
-                        "tittel": "Oppgave 1.50",
-                        "tekst": "<strong>a)</strong> Skriv $2\\frac{1}{3}$ som uekte brøk.<br><br><strong>b)</strong> Regn ut $1\\frac{1}{2} + 2\\frac{1}{4}$.<br><br><strong>c)</strong> Regn ut $3 - 1\\frac{2}{5}$.",
-                        "bilde": null,
-                        "hint": "En blandet tall $a\\frac{b}{c}$ er $a + \\frac{b}{c} = \\frac{ac + b}{c}$. Regn med uekte brøker, og skriv gjerne svaret som blandet tall til slutt.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$2\\frac{1}{3} = \\frac{2 \\cdot 3 + 1}{3} = \\frac{7}{3}$<br><br><strong>Svar:</strong> $\\frac{7}{3}$",
-                            "<strong>b)</strong><br>$1\\frac{1}{2} = \\frac{3}{2}$, $2\\frac{1}{4} = \\frac{9}{4}$<br><br>Fellesnevner $4$: $\\frac{6}{4} + \\frac{9}{4} = \\frac{15}{4} = 3\\frac{3}{4}$<br><br><strong>Svar:</strong> $\\frac{15}{4}$ (eller $3\\frac{3}{4}$)",
-                            "<strong>c)</strong><br>$3 = \\frac{15}{5}$, $1\\frac{2}{5} = \\frac{7}{5}$<br><br>$\\frac{15}{5} - \\frac{7}{5} = \\frac{8}{5} = 1\\frac{3}{5}$<br><br><strong>Svar:</strong> $\\frac{8}{5}$ (eller $1\\frac{3}{5}$)"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "1.51",
-                        "tittel": "Oppgave 1.51",
-                        "tekst": "Regn ut. Forkort gjerne *før* du ganger:<br><br><strong>a)</strong> $\\frac{2}{3} \\cdot \\frac{3}{8}$<br><br><strong>b)</strong> $5 \\cdot \\frac{2}{15}$<br><br><strong>c)</strong> Hva er $\\frac{3}{4}$ av $16$?",
-                        "bilde": null,
-                        "hint": "Gange brøker: teller med teller, nevner med nevner. «Av» betyr gange. $5 = \\frac{5}{1}$.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>Forkort $3$ i teller og nevner: $\\frac{2}{1} \\cdot \\frac{1}{8} = \\frac{2}{8} = \\frac{1}{4}$<br><br>(eller $\\frac{6}{24} = \\frac{1}{4}$)<br><br><strong>Svar:</strong> $\\frac{1}{4}$",
-                            "<strong>b)</strong><br>$\\frac{5}{1} \\cdot \\frac{2}{15} = \\frac{10}{15} = \\frac{2}{3}$<br><br><strong>Svar:</strong> $\\frac{2}{3}$",
-                            "<strong>c)</strong><br>$\\frac{3}{4} \\cdot 16 = \\frac{3 \\cdot 16}{4} = 3 \\cdot 4 = 12$<br><br><strong>Svar:</strong> $12$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "1.52",
-                        "tittel": "Oppgave 1.52",
-                        "tekst": "Regn ut:<br><br><strong>a)</strong> $\\frac{2}{3} : \\frac{4}{9}$<br><br><strong>b)</strong> $5 : \\frac{2}{3}$<br><br><strong>c)</strong> $\\frac{3}{8} : 6$",
-                        "bilde": null,
-                        "hint": "Å dele på en brøk er det samme som å gange med den omvendte brøken. $6 = \\frac{6}{1}$, så den omvendte er $\\frac{1}{6}$.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$\\frac{2}{3} \\cdot \\frac{9}{4} = \\frac{18}{12} = \\frac{3}{2}$<br><br><strong>Svar:</strong> $\\frac{3}{2}$",
-                            "<strong>b)</strong><br>$5 \\cdot \\frac{3}{2} = \\frac{15}{2}$<br><br><strong>Svar:</strong> $\\frac{15}{2}$",
-                            "<strong>c)</strong><br>$\\frac{3}{8} \\cdot \\frac{1}{6} = \\frac{3}{48} = \\frac{1}{16}$<br><br><strong>Svar:</strong> $\\frac{1}{16}$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "1.53",
-                        "tittel": "Oppgave 1.53",
-                        "tekst": "<strong>a)</strong> Regn ut $\\frac{1}{2} + \\frac{1}{3} \\cdot \\frac{1}{4}$. Husk regnerekkefølgen.<br><br><strong>b)</strong> En tank er $\\frac{2}{5}$ full. Det tømmes $\\frac{1}{4}$ av *innholdet*. Hvor stor andel av hele tanken er igjen?<br><br><strong>c)</strong> Regn ut $\\left(\\frac{3}{4} + \\frac{1}{2}\\right) : \\frac{5}{6}$.",
-                        "bilde": null,
-                        "hint": "I <strong>a)</strong> ganges før det plusses. I <strong>b)</strong> betyr «av innholdet» at du tar $\\frac{1}{4}$ av $\\frac{2}{5}$, ikke av hele tanken. I <strong>c)</strong> parentes først.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$\\frac{1}{3} \\cdot \\frac{1}{4} = \\frac{1}{12}$<br><br>$\\frac{1}{2} + \\frac{1}{12} = \\frac{6}{12} + \\frac{1}{12} = \\frac{7}{12}$<br><br><strong>Svar:</strong> $\\frac{7}{12}$",
-                            "<strong>b)</strong><br>Det som tømmes: $\\frac{1}{4} \\cdot \\frac{2}{5} = \\frac{2}{20} = \\frac{1}{10}$ av hele tanken.<br><br>Igjen: $\\frac{2}{5} - \\frac{1}{10} = \\frac{4}{10} - \\frac{1}{10} = \\frac{3}{10}$<br><br>(eller: det som blir igjen av innholdet er $\\frac{3}{4}$, så $\\frac{2}{5} \\cdot \\frac{3}{4} = \\frac{6}{20} = \\frac{3}{10}$)<br><br><strong>Svar:</strong> $\\frac{3}{10}$",
-                            "<strong>c)</strong><br>$\\frac{3}{4} + \\frac{1}{2} = \\frac{3}{4} + \\frac{2}{4} = \\frac{5}{4}$<br><br>$\\frac{5}{4} : \\frac{5}{6} = \\frac{5}{4} \\cdot \\frac{6}{5} = \\frac{6}{4} = \\frac{3}{2}$<br><br><strong>Svar:</strong> $\\frac{3}{2}$"
+                            "<strong>a)</strong><br>Vi ganger teller med teller og nevner med nevner:<br>$\frac{3 \\cdot 2}{4 \\cdot 5}$<br>$= \frac{6}{20}$<br><br>Vi forkorter brøken ved å dele på $2$ oppe og nede:<br>$= \frac{3}{10}$<br><br><strong>Svar:</strong> $\frac{3}{10}$",
+                            "<strong>b)</strong><br>For å dele to brøker, ganger vi den første med den omvendte av den andre:<br>$\frac{4}{7} \\cdot \frac{3}{2}$<br><br>Ganger teller og nevner:<br>$= \frac{4 \\cdot 3}{7 \\cdot 2}$<br>$= \frac{12}{14}$<br><br>Vi forkorter brøken ved å dele på $2$ oppe og nede:<br>$= \frac{6}{7}$<br><br><strong>Svar:</strong> $\frac{6}{7}$"
                         ],
                         "starter": ""
                     }
@@ -711,7 +599,7 @@ window.fagsok = [
                         "alternativer": [
                             "Å finne minste felles multiplum",
                             "Å finne største felles faktor",
-                            "Å løse andregradsligninger",
+                            "Å løse andregradslikninger",
                             "Å finne primtallsfaktorer"
                         ],
                         "riktigSvar": 1,
@@ -806,7 +694,7 @@ window.fagsok = [
                         "forklaring": "Telleren kan faktoriseres med konjugatsetningen (tredje kvadratsetning): $(x-2)(x+2)$. Når vi forkorter bort $(x-2)$, står vi igjen med $x+2$."
                     },
                     {
-                        "sporsmal": "Løs ligningen $\\frac{x}{3} - \\frac{x}{4} = 2$.",
+                        "sporsmal": "Løs likningen $\\frac{x}{3} - \\frac{x}{4} = 2$.",
                         "alternativer": [
                             "$x = 12$",
                             "$x = 24$",
@@ -912,33 +800,33 @@ window.fagsok = [
                     {
                         "id": "1.59",
                         "tittel": "Oppgave 1.59",
-                        "tekst": "Bruk potensreglene til å bevise algebraisk at ligningen stemmer: <br>$4^{x+1} - 4^x = 3 \\cdot 4^x$",
+                        "tekst": "Bruk potensreglene til å bevise algebraisk at likningen stemmer: <br>$4^{x+1} - 4^x = 3 \\cdot 4^x$",
                         "bilde": null,
                         "hint": "Bruk regelen for multiplikasjon av potenser baklengs for å splitte opp $4^{x+1}$ til $4^x \\cdot 4^1$.<br>Da kan du faktorisere ut $4^x$.",
                         "fasit": null,
                         "fasitSteg": [
                             "Vi skal bevise at $4^{x+1} - 4^x = 3 \\cdot 4^x$. Vi starter med venstre side (V.S) og viser at den er lik høyre side (H.S).<br><br><strong>V.S:</strong><br>$4^{x+1} - 4^x$<br><br>$= (4^x \\cdot 4^1) - 4^x$ (bruker potensregelen $a^{n+m} = a^n \\cdot a^m$ til å splitte opp det første leddet)<br><br>$= 4 \\cdot 4^x - 1 \\cdot 4^x$ (omorganiserer litt og gjør det tydelig at vi har fire $4^x$ og trekker fra én $4^x$)<br><br>$= 4^x \\cdot (4 - 1)$ (faktoriserer ut felles faktor, $4^x$)",
-                            "$= 4^x \\cdot 3$ (regner ut parentesen)<br><br>$= 3 \\cdot 4^x$ (bytter rekkefølge på faktorene)<br><br>Dette er nøyaktig det som står på høyre side av ligningen.<br><br>V.S $=$ H.S<br><br><strong>Svar:</strong> Beviset er fullført, ligningen stemmer."
+                            "$= 4^x \\cdot 3$ (regner ut parentesen)<br><br>$= 3 \\cdot 4^x$ (bytter rekkefølge på faktorene)<br><br>Dette er nøyaktig det som står på høyre side av likningen.<br><br>V.S $=$ H.S<br><br><strong>Svar:</strong> Beviset er fullført, likningen stemmer."
                         ],
                         "starter": ""
                     },
                     {
                         "id": "1.60",
                         "tittel": "Oppgave 1.60",
-                        "tekst": "<button type=\"button\" class=\"hint-btn ressurs-link-btn\" onclick=\"window.location.hash='ressurser/kvadratrotter'\">📚 Lær rot-regler i Fagbiblioteket</button><br><br>Regn ut og skriv svaret så enkelt som mulig:<br><strong>a)</strong> $\\sqrt{2} \\cdot \\sqrt{8}$<br><br><strong>b)</strong> $\\frac{\\sqrt{50}}{\\sqrt{2}}$",
+                        "tekst": "<button onclick=\"window.goToRessurser()\" style=\"background-color: #10b981; box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2); transition: all 0.2s; color: white; padding: 5px 10px; border-radius: 5px; border: none; cursor: pointer; margin-bottom: 15px; font-weight: bold;\">📚 Lær rot-regler i Fagbiblioteket</button><br><br>Regn ut og skriv svaret så enkelt som mulig:<br><strong>a)</strong> $\\sqrt{2} \\cdot \\sqrt{8}$<br><br><strong>b)</strong> $\frac{\\sqrt{50}}{\\sqrt{2}}$",
                         "bilde": null,
-                        "hint": "Bruk rotreglene: $\\sqrt{a} \\cdot \\sqrt{b} = \\sqrt{a \\cdot b}$ og $\\frac{\\sqrt{a}}{\\sqrt{b}} = \\sqrt{\\frac{a}{b}}$.",
+                        "hint": "Bruk rotreglene: $\\sqrt{a} \\cdot \\sqrt{b} = \\sqrt{a \\cdot b}$ og $\frac{\\sqrt{a}}{\\sqrt{b}} = \\sqrt{\frac{a}{b}}$.",
                         "fasit": null,
                         "fasitSteg": [
                             "<strong>a)</strong><br>Vi bruker regelen for multiplikasjon av røtter:<br>$\\sqrt{2} \\cdot \\sqrt{8}$<br>$= \\sqrt{2 \\cdot 8}$<br>$= \\sqrt{16}$<br>$= 4$<br><br><strong>Svar:</strong> $4$",
-                            "<strong>b)</strong><br>Vi bruker regelen for divisjon av røtter:<br>$\\frac{\\sqrt{50}}{\\sqrt{2}}$<br>$= \\sqrt{\\frac{50}{2}}$<br>$= \\sqrt{25}$<br>$= 5$<br><br><strong>Svar:</strong> $5$"
+                            "<strong>b)</strong><br>Vi bruker regelen for divisjon av røtter:<br>$\frac{\\sqrt{50}}{\\sqrt{2}}$<br>$= \\sqrt{\frac{50}{2}}$<br>$= \\sqrt{25}$<br>$= 5$<br><br><strong>Svar:</strong> $5$"
                         ],
                         "starter": ""
                     },
                     {
                         "id": "1.61",
                         "tittel": "Oppgave 1.61",
-                        "tekst": "<button type=\"button\" class=\"hint-btn ressurs-link-btn\" onclick=\"window.location.hash='ressurser/kvadratrotter'\">📚 Lær rot-regler i Fagbiblioteket</button><br><br>Forenkle uttrykket: $\\sqrt{72}$",
+                        "tekst": "<button onclick=\"window.goToRessurser()\" style=\"background-color: #10b981; box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2); transition: all 0.2s; color: white; padding: 5px 10px; border-radius: 5px; border: none; cursor: pointer; margin-bottom: 15px; font-weight: bold;\">📚 Lær rot-regler i Fagbiblioteket</button><br><br>Forenkle uttrykket: $\\sqrt{72}$",
                         "bilde": null,
                         "hint": "Prøv å skrive $72$ som et produkt av et kvadrattall og et annet tall. Kvadratallene er $1, 4, 9, 16, 25, 36, \\dots$",
                         "fasit": null,
@@ -1188,8 +1076,8 @@ window.fagsok = [
                         "hint": "Ved multiplikasjon skal svaret ha like mange gjeldende siffer som det tallet i regnestykket som har *færrest* gjeldende siffer.",
                         "fasit": null,
                         "fasitSteg": [
-                            "Arealet av et rektangel er lengde ganger bredde:<br>$A = 4.3 \\text{ m} \\cdot 3.25 \\text{ m} = 13.975 \\text{ m}^2$<br><br>Nå må vi runde av svaret. Regelen for multiplikasjon sier at svaret ikke kan oppgis med større nøyaktighet (flere gjeldende siffer) enn den mest unøyaktige faktoren.<br>- $4.3$ har <strong>2</strong> gjeldende siffer.<br>- $3.25$ har <strong>3</strong> gjeldende siffer.",
-                            "Dette betyr at svaret vårt kun kan ha <strong>2</strong> gjeldende siffer.<br>Vi runder av $13.975$ til to siffer, noe som gir $14$.<br><br><strong>Svar:</strong> Arealet er $14 \\text{ m}^2$."
+                            "Arealet av et rektangel er lengde ganger bredde:<br>$A = 4.3 \text{ m} \\cdot 3.25 \text{ m} = 13.975 \text{ m}^2$<br><br>Nå må vi runde av svaret. Regelen for multiplikasjon sier at svaret ikke kan oppgis med større nøyaktighet (flere gjeldende siffer) enn den mest unøyaktige faktoren.<br>- $4.3$ har <strong>2</strong> gjeldende siffer.<br>- $3.25$ har <strong>3</strong> gjeldende siffer.",
+                            "Dette betyr at svaret vårt kun kan ha <strong>2</strong> gjeldende siffer.<br>Vi runder av $13.975$ til to siffer, noe som gir $14$.<br><br><strong>Svar:</strong> Arealet er $14 \text{ m}^2$."
                         ],
                         "starter": ""
                     }
@@ -1522,8 +1410,8 @@ window.fagsok = [
                         "tittel": "Øveprøve · Kapittel 1 (oversikt)",
                         "tekst": "<strong>Tid:</strong> ca. 60–75 min  <br><strong>Hjelpemidler:</strong> ingen (eller kun kladdeark)<br><br><strong>Instruks:</strong> Vis mellomregning. Oppgaver med flere bokstaver teller hver for seg.<br><br>Prøven består av 10 oppgaver som dekker hovedtemaene i kapittel 1.",
                         "bilde": null,
-                        "hint": "",
-                        "fasit": null,
+                        "hint": "Les hele oppgaven før du starter. Begynn med oppgavene du mestrer best, og kom tilbake til de vanskeligere.",
+                        "fasit": "Dette er bare oversiktssiden. Gå videre til oppgave 1–10 for spørsmål og steg-for-steg-løsninger.",
                         "fasitSteg": null,
                         "starter": ""
                     },
@@ -1532,7 +1420,7 @@ window.fagsok = [
                         "tittel": "Oppgave 1 — Tallmengder og symboler",
                         "tekst": "<strong>a)</strong> Sett inn $\\in$ eller $\\notin$:<br><br>$-\\dfrac{1}{2}$ _____ $\\mathbb{Z}$ · $\\sqrt{16}$ _____ $\\mathbb{N}$ · $0{,}75$ _____ $\\mathbb{Q}$<br><br><strong>b)</strong> Forklar kort forskjellen mellom $\\mathbb{N}$ og $\\mathbb{Z}$.<br><br><strong>c)</strong> Gi et tall som ligger i $\\mathbb{R}$ men ikke i $\\mathbb{Q}$. Begrunn.",
                         "bilde": null,
-                        "hint": "",
+                        "hint": "Husk: $\\mathbb{N}$ = naturlige tall, $\\mathbb{Z}$ = hele tall, $\\mathbb{Q}$ = rasjonale tall, $\\mathbb{R}$ = reelle tall. Et irrasjonalt tall kan ikke skrives som brøk av to heltall.",
                         "fasit": null,
                         "fasitSteg": [
                             "<strong>a)</strong><br>$-\\dfrac{1}{2}$ er en brøk, ikke et heltall, så $-\\dfrac{1}{2} \\notin \\mathbb{Z}$.<br><br>$\\sqrt{16} = 4$, og $4$ er et naturlig tall, så $\\sqrt{16} \\in \\mathbb{N}$.<br><br>$0{,}75 = \\dfrac{3}{4}$, som er en brøk av to heltall, så $0{,}75 \\in \\mathbb{Q}$.<br><br><strong>Svar:</strong> $\\notin$ · $\\in$ · $\\in$",
@@ -1546,7 +1434,7 @@ window.fagsok = [
                         "tittel": "Oppgave 2 — Parenteser og regnerekkefølge",
                         "tekst": "Regn ut:<br><br><strong>a)</strong> $8 - (3 + 1)^2$<br><br><strong>b)</strong> $2 \\cdot (-4)^2 - (-3)^3$<br><br><strong>c)</strong> $\\dfrac{(-2)^3 - 2^2}{2}$",
                         "bilde": null,
-                        "hint": "",
+                        "hint": "Regnerekkefølge: parentes → potens → multiplikasjon/divisjon → addisjon/subtraksjon. Husk at $(-4)^2 = 16$, mens $-4^2 = -16$.",
                         "fasit": null,
                         "fasitSteg": [
                             "<strong>a)</strong><br>Først parentes: $3 + 1 = 4$<br><br>Deretter potens: $4^2 = 16$<br><br>Til slutt: $8 - 16 = -8$<br><br><strong>Svar:</strong> $-8$",
@@ -1560,7 +1448,7 @@ window.fagsok = [
                         "tittel": "Oppgave 3 — Tallmønstre",
                         "tekst": "Følgen er $5,\\ 8,\\ 12,\\ 17,\\ 23,\\ \\dots$<br><br><strong>a)</strong> Finn de to neste leddene.<br><br><strong>b)</strong> Beskriv mønsteret med ord.<br><br><strong>c)</strong> Finn en formel for det $n$-te leddet.",
                         "bilde": null,
-                        "hint": "",
+                        "hint": "Se på differansen mellom leddene. Differansene danner selv et mønster.",
                         "fasit": null,
                         "fasitSteg": [
                             "<strong>a)</strong><br>Differansene mellom leddene:<br>$8 - 5 = 3$<br>$12 - 8 = 4$<br>$17 - 12 = 5$<br>$23 - 17 = 6$<br><br>Neste differanse er $7$, deretter $8$:<br>$23 + 7 = 30$<br>$30 + 8 = 38$<br><br><strong>Svar:</strong> $30$ og $38$",
@@ -1574,7 +1462,7 @@ window.fagsok = [
                         "tittel": "Oppgave 4 — Primtall og delbarhet",
                         "tekst": "<strong>a)</strong> Primtallsfaktoriser $120$.<br><br><strong>b)</strong> Bruk faktoriseringen til å finne SFF$(120, 84)$.<br><br><strong>c)</strong> Er $121$ et primtall? Begrunn uten å bare svare «ja/nei».",
                         "bilde": null,
-                        "hint": "",
+                        "hint": "Del på minste primtall til du bare har primtall igjen. SFF = produkt av felles primfaktorer med laveste eksponent.",
                         "fasit": null,
                         "fasitSteg": [
                             "<strong>a)</strong><br>$120 = 12 \\cdot 10 = (2^2 \\cdot 3) \\cdot (2 \\cdot 5) = 2^3 \\cdot 3 \\cdot 5$<br><br>Steg for steg:<br>$120 \\div 2 = 60$<br>$60 \\div 2 = 30$<br>$30 \\div 2 = 15$<br>$15 \\div 3 = 5$<br>$5 \\div 5 = 1$<br><br><strong>Svar:</strong> $120 = 2^3 \\cdot 3 \\cdot 5$",
@@ -1588,7 +1476,7 @@ window.fagsok = [
                         "tittel": "Oppgave 5 — Brøk",
                         "tekst": "<strong>a)</strong> Regn ut $\\dfrac{2}{3} + \\dfrac{1}{6}$.<br><br><strong>b)</strong> Regn ut $\\dfrac{3}{4} \\cdot \\dfrac{8}{9}$.<br><br><strong>c)</strong> En tank er $\\dfrac{2}{5}$ full. Det tømmes $\\dfrac{1}{4}$ av innholdet. Hvilken brøkdel av tanken er igjen?",
                         "bilde": null,
-                        "hint": "",
+                        "hint": "I c): «$\\dfrac{1}{4}$ av innholdet» betyr $\\dfrac{1}{4}$ av det som *er i* tanken, ikke $\\dfrac{1}{4}$ av hele tanken.",
                         "fasit": null,
                         "fasitSteg": [
                             "<strong>a)</strong><br>Fellesnevner $6$: $\\dfrac{2}{3} = \\dfrac{4}{6}$<br><br>$\\dfrac{4}{6} + \\dfrac{1}{6} = \\dfrac{5}{6}$<br><br><strong>Svar:</strong> $\\dfrac{5}{6}$",
@@ -1602,7 +1490,7 @@ window.fagsok = [
                         "tittel": "Oppgave 6 — Potensregler",
                         "tekst": "Forenkle:<br><br><strong>a)</strong> $a^5 \\cdot a^{-2}$<br><br><strong>b)</strong> $\\dfrac{(2x)^3}{2x^{-1}}$<br><br><strong>c)</strong> $(y^{-2})^3 \\cdot y^5$",
                         "bilde": null,
-                        "hint": "",
+                        "hint": "$a^m \\cdot a^n = a^{m+n}$, $\\dfrac{a^m}{a^n} = a^{m-n}$, $(a^m)^n = a^{mn}$, $(ab)^n = a^n b^n$.",
                         "fasit": null,
                         "fasitSteg": [
                             "<strong>a)</strong><br>$a^5 \\cdot a^{-2} = a^{5 + (-2)} = a^3$<br><br><strong>Svar:</strong> $a^3$",
@@ -1616,7 +1504,7 @@ window.fagsok = [
                         "tittel": "Oppgave 7 — Røtter",
                         "tekst": "Skriv så enkelt som mulig:<br><br><strong>a)</strong> $\\sqrt{50}$<br><br><strong>b)</strong> $\\sqrt{12} \\cdot \\sqrt{3}$<br><br><strong>c)</strong> $5\\sqrt{7} - 2\\sqrt{7} + \\sqrt{28}$",
                         "bilde": null,
-                        "hint": "",
+                        "hint": "Trekk ut største mulige kvadrattall under rottegnet. Like roter kan regnes sammen som like ledd.",
                         "fasit": null,
                         "fasitSteg": [
                             "<strong>a)</strong><br>$\\sqrt{50} = \\sqrt{25 \\cdot 2} = \\sqrt{25} \\cdot \\sqrt{2} = 5\\sqrt{2}$<br><br><strong>Svar:</strong> $5\\sqrt{2}$",
@@ -1630,12 +1518,12 @@ window.fagsok = [
                         "tittel": "Oppgave 8 — Standardform",
                         "tekst": "<strong>a)</strong> Skriv $0{,}00048$ på standardform.<br><br><strong>b)</strong> Regn ut $4{,}0 \\cdot 10^5 + 3{,}0 \\cdot 10^4$. Oppgi svaret på standardform.<br><br><strong>c)</strong> Sett inn $>$, $=$ eller $<$: $6 \\cdot 10^{-2}$ _____ $0{,}06$",
                         "bilde": null,
-                        "hint": "",
+                        "hint": "Standardform: $a \\cdot 10^n$ der $1 \\le |a| < 10$. Ved addisjon: lag like eksponenter først.",
                         "fasit": null,
                         "fasitSteg": [
                             "<strong>a)</strong><br>$0{,}00048 = 4{,}8 \\cdot 10^{-4}$<br>(komma flyttes $4$ plasser til høyre)<br><br><strong>Svar:</strong> $4{,}8 \\cdot 10^{-4}$",
                             "<strong>b)</strong><br>$4{,}0 \\cdot 10^5 = 40 \\cdot 10^4$<br><br>$40 \\cdot 10^4 + 3{,}0 \\cdot 10^4 = 43 \\cdot 10^4 = 4{,}3 \\cdot 10^5$<br><br><strong>Svar:</strong> $4{,}3 \\cdot 10^5$",
-                            "<strong>c)</strong><br>$6 \\cdot 10^{-2} = 0{,}06$<br><br>Altså $6 \\cdot 10^{-2} = 0{,}06$<br><br><strong>Svar:</strong> $="
+                            "<strong>c)</strong><br>$6 \\cdot 10^{-2} = 0{,}06$<br><br>Altså $6 \\cdot 10^{-2} = 0{,}06$<br><br><strong>Svar:</strong> $=$"
                         ],
                         "starter": ""
                     },
@@ -1644,7 +1532,7 @@ window.fagsok = [
                         "tittel": "Oppgave 9 — Intervall",
                         "tekst": "<strong>a)</strong> Skriv $-3 \\le x < 2$ som intervall.<br><br><strong>b)</strong> Skriv intervallet $\\langle 0, 5]$ som ulikhet.<br><br><strong>c)</strong> Sett inn $\\in$ eller $\\notin$: $5$ _____ $\\langle 1, 5\\rangle$ · $5$ _____ $[1, 5]$",
                         "bilde": null,
-                        "hint": "",
+                        "hint": "$[a, b]$ inkluderer endepunktene, $\\langle a, b\\rangle$ ekskluderer dem. Blandede intervaller bruker én av hver.",
                         "fasit": null,
                         "fasitSteg": [
                             "<strong>a)</strong><br>$-3$ er inkludert (≤), $2$ er ikke inkludert (<).<br><br><strong>Svar:</strong> $[-3, 2\\rangle$",
@@ -1658,7 +1546,7 @@ window.fagsok = [
                         "tittel": "Oppgave 10 — Logikk (mattenøtt)",
                         "tekst": "<strong>a)</strong> Sett inn $\\Rightarrow$ eller $\\Leftrightarrow$: $x = -2$ _____ $x^2 = 4$<br><br><strong>b)</strong> Påstanden «hvis $n$ er delelig med $6$, så er $n$ delelig med $3$» — er den sann? Begrunn.<br><br><strong>c)</strong> Gi et moteksempel til: «hvis $n$ er oddetall, så er $n + 2$ et primtall».",
                         "bilde": null,
-                        "hint": "",
+                        "hint": "$\\Rightarrow$ er «medfører» (én vei). $\\Leftrightarrow$ er «ekvivalent med» (begge veier). Et moteksempel er ett konkret tall som gjør påstanden usann.",
                         "fasit": null,
                         "fasitSteg": [
                             "<strong>a)</strong><br>Hvis $x = -2$, så er $x^2 = 4$. Men $x^2 = 4$ har to løsninger: $x = 2$ og $x = -2$.<br><br>Implikasjonen går bare én vei: $x = -2 \\Rightarrow x^2 = 4$, men ikke motsatt.<br><br><strong>Svar:</strong> $\\Rightarrow$",
@@ -1674,7 +1562,7 @@ window.fagsok = [
     },
     {
         "id": "kap2",
-        "tittel": "Kapittel 2: Algebra og Mønstre",
+        "tittel": "Kapittel 2: Algebra og mønstre",
         "delkapitler": [
             {
                 "id": "2A",
@@ -1704,7 +1592,7 @@ window.fagsok = [
                         "fasitSteg": [
                             "<strong>a)</strong><br>Vi skal løse opp parentesene og trekke sammen:<br><br>$3(a - 2) - 2(a + 4)$<br><br>$= 3 \\cdot a - 3 \\cdot 2 - 2 \\cdot a - 2 \\cdot 4$ (gange inn i parentesene)<br><br>$= 3a - 6 - 2a - 8$ (regne ut produktene)<br><br>$= 3a - 2a - 6 - 8$ (samle like ledd)<br><br>$= a - 14$ (trekke sammen)<br><br><strong>Svar:</strong> $a - 14$",
                             "<strong>b)</strong><br>Vi skal løse opp parentesene og trekke sammen:<br><br>$5(b^4 - 3a) + 10$<br><br>$= 5 \\cdot b^4 - 5 \\cdot 3a + 10$ (gange inn i parentesen)<br><br>$= 5b^4 - 15a + 10$ (regne ut produktene)<br><br><strong>Svar:</strong> $5b^4 - 15a + 10$",
-                            "<strong>c)</strong><br>Ligningen som er oppgitt er: $2x(x - 3) = 2x^2 - 3$<br><br>Feilen er at $2x$ kun er multiplisert med $x$, og ikke med $-3$. <br><br>Riktig utregning:<br><br>$2x(x - 3)$<br><br>$= 2x \\cdot x - 2x \\cdot 3$ (multipliser $2x$ med hvert ledd inni parentesen)<br><br>$= 2x^2 - 6x$<br><br><strong>Svar:</strong> Feilen er at det mangler å multiplisere med $-3$. Riktig svar er $2x^2 - 6x$"
+                            "<strong>c)</strong><br>Likningen som er oppgitt er: $2x(x - 3) = 2x^2 - 3$<br><br>Feilen er at $2x$ kun er multiplisert med $x$, og ikke med $-3$. <br><br>Riktig utregning:<br><br>$2x(x - 3)$<br><br>$= 2x \\cdot x - 2x \\cdot 3$ (multipliser $2x$ med hvert ledd inni parentesen)<br><br>$= 2x^2 - 6x$<br><br><strong>Svar:</strong> Feilen er at det mangler å multiplisere med $-3$. Riktig svar er $2x^2 - 6x$"
                         ],
                         "starter": ""
                     },
@@ -1720,62 +1608,6 @@ window.fagsok = [
                             "Først ganger vi ut de to første parentesene:<br>$(3x \\cdot 2x + 3x \\cdot 4 - 1 \\cdot 2x - 1 \\cdot 4)$<br>$= (6x^2 + 12x - 2x - 4)$<br>$= (6x^2 + 10x - 4)$ (gange ut og forenkle)",
                             "Så regner vi ut det siste leddet ved å bruke konjugatsetningen $(a + b)(a - b) = a^2 - b^2$:<br>$(x + 2)(x - 2)$<br>$= (x^2 - 2^2)$<br>$= (x^2 - 4)$",
                             "Sett det hele sammen med minustegnet mellom:<br>$(6x^2 + 10x - 4) - (x^2 - 4)$<br><br>$= 6x^2 + 10x - 4 - x^2 + 4$ (hev parentesene, husk å snu fortegn etter minus)<br><br>$= 6x^2 - x^2 + 10x - 4 + 4$ (samle like ledd)<br><br>$= 5x^2 + 10x$ (trekk sammen)<br><br><strong>Svar:</strong> $5x^2 + 10x$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "2.17",
-                        "tittel": "Oppgave 2.17",
-                        "tekst": "Trekk sammen like ledd:<br><br><strong>a)</strong> $7x - 2 + 3x + 8$<br><br><strong>b)</strong> $5a - 3b + a + 7b$<br><br><strong>c)</strong> $-2(3x - 4)$",
-                        "bilde": null,
-                        "hint": "Samle $x$-ledd, $a$-ledd og $b$-ledd for seg. Husk å gange inn tallet foran parentesen med begge leddene inni.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$7x - 2 + 3x + 8 = 7x + 3x - 2 + 8 = 10x + 6$<br><br><strong>Svar:</strong> $10x + 6$",
-                            "<strong>b)</strong><br>$5a - 3b + a + 7b = 5a + a - 3b + 7b = 6a + 4b$<br><br><strong>Svar:</strong> $6a + 4b$",
-                            "<strong>c)</strong><br>$-2(3x - 4) = -2 \\cdot 3x - 2 \\cdot (-4) = -6x + 8$<br><br><strong>Svar:</strong> $-6x + 8$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "2.18",
-                        "tittel": "Oppgave 2.18",
-                        "tekst": "Løs opp parentesene og trekk sammen:<br><br><strong>a)</strong> $2(x + 1) + 3(x - 4)$<br><br><strong>b)</strong> $4 - (2x + 1)$<br><br><strong>c)</strong> En rektangulær platting har sider $x + 3$ og $x$. Skriv et forenklet uttrykk for omkretsen.",
-                        "bilde": null,
-                        "hint": "Minus foran en parentes bytter fortegn på alle ledd inni. Omkretsen av et rektangel er $2l + 2b$.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$2(x + 1) + 3(x - 4) = 2x + 2 + 3x - 12 = 5x - 10$<br><br><strong>Svar:</strong> $5x - 10$",
-                            "<strong>b)</strong><br>$4 - (2x + 1) = 4 - 2x - 1 = 3 - 2x$<br><br><strong>Svar:</strong> $3 - 2x$",
-                            "<strong>c)</strong><br>$O = 2(x + 3) + 2x = 2x + 6 + 2x = 4x + 6$<br><br><strong>Svar:</strong> $4x + 6$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "2.19",
-                        "tittel": "Oppgave 2.19",
-                        "tekst": "Regn ut og trekk sammen:<br><br><strong>a)</strong> $(x + 2)(x + 3)$<br><br><strong>b)</strong> $(2x - 1)(x + 4)$<br><br><strong>c)</strong> $x(x - 5) - 3(x - 5)$",
-                        "bilde": null,
-                        "hint": "Bruk den distributive loven: hvert ledd i den første parentesen ganges med hvert ledd i den andre.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$(x + 2)(x + 3) = x^2 + 3x + 2x + 6 = x^2 + 5x + 6$<br><br><strong>Svar:</strong> $x^2 + 5x + 6$",
-                            "<strong>b)</strong><br>$(2x - 1)(x + 4) = 2x^2 + 8x - x - 4 = 2x^2 + 7x - 4$<br><br><strong>Svar:</strong> $2x^2 + 7x - 4$",
-                            "<strong>c)</strong><br>$x(x - 5) - 3(x - 5) = x^2 - 5x - 3x + 15 = x^2 - 8x + 15$<br><br><strong>Svar:</strong> $x^2 - 8x + 15$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "2.20",
-                        "tittel": "Oppgave 2.20",
-                        "tekst": "En elev skriver $3(x - 2) + x = 3x - 2 + x = 4x - 2$.<br><br><strong>a)</strong> Hvor er feilen?<br><br><strong>b)</strong> Hva blir det riktige svaret?<br><br><strong>c)</strong> Sett $x = 4$ inn i både det opprinnelige uttrykket og elevens svar. Bekreft at de ikke er like.",
-                        "bilde": null,
-                        "hint": "Tallet utenfor parentesen skal ganges med *alle* leddene inni, også tallet $-2$.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>Eleven ganger $3$ bare med $x$, og glemmer $3 \\cdot (-2) = -6$. Feilen er at $-2$ ikke blir multiplisert med $3$.<br><br><strong>Svar:</strong> $3$ er ikke ganget inn med $-2$.",
-                            "<strong>b)</strong><br>$3(x - 2) + x = 3x - 6 + x = 4x - 6$<br><br><strong>Svar:</strong> $4x - 6$",
-                            "<strong>c)</strong><br>Opprinnelig: $3(4 - 2) + 4 = 3 \\cdot 2 + 4 = 10$.<br>Elevens uttrykk: $4 \\cdot 4 - 2 = 14$.<br>Riktig forenkling: $4 \\cdot 4 - 6 = 10$. Elevens svar stemmer ikke.<br><br><strong>Svar:</strong> Opprinnelig gir $10$, elevens $14$."
                         ],
                         "starter": ""
                     }
@@ -1994,62 +1826,6 @@ window.fagsok = [
                             "<strong>c)</strong><br>Vi bruker 1. kvadratsetning: $(a + b)^2 = a^2 + 2ab + b^2$<br>Her er første ledd $b^2$ og andre ledd $a^3$.<br><br>$(b^2 + a^3)^2 = (b^2)^2 + 2 \\cdot (b^2) \\cdot (a^3) + (a^3)^2$ (setter inn i formelen)<br>$b^{2 \\cdot 2} + 2a^3b^2 + a^{3 \\cdot 2}$ (bruker potensregelen $(x^n)^m = x^{n \\cdot m}$)<br>$b^4 + 2a^3b^2 + a^6$ (forenkler)<br><br><strong>Svar:</strong> $b^4 + 2a^3b^2 + a^6$"
                         ],
                         "starter": ""
-                    },
-                    {
-                        "id": "2.21",
-                        "tittel": "Oppgave 2.21",
-                        "tekst": "Bruk kvadratsetningene:<br><br><strong>a)</strong> $(x + 7)^2$<br><br><strong>b)</strong> $(y - 3)^2$<br><br><strong>c)</strong> $(5 + a)(5 - a)$",
-                        "bilde": null,
-                        "hint": "$(a+b)^2 = a^2 + 2ab + b^2$, $(a-b)^2 = a^2 - 2ab + b^2$, $(a+b)(a-b) = a^2 - b^2$.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$(x + 7)^2 = x^2 + 2 \\cdot x \\cdot 7 + 7^2 = x^2 + 14x + 49$<br><br><strong>Svar:</strong> $x^2 + 14x + 49$",
-                            "<strong>b)</strong><br>$(y - 3)^2 = y^2 - 2 \\cdot y \\cdot 3 + 9 = y^2 - 6y + 9$<br><br><strong>Svar:</strong> $y^2 - 6y + 9$",
-                            "<strong>c)</strong><br>$(5 + a)(5 - a) = 5^2 - a^2 = 25 - a^2$<br><br><strong>Svar:</strong> $25 - a^2$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "2.22",
-                        "tittel": "Oppgave 2.22",
-                        "tekst": "Regn ut uten kalkulator ved hjelp av kvadratsetninger:<br><br><strong>a)</strong> $103^2$<br><br><strong>b)</strong> $98 \\cdot 102$<br><br><strong>c)</strong> $49^2$",
-                        "bilde": null,
-                        "hint": "Skriv tallene som $100 + 3$, $100 - 2$ og $100 + 2$, eller $50 - 1$.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$103^2 = (100 + 3)^2 = 100^2 + 2 \\cdot 100 \\cdot 3 + 3^2 = 10000 + 600 + 9 = 10609$<br><br><strong>Svar:</strong> $10609$",
-                            "<strong>b)</strong><br>$98 \\cdot 102 = (100 - 2)(100 + 2) = 100^2 - 2^2 = 10000 - 4 = 9996$<br><br><strong>Svar:</strong> $9996$",
-                            "<strong>c)</strong><br>$49^2 = (50 - 1)^2 = 2500 - 100 + 1 = 2401$<br><br><strong>Svar:</strong> $2401$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "2.23",
-                        "tittel": "Oppgave 2.23",
-                        "tekst": "Forenkle:<br><br><strong>a)</strong> $(2x - 1)^2$<br><br><strong>b)</strong> $(2x - 1)^2 - (2x + 1)(2x - 1)$<br><br><strong>c)</strong> $(x + y)^2 - (x - y)^2$",
-                        "bilde": null,
-                        "hint": "Regn ut hver kvadratsetning for seg, og trekk deretter sammen like ledd.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$(2x - 1)^2 = 4x^2 - 4x + 1$<br><br><strong>Svar:</strong> $4x^2 - 4x + 1$",
-                            "<strong>b)</strong><br>$(2x - 1)^2 - (2x + 1)(2x - 1) = (4x^2 - 4x + 1) - (4x^2 - 1) = 4x^2 - 4x + 1 - 4x^2 + 1 = -4x + 2$<br><br><strong>Svar:</strong> $-4x + 2$",
-                            "<strong>c)</strong><br>$(x + y)^2 - (x - y)^2 = (x^2 + 2xy + y^2) - (x^2 - 2xy + y^2) = x^2 + 2xy + y^2 - x^2 + 2xy - y^2 = 4xy$<br><br><strong>Svar:</strong> $4xy$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "2.24",
-                        "tittel": "Oppgave 2.24",
-                        "tekst": "Regn ut eksakt:<br><br><strong>a)</strong> $(\\sqrt{7} - 1)(\\sqrt{7} + 1)$<br><br><strong>b)</strong> $(\\sqrt{5} + 2)^2$<br><br><strong>c)</strong> $(3 - \\sqrt{2})^2$",
-                        "bilde": null,
-                        "hint": "Tredje kvadratsetning fjerner kvadratrot når du ganger konjugatet. Husk $2ab$ i de to første.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$(\\sqrt{7} - 1)(\\sqrt{7} + 1) = 7 - 1 = 6$<br><br><strong>Svar:</strong> $6$",
-                            "<strong>b)</strong><br>$(\\sqrt{5} + 2)^2 = 5 + 4\\sqrt{5} + 4 = 9 + 4\\sqrt{5}$<br><br><strong>Svar:</strong> $9 + 4\\sqrt{5}$",
-                            "<strong>c)</strong><br>$(3 - \\sqrt{2})^2 = 9 - 6\\sqrt{2} + 2 = 11 - 6\\sqrt{2}$<br><br><strong>Svar:</strong> $11 - 6\\sqrt{2}$"
-                        ],
-                        "starter": ""
                     }
                 ],
                 "quiz": [
@@ -2244,62 +2020,6 @@ window.fagsok = [
                             "<strong>Eksempel:</strong><br><br>$4 + 8$ (vi velger to partall)<br><br>$12$ (summerer tallene)<br><br>$2 \\cdot 6$ ($12$ kan deles på $2$ og er derfor et partall)<br><br><strong>Svar:</strong> Summen av to partall er alltid et partall."
                         ],
                         "starter": ""
-                    },
-                    {
-                        "id": "2.25",
-                        "tittel": "Oppgave 2.25",
-                        "tekst": "Sett felles faktor utenfor parentes:<br><br><strong>a)</strong> $6x + 9$<br><br><strong>b)</strong> $4x^2 - 10x$<br><br><strong>c)</strong> $12ab - 18a$",
-                        "bilde": null,
-                        "hint": "Finn det største tallet (og de bokstavene) som går opp i *alle* ledd.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$6x + 9 = 3(2x + 3)$<br><br><strong>Svar:</strong> $3(2x + 3)$",
-                            "<strong>b)</strong><br>$4x^2 - 10x = 2x(2x - 5)$<br><br><strong>Svar:</strong> $2x(2x - 5)$",
-                            "<strong>c)</strong><br>$12ab - 18a = 6a(2b - 3)$<br><br><strong>Svar:</strong> $6a(2b - 3)$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "2.26",
-                        "tittel": "Oppgave 2.26",
-                        "tekst": "Faktoriser ved å løfte ut felles binomial:<br><br><strong>a)</strong> $x(x + 5) + 2(x + 5)$<br><br><strong>b)</strong> $3(y - 1) - x(y - 1)$<br><br><strong>c)</strong> $a(a - 4) - 3(a - 4)$",
-                        "bilde": null,
-                        "hint": "Parentesen som står i begge ledd, kan løftes ut som felles faktor.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$x(x + 5) + 2(x + 5) = (x + 5)(x + 2)$<br><br><strong>Svar:</strong> $(x + 5)(x + 2)$",
-                            "<strong>b)</strong><br>$3(y - 1) - x(y - 1) = (y - 1)(3 - x)$<br><br><strong>Svar:</strong> $(y - 1)(3 - x)$",
-                            "<strong>c)</strong><br>$a(a - 4) - 3(a - 4) = (a - 4)(a - 3)$<br><br><strong>Svar:</strong> $(a - 4)(a - 3)$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "2.27",
-                        "tittel": "Oppgave 2.27",
-                        "tekst": "<strong>a)</strong> Faktoriser $2\\pi r + 2\\pi h$.<br><br><strong>b)</strong> Omkretsen av en sirkel er $O = 2\\pi r$. Skriv $2\\pi r + 2\\pi h$ som $O$ ganger et uttrykk.<br><br><strong>c)</strong> Når $r = 3$ og $h = 5$, regn ut verdien av det faktoriserte uttrykket (la $\\pi$ stå).",
-                        "bilde": null,
-                        "hint": "Både $2$ og $\\pi$ går opp i begge ledd.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$2\\pi r + 2\\pi h = 2\\pi(r + h)$<br><br><strong>Svar:</strong> $2\\pi(r + h)$",
-                            "<strong>b)</strong><br>$2\\pi r + 2\\pi h = 2\\pi r\\left(1 + \\frac{h}{r}\\right) = O\\left(1 + \\frac{h}{r}\\right)$, eller enklere: $O \\cdot \\frac{r+h}{r}$.<br>Vanligst: $2\\pi(r + h) = \\frac{O}{r}(r + h)$.<br><br>En ryddig formulering: $2\\pi(r + h) = O \\cdot \\frac{r + h}{r}$.<br><br><strong>Svar:</strong> $O \\cdot \\dfrac{r + h}{r}$",
-                            "<strong>c)</strong><br>$2\\pi(3 + 5) = 2\\pi \\cdot 8 = 16\\pi$<br><br><strong>Svar:</strong> $16\\pi$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "2.28",
-                        "tittel": "Oppgave 2.28",
-                        "tekst": "Vis ved faktorisering at:<br><br><strong>a)</strong> $\\sqrt{18} - \\sqrt{8} = \\sqrt{2}$<br><br><strong>b)</strong> $\\sqrt{50} + \\sqrt{8} = 7\\sqrt{2}$<br><br><strong>c)</strong> $4\\sqrt{12} - 2\\sqrt{27} = 2\\sqrt{3}$",
-                        "bilde": null,
-                        "hint": "Trekk ut kvadrattall under roten: $\\sqrt{18} = \\sqrt{9 \\cdot 2} = 3\\sqrt{2}$.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$\\sqrt{18} - \\sqrt{8} = \\sqrt{9 \\cdot 2} - \\sqrt{4 \\cdot 2} = 3\\sqrt{2} - 2\\sqrt{2} = \\sqrt{2}$<br><br><strong>Svar:</strong> Vist, likheten stemmer.",
-                            "<strong>b)</strong><br>$\\sqrt{50} + \\sqrt{8} = 5\\sqrt{2} + 2\\sqrt{2} = 7\\sqrt{2}$<br><br><strong>Svar:</strong> Vist.",
-                            "<strong>c)</strong><br>$4\\sqrt{12} - 2\\sqrt{27} = 4 \\cdot 2\\sqrt{3} - 2 \\cdot 3\\sqrt{3} = 8\\sqrt{3} - 6\\sqrt{3} = 2\\sqrt{3}$<br><br><strong>Svar:</strong> Vist."
-                        ],
-                        "starter": ""
                     }
                 ],
                 "quiz": [
@@ -2467,76 +2187,6 @@ window.fagsok = [
                             "<strong>a)</strong><br>Vi skal faktorisere uttrykket $-b + \\frac{63}{7}$.<br>Først forenkler vi brøken, siden $63$ delt på $7$ er $9$:<br>$-b + 9$<br>Dette uttrykket har ingen felles faktorer, og det passer ikke med noen av kvadratsetningene. Derfor kan det ikke faktoriseres videre.<br><br><strong>Svar:</strong> Kan ikke faktoriseres utover $-b + 9$",
                             "<strong>b)</strong><br>Vi skal faktorisere uttrykket $a^2 - 6a - 12$.<br>Vi sjekker om det kan være et fullstendig kvadrat. Da måtte vi brukt andre kvadratsetning: $a^2 - 2ab + b^2$.<br>Midtleddet er $-6a$, noe som betyr at $2b = 6 \\rightarrow b = 3$.<br>Da burde det siste leddet vært $b^2 = 3^2 = 9$.<br>I stedet for $9$, er siste ledd $-12$. Uttrykket er derfor ikke et fullstendig kvadrat.<br>Siden vi heller ikke lett kan finne to heltall som har produkt $-12$ og sum $-6$, kan ikke uttrykket faktoriseres med heltall.<br><br><strong>Svar:</strong> Kan ikke faktoriseres",
                             "<strong>c)</strong><br>Vi skal faktorisere uttrykket $15 - 10v + v^2$.<br>Først omskriver vi uttrykket slik at vi får potenser av $v$ i synkende rekkefølge:<br>$v^2 - 10v + 15$<br>Vi sjekker om dette kan være et fullstendig kvadrat ved å bruke andre kvadratsetning.<br>Her er midtleddet $-10v$, så vi tar halvparten av dette for å finne $b$: $\\frac{10}{2} = 5$.<br>Kvadratet av dette tallet er $5^2 = 25$.<br>Siden det siste leddet i uttrykket vårt er $15$ og ikke $25$, er ikke uttrykket et fullstendig kvadrat.<br>Vi finner heller ikke to heltall som gir produkt $15$ og sum $-10$.<br><br><strong>Svar:</strong> Kan ikke faktoriseres"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "2.29",
-                        "tittel": "Oppgave 2.29",
-                        "tekst": "Faktoriser:<br><br><strong>a)</strong> $x^2 - 49$<br><br><strong>b)</strong> $x^2 + 6x + 9$<br><br><strong>c)</strong> $4x^2 - 12x + 9$",
-                        "bilde": null,
-                        "hint": "Differanse av to kvadrat: $a^2 - b^2 = (a-b)(a+b)$. Fullstendig kvadrat: $a^2 \\pm 2ab + b^2 = (a \\pm b)^2$.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$x^2 - 49 = (x - 7)(x + 7)$<br><br><strong>Svar:</strong> $(x - 7)(x + 7)$",
-                            "<strong>b)</strong><br>$x^2 + 6x + 9 = (x + 3)^2$<br><br><strong>Svar:</strong> $(x + 3)^2$",
-                            "<strong>c)</strong><br>$4x^2 - 12x + 9 = (2x - 3)^2$<br><br><strong>Svar:</strong> $(2x - 3)^2$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "2.30",
-                        "tittel": "Oppgave 2.30",
-                        "tekst": "Faktoriser:<br><br><strong>a)</strong> $x^2 - 5x + 6$<br><br><strong>b)</strong> $x^2 + x - 12$<br><br><strong>c)</strong> $2x^2 + 5x - 3$",
-                        "bilde": null,
-                        "hint": "Finn to tall med produkt lik konstantleddet og sum lik $x$-koeffisienten. I <strong>c)</strong> kan du prøve $(2x + a)(x + b)$.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>To tall med produkt $6$ og sum $-5$: $-2$ og $-3$.<br>$x^2 - 5x + 6 = (x - 2)(x - 3)$<br><br><strong>Svar:</strong> $(x - 2)(x - 3)$",
-                            "<strong>b)</strong><br>Produkt $-12$, sum $1$: $4$ og $-3$.<br>$x^2 + x - 12 = (x + 4)(x - 3)$<br><br><strong>Svar:</strong> $(x + 4)(x - 3)$",
-                            "<strong>c)</strong><br>$(2x - 1)(x + 3) = 2x^2 + 6x - x - 3 = 2x^2 + 5x - 3$<br><br><strong>Svar:</strong> $(2x - 1)(x + 3)$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "2.31",
-                        "tittel": "Oppgave 2.31",
-                        "tekst": "<strong>a)</strong> Hvilket tall må stå i $\\square$ for at $x^2 - 12x + \\square$ skal bli et fullstendig kvadrat?<br><br><strong>b)</strong> Faktoriser deretter uttrykket.<br><br><strong>c)</strong> Er $x^2 - 12x + 20$ et fullstendig kvadrat? Begrunn.",
-                        "bilde": null,
-                        "hint": "I $(x - a)^2 = x^2 - 2ax + a^2$ er konstantleddet $a^2$ der $2a$ er koeffisienten foran $x$.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$2a = 12$, så $a = 6$ og $a^2 = 36$.<br><br><strong>Svar:</strong> $36$",
-                            "<strong>b)</strong><br>$x^2 - 12x + 36 = (x - 6)^2$<br><br><strong>Svar:</strong> $(x - 6)^2$",
-                            "<strong>c)</strong><br>Nei. $6^2 = 36 \\neq 20$. (Uttrykket kan likevel faktoriseres som $(x-2)(x-10)$, men det er *ikke* et kvadrat.)<br><br><strong>Svar:</strong> Nei, konstantleddet skulle vært $36$."
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "2.32",
-                        "tittel": "Oppgave 2.32",
-                        "tekst": "<strong>a)</strong> Faktoriser $25 - x^2$.<br><br><strong>b)</strong> Faktoriser $9x^2 - 1$.<br><br><strong>c)</strong> Faktoriser $x^4 - 16$ (hint: se $x^4$ som $(x^2)^2$).",
-                        "bilde": null,
-                        "hint": "Alle tre er differanse av to kvadrat.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$25 - x^2 = (5 - x)(5 + x)$<br><br><strong>Svar:</strong> $(5 - x)(5 + x)$",
-                            "<strong>b)</strong><br>$9x^2 - 1 = (3x - 1)(3x + 1)$<br><br><strong>Svar:</strong> $(3x - 1)(3x + 1)$",
-                            "<strong>c)</strong><br>$x^4 - 16 = (x^2 - 4)(x^2 + 4) = (x - 2)(x + 2)(x^2 + 4)$<br><br><strong>Svar:</strong> $(x - 2)(x + 2)(x^2 + 4)$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "2.33",
-                        "tittel": "Oppgave 2.33",
-                        "tekst": "En kvadratisk ramme har ytre side $x + 2$ og indre side $x$.<br><br><strong>a)</strong> Skriv et uttrykk for arealet av selve rammen (det som er igjen når det indre kvadratet er fjernet).<br><br><strong>b)</strong> Faktoriser uttrykket.<br><br><strong>c)</strong> Hvor stort er rammearealet når $x = 6$?",
-                        "bilde": null,
-                        "hint": "Arealet av rammen er ytre kvadrat minus indre kvadrat. Bruk $a^2 - b^2$.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$A = (x + 2)^2 - x^2$<br><br><strong>Svar:</strong> $(x + 2)^2 - x^2$",
-                            "<strong>b)</strong><br>$(x + 2)^2 - x^2 = x^2 + 4x + 4 - x^2 = 4x + 4 = 4(x + 1)$<br>(eller direkte: $((x+2) - x)((x+2)+x) = 2(2x + 2) = 4(x + 1)$)<br><br><strong>Svar:</strong> $4(x + 1)$",
-                            "<strong>c)</strong><br>$4(6 + 1) = 28$<br><br><strong>Svar:</strong> $28$"
                         ],
                         "starter": ""
                     }
@@ -2712,62 +2362,6 @@ window.fagsok = [
                             "<strong>e)</strong><br>Vi skal trekke sammen $\\frac{2}{b + 4} - \\frac{2b - 8}{b^2 - 16} + 4$<br><br>Vi starter med å forenkle den midterste brøken:<br>$\\frac{2b - 8}{b^2 - 16}$<br><br>$\\rightarrow \\frac{2(b - 4)}{(b - 4)(b + 4)}$ (faktoriser ut 2 i teller, bruk tredje kvadratsetning i nevner)<br><br>$\\rightarrow \\frac{2}{b + 4}$ (stryk $b - 4$ oppe og nede)<br><br>Nå setter vi dette inn i det opprinnelige uttrykket:<br>$\\frac{2}{b + 4} - \\frac{2}{b + 4} + 4$<br><br>$\\rightarrow 0 + 4 = 4$ (de to første brøkene er like og opphever hverandre)<br><br><strong>Svar:</strong> $4$"
                         ],
                         "starter": ""
-                    },
-                    {
-                        "id": "2.34",
-                        "tittel": "Oppgave 2.34",
-                        "tekst": "Forkort så langt det går:<br><br><strong>a)</strong> $\\dfrac{6x - 9}{3}$<br><br><strong>b)</strong> $\\dfrac{x^2 - 9}{x - 3}$<br><br><strong>c)</strong> $\\dfrac{2x}{4x}$",
-                        "bilde": null,
-                        "hint": "Faktoriser teller og nevner først. Du kan forkorte felles faktorer, men ikke ledd som bare er addert.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$\\dfrac{6x - 9}{3} = \\dfrac{3(2x - 3)}{3} = 2x - 3$<br><br><strong>Svar:</strong> $2x - 3$",
-                            "<strong>b)</strong><br>$\\dfrac{x^2 - 9}{x - 3} = \\dfrac{(x - 3)(x + 3)}{x - 3} = x + 3$ (for $x \\neq 3$)<br><br><strong>Svar:</strong> $x + 3$",
-                            "<strong>c)</strong><br>$\\dfrac{2x}{4x} = \\dfrac{2}{4} = \\dfrac{1}{2}$ (for $x \\neq 0$)<br><br><strong>Svar:</strong> $\\dfrac{1}{2}$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "2.35",
-                        "tittel": "Oppgave 2.35",
-                        "tekst": "Trekk sammen:<br><br><strong>a)</strong> $\\dfrac{1}{x} + \\dfrac{2}{x}$<br><br><strong>b)</strong> $\\dfrac{3}{2x} + \\dfrac{1}{x}$<br><br><strong>c)</strong> $\\dfrac{2}{x} - \\dfrac{1}{2x}$",
-                        "bilde": null,
-                        "hint": "Fellesnevner i <strong>b)</strong> og <strong>c)</strong> er $2x$.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$\\dfrac{1}{x} + \\dfrac{2}{x} = \\dfrac{3}{x}$<br><br><strong>Svar:</strong> $\\dfrac{3}{x}$",
-                            "<strong>b)</strong><br>$\\dfrac{3}{2x} + \\dfrac{1}{x} = \\dfrac{3}{2x} + \\dfrac{2}{2x} = \\dfrac{5}{2x}$<br><br><strong>Svar:</strong> $\\dfrac{5}{2x}$",
-                            "<strong>c)</strong><br>$\\dfrac{2}{x} - \\dfrac{1}{2x} = \\dfrac{4}{2x} - \\dfrac{1}{2x} = \\dfrac{3}{2x}$<br><br><strong>Svar:</strong> $\\dfrac{3}{2x}$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "2.36",
-                        "tittel": "Oppgave 2.36",
-                        "tekst": "En elev skriver $\\dfrac{x + 2}{2} = x + 1$.<br><br><strong>a)</strong> Vis at det er feil ved å sette inn $x = 4$.<br><br><strong>b)</strong> Forkort uttrykket riktig.<br><br><strong>c)</strong> For hvilken $x$ *ville* elevens regel ha gitt samme verdi som det opprinnelige uttrykket?",
-                        "bilde": null,
-                        "hint": "Du kan bare forkorte faktorer, ikke enkeltledd i en sum. Prøv med et tall.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>Venstre: $\\dfrac{4 + 2}{2} = 3$. Høyre: $4 + 1 = 5$. $3 \\neq 5$, så påstanden er feil.<br><br><strong>Svar:</strong> Med $x = 4$ får vi $3 \\neq 5$.",
-                            "<strong>b)</strong><br>$\\dfrac{x + 2}{2} = \\dfrac{x}{2} + 1$<br><br><strong>Svar:</strong> $\\dfrac{x}{2} + 1$",
-                            "<strong>c)</strong><br>$\\dfrac{x + 2}{2} = x + 1 \\Rightarrow x + 2 = 2x + 2 \\Rightarrow 0 = x$. Bare for $x = 0$.<br><br><strong>Svar:</strong> Bare når $x = 0$."
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "2.37",
-                        "tittel": "Oppgave 2.37",
-                        "tekst": "Trekk sammen og forkort:<br><br><strong>a)</strong> $\\dfrac{x}{4} + \\dfrac{x}{6}$<br><br><strong>b)</strong> $\\dfrac{2}{x + 1} + \\dfrac{3}{x + 1}$<br><br><strong>c)</strong> $\\dfrac{1}{x} + \\dfrac{1}{x + 1}$",
-                        "bilde": null,
-                        "hint": "Fellesnevner i <strong>a)</strong> er $12$. I <strong>c)</strong> er fellesnevneren $x(x + 1)$.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$\\dfrac{x}{4} + \\dfrac{x}{6} = \\dfrac{3x}{12} + \\dfrac{2x}{12} = \\dfrac{5x}{12}$<br><br><strong>Svar:</strong> $\\dfrac{5x}{12}$",
-                            "<strong>b)</strong><br>$\\dfrac{2}{x + 1} + \\dfrac{3}{x + 1} = \\dfrac{5}{x + 1}$<br><br><strong>Svar:</strong> $\\dfrac{5}{x + 1}$",
-                            "<strong>c)</strong><br>$\\dfrac{1}{x} + \\dfrac{1}{x + 1} = \\dfrac{x + 1 + x}{x(x + 1)} = \\dfrac{2x + 1}{x(x + 1)}$<br><br><strong>Svar:</strong> $\\dfrac{2x + 1}{x(x + 1)}$"
-                        ],
-                        "starter": ""
                     }
                 ],
                 "quiz": [
@@ -2924,83 +2518,13 @@ window.fagsok = [
                             "<strong>c)</strong><br>Vi skal finne tall nummer 10, altså $C_{10}$. Vi setter inn $n = 10$ i formelen:<br><br>$C_{10} = 3 \\cdot 10^2 - 3 \\cdot 10 + 1$<br><br>$C_{10} = 3 \\cdot 100 - 30 + 1$ (regner ut potens og ganging)<br><br>$C_{10} = 300 - 30 + 1$ (ganger ut parentesen)<br><br>$C_{10} = 270 + 1$ (trekker fra)<br><br>$C_{10} = 271$<br><br><strong>Svar:</strong> $C_{10} = 271$"
                         ],
                         "starter": ""
-                    },
-                    {
-                        "id": "2.38",
-                        "tittel": "Oppgave 2.38",
-                        "tekst": "Omkretsen av en sirkel er $O = 2\\pi r$.<br><br><strong>a)</strong> Isoler $r$.<br><br><strong>b)</strong> Finn $r$ når $O = 10\\pi$.<br><br><strong>c)</strong> Isoler $\\pi$ i formelen.",
-                        "bilde": null,
-                        "hint": "Del på det som står sammen med den ukjente.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$O = 2\\pi r \\Rightarrow r = \\dfrac{O}{2\\pi}$<br><br><strong>Svar:</strong> $r = \\dfrac{O}{2\\pi}$",
-                            "<strong>b)</strong><br>$r = \\dfrac{10\\pi}{2\\pi} = 5$<br><br><strong>Svar:</strong> $5$",
-                            "<strong>c)</strong><br>$\\pi = \\dfrac{O}{2r}$<br><br><strong>Svar:</strong> $\\pi = \\dfrac{O}{2r}$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "2.39",
-                        "tittel": "Oppgave 2.39",
-                        "tekst": "Omkretsen av et rektangel er $P = 2\\ell + 2b$.<br><br><strong>a)</strong> Isoler $\\ell$.<br><br><strong>b)</strong> Når $P = 40$ og $b = 7$, finn $\\ell$.<br><br><strong>c)</strong> Isoler $b$ i $A = \\ell \\cdot b$.",
-                        "bilde": null,
-                        "hint": "Trekk fra $2b$ først, og del deretter på $2$.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$P = 2\\ell + 2b \\Rightarrow P - 2b = 2\\ell \\Rightarrow \\ell = \\dfrac{P - 2b}{2}$<br><br><strong>Svar:</strong> $\\ell = \\dfrac{P - 2b}{2}$",
-                            "<strong>b)</strong><br>$\\ell = \\dfrac{40 - 14}{2} = 13$<br><br><strong>Svar:</strong> $13$",
-                            "<strong>c)</strong><br>$b = \\dfrac{A}{\\ell}$<br><br><strong>Svar:</strong> $b = \\dfrac{A}{\\ell}$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "2.40",
-                        "tittel": "Oppgave 2.40",
-                        "tekst": "Trekanttallene er $1,\\ 3,\\ 6,\\ 10,\\ 15,\\ \\dots$<br><br><strong>a)</strong> Finn de to neste leddene.<br><br><strong>b)</strong> Beskriv mønsteret med ord.<br><br><strong>c)</strong> En formel er $T_n = \\dfrac{n(n+1)}{2}$. Sjekk at den stemmer for $n = 4$ og $n = 5$.",
-                        "bilde": null,
-                        "hint": "Differansen øker med $1$ hver gang: $+2$, $+3$, $+4$, $+5$, $\\dots$",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>Neste differanser er $+6$ og $+7$: $15 + 6 = 21$ og $21 + 7 = 28$.<br><br><strong>Svar:</strong> $21$ og $28$",
-                            "<strong>b)</strong><br>Det $n$-te trekanttallet er summen av de $n$ første naturlige tallene. Differansen mellom leddene øker med $1$ for hvert steg.<br><br><strong>Svar:</strong> Summen $1 + 2 + \\cdots + n$.",
-                            "<strong>c)</strong><br>$T_4 = \\dfrac{4 \\cdot 5}{2} = 10$, $T_5 = \\dfrac{5 \\cdot 6}{2} = 15$. Begge matcher listen.<br><br><strong>Svar:</strong> Formelen stemmer for $n = 4$ og $n = 5$."
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "2.41",
-                        "tittel": "Oppgave 2.41",
-                        "tekst": "Følgen av partall er $2,\\ 4,\\ 6,\\ 8,\\ \\dots$<br><br><strong>a)</strong> Skriv en formel for det $n$-te partallet.<br><br><strong>b)</strong> Hva er det $20$. partallet?<br><br><strong>c)</strong> Vis at summen av det $n$-te og det $(n+1)$-te partallet er $4n + 2$.",
-                        "bilde": null,
-                        "hint": "Det $n$-te partallet er $2n$.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$a_n = 2n$<br><br><strong>Svar:</strong> $2n$",
-                            "<strong>b)</strong><br>$a_{20} = 40$<br><br><strong>Svar:</strong> $40$",
-                            "<strong>c)</strong><br>$2n + 2(n + 1) = 2n + 2n + 2 = 4n + 2$<br><br><strong>Svar:</strong> Vist."
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "2.42",
-                        "tittel": "Oppgave 2.42",
-                        "tekst": "Farten er $v = \\dfrac{s}{t}$, der $s$ er strekning og $t$ er tid.<br><br><strong>a)</strong> Isoler $s$.<br><br><strong>b)</strong> Isoler $t$.<br><br><strong>c)</strong> En sykkel holder $v = 8$ m/s i $t = 15$ s. Finn $s$.",
-                        "bilde": null,
-                        "hint": "Gang med $t$ for å isolere $s$. Del $s$ på $v$ for å isolere $t$.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$s = v \\cdot t$<br><br><strong>Svar:</strong> $s = vt$",
-                            "<strong>b)</strong><br>$t = \\dfrac{s}{v}$<br><br><strong>Svar:</strong> $t = \\dfrac{s}{v}$",
-                            "<strong>c)</strong><br>$s = 8 \\cdot 15 = 120$ m<br><br><strong>Svar:</strong> $120$ m"
-                        ],
-                        "starter": ""
                     }
                 ],
                 "quiz": [
                     {
                         "sporsmal": "Hva er en formel?",
                         "alternativer": [
-                            "En ligning der alle tallene er kjente",
+                            "En likning der alle tallene er kjente",
                             "En regel skrevet med matematiske symboler som viser en sammenheng",
                             "Et regnestykke med bare én bokstav",
                             "Et tallmønster"
@@ -3127,19 +2651,19 @@ window.fagsok = [
                     {
                         "id": "2.OP0",
                         "tittel": "Øveprøve · Kapittel 2 (oversikt)",
-                        "tekst": "<strong>Tid:</strong> ca. 60 min  <br><strong>Hjelpemidler:</strong> ingen (kun kladdeark)<br><br><strong>Instruks:</strong> Vis mellomregning. Bruk kvadratsetninger der det lønner seg. Oppgaver med flere bokstaver teller hver for seg.<br><br>Prøven er lagt opp som en typisk 1T-vurdering i algebra og mønstre: parenteser og kvadratsetninger, rasjonale uttrykk, formelregning, figurtall og et kort programmeringsinnslag.",
+                        "tekst": "<strong>Tid:</strong> ca. 55–70 min  <br><strong>Hjelpemidler:</strong> ingen<br><br><strong>Instruks:</strong> Bruk kvadratsetninger der det lønner seg. Vis mellomregning.<br><br>Prøven består av 10 oppgaver som dekker hovedtemaene i kapittel 2.",
                         "bilde": null,
-                        "hint": "",
-                        "fasit": null,
+                        "hint": "Kvadratsetningene sparer tid: $(a+b)^2 = a^2 + 2ab + b^2$, $(a-b)^2 = a^2 - 2ab + b^2$, $(a+b)(a-b) = a^2 - b^2$.",
+                        "fasit": "Dette er bare oversiktssiden. Gå videre til oppgave 1–10 for spørsmål og steg-for-steg-løsninger.",
                         "fasitSteg": null,
                         "starter": ""
                     },
                     {
                         "id": "2.OP1",
-                        "tittel": "Oppgave 1 — Like ledd og parenteser",
-                        "tekst": "Trekk sammen og fjern parenteser:<br><br><strong>a)</strong> $5x - 3y + 2x + y$<br><br><strong>b)</strong> $4(a - 2) - 3(a + 1)$<br><br><strong>c)</strong> $2(x + 3y) - (x - y)$",
+                        "tittel": "Oppgave 1 — Like ledd",
+                        "tekst": "Trekk sammen:<br><br><strong>a)</strong> $5x - 3y + 2x + y$<br><br><strong>b)</strong> $4(a - 2) - 3(a + 1)$<br><br><strong>c)</strong> $2(x + 3y) - (x - y)$",
                         "bilde": null,
-                        "hint": "",
+                        "hint": "Samle ledd med samme variabel. Husk fortegn når du fjerner parenteser etter minustegn.",
                         "fasit": null,
                         "fasitSteg": [
                             "<strong>a)</strong><br>$x$-ledd: $5x + 2x = 7x$<br><br>$y$-ledd: $-3y + y = -2y$<br><br><strong>Svar:</strong> $7x - 2y$",
@@ -3150,62 +2674,66 @@ window.fagsok = [
                     },
                     {
                         "id": "2.OP2",
-                        "tittel": "Oppgave 2 — Kvadratsetning og oppløsning",
-                        "tekst": "Regn ut og trekk sammen:<br><br><strong>a)</strong> $(a + 1)^2 - a(2 - a)$<br><br><strong>b)</strong> $(x + 4)^2$<br><br><strong>c)</strong> $(2b + 5)(2b - 5)$",
+                        "tittel": "Oppgave 2 — Løse opp parenteser",
+                        "tekst": "<strong>a)</strong> $3(2x - 1) + 4$<br><br><strong>b)</strong> $(x + 5)(x - 2)$<br><br><strong>c)</strong> $2x(x - 3) - (x - 3)(x + 1)$",
                         "bilde": null,
-                        "hint": "",
+                        "hint": "Ved produkt av to parenteser: hvert ledd i den første multipliseres med hvert ledd i den andre. Se etter felles faktor i c).",
                         "fasit": null,
                         "fasitSteg": [
-                            "<strong>a)</strong><br>$(a + 1)^2 = a^2 + 2a + 1$<br><br>$a(2 - a) = 2a - a^2$<br><br>$(a + 1)^2 - a(2 - a) = a^2 + 2a + 1 - (2a - a^2) = a^2 + 2a + 1 - 2a + a^2 = 2a^2 + 1$<br><br><strong>Svar:</strong> $2a^2 + 1$",
-                            "<strong>b)</strong><br>$(x + 4)^2 = x^2 + 2 \\cdot x \\cdot 4 + 4^2 = x^2 + 8x + 16$<br><br><strong>Svar:</strong> $x^2 + 8x + 16$",
-                            "<strong>c)</strong><br>$(2b + 5)(2b - 5) = (2b)^2 - 5^2 = 4b^2 - 25$<br><br><strong>Svar:</strong> $4b^2 - 25$"
+                            "<strong>a)</strong><br>$3(2x - 1) + 4 = 6x - 3 + 4 = 6x + 1$<br><br><strong>Svar:</strong> $6x + 1$",
+                            "<strong>b)</strong><br>$(x + 5)(x - 2) = x \\cdot x + x \\cdot (-2) + 5 \\cdot x + 5 \\cdot (-2)$<br><br>$= x^2 - 2x + 5x - 10 = x^2 + 3x - 10$<br><br><strong>Svar:</strong> $x^2 + 3x - 10$",
+                            "<strong>c)</strong><br>$2x(x - 3) = 2x^2 - 6x$<br><br>$(x - 3)(x + 1) = x^2 + x - 3x - 3 = x^2 - 2x - 3$<br><br>$2x^2 - 6x - (x^2 - 2x - 3) = 2x^2 - 6x - x^2 + 2x + 3 = x^2 - 4x + 3$<br><br><strong>Svar:</strong> $x^2 - 4x + 3$"
                         ],
                         "starter": ""
                     },
                     {
                         "id": "2.OP3",
-                        "tittel": "Oppgave 3 — Kvadratsetninger med rot",
-                        "tekst": "Regn ut og skriv så enkelt som mulig:<br><br><strong>a)</strong> $(2 + \\sqrt{5})(2 - \\sqrt{5})$<br><br><strong>b)</strong> $(\\sqrt{5} + 3)^2$<br><br><strong>c)</strong> $(7 - \\sqrt{2})(7 + \\sqrt{2})$",
+                        "tittel": "Oppgave 3 — Kvadratsetninger",
+                        "tekst": "Regn ut:<br><br><strong>a)</strong> $(x + 4)^2$<br><br><strong>b)</strong> $(3 - a)^2$<br><br><strong>c)</strong> $(2b + 5)(2b - 5)$",
                         "bilde": null,
-                        "hint": "",
+                        "hint": "$(a+b)^2 = a^2 + 2ab + b^2$, $(a-b)^2 = a^2 - 2ab + b^2$, $(a+b)(a-b) = a^2 - b^2$.",
                         "fasit": null,
                         "fasitSteg": [
-                            "<strong>a)</strong><br>$(2 + \\sqrt{5})(2 - \\sqrt{5}) = 2^2 - (\\sqrt{5})^2 = 4 - 5 = -1$<br><br><strong>Svar:</strong> $-1$",
-                            "<strong>b)</strong><br>$(\\sqrt{5} + 3)^2 = (\\sqrt{5})^2 + 2 \\cdot \\sqrt{5} \\cdot 3 + 3^2 = 5 + 6\\sqrt{5} + 9 = 14 + 6\\sqrt{5}$<br><br><strong>Svar:</strong> $14 + 6\\sqrt{5}$",
-                            "<strong>c)</strong><br>$(7 - \\sqrt{2})(7 + \\sqrt{2}) = 7^2 - (\\sqrt{2})^2 = 49 - 2 = 47$<br><br><strong>Svar:</strong> $47$"
+                            "<strong>a)</strong><br>$(x + 4)^2 = x^2 + 2 \\cdot x \\cdot 4 + 4^2 = x^2 + 8x + 16$<br><br><strong>Svar:</strong> $x^2 + 8x + 16$",
+                            "<strong>b)</strong><br>$(3 - a)^2 = 3^2 - 2 \\cdot 3 \\cdot a + a^2 = 9 - 6a + a^2$<br><br><strong>Svar:</strong> $a^2 - 6a + 9$ (eller $9 - 6a + a^2$)",
+                            "<strong>c)</strong><br>$(2b + 5)(2b - 5) = (2b)^2 - 5^2 = 4b^2 - 25$<br><br><strong>Svar:</strong> $4b^2 - 25$"
                         ],
                         "starter": ""
                     },
                     {
                         "id": "2.OP4",
-                        "tittel": "Oppgave 4 — Forenkle brøker",
-                        "tekst": "Skriv så enkelt som mulig:<br><br><strong>a)</strong> $\\dfrac{2}{3} + 1 - \\dfrac{5}{9}$<br><br><strong>b)</strong> $\\dfrac{1}{2x} - \\dfrac{3 - x}{3x}$<br><br><strong>c)</strong> $\\dfrac{x}{4x + 8} + \\dfrac{1}{12} - \\dfrac{4x + 5}{6x + 12}$",
+                        "tittel": "Oppgave 4 — Kvadratsetninger med rot",
+                        "tekst": "<strong>a)</strong> $(7 - \\sqrt{2})(7 + \\sqrt{2})$<br><br><strong>b)</strong> $(\\sqrt{5} + 3)^2$<br><br><strong>c)</strong> $(x - \\sqrt{3})^2 - (x + \\sqrt{3})(x - \\sqrt{3})$",
                         "bilde": null,
-                        "hint": "",
+                        "hint": "Samme regler som vanlige kvadratsetninger — roten oppfører seg som et vanlig ledd.",
                         "fasit": null,
                         "fasitSteg": [
-                            "<strong>a)</strong><br>$1 = \\dfrac{9}{9}$, $\\dfrac{2}{3} = \\dfrac{6}{9}$<br><br>$\\dfrac{6}{9} + \\dfrac{9}{9} - \\dfrac{5}{9} = \\dfrac{10}{9}$<br><br><strong>Svar:</strong> $\\dfrac{10}{9}$",
-                            "<strong>b)</strong><br>Fellesnevner $6x$:<br>$\\dfrac{1}{2x} = \\dfrac{3}{6x}$, $\\dfrac{3-x}{3x} = \\dfrac{2(3-x)}{6x} = \\dfrac{6-2x}{6x}$<br><br>$\\dfrac{3}{6x} - \\dfrac{6-2x}{6x} = \\dfrac{3 - 6 + 2x}{6x} = \\dfrac{2x - 3}{6x}$<br><br><strong>Svar:</strong> $\\dfrac{2x - 3}{6x}$",
-                            "<strong>c)</strong><br>$4x + 8 = 4(x + 2)$ og $6x + 12 = 6(x + 2)$.<br><br>$\\dfrac{x}{4(x+2)} + \\dfrac{1}{12} - \\dfrac{4x+5}{6(x+2)}$<br><br>Fellesnevner $12(x+2)$:<br>$\\dfrac{3x}{12(x+2)} + \\dfrac{x+2}{12(x+2)} - \\dfrac{2(4x+5)}{12(x+2)} = \\dfrac{3x + x + 2 - 8x - 10}{12(x+2)} = \\dfrac{-4x - 8}{12(x+2)}$<br><br>$\\dfrac{-4(x+2)}{12(x+2)} = -\\dfrac{4}{12} = -\\dfrac{1}{3}$ (for $x \\neq -2$)<br><br><strong>Svar:</strong> $-\\dfrac{1}{3}$"
+                            "<strong>a)</strong><br>$(7 - \\sqrt{2})(7 + \\sqrt{2}) = 7^2 - (\\sqrt{2})^2 = 49 - 2 = 47$<br><br><strong>Svar:</strong> $47$",
+                            "<strong>b)</strong><br>$(\\sqrt{5} + 3)^2 = (\\sqrt{5})^2 + 2 \\cdot \\sqrt{5} \\cdot 3 + 3^2 = 5 + 6\\sqrt{5} + 9 = 14 + 6\\sqrt{5}$<br><br><strong>Svar:</strong> $14 + 6\\sqrt{5}$",
+                            "<strong>c)</strong><br>$(x - \\sqrt{3})^2 = x^2 - 2x\\sqrt{3} + 3$<br><br>$(x + \\sqrt{3})(x - \\sqrt{3}) = x^2 - 3$<br><br>Differanse:<br>$x^2 - 2x\\sqrt{3} + 3 - (x^2 - 3) = x^2 - 2x\\sqrt{3} + 3 - x^2 + 3 = -2x\\sqrt{3} + 6$<br><br><strong>Svar:</strong> $6 - 2x\\sqrt{3}$"
                         ],
                         "starter": ""
                     },
                     {
                         "id": "2.OP5",
-                        "tittel": "Oppgave 5 — Divisjon av rasjonale uttrykk",
-                        "tekst": "Regn ut og forkort så langt det går:<br><br>$\\dfrac{x + 3}{2x} : \\dfrac{x^2 - 9}{4x^2}$<br><br>Oppgi også hvilke $x$ som *ikke* er tillatt.",
+                        "tittel": "Oppgave 5 — Tallprodukt uten kalkulator",
+                        "tekst": "<strong>a)</strong> $52 \\cdot 48$<br><br><strong>b)</strong> $61^2$<br><br><strong>c)</strong> $101 \\cdot 99$",
                         "bilde": null,
-                        "hint": "",
-                        "fasit": "Ikke tillatt: $x = 0$ (nevner $2x$ og $4x^2$) og $x = \\pm 3$ (nevner $x^2-9$ i den andre brøken).<br><br>$\\dfrac{x + 3}{2x} \\cdot \\dfrac{4x^2}{x^2 - 9} = \\dfrac{x + 3}{2x} \\cdot \\dfrac{4x^2}{(x+3)(x-3)}$<br><br>Forkort $(x+3)$ (krever $x \\neq -3$) og én $x$ samt faktoren $2$:<br>$\\dfrac{1}{2x} \\cdot \\dfrac{4x^2}{x-3} = \\dfrac{4x^2}{2x(x-3)} = \\dfrac{2x}{x-3}$<br><br><strong>Svar:</strong> $\\dfrac{2x}{x-3}$, $x \\neq 0,\\ \\pm 3$",
-                        "fasitSteg": null,
+                        "hint": "Skriv tallene som $(a+b)(a-b)$ eller $(a+b)^2$ for å bruke kvadratsetninger.",
+                        "fasit": null,
+                        "fasitSteg": [
+                            "<strong>a)</strong><br>$52 \\cdot 48 = (50 + 2)(50 - 2) = 50^2 - 2^2 = 2500 - 4 = 2496$<br><br><strong>Svar:</strong> $2496$",
+                            "<strong>b)</strong><br>$61^2 = (60 + 1)^2 = 60^2 + 2 \\cdot 60 \\cdot 1 + 1^2 = 3600 + 120 + 1 = 3721$<br><br><strong>Svar:</strong> $3721$",
+                            "<strong>c)</strong><br>$101 \\cdot 99 = (100 + 1)(100 - 1) = 100^2 - 1^2 = 10000 - 1 = 9999$<br><br><strong>Svar:</strong> $9999$"
+                        ],
                         "starter": ""
                     },
                     {
                         "id": "2.OP6",
                         "tittel": "Oppgave 6 — Faktorisering",
-                        "tekst": "Faktoriser så langt som mulig:<br><br><strong>a)</strong> $8x - 12$<br><br><strong>b)</strong> $x^2 - 36$<br><br><strong>c)</strong> $x(x - 4) + 3(x - 4)$",
+                        "tekst": "Faktoriser:<br><br><strong>a)</strong> $8x - 12$<br><br><strong>b)</strong> $x^2 - 36$<br><br><strong>c)</strong> $x(x - 4) + 3(x - 4)$",
                         "bilde": null,
-                        "hint": "",
+                        "hint": "Trekk ut felles faktor. $a^2 - b^2 = (a+b)(a-b)$. I c) er $(x-4)$ felles.",
                         "fasit": null,
                         "fasitSteg": [
                             "<strong>a)</strong><br>Felles faktor $4$: $8x - 12 = 4(2x - 3)$<br><br><strong>Svar:</strong> $4(2x - 3)$",
@@ -3217,56 +2745,58 @@ window.fagsok = [
                     {
                         "id": "2.OP7",
                         "tittel": "Oppgave 7 — Fullstendig kvadrat",
-                        "tekst": "<strong>a)</strong> Skriv $x^2 - 10x + 25$ som et kvadrat av et binomial.<br><br><strong>b)</strong> Hvilket tall må stå i ruten for at $x^2 + 14x + \\square$ skal bli et fullstendig kvadrat?<br><br><strong>c)</strong> Er $x^2 + 6x + 8$ et fullstendig kvadrat? Begrunn.",
+                        "tekst": "<strong>a)</strong> Faktoriser $x^2 - 10x + 25$.<br><br><strong>b)</strong> Hvilket tall må stå i $\\square$ for at $x^2 + 14x + \\square$ skal bli et fullstendig kvadrat?<br><br><strong>c)</strong> Er $x^2 + 6x + 8$ et fullstendig kvadrat? Begrunn.",
                         "bilde": null,
-                        "hint": "",
+                        "hint": "Fullstendig kvadrat: $x^2 + 2kx + k^2 = (x + k)^2$. Midtleddet avgjør $k$.",
                         "fasit": null,
                         "fasitSteg": [
                             "<strong>a)</strong><br>$x^2 - 10x + 25 = x^2 - 2 \\cdot x \\cdot 5 + 5^2 = (x - 5)^2$<br><br><strong>Svar:</strong> $(x - 5)^2$",
-                            "<strong>b)</strong><br>Vi trenger $x^2 + 14x + k^2 = (x + k)^2$ der $2k = 14$, så $k = 7$ og $k^2 = 49$.<br><br><strong>Svar:</strong> $49$",
-                            "<strong>c)</strong><br>Hvis det var et fullstendig kvadrat, måtte konstantleddet være $\\left(\\dfrac{6}{2}\\right)^2 = 9$.<br><br>Her er konstantleddet $8$, ikke $9$. Vi kan også faktorisere:<br>$x^2 + 6x + 8 = (x + 2)(x + 4)$, som ikke er et kvadrat av ett binomial.<br><br><strong>Svar:</strong> Nei — konstantleddet skulle vært $9$ for at det skulle bli $(x + 3)^2$."
+                            "<strong>b)</strong><br>Vi trenger $x^2 + 14x + k^2 = (x + k)^2$, der $2k = 14$, så $k = 7$.<br><br>Da er $k^2 = 49$.<br><br><strong>Svar:</strong> $49$",
+                            "<strong>c)</strong><br>Hvis det var et fullstendig kvadrat, måtte konstantleddet være $\\left(\\dfrac{6}{2}\\right)^2 = 9$.<br><br>Her er konstantleddet $8$, ikke $9$. Vi kan også sjekke:<br>$x^2 + 6x + 8 = (x + 2)(x + 4)$, som ikke er et kvadrat av ett binomial.<br><br><strong>Svar:</strong> Nei — konstantleddet skulle vært $9$ for at det skulle bli $(x + 3)^2$."
                         ],
                         "starter": ""
                     },
                     {
                         "id": "2.OP8",
-                        "tittel": "Oppgave 8 — Formelregning (kjegle og kule)",
-                        "tekst": "Volumet av en kjegle er gitt ved $V = \\dfrac{\\pi r^2 h}{3}$.<br><br><strong>a)</strong> Finn en formel for høyden $h$.<br><br>Volumet av en kule er gitt ved $V = \\dfrac{4\\pi r^3}{3}$.<br><br><strong>b)</strong> Hva er volumet til en kule med radius $r = 2$? La $\\pi$ stå.<br><br>Overflatearealet til en kule er $A = 4\\pi r^2$.<br><br><strong>c)</strong> Finn et uttrykk for forholdet mellom volumet og overflatearealet til en kule, $\\dfrac{V}{A}$. Forkort så langt det går.",
+                        "tittel": "Oppgave 8 — Rasjonale uttrykk",
+                        "tekst": "<strong>a)</strong> Forkort $\\dfrac{10x - 15}{5}$.<br><br><strong>b)</strong> Trekk sammen $\\dfrac{1}{x} + \\dfrac{4}{3x}$.<br><br><strong>c)</strong> En elev skriver $\\dfrac{x + 4}{4} = x + 1$. Vis at det er feil, og forenkle riktig.",
                         "bilde": null,
-                        "hint": "",
+                        "hint": "Du kan bare forkorte faktorer som står i både teller og nevner — ikke ledd i en sum.",
                         "fasit": null,
                         "fasitSteg": [
-                            "<strong>a)</strong><br>$V = \\dfrac{\\pi r^2 h}{3}$<br><br>Gang med $3$: $3V = \\pi r^2 h$<br><br>Del på $\\pi r^2$ (forutsatt $r \\neq 0$): $h = \\dfrac{3V}{\\pi r^2}$<br><br><strong>Svar:</strong> $h = \\dfrac{3V}{\\pi r^2}$",
-                            "<strong>b)</strong><br>$V = \\dfrac{4\\pi \\cdot 2^3}{3} = \\dfrac{4\\pi \\cdot 8}{3} = \\dfrac{32\\pi}{3}$<br><br><strong>Svar:</strong> $\\dfrac{32\\pi}{3}$",
-                            "<strong>c)</strong><br>$\\dfrac{V}{A} = \\dfrac{\\frac{4\\pi r^3}{3}}{4\\pi r^2} = \\dfrac{4\\pi r^3}{3} \\cdot \\dfrac{1}{4\\pi r^2} = \\dfrac{r}{3}$<br><br><strong>Svar:</strong> $\\dfrac{r}{3}$"
+                            "<strong>a)</strong><br>$\\dfrac{10x - 15}{5} = \\dfrac{5(2x - 3)}{5} = 2x - 3$<br><br><strong>Svar:</strong> $2x - 3$",
+                            "<strong>b)</strong><br>Fellesnevner $3x$:<br>$\\dfrac{1}{x} = \\dfrac{3}{3x}$<br><br>$\\dfrac{3}{3x} + \\dfrac{4}{3x} = \\dfrac{7}{3x}$<br><br><strong>Svar:</strong> $\\dfrac{7}{3x}$",
+                            "<strong>c)</strong><br>Feilen er at eleven deler bare $4$ i telleren på $4$, men lar $x$ stå urørt. Man kan ikke forkorte ett ledd i en sum.<br><br>Riktig:<br>$\\dfrac{x + 4}{4} = \\dfrac{x}{4} + \\dfrac{4}{4} = \\dfrac{x}{4} + 1$<br><br>Moteksempel: Hvis $x = 0$, venstre side $\\dfrac{4}{4} = 1$, høyre side $0 + 1 = 1$ (tilfeldig like). Hvis $x = 4$: venstre $\\dfrac{8}{4} = 2$, elevens svar $4 + 1 = 5$ — ikke like.<br><br><strong>Svar:</strong> Feil fordi man ikke kan forkorte ledd i en sum. Riktig: $\\dfrac{x}{4} + 1$."
                         ],
                         "starter": ""
                     },
                     {
                         "id": "2.OP9",
-                        "tittel": "Oppgave 9 — Figurtall (hundetall)",
-                        "tekst": "Figuren viser de tre første *hundetallene*. Hver hund er bygd av firkanter: et kvadratisk <strong>hode</strong>, en rektangulær <strong>kropp</strong>, <strong>to ben</strong> og en <strong>hale</strong>.<br><br><strong>a)</strong> Fyll ut tabellen.<br><table style=\"width:100%; border-collapse:collapse; margin:1rem 0; text-align:left;\"><tr><th style=\"border:1px solid var(--border); padding:0.75rem; background:rgba(255,255,255,0.05);\">Nummer</th><th style=\"border:1px solid var(--border); padding:0.75rem; background:rgba(255,255,255,0.05);\">Hode</th><th style=\"border:1px solid var(--border); padding:0.75rem; background:rgba(255,255,255,0.05);\">Kropp</th><th style=\"border:1px solid var(--border); padding:0.75rem; background:rgba(255,255,255,0.05);\">Totalt to ben</th><th style=\"border:1px solid var(--border); padding:0.75rem; background:rgba(255,255,255,0.05);\">Hale</th></tr><tr><td style=\"border:1px solid var(--border); padding:0.75rem;\">1</td><td style=\"border:1px solid var(--border); padding:0.75rem;\">4</td><td style=\"border:1px solid var(--border); padding:0.75rem;\">6</td><td style=\"border:1px solid var(--border); padding:0.75rem;\">2</td><td style=\"border:1px solid var(--border); padding:0.75rem;\">1</td></tr><tr><td style=\"border:1px solid var(--border); padding:0.75rem;\">2</td><td style=\"border:1px solid var(--border); padding:0.75rem;\"></td><td style=\"border:1px solid var(--border); padding:0.75rem;\"></td><td style=\"border:1px solid var(--border); padding:0.75rem;\"></td><td style=\"border:1px solid var(--border); padding:0.75rem;\"></td></tr><tr><td style=\"border:1px solid var(--border); padding:0.75rem;\">3</td><td style=\"border:1px solid var(--border); padding:0.75rem;\"></td><td style=\"border:1px solid var(--border); padding:0.75rem;\"></td><td style=\"border:1px solid var(--border); padding:0.75rem;\"></td><td style=\"border:1px solid var(--border); padding:0.75rem;\"></td></tr><tr><td style=\"border:1px solid var(--border); padding:0.75rem;\">4</td><td style=\"border:1px solid var(--border); padding:0.75rem;\"></td><td style=\"border:1px solid var(--border); padding:0.75rem;\"></td><td style=\"border:1px solid var(--border); padding:0.75rem;\"></td><td style=\"border:1px solid var(--border); padding:0.75rem;\"></td></tr><tr><td style=\"border:1px solid var(--border); padding:0.75rem;\">$n$</td><td style=\"border:1px solid var(--border); padding:0.75rem;\"></td><td style=\"border:1px solid var(--border); padding:0.75rem;\"></td><td style=\"border:1px solid var(--border); padding:0.75rem;\"></td><td style=\"border:1px solid var(--border); padding:0.75rem;\"></td></tr></table><br><strong>b)</strong> Lag en formel for hundetall nummer $n$ (totalt antall firkanter).",
-                        "bilde": "hundetall.png",
-                        "hint": "",
+                        "tittel": "Oppgave 9 — Formelregning",
+                        "tekst": "Arealet av et rektangel er $A = l \\cdot b$.<br><br><strong>a)</strong> Isoler $b$.<br><br><strong>b)</strong> Når $A = 48$ og $l = 12$, finn $b$.<br><br><strong>c)</strong> Omform $v = \\dfrac{s}{t}$ slik at $t$ står alene.",
+                        "bilde": null,
+                        "hint": "Det du gjør på den ene siden av likhetstegnet, må du gjøre på den andre.",
                         "fasit": null,
                         "fasitSteg": [
-                            "<strong>a)</strong><br><table style=\"width:100%; border-collapse:collapse; margin:1rem 0; text-align:left;\"><tr><th style=\"border:1px solid var(--border); padding:0.75rem; background:rgba(255,255,255,0.05);\">Nummer</th><th style=\"border:1px solid var(--border); padding:0.75rem; background:rgba(255,255,255,0.05);\">Hode</th><th style=\"border:1px solid var(--border); padding:0.75rem; background:rgba(255,255,255,0.05);\">Kropp</th><th style=\"border:1px solid var(--border); padding:0.75rem; background:rgba(255,255,255,0.05);\">Totalt to ben</th><th style=\"border:1px solid var(--border); padding:0.75rem; background:rgba(255,255,255,0.05);\">Hale</th></tr><tr><td style=\"border:1px solid var(--border); padding:0.75rem;\">1</td><td style=\"border:1px solid var(--border); padding:0.75rem;\">$4 = 2^2$</td><td style=\"border:1px solid var(--border); padding:0.75rem;\">$6$</td><td style=\"border:1px solid var(--border); padding:0.75rem;\">$2$</td><td style=\"border:1px solid var(--border); padding:0.75rem;\">$1$</td></tr><tr><td style=\"border:1px solid var(--border); padding:0.75rem;\">2</td><td style=\"border:1px solid var(--border); padding:0.75rem;\">$9 = 3^2$</td><td style=\"border:1px solid var(--border); padding:0.75rem;\">$12$</td><td style=\"border:1px solid var(--border); padding:0.75rem;\">$4$</td><td style=\"border:1px solid var(--border); padding:0.75rem;\">$2$</td></tr><tr><td style=\"border:1px solid var(--border); padding:0.75rem;\">3</td><td style=\"border:1px solid var(--border); padding:0.75rem;\">$16 = 4^2$</td><td style=\"border:1px solid var(--border); padding:0.75rem;\">$20$</td><td style=\"border:1px solid var(--border); padding:0.75rem;\">$6$</td><td style=\"border:1px solid var(--border); padding:0.75rem;\">$3$</td></tr><tr><td style=\"border:1px solid var(--border); padding:0.75rem;\">4</td><td style=\"border:1px solid var(--border); padding:0.75rem;\">$25 = 5^2$</td><td style=\"border:1px solid var(--border); padding:0.75rem;\">$30$</td><td style=\"border:1px solid var(--border); padding:0.75rem;\">$8$</td><td style=\"border:1px solid var(--border); padding:0.75rem;\">$4$</td></tr><tr><td style=\"border:1px solid var(--border); padding:0.75rem;\">$n$</td><td style=\"border:1px solid var(--border); padding:0.75rem;\">$(n+1)^2$</td><td style=\"border:1px solid var(--border); padding:0.75rem;\">$(n+1)(n+2)$</td><td style=\"border:1px solid var(--border); padding:0.75rem;\">$2n$</td><td style=\"border:1px solid var(--border); padding:0.75rem;\">$n$</td></tr></table><br><strong>Svar:</strong> Se tabellen.",
-                            "<strong>b)</strong><br>Totalt:<br>$H_n = (n+1)^2 + (n+1)(n+2) + 2n + n$<br><br>$= (n^2 + 2n + 1) + (n^2 + 3n + 2) + 3n = 2n^2 + 8n + 3$<br><br>Kontroll: $n=1$ gir $2+8+3=13$, og $4+6+2+1=13$. $n=2$ gir $8+16+3=27$.<br><br><strong>Svar:</strong> $H_n = 2n^2 + 8n + 3$"
+                            "<strong>a)</strong><br>$A = l \\cdot b$<br><br>Del begge sider på $l$ (forutsatt $l \\neq 0$):<br>$b = \\dfrac{A}{l}$<br><br><strong>Svar:</strong> $b = \\dfrac{A}{l}$",
+                            "<strong>b)</strong><br>$b = \\dfrac{48}{12} = 4$<br><br><strong>Svar:</strong> $b = 4$",
+                            "<strong>c)</strong><br>$v = \\dfrac{s}{t}$<br><br>Multipliser begge sider med $t$: $v \\cdot t = s$<br><br>Del begge sider på $v$ (forutsatt $v \\neq 0$): $t = \\dfrac{s}{v}$<br><br><strong>Svar:</strong> $t = \\dfrac{s}{v}$"
                         ],
                         "starter": ""
                     },
                     {
                         "id": "2.OP10",
-                        "tittel": "Oppgave 10 — Programmering",
-                        "tekst": "<strong>a)</strong> Hva gjør dette programmet? Oppgi alle tallene som skrives ut.<br><br><pre class=\"prog-code\"><code>n = 1<br>while n &lt; 11:<br>    print(n)<br>    n = n + 1</code></pre><br><br><strong>b)</strong> Hva gjør dette programmet? Hva blir skrevet ut til slutt?<br><br><pre class=\"prog-code\"><code>x = 0<br>s = 0<br>while x &lt; 20:<br>    x = x + 2<br>    s = s + x<br>print(\"[Det som printes er...]\", s)</code></pre><br><br>Kom også med et forslag til tekst som kan erstatte <code>[Det som printes er...]</code>.",
+                        "tittel": "Oppgave 10 — Figurtall og generalisering",
+                        "tekst": "Kvadrattallene er $1,\\ 4,\\ 9,\\ 16,\\ \\dots$<br><br><strong>a)</strong> Finn det 8. kvadrattallet.<br><br><strong>b)</strong> Skriv en formel for det $n$-te kvadrattallet.<br><br><strong>c)</strong> Vis at differansen mellom det $n$-te og det $(n-1)$-te kvadrattallet er $2n - 1$.",
                         "bilde": null,
-                        "hint": "",
+                        "hint": "Det $n$-te kvadrattallet er $n^2$. Bruk algebra i c) — ikke bare tall-eksempler.",
                         "fasit": null,
                         "fasitSteg": [
-                            "<strong>a)</strong><br>Løkken kjører så lenge $n < 11$. Den skriver ut $n$ og øker deretter $n$ med $1$. Første verdi er $1$, siste gang $n$ skrives ut er når $n = 10$.<br><br><strong>Svar:</strong> Programmet skriver ut tallene $1, 2, 3, \\ldots, 10$ (hvert tall på egen linje).",
-                            "<strong>b)</strong><br>Start: $x = 0$, $s = 0$.<br><br>Hver runde: $x$ øker med $2$, deretter $s \\leftarrow s + x$.<br>Verdiene som legges til $s$ er $2, 4, 6, \\ldots, 20$.<br><br>Når $x = 20$ er $x < 20$ usann, og løkken stopper.<br>Summen av de ti første positive partallene:<br>$2 + 4 + \\cdots + 20 = 10 \\cdot 11 = 110$.<br><br>Forslag til utskriftstekst: <code>\"Summen av partallene fra 2 til 20 er\"</code>.<br><br><strong>Svar:</strong> Programmet summerer partallene fra $2$ til $20$ og skriver ut $110$. Forslag: <code>Summen av partallene fra 2 til 20 er</code>."
+                            "<strong>a)</strong><br>Det 8. kvadrattallet er $8^2 = 64$.<br><br><strong>Svar:</strong> $64$",
+                            "<strong>b)</strong><br><strong>Svar:</strong> $n^2$",
+                            "<strong>c)</strong><br>Det $n$-te kvadrattallet: $n^2$<br><br>Det $(n-1)$-te: $(n-1)^2 = n^2 - 2n + 1$<br><br>Differanse:<br>$n^2 - (n^2 - 2n + 1) = n^2 - n^2 + 2n - 1 = 2n - 1$<br><br><strong>Svar:</strong> Vist algebraisk: $n^2 - (n-1)^2 = 2n - 1$."
                         ],
-                        "starter": "x = 0\ns = 0\nwhile x < 20:\n    x = x + 2\n    s = s + x\nprint(\"Summen av partallene fra 2 til 20 er\", s)"
+                        "starter": ""
                     }
                 ],
                 "quiz": null
@@ -3275,7 +2805,7 @@ window.fagsok = [
     },
     {
         "id": "kap3",
-        "tittel": "Kapittel 3: Likninger og Ulikheter",
+        "tittel": "Kapittel 3: Likninger og ulikheter",
         "delkapitler": [
             {
                 "id": "3A",
@@ -3324,87 +2854,6 @@ window.fagsok = [
                         "hint": "La Kari ha $K$ abonnenter. Sett opp uttrykk for Olav og Ali ved hjelp av $K$.",
                         "fasit": "Vi skal finne antall abonnenter for hver person, og uttrykker dem ved hjelp av én felles variabel.<br><br>La $K$ være antall abonnenter Kari har.<br><br>Olav har dobbelt så mange som Kari: $\\text{Olav} = 2K$<br><br>Ali har $20$ flere enn Kari: $\\text{Ali} = K + 20$<br><br>Til sammen har de $120$ abonnenter. Vi setter opp en likning:<br><br>$K + 2K + (K + 20) = 120$<br><br>$3K + K + 20 = 120$ (trekk sammen Kari og Olavs abonnenter)<br><br>$4K + 20 = 120$ (trekk sammen $K$-leddene)<br><br>$4K = 120 - 20$ (flytt over $20$ og bytt fortegn)<br><br>$4K = 100$ (forenkle)<br><br>$K = \\frac{100}{4} = 25$ (del på $4$)<br><br>Nå vet vi at Kari har $25$ abonnenter. Vi regner ut de andre:<br><br>$\\text{Olav} = 2 \\cdot 25 = 50$<br><br>$\\text{Ali} = 25 + 20 = 45$<br><br><strong>Svar:</strong> Kari har $25$, Olav har $50$ og Ali har $45$ abonnenter.",
                         "fasitSteg": null,
-                        "starter": ""
-                    },
-                    {
-                        "id": "3.23",
-                        "tittel": "Oppgave 3.23",
-                        "tekst": "Løs likningene og sett prøve:<br><br><strong>a)</strong> $3x + 5 = 20$<br><br><strong>b)</strong> $2(x - 4) = 10$<br><br><strong>c)</strong> $5 - x = 2x + 8$",
-                        "bilde": null,
-                        "hint": "Samle $x$ på én side og tall på den andre. Bytt fortegn når du flytter over likhetstegnet.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$3x = 15 \\Rightarrow x = 5$. Prøve: $3 \\cdot 5 + 5 = 20$.<br><br><strong>Svar:</strong> $x = 5$",
-                            "<strong>b)</strong><br>$2x - 8 = 10 \\Rightarrow 2x = 18 \\Rightarrow x = 9$. Prøve: $2(9 - 4) = 10$.<br><br><strong>Svar:</strong> $x = 9$",
-                            "<strong>c)</strong><br>$5 - 8 = 2x + x \\Rightarrow -3 = 3x \\Rightarrow x = -1$.<br>Prøve: VS $5 - (-1) = 6$, HS $2(-1) + 8 = 6$.<br><br><strong>Svar:</strong> $x = -1$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "3.24",
-                        "tittel": "Oppgave 3.24",
-                        "tekst": "Løs:<br><br><strong>a)</strong> $\\dfrac{x}{4} + \\dfrac{x}{6} = 5$<br><br><strong>b)</strong> $\\dfrac{2x - 1}{3} = 3$<br><br><strong>c)</strong> $4 - \\dfrac{x}{2} = x$",
-                        "bilde": null,
-                        "hint": "Gang gjennom med fellesnevneren for å kvitte deg med brøkene.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>Fellesnevner $12$: $3x + 2x = 60 \\Rightarrow 5x = 60 \\Rightarrow x = 12$.<br><br><strong>Svar:</strong> $x = 12$",
-                            "<strong>b)</strong><br>$2x - 1 = 9 \\Rightarrow 2x = 10 \\Rightarrow x = 5$.<br><br><strong>Svar:</strong> $x = 5$",
-                            "<strong>c)</strong><br>Gang med $2$: $8 - x = 2x \\Rightarrow 8 = 3x \\Rightarrow x = \\dfrac{8}{3}$.<br><br><strong>Svar:</strong> $x = \\dfrac{8}{3}$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "3.25",
-                        "tittel": "Oppgave 3.25",
-                        "tekst": "En kino selger barnebilletter til $80$ kr og voksenbilletter til $140$ kr. Det ble solgt $12$ billetter totalt, og inntekten ble $1320$ kr.<br><br><strong>a)</strong> Sett $b$ som antall barnebilletter. Skriv en likning.<br><br><strong>b)</strong> Hvor mange barnebilletter og voksenbilletter ble solgt?",
-                        "bilde": null,
-                        "hint": "Antall voksenbilletter er $12 - b$. Sett opp uttrykk for totalpris.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$80b + 140(12 - b) = 1320$<br><br><strong>Svar:</strong> $80b + 140(12 - b) = 1320$",
-                            "<strong>b)</strong><br>$80b + 1680 - 140b = 1320$<br>$-60b = 1320 - 1680 = -360$<br>$b = 6$. Da er voksenbilletter $6$.<br><br>Prøve: $80 \\cdot 6 + 140 \\cdot 6 = 480 + 840 = 1320$.<br><br><strong>Svar:</strong> $6$ barne- og $6$ voksenbilletter."
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "3.26",
-                        "tittel": "Oppgave 3.26",
-                        "tekst": "Løs og sett prøve: $3(2x - 1) - x = 4(x + 2)$",
-                        "bilde": null,
-                        "hint": "Løs opp parentesene først, samle $x$-ledd, så tall.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "$6x - 3 - x = 4x + 8$<br><br>$5x - 3 = 4x + 8$<br><br>$5x - 4x = 8 + 3$<br><br>$x = 11$",
-                            "<strong>Prøve:</strong> VS $3(22 - 1) - 11 = 63 - 11 = 52$. HS $4(11 + 2) = 52$.<br><br><strong>Svar:</strong> $x = 11$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "3.47",
-                        "tittel": "Oppgave 3.47",
-                        "tekst": "Løs ulikhetene. Husk at ulikhetstegnet snur når du ganger eller deler med et negativt tall.<br><br><strong>a)</strong> $2x - 5 < 7$<br><br><strong>b)</strong> $3 - x \\geq 1$<br><br><strong>c)</strong> $4(x + 1) \\leq 2x + 10$",
-                        "bilde": null,
-                        "hint": "Flytt tall til én side og $x$ til den andre, akkurat som i en likning. I <strong>b)</strong> får du et negativt $x$-ledd — del med $-1$ og snu tegnet.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$2x - 5 < 7$<br><br>$2x < 12$<br><br>$x < 6$<br><br><strong>Svar:</strong> $x < 6$",
-                            "<strong>b)</strong><br>$3 - x \\geq 1$<br><br>$-x \\geq 1 - 3$<br><br>$-x \\geq -2$<br><br>Del med $-1$ og snu tegnet: $x \\leq 2$.<br><br><strong>Svar:</strong> $x \\leq 2$",
-                            "<strong>c)</strong><br>$4x + 4 \\leq 2x + 10$<br><br>$4x - 2x \\leq 10 - 4$<br><br>$2x \\leq 6$<br><br>$x \\leq 3$<br><br><strong>Svar:</strong> $x \\leq 3$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "3.48",
-                        "tittel": "Oppgave 3.48",
-                        "tekst": "Et prepaid-abonnement koster $99$ kr i grunnpris pluss $2$ kr per minutt du ringer. Du har $199$ kr på konto.<br><br><strong>a)</strong> Sett $m$ som antall minutter. Skriv en ulikhet som beskriver hvor lenge du kan snakke.<br><br><strong>b)</strong> Hvor mange hele minutter kan du ringe uten å gå i minus?",
-                        "bilde": null,
-                        "hint": "Grunnpris pluss pris per minutt kan ikke overstige $199$. Løs ulikheten, og husk at $m$ må være et heltall.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$99 + 2m \\leq 199$<br><br><strong>Svar:</strong> $99 + 2m \\leq 199$",
-                            "<strong>b)</strong><br>$2m \\leq 100$<br><br>$m \\leq 50$<br><br>Du kan ringe i inntil $50$ hele minutter.<br><br><strong>Svar:</strong> $50$ minutter"
-                        ],
                         "starter": ""
                     }
                 ],
@@ -3611,62 +3060,6 @@ window.fagsok = [
                         "hint": "Finn fellesnevner ($T_A \\cdot T_B$) for brøkene på høyre side og sett dem på felles brøkstrek.",
                         "fasit": "Vi skal løse ut for $T$. Det første vi gjør er å utvide brøkene på høyre side slik at vi kan slå dem sammen. Fellesnevneren er $T_A \\cdot T_B$.<br><br>$\\frac{1}{T} = \\frac{2}{T_A} + \\frac{2}{T_B}$<br><br>$\\frac{1}{T} = \\frac{2 \\cdot T_B}{T_A \\cdot T_B} + \\frac{2 \\cdot T_A}{T_B \\cdot T_A}$ (utvid første brøk med $T_B$ og andre med $T_A$)<br><br>$\\frac{1}{T} = \\frac{2T_B + 2T_A}{T_A \\cdot T_B}$ (sett på felles brøkstrek)<br><br>Siden vi har en brøk på hver side der nevnerne på hver sin side korresponderer med tellerne hvis vi snur dem på hodet, kan vi snu brøkene på begge sider (ta den inverse):<br><br>$T = \\frac{T_A \\cdot T_B}{2T_B + 2T_A}$<br><br>Trekker vi ut $2$ fra leddene i nevneren (faktorisering), får vi et enda ryddigere uttrykk:<br><br>$T = \\frac{T_A \\cdot T_B}{2(T_A + T_B)}$<br><br><strong>Svar:</strong> $T = \\frac{T_A \\cdot T_B}{2(T_A + T_B)}$",
                         "fasitSteg": null,
-                        "starter": ""
-                    },
-                    {
-                        "id": "3.27",
-                        "tittel": "Oppgave 3.27",
-                        "tekst": "Arealet av en sirkel er $A = \\pi r^2$.<br><br><strong>a)</strong> Isoler $r$ (husk at radius er positiv).<br><br><strong>b)</strong> Finn $r$ når $A = 36\\pi$.<br><br><strong>c)</strong> Isoler $\\pi$.",
-                        "bilde": null,
-                        "hint": "Del på $\\pi$, og ta kvadratrot. Velg den positive roten.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$r = \\sqrt{\\dfrac{A}{\\pi}}$<br><br><strong>Svar:</strong> $r = \\sqrt{\\dfrac{A}{\\pi}}$",
-                            "<strong>b)</strong><br>$r = \\sqrt{\\dfrac{36\\pi}{\\pi}} = \\sqrt{36} = 6$<br><br><strong>Svar:</strong> $6$",
-                            "<strong>c)</strong><br>$\\pi = \\dfrac{A}{r^2}$<br><br><strong>Svar:</strong> $\\pi = \\dfrac{A}{r^2}$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "3.28",
-                        "tittel": "Oppgave 3.28",
-                        "tekst": "Newtons andre lov: $F = ma$.<br><br><strong>a)</strong> Isoler $m$.<br><br><strong>b)</strong> Isoler $a$.<br><br><strong>c)</strong> Finn $a$ når $F = 24$ og $m = 6$.",
-                        "bilde": null,
-                        "hint": "Del begge sider på den størrelsen du ikke skal isolere.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$m = \\dfrac{F}{a}$<br><br><strong>Svar:</strong> $m = \\dfrac{F}{a}$",
-                            "<strong>b)</strong><br>$a = \\dfrac{F}{m}$<br><br><strong>Svar:</strong> $a = \\dfrac{F}{m}$",
-                            "<strong>c)</strong><br>$a = \\dfrac{24}{6} = 4$<br><br><strong>Svar:</strong> $4$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "3.29",
-                        "tittel": "Oppgave 3.29",
-                        "tekst": "For to motstander i parallell gjelder $\\dfrac{1}{R} = \\dfrac{1}{R_1} + \\dfrac{1}{R_2}$.<br><br><strong>a)</strong> Trekk sammen høyre side.<br><br><strong>b)</strong> Isoler $R$.<br><br><strong>c)</strong> Regn ut $R$ når $R_1 = 6$ og $R_2 = 3$.",
-                        "bilde": null,
-                        "hint": "Fellesnevner på høyre side er $R_1 R_2$. Deretter snur du brøken.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$\\dfrac{1}{R_1} + \\dfrac{1}{R_2} = \\dfrac{R_2 + R_1}{R_1 R_2}$<br><br><strong>Svar:</strong> $\\dfrac{R_1 + R_2}{R_1 R_2}$",
-                            "<strong>b)</strong><br>$\\dfrac{1}{R} = \\dfrac{R_1 + R_2}{R_1 R_2} \\Rightarrow R = \\dfrac{R_1 R_2}{R_1 + R_2}$<br><br><strong>Svar:</strong> $R = \\dfrac{R_1 R_2}{R_1 + R_2}$",
-                            "<strong>c)</strong><br>$R = \\dfrac{6 \\cdot 3}{6 + 3} = \\dfrac{18}{9} = 2$<br><br><strong>Svar:</strong> $2$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "3.30",
-                        "tittel": "Oppgave 3.30",
-                        "tekst": "Temperaturomregning: $C = \\dfrac{5}{9}(F - 32)$.<br><br><strong>a)</strong> Isoler $F$.<br><br><strong>b)</strong> Finn $F$ når $C = 20$.<br><br><strong>c)</strong> Finn $C$ når $F = 32$.",
-                        "bilde": null,
-                        "hint": "Gang med $\\dfrac{9}{5}$ først, og legg deretter til $32$.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$\\dfrac{9}{5}C = F - 32 \\Rightarrow F = \\dfrac{9}{5}C + 32$<br><br><strong>Svar:</strong> $F = \\dfrac{9}{5}C + 32$",
-                            "<strong>b)</strong><br>$F = \\dfrac{9}{5} \\cdot 20 + 32 = 36 + 32 = 68$<br><br><strong>Svar:</strong> $68$",
-                            "<strong>c)</strong><br>$C = \\dfrac{5}{9}(32 - 32) = 0$<br><br><strong>Svar:</strong> $0$"
-                        ],
                         "starter": ""
                     }
                 ],
@@ -3885,75 +3278,6 @@ window.fagsok = [
                         "fasit": "Vi vet at arealet av et rektangel er lengde multiplisert med bredde.<br><br>Bredde: $a$<br>Lengde: $a + 10$<br>Areal: $140$<br><br>Vi setter opp en likning for arealet:<br><br>$a \\cdot (a + 10) = 140$ (areal $=$ bredde $\\cdot$ lengde)<br><br>$a^2 + 10a = 140$ (gang $a$ inn i parentesen)<br><br>$a^2 + 10a - 140 = 0$ (flytt $140$ til venstre side for å få en standard andregradslikning på formen $ax^2 + bx + c = 0$)<br><br>Vi bruker ABC-formelen for å løse likningen, der $A = 1$, $B = 10$, og $C = -140$:<br><br>$a = \\frac{-B \\pm \\sqrt{B^2 - 4AC}}{2A}$<br><br>$a = \\frac{-10 \\pm \\sqrt{10^2 - 4 \\cdot 1 \\cdot (-140)}}{2 \\cdot 1}$ (sett inn verdiene)<br><br>$a = \\frac{-10 \\pm \\sqrt{100 - (-560)}}{2}$ (regn ut inni roten)<br><br>$a = \\frac{-10 \\pm \\sqrt{100 + 560}}{2}$<br><br>$a = \\frac{-10 \\pm \\sqrt{660}}{2}$<br><br>$a \\approx \\frac{-10 \\pm 25.69}{2}$<br><br>Dette gir oss to mulige svar for $a$:<br><br>$a_1 \\approx \\frac{-10 + 25.69}{2} = \\frac{15.69}{2} \\approx 7.85$<br><br>$a_2 \\approx \\frac{-10 - 25.69}{2} = \\frac{-35.69}{2} \\approx -17.85$<br><br>Siden en fysisk bredde ikke kan være et negativt tall, forkaster vi $a_2 \\approx -17.85$. <br><br>Bredden er derfor ca. $7.85$ meter.<br>Lengden er da $a + 10 \\approx 7.85 + 10 = 17.85$ meter.<br><br><strong>Svar:</strong> Bredden er ca. $7.85$ meter og lengden er ca. $17.85$ meter.",
                         "fasitSteg": null,
                         "starter": ""
-                    },
-                    {
-                        "id": "3.31",
-                        "tittel": "Oppgave 3.31",
-                        "tekst": "Løs:<br><br><strong>a)</strong> $(x - 2)(x + 5) = 0$<br><br><strong>b)</strong> $x^2 - 9 = 0$<br><br><strong>c)</strong> $3x^2 = 12$",
-                        "bilde": null,
-                        "hint": "Produktregelen: $A \\cdot B = 0$ gir $A = 0$ eller $B = 0$. Husk begge røttene når du tar kvadratrot.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$x - 2 = 0$ eller $x + 5 = 0 \\Rightarrow x = 2$ eller $x = -5$.<br><br><strong>Svar:</strong> $x = 2 \\vee x = -5$",
-                            "<strong>b)</strong><br>$x^2 = 9 \\Rightarrow x = 3$ eller $x = -3$.<br><br><strong>Svar:</strong> $x = \\pm 3$",
-                            "<strong>c)</strong><br>$x^2 = 4 \\Rightarrow x = \\pm 2$.<br><br><strong>Svar:</strong> $x = \\pm 2$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "3.32",
-                        "tittel": "Oppgave 3.32",
-                        "tekst": "Løs ved produktregelen:<br><br><strong>a)</strong> $x^2 + 5x = 0$<br><br><strong>b)</strong> $2x(x - 3) = 0$<br><br><strong>c)</strong> $x^2 = 7$ (eksakt svar)",
-                        "bilde": null,
-                        "hint": "Løft $x$ utenfor parentes i <strong>a)</strong>. I <strong>c)</strong> lar du kvadratroten stå.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$x(x + 5) = 0 \\Rightarrow x = 0$ eller $x = -5$.<br><br><strong>Svar:</strong> $x = 0 \\vee x = -5$",
-                            "<strong>b)</strong><br>$2x = 0$ eller $x - 3 = 0 \\Rightarrow x = 0$ eller $x = 3$.<br><br><strong>Svar:</strong> $x = 0 \\vee x = 3$",
-                            "<strong>c)</strong><br>$x = \\pm \\sqrt{7}$<br><br><strong>Svar:</strong> $x = \\pm \\sqrt{7}$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "3.33",
-                        "tittel": "Oppgave 3.33",
-                        "tekst": "<strong>a)</strong> Løs $x^2 = -4$ i de reelle tallene. Begrunn.<br><br><strong>b)</strong> Løs $5x^2 = 0$.<br><br><strong>c)</strong> Løs $(x + 1)^2 = 16$.",
-                        "bilde": null,
-                        "hint": "Et kvadrat er aldri negativt i $\\mathbb{R}$. $(x+1)^2 = 16$ gir to muligheter.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>Ingen reelle $x$ oppfyller $x^2 = -4$, fordi $x^2 \\geq 0$ for alle reelle $x$.<br>$L = \\emptyset$<br><br><strong>Svar:</strong> Ingen reell løsning",
-                            "<strong>b)</strong><br>$x^2 = 0 \\Rightarrow x = 0$ (dobbelt rot, men én verdi).<br><br><strong>Svar:</strong> $x = 0$",
-                            "<strong>c)</strong><br>$x + 1 = 4$ eller $x + 1 = -4 \\Rightarrow x = 3$ eller $x = -5$.<br><br><strong>Svar:</strong> $x = 3 \\vee x = -5$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "3.49",
-                        "tittel": "Oppgave 3.49",
-                        "tekst": "Et kvadrat har sidelengde $x$ cm. Vi legger en ramme på $2$ cm rundt alle sider, slik at det ytre kvadratet har areal $196\\,\\text{cm}^2$.<br><br><strong>a)</strong> Sett opp en likning for $x$.<br><br><strong>b)</strong> Finn sidelengden til det indre kvadratet.",
-                        "bilde": null,
-                        "hint": "Rammen ligger på begge sider, så det ytre kvadratet har side $x + 4$. Arealet er siden i andre.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$(x + 4)^2 = 196$<br><br><strong>Svar:</strong> $(x + 4)^2 = 196$",
-                            "<strong>b)</strong><br>$x + 4 = \\pm 14$<br><br>$x = 10$ eller $x = -18$. Lengde må være positiv, så $x = 10$.<br><br>Kontroll: ytre side $14$, areal $196$.<br><br><strong>Svar:</strong> $10\\,\\text{cm}$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "3.54",
-                        "tittel": "Oppgave 3.54",
-                        "tekst": "Løs likningene ved faktorisering:<br><br><strong>a)</strong> $x^2 - 2x - 8 = 0$<br><br><strong>b)</strong> $x^2 + 8x + 16 = 0$<br><br><strong>c)</strong> $3x^2 - 12x = 0$",
-                        "bilde": null,
-                        "hint": "Finn to tall som gir riktig produkt (konstantleddet) og riktig sum ($x$-koeffisienten). I <strong>c)</strong> kan du løfte $3x$ utenfor parentes.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>Vi søker to tall med produkt $-8$ og sum $-2$: $-4$ og $2$.<br><br>$(x - 4)(x + 2) = 0$<br><br>$x = 4$ eller $x = -2$.<br><br><strong>Svar:</strong> $x = 4 \\vee x = -2$",
-                            "<strong>b)</strong><br>$x^2 + 8x + 16 = (x + 4)^2 = 0$<br><br>Dobbelt rot $x = -4$.<br><br><strong>Svar:</strong> $x = -4$",
-                            "<strong>c)</strong><br>$3x(x - 4) = 0$<br><br>$x = 0$ eller $x = 4$.<br><br><strong>Svar:</strong> $x = 0 \\vee x = 4$"
-                        ],
-                        "starter": ""
                     }
                 ],
                 "quiz": [
@@ -4155,74 +3479,6 @@ window.fagsok = [
                         "fasit": "Vi vet at arealet av et rektangel er lengde ganger bredde, og arealet er $45$.<br><br>$A = \\text{lengde} \\cdot \\text{bredde} = 45$<br><br>Vi lar bredden være $b$. Da er lengden $b + 4$ (siden lengden er $4$ cm lengre enn bredden).<br><br>$b \\cdot (b + 4) = 45$ (setter opp likningen for areal)<br><br>$b^2 + 4b = 45$ (ganger $b$ inn i parentesen)<br><br>$b^2 + 4b - 45 = 0$ (flytter 45 over til venstre side for å få en vanlig andregradslikning)<br><br>Nå bruker vi abc-formelen med $a=1, b=4, c=-45$:<br><br>$b = \\frac{-4 \\pm \\sqrt{4^2 - 4 \\cdot 1 \\cdot (-45)}}{2 \\cdot 1}$ (setter inn verdier i formelen)<br><br>$b = \\frac{-4 \\pm \\sqrt{16 + 180}}{2}$ (forenkler under roten)<br><br>$b = \\frac{-4 \\pm \\sqrt{196}}{2}$ (legger sammen)<br><br>$b = \\frac{-4 \\pm 14}{2}$ (kvadratroten av 196 er 14)<br><br>$b = \\frac{10}{2} = 5$ eller $b = \\frac{-18}{2} = -9$<br><br>Siden en sidelengde ($b$) ikke kan være negativ i virkeligheten, kan vi forkaste $b = -9$. Da er bredden $5$ cm.<br><br>Lengden er da $b + 4 = 5 + 4 = 9$ cm.<br><br><strong>Svar:</strong> Bredden er $5$ cm og lengden er $9$ cm.",
                         "fasitSteg": null,
                         "starter": ""
-                    },
-                    {
-                        "id": "3.34",
-                        "tittel": "Oppgave 3.34",
-                        "tekst": "Løs $x^2 - 5x + 6 = 0$ på to måter:<br><br><strong>a)</strong> Ved faktorisering.<br><br><strong>b)</strong> Ved abc-formelen.<br><br><strong>c)</strong> Sett prøve på begge røttene.",
-                        "bilde": null,
-                        "hint": "Her er $a = 1$, $b = -5$, $c = 6$. Diskriminanten $D = b^2 - 4ac$.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$(x - 2)(x - 3) = 0 \\Rightarrow x = 2$ eller $x = 3$.<br><br><strong>Svar:</strong> $x = 2 \\vee x = 3$",
-                            "<strong>b)</strong><br>$D = 25 - 24 = 1$, $x = \\dfrac{5 \\pm 1}{2}$, så $x = 3$ og $x = 2$. Samme svar.<br><br><strong>Svar:</strong> $x = 2 \\vee x = 3$",
-                            "<strong>c)</strong><br>$2^2 - 5 \\cdot 2 + 6 = 4 - 10 + 6 = 0$. $3^2 - 15 + 6 = 0$. Begge passer.<br><br><strong>Svar:</strong> Prøven stemmer."
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "3.35",
-                        "tittel": "Oppgave 3.35",
-                        "tekst": "Løs eksakt med abc-formelen: $x^2 + 4x + 1 = 0$",
-                        "bilde": null,
-                        "hint": "$a = 1$, $b = 4$, $c = 1$. Forenkle $\\sqrt{12}$ hvis du får det — her blir $D = 12$? Sjekk: $16 - 4 = 12$. $\\sqrt{12} = 2\\sqrt{3}$.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "$D = 16 - 4 = 12 = 4 \\cdot 3$<br><br>$x = \\dfrac{-4 \\pm \\sqrt{12}}{2} = \\dfrac{-4 \\pm 2\\sqrt{3}}{2} = -2 \\pm \\sqrt{3}$",
-                            "<strong>Svar:</strong> $x = -2 + \\sqrt{3}$ eller $x = -2 - \\sqrt{3}$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "3.36",
-                        "tittel": "Oppgave 3.36",
-                        "tekst": "Løs $2x^2 + x - 1 = 0$ med abc-formelen.",
-                        "bilde": null,
-                        "hint": "$a = 2$, $b = 1$, $c = -1$. $D = 1 + 8 = 9$.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "$D = 1 - 4 \\cdot 2 \\cdot (-1) = 1 + 8 = 9$<br><br>$x = \\dfrac{-1 \\pm 3}{4}$<br><br>$x = \\dfrac{2}{4} = \\dfrac{1}{2}$ eller $x = \\dfrac{-4}{4} = -1$",
-                            "<strong>Svar:</strong> $x = \\dfrac{1}{2} \\vee x = -1$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "3.37",
-                        "tittel": "Oppgave 3.37",
-                        "tekst": "<strong>a)</strong> Regn ut diskriminanten til $x^2 + 2x + 5 = 0$. Hvor mange reelle løsninger har likningen?<br><br><strong>b)</strong> Hva må $k$ være for at $x^2 + kx + 9 = 0$ skal ha nøyaktig én løsning?<br><br><strong>c)</strong> Løs $x^2 - 6x + 9 = 0$.",
-                        "bilde": null,
-                        "hint": "Antall reelle løsninger: $D > 0$ to, $D = 0$ én, $D < 0$ ingen. Én løsning krever $D = 0$.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$D = 4 - 20 = -16 < 0$. Ingen reelle løsninger.<br><br><strong>Svar:</strong> $D = -16$, ingen reelle løsninger",
-                            "<strong>b)</strong><br>$D = k^2 - 36 = 0 \\Rightarrow k = \\pm 6$.<br><br><strong>Svar:</strong> $k = 6$ eller $k = -6$",
-                            "<strong>c)</strong><br>$D = 36 - 36 = 0$, $x = \\dfrac{6}{2} = 3$ (dobbelt rot).<br>Eller $(x - 3)^2 = 0$.<br><br><strong>Svar:</strong> $x = 3$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "3.50",
-                        "tittel": "Oppgave 3.50",
-                        "tekst": "Bruk diskriminanten $D = b^2 - 4ac$ til å avgjøre *hvor mange* reelle løsninger likningene har. Du trenger ikke finne løsningene.<br><br><strong>a)</strong> $x^2 - 6x + 9 = 0$<br><br><strong>b)</strong> $x^2 - 6x + 10 = 0$<br><br><strong>c)</strong> $x^2 - 6x + 8 = 0$",
-                        "bilde": null,
-                        "hint": "$D > 0$: to reelle løsninger. $D = 0$: én (dobbelt rot). $D < 0$: ingen reelle løsninger.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "Her er $a = 1$ og $b = -6$ i alle tre.<br><br><strong>a)</strong><br>$D = 36 - 36 = 0$. Én reell løsning (dobbelt rot).<br><br><strong>Svar:</strong> $1$ reell løsning",
-                            "<strong>b)</strong><br>$D = 36 - 40 = -4 < 0$. Ingen reelle løsninger.<br><br><strong>Svar:</strong> $0$ reelle løsninger",
-                            "<strong>c)</strong><br>$D = 36 - 32 = 4 > 0$. To ulike reelle løsninger.<br><br><strong>Svar:</strong> $2$ reelle løsninger"
-                        ],
-                        "starter": ""
                     }
                 ],
                 "quiz": [
@@ -4400,85 +3656,6 @@ window.fagsok = [
                             "<strong>b)</strong><br>Vi starter med likningen:<br>$3 + \\frac{4}{x} = -1 + \\frac{5}{x}$<br><br>Her ser vi at $x \\neq 0$. Vi samler leddene med $x$ på én side, og konstantene på den andre siden.<br><br>$3 + 1 = \\frac{5}{x} - \\frac{4}{x}$ (flytt $-1$ til venstre og $\\frac{4}{x}$ til høyre)<br><br>$4 = \\frac{5 - 4}{x}$ (trekk sammen brøkene, da de allerede har samme nevner)<br><br>$4 = \\frac{1}{x}$<br><br>$4x = 1$ (gang begge sider med $x$)<br><br>$x = \\frac{1}{4}$ (del begge sider på 4)<br><br>Løsningen gir ikke $0$ i nevner, så den er gyldig.<br><br><strong>Svar:</strong> $x = \\frac{1}{4}$",
                             "<strong>c)</strong><br>Vi starter med likningen:<br>$\\frac{2}{a + 4} + \\frac{3}{a + 4} = 1$<br><br>Nevneren sier at $a + 4 \\neq 0$, som betyr at $a \\neq -4$. Leddene på venstre side har allerede fellesnevner, så vi kan legge dem rett sammen:<br><br>$\\frac{2 + 3}{a + 4} = 1$<br><br>$\\frac{5}{a + 4} = 1$ (trekk sammen i telleren)<br><br>$5 = 1 \\cdot (a + 4)$ (gang begge sider med nevneren $a + 4$)<br><br>$5 = a + 4$<br><br>$a = 5 - 4 = 1$ (isoler $a$)<br><br>Løsningen $a = 1$ bryter ikke kravet om at $a \\neq -4$.<br><br><strong>Svar:</strong> $a = 1$",
                             "<strong>d)</strong><br>Vi starter med likningen:<br>$\\frac{2a}{a^2 - 9} = \\frac{a}{a - 3} - \\frac{2}{a + 3}$<br><br>Vi faktoriserer nevneren $a^2 - 9$ ved hjelp av konjugatsetningen ($a^2 - b^2 = (a - b)(a + b)$):<br>$a^2 - 9 = (a - 3)(a + 3)$<br><br>Likningen blir da:<br>$\\frac{2a}{(a - 3)(a + 3)} = \\frac{a}{a - 3} - \\frac{2}{a + 3}$<br><br>Fellesnevner er $(a - 3)(a + 3)$. For at likningen skal være definert, må $a \\neq 3$ og $a \\neq -3$.<br>Vi ganger alle ledd med fellesnevneren $(a - 3)(a + 3)$:<br><br>$2a = a \\cdot (a + 3) - 2 \\cdot (a - 3)$<br><br>$2a = a^2 + 3a - (2a - 6)$ (gang inn i parentesene)<br><br>$2a = a^2 + 3a - 2a + 6$ (løs opp minusparentesen)<br><br>$2a = a^2 + a + 6$ (trekk sammen leddene på høyre side)<br><br>$0 = a^2 + a - 2a + 6$ (flytt $2a$ over til høyre side)<br><br>$a^2 - a + 6 = 0$<br><br>Vi sjekker om det finnes løsninger for andregradslikningen $a^2 - a + 6 = 0$.<br>Vi finner diskriminanten ($b^2 - 4ac$):<br>$(-1)^2 - 4 \\cdot 1 \\cdot 6 = 1 - 24 = -23$<br><br>Siden tallet under rottegnet vil være negativt, har likningen ingen reelle løsninger.<br>Dermed finnes det ingen verdier for $a$ som oppfyller likningen.<br><br><strong>Svar:</strong> $L = \\emptyset$ (Ingen løsning)"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "3.38",
-                        "tittel": "Oppgave 3.38",
-                        "tekst": "Løs. Oppgi verdier som *ikke* er tillatt.<br><br><strong>a)</strong> $\\dfrac{3}{x} = \\dfrac{1}{2}$<br><br><strong>b)</strong> $\\dfrac{5}{x - 1} = 2$<br><br><strong>c)</strong> $\\dfrac{2}{x} + \\dfrac{1}{x} = 6$",
-                        "bilde": null,
-                        "hint": "Nevneren kan ikke være $0$. Gang med nevneren for å fjerne brøken, og sjekk svaret etterpå.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$x \\neq 0$. $3 \\cdot 2 = x \\Rightarrow x = 6$. Tillatt.<br><br><strong>Svar:</strong> $x = 6$",
-                            "<strong>b)</strong><br>$x \\neq 1$. $5 = 2(x - 1) \\Rightarrow 5 = 2x - 2 \\Rightarrow x = \\dfrac{7}{2}$. Tillatt.<br><br><strong>Svar:</strong> $x = \\dfrac{7}{2}$",
-                            "<strong>c)</strong><br>$x \\neq 0$. $\\dfrac{3}{x} = 6 \\Rightarrow x = \\dfrac{1}{2}$. Tillatt.<br><br><strong>Svar:</strong> $x = \\dfrac{1}{2}$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "3.39",
-                        "tittel": "Oppgave 3.39",
-                        "tekst": "Løs $\\dfrac{x + 1}{x} = 3$. Husk å sjekke $x = 0$.",
-                        "bilde": null,
-                        "hint": "Gang med $x$ (som krever $x \\neq 0$), og kontroller svaret i den opprinnelige likningen.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "$x \\neq 0$.<br><br>$x + 1 = 3x \\Rightarrow 1 = 2x \\Rightarrow x = \\dfrac{1}{2}$.",
-                            "Prøve: $\\dfrac{\\frac{1}{2} + 1}{\\frac{1}{2}} = \\dfrac{\\frac{3}{2}}{\\frac{1}{2}} = 3$. Gyldig.<br><br><strong>Svar:</strong> $x = \\dfrac{1}{2}$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "3.40",
-                        "tittel": "Oppgave 3.40",
-                        "tekst": "Løs $\\dfrac{1}{x} + \\dfrac{1}{x + 2} = \\dfrac{3}{4}$.<br><br>Oppgi først hvilke $x$ som *ikke* er tillatt.",
-                        "bilde": null,
-                        "hint": "Fellesnevner $4x(x + 2)$. Gang gjennom og få en andregradslikning.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "Ikke tillatt: $x = 0$ og $x = -2$.<br><br>Gang med $4x(x + 2)$:<br>$4(x + 2) + 4x = 3x(x + 2)$<br>$4x + 8 + 4x = 3x^2 + 6x$<br>$0 = 3x^2 - 2x - 8$",
-                            "$D = 4 + 96 = 100$, $x = \\dfrac{2 \\pm 10}{6}$<br>$x = 2$ eller $x = \\dfrac{-8}{6} = -\\dfrac{4}{3}$.<br>Begge er tillatt.<br><br><strong>Svar:</strong> $x = 2 \\vee x = -\\dfrac{4}{3}$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "3.41",
-                        "tittel": "Oppgave 3.41",
-                        "tekst": "En elev løser $\\dfrac{1}{x - 2} = \\dfrac{x}{x - 2}$ og får $x = 1$ og $x = 2$.<br><br><strong>a)</strong> Hvilken av verdiene er en falsk løsning, og hvorfor?<br><br><strong>b)</strong> Løs likningen riktig.",
-                        "bilde": null,
-                        "hint": "Du kan aldri ha $0$ i nevner. Gang med $x - 2$ bare hvis $x \\neq 2$.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$x = 2$ gjør begge nevnere $0$. Uttrykket er ikke definert, så $x = 2$ er falsk.<br><br><strong>Svar:</strong> $x = 2$ er falsk.",
-                            "<strong>b)</strong><br>For $x \\neq 2$: $1 = x \\Rightarrow x = 1$.<br>Prøve: $\\dfrac{1}{1 - 2} = -1$ og $\\dfrac{1}{1 - 2} = -1$. Gyldig.<br><br><strong>Svar:</strong> $x = 1$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "3.42",
-                        "tittel": "Oppgave 3.42",
-                        "tekst": "Løs $\\dfrac{2}{x + 3} + \\dfrac{1}{x} = 1$.",
-                        "bilde": null,
-                        "hint": "Fellesnevner $x(x + 3)$. Sjekk $x \\neq 0$ og $x \\neq -3$ til slutt.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "Ikke tillatt: $x = 0$, $x = -3$.<br><br>$2x + (x + 3) = x(x + 3)$<br>$3x + 3 = x^2 + 3x$<br>$0 = x^2 - 3$<br>$x = \\pm \\sqrt{3}$",
-                            "Begge er ulike $0$ og $-3$, så begge er gyldige.<br><br><strong>Svar:</strong> $x = \\sqrt{3} \\vee x = -\\sqrt{3}$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "3.55",
-                        "tittel": "Oppgave 3.55",
-                        "tekst": "Løs $\\dfrac{3}{x + 1} = \\dfrac{2}{x - 1}$.<br><br>Oppgi først hvilke $x$ som *ikke* er tillatt, og sett prøve i svaret.",
-                        "bilde": null,
-                        "hint": "Nevnerne kan ikke være $0$. Kryssmultiplikasjon gir $3(x - 1) = 2(x + 1)$.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "Ikke tillatt: $x = -1$ og $x = 1$.<br><br>$3(x - 1) = 2(x + 1)$<br><br>$3x - 3 = 2x + 2$<br><br>$3x - 2x = 2 + 3$<br><br>$x = 5$",
-                            "$x = 5$ er ulik $\\pm 1$, så den er tillatt.<br><br>Prøve: $\\dfrac{3}{6} = \\dfrac{1}{2}$ og $\\dfrac{2}{4} = \\dfrac{1}{2}$. Stemmer.<br><br><strong>Svar:</strong> $x = 5$"
                         ],
                         "starter": ""
                     }
@@ -4677,11 +3854,11 @@ window.fagsok = [
                         "tittel": "Oppgave 3.17",
                         "tekst": "Avgjør når disse matematiske uttrykkene er sanne:<br><br><strong>a)</strong> $\\frac{a}{5} = \\frac{3}{10}$<br><br><strong>b)</strong> $\\frac{10}{2b} = \\frac{4}{5}$",
                         "bilde": null,
-                        "hint": "Bruk kryssmultiplikasjon for å løse ligningene.",
+                        "hint": "Bruk kryssmultiplikasjon for å løse likningene.",
                         "fasit": null,
                         "fasitSteg": [
-                            "<strong>a)</strong><br>Vi løser ligningen for $a$:<br><br>$\\frac{a}{5} = \\frac{3}{10}$<br><br>$a \\cdot 10 = 3 \\cdot 5$ (kryssmultipliserer)<br><br>$10a = 15$ (regner ut høyre side)<br><br>$a = \\frac{15}{10}$ (deler på $10$ på begge sider)<br><br>$a = 1.5$<br><br><strong>Svar:</strong> $a = 1.5$",
-                            "<strong>b)</strong><br>Vi løser ligningen for $b$:<br><br>$\\frac{10}{2b} = \\frac{4}{5}$<br><br>$10 \\cdot 5 = 4 \\cdot 2b$ (kryssmultipliserer)<br><br>$50 = 8b$ (forenkler begge sider)<br><br>$b = \\frac{50}{8}$ (deler på $8$ på begge sider)<br><br>$b = 6.25$<br><br><strong>Svar:</strong> $b = 6.25$"
+                            "<strong>a)</strong><br>Vi løser likningen for $a$:<br><br>$\\frac{a}{5} = \\frac{3}{10}$<br><br>$a \\cdot 10 = 3 \\cdot 5$ (kryssmultipliserer)<br><br>$10a = 15$ (regner ut høyre side)<br><br>$a = \\frac{15}{10}$ (deler på $10$ på begge sider)<br><br>$a = 1.5$<br><br><strong>Svar:</strong> $a = 1.5$",
+                            "<strong>b)</strong><br>Vi løser likningen for $b$:<br><br>$\\frac{10}{2b} = \\frac{4}{5}$<br><br>$10 \\cdot 5 = 4 \\cdot 2b$ (kryssmultipliserer)<br><br>$50 = 8b$ (forenkler begge sider)<br><br>$b = \\frac{50}{8}$ (deler på $8$ på begge sider)<br><br>$b = 6.25$<br><br><strong>Svar:</strong> $b = 6.25$"
                         ],
                         "starter": ""
                     },
@@ -4700,61 +3877,6 @@ window.fagsok = [
                             "<strong>e)</strong><br>Vi skal forkorte $\\frac{p^2 - 2p - 8}{p^2 - 16}$.<br><br>Først faktoriserer vi telleren $p^2 - 2p - 8$.<br>Nullpunkter: $p = \\frac{2 \\pm \\sqrt{4 - 4(1)(-8)}}{2} = \\frac{2 \\pm \\sqrt{36}}{2} = \\frac{2 \\pm 6}{2}$.<br>Dette gir $p_1 = 4$, $p_2 = -2$.<br>Teller faktorisert: $(p - 4)(p + 2)$.<br><br>Deretter faktoriserer vi nevneren $p^2 - 16$.<br>Dette er konjugatsetningen, $a^2 - b^2 = (a-b)(a+b)$.<br>Nevner faktorisert: $(p - 4)(p + 4)$.<br><br>Setter dette inn i brøken:<br>$\\frac{(p - 4)(p + 2)}{(p - 4)(p + 4)}$<br><br>Stryker felles faktor $(p - 4)$:<br>$\\frac{p + 2}{p + 4}$<br><br><strong>Svar:</strong> $\\frac{p + 2}{p + 4}$",
                             "<strong>f)</strong><br>Vi skal forkorte $\\frac{3v^2 - 14v + 8}{v^2 - 6v + 8}$.<br><br>Teller: $3v^2 - 14v + 8$.<br>Nullpunkter: $v = \\frac{14 \\pm \\sqrt{(-14)^2 - 4 \\cdot 3 \\cdot 8}}{2 \\cdot 3} = \\frac{14 \\pm \\sqrt{196 - 96}}{6} = \\frac{14 \\pm 10}{6}$.<br>Dette gir $v_1 = 4$, $v_2 = \\frac{4}{6} = \\frac{2}{3}$.<br>Faktorisert: $3(v - 4)(v - \\frac{2}{3}) = (v - 4)(3v - 2)$.<br><br>Nevner: $v^2 - 6v + 8$.<br>Nullpunkter: $v = \\frac{6 \\pm \\sqrt{36 - 32}}{2} = \\frac{6 \\pm 2}{2}$.<br>Dette gir $v_1 = 4$, $v_2 = 2$.<br>Faktorisert: $(v - 4)(v - 2)$.<br><br>Setter inn i brøken:<br>$\\frac{(v - 4)(3v - 2)}{(v - 4)(v - 2)}$<br><br>Stryker felles faktor $(v - 4)$:<br>$\\frac{3v - 2}{v - 2}$<br><br><strong>Svar:</strong> $\\frac{3v - 2}{v - 2}$",
                             "<strong>g)</strong><br>Vi skal forkorte $\\frac{-2y^2 + 10y - 12}{2y^2 - 8y + 8}$.<br><br>Teller: $-2y^2 + 10y - 12 = -2(y^2 - 5y + 6)$.<br>Nullpunkter for $y^2 - 5y + 6$: $y = \\frac{5 \\pm \\sqrt{25 - 24}}{2} = \\frac{5 \\pm 1}{2}$.<br>Dette gir $y_1 = 3$, $y_2 = 2$.<br>Teller faktorisert: $-2(y - 3)(y - 2)$.<br><br>Nevner: $2y^2 - 8y + 8 = 2(y^2 - 4y + 4)$.<br>Nullpunkter for $y^2 - 4y + 4$: $y = \\frac{4 \\pm \\sqrt{16 - 16}}{2} = 2$.<br>Nevner faktorisert: $2(y - 2)(y - 2)$.<br><br>Setter inn i brøken:<br>$\\frac{-2(y - 3)(y - 2)}{2(y - 2)(y - 2)}$<br><br>Forenkler brøken ved å dele på $2(y - 2)$ oppe og nede:<br>$\\frac{-1(y - 3)}{y - 2}$<br><br>Dette kan skrives som:<br>$\\frac{-y + 3}{y - 2} = \\frac{3 - y}{y - 2}$<br><br><strong>Svar:</strong> $\\frac{3 - y}{y - 2}$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "3.43",
-                        "tittel": "Oppgave 3.43",
-                        "tekst": "<strong>a)</strong> Er $x = 2$ et nullpunkt for $f(x) = x^2 - 3x + 2$? Vis utregning.<br><br><strong>b)</strong> Er $x = -1$ et nullpunkt for $g(x) = x^2 + x$?<br><br><strong>c)</strong> Finn alle nullpunktene til $h(x) = x^2 - 4$.",
-                        "bilde": null,
-                        "hint": "Nullpunkt betyr $f(a) = 0$. Sett inn, eller faktoriser.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$f(2) = 4 - 6 + 2 = 0$. Ja.<br><br><strong>Svar:</strong> Ja",
-                            "<strong>b)</strong><br>$g(-1) = 1 - 1 = 0$. Ja.<br><br><strong>Svar:</strong> Ja",
-                            "<strong>c)</strong><br>$x^2 - 4 = (x - 2)(x + 2) = 0 \\Rightarrow x = 2$ eller $x = -2$.<br><br><strong>Svar:</strong> $x = \\pm 2$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "3.44",
-                        "tittel": "Oppgave 3.44",
-                        "tekst": "Nullpunktfaktoriser:<br><br><strong>a)</strong> $x^2 - x - 6$<br><br><strong>b)</strong> $x^2 - 4x$<br><br><strong>c)</strong> $2x^2 - 8$",
-                        "bilde": null,
-                        "hint": "Finn røttene, og skriv $a(x - r_1)(x - r_2)$. Husk $a$ foran hvis ledende koeffisient ikke er $1$.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>Røtter $3$ og $-2$: $x^2 - x - 6 = (x - 3)(x + 2)$<br><br><strong>Svar:</strong> $(x - 3)(x + 2)$",
-                            "<strong>b)</strong><br>$x(x - 4)$<br><br><strong>Svar:</strong> $x(x - 4)$",
-                            "<strong>c)</strong><br>$2(x^2 - 4) = 2(x - 2)(x + 2)$<br><br><strong>Svar:</strong> $2(x - 2)(x + 2)$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "3.51",
-                        "tittel": "Oppgave 3.51",
-                        "tekst": "Et kart har målestokk $1 : 50\\,000$. Avstanden mellom to steder på kartet er $8{,}4\\,\\text{cm}$.<br><br><strong>a)</strong> Hvor lang er den virkelige avstanden i centimeter?<br><br><strong>b)</strong> Gjør om svaret til kilometer.",
-                        "bilde": null,
-                        "hint": "Målestokk $1 : 50\\,000$ betyr at $1$ cm på kartet er $50\\,000$ cm i virkeligheten. $1\\,\\text{km} = 100\\,000\\,\\text{cm}$.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$8{,}4 \\cdot 50\\,000 = 420\\,000\\,\\text{cm}$<br><br><strong>Svar:</strong> $420\\,000\\,\\text{cm}$",
-                            "<strong>b)</strong><br>$420\\,000\\,\\text{cm} = 4\\,200\\,\\text{m} = 4{,}2\\,\\text{km}$<br><br>(eller $420\\,000 / 100\\,000 = 4{,}2$)<br><br><strong>Svar:</strong> $4{,}2\\,\\text{km}$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "3.52",
-                        "tittel": "Oppgave 3.52",
-                        "tekst": "La $f(x) = x^2 - 5x + 6$.<br><br><strong>a)</strong> Regn ut $f(0)$, $f(2)$ og $f(3)$.<br><br><strong>b)</strong> Finn nullpunktene til $f$.<br><br><strong>c)</strong> Skriv $f(x)$ på faktorform.",
-                        "bilde": null,
-                        "hint": "Nullpunkt betyr $f(x) = 0$. Når du har røttene $r_1$ og $r_2$, er $f(x) = (x - r_1)(x - r_2)$ fordi ledende koeffisient er $1$.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$f(0) = 6$<br><br>$f(2) = 4 - 10 + 6 = 0$<br><br>$f(3) = 9 - 15 + 6 = 0$<br><br><strong>Svar:</strong> $6$, $0$ og $0$",
-                            "<strong>b)</strong><br>Siden $f(2) = f(3) = 0$, er nullpunktene $x = 2$ og $x = 3$.<br>(Alternativt: $x^2 - 5x + 6 = 0$ gir $(x - 2)(x - 3) = 0$.)<br><br><strong>Svar:</strong> $x = 2$ og $x = 3$",
-                            "<strong>c)</strong><br>$f(x) = (x - 2)(x - 3)$<br><br><strong>Svar:</strong> $(x - 2)(x - 3)$"
                         ],
                         "starter": ""
                     }
@@ -4963,47 +4085,6 @@ window.fagsok = [
                         "fasit": "Vi lar $P(x) = x^3 - 4x^2 + cx - 12$. <br><br>Når divisjonen med $(x - 3)$ går opp uten rest, sier restteoremet at $P(3) = 0$.<br><br>Vi setter $x = 3$ inn i uttrykket for $P(x)$ og setter det lik $0$:<br><br>$3^3 - 4 \\cdot 3^2 + c \\cdot 3 - 12 = 0$ (setter inn $x=3$)<br><br>$27 - 4 \\cdot 9 + 3c - 12 = 0$ (regner ut potensene)<br><br>$27 - 36 + 3c - 12 = 0$ (ganger ut)<br><br>$-9 - 12 + 3c = 0$ (trekker sammen tallene)<br><br>$-21 + 3c = 0$<br><br>$3c = 21$ (flytter $-21$ til høyre side)<br><br>$c = \\frac{21}{3}$ (deler på 3)<br><br>$c = 7$<br><br><strong>Svar:</strong> $c = 7$",
                         "fasitSteg": null,
                         "starter": ""
-                    },
-                    {
-                        "id": "3.45",
-                        "tittel": "Oppgave 3.45",
-                        "tekst": "Utfør polynomdivisjonen og skriv svaret som et produkt hvis det går opp:<br><br><strong>a)</strong> $(x^2 - 5x + 6) : (x - 2)$<br><br><strong>b)</strong> $(x^2 + 2x - 8) : (x + 4)$",
-                        "bilde": null,
-                        "hint": "Del ledd for ledd, eller bruk at hvis $x = a$ er rot, så går $x - a$ opp.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$x^2 - 5x + 6 = (x - 2)(x - 3)$, så kvotienten er $x - 3$.<br><br><strong>Svar:</strong> $x - 3$, og $(x - 2)(x - 3)$",
-                            "<strong>b)</strong><br>$x^2 + 2x - 8 = (x + 4)(x - 2)$, kvotient $x - 2$.<br><br><strong>Svar:</strong> $x - 2$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "3.46",
-                        "tittel": "Oppgave 3.46",
-                        "tekst": "<strong>a)</strong> Utfør $(x^3 - 1) : (x - 1)$.<br><br><strong>b)</strong> Kontroller ved å gange kvotienten med $x - 1$.<br><br><strong>c)</strong> Hvorfor går divisjonen opp? (Hint: $1^3 - 1 = 0$.)",
-                        "bilde": null,
-                        "hint": "Polynomdivisjon, eller formelen $a^3 - b^3 = (a - b)(a^2 + ab + b^2)$ med $b = 1$.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$x^3 - 1 = (x - 1)(x^2 + x + 1)$, så kvotienten er $x^2 + x + 1$.<br><br><strong>Svar:</strong> $x^2 + x + 1$",
-                            "<strong>b)</strong><br>$(x - 1)(x^2 + x + 1) = x^3 + x^2 + x - x^2 - x - 1 = x^3 - 1$. Stemmer.<br><br><strong>Svar:</strong> Kontroll OK",
-                            "<strong>c)</strong><br>$x = 1$ er rot i $x^3 - 1$ fordi $1 - 1 = 0$. Da går $x - 1$ opp i polynomet (restsetningen).<br><br><strong>Svar:</strong> Fordi $x = 1$ er et nullpunkt."
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "3.53",
-                        "tittel": "Oppgave 3.53",
-                        "tekst": "Utfør polynomdivisjonen $(x^2 + 3x + 1) : (x + 1)$.<br><br><strong>a)</strong> Finn kvotient og rest.<br><br><strong>b)</strong> Skriv $x^2 + 3x + 1$ på formen $(\\text{divisor}) \\cdot (\\text{kvotient}) + \\text{rest}$.<br><br><strong>c)</strong> Kontroller ved å gange ut.",
-                        "bilde": null,
-                        "hint": "$x + 1$ går ikke opp. Del første ledd $x^2 : x = x$, trekk fra, og fortsett. Resten blir et tall.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$x^2 : x = x$. Trekk fra $x(x + 1) = x^2 + x$:<br><br>$(x^2 + 3x + 1) - (x^2 + x) = 2x + 1$.<br><br>$2x : x = 2$. Trekk fra $2(x + 1) = 2x + 2$:<br><br>$(2x + 1) - (2x + 2) = -1$.<br><br>Kvotient $x + 2$, rest $-1$.<br><br><strong>Svar:</strong> kvotient $x + 2$, rest $-1$",
-                            "<strong>b)</strong><br>$x^2 + 3x + 1 = (x + 1)(x + 2) - 1$<br><br><strong>Svar:</strong> $(x + 1)(x + 2) - 1$",
-                            "<strong>c)</strong><br>$(x + 1)(x + 2) = x^2 + 3x + 2$, deretter $x^2 + 3x + 2 - 1 = x^2 + 3x + 1$. Stemmer.<br><br><strong>Svar:</strong> Kontroll OK"
-                        ],
-                        "starter": ""
                     }
                 ],
                 "quiz": [
@@ -5118,158 +4199,6 @@ window.fagsok = [
                         "forklaring": "Faktoriseringsregelen er $a(x-x_1)(x-x_2)...$. Faktoren $a$ (her $-5$) kan være hva som helst, og endrer ikke hvor funksjonen krysser x-aksen (røttene)."
                     }
                 ]
-            },
-            {
-                "id": "3OP",
-                "tittel": "Øveprøve",
-                "oppgaver": [
-                    {
-                        "id": "3.OP0",
-                        "tittel": "Øveprøve · Kapittel 3 (oversikt)",
-                        "tekst": "<strong>Tid:</strong> ca. 60–75 min  <br><strong>Hjelpemidler:</strong> ingen (kun kladdeark)<br><br><strong>Instruks:</strong> Vis mellomregning. Sett prøve der det er naturlig. Oppgi verdier som ikke er tillatt i rasjonale likninger. Oppgaver med flere bokstaver teller hver for seg.<br><br>Prøven dekker førstegradslikninger, andregrad (produktregel og abc-formel), rasjonale likninger, ulikheter og polynomdivisjon — i samme stil som en 1T-vurdering.",
-                        "bilde": null,
-                        "hint": "",
-                        "fasit": null,
-                        "fasitSteg": null,
-                        "starter": ""
-                    },
-                    {
-                        "id": "3.OP1",
-                        "tittel": "Oppgave 1 — Førstegradslikning",
-                        "tekst": "Løs likningen og sett prøve:<br><br>$3 - 2(x - 1) = 5 - (2 + 4x)$",
-                        "bilde": null,
-                        "hint": "",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "Venstre: $3 - 2x + 2 = 5 - 2x$<br><br>Høyre: $5 - 2 - 4x = 3 - 4x$<br><br>$5 - 2x = 3 - 4x$<br><br>Legg til $4x$ på begge sider: $5 + 2x = 3$<br><br>$2x = 3 - 5 = -2$<br><br>$x = -1$",
-                            "Prøve: VS $3 - 2(-1 - 1) = 3 - 2(-2) = 3 + 4 = 7$<br><br>HS $5 - (2 + 4\\cdot(-1)) = 5 - (2 - 4) = 5 - (-2) = 7$.<br><br><strong>Svar:</strong> $x = -1$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "3.OP2",
-                        "tittel": "Oppgave 2 — Tekstlikning",
-                        "tekst": "To søsken er til sammen $27$ år. Den eldste er $5$ år eldre enn den yngste.<br><br><strong>a)</strong> Sett opp en likning.<br><br><strong>b)</strong> Finn alderen til hver av dem.",
-                        "bilde": null,
-                        "hint": "",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$y + (y + 5) = 27$, altså $2y + 5 = 27$<br><br><strong>Svar:</strong> $2y + 5 = 27$",
-                            "<strong>b)</strong><br>$2y = 22 \\Rightarrow y = 11$. Eldste: $11 + 5 = 16$.<br><br>Prøve: $11 + 16 = 27$, og $16 - 11 = 5$.<br><br><strong>Svar:</strong> $11$ og $16$ år"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "3.OP3",
-                        "tittel": "Oppgave 3 — Produktregelen",
-                        "tekst": "Løs likningene:<br><br><strong>a)</strong> $(x + 3)(4 - x) = 0$<br><br><strong>b)</strong> $x^2 + 5x = 0$<br><br><strong>c)</strong> $2x^2 - 50 = 0$",
-                        "bilde": null,
-                        "hint": "",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$x + 3 = 0$ eller $4 - x = 0$<br>$x = -3$ eller $x = 4$<br><br><strong>Svar:</strong> $x = -3 \\vee x = 4$",
-                            "<strong>b)</strong><br>$x(x + 5) = 0 \\Rightarrow x = 0$ eller $x = -5$<br><br><strong>Svar:</strong> $x = 0 \\vee x = -5$",
-                            "<strong>c)</strong><br>$2x^2 = 50 \\Rightarrow x^2 = 25 \\Rightarrow x = \\pm 5$<br><br>(eller: $2(x^2 - 25) = 0 \\Rightarrow (x-5)(x+5) = 0$)<br><br><strong>Svar:</strong> $x = 5 \\vee x = -5$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "3.OP4",
-                        "tittel": "Oppgave 4 — Nullpunkter og faktorisering",
-                        "tekst": "Funksjonen $g$ er gitt ved $g(x) = x^2 - 4x - 5$.<br><br><strong>a)</strong> Vis at $x = 5$ er et nullpunkt.<br><br><strong>b)</strong> Finn det andre nullpunktet.<br><br><strong>c)</strong> Skriv $g(x)$ på faktorform.",
-                        "bilde": null,
-                        "hint": "",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$g(5) = 25 - 20 - 5 = 0$. Ja, $x = 5$ er nullpunkt.<br><br><strong>Svar:</strong> Vist: $g(5) = 0$",
-                            "<strong>b)</strong><br>$x^2 - 4x - 5 = (x - 5)(x + 1)$ fordi $5 \\cdot (-1) = -5$ og $-5 + 1 = -4$.<br>Det andre nullpunktet er $x = -1$.<br><br>$g(-1) = 1 + 4 - 5 = 0$.<br><br><strong>Svar:</strong> $x = -1$",
-                            "<strong>c)</strong><br><strong>Svar:</strong> $g(x) = (x - 5)(x + 1)$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "3.OP5",
-                        "tittel": "Oppgave 5 — abc-formelen",
-                        "tekst": "<strong>a)</strong> Løs $x^2 - 4x - 5 = 0$ med abc-formelen (samme polynom som i oppgave 4 — vis at du får samme svar).<br><br><strong>b)</strong> Hvor mange reelle løsninger har $x^2 + x + 1 = 0$? Begrunn med diskriminanten.",
-                        "bilde": null,
-                        "hint": "",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$a = 1$, $b = -4$, $c = -5$<br><br>$D = (-4)^2 - 4\\cdot 1 \\cdot (-5) = 16 + 20 = 36$<br><br>$x = \\dfrac{4 \\pm 6}{2}$<br><br>$x = \\dfrac{10}{2} = 5$ eller $x = \\dfrac{-2}{2} = -1$<br><br><strong>Svar:</strong> $x = 5 \\vee x = -1$",
-                            "<strong>b)</strong><br>$D = 1^2 - 4\\cdot 1 \\cdot 1 = 1 - 4 = -3 < 0$. Ingen reelle løsninger.<br><br><strong>Svar:</strong> Ingen reelle løsninger ($D < 0$)"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "3.OP6",
-                        "tittel": "Oppgave 6 — Rasjonal likning",
-                        "tekst": "Løs likningen. Oppgi verdier som ikke er tillatt, og sett prøve.<br><br>$2 - \\dfrac{2}{3 - x} = 0$",
-                        "bilde": null,
-                        "hint": "",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "Ikke tillatt: $x = 3$.<br><br>$2 = \\dfrac{2}{3 - x}$<br><br>Gang med $3 - x$: $2(3 - x) = 2$<br><br>$3 - x = 1$<br><br>$x = 2$",
-                            "Prøve: $2 - \\dfrac{2}{3-2} = 2 - 2 = 0$. Gyldig, og $2 \\neq 3$.<br><br><strong>Svar:</strong> $x = 2$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "3.OP7",
-                        "tittel": "Oppgave 7 — Falsk løsning",
-                        "tekst": "En elev løser $\\dfrac{1}{x - 2} = \\dfrac{x}{x - 2}$ og får $x = 1$ og $x = 2$.<br><br><strong>a)</strong> Hvilken av verdiene er en falsk løsning, og hvorfor?<br><br><strong>b)</strong> Løs likningen riktig.",
-                        "bilde": null,
-                        "hint": "",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>For $x = 2$ blir begge nevnerne $0$. Uttrykket er udefinert, så $x = 2$ er en falsk løsning.<br><br><strong>Svar:</strong> $x = 2$ er falsk (nevner $0$).",
-                            "<strong>b)</strong><br>For $x \\neq 2$: gang med $x - 2$ og få $1 = x$.<br>$x = 1$ er tillatt.<br><br>Prøve: $\\dfrac{1}{1-2} = -1$ og $\\dfrac{1}{1-2} = -1$. Gyldig.<br><br><strong>Svar:</strong> $x = 1$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "3.OP8",
-                        "tittel": "Oppgave 8 — Ulikheter",
-                        "tekst": "Løs ulikhetene. Husk å snu ulikhetstegnet når du ganger eller deler med et negativt tall.<br><br><strong>a)</strong> $3 - 2(x - 1) < 5$<br><br><strong>b)</strong> $4(x + 1) \\leq 2x + 10$<br><br><strong>c)</strong> Et sim-kort koster $99$ kr pluss $2$ kr per minutt. Du har $199$ kr. Hvor mange hele minutter kan du snakke?",
-                        "bilde": null,
-                        "hint": "",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$3 - 2x + 2 < 5$<br>$5 - 2x < 5$<br>$-2x < 0$<br>Del med $-2$ og snu: $x > 0$<br><br><strong>Svar:</strong> $x > 0$",
-                            "<strong>b)</strong><br>$4x + 4 \\leq 2x + 10$<br>$2x \\leq 6$<br>$x \\leq 3$<br><br><strong>Svar:</strong> $x \\leq 3$",
-                            "<strong>c)</strong><br>$99 + 2m \\leq 199$<br>$2m \\leq 100$<br>$m \\leq 50$<br><br><strong>Svar:</strong> Høyst $50$ minutter"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "3.OP9",
-                        "tittel": "Oppgave 9 — Polynomdivisjon",
-                        "tekst": "Polynomet $P$ er gitt ved $P(x) = 2x^3 + 4x^2 - 10x - 12$.<br><br><strong>a)</strong> Forklar at divisjonen $P(x) : (x + 1)$ går opp.<br><br><strong>b)</strong> Gjennomfør divisjonen.<br><br><strong>c)</strong> Skriv $P(x)$ som et produkt av lineære faktorer.<br><br><strong>d)</strong> Løs likningen $P(x) = 0$.",
-                        "bilde": null,
-                        "hint": "",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$P(-1) = 2(-1)^3 + 4(-1)^2 - 10(-1) - 12 = -2 + 4 + 10 - 12 = 0$.<br>Siden $P(-1) = 0$, går $x + 1$ opp i $P(x)$.<br><br><strong>Svar:</strong> $P(-1) = 0$, derfor går det opp.",
-                            "<strong>b)</strong><br>$(2x^3 + 4x^2 - 10x - 12) : (x + 1) = 2x^2 + 2x - 12$<br><br>Kontroll: $(x+1)(2x^2 + 2x - 12) = 2x^3 + 2x^2 - 12x + 2x^2 + 2x - 12 = 2x^3 + 4x^2 - 10x - 12$.<br><br><strong>Svar:</strong> $2x^2 + 2x - 12$",
-                            "<strong>c)</strong><br>$2x^2 + 2x - 12 = 2(x^2 + x - 6) = 2(x + 3)(x - 2)$<br><br>Dermed $P(x) = 2(x + 1)(x + 3)(x - 2)$<br><br><strong>Svar:</strong> $P(x) = 2(x + 1)(x + 3)(x - 2)$",
-                            "<strong>d)</strong><br>$2(x+1)(x+3)(x-2) = 0 \\Rightarrow x = -1 \\vee x = -3 \\vee x = 2$<br><br><strong>Svar:</strong> $x = -3 \\vee x = -1 \\vee x = 2$"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "3.OP10",
-                        "tittel": "Oppgave 10 — Tekst med andregrad",
-                        "tekst": "Et rektangel har areal $48$. Lengden er $2$ mer enn bredden $b$.<br><br><strong>a)</strong> Sett opp en andregradslikning for $b$.<br><br><strong>b)</strong> Finn sidene (begge positive).",
-                        "bilde": null,
-                        "hint": "",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>$b(b + 2) = 48 \\Rightarrow b^2 + 2b - 48 = 0$<br><br><strong>Svar:</strong> $b^2 + 2b - 48 = 0$",
-                            "<strong>b)</strong><br>$D = 4 + 192 = 196$, $b = \\dfrac{-2 \\pm 14}{2}$<br><br>$b = 6$ eller $b = -8$. Bredde må være positiv: $b = 6$, lengde $8$.<br><br>Prøve: $6 \\cdot 8 = 48$.<br><br><strong>Svar:</strong> $6$ og $8$"
-                        ],
-                        "starter": ""
-                    }
-                ],
-                "quiz": null
             }
         ]
     },
@@ -5371,7 +4300,7 @@ window.fagsok = [
                         "fasitSteg": [
                             "<strong>a)</strong><br>Vi setter $x = 8$ inn i funksjonen.<br><br>$p(8) = 5 - \\sqrt{2 \\cdot 8}$ (setter inn for $x$)<br>$p(8) = 5 - \\sqrt{16}$ (regner ut produktet under roten)<br>$p(8) = 5 - 4 = 1$ (tar kvadratroten og subtraherer)",
                             "<strong>Svar:</strong> $p(8) = 1$.",
-                            "<strong>b)</strong><br>Vi setter funksjonsuttrykket lik $3$.<br><br>$5 - \\sqrt{2x} = 3$<br>$5 - 3 = \\sqrt{2x}$ (flytter roten til høyre og tall til venstre)<br>$2 = \\sqrt{2x}$ (forenkler venstre side)<br>$2^2 = (\\sqrt{2x})^2$ (kvadrerer begge sider for å fjerne rottegnet)<br>$4 = 2x$ (deler på 2)<br>$x = \\frac{4}{2} = 2$<br><br><strong>Prøve:</strong> Vi setter $x = 2$ inn i den opprinnelige ligningen:<br>$p(2) = 5 - \\sqrt{2 \\cdot 2} = 5 - 2 = 3$. Løsningen stemmer!",
+                            "<strong>b)</strong><br>Vi setter funksjonsuttrykket lik $3$.<br><br>$5 - \\sqrt{2x} = 3$<br>$5 - 3 = \\sqrt{2x}$ (flytter roten til høyre og tall til venstre)<br>$2 = \\sqrt{2x}$ (forenkler venstre side)<br>$2^2 = (\\sqrt{2x})^2$ (kvadrerer begge sider for å fjerne rottegnet)<br>$4 = 2x$ (deler på 2)<br>$x = \\frac{4}{2} = 2$<br><br><strong>Prøve:</strong> Vi setter $x = 2$ inn i den opprinnelige likningen:<br>$p(2) = 5 - \\sqrt{2 \\cdot 2} = 5 - 2 = 3$. Løsningen stemmer!",
                             "<strong>Svar:</strong> $x = 2$.",
                             "<strong>c)</strong><br><strong>Definisjonsmengde ($D_p$):</strong> <br>Uttrykket under rottegnet kan ikke være negativt fordi vi ikke kan ta kvadratroten av negative tall (i reelle tall).<br>$2x \\ge 0$<br>$x \\ge 0$ (deler på 2)<br><br><strong>Verdimengde ($V_p$):</strong> <br>Rottegnet $\\sqrt{2x}$ gir alltid et positivt svar (eller null).<br>Dermed trekker vi alltid noe positivt (eller null) fra tallet $5$.<br>Den aller største verdien for $p(x)$ skjer når rot-leddet er så lite som mulig (som er $0$).<br>Da får vi $p(x) = 5 - 0 = 5$. For alle andre verdier av $x > 0$ vil $p(x)$ være mindre enn $5$, og synke uendelig mot negative verdier.",
                             "<strong>Svar:</strong> Definisjonsmengden er $D_p = [0, \\rightarrow\\rangle$ og verdimengden er $V_p = \\langle\\leftarrow, 5]$."
@@ -5649,7 +4578,7 @@ window.fagsok = [
                     {
                         "id": "4.16",
                         "tittel": "Oppgave 4.16",
-                        "tekst": "En linje er gitt ved likningen $px + qy = r$ (der $q \\neq 0$). Finn et uttrykk for stigningstallet og konstantleddet.",
+                        "tekst": "En linje er gitt ved likningen $px + qy = r$ (der $q <br>eq 0$). Finn et uttrykk for stigningstallet og konstantleddet.",
                         "bilde": null,
                         "hint": "Omform likningen slik at den står på standardformen $y = ax + b$. For å få $y$ alene, må du flytte på de andre leddene og deretter dele på $q$.",
                         "fasit": null,
@@ -6046,7 +4975,7 @@ window.fagsok = [
                             "<strong>Svar:</strong> Nullpunkt er $x = 2$. y-skjæringen er i punktet $(0, -3)$.",
                             "<strong>b)</strong><br>Loddrett asymptote finner vi når nevneren er $0$:<br>$x + 2 = 0$<br>$x = -2$<br><br>Vannrett asymptote finner vi ved å se på leddene med høyest grad:<br>$\\frac{3x}{x} = 3$<br>$y = 3$",
                             "<strong>Svar:</strong> Loddrett asymptote er $x = -2$ og vannrett asymptote er $y = 3$.",
-                            "<strong>c)</strong><br>Definisjonsmengden er alle mulige $x$-verdier. Siden vi ikke kan dele på $0$, må $x \\neq -2$:<br>$D_k = \\mathbb{R} \\setminus \\{-2\\}$<br><br>Verdimengden er alle mulige $y$-verdier. Grafen vil aldri treffe den vannrette asymptoten $y = 3$:<br>$V_k = \\mathbb{R} \\setminus \\{3\\}$",
+                            "<strong>c)</strong><br>Definisjonsmengden er alle mulige $x$-verdier. Siden vi ikke kan dele på $0$, må $x <br>eq -2$:<br>$D_k = \\mathbb{R} \\setminus \\{-2\\}$<br><br>Verdimengden er alle mulige $y$-verdier. Grafen vil aldri treffe den vannrette asymptoten $y = 3$:<br>$V_k = \\mathbb{R} \\setminus \\{3\\}$",
                             "<strong>Svar:</strong> $D_k = \\mathbb{R} \\setminus \\{-2\\}$ og $V_k = \\mathbb{R} \\setminus \\{3\\}$.",
                             "<strong>d)</strong><br>Tegn asymptotene som stiplede linjer i et koordinatsystem:<br>- Loddrett linje i $x = -2$<br>- Vannrett linje i $y = 3$<br><br>Marker punktene fra oppgave a: $(2, 0)$ og $(0, -3)$.<br>Tegn kurvene i hjørnene slik at de går gjennom punktene og legger seg inntil asymptotene.",
                             "<strong>Svar:</strong> Grafen skisseres med asymptotene $x = -2$ og $y = 3$."
@@ -6305,7 +5234,7 @@ window.fagsok = [
                         "fasitSteg": [
                             "<strong>a)</strong><br>Vi setter $x = 5$ inn i formelen.<br><br>$A(5) = 3.14 \\cdot 5^{1.9}$<br><br>$A(5) \\approx 66.8$ (regn ut produktet)",
                             "<strong>Svar:</strong> Arealet er $66.8 \\text{ km}^2$.",
-                            "<strong>b)</strong><br>Vi setter $A(x) = 100$ inn i ligningen og løser for $x$.<br><br>$3.14 \\cdot x^{1.9} = 100$<br><br>$x^{1.9} = \\frac{100}{3.14}$ (del begge sider på $3.14$)<br><br>$x = \\left(\\frac{100}{3.14}\\right)^{\\frac{1}{1.9}}$ (opphøy i invers brøk)<br><br>$x \\approx 6.13 \\text{ km}$",
+                            "<strong>b)</strong><br>Vi setter $A(x) = 100$ inn i likningen og løser for $x$.<br><br>$3.14 \\cdot x^{1.9} = 100$<br><br>$x^{1.9} = \\frac{100}{3.14}$ (del begge sider på $3.14$)<br><br>$x = \\left(\\frac{100}{3.14}\\right)^{\\frac{1}{1.9}}$ (opphøy i invers brøk)<br><br>$x \\approx 6.13 \\text{ km}$",
                             "<strong>Svar:</strong> Radiusen er $6.13 \\text{ km}$.",
                             "<strong>c)</strong><br>Når radiusen $x$ øker med $15\\%$, multipliseres den med vekstfaktoren $1.15$.<br>Siden arealet er proporsjonalt med $x^{1.9}$, må vekstfaktoren for arealet være $1.15^{1.9}$.<br><br>Vekstfaktor $= 1.15^{1.9} \\approx 1.304$<br><br>Dette gir en økning på $30.4\\%$.",
                             "<strong>Svar:</strong> Arealet øker med $30.4\\%$."
@@ -7164,6 +6093,12 @@ window.fagstoff = [
         "html": ""
     },
     {
+        "id": "tallmengder",
+        "tittel": "Fagbibliotek: Tallmengder",
+        "src": "fagstoff/tallmengder.html",
+        "html": ""
+    },
+    {
         "id": "videoer",
         "tittel": "Fagbibliotek: Videoer",
         "html": "Her finner du utvalgte videoer til de ulike temaene i faget.<br><br><h3>Temaer i kapittel 1</h3><br><br><strong>Regnerekkefølge, parenteser, potenser og kvadratrøtter, multiplikasjon og divisjon, addisjon og subtraksjon</strong><br>- <a href=\"https://www.youtube.com/watch?v=HCvi7QZBoGE\" target=\"_blank\" style=\"color:var(--primary); text-decoration:underline;\">https://www.youtube.com/watch?v=HCvi7QZBoGE</a><br>- <a href=\"https://www.youtube.com/watch?v=ypG5Ab-bMnY\" target=\"_blank\" style=\"color:var(--primary); text-decoration:underline;\">https://www.youtube.com/watch?v=ypG5Ab-bMnY</a><br><br><strong>Absoluttverdi</strong><br>- <a href=\"https://www.youtube.com/watch?v=BIh3qDceX3Q\" target=\"_blank\" style=\"color:var(--primary); text-decoration:underline;\">https://www.youtube.com/watch?v=BIh3qDceX3Q</a><br><br><strong>Rasjonelle tall, irrasjonelle tall, naturlige tall, reelle tall, intervaller og tegnsetting</strong><br>- <a href=\"https://www.youtube.com/watch?v=4ey3raG716U\" target=\"_blank\" style=\"color:var(--primary); text-decoration:underline;\">https://www.youtube.com/watch?v=4ey3raG716U</a><br>- <a href=\"https://www.youtube.com/watch?v=X4HiQJiQ6Xw\" target=\"_blank\" style=\"color:var(--primary); text-decoration:underline;\">https://www.youtube.com/watch?v=X4HiQJiQ6Xw</a><br><br><strong>Kvadrattall, rektangeltall, trekanttall, hustall og tallmønstre</strong><br>- <a href=\"https://www.youtube.com/watch?v=Pm1Z8GJFqPw\" target=\"_blank\" style=\"color:var(--primary); text-decoration:underline;\">https://www.youtube.com/watch?v=Pm1Z8GJFqPw</a><br>- <a href=\"https://www.youtube.com/watch?v=lEgYrvKDFN0\" target=\"_blank\" style=\"color:var(--primary); text-decoration:underline;\">https://www.youtube.com/watch?v=lEgYrvKDFN0</a><br><br><strong>Primtall og primtallsfaktorisering</strong><br>- <a href=\"https://www.youtube.com/watch?v=iMmTOV6rKqg\" target=\"_blank\" style=\"color:var(--primary); text-decoration:underline;\">https://www.youtube.com/watch?v=iMmTOV6rKqg</a><br>- <a href=\"https://www.youtube.com/watch?v=tPz8Q1DIQ48\" target=\"_blank\" style=\"color:var(--primary); text-decoration:underline;\">https://www.youtube.com/watch?v=tPz8Q1DIQ48</a><br><br><strong>Felles faktor og faktorisering</strong><br>- <a href=\"https://www.youtube.com/watch?v=7L7mYWpMY9U\" target=\"_blank\" style=\"color:var(--primary); text-decoration:underline;\">https://www.youtube.com/watch?v=7L7mYWpMY9U</a><br><br><strong>Kvadratrøtter</strong><br>- <a href=\"https://www.youtube.com/watch?v=NRx60-H6ZY0\" target=\"_blank\" style=\"color:var(--primary); text-decoration:underline;\">https://www.youtube.com/watch?v=NRx60-H6ZY0</a><br>- <a href=\"https://www.youtube.com/watch?v=FKk2bSV0qoA\" target=\"_blank\" style=\"color:var(--primary); text-decoration:underline;\">https://www.youtube.com/watch?v=FKk2bSV0qoA</a><br>- <a href=\"https://www.youtube.com/watch?v=Oh5Yr1fzHiE\" target=\"_blank\" style=\"color:var(--primary); text-decoration:underline;\">https://www.youtube.com/watch?v=Oh5Yr1fzHiE</a><br><br><strong>Potenser, regneregler for potenser, negative eksponenter og eksponent lik null</strong><br>- <a href=\"https://www.youtube.com/watch?v=daQqN2aB7is\" target=\"_blank\" style=\"color:var(--primary); text-decoration:underline;\">https://www.youtube.com/watch?v=daQqN2aB7is</a><br><br><strong>Standardform og prefikser</strong><br>- <a href=\"https://www.youtube.com/watch?v=SSb_IddmrdE\" target=\"_blank\" style=\"color:var(--primary); text-decoration:underline;\">https://www.youtube.com/watch?v=SSb_IddmrdE</a><br><br><strong>Implikasjon og ekvivalens</strong><br>- <a href=\"https://www.youtube.com/watch?v=lnB4y3IyCRQ\" target=\"_blank\" style=\"color:var(--primary); text-decoration:underline;\">https://www.youtube.com/watch?v=lnB4y3IyCRQ</a><br><br><strong>Direkte bevis</strong><br>- <a href=\"https://www.youtube.com/watch?v=KJ_5M5mup2E\" target=\"_blank\" style=\"color:var(--primary); text-decoration:underline;\">https://www.youtube.com/watch?v=KJ_5M5mup2E</a><br><br><strong>Indirekte bevis</strong><br>- <a href=\"https://www.youtube.com/watch?v=fLeV0JMmBbU\" target=\"_blank\" style=\"color:var(--primary); text-decoration:underline;\">https://www.youtube.com/watch?v=fLeV0JMmBbU</a><br><br><h3>Temaer i kapittel 2</h3><br><br><strong>Regning med bokstavuttrykk</strong><br>- <a href=\"https://www.youtube.com/watch?v=PA7Q18hLK0E\" target=\"_blank\" style=\"color:var(--primary); text-decoration:underline;\">https://www.youtube.com/watch?v=PA7Q18hLK0E</a><br><br><strong>Første kvadratsetning</strong><br>- <a href=\"https://www.youtube.com/watch?v=LgDQ29AAfEM&list=PLuwGvcVZCuI08jK2OYQoLsEggtO4ehM2z\" target=\"_blank\" style=\"color:var(--primary); text-decoration:underline;\">https://www.youtube.com/watch?v=LgDQ29AAfEM&list=PLuwGvcVZCuI08jK2OYQoLsEggtO4ehM2z</a><br><br><strong>Andre kvadratsetning</strong><br>- <a href=\"https://www.youtube.com/watch?v=vKmPyzXwm_A&list=PLuwGvcVZCuI08jK2OYQoLsEggtO4ehM2z&index=3\" target=\"_blank\" style=\"color:var(--primary); text-decoration:underline;\">https://www.youtube.com/watch?v=vKmPyzXwm_A&list=PLuwGvcVZCuI08jK2OYQoLsEggtO4ehM2z&index=3</a><br><br><strong>Tredje kvadratsetning</strong><br>- <a href=\"https://www.youtube.com/watch?v=isqqIJYcnB0&list=PLuwGvcVZCuI08jK2OYQoLsEggtO4ehM2z&index=4\" target=\"_blank\" style=\"color:var(--primary); text-decoration:underline;\">https://www.youtube.com/watch?v=isqqIJYcnB0&list=PLuwGvcVZCuI08jK2OYQoLsEggtO4ehM2z&index=4</a><br><br><strong>Fullstendig kvadrat</strong><br>- <a href=\"https://www.youtube.com/watch?v=B9vsG1QMy1o&list=PLuwGvcVZCuI08jK2OYQoLsEggtO4ehM2z&index=8\" target=\"_blank\" style=\"color:var(--primary); text-decoration:underline;\">https://www.youtube.com/watch?v=B9vsG1QMy1o&list=PLuwGvcVZCuI08jK2OYQoLsEggtO4ehM2z&index=8</a><br>- <a href=\"https://www.youtube.com/watch?v=7nri1E0v_xE&list=PLuwGvcVZCuI08jK2OYQoLsEggtO4ehM2z&index=9\" target=\"_blank\" style=\"color:var(--primary); text-decoration:underline;\">https://www.youtube.com/watch?v=7nri1E0v_xE&list=PLuwGvcVZCuI08jK2OYQoLsEggtO4ehM2z&index=9</a><br><br><strong>Faktorisering med kvadratsetninger</strong><br>- <a href=\"https://www.youtube.com/watch?v=OmjOo1a4pLA&list=PLuwGvcVZCuI08jK2OYQoLsEggtO4ehM2z&index=5\" target=\"_blank\" style=\"color:var(--primary); text-decoration:underline;\">https://www.youtube.com/watch?v=OmjOo1a4pLA&list=PLuwGvcVZCuI08jK2OYQoLsEggtO4ehM2z&index=5</a><br><br><strong>Utvide brøk, addisjon og subtraksjon med brøk, multiplikasjon og divisjon med brøk</strong><br>- <a href=\"https://www.youtube.com/watch?v=2foqFiSTRPc\" target=\"_blank\" style=\"color:var(--primary); text-decoration:underline;\">https://www.youtube.com/watch?v=2foqFiSTRPc</a><br>- <a href=\"https://www.youtube.com/watch?v=OJ5HuprEHQw\" target=\"_blank\" style=\"color:var(--primary); text-decoration:underline;\">https://www.youtube.com/watch?v=OJ5HuprEHQw</a><br>- <a href=\"https://www.youtube.com/watch?v=p2SeSghAyEE\" target=\"_blank\" style=\"color:var(--primary); text-decoration:underline;\">https://www.youtube.com/watch?v=p2SeSghAyEE</a><br><br><strong>Brudden brøk</strong><br>- <a href=\"https://www.youtube.com/watch?v=Im0BPFxDwp8\" target=\"_blank\" style=\"color:var(--primary); text-decoration:underline;\">https://www.youtube.com/watch?v=Im0BPFxDwp8</a><br>- <a href=\"https://www.youtube.com/watch?v=gbSxO58tU8w\" target=\"_blank\" style=\"color:var(--primary); text-decoration:underline;\">https://www.youtube.com/watch?v=gbSxO58tU8w</a> (mer detaljert)<br><br><strong>Bruk av tekst for å lage formel</strong><br>- <a href=\"https://www.youtube.com/watch?v=scwkoWmWDBY\" target=\"_blank\" style=\"color:var(--primary); text-decoration:underline;\">https://www.youtube.com/watch?v=scwkoWmWDBY</a><br><br><strong>Formelregning – sette tall inn i formler og endre formelen</strong><br>- <a href=\"https://www.youtube.com/watch?v=LCyd253ucAg\" target=\"_blank\" style=\"color:var(--primary); text-decoration:underline;\">https://www.youtube.com/watch?v=LCyd253ucAg</a><br><br><strong>Formler og logikk for figurtall</strong><br>- <a href=\"https://www.youtube.com/watch?v=f4v7perY_0o\" target=\"_blank\" style=\"color:var(--primary); text-decoration:underline;\">https://www.youtube.com/watch?v=f4v7perY_0o</a><br>- <a href=\"https://www.youtube.com/watch?v=bDZ7JL4ZUzY\" target=\"_blank\" style=\"color:var(--primary); text-decoration:underline;\">https://www.youtube.com/watch?v=bDZ7JL4ZUzY</a><br><br><h3>Temaer i kapittel 3</h3><br><br>Følgende temaer vil få videoforklaringer:<br>- Lineære likninger<br>- Identitet<br>- Hva er en likning?<br>- Fra tekst til likning<br>- Bruk av formler for å finne ukjent variabel<br>- Snu på formelen<br>- Andregradslikning, ABC-formelen og produktregelen<br>- Antall løsninger på en andregradslikning<br>- Praktisk bruk av andregradslikninger<br>- Bevis for ABC-formelen<br>- Ekvivalens<br>- Rasjonale likninger<br>- Proporsjoner<br>- Nullpunktsfaktorisering og finne nullpunkt<br>- Andregradspolynom og lineære faktorer<br>- Polynomdivisjon<br>- Sammenheng mellom polynomdivisjon og nullpunktsfaktorisering<br>- Polynomdivisjon med rest<br>- Tredjegradspolynomer<br><br><h3>Temaer i kapittel 4</h3><br><br>Følgende temaer vil få videoforklaringer:<br>- Koordinatsystem, $x$- og $y$-akse, nullpunkter og ekstremalpunkter<br>- Hva er en funksjon?<br>- Definisjonsmengde og verdimengde<br>- Topp- og bunnpunkt<br>- Lineære funksjoner og form<br>- Ettpunktsformelen<br>- Polynomfunksjoner og form<br>- Gjenkjenne første-, andre- og tredjegradsfunksjoner<br>- Rasjonale funksjoner og asymptoter<br>- Potensfunksjoner og form<br>- Eksponentialfunksjoner og form<br>- Gjennomsnittlig og momentan vekst<br>- Hva forteller vekstfarten oss?<br>- Den deriverte<br>- Derivasjon og hva den kan fortelle oss<br>- Fortegn til den deriverte<br>- Fortegnslinje"
@@ -7353,4 +6288,4 @@ window.programmeringData = [
     }
 ];
 
-window.ASSET_VERSION = "9fe01b80ab";
+window.ASSET_VERSION = "5d57a8b221";
