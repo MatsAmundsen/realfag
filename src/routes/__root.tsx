@@ -1,3 +1,4 @@
+import "../styles.css";
 import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
@@ -6,10 +7,28 @@ import { AppShell } from "@/components/AppShell";
 import appCss from "../styles.css?url";
 
 const APP_NAME = "Matteguiden 1T";
-const MG_BUILD = "2026-08-27-t-rex";
+const MG_BUILD = "2026-08-27-layout";
+
+const CRITICAL_CSS = `html,body{margin:0;background:#0a0f1e;color:#e2e8f0;font-family:Inter,system-ui,sans-serif;}
+.navbar{display:flex;align-items:center;justify-content:space-between;padding:.875rem 2rem;position:sticky;top:0;z-index:200;gap:1.5rem;background:rgba(10,15,30,.85);border-bottom:1px solid rgba(255,255,255,.07);}
+.desktop-nav{display:flex;align-items:center;gap:.25rem;flex-shrink:0;}
+.hamburger-btn{display:none;}
+.mobile-nav-drawer{position:fixed!important;top:0;left:0;bottom:0;width:min(300px,88vw);transform:translateX(-110%);visibility:hidden;pointer-events:none;z-index:5500;}
+.mobile-nav-drawer.is-open{transform:translateX(0);visibility:visible;pointer-events:auto;}
+@media(max-width:900px){.hamburger-btn{display:inline-flex!important;align-items:center;justify-content:center;}.desktop-nav{display:none!important;}}`;
 
 const KILL_LEGACY_PWA = `(function(){
   var BUILD=${JSON.stringify(MG_BUILD)};
+  function hideDrawer(){
+    var d=document.getElementById("mobile-nav-drawer");
+    if(!d || d.classList.contains("is-open")) return;
+    if(window.getComputedStyle(d).position !== "fixed"){
+      d.style.position="fixed";
+      d.style.transform="translateX(-110%)";
+      d.style.visibility="hidden";
+      d.style.pointerEvents="none";
+    }
+  }
   try {
     var b=document.getElementById("mg-update-banner");
     if(b){b.hidden=true;b.style.display="none";}
@@ -21,6 +40,9 @@ const KILL_LEGACY_PWA = `(function(){
     if(window.caches) caches.keys().then(function(keys){
       keys.forEach(function(k){caches.delete(k);});
     });
+    hideDrawer();
+    document.addEventListener("DOMContentLoaded", hideDrawer);
+    window.addEventListener("load", hideDrawer);
     fetch("/version.json?mg="+Date.now(),{cache:"no-store",headers:{"Cache-Control":"no-cache"}})
       .then(function(r){return r.ok?r.json():null;})
       .then(function(v){
@@ -115,7 +137,7 @@ export const Route = createRootRoute({
     ],
     links: [
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
-      { rel: "stylesheet", href: appCss },
+      ...(import.meta.env.PROD ? [{ rel: "stylesheet" as const, href: appCss }] : []),
       { rel: "manifest", href: "/__grok/manifest.webmanifest" },
       { rel: "apple-touch-icon", href: "/__grok/icon-180.png" },
       {
@@ -128,6 +150,7 @@ export const Route = createRootRoute({
     <html lang="nb" suppressHydrationWarning>
       <head>
         <HeadContent />
+        <style dangerouslySetInnerHTML={{ __html: CRITICAL_CSS }} />
       </head>
       <body>
         <script dangerouslySetInnerHTML={{ __html: KILL_LEGACY_PWA }} />

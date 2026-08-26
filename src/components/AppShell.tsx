@@ -57,6 +57,15 @@ export function AppShell() {
   }, [pathname]);
 
   useEffect(() => {
+    const drawer = document.getElementById("mobile-nav-drawer");
+    if (drawer && menu) {
+      drawer.style.transform = "";
+      drawer.style.visibility = "";
+      drawer.style.pointerEvents = "";
+    }
+  }, [menu]);
+
+  useEffect(() => {
     if (!menu) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setMenu(false);

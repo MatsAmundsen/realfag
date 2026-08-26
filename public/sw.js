@@ -1,4 +1,4 @@
-/* mg-build: 2026-08-27-t-rex
+/* mg-build: 2026-08-27-layout
    Matteguiden: do not cache, and NEVER reload the page.
    An older build called clients.navigate() here, which made the
    preview (and Live) blink forever. This worker only clears leftover

@@ -1,12 +1,22 @@
 import { useEffect } from "react";
 
-const MG_BUILD = "2026-08-27-t-rex";
+const MG_BUILD = "2026-08-27-layout";
+
+function forceChrome() {
+  const drawer = document.getElementById("mobile-nav-drawer");
+  if (!drawer || drawer.classList.contains("is-open")) return;
+  if (window.getComputedStyle(drawer).position !== "fixed") {
+    drawer.style.position = "fixed";
+    drawer.style.transform = "translateX(-110%)";
+    drawer.style.visibility = "hidden";
+    drawer.style.pointerEvents = "none";
+  }
+}
 
 /**
- * Old Matteguiden registered /sw.js. A later "kill" worker then called
- * clients.navigate(?mg=timestamp) on activate, which reloaded the page
- * forever. Unregister leftovers. Force a single reload if version.json
- * is newer than this HTML. Do not loop.
+ * Old Matteguiden registered /sw.js. Unregister leftovers. If the Grok
+ * preview iframe drops the stylesheet, force the chrome layout so the
+ * drawer cannot sit in document flow.
  */
 export function KillLegacyPwa() {
   useEffect(() => {
@@ -23,6 +33,11 @@ export function KillLegacyPwa() {
         keys.forEach((k) => void caches.delete(k));
       });
     }
+
+    forceChrome();
+    const t1 = window.setTimeout(forceChrome, 0);
+    const t2 = window.setTimeout(forceChrome, 120);
+    const raf = requestAnimationFrame(forceChrome);
 
     void fetch(`/version.json?mg=${Date.now()}`, {
       cache: "no-store",
@@ -55,7 +70,12 @@ export function KillLegacyPwa() {
       }
     };
     document.addEventListener("click", onClick, true);
-    return () => document.removeEventListener("click", onClick, true);
+    return () => {
+      window.clearTimeout(t1);
+      window.clearTimeout(t2);
+      cancelAnimationFrame(raf);
+      document.removeEventListener("click", onClick, true);
+    };
   }, []);
 
   return null;
