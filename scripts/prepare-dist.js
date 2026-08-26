@@ -19,10 +19,11 @@ fs.mkdirSync(DIST);
 
 // Filer som skal med i deployet
 const files = {
-    'Indeks.html': 'index.html',   // Omdøp til index.html
+    'Indeks.html': 'index.html',
     'app.js':      'app.js',
     'style.css':   'style.css',
     'data.js':     'data.js',
+    'sw.js':       'sw.js',
 };
 
 // Kopier faste filer

@@ -375,13 +375,14 @@ function stampAssets() {
     const dataPath = path.join(root, 'data.js');
     const appPath = path.join(root, 'app.js');
     const stylePath = path.join(root, 'style.css');
-    const htmlPath = path.join(root, 'Indeks.html');
+    const swPath = path.join(root, 'sw.js');
     const fagstoffDir = path.join(root, 'fagstoff');
 
     const combined = crypto.createHash('sha256')
         .update(fileHash(dataPath))
         .update(fs.existsSync(appPath) ? fileHash(appPath) : '')
         .update(fs.existsSync(stylePath) ? fileHash(stylePath) : '')
+        .update(fs.existsSync(swPath) ? fileHash(swPath) : '')
         .update(hashTree(fagstoffDir))
         .digest('hex')
         .slice(0, 10);
@@ -391,13 +392,16 @@ function stampAssets() {
     const versionFile = path.join(root, 'version.json');
     fs.writeFileSync(versionFile, JSON.stringify({ version: combined, builtAt: new Date().toISOString() }, null, 2) + '\n');
 
-    if (fs.existsSync(htmlPath)) {
-        let html = fs.readFileSync(htmlPath, 'utf-8');
+    const indeksPath = path.join(root, 'Indeks.html');
+    if (fs.existsSync(indeksPath)) {
+        let html = fs.readFileSync(indeksPath, 'utf-8');
         html = html
+            .replace(/window\.__MG_BUILD = "[^"]*"/g, `window.__MG_BUILD = "${combined}"`)
             .replace(/href="style\.css(\?v=[^"]*)?"/g, `href="style.css?v=${combined}"`)
             .replace(/src="data\.js(\?v=[^"]*)?"/g, `src="data.js?v=${combined}"`)
             .replace(/src="app\.js(\?v=[^"]*)?"/g, `src="app.js?v=${combined}"`);
-        fs.writeFileSync(htmlPath, html);
+        fs.writeFileSync(indeksPath, html);
+        fs.copyFileSync(indeksPath, path.join(root, 'index.html'));
     }
 
     console.log(`✓ Cache-busting: v=${combined}`);

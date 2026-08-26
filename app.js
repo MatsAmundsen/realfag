@@ -891,17 +891,11 @@ function buildTaskCard(oppgave, contextLabel, index = 0, total = 1, subId = null
         ${(idPrefix === 'prog-' || oppgave.starter) ? buildPlaygroundHtml(`${idPrefix}play-${oppgave.id}`, oppgave.starter || '') : ''}
     `;
 
-    const isOpOverview = /OP0$/i.test(String(oppgave.id || ''))
-        || /oversikt/i.test(String(oppgave.tittel || ''));
-    const isOveprove = /OP$/i.test(String(subId || '')) || /OP\d/i.test(String(oppgave.id || ''));
-    const hasHint = !isOpOverview && !isOveprove && oppgave.hint && String(oppgave.hint).trim();
-    const showFasit = !isOpOverview;
-
     // Fasit HTML
     let fasitKnapp = '';
     let fasitHtml  = '';
 
-    if (showFasit && oppgave.fasitSteg && oppgave.fasitSteg.length > 0) {
+    if (oppgave.fasitSteg && oppgave.fasitSteg.length > 0) {
         fasitKnapp = `<button class="hint-btn fasit-btn" onclick="toggleSolution('${idPrefix}fasit-${oppgave.id}')">Vis fasit (Steg 1) 📝</button>`;
         fasitHtml  = `<div id="${idPrefix}fasit-${oppgave.id}" class="solution-content steg-container">`;
         
@@ -924,24 +918,25 @@ function buildTaskCard(oppgave, contextLabel, index = 0, total = 1, subId = null
             </div>`;
         });
         fasitHtml += `</div>`;
-    } else if (showFasit && oppgave.fasit) {
+    } else if (oppgave.fasit) {
         fasitKnapp = `<button class="hint-btn fasit-btn" onclick="toggleSolution('${idPrefix}fasit-${oppgave.id}')">Fasit 📝</button>`;
         fasitHtml  = `<div id="${idPrefix}fasit-${oppgave.id}" class="solution-content"><strong>Løsningsforslag:</strong><br><br>${oppgave.fasit}</div>`;
     }
 
-    const prereqBtn = (!isOpOverview && subId && typeof prereqMap !== 'undefined' && prereqMap[subId])
-        ? `<button class="hint-btn prereq-btn" onclick="togglePrereqInline(this, '${idPrefix}prereq-${oppgave.id}', '${subId}')" style="background: var(--primary-subtle); color: var(--primary-dark); border-color: var(--primary-light);">Hva må jeg kunne? 🗺️</button>`
-        : '';
-
     html += `
         <div class="task-action-bar">
-            ${prereqBtn}
-            ${hasHint ? `<button class="hint-btn" onclick="toggleHint('${idPrefix}hint-${oppgave.id}')">Vis hint 💡</button>` : ''}
+            ${(function(){
+                if (subId && typeof prereqMap !== 'undefined' && prereqMap[subId]) {
+                    return `<button class="hint-btn prereq-btn" onclick="togglePrereqInline(this, '${idPrefix}prereq-${oppgave.id}', '${subId}')" style="background: var(--primary-subtle); color: var(--primary-dark); border-color: var(--primary-light);">Hva må jeg kunne? 🗺️</button>`;
+                }
+                return '';
+            })()}
+            <button class="hint-btn" onclick="toggleHint('${idPrefix}hint-${oppgave.id}')">Vis hint 💡</button>
             ${fasitKnapp}
             <button class="hint-btn done-btn${done ? ' done-active' : ''}" aria-pressed="${done ? 'true' : 'false'}" onclick="toggleTaskDone('${kapId || ''}','${subId || ''}','${oppgave.id}', this)">${done ? 'Ferdig ✓' : 'Marker som ferdig'}</button>
         </div>
         <div id="${idPrefix}prereq-${oppgave.id}" class="prereq-inline-container" style="display:none;"></div>
-        ${hasHint ? `<div id="${idPrefix}hint-${oppgave.id}" class="hint-content">${oppgave.hint}</div>` : ''}
+        <div id="${idPrefix}hint-${oppgave.id}" class="hint-content">${oppgave.hint}</div>
         ${fasitHtml}
     `;
 
@@ -1196,9 +1191,9 @@ async function loadRessurser() {
     for (const tema of window.fagstoff) {
         if (tema.src && !tema._loaded) {
             try {
-                const version = window.ASSET_VERSION || '';
+                const version = window.ASSET_VERSION || window.__MG_BUILD || '';
                 const sep = tema.src.includes('?') ? '&' : '?';
-                const url = version ? `${tema.src}${sep}v=${encodeURIComponent(version)}` : tema.src;
+                const url = `${tema.src}${sep}v=${encodeURIComponent(version)}&t=${Date.now()}`;
                 const res = await fetch(url, { cache: 'no-store' });
                 if (res.ok) {
                     tema.html = extractFagstoffHtml(await res.text());
