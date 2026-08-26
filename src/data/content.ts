@@ -4,10 +4,11 @@ import { EXTRA, SUB_TITLES } from "./extra-tasks";
 import { KAP3_OVEPROVE } from "./kap3-oveprove";
 import { KAP4_QUIZ } from "./kap4-quiz";
 import { KAP5 } from "./kap5";
-import tallmengderHtml from "../../public/fagstoff/tallmengder.html?raw";
-import brokregningHtml from "../../public/fagstoff/brokregning.html?raw";
-import kvadratrotterHtml from "../../public/fagstoff/kvadratrotter.html?raw";
-import programmeringHtml from "../../public/fagstoff/programmering.html?raw";
+import tallmengderHtml from "./fagstoff/tallmengder.html?raw";
+import brokregningHtml from "./fagstoff/brokregning.html?raw";
+import kvadratrotterHtml from "./fagstoff/kvadratrotter.html?raw";
+import programmeringHtml from "./fagstoff/programmering.html?raw";
+import videoerHtml from "./fagstoff/videoer.html?raw";
 
 export const fagsokRaw = (rawFagsok as Kapittel[]).map((kap) => {
   const delkapitler = kap.delkapitler.map((dk) => ({
@@ -38,6 +39,7 @@ export const fagstoff = (rawFagstoff as Fagstoff[]).map((f) => {
     brokregning: brokregningHtml,
     kvadratrotter: kvadratrotterHtml,
     programmering: programmeringHtml,
+    videoer: videoerHtml,
   };
   if (inline[f.id]) return { ...f, html: inline[f.id], src: undefined };
   return f;

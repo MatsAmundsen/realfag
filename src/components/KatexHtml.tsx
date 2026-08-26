@@ -1,16 +1,21 @@
 import { useMemo } from "react";
-import { formatTaskHtml } from "@/lib/katex-render";
+import { formatArticleHtml, formatTaskHtml } from "@/lib/katex-render";
 
 export function KatexHtml({
   html,
   className,
   as = "div",
+  mode = "task",
 }: {
   html: string;
   className?: string;
   as?: "div" | "span" | "p";
+  mode?: "task" | "article";
 }) {
-  const rendered = useMemo(() => formatTaskHtml(html || ""), [html]);
+  const rendered = useMemo(
+    () => (mode === "article" ? formatArticleHtml(html || "") : formatTaskHtml(html || "")),
+    [html, mode],
+  );
   if (as === "span") {
     return <span className={className} dangerouslySetInnerHTML={{ __html: rendered }} />;
   }

@@ -1,15 +1,32 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import { X } from "lucide-react";
 import { fagstoff } from "@/data/content";
 import { KatexHtml } from "@/components/KatexHtml";
+import { extractYoutubeId, runPythonEditor } from "@/lib/py-runner";
 
-export const Route = createFileRoute("/ressurser")({ component: RessurserPage });
+type RessursSearch = { t?: string };
+
+function readTab(search: RessursSearch) {
+  const t = typeof search.t === "string" ? search.t : "";
+  return fagstoff.some((f) => f.id === t) ? t : fagstoff[0]?.id || "tallmengder";
+}
+
+export const Route = createFileRoute("/ressurser")({
+  validateSearch: (search: Record<string, unknown>): RessursSearch => ({
+    t: typeof search.t === "string" ? search.t : undefined,
+  }),
+  component: RessurserPage,
+});
 
 function RessurserPage() {
-  const [tab, setTab] = useState(fagstoff[0]?.id || "brokregning");
+  const search = Route.useSearch();
+  const tab = readTab(search);
   const current = fagstoff.find((f) => f.id === tab) || fagstoff[0];
   const [html, setHtml] = useState(current?.html || "");
   const [loading, setLoading] = useState(false);
+  const [player, setPlayer] = useState<{ id: string; title: string } | null>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!current) return;
@@ -46,13 +63,54 @@ function RessurserPage() {
     };
   }, [current]);
 
+  useEffect(() => {
+    const w = window as Window & {
+      __mgOpenYoutube?: (id: string, title: string) => void;
+    };
+    w.__mgOpenYoutube = (id, title) => setPlayer({ id, title });
+    return () => {
+      if (w.__mgOpenYoutube) delete w.__mgOpenYoutube;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!player) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setPlayer(null);
+    };
+    window.addEventListener("keydown", onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [player]);
+
   function onContentClick(e: React.MouseEvent) {
-    const el = (e.target as HTMLElement).closest("[data-fag-scroll], [data-brok-scroll]");
+    const raw = e.target;
+    const el = raw instanceof Element ? raw : (raw as Node | null)?.parentElement;
     if (!el) return;
-    e.preventDefault();
-    const id = el.getAttribute("data-fag-scroll") || el.getAttribute("data-brok-scroll");
-    if (!id) return;
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+
+    const runBtn = el.closest("[data-run]");
+    if (runBtn) {
+      e.preventDefault();
+      void runPythonEditor(runBtn.getAttribute("data-run"));
+      return;
+    }
+
+    const yt = el.closest("a[href*='youtube.com'], a[href*='youtu.be']");
+    if (yt instanceof HTMLAnchorElement) {
+      const id = extractYoutubeId(yt.getAttribute("href") || yt.href);
+      if (id) {
+        e.preventDefault();
+        const title =
+          yt.querySelector(".vid-card-title")?.textContent?.trim() ||
+          yt.textContent?.replace(/\s+/g, " ").trim() ||
+          "Video";
+        setPlayer({ id, title });
+      }
+    }
   }
 
   return (
@@ -61,14 +119,34 @@ function RessurserPage() {
         <h1>Ressurser</h1>
         <p>Fagbibliotek med tallmengder, brøkregning, kvadratrøtter, programmering og temavideoer.</p>
       </div>
-      <div className="res-tabs">
+      <nav className="res-tabs" aria-label="Fagbibliotek">
         {fagstoff.map((f) => (
-          <button key={f.id} type="button" className={f.id === tab ? "is-on" : ""} onClick={() => setTab(f.id)}>
+          <a
+            key={f.id}
+            href={`/ressurser?t=${encodeURIComponent(f.id)}`}
+            className={f.id === tab ? "is-on" : ""}
+            aria-current={f.id === tab ? "page" : undefined}
+          >
             {f.tittel.replace("Fagbibliotek: ", "")}
-          </button>
+          </a>
         ))}
-      </div>
-      <div className="res-html" onClick={onContentClick}>
+      </nav>
+      <div
+        className="res-html"
+        ref={contentRef}
+        onClick={onContentClick}
+        onKeyDown={(e) => {
+          if (e.key !== "Tab") return;
+          const t = e.target as HTMLElement;
+          if (!t.classList.contains("py-code")) return;
+          e.preventDefault();
+          const ta = t as HTMLTextAreaElement;
+          const s = ta.selectionStart;
+          const end = ta.selectionEnd;
+          ta.value = `${ta.value.slice(0, s)}    ${ta.value.slice(end)}`;
+          ta.selectionStart = ta.selectionEnd = s + 4;
+        }}
+      >
         {loading ? (
           <p className="res-loading">Laster fagstoff…</p>
         ) : (
@@ -77,11 +155,31 @@ function RessurserPage() {
               {current?.tittel}
             </h3>
             <div className="fagstoff-content">
-              <KatexHtml html={html} />
+              <KatexHtml html={html} mode="article" />
             </div>
           </article>
         )}
       </div>
+      {player && (
+        <div className="yt-lightbox" role="dialog" aria-modal="true" aria-label={player.title} onClick={() => setPlayer(null)}>
+          <div className="yt-lightbox-card" onClick={(e) => e.stopPropagation()}>
+            <div className="yt-lightbox-bar">
+              <strong>{player.title}</strong>
+              <button type="button" className="quiz-close-btn" aria-label="Lukk video" onClick={() => setPlayer(null)}>
+                <X size={18} />
+              </button>
+            </div>
+            <div className="yt-lightbox-frame">
+              <iframe
+                src={`https://www.youtube-nocookie.com/embed/${player.id}?autoplay=1&rel=0`}
+                title={player.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

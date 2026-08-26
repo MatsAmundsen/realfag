@@ -39,7 +39,7 @@ export function formatTaskHtml(html: string): string {
     );
 
   const stash: string[] = [];
-  s = s.replace(/<pre[\s\S]*?<\/pre>|<code[\s\S]*?<\/code>|<svg[\s\S]*?<\/svg>/gi, (m) => {
+  s = s.replace(/<pre[\s\S]*?<\/pre>|<code[\s\S]*?<\/code>|<svg[\s\S]*?<\/svg>|<textarea[\s\S]*?<\/textarea>/gi, (m) => {
     stash.push(m);
     return `\u0000${stash.length - 1}\u0000`;
   });
@@ -51,6 +51,25 @@ export function formatTaskHtml(html: string): string {
 
   s = structureTaskParts(s);
 
+  s = s.replace(/\u0000(\d+)\u0000/g, (_, i) => stash[Number(i)] || "");
+  return s;
+}
+
+/** KaTeX for fagbibliotek-HTML — uten oppgave-omskriving som kan ødelegge knapper. */
+export function formatArticleHtml(html: string): string {
+  if (!html) return "";
+  let s = html
+    .replace(/\u000c\s*rac/g, "\\frac")
+    .replace(/\u0009\s*ext/g, "\\text");
+
+  const stash: string[] = [];
+  s = s.replace(/<pre[\s\S]*?<\/pre>|<code[\s\S]*?<\/code>|<svg[\s\S]*?<\/svg>|<textarea[\s\S]*?<\/textarea>/gi, (m) => {
+    stash.push(m);
+    return `\u0000${stash.length - 1}\u0000`;
+  });
+
+  s = s.replace(/\$\$([\s\S]+?)\$\$/g, (_, tex: string) => renderTex(tex, true));
+  s = s.replace(/\$([^$]+)\$/g, (_, tex: string) => renderTex(tex, false));
   s = s.replace(/\u0000(\d+)\u0000/g, (_, i) => stash[Number(i)] || "");
   return s;
 }
