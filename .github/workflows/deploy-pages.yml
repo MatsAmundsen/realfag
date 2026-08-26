@@ -24,8 +24,10 @@ jobs:
           node-version: "22"
       - name: Bygg dist
         run: |
-          node --experimental-default-type=commonjs build.js
-          node --experimental-default-type=commonjs scripts/prepare-dist.js
+          cp build.js build.cjs
+          cp scripts/prepare-dist.js scripts/prepare-dist.cjs
+          node build.cjs
+          node scripts/prepare-dist.cjs
       - name: .nojekyll
         run: touch dist/.nojekyll
       - uses: actions/configure-pages@v5
