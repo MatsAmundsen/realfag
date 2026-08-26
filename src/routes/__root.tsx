@@ -6,8 +6,10 @@ import { AppShell } from "@/components/AppShell";
 import appCss from "../styles.css?url";
 
 const APP_NAME = "Matteguiden 1T";
+const MG_BUILD = "2026-08-27-t-rex";
 
 const KILL_LEGACY_PWA = `(function(){
+  var BUILD=${JSON.stringify(MG_BUILD)};
   try {
     var b=document.getElementById("mg-update-banner");
     if(b){b.hidden=true;b.style.display="none";}
@@ -19,6 +21,16 @@ const KILL_LEGACY_PWA = `(function(){
     if(window.caches) caches.keys().then(function(keys){
       keys.forEach(function(k){caches.delete(k);});
     });
+    fetch("/version.json?mg="+Date.now(),{cache:"no-store",headers:{"Cache-Control":"no-cache"}})
+      .then(function(r){return r.ok?r.json():null;})
+      .then(function(v){
+        if(!v||!v.version||v.version===BUILD) return;
+        var key="mg-forced-"+v.version;
+        try { if(sessionStorage.getItem(key)) return; sessionStorage.setItem(key,"1"); } catch(e){ return; }
+        var u=new URL(location.href);
+        u.searchParams.set("mg", v.version);
+        location.replace(u.toString());
+      }).catch(function(){});
   } catch(e) {}
 })();`;
 
@@ -96,7 +108,10 @@ export const Route = createRootRoute({
         content: "Læringsressurs for vg1 matematikk 1T: oppgaver, quiz, øveprøver og eksamensarkiv.",
       },
       { name: "theme-color", content: "#0a0f1e" },
-      { name: "mg-build", content: "2026-08-26-ressurs-lenker" },
+      { name: "mg-build", content: MG_BUILD },
+      { httpEquiv: "Cache-Control", content: "no-cache, no-store, must-revalidate" },
+      { httpEquiv: "Pragma", content: "no-cache" },
+      { httpEquiv: "Expires", content: "0" },
     ],
     links: [
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },

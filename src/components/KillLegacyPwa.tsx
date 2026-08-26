@@ -1,9 +1,12 @@
 import { useEffect } from "react";
 
+const MG_BUILD = "2026-08-27-t-rex";
+
 /**
  * Old Matteguiden registered /sw.js. A later "kill" worker then called
  * clients.navigate(?mg=timestamp) on activate, which reloaded the page
- * forever. Unregister leftovers. Do not register a new worker. Do not reload.
+ * forever. Unregister leftovers. Force a single reload if version.json
+ * is newer than this HTML. Do not loop.
  */
 export function KillLegacyPwa() {
   useEffect(() => {
@@ -20,6 +23,26 @@ export function KillLegacyPwa() {
         keys.forEach((k) => void caches.delete(k));
       });
     }
+
+    void fetch(`/version.json?mg=${Date.now()}`, {
+      cache: "no-store",
+      headers: { "Cache-Control": "no-cache" },
+    })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((v: { version?: string } | null) => {
+        if (!v?.version || v.version === MG_BUILD) return;
+        const key = `mg-forced-${v.version}`;
+        try {
+          if (sessionStorage.getItem(key)) return;
+          sessionStorage.setItem(key, "1");
+        } catch {
+          return;
+        }
+        const u = new URL(window.location.href);
+        u.searchParams.set("mg", v.version);
+        window.location.replace(u.toString());
+      })
+      .catch(() => {});
 
     const onClick = (e: MouseEvent) => {
       const t = e.target;
