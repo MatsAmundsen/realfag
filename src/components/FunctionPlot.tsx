@@ -33,12 +33,12 @@ function fmt(n: number) {
 
 function GraphSvg({ spec, large }: { spec: PlotSpec; large?: boolean }) {
   const uid = useId().replace(/:/g, "");
-  const W = large ? 760 : 360;
-  const H = large ? 500 : 250;
-  const padL = large ? 52 : 40;
-  const padR = large ? 28 : 22;
-  const padT = large ? 28 : 22;
-  const padB = large ? 38 : 30;
+  const W = large ? 760 : 520;
+  const H = large ? 500 : 320;
+  const padL = large ? 52 : 44;
+  const padR = large ? 28 : 24;
+  const padT = large ? 28 : 24;
+  const padB = large ? 38 : 34;
   const { xMin, xMax, yMin, yMax } = spec;
   const sampled = useMemo(() => samplePlot(spec, large ? 360 : 240), [spec, large]);
   const xScale = (x: number) => padL + ((x - xMin) / (xMax - xMin || 1)) * (W - padL - padR);

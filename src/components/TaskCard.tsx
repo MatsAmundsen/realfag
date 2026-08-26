@@ -98,12 +98,12 @@ export function TaskCard({
         </div>
       </div>
       <div className={plot ? "task-body has-graph" : "task-body"}>
+        {oppgave.bilde && (
+          <img src={oppgave.bilde} alt="" className="task-image" />
+        )}
         <KatexHtml html={oppgave.tekst} className="task-content" />
         {plot && <FunctionPlot spec={plot} />}
       </div>
-      {oppgave.bilde && (
-        <img src={oppgave.bilde} alt="" className="task-image" />
-      )}
       <div className="task-action-bar">
         {canHelp && oppgave.hint && (
           <button type="button" className="hint-btn" onClick={() => setHintOn((v) => !v)}>

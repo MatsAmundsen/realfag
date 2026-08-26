@@ -58,7 +58,7 @@ const dk5A: Delkapittel = {
   oppgaver: [
     o(
       "5.1",
-      "Et par $(x,y)$ er løsning på et likningssett bare hvis det passer i <em>begge</em> likningene.<br><br>Grafene til $f(x) = -\\dfrac{1}{2}x + 4$ og $g(x) = 2x - 1$ er to rette linjer.<br><br><strong>a)</strong> Les av (eller regn ut) skjæringspunktet.<br><br><strong>b)</strong> Skriv de to linjene som et likningssett med $x$ og $y$.<br><br><strong>c)</strong> Kontroller at paret fra <strong>a)</strong> passer i begge likningene.",
+      "Et par $(x,y)$ er løsning på et likningssett bare hvis det passer i <em>begge</em> likningene.<br><br>Figuren viser grafene til $f(x) = -\\dfrac{1}{2}x + 4$ og $g(x) = 2x - 1$.<br><br><strong>a)</strong> Les av (eller regn ut) skjæringspunktet.<br><br><strong>b)</strong> Skriv de to linjene som et likningssett med $x$ og $y$.<br><br><strong>c)</strong> Kontroller at paret fra <strong>a)</strong> passer i begge likningene.",
       "Sett $f(x)=g(x)$ for å finne $x$. Deretter $y=f(x)$.",
       [
         "<strong>a)</strong> $-\\dfrac{1}{2}x+4=2x-1$<br>$5=\\dfrac{5}{2}x$<br>$x=2$, $y=2\\cdot 2-1=3$. Skjæringspunkt $(2,3)$.",
@@ -141,6 +141,7 @@ const dk5B: Delkapittel = {
     q("«$25\\,\\%$ av guttene» i et sett skrives", ["$0{,}25g$", "$25g$", "$g+25$", "$g/25$"], 0, "Prosent er desimaltall i likningen."),
     q("Hvorfor trenger vi to likninger for å finne to priser?", ["Fordi vi liker ekstra arbeid", "To ukjente krever to uavhengige opplysninger", "Priser er alltid hele tall", "Grafen må være en parabel"], 1, "Ett krav per ukjent, og kravene må være ulike."),
     q("Hvis du bare kjenner totalsummen $e+v=210$, kan du finne $e$ og $v$?", ["Ja, entydig", "Nei, uendelig mange par passer", "Bare hvis $e=v$", "Bare grafisk"], 1, "Én likning med to ukjente har uendelig mange løsninger."),
+    q("En familie betaler $1428$ kr etter $15\\,\\%$ rabatt. Beløpet før rabatt er", ["$1428\\cdot 0{,}15$", "$1428 / 0{,}85$", "$1428\\cdot 1{,}15$", "$1428 / 0{,}15$"], 1, "De betalte $85\\,\\%$ av ordinær pris, så $1428/0{,}85=1680$."),
   ],
   oppgaver: [
     o(
@@ -210,6 +211,17 @@ const dk5B: Delkapittel = {
         "<strong>a)</strong> $I(x)=5x+80$, $K(x)=5x+40$.",
         "<strong>b)</strong> $5x+80=5x+40$ har ingen løsning. Linjene er parallelle.",
         "<strong>c)</strong> Inntekten ligger alltid $40$ kr over kostnaden. De blir aldri like — overskuddet er konstant $40$ kr.<br><strong>Svar:</strong> aldri like; overskudd $40$ kr uansett $x$",
+      ],
+    ),
+
+    o(
+      "5B.7",
+      "Et alpinsenter selger voksenbillett og barnebillett.<br>Familien Lien betaler $980$ kr for <strong>én voksen og tre barn</strong>.<br><br>Familien Nygård er medlemmer i skiklubben og får $15\\,\\%$ rabatt på hele beløpet. Etter rabatten betaler de $1428$ kr for <strong>tre voksne og fire barn</strong>.<br><br>La $v$ være voksenpris og $b$ barnepris (før rabatt).<br><br><strong>a)</strong> Sett opp et likningssett. Husk at rabatten bare gjelder Nygård.<br><br><strong>b)</strong> Finn $v$ og $b$.<br><br><strong>c)</strong> Hva ville Lien ha betalt med samme $15\\,\\%$ rabatt?",
+      "Rabatt på $15\\,\\%$ betyr at Nygård betaler $85\\,\\%$ av ordinær pris. Del $1428$ på $0{,}85$.",
+      [
+        "<strong>a)</strong> $v+3b=980$ og $0{,}85(3v+4b)=1428$, altså $3v+4b=1680$.",
+        "<strong>b)</strong> $v=980-3b$. $3(980-3b)+4b=1680$<br>$2940-5b=1680$, $b=252$, $v=224$.",
+        "<strong>c)</strong> $0{,}85\\cdot 980=833$ kr.<br><strong>Svar:</strong> voksen $224$ kr, barn $252$ kr; Lien med rabatt $833$ kr",
       ],
     ),
   ],
@@ -343,7 +355,7 @@ const dk5D: Delkapittel = {
     ),
     o(
       "5.27",
-      "Grafen til $h(x)=-x^2+4x+1$ er en parabel.<br><br><strong>a)</strong> Finn toppunktet.<br><br><strong>b)</strong> Finn nullpunktene (eksakt).<br><br><strong>c)</strong> For hvilke $x$ er $h(x)>0$?",
+      "Figuren viser parabelen $h(x)=-x^2+4x+1$.<br><br><strong>a)</strong> Finn toppunktet.<br><br><strong>b)</strong> Finn nullpunktene (eksakt, ikke bare avlest).<br><br><strong>c)</strong> For hvilke $x$ er $h(x)>0$?",
       "Toppunktet ligger på $x=-b/(2a)$. ABC-formelen gir nullpunktene.",
       [
         "<strong>a)</strong> $a=-1$, $b=4$, $x=-4/(-2)=2$. $h(2)=-4+8+1=5$. Toppunkt $(2,5)$.",
@@ -368,6 +380,17 @@ const dk5D: Delkapittel = {
       [
         "<strong>a)</strong> Uendelig mange parabler gjennom to punkt (familien har én fri parameter).",
         "<strong>b)</strong> Da finnes det ingen annengradsfunksjon som treffer alle fire. Du må bytte modell (f.eks. tredjegrad).<br><strong>Svar:</strong> tre punkt låser $a,b,c$; et avvikende fjerde punkt knuser modellen",
+      ],
+    ),
+
+    o(
+      "5D.7",
+      "Figuren viser $f(x)=(x-2)^2$ (parabel) og $g(x)=x$ (linje). De skjærer hverandre i $(1,1)$ og $(4,4)$.<br><strong>Oppgaven skal løses grafisk</strong> — les av, ikke løs algebraisk.<br><br><strong>a)</strong> Løs $f(x)=g(x)$.<br><br><strong>b)</strong> Løs $g(x)>2$.<br><br><strong>c)</strong> Løs $f(x)\\le g(x)$.",
+      "Skjæringspunktene gir a). I c) er det der parabelen ligger på eller under linjen.",
+      [
+        "<strong>a)</strong> Grafene møtes i $x=1$ og $x=4$.",
+        "<strong>b)</strong> Linjen $y=x$ ligger over $y=2$ når $x>2$, altså $x\\in\\langle 2,\\infty\\rangle$.",
+        "<strong>c)</strong> Parabelen under/på linjen mellom skjæringspunktene: $x\\in[1,4]$.<br><strong>Svar:</strong> a) $x=1$ eller $x=4$ b) $\\langle 2,\\infty\\rangle$ c) $[1,4]$",
       ],
     ),
   ],
@@ -423,7 +446,7 @@ const dk5E: Delkapittel = {
     ),
     o(
       "5.34",
-      "Vi har settet $y=x+2$ og $y=x^2+a$. Grafen til $f(x)=x+2$ er linjen. Når $a=-4$ er parabelen $h(x)=x^2-4$.<br><br><strong>a)</strong> Vis at du får $x^2-x+(a-2)=0$.<br><br><strong>b)</strong> For hvilke $a$ har settet to, én og ingen løsning?<br><br><strong>c)</strong> Når $a=-4$: finn punktene (les også av grafen).",
+      "Vi har settet $y=x+2$ og $y=x^2+a$. Figuren viser linjen $f(x)=x+2$ og parabelen $h(x)=x^2-4$ (altså $a=-4$).<br><br><strong>a)</strong> Vis at du får $x^2-x+(a-2)=0$.<br><br><strong>b)</strong> For hvilke $a$ har settet to, én og ingen løsning?<br><br><strong>c)</strong> Når $a=-4$: finn punktene (les også av grafen).",
       "Diskriminanten $D=1-4(a-2)=9-4a$.",
       [
         "<strong>a)</strong> $x+2=x^2+a$ $\\Rightarrow$ $x^2-x+(a-2)=0$.",
@@ -449,6 +472,27 @@ const dk5E: Delkapittel = {
         "<strong>a)</strong> $xy=60$ og $x^2+y^2=13^2=169$.",
         "<strong>b)</strong> $(x+y)^2=169+120=289$, $x+y=17$ (positivt). $x$ og $y$ er røttene i $t^2-17t+60=0$, $(t-5)(t-12)=0$. Sider $5$ m og $12$ m.",
         "<strong>c)</strong> Omkrets $2\\cdot 17=34$ m, funnet fra $x+y$ uten å splitte.<br><strong>Svar:</strong> $5$ m og $12$ m, omkrets $34$ m",
+      ],
+    ),
+
+    o(
+      "5E.9",
+      "Løs settene. Oppgi alle tallpar.<br><br><strong>a)</strong> $$\\begin{cases}x^2-y=3\\\\ x+y=9\\end{cases}$$<br><br><strong>b)</strong> $$\\begin{cases}x^2-y=5\\\\ 2x+y=7\\end{cases}$$<br><br><strong>c)</strong> Hvorfor kan a) ha to løsninger, mens et vanlig førstegradssett $2\\times 2$ høyst har én?",
+      "Isoler $y$ fra den lineære likningen og sett inn. Da får du en andregradslikning.",
+      [
+        "<strong>a)</strong> $y=9-x$. $x^2-(9-x)=3$, $x^2+x-12=0$, $(x+4)(x-3)=0$. Par $(3,6)$ og $(-4,13)$.",
+        "<strong>b)</strong> $y=7-2x$. $x^2-(7-2x)=5$, $x^2+2x-12=0$, $(x+4)(x-3)=0$. Par $(3,1)$ og $(-4,15)$.",
+        "<strong>c)</strong> Den ene likningen er en parabel. Parabel og linje kan møtes i to punkt. To rette linjer møtes i høyst ett.<br><strong>Svar:</strong> a) $(3,6)$ og $(-4,13)$ b) $(3,1)$ og $(-4,15)$",
+      ],
+    ),
+    o(
+      "5E.10",
+      "CAS/graftegner viser $f(x)=x^3-5x+1$ og $g(x)=-x+1$ i samme ruteark. Hjelpemidler er tillatt.<br><br><strong>a)</strong> Les av $x$-verdiene der grafene skjærer. Kontroller med CAS at $f(x)=g(x)$ har nøyaktig tre løsninger.<br><br><strong>b)</strong> Løs $f(x)\\ge g(x)$ grafisk.<br><br><strong>c)</strong> Vis at $f(x)-g(x)=x(x-2)(x+2)$, og bekreft b) med fortegnslinje.",
+      "$f\\ge g$ der den kubiske kurven ligger over eller på linjen. Skjæringspunktene deler $x$-aksen.",
+      [
+        "<strong>a)</strong> Skjæring i $x=-2$, $x=0$ og $x=2$. CAS: $x^3-5x+1=-x+1$ $\\Rightarrow$ $x^3-4x=0$ $\\Rightarrow$ $x(x^2-4)=0$.",
+        "<strong>b)</strong> Over linjen på $[-2,0]$ og fra $x=2$ og ut: $x\\in[-2,0]\\cup[2,\\infty\\rangle$.",
+        "<strong>c)</strong> $f-g=x^3-4x=x(x-2)(x+2)$. Fortegn: minus, pluss, minus, pluss rundt $-2$, $0$, $2$. $\\ge 0$ gir $[-2,0]\\cup[2,\\infty\\rangle$.<br><strong>Svar:</strong> a) $-2$, $0$, $2$ b–c) $[-2,0]\\cup[2,\\infty\\rangle$",
       ],
     ),
   ],
@@ -505,7 +549,7 @@ const dk5F: Delkapittel = {
     ),
     o(
       "5.41",
-      "Sesongkort koster $280$ kr, og hver tur koster da $15$ kr. Uten kort koster hver tur $40$ kr. La $x$ være antall turer.<br>Se grafene til $f(x)=15x+280$ og $g(x)=40x$.<br><br><strong>a)</strong> Hva forteller $15x+280<40x$?<br><br><strong>b)</strong> Løs ulikheten.<br><br><strong>c)</strong> Tolk med hele turer.",
+      "Sesongkort koster $280$ kr, og hver tur koster da $15$ kr. Uten kort koster hver tur $40$ kr. La $x$ være antall turer.<br>Figuren viser grafene til $f(x)=15x+280$ og $g(x)=40x$.<br><br><strong>a)</strong> Hva forteller $15x+280<40x$?<br><br><strong>b)</strong> Løs ulikheten.<br><br><strong>c)</strong> Tolk med hele turer.",
       "Flytt $x$-ledd til samme side.",
       [
         "<strong>a)</strong> Når sesongkortet gir lavere totalpris.",
@@ -515,7 +559,7 @@ const dk5F: Delkapittel = {
     ),
     o(
       "5.42",
-      "Grafene til $f(x)=\\dfrac{1}{2}x+2$ og $g(x)=-\\dfrac{1}{4}x+6$ skjærer hverandre.<br><br><strong>a)</strong> Finn skjæringspunktet.<br><br><strong>b)</strong> For hvilke $x$ er $f(x)\\ge g(x)$?<br><br><strong>c)</strong> Skriv svaret som intervall.",
+      "Figuren viser $f(x)=\\dfrac{1}{2}x+2$ og $g(x)=-\\dfrac{1}{4}x+6$.<br><br><strong>a)</strong> Finn skjæringspunktet (regn, og sjekk på figuren).<br><br><strong>b)</strong> For hvilke $x$ er $f(x)\\ge g(x)$?<br><br><strong>c)</strong> Skriv svaret som intervall.",
       "Sett $f=g$ for skjæringen. Deretter se hvilken graf som ligger øverst til høyre.",
       [
         "<strong>a)</strong> $\\dfrac{1}{2}x+2=-\\dfrac{1}{4}x+6$, $\\dfrac{3}{4}x=4$, $x=\\dfrac{16}{3}$, $y=\\dfrac{14}{3}$.",
@@ -525,7 +569,7 @@ const dk5F: Delkapittel = {
     ),
     o(
       "5.43",
-      "Løs $2x+3>-\\dfrac{1}{2}x+8$ både ved regning og ved å se på $f(x)=2x+3$ og $g(x)=-\\dfrac{1}{2}x+8$.",
+      "Løs $2x+3>-\\dfrac{1}{2}x+8$ både ved regning og grafisk. Figuren viser $f(x)=2x+3$ og $g(x)=-\\dfrac{1}{2}x+8$.",
       "Samle $x$ på venstre side.",
       [
         "$2x+\\dfrac{1}{2}x>5$, $\\dfrac{5}{2}x>5$, $x>2$.<br>Grafisk: $f$ starter under $g$ og har brattere positiv stigning, så $f>g$ til høyre for $x=2$.<br><strong>Svar:</strong> $x\\in\\langle 2,\\infty\\rangle$",
@@ -576,7 +620,7 @@ const dk5G: Delkapittel = {
     ),
     o(
       "5.47",
-      "Grafen til $f(x)=-(x+2)(x-5)$ er en parabel som skjærer $x$-aksen i $-2$ og $5$. Linja $g(x)=4$ skjærer $f$ i $x=0$ og $x=3$.<br><br><strong>a)</strong> Løs $f(x)>0$.<br><br><strong>b)</strong> Løs $f(x)>4$.<br><br><strong>c)</strong> Løs $f(x)<g(x)$.",
+      "Figuren viser parabelen $f(x)=-(x+2)(x-5)$ og linjen $g(x)=4$. Parabelen skjærer $x$-aksen i $-2$ og $5$. Linja skjærer $f$ i $x=0$ og $x=3$.<br><br><strong>a)</strong> Løs $f(x)>0$.<br><br><strong>b)</strong> Løs $f(x)>4$.<br><br><strong>c)</strong> Løs $f(x)<g(x)$.",
       "$f>4$ er der parabelen ligger over den vannrette linja.",
       [
         "<strong>a)</strong> Parabel ned, positiv mellom nullpunktene: $\\langle-2,5\\rangle$",
@@ -718,74 +762,106 @@ const dk5H: Delkapittel = {
 const dk5OP: Delkapittel = {
   id: "5OP",
   tittel: "Øveprøve",
-  quiz: null,
+  quiz: [
+    q("$5-2x<3x-10$ har løsning", ["$x<3$", "$x>3$", "$x=3$", "$x\\le 3$"], 1, "$15<5x$ gir $x>3$."),
+    q("Settet $x^2+y=10$, $x+y=4$ har", ["én løsning", "to løsninger", "ingen løsning", "uendelig mange"], 1, "Innsetting gir $x^2-x-6=0$ med to reelle røtter."),
+    q("$\\dfrac{x-3}{x+1}\\le 0$ har løsning", ["$[-1,3]$", "$\\langle-1,3]$", "$\\langle-1,3\\rangle$", "$(-\\infty,-1]$"], 1, "Inkluder nullpunktet $3$, ekskluder polen $-1$."),
+    q("To linjer $2x+y=5$ og $kx+2y=4$ er uten felles punkt når", ["$k=2$", "$k=4$", "$k=0$", "aldri"], 1, "$k=4$ gir parallell $2x+y=2$, som aldri møter $2x+y=5$."),
+    q("Parabel og linje skjærer i $x=2$ og $x=5$. Da er $f\\le g$ typisk", ["$\\langle-\\infty,2\\rangle$", "$[2,5]$ (parabel vender opp)", "bare $x=2$", "alle $x$"], 1, "En parabel som vender opp ligger under linjen mellom skjæringspunktene."),
+    q("$10\\,\\%$ rabatt på $720$ kr gir å betale", ["$72$ kr", "$648$ kr", "$792$ kr", "$710$ kr"], 1, "$0{,}9\\cdot 720=648$."),
+  ],
   oppgaver: [
     o(
       "5.OP0",
-      "<strong>Tid:</strong> ca. 60–75 min<br><strong>Hjelpemidler:</strong> Del 1 uten, del 2 med<br><br>Prøven dekker lineære sett, modellering, tre ukjente, andregradsmodeller, ikkelineære sett, førstegradsulikheter, fortegnslinje og rasjonale ulikheter.<br>Vis mellomregning. Merk ferdig etter hvert som du er fornøyd.",
-      "Les hele prøven først. Begynn med det du mestrer.",
-      ["Dette er oversiktssiden. Gå videre til oppgave 1."],
+      "<strong>Kapittel 5 · Likningssett og ulikheter</strong><br><strong>Tid:</strong> ca. $90$ min (del $1$ ca. $45$ min, del $2$ ca. $45$ min)<br><br>Prøven er bygd opp som en ekte 1T-prøve.<br><br><strong>Del 1 — uten hjelpemidler</strong> (oppgave $1$–$5$): førstegradsulikhet, lineært og ikkelineært sett, andregrads- og rasjonal ulikhet, grafisk avlesning, fortegnslinje baklengs.<br><br><strong>Del 2 — med hjelpemidler</strong> (oppgave $6$–$8$): modellering med rabatt, CAS/graf, parameter uten løsning.<br><br>Vis mellomregning. Oppgaver med bokstaver teller hver for seg.",
+      "Start med del 1. Ikke bruk kalkulator før du er ferdig med oppgave $5$.",
+      ["Dette er oversiktssiden. Gå videre til oppgave $1$–$8$."],
     ),
     o(
       "5.OP1",
-      "Løs settene.<br><br><strong>a)</strong> $2x+y=7$, $x-y=2$<br><br><strong>b)</strong> $\\dfrac{1}{2}x+y=3$, $x-y=0$",
-      "I a) faller $y$ ut hvis du legger sammen.",
-      [
-        "<strong>a)</strong> Sum: $3x=9$, $x=3$, $y=1$.<br><strong>Svar:</strong> $(3,1)$",
-        "<strong>b)</strong> $x=y$ inn: $\\dfrac{1}{2}x+x=3$, $\\dfrac{3}{2}x=3$, $x=2$, $y=2$.<br><strong>Svar:</strong> $(2,2)$",
-      ],
+      "<em>Del 1 · uten hjelpemidler</em><br><br>Løs ulikheten $5-2x<3x-10$. Skriv svaret som et intervall.",
+      "Samle $x$-leddene på én side. Fortegnet snur ikke når du bare flytter ledd.",
+      ["$5+10<3x+2x$, $15<5x$, $x>3$.<br><strong>Svar:</strong> $\\langle 3,\\infty\\rangle$"],
     ),
     o(
       "5.OP2",
-      "Et museum tar $80$ kr for ungdom og $140$ kr for voksne. Det ble solgt $90$ billetter for $10\\,200$ kr.<br><br><strong>a)</strong> Sett opp et sett.<br><br><strong>b)</strong> Finn antall av hver.",
-      "Én likning teller billetter, én teller kroner.",
+      "<em>Del 1 · uten hjelpemidler</em><br><br>Løs likningssettene.<br><br><strong>a)</strong> $$\\begin{cases}2p+q=11\\\\ p-q=1\\end{cases}$$<br><br><strong>b)</strong> $$\\begin{cases}x^2+y=10\\\\ x+y=4\\end{cases}$$",
+      "I a) kan du legge sammen slik at $q$ faller bort. I b) isoler $y$ og sett inn — du får en andregradslikning.",
       [
-        "<strong>a)</strong> $u+v=90$, $80u+140v=10200$.",
-        "<strong>b)</strong> $v=90-u$. $80u+140(90-u)=10200$<br>$-60u+12600=10200$, $u=40$, $v=50$.<br><strong>Svar:</strong> $40$ ungdom, $50$ voksne",
+        "<strong>a)</strong> Sum: $3p=12$, $p=4$, $q=3$. $(p,q)=(4,3)$.",
+        "<strong>b)</strong> $y=4-x$. $x^2+(4-x)=10$, $x^2-x-6=0$, $(x-3)(x+2)=0$. $(3,1)$ og $(-2,6)$.<br><strong>Svar:</strong> a) $(4,3)$ b) $(3,1)$ og $(-2,6)$",
       ],
     ),
     o(
       "5.OP3",
-      "Løs $x+y+z=6$, $x=2y$, $z=y$.",
-      "Bytt inn i den første.",
-      ["$2y+y+y=6$, $4y=6$, $y=\\dfrac{3}{2}$, $x=3$, $z=\\dfrac{3}{2}$.<br><strong>Svar:</strong> $\\left(3,\\dfrac{3}{2},\\dfrac{3}{2}\\right)$"],
+      "<em>Del 1 · uten hjelpemidler</em><br><br>Løs ulikhetene.<br><br><strong>a)</strong> $x^2-6x<-8$<br><br><strong>b)</strong> $3(x-1)(x+5)>0$<br><br><strong>c)</strong> $\\dfrac{x-3}{x+1}\\le 0$",
+      "Flytt alt til venstre og faktoriser. I c) er $x=-1$ en pol og kan ikke være med.",
+      [
+        "<strong>a)</strong> $x^2-6x+8<0$, $(x-2)(x-4)<0$, $x\\in\\langle 2,4\\rangle$.",
+        "<strong>b)</strong> $3>0$, så $(x-1)(x+5)>0$ utenfor nullpunktene: $x\\in\\langle-\\infty,-5\\rangle\\cup\\langle 1,\\infty\\rangle$.",
+        "<strong>c)</strong> Nullpunkt $3$ (med), pol $-1$ (uten): $x\\in\\langle-1,3]$.<br><strong>Svar:</strong> a) $\\langle 2,4\\rangle$ b) $\\langle-\\infty,-5\\rangle\\cup\\langle 1,\\infty\\rangle$ c) $\\langle-1,3]$",
+      ],
     ),
     o(
       "5.OP4",
-      "$f$ er av typen $ax^2+bx+c$ med $f(0)=3$, $f(1)=6$, $f(2)=11$. Finn $a$, $b$ og $c$. Kontrollgraf: treffer $h(x)=x^2+2x+3$ punktene $(0, 3)$, $(1, 6)$ og $(2, 11)$?",
-      "$f(0)=c$. Trekk de andre likningene.",
+      "<em>Del 1 · uten hjelpemidler</em><br><br>Figuren viser $f(x)=x^2-6x+8$ (parabel) og $g(x)=x-2$ (linje). De skjærer i $(2,0)$ og $(5,3)$.<br><strong>Oppgaven skal løses grafisk.</strong><br><br><strong>a)</strong> Løs $f(x)=g(x)$.<br><br><strong>b)</strong> Løs $g(x)>1$.<br><br><strong>c)</strong> Løs $f(x)\\le g(x)$.",
+      "Les av skjæringspunktene. I c) er det der parabelen ligger på eller under linjen.",
       [
-        "$c=3$. $a+b+3=6$ $\\Rightarrow$ $a+b=3$. $4a+2b+3=11$ $\\Rightarrow$ $2a+b=4$. Trekk: $a=1$, $b=2$.<br><strong>Svar:</strong> $f(x)=x^2+2x+3$",
+        "<strong>a)</strong> $x=2$ eller $x=5$.",
+        "<strong>b)</strong> $x-2>1$ $\\Rightarrow$ $x>3$, altså $\\langle 3,\\infty\\rangle$.",
+        "<strong>c)</strong> Parabel under/på linjen mellom skjæringene: $[2,5]$.<br><strong>Svar:</strong> a) $2$ eller $5$ b) $\\langle 3,\\infty\\rangle$ c) $[2,5]$",
       ],
     ),
     o(
       "5.OP5",
-      "Et rektangel har omkrets $26$ cm og areal $36$ cm$^2$. Finn sidene.",
-      "$x+y=13$, $xy=36$.",
-      ["$x(13-x)=36$, $x^2-13x+36=0$, $(x-4)(x-9)=0$.<br><strong>Svar:</strong> $4$ cm og $9$ cm"],
+      `<em>Del 1 · uten hjelpemidler</em><br><br>Finn <strong>et</strong> polynomuttrykk $p(x)$ som passer til fortegnslinja. Nullpunktene er merket.<br>${signSvg(
+        [
+          { label: "−3", kind: "zero" },
+          { label: "1", kind: "zero" },
+        ],
+        "+",
+        ["−"],
+        "+",
+      )}<br><strong>a)</strong> Begrunn valg av faktorer og fortegn foran produktet.<br><strong>b)</strong> Skriv ett konkret uttrykk for $p(x)$.<br><strong>c)</strong> Løs $p(x)\\le 0$ ut fra linja.`,
+      "Nullpunkt $r$ gir $(x-r)$. Pluss utenfor og minus mellom betyr positiv leder.",
+      [
+        "<strong>a)</strong> Nullpunkt $-3$ og $1$ gir $(x+3)(x-1)$. Produktet er minus mellom og pluss utenfor, så $p(x)=k(x+3)(x-1)$ med $k>0$.",
+        "<strong>b)</strong> For eksempel $p(x)=(x+3)(x-1)$.",
+        "<strong>c)</strong> $p\\le 0$ på $[-3,1]$.<br><strong>Svar:</strong> f.eks. $(x+3)(x-1)$, $p\\le 0$ for $x\\in[-3,1]$",
+      ],
     ),
     o(
       "5.OP6",
-      "Biblioteket tar $35$ kr per besøk, eller $420$ kr for årskort. La $x$ være antall besøk. Når lønner årskortet seg? Se $f(x)=35x$ og $g(x)=420$.",
-      "$420<35x$.",
-      ["$x>12$. Fra og med $13$ besøk.<br><strong>Svar:</strong> fra $13$ besøk"],
+      "<em>Del 2 · med hjelpemidler</em><br><br>En kino selger voksenbillett og barnebillett. Familien Dahl betaler $430$ kr for <strong>to voksne og ett barn</strong>.<br><br>Familien Berg er venneklubb og får $10\\,\\%$ rabatt på hele beløpet. Etter rabatten betaler de $648$ kr for <strong>tre voksne og tre barn</strong>.<br><br>Hvor mye koster en voksenbillett, og hvor mye koster en barnebillett (ordinær pris)?",
+      "$10\\,\\%$ rabatt betyr at Berg betaler $90\\,\\%$ av ordinær pris. Del $648$ på $0{,}9$.",
+      [
+        "La $v$ og $b$ være prisene. $2v+b=430$ og $0{,}9(3v+3b)=648$, altså $v+b=240$.",
+        "$2v+(240-v)=430$, $v=190$, $b=50$.<br><strong>Svar:</strong> voksen $190$ kr, barn $50$ kr",
+      ],
     ),
     o(
       "5.OP7",
-      "Løs $x^2-5x+6\\le 0$ og $(x+2)(x-4)>0$. Grafene til $f(x)=x^2-5x+6$ og $g(x)=(x+2)(x-4)$ vises under.",
-      "Faktoriser og les fortegnslinja.",
+      "<em>Del 2 · med hjelpemidler</em><br><br>Figuren viser $f(x)=x^3-9x+4$ og $g(x)=4$. Bruk figuren og CAS/graftegner.<br><br><strong>a)</strong> Finn alle $x$ slik at $f(x)=g(x)$.<br><br><strong>b)</strong> Løs $f(x)\\ge g(x)$ grafisk.<br><br><strong>c)</strong> Bekreft b) ved å faktorisere $f(x)-g(x)$.",
+      "$f-g=x^3-9x=x(x^2-9)$. Nullpunktene ser du også merket på figuren.",
       [
-        "$(x-2)(x-3)\\le 0$ $\\Rightarrow$ $[2,3]$.<br>$(x+2)(x-4)>0$ $\\Rightarrow$ $\\langle-\\infty,-2\\rangle\\cup\\langle 4,\\infty\\rangle$.<br><strong>Svar:</strong> $[2,3]$ og $\\langle-\\infty,-2\\rangle\\cup\\langle 4,\\infty\\rangle$",
+        "<strong>a)</strong> $x^3-9x+4=4$ $\\Rightarrow$ $x(x-3)(x+3)=0$. $x=-3$, $0$ og $3$.",
+        "<strong>b)</strong> Over $y=4$ på $[-3,0]$ og fra $3$ og ut: $[-3,0]\\cup[3,\\infty\\rangle$.",
+        "<strong>c)</strong> $x(x-3)(x+3)\\ge 0$ gir samme mengde.<br><strong>Svar:</strong> a) $-3$, $0$, $3$ b–c) $[-3,0]\\cup[3,\\infty\\rangle$",
       ],
     ),
     o(
       "5.OP8",
-      "Løs $\\dfrac{x-3}{x+1}\\le 0$. Grafen til $Q(x)=\\dfrac{x-3}{x+1}$ har pol i $x=-1$.",
-      "Nullpunkt $3$ (med), pol $-1$ (uten).",
-      ["$x\\in\\langle-1,3]$.<br><strong>Svar:</strong> $\\langle-1,3]$"],
+      "<em>Del 2 · med hjelpemidler</em><br><br>Likningssettet $$\\begin{cases}2x+y=5\\\\ kx+2y=4\\end{cases}$$ der $k$ er reelt.<br><br><strong>Hvilken verdi må $k$ ha for at settet ikke skal ha en løsning?</strong> Vis med regning og begrunn.",
+      "To linjer har ingen felles punkt når de er parallelle og ikke sammenfallende.",
+      [
+        "$y=5-2x$ inn: $kx+2(5-2x)=4$, $(k-4)x=-6$.",
+        "Når $k\\neq 4$ er det én løsning. Når $k=4$ blir $0=-6$, usant — ingen løsning.",
+        "Geometrisk: $k=4$ gir $2x+y=2$, parallell med $2x+y=5$.<br><strong>Svar:</strong> $k=4$",
+      ],
     ),
   ],
 };
+
 
 export const KAP5: Kapittel = {
   id: "kap5",

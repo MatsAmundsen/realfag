@@ -421,6 +421,104 @@ export const EXTRA: Record<string, Oppgave[]> = {
       ],
     ),
   ],
+  "4B": [
+    o(
+      "4B.7",
+      "Hvilke av uttrykkene under er <strong>førstegradsfunksjoner</strong>? Begrunn kort for hvert.<br><br><strong>a)</strong> $y=4-2x$<br><br><strong>b)</strong> $y=x(x-3)$<br><br><strong>c)</strong> $y=7$<br><br><strong>d)</strong> $y=\\dfrac{x-1}{2}$<br><br><strong>e)</strong> $y=3\\cdot 2^x$<br><br><strong>f)</strong> $y=\\dfrac{2}{x}$",
+      "Førstegrad: $f(x)=ax+b$ med $a\\neq 0$. Grafen er en rett linje som verken er vannrett eller loddrett. Konstantfunksjon har grad $0$.",
+      [
+        "<strong>a)</strong> $4-2x$ er på formen $ax+b$ med $a=-2\\neq 0$.<br><strong>Svar:</strong> ja, førstegrad",
+        "<strong>b)</strong> $x(x-3)=x^2-3x$ har $x^2$. Det er andregrad.<br><strong>Svar:</strong> nei, andregrad",
+        "<strong>c)</strong> $y=7$ er konstant (grad $0$). Grafen er vannrett, stigningstall $0$.<br><strong>Svar:</strong> nei, konstantfunksjon",
+        "<strong>d)</strong> $\\dfrac{x-1}{2}=\\dfrac{1}{2}x-\\dfrac{1}{2}$. Fortsatt $ax+b$ med $a\\neq 0$.<br><strong>Svar:</strong> ja, førstegrad",
+        "<strong>e)</strong> Variabelen står i eksponenten. Det er en eksponentialfunksjon.<br><strong>Svar:</strong> nei, eksponential",
+        "<strong>f)</strong> Nevneren inneholder $x$. Det er en rasjonal funksjon, ikke et polynom av første grad.<br><strong>Svar:</strong> nei, rasjonal",
+      ],
+    ),
+    o(
+      "4B.8",
+      "Du skal finne uttrykket $f(x)=ax+b$ til en rett linje.<br><br><strong>a)</strong> Hvor mange (ulike) punkt trenger du vanligvis? Hvorfor akkurat det antallet?<br><br><strong>b)</strong> Linja går gjennom $(2,-1)$ og $(5,5)$. Finn $a$ og $b$.<br><br><strong>c)</strong> En annen linje har stigningstall $-3$ og går gjennom $(0,4)$. Hvorfor trenger du ikke to punkt her?",
+      "To ukjente $a$ og $b$ krever to opplysninger. Stigningstall: $a=\\dfrac{y_2-y_1}{x_2-x_1}$. Går linja gjennom $(0,b)$, er konstantleddet ferdig.",
+      [
+        "<strong>a)</strong> $a$ og $b$ er to ukjente, så du trenger to uavhengige opplysninger — typisk to punkt, eller stigningstall og ett punkt.<br><strong>Svar:</strong> to punkt (eller stigning + ett punkt)",
+        "<strong>b)</strong> $a=\\dfrac{5-(-1)}{5-2}=\\dfrac{6}{3}=2$. Så $f(x)=2x+b$. $2\\cdot 2+b=-1$, $b=-5$.<br><strong>Svar:</strong> $f(x)=2x-5$",
+        "<strong>c)</strong> Stigningstallet er gitt, og $(0,4)$ er $y$-skjæringen, altså $b=4$. Begge leddene er kjent uten mer regning.<br><strong>Svar:</strong> $a$ og $b$ er allerede gitt; $f(x)=-3x+4$",
+      ],
+    ),
+  ],
+  "4C": [
+    o(
+      "4C.7",
+      "Avgjør om funksjonen er av <strong>første, andre eller tredje</strong> grad. Begrunn med graden til polynomet, ikke med «det ser sånn ut».<br><br><strong>a)</strong> $p(x)=5x-x^3+1$<br><br><strong>b)</strong> $q(x)=(x-2)(x+4)$<br><br><strong>c)</strong> $r(x)=\\dfrac{2x+6}{2}$<br><br><strong>d)</strong> $s(x)=x^2(x-1)$<br><br><strong>e)</strong> Grafen er en parabel som vender ned. Hvilken grad, og hva vet du om koeffisienten foran høyeste potens?",
+      "Graden er høyeste eksponent etter at du har ganget ut. $(x-2)(x+4)$ blir $x^2+\\ldots$. En brøk med konstant nevner er fortsatt et polynom.",
+      [
+        "<strong>a)</strong> Høyeste potens er $x^3$ (leddet $-x^3$).<br><strong>Svar:</strong> tredje grad",
+        "<strong>b)</strong> $(x-2)(x+4)=x^2+2x-8$. Høyeste potens $x^2$.<br><strong>Svar:</strong> andre grad",
+        "<strong>c)</strong> $\\dfrac{2x+6}{2}=x+3$. Høyeste potens $x^1$.<br><strong>Svar:</strong> første grad",
+        "<strong>d)</strong> $x^2(x-1)=x^3-x^2$. Høyeste potens $x^3$.<br><strong>Svar:</strong> tredje grad",
+        "<strong>e)</strong> Parabel = andregrad. Vender ned $\\Leftrightarrow$ $a<0$ i $ax^2+bx+c$.<br><strong>Svar:</strong> andre grad, og $a<0$",
+      ],
+    ),
+    o(
+      "4C.8",
+      "Hvordan finner vi funksjonsuttrykket?<br><br><strong>a)</strong> En andregradsfunksjon $f(x)=ax^2+bx+c$ skal bestemmes. Hvor mange punkt trenger du i utgangspunktet, og hvorfor?<br><br><strong>b)</strong> En parabel har toppunkt $(2,5)$ og går gjennom $(0,1)$. Skriv $f$ på formen $a(x-2)^2+5$ og finn $a$.<br><br><strong>c)</strong> En tredjegrad har nullpunktene $-1$, $0$ og $3$, og $p(1)=8$. Hvorfor kan vi skrive $p(x)=ax(x+1)(x-3)$, og hvordan finner vi $a$?",
+      "Én opplysning per ukjent. Toppunktform $a(x-x_t)^2+y_t$ har bare $a$ igjen når toppunktet er kjent. Tre nullpunkt låser faktorene, ett ekstra punkt låser $a$.",
+      [
+        "<strong>a)</strong> Tre ukjente $a$, $b$ og $c$ krever tre punkt (som ikke ligger på ei rett linje).<br><strong>Svar:</strong> tre punkt",
+        "<strong>b)</strong> $f(0)=a(0-2)^2+5=4a+5=1$, $4a=-4$, $a=-1$.<br><strong>Svar:</strong> $f(x)=-(x-2)^2+5$",
+        "<strong>c)</strong> Nullpunktene gir faktorene (her er $x$ en av dem). $p(1)=a(1)(2)(-2)=-4a=8$, så $a=-2$.<br><strong>Svar:</strong> $p(x)=-2x(x+1)(x-3)$",
+      ],
+    ),
+  ],
+  "4D": [
+    o(
+      "4D.8",
+      "Hvilke av funksjonene er <strong>rasjonale</strong>? For dem som ikke er det: hva slags funksjon er de da?<br><br><strong>a)</strong> $f(x)=\\dfrac{2x-1}{x+4}$<br><br><strong>b)</strong> $g(x)=x^2-9$<br><br><strong>c)</strong> $h(x)=\\dfrac{3}{x}$<br><br><strong>d)</strong> $k(x)=5\\cdot 0{,}8^x$<br><br><strong>e)</strong> $m(x)=\\dfrac{x^2-1}{1}$",
+      "Rasjonal: brøk der teller og nevner er polynomer, og nevneren ikke er konstant. Hvis nevneren er konstant, er det et polynom.",
+      [
+        "<strong>a)</strong> Polynom delt på polynom, nevner ikke konstant.<br><strong>Svar:</strong> rasjonal",
+        "<strong>b)</strong> Polynom av andre grad, ingen brøk.<br><strong>Svar:</strong> nei, andregradspolynom",
+        "<strong>c)</strong> $3$ og $x$ er polynomer. Nevneren varierer.<br><strong>Svar:</strong> rasjonal",
+        "<strong>d)</strong> Variabelen står i eksponenten.<br><strong>Svar:</strong> nei, eksponentialfunksjon",
+        "<strong>e)</strong> Nevneren er konstanten $1$, så $m(x)=x^2-1$ er et polynom.<br><strong>Svar:</strong> nei, andregradspolynom",
+      ],
+    ),
+    o(
+      "4D.9",
+      "En rasjonal funksjon har formen $f(x)=\\dfrac{ax+b}{x-c}$.<br><br><strong>a)</strong> Hva avleses fra den loddrette asymptoten, og hva avleses fra den vannrette?<br><br><strong>b)</strong> Hvorfor er ikke asymptotene nok til å låse alle tre tallene $a$, $b$ og $c$? Hva slags ekstra opplysning trenger du?<br><br><strong>c)</strong> $f$ har loddrett asymptote $x=2$, vannrett asymptote $y=3$, og går gjennom $(0,-3)$. Finn $f(x)$.",
+      "Loddrett asymptote: $x=c$. Vannrett: $y=a$ (samme grad i teller og nevner). Ett punkt gir den siste likningen.",
+      [
+        "<strong>a)</strong> Loddrett $x=c$ gir hullet i definisjonsmengden. Vannrett $y=a$ er forholdet mellom ledende koeffisienter — her selve $a$.<br><strong>Svar:</strong> $c$ fra loddrett, $a$ fra vannrett",
+        "<strong>b)</strong> $a$ og $c$ er da kjent, men $b$ er fortsatt fri. Ett punkt $(x_0,y_0)$ på grafen gir én likning for $b$.<br><strong>Svar:</strong> du trenger ett punkt til",
+        "<strong>c)</strong> $c=2$, $a=3$, så $f(x)=\\dfrac{3x+b}{x-2}$. $f(0)=-3$: $\\dfrac{b}{-2}=-3$, $b=6$.<br><strong>Svar:</strong> $f(x)=\\dfrac{3x+6}{x-2}$",
+      ],
+    ),
+  ],
+  "4F": [
+    o(
+      "4F.8",
+      "Koble hvert uttrykk til riktig funksjonstype: <em>førstegrad</em>, <em>andregrad</em>, <em>tredjegrad</em>, <em>eksponential</em> eller <em>rasjonal</em>.<br><br><strong>a)</strong> $f(x)=2x^3-x$<br><br><strong>b)</strong> $g(x)=400\\cdot 1{,}03^x$<br><br><strong>c)</strong> $h(x)=\\dfrac{x+1}{x-5}$<br><br><strong>d)</strong> $k(x)=7-0{,}5x$<br><br><strong>e)</strong> $p(x)=(x+3)^2$<br><br><strong>f)</strong> Hvorfor er $q(x)=3\\cdot x^{1{,}2}$ <em>ikke</em> en eksponentialfunksjon, selv om den vokser?",
+      "Se hvor variabelen står: i basen med fast eksponent (potens/polynom), i eksponenten (eksponential), eller i en nevner (rasjonal). Graden er høyeste eksponent i et polynom.",
+      [
+        "<strong>a)</strong> Polynom, høyeste potens $3$.<br><strong>Svar:</strong> tredjegrad",
+        "<strong>b)</strong> Fast base $1{,}03$, variabelen i eksponenten.<br><strong>Svar:</strong> eksponential",
+        "<strong>c)</strong> Brøk av to polynomer, nevneren er ikke konstant.<br><strong>Svar:</strong> rasjonal",
+        "<strong>d)</strong> $ax+b$ med $a=-0{,}5$.<br><strong>Svar:</strong> førstegrad",
+        "<strong>e)</strong> $(x+3)^2=x^2+6x+9$.<br><strong>Svar:</strong> andregrad",
+        "<strong>f)</strong> Her er $x$ basen og $1{,}2$ en konstant eksponent — det er en potensfunksjon $a\\cdot x^b$. Hos eksponentialen er det omvendt: $a\\cdot b^x$.<br><strong>Svar:</strong> det er en potensfunksjon, ikke eksponential",
+      ],
+    ),
+    o(
+      "4F.9",
+      "Hvordan finner vi uttrykket, avhengig av typen?<br><br><strong>a)</strong> Eksponential $f(x)=a\\cdot b^x$ går gjennom $(1,6)$ og $(3,24)$. Finn $a$ og $b$. Vis mellomregning — ingen av punktene har $x=0$.<br><br><strong>b)</strong> Sammenlikn med førstegrad: hvorfor deler vi de to likningene på hverandre her, mens vi for $ax+b$ bruker topunktsformelen?<br><br><strong>c)</strong> En størrelse er $800$ til å begynne med og synker $12\\,\\%$ per år. Skriv $V(t)$ uten å bruke punkt-metoden i a).",
+      "For $a\\cdot b^x$: sett inn begge punkt, del likningene slik at $a$ faller ut, og løs for $b$. Prosentvis endring gir $b$ direkte som vekstfaktor.",
+      [
+        "<strong>a)</strong> $a b^{1}=6$ og $a b^{3}=24$. Del den siste på den første: $b^{2}=4$, så $b=2$ (siden $b>0$). Da $a\\cdot 2=6$, $a=3$.<br><strong>Svar:</strong> $f(x)=3\\cdot 2^x$",
+        "<strong>b)</strong> Eksponentialen er et <em>produkt</em> $a\\cdot b^x$, derfor forsvinner $a$ når vi deler. Lineær er en <em>sum</em> $ax+b$, derfor trekker vi $y$-verdiene fra hverandre og deler på $\\Delta x$.<br><strong>Svar:</strong> deling fjerner $a$ i produktet; topunktsformelen fjerner $b$ i summen",
+        "<strong>c)</strong> Startverdi $a=800$. Nedgang $12\\,\\%$ gir vekstfaktor $b=0{,}88$.<br><strong>Svar:</strong> $V(t)=800\\cdot 0{,}88^t$",
+      ],
+    ),
+  ],
 };
 
 export const SUB_TITLES: Record<string, string> = {
@@ -452,8 +550,8 @@ export const SUB_TITLES: Record<string, string> = {
   "4D": "4D Rasjonale funksjoner",
   "4E": "4E Potensfunksjoner",
   "4F": "4F Eksponentialfunksjoner",
-  "4G": "4G Drøfting",
-  "4H": "4H Vekstfart og derivasjon",
+  "4G": "4G Vekstfart",
+  "4H": "4H Derivasjon og ekstremalpunkt",
   "5A": "5A To ukjente",
   "5B": "5B Modellering med likningssett",
   "5C": "5C Tre ukjente",

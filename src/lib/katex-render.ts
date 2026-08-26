@@ -49,8 +49,46 @@ export function formatTaskHtml(html: string): string {
   s = s.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
   s = s.replace(/(^|>)(\s*)([a-h]\))(\s)/gi, "$1$2<strong>$3</strong>$4");
 
+  s = structureTaskParts(s);
+
   s = s.replace(/\u0000(\d+)\u0000/g, (_, i) => stash[Number(i)] || "");
   return s;
+}
+
+const PART_RE =
+  /(?:(?:<br\s*\/?>\s*)+|(?:^))(?:<strong>\s*)?([a-h1-9]\))(?:\s*<\/strong>)?(?:\s|&nbsp;)*/gi;
+
+/** Split a)/b)/c) (og 1)/2)) ut som egne rader, slik at oppgaveteksten blir skannbar. */
+export function structureTaskParts(html: string): string {
+  if (!html) return html;
+  PART_RE.lastIndex = 0;
+  const matches = [...html.matchAll(PART_RE)];
+  if (matches.length === 0) return html;
+
+  const first = matches[0]!;
+  if (first.index == null) return html;
+
+  const stem = html
+    .slice(0, first.index)
+    .replace(/(?:<br\s*\/?>\s*)+$/gi, "")
+    .trim();
+  const blocks: string[] = [];
+  if (stem) blocks.push(`<div class="task-stem">${stem}</div>`);
+
+  for (let i = 0; i < matches.length; i++) {
+    const cur = matches[i]!;
+    const startBody = (cur.index ?? 0) + cur[0].length;
+    const end = i + 1 < matches.length ? matches[i + 1]!.index! : html.length;
+    const body = html
+      .slice(startBody, end)
+      .replace(/^(?:<br\s*\/?>\s*)+|(?:<br\s*\/?>\s*)+$/gi, "")
+      .trim();
+    const letter = cur[1]!;
+    blocks.push(
+      `<div class="task-part"><span class="part-letter">${letter}</span><div class="part-body">${body}</div></div>`,
+    );
+  }
+  return blocks.join("");
 }
 
 export function renderKatex(root: HTMLElement | null) {

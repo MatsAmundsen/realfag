@@ -32,7 +32,6 @@ export const fagsok = [
                         "fasit": null,
                         "fasitSteg": [
                             "<strong>a)</strong> <br>Rasjonale tall er tall som kan skrives som en brøk $\\frac{a}{b}$ der $a$ og $b$ er heltall.<br><br>Gjennomgang av tallene for å sjekke om de er rasjonale:<br><br>$-5 \\rightarrow$ kan skrives som $\\frac{-5}{1}$ (rasjonalt)<br><br>$\\sqrt{16} \\rightarrow$ er lik $4$, som kan skrives som $\\frac{4}{1}$ (rasjonalt)<br><br>$\\frac{3}{4} \\rightarrow$ er allerede en brøk av to heltall (rasjonalt)<br><br>$\\pi \\rightarrow$ er et uendelig desimaltall uten gjentagende mønster (irrasjonalt)<br><br>$0.333... \\rightarrow$ er uendelig periodisk, og tilsvarer brøken $\\frac{1}{3}$ (rasjonalt)<br><br>$\\sqrt{7} \\rightarrow$ kvadratroten av et tall som ikke er et perfekt kvadrat blir uendelig uten mønster (irrasjonalt)<br><br><strong>Svar:</strong> De rasjonale tallene er $-5$, $\\sqrt{16}$, $\\frac{3}{4}$ og $0.333...$",
-                            "",
                             "<strong>b)</strong> <br>Vi ser på de rasjonale tallene vi fant i oppgave a: $-5$, $4$, $\\frac{3}{4}$ og $\\frac{1}{3}$.<br><br>Naturlige tall ($\\mathbb{N}$) er positive heltall ($1, 2, 3, ...$). <br><br>Tallet $\\sqrt{16} = 4$ er et positivt heltall. <br><br><strong>Svar:</strong> Tallet er $\\sqrt{16}$, og det tilhører de naturlige tallene ($\\mathbb{N}$)."
                         ],
                         "starter": ""
@@ -4260,7 +4259,7 @@ export const fagsok = [
                     {
                         "id": "4.3",
                         "tittel": "Oppgave 4.3",
-                        "tekst": "Gitt grafen til $g(x) = x^2 - 4x + 3$.<br><br>a) Finn nullpunktene til $g$.<br><br>b) Hva er verdimengden til $g$?<br><br>c) Finn $g(0)$.<br><br>d) For hvilke verdier av $x$ er $g(x) = 3$?",
+                        "tekst": "Figuren viser grafen til $g(x) = x^2 - 4x + 3$.<br><br>a) Finn nullpunktene til $g$.<br><br>b) Hva er verdimengden til $g$?<br><br>c) Finn $g(0)$.<br><br>d) For hvilke verdier av $x$ er $g(x) = 3$?",
                         "bilde": null,
                         "hint": "For nullpunkter setter du uttrykket lik null. For verdimengde til en parabel, finn bunnpunktet.",
                         "fasit": null,
@@ -4328,7 +4327,7 @@ export const fagsok = [
                     {
                         "id": "4.7",
                         "tittel": "Oppgave 4.7",
-                        "tekst": "$f(x) = 0.5x^2 + 3x - 3$ og $g(x) = 2x + b$. Grafene skjærer hverandre i $(2, 5)$.<br><br>a) Finn funksjonsuttrykkene til $f$ og $g$.<br><br>b) Finn det andre skjæringspunktet.<br><br>c) Ligger punktet $(1, 4)$ på minst én av grafene?",
+                        "tekst": "Parabelen $f$ og linjen $g$ er gitt ved $$f(x)=\\dfrac{1}{2}x^{2}+3x-3,\\qquad g(x)=2x+b$$ der $b$ er et ukjent tall. Grafene skjærer hverandre i punktet $(2,5)$.<br><br>Du skal bruke <strong>regning</strong> — ikke en ferdig figur.<br><br>a) Finn $b$, og skriv funksjonsuttrykkene til $f$ og $g$.<br><br>b) Finn det andre skjæringspunktet.<br><br>c) Ligger punktet $(1,4)$ på minst én av grafene? Begrunn med utregning.",
                         "bilde": null,
                         "hint": "Bruk punktet $(2, 5)$ til å finne $b$ i uttrykket for $g$.",
                         "fasit": null,
@@ -4477,7 +4476,7 @@ export const fagsok = [
                     {
                         "id": "4.9",
                         "tittel": "Oppgave 4.9",
-                        "tekst": "Konstruer funksjonene: $v(x) = 3$, $f(x) = x - 2$, $g(x) = -x + 2$ og $h(x) = 2x - 2$.<br><br><strong>a)</strong> Hvilke grafer krysser hverandre?<br><br><strong>b)</strong> Når krysser de hverandre?<br><br><strong>c)</strong> Hva betyr uttrykket $f(x) = v(x)$?",
+                        "tekst": "Figuren viser grafene $v(x) = 3$, $f(x) = x - 2$, $g(x) = -x + 2$ og $h(x) = 2x - 2$.<br><br><strong>a)</strong> Hvilke grafer krysser hverandre?<br><br><strong>b)</strong> Finn ett skjæringspunkt ved regning, og les av de andre på figuren.<br><br><strong>c)</strong> Hva betyr uttrykket $f(x) = v(x)$?",
                         "bilde": null,
                         "hint": "Stigningstallet avslører om to linjer er parallelle. Grafer som ikke er parallelle, vil alltid krysse hverandre på et eller annet punkt.",
                         "fasit": null,
@@ -4579,7 +4578,7 @@ export const fagsok = [
                     {
                         "id": "4.16",
                         "tittel": "Oppgave 4.16",
-                        "tekst": "En linje er gitt ved likningen $px + qy = r$ (der $q <br>eq 0$). Finn et uttrykk for stigningstallet og konstantleddet.",
+                        "tekst": "En linje er gitt ved likningen $px + qy = r$ (der $q \\neq 0$). Finn et uttrykk for stigningstallet og konstantleddet.",
                         "bilde": null,
                         "hint": "Omform likningen slik at den står på standardformen $y = ax + b$. For å få $y$ alene, må du flytte på de andre leddene og deretter dele på $q$.",
                         "fasit": null,
@@ -4986,7 +4985,7 @@ export const fagsok = [
                     {
                         "id": "4.27",
                         "tittel": "Oppgave 4.27",
-                        "tekst": "Vi har grafen til en rasjonal funksjon (skjult). Hvilket av følgende uttrykk er riktig?<br>1) $f(x) = \\frac{x+1}{x-2}$<br>2) $f(x) = \\frac{x-1}{x+2}$<br>3) $f(x) = \\frac{2x+2}{x-2}$<br>4) $f(x) = \\frac{x+2}{x-1}$",
+                        "tekst": "Figuren viser grafen til en rasjonal funksjon.<br><br>Hvilket av følgende uttrykk passer til grafen?<br><br><strong>1)</strong> $\\dfrac{x+1}{x-2}$<br><br><strong>2)</strong> $\\dfrac{x-1}{x+2}$<br><br><strong>3)</strong> $\\dfrac{2x+2}{x-2}$<br><br><strong>4)</strong> $\\dfrac{x+2}{x-1}$",
                         "bilde": "/images/Bilde4.27.png",
                         "hint": "Avles grafen. Hvor ligger den loddrette asymptoten, og hvor krysser den x-aksen (nullpunkt)?",
                         "fasit": null,
