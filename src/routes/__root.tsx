@@ -1,10 +1,26 @@
 import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
+import { KillLegacyPwa } from "@/components/KillLegacyPwa";
 import { AppShell } from "@/components/AppShell";
 import appCss from "../styles.css?url";
 
 const APP_NAME = "Matteguiden 1T";
+
+const KILL_LEGACY_PWA = `(function(){
+  try {
+    var b=document.getElementById("mg-update-banner");
+    if(b){b.hidden=true;b.style.display="none";}
+    if("serviceWorker"in navigator){
+      navigator.serviceWorker.getRegistrations().then(function(regs){
+        regs.forEach(function(r){r.unregister();});
+      });
+    }
+    if(window.caches) caches.keys().then(function(keys){
+      keys.forEach(function(k){caches.delete(k);});
+    });
+  } catch(e) {}
+})();`;
 
 export const Route = createRootRoute({
   head: () => ({
@@ -35,7 +51,9 @@ export const Route = createRootRoute({
         <HeadContent />
       </head>
       <body>
+        <script dangerouslySetInnerHTML={{ __html: KILL_LEGACY_PWA }} />
         <PreviewHostBridge />
+        <KillLegacyPwa />
         <AuthProvider>
           <AppShell />
         </AuthProvider>
