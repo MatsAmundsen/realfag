@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { X } from "lucide-react";
 import type { QuizQuestion } from "@/data/types";
 import { KatexHtml } from "./KatexHtml";
@@ -23,6 +23,8 @@ export function QuizOverlay({
 
   const q = questions[idx];
   const letters = ["A", "B", "C", "D", "E", "F"];
+  const failed = done && questions.length > 0 && score / questions.length < 0.5;
+  const perfect = done && questions.length > 0 && score === questions.length;
 
   function choose(i: number) {
     if (picked !== null || !q) return;
@@ -37,8 +39,8 @@ export function QuizOverlay({
       if (score === questions.length) {
         fireCelebration({
           kind: "quiz",
-          title: "Perfekt quiz",
-          body: `Alle ${questions.length} spørsmål riktig i ${title}.`,
+          title: "Du temmet T-rexen",
+          body: `Alle ${questions.length} spørsmål riktig i ${title}. Prikkfri.`,
           badges: rec.newly,
         });
       }
@@ -79,16 +81,20 @@ export function QuizOverlay({
           )}
           <div className="quiz-panel-body">
             {done ? (
-              <div className="quiz-result">
+              <div className={`quiz-result${failed ? " is-rex" : ""}${perfect ? " is-win" : ""}`}>
+                {failed && <QuizClip kind="fail" />}
+                {perfect && <QuizClip kind="win" />}
                 <div className="quiz-result-score">
                   {score}/{questions.length}
                 </div>
                 <p className="quiz-result-text">
-                  {score === questions.length
-                    ? "Prikkfri. Du kan dette delkapittelet."
+                  {perfect
+                    ? "Prikkfri. Du temmet T-rexen og kan dette delkapittelet."
                     : score >= questions.length * 0.7
                       ? "Sterkt. Gå gjennom de du bommet på, og ta quizen på nytt."
-                      : "God start. Les løsningene i oppgavene og prøv igjen."}
+                      : failed
+                        ? "Under 50 %. T-rexen tok hodet ditt. Les mer og ta quizen på nytt."
+                        : "God start. Les løsningene i oppgavene og prøv igjen."}
                 </p>
                 <button
                   type="button"
@@ -145,5 +151,28 @@ export function QuizOverlay({
         </div>
       </div>
     </>
+  );
+}
+
+export function QuizClip({ kind }: { kind: "fail" | "win" }) {
+  const [reduce, setReduce] = useState(false);
+  useEffect(() => {
+    setReduce(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }, []);
+
+  const src = kind === "win" ? "/videos/quiz-win.mp4" : "/videos/quiz-rex.mp4";
+  const poster = kind === "win" ? "/videos/quiz-win.jpg" : "/videos/quiz-rex.jpg";
+  const caption = kind === "win" ? "Prikkfri. Du rir T-rexen ut." : "Game over. T-rexen spiste deg.";
+  const alt = kind === "win" ? "Elev rir en T-rex gjennom klasserommet" : "En T-rex i klasserommet";
+
+  return (
+    <figure className={`quiz-rex${kind === "win" ? " is-win" : ""}`}>
+      {reduce ? (
+        <img src={poster} alt={alt} />
+      ) : (
+        <video src={src} poster={poster} autoPlay muted playsInline preload="auto" />
+      )}
+      <figcaption>{caption}</figcaption>
+    </figure>
   );
 }

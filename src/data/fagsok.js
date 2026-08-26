@@ -165,7 +165,7 @@ export const fagsok = [
                         "forklaring": "Absoluttverdien angir avstanden til null på tallinjen, som alltid er positiv eller null. Derfor er $|-7| = 7$."
                     },
                     {
-                        "sporsmal": "Hva betyr intervallet $[2, 5)$?",
+                        "sporsmal": "Hva betyr intervallet $[2, 5\\rangle$?",
                         "alternativer": [
                             "Alle tall mellom 2 og 5, inkludert både 2 og 5",
                             "Alle tall fra og med 2 opp til, men ikke inkludert 5",
@@ -173,7 +173,7 @@ export const fagsok = [
                             "Bare heltallene 2, 3 og 4"
                         ],
                         "riktigSvar": 1,
-                        "forklaring": "En klammeparentes $[$ betyr at tallet er inkludert, mens en vanlig parentes $)$ betyr at tallet ikke er inkludert."
+                        "forklaring": "Klammeparentes $[ $ betyr at endepunktet er med. Vinkelparentes $\\rangle$ betyr at endepunktet ikke er med. Altså $2 \\le x < 5$."
                     },
                     {
                         "sporsmal": "Hvilket av følgende tall tilhører mengden irrasjonale tall?",
@@ -209,15 +209,15 @@ export const fagsok = [
                         "forklaring": "$\\mathbb{Z}$ betyr at vi bare ser på heltall. Ulikheten betyr at $x$ må være større enn -2 (altså fra -1) og opp til og med 1."
                     },
                     {
-                        "sporsmal": "Hvilken påstand er sann for snittet av intervallene $A = [0, 4]$ og $B = (2, 6)$?",
+                        "sporsmal": "Hvilken skrivemåte tilsvarer ulikheten $-2 \\le x < 8$?",
                         "alternativer": [
-                            "$A \\cap B = [0, 6)$",
-                            "$A \\cap B = (2, 4]$",
-                            "$A \\cap B = [2, 4]$",
-                            "$A \\cap B = [0, 2)$"
+                            "$[-2, 8]$",
+                            "$\\langle -2, 8\\rangle$",
+                            "$[-2, 8\\rangle$",
+                            "$\\langle -2, 8]$"
                         ],
-                        "riktigSvar": 1,
-                        "forklaring": "Snittet inneholder tallene som er i *begge* intervallene. Det er tallene som er større enn 2 (fra $B$) og mindre eller lik 4 (fra $A$)."
+                        "riktigSvar": 2,
+                        "forklaring": "$-2$ er med, derfor klamme $[$. $8$ er ikke med, derfor vinkelparentes $\\rangle$. Altså $x \\in [-2, 8\\rangle$."
                     },
                     {
                         "sporsmal": "Løs likningen $|x - 2| = 5$.",

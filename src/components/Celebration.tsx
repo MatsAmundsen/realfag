@@ -2,11 +2,13 @@ import { useEffect, useRef } from "react";
 import { Award, X } from "lucide-react";
 import { BADGE_META } from "@/lib/progress";
 import { useProgressStore } from "@/lib/progress-store";
+import { QuizClip } from "./QuizOverlay";
 
 export function CelebrationHost() {
   const celebration = useProgressStore((s) => s.celebration);
   const dismiss = useProgressStore((s) => s.dismissCelebration);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const isQuizWin = celebration?.kind === "quiz";
 
   useEffect(() => {
     if (!celebration) return;
@@ -20,11 +22,13 @@ export function CelebrationHost() {
     canvas.width = window.innerWidth * dpr;
     canvas.height = window.innerHeight * dpr;
     ctx.scale(dpr, dpr);
-    const colors = ["#6366f1", "#34d399", "#818cf8", "#e2e8f0", "#f59e0b"];
-    const bits = Array.from({ length: 90 }, () => ({
+    const colors = isQuizWin
+      ? ["#fbbf24", "#f59e0b", "#fde68a", "#34d399", "#ffffff"]
+      : ["#6366f1", "#34d399", "#818cf8", "#e2e8f0", "#f59e0b"];
+    const bits = Array.from({ length: isQuizWin ? 72 : 90 }, () => ({
       x: Math.random() * window.innerWidth,
       y: -20 - Math.random() * 120,
-      r: 3 + Math.random() * 4,
+      r: isQuizWin ? 2.5 + Math.random() * 3 : 3 + Math.random() * 4,
       vx: -1.4 + Math.random() * 2.8,
       vy: 2.4 + Math.random() * 3.2,
       rot: Math.random() * Math.PI,
@@ -47,24 +51,28 @@ export function CelebrationHost() {
         ctx.fillRect(-b.r, -b.r / 2, b.r * 2, b.r);
         ctx.restore();
       });
-      if (frame < 140) raf = requestAnimationFrame(tick);
+      if (frame < (isQuizWin ? 200 : 140)) raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [celebration]);
+  }, [celebration, isQuizWin]);
 
   if (!celebration) return null;
 
   return (
-    <div className="cele-overlay" role="dialog" aria-modal="true" aria-labelledby="cele-title">
+    <div className={`cele-overlay${isQuizWin ? " is-quiz-win" : ""}`} role="dialog" aria-modal="true" aria-labelledby="cele-title">
       <canvas ref={canvasRef} className="cele-canvas" aria-hidden="true" />
       <div className="cele-card">
         <button type="button" className="quiz-close-btn cele-close" onClick={dismiss} aria-label="Lukk">
           <X size={18} />
         </button>
-        <div className="cele-mark">
-          <Award size={28} />
-        </div>
+        {isQuizWin ? (
+          <QuizClip kind="win" />
+        ) : (
+          <div className="cele-mark">
+            <Award size={28} />
+          </div>
+        )}
         <h2 id="cele-title">{celebration.title}</h2>
         <p>{celebration.body}</p>
         {celebration.badges.length > 0 && (
