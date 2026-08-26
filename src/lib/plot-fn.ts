@@ -61,6 +61,11 @@ function latexToJs(input: string): string {
   s = s.replace(/\\abs\b/g, "abs");
   s = s.replace(/\^{([^{}]+)}/g, "**($1)");
   s = s.replace(/\^(\([^)]+\)|[0-9.]+|[a-zA-Z])/g, "**$1");
+  // JS forbids `-x**2` (syntax error). Math `-x^2` means `-(x^2)`.
+  s = s.replace(
+    /(^|[+\-*/(,])-([A-Za-z_][A-Za-z0-9_]*|\d+(?:\.\d+)?)\*\*([A-Za-z0-9.]+|\([^)]+\))/g,
+    "$1-($2**$3)",
+  );
   s = s.replace(/\{/g, "(").replace(/\}/g, ")");
   s = s.replace(/(\d(?:\.\d+)?)(?=PI|E|[A-Za-z(])/g, "$1*");
   s = s.replace(/(PI|E)(?=PI|E|[A-Za-z(])/g, "$1*");

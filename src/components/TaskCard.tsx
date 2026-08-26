@@ -40,7 +40,7 @@ export function TaskCard({
   const steps = (oppgave.fasitSteg || []).filter(Boolean);
   const fasitHtml = oppgave.fasit;
   const plot = useMemo(
-    () => (kapId === "kap4" ? extractPlots(oppgave.tekst) : null),
+    () => (kapId === "kap4" || kapId === "kap5" ? extractPlots(oppgave.tekst) : null),
     [kapId, oppgave.tekst],
   );
 

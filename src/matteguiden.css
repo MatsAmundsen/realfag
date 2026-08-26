@@ -3219,6 +3219,7 @@ a.btn-primary { color: #fff; }
 .mm-kap2 { --mm: #34d399; --mm-soft: rgba(52,211,153,0.12); }
 .mm-kap3 { --mm: #f59e0b; --mm-soft: rgba(245,158,11,0.12); }
 .mm-kap4 { --mm: #a78bfa; --mm-soft: rgba(167,139,250,0.12); }
+.mm-kap5 { --mm: #22d3ee; --mm-soft: rgba(34,211,238,0.12); }
 .mm-path-card.mm-exam { background: var(--primary-subtle); }
 .mm-path-card.mm-exam svg { color: var(--hint-color); }
 
@@ -3250,7 +3251,7 @@ a.btn-primary { color: #fff; }
 
 .mm-helhet-cols {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 0.85rem;
 }
 .mm-helhet-col {

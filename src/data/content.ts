@@ -2,12 +2,13 @@ import { fagsok as rawFagsok, fagstoff as rawFagstoff, programmeringData as rawP
 import type { Fagstoff, Kapittel, Oppgave } from "./types";
 import { EXTRA, SUB_TITLES } from "./extra-tasks";
 import { KAP3_OVEPROVE } from "./kap3-oveprove";
+import { KAP5 } from "./kap5";
 import tallmengderHtml from "../../public/fagstoff/tallmengder.html?raw";
 import brokregningHtml from "../../public/fagstoff/brokregning.html?raw";
 import kvadratrotterHtml from "../../public/fagstoff/kvadratrotter.html?raw";
 import programmeringHtml from "../../public/fagstoff/programmering.html?raw";
 
-export const fagsok = (rawFagsok as Kapittel[]).map((kap) => {
+export const fagsokRaw = (rawFagsok as Kapittel[]).map((kap) => {
   const delkapitler = kap.delkapitler.map((dk) => ({
     ...dk,
     tittel: SUB_TITLES[dk.id] || dk.tittel,
@@ -28,6 +29,7 @@ export const fagsok = (rawFagsok as Kapittel[]).map((kap) => {
   }
   return { ...kap, delkapitler };
 });
+export const fagsok = [...fagsokRaw, KAP5];
 export const fagstoff = (rawFagstoff as Fagstoff[]).map((f) => {
   const inline: Record<string, string> = {
     tallmengder: tallmengderHtml,
@@ -67,6 +69,12 @@ export const CHAPTER_META: Record<
     blurb: "Funksjoner, derivasjon og funksjonsdrøfting",
     image: "/images/kap4.jpg",
     tint: "#a78bfa",
+  },
+  kap5: {
+    short: "Likningssett og ulikheter",
+    blurb: "To og tre ukjente, modeller, fortegnslinje og rasjonale ulikheter",
+    image: "/images/kap5.jpg",
+    tint: "#22d3ee",
   },
 };
 

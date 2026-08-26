@@ -454,4 +454,13 @@ export const SUB_TITLES: Record<string, string> = {
   "4F": "4F Eksponentialfunksjoner",
   "4G": "4G Drøfting",
   "4H": "4H Vekstfart og derivasjon",
+  "5A": "5A To ukjente",
+  "5B": "5B Modellering med likningssett",
+  "5C": "5C Tre ukjente",
+  "5D": "5D Andregradsmodeller",
+  "5E": "5E Ikkelineære likningssett",
+  "5F": "5F Førstegradsulikheter",
+  "5G": "5G Fortegnslinje og andregradsulikheter",
+  "5H": "5H Rasjonale ulikheter",
+  "5OP": "Øveprøve",
 };

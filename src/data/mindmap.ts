@@ -64,6 +64,7 @@ export const OVERVIEW: { id: string; kapId: string; title: string; short: string
   { id: "kap2", kapId: "kap2", title: "Kapittel 2", short: "Algebra og mønstre" },
   { id: "kap3", kapId: "kap3", title: "Kapittel 3", short: "Likninger" },
   { id: "kap4", kapId: "kap4", title: "Kapittel 4", short: "Funksjoner" },
+  { id: "kap5", kapId: "kap5", title: "Kapittel 5", short: "Likningssett" },
 ];
 
 export const HELHET_NODES: HelhetNode[] = [
@@ -94,6 +95,14 @@ export const HELHET_NODES: HelhetNode[] = [
   { id: "4F", label: "Eksponentialfunksjoner", kapId: "kap4", subId: "4F" },
   { id: "4G", label: "Drøfting", kapId: "kap4", subId: "4G" },
   { id: "4H", label: "Vekstfart og derivasjon", kapId: "kap4", subId: "4H" },
+  { id: "5A", label: "To ukjente", kapId: "kap5", subId: "5A" },
+  { id: "5B", label: "Modellering", kapId: "kap5", subId: "5B" },
+  { id: "5C", label: "Tre ukjente", kapId: "kap5", subId: "5C" },
+  { id: "5D", label: "Andregradsmodeller", kapId: "kap5", subId: "5D" },
+  { id: "5E", label: "Ikkelineære sett", kapId: "kap5", subId: "5E" },
+  { id: "5F", label: "Førstegradsulikheter", kapId: "kap5", subId: "5F" },
+  { id: "5G", label: "Fortegnslinje", kapId: "kap5", subId: "5G" },
+  { id: "5H", label: "Rasjonale ulikheter", kapId: "kap5", subId: "5H" },
 ];
 
 export const HELHET_EDGES: HelhetEdge[] = [
@@ -116,6 +125,19 @@ export const HELHET_EDGES: HelhetEdge[] = [
   { from: "4B", to: "4H" },
   { from: "4C", to: "4G" },
   { from: "4H", to: "4G" },
+  { from: "3A", to: "5A" },
+  { from: "4B", to: "5A" },
+  { from: "5A", to: "5B" },
+  { from: "5A", to: "5C" },
+  { from: "3D", to: "5D" },
+  { from: "4C", to: "5D" },
+  { from: "5D", to: "5E" },
+  { from: "3A", to: "5F" },
+  { from: "5F", to: "5G" },
+  { from: "4G", to: "5G", dashed: true, label: "fortegn" },
+  { from: "5G", to: "5H" },
+  { from: "3E", to: "5H" },
+  { from: "4D", to: "5H", dashed: true },
 ];
 
 export const CHAPTER_MAPS: Record<string, ChapterDetail> = {
@@ -425,6 +447,98 @@ export const CHAPTER_MAPS: Record<string, ChapterDetail> = {
       },
     ],
   },
+  kap5: {
+    kapId: "kap5",
+    title: "Kapittel 5 — likningssett og ulikheter",
+    blurb: "Flere ukjente samtidig, modeller fra virkeligheten, og ulikheter med fortegnslinje.",
+    nextLabel: "Bygger på likninger (kap. 3) og grafer (kap. 4)",
+    clusters: [
+      {
+        id: "5A",
+        title: "5A To ukjente",
+        subId: "5A",
+        layout: "stack",
+        nodes: [
+          n("5A-par", "Løsning er et par (x, y)", "5A"),
+          n("5A-graf", "Skjæringspunkt mellom to linjer", "5A"),
+          n("5A-inn", "Innsettingsmetoden", "5A"),
+          n("5A-add", "Addisjonsmetoden", "5A"),
+        ],
+      },
+      {
+        id: "5B",
+        title: "5B Modellering",
+        subId: "5B",
+        layout: "stack",
+        nodes: [
+          n("5B-to", "To opplysninger → to likninger", "5B"),
+          n("5B-kryss", "Like kostnader der grafene møtes", "5B"),
+        ],
+      },
+      {
+        id: "5C",
+        title: "5C Tre ukjente",
+        subId: "5C",
+        layout: "stack",
+        nodes: [
+          n("5C-tre", "Tre uavhengige likninger", "5C"),
+          n("5C-sum", "Sum-trikset x+y+z", "5C"),
+        ],
+      },
+      {
+        id: "5D",
+        title: "5D Andregradsmodeller",
+        subId: "5D",
+        layout: "stack",
+        nodes: [
+          n("5D-tre", "Tre punkt låser ax²+bx+c", "5D"),
+          n("5D-fak", "Nullpunkt → faktorform", "5D"),
+        ],
+      },
+      {
+        id: "5E",
+        title: "5E Ikkelineære sett",
+        subId: "5E",
+        layout: "stack",
+        nodes: [
+          n("5E-par", "Linje og parabel", "5E"),
+          n("5E-sir", "Linje og sirkel: 0, 1 eller 2 treff", "5E"),
+        ],
+      },
+      {
+        id: "5F",
+        title: "5F Førstegradsulikheter",
+        subId: "5F",
+        layout: "stack",
+        nodes: [
+          n("5F-snu", "Negativ faktor snur tegnet", "5F"),
+          n("5F-int", "Svar som intervall", "5F"),
+          n("5F-graf", "f > g der grafen ligger over", "5F"),
+        ],
+      },
+      {
+        id: "5G",
+        title: "5G Fortegnslinje",
+        subId: "5G",
+        layout: "stack",
+        nodes: [
+          n("5G-null", "Nullpunkt deler tallinja", "5G"),
+          n("5G-test", "Testpunkt i hvert intervall", "5G"),
+          n("5G-a", "a < 0 speiler fortegnet", "5G"),
+        ],
+      },
+      {
+        id: "5H",
+        title: "5H Rasjonale ulikheter",
+        subId: "5H",
+        layout: "stack",
+        nodes: [
+          n("5H-pol", "Pol er aldri med i løsningen", "5H"),
+          n("5H-flytt", "Flytt alt til venstre, felles nevner", "5H"),
+        ],
+      },
+    ],
+  },
 };
 
 export const PREREQS: Record<string, Prereq> = {
@@ -572,6 +686,62 @@ export const PREREQS: Record<string, Prereq> = {
     inputs: [
       { label: "Stigningstall", subId: "4B", kapId: "kap4", role: "basic" },
       { label: "Polynomregning", subId: "2A", kapId: "kap2", role: "basic" },
+    ],
+  },
+  "5A": {
+    title: "Likningssett med to ukjente",
+    blurb: "To linjer i planet. Løsningen er skjæringspunktet — hvis det finnes.",
+    inputs: [
+      { label: "Førstegradslikninger", subId: "3A", kapId: "kap3", role: "basic" },
+      { label: "Lineære funksjoner", subId: "4B", kapId: "kap4", role: "step" },
+    ],
+  },
+  "5F": {
+    title: "Førstegradsulikheter",
+    blurb: "Samme isolering som i en likning, men negativ faktor snur tegnet. Svaret er et intervall.",
+    inputs: [
+      { label: "Førstegradslikninger", subId: "3A", kapId: "kap3", role: "basic" },
+      { label: "Lineære funksjoner", subId: "4B", kapId: "kap4", role: "step" },
+    ],
+  },
+  "5C": {
+    title: "Tre ukjente",
+    blurb: "Tre uavhengige likninger. Innsetting eller addisjon, én ukjent om gangen.",
+    inputs: [
+      { label: "To ukjente", subId: "5A", kapId: "kap5", role: "step" },
+      { label: "Bokstavregning", subId: "2A", kapId: "kap2", role: "basic" },
+    ],
+  },
+  "5D": {
+    title: "Andregradsmodeller",
+    blurb: "Tre punkt låser parabelen. Nullpunktene gir faktorform.",
+    inputs: [
+      { label: "ABC-formelen", subId: "3D", kapId: "kap3", role: "step" },
+      { label: "Andregradsfunksjoner", subId: "4C", kapId: "kap4", role: "basic" },
+    ],
+  },
+  "5E": {
+    title: "Ikkelineære likningssett",
+    blurb: "Linje mot parabel eller sirkel. Diskriminanten styrer antallet treff.",
+    inputs: [
+      { label: "To ukjente", subId: "5A", kapId: "kap5", role: "basic" },
+      { label: "Andregradslikninger", subId: "3C", kapId: "kap3", role: "step" },
+    ],
+  },
+  "5G": {
+    title: "Fortegnslinje",
+    blurb: "Nullpunktene deler tallinja. Test et punkt i hvert intervall.",
+    inputs: [
+      { label: "Faktorisering", subId: "2D", kapId: "kap2", role: "step" },
+      { label: "Førstegradsulikheter", subId: "5F", kapId: "kap5", role: "basic" },
+    ],
+  },
+  "5H": {
+    title: "Rasjonale ulikheter",
+    blurb: "Poler er aldri med. Flytt alt til venstre og les fortegnslinja.",
+    inputs: [
+      { label: "Rasjonale likninger", subId: "3E", kapId: "kap3", role: "step" },
+      { label: "Fortegnslinje", subId: "5G", kapId: "kap5", role: "step" },
     ],
   },
 };

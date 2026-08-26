@@ -15,7 +15,7 @@ import { countChapter, countSubchapter, isOvingDelkap, type Progress } from "@/l
 import { useProgressStore } from "@/lib/progress-store";
 import { PrereqMini } from "./PrereqMini";
 
-type Tab = "helhet" | "kap1" | "kap2" | "kap3" | "kap4";
+type Tab = "helhet" | "kap1" | "kap2" | "kap3" | "kap4" | "kap5";
 
 function tone(pct: number) {
   if (pct >= 100) return "done";
@@ -151,7 +151,7 @@ function OverviewPath({ tab, onPick }: { tab: Tab; onPick: (t: Tab) => void }) {
 function HelhetView({ onOpenChapter }: { onOpenChapter: (kapId: string) => void }) {
   const p = useProgressStore((s) => s.p);
   const byKap = useMemo(() => {
-    const map: Record<string, typeof HELHET_NODES> = { kap1: [], kap2: [], kap3: [], kap4: [] };
+    const map: Record<string, typeof HELHET_NODES> = { kap1: [], kap2: [], kap3: [], kap4: [], kap5: [] };
     HELHET_NODES.forEach((n) => {
       map[n.kapId]?.push(n);
     });
