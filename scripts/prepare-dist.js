@@ -60,6 +60,9 @@ if (fs.existsSync(fagstoffSrc)) {
     console.log('  ✓ fagstoff/ → dist/fagstoff/');
 }
 
+fs.writeFileSync(path.join(DIST, '.nojekyll'), '');
+console.log('  ✓ .nojekyll → dist/.nojekyll');
+
 // Kopier alle bilder (png, jpg, svg)
 const imageExts = ['.png', '.jpg', '.jpeg', '.svg', '.gif', '.webp'];
 for (const file of fs.readdirSync(ROOT)) {
