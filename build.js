@@ -392,19 +392,29 @@ function stampAssets() {
     const versionFile = path.join(root, 'version.json');
     fs.writeFileSync(versionFile, JSON.stringify({ version: combined, builtAt: new Date().toISOString() }, null, 2) + '\n');
 
+    const bdir = path.join(root, 'b', combined);
+    const bRoot = path.join(root, 'b');
+    if (fs.existsSync(bRoot)) {
+        for (const name of fs.readdirSync(bRoot)) {
+            if (name !== combined) fs.rmSync(path.join(bRoot, name), { recursive: true, force: true });
+        }
+    }
+    fs.mkdirSync(bdir, { recursive: true });
+    fs.copyFileSync(dataPath, path.join(bdir, 'data.js'));
+    if (fs.existsSync(appPath)) fs.copyFileSync(appPath, path.join(bdir, 'app.js'));
+    if (fs.existsSync(stylePath)) fs.copyFileSync(stylePath, path.join(bdir, 'style.css'));
+
     const indeksPath = path.join(root, 'Indeks.html');
     if (fs.existsSync(indeksPath)) {
         let html = fs.readFileSync(indeksPath, 'utf-8');
         html = html
             .replace(/window\.__MG_BUILD = "[^"]*"/g, `window.__MG_BUILD = "${combined}"`)
-            .replace(/href="style\.css(\?v=[^"]*)?"/g, `href="style.css?v=${combined}"`)
-            .replace(/src="data\.js(\?v=[^"]*)?"/g, `src="data.js?v=${combined}"`)
-            .replace(/src="app\.js(\?v=[^"]*)?"/g, `src="app.js?v=${combined}"`);
+            .replace(/href="style\.css(\?v=[^"]*)?"/g, `href="style.css?v=${combined}"`);
         fs.writeFileSync(indeksPath, html);
         fs.copyFileSync(indeksPath, path.join(root, 'index.html'));
     }
 
-    console.log(`✓ Cache-busting: v=${combined}`);
+    console.log(`✓ Cache-busting: v=${combined} (b/${combined}/)`);
 }
 
 build();

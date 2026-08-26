@@ -283,26 +283,153 @@
 
     <div id="badge-toast" class="badge-toast hidden" role="status" aria-live="polite"></div>
 
-    <script src="data.js?v=d1eb5c83d7"></script>
-    <script src="app.js?v=d1eb5c83d7"></script>
+    <div id="mg-update-banner" hidden style="position:fixed;z-index:99999;left:50%;bottom:1.25rem;transform:translateX(-50%);display:flex;gap:.75rem;align-items:center;padding:.7rem 1rem;border-radius:12px;background:#111827;color:#e2e8f0;border:1px solid rgba(99,102,241,.45);box-shadow:0 12px 40px rgba(0,0,0,.4);font:600 14px/1.3 Inter,system-ui,sans-serif;max-width:calc(100vw - 2rem)">
+        <span>Ny versjon er klar.</span>
+        <button type="button" id="mg-update-btn" style="cursor:pointer;border:0;border-radius:8px;padding:.45rem .8rem;background:#6366f1;color:#fff;font:650 13px Inter,system-ui,sans-serif">Last inn på nytt</button>
+    </div>
     <script>
+    /* MG_FORCE_LATEST 2026-08-26 — tving alltid nyeste JS/CSS. Ikke last HTML på nytt i løkke. */
     (function () {
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.getRegistrations().then(function (regs) {
-                regs.forEach(function (r) { r.unregister(); });
+        var FALLBACK = window.__MG_BUILD || "dev";
+        window.__MG_FORCE_LATEST = 1;
+        var banner = document.getElementById("mg-update-banner");
+        var btn = document.getElementById("mg-update-btn");
+
+        function bust(url) {
+            return url + (url.indexOf("?") >= 0 ? "&" : "?") + "mg=" + Date.now();
+        }
+
+        function killWorkersAndCache() {
+            var jobs = [];
+            if ("serviceWorker" in navigator) {
+                jobs.push(navigator.serviceWorker.getRegistrations().then(function (regs) {
+                    return Promise.all(regs.map(function (r) { return r.unregister(); }));
+                }));
+            }
+            if (window.caches) {
+                jobs.push(caches.keys().then(function (keys) {
+                    return Promise.all(keys.map(function (k) { return caches.delete(k); }));
+                }));
+            }
+            return Promise.all(jobs).catch(function () {});
+        }
+
+        function fetchJson(url) {
+            return fetch(bust(url), { cache: "reload" }).then(function (r) {
+                return r.ok ? r.json() : null;
+            }).catch(function () { return null; });
+        }
+
+        function fetchText(url) {
+            return fetch(bust(url), { cache: "reload" }).then(function (r) {
+                if (!r.ok) throw new Error(url);
+                return r.text();
             });
         }
-        if (location.protocol === 'file:') return;
-        fetch('version.json?t=' + Date.now(), { cache: 'no-store' })
-            .then(function (r) { return r.ok ? r.json() : null; })
-            .then(function (info) {
-                if (!info || !info.version) return;
-                var url = new URL(location.href);
-                if (url.searchParams.get('_v') === info.version) return;
-                url.searchParams.set('_v', info.version);
-                location.replace(url.toString());
-            })
-            .catch(function () {});
+
+        function fetchBlobUrl(url) {
+            return fetch(bust(url), { cache: "reload" }).then(function (r) {
+                if (!r.ok) throw new Error(url);
+                return r.blob();
+            }).then(function (blob) {
+                return URL.createObjectURL(blob);
+            });
+        }
+
+        function firstOk(urls, fn) {
+            var i = 0;
+            function next() {
+                if (i >= urls.length) return Promise.reject(new Error("ingen kilde"));
+                return fn(urls[i++]).catch(function () { return next(); });
+            }
+            return next();
+        }
+
+        function newestVersion() {
+            return Promise.all([
+                fetchJson("version.json"),
+                fetchJson("https://raw.githubusercontent.com/MatsAmundsen/realfag/main/version.json"),
+                fetchJson("https://raw.githubusercontent.com/MatsAmundsen/MatsAmundsen.github.io/main/version.json")
+            ]).then(function (list) {
+                var best = null;
+                list.forEach(function (info) {
+                    if (!info || !info.version) return;
+                    if (!best) { best = info; return; }
+                    if ((info.builtAt || "") > (best.builtAt || "")) best = info;
+                });
+                return (best && best.version) || FALLBACK;
+            });
+        }
+
+        function runScript(code) {
+            var s = document.createElement("script");
+            s.text = code;
+            document.body.appendChild(s);
+        }
+
+        function boot(v) {
+            window.__MG_BUILD = v;
+            try { localStorage.setItem("mg_build", v); } catch (e) {}
+            var cssUrls = ["b/" + v + "/style.css", "style.css"];
+            var dataUrls = ["b/" + v + "/data.js", "data.js"];
+            var appUrls = ["b/" + v + "/app.js", "app.js"];
+            return firstOk(cssUrls, fetchBlobUrl).then(function (href) {
+                var link = document.getElementById("mg-css");
+                if (!link) {
+                    link = document.createElement("link");
+                    link.rel = "stylesheet";
+                    link.id = "mg-css";
+                    document.head.appendChild(link);
+                }
+                link.href = href;
+            }).then(function () {
+                return firstOk(dataUrls, fetchText).then(runScript);
+            }).then(function () {
+                return firstOk(appUrls, fetchText).then(runScript);
+            });
+        }
+
+        function showBanner(v) {
+            if (!banner) return;
+            banner.hidden = false;
+            banner.style.display = "flex";
+            if (btn) btn.onclick = function () {
+                try { sessionStorage.setItem("mg_force", v); } catch (e) {}
+                location.reload();
+            };
+        }
+
+        function watch(current) {
+            setInterval(function () {
+                newestVersion().then(function (v) {
+                    if (v && v !== current) showBanner(v);
+                });
+            }, 120000);
+        }
+
+        if (location.protocol === "file:") {
+            var s1 = document.createElement("script");
+            s1.src = "data.js";
+            s1.onload = function () {
+                var s2 = document.createElement("script");
+                s2.src = "app.js";
+                document.body.appendChild(s2);
+            };
+            document.body.appendChild(s1);
+            return;
+        }
+
+        killWorkersAndCache().then(function () { return newestVersion(); }).then(function (v) {
+            return boot(v).then(function () { watch(v); });
+        }).catch(function () {
+            return boot(FALLBACK).catch(function () {
+                var p = document.createElement("p");
+                p.setAttribute("role", "alert");
+                p.style.cssText = "position:fixed;left:50%;top:1rem;transform:translateX(-50%);z-index:99999;padding:.7rem 1rem;border-radius:10px;background:#7f1d1d;color:#fff;font:600 14px Inter,system-ui,sans-serif";
+                p.textContent = "Kunne ikke laste nyeste versjon. Last siden på nytt.";
+                document.body.appendChild(p);
+            });
+        });
     })();
     </script>
 </body>

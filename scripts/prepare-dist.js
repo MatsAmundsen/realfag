@@ -60,6 +60,12 @@ if (fs.existsSync(fagstoffSrc)) {
     console.log('  ✓ fagstoff/ → dist/fagstoff/');
 }
 
+const bSrc = path.join(ROOT, 'b');
+if (fs.existsSync(bSrc)) {
+    copyDir(bSrc, path.join(DIST, 'b'));
+    console.log('  ✓ b/ → dist/b/');
+}
+
 fs.writeFileSync(path.join(DIST, '.nojekyll'), '');
 console.log('  ✓ .nojekyll → dist/.nojekyll');
 
