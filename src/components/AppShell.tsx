@@ -29,6 +29,20 @@ export function AppShell() {
     } catch {
       /* ignore */
     }
+    if (!("serviceWorker" in navigator)) return;
+    void navigator.serviceWorker.getRegistrations().then((regs) => {
+      regs.forEach((r) => {
+        const url = r.active?.scriptURL || r.waiting?.scriptURL || r.installing?.scriptURL || "";
+        if (url.includes("/sw.js") && !url.includes("__grok")) void r.unregister();
+      });
+    });
+    if (window.caches) {
+      void caches.keys().then((keys) => {
+        keys
+          .filter((k) => k.toLowerCase().includes("matte") || k.toLowerCase().includes("mg-"))
+          .forEach((k) => void caches.delete(k));
+      });
+    }
   }, [hydrate]);
 
   useEffect(() => {
