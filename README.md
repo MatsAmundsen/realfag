@@ -2,6 +2,6 @@
 
 Utforskende læring i matematikk 1T: oppgaver, quizer, fagstoff og kunnskapskart.
 
-**Live:** https://matsamundsen.github.io/realfag/
+**Live:** https://matsamundsen.github.io/
 
-Hver push til `main` bygger og publiserer nettsiden automatisk (GitHub Pages).
+Nettsiden oppdateres automatisk fra dette repoet (ca. hvert 15. minutt etter push til `main`, og kan også kjøres manuelt under Actions i [MatsAmundsen.github.io](https://github.com/MatsAmundsen/MatsAmundsen.github.io)).
