@@ -26,13 +26,13 @@ export const fagsok = [
                     {
                         "id": "1.11",
                         "tittel": "Oppgave 1.11",
-                        "tekst": "Gitt følgende liste med tall: $-5$, $\\sqrt{16}$, $\\frac{3}{4}$, $\\pi$, $0.333...$, $\\sqrt{7}$<br><br><strong>a)</strong> Hvilke av disse tallene hører til i mengden av rasjonale tall ($\\mathbb{Q}$)?<br><br><strong>b)</strong> Ett av de rasjonale tallene i listen kan også klassifiseres i en enda 'mindre' og mer spesifikk tallmengde. Hvilket tall er det, og hvilken mengde?",
+                        "tekst": "Gitt følgende liste med tall: $-5$, $\\sqrt{16}$, $\\frac{3}{4}$, $\\pi$, $0.333...$, $\\sqrt{7}$<br><br><strong>a)</strong> Hvilke av disse tallene hører til i mengden av rasjonale tall ($\\mathbb{Q}$)?<br><br><strong>b)</strong> Hvilket av de rasjonale tallene ligger i den minste tallmengden, og hvilken mengde er det?",
                         "bilde": null,
                         "hint": "Rasjonale tall er alle tall som kan skrives som en brøk av to heltall. Naturlige tall er de positive heltallene vi bruker til å telle.",
                         "fasit": null,
                         "fasitSteg": [
                             "<strong>a)</strong> <br>Rasjonale tall er tall som kan skrives som en brøk $\\frac{a}{b}$ der $a$ og $b$ er heltall.<br><br>Gjennomgang av tallene for å sjekke om de er rasjonale:<br><br>$-5 \\rightarrow$ kan skrives som $\\frac{-5}{1}$ (rasjonalt)<br><br>$\\sqrt{16} \\rightarrow$ er lik $4$, som kan skrives som $\\frac{4}{1}$ (rasjonalt)<br><br>$\\frac{3}{4} \\rightarrow$ er allerede en brøk av to heltall (rasjonalt)<br><br>$\\pi \\rightarrow$ er et uendelig desimaltall uten gjentagende mønster (irrasjonalt)<br><br>$0.333... \\rightarrow$ er uendelig periodisk, og tilsvarer brøken $\\frac{1}{3}$ (rasjonalt)<br><br>$\\sqrt{7} \\rightarrow$ kvadratroten av et tall som ikke er et perfekt kvadrat blir uendelig uten mønster (irrasjonalt)<br><br><strong>Svar:</strong> De rasjonale tallene er $-5$, $\\sqrt{16}$, $\\frac{3}{4}$ og $0.333...$",
-                            "<strong>b)</strong> <br>Vi ser på de rasjonale tallene vi fant i oppgave a: $-5$, $4$, $\\frac{3}{4}$ og $\\frac{1}{3}$.<br><br>Naturlige tall ($\\mathbb{N}$) er positive heltall ($1, 2, 3, ...$). <br><br>Tallet $\\sqrt{16} = 4$ er et positivt heltall. <br><br><strong>Svar:</strong> Tallet er $\\sqrt{16}$, og det tilhører de naturlige tallene ($\\mathbb{N}$)."
+                            "<strong>b)</strong> <br>Vi ser på de rasjonale tallene vi fant i oppgave a: $-5$, $4$, $\\frac{3}{4}$ og $\\frac{1}{3}$.<br><br>$-5 \\in \\mathbb{Z}$, men $\\mathbb{N}$ er en mindre mengde enn $\\mathbb{Z}$.<br><br>Tallet $\\sqrt{16} = 4$ er et naturlig tall, så $\\sqrt{16} = 4 \\in \\mathbb{N}$.<br><br><strong>Svar:</strong> $\\sqrt{16} = 4 \\in \\mathbb{N}$."
                         ],
                         "starter": ""
                     },
@@ -274,7 +274,7 @@ export const fagsok = [
                         "tittel": "Oppgave 1.28",
                         "tekst": "Se på tallfølgen: $1, 8, 27, 64, \\dots$<br><br><strong>a)</strong> Hva kalles disse tallene i matematikken?<br><br><strong>b)</strong> Hva blir det neste tallet i følgen?<br><br><strong>c)</strong> Prøv å finne en generell formel for det $n$-te tallet i denne følgen.",
                         "bilde": null,
-                        "hint": "Prøv å skrive tallene som en potens av $3$.",
+                        "hint": "Prøv å skrive tallene som kuber $n^3$.",
                         "fasit": null,
                         "fasitSteg": [
                             "<strong>a)</strong> <br>Vi observerer tallfølgen og ser på sammenhengen mellom posisjonen til tallet og selve tallet:<br>$1 = 1 \\cdot 1 \\cdot 1 = 1^3$<br>$8 = 2 \\cdot 2 \\cdot 2 = 2^3$<br>$27 = 3 \\cdot 3 \\cdot 3 = 3^3$<br>$64 = 4 \\cdot 4 \\cdot 4 = 4^3$<br><br>Siden hvert tall kan skrives som et heltall opphøyd i $3$, er de kuber av heltall.<br><br><strong>Svar:</strong> Tallene kalles kubikktall.",
@@ -5198,12 +5198,12 @@ export const fagsok = [
                         "hint": "Eksponenten $0.55$ er positiv og under $1$, så grafen stiger, men slakker av.",
                         "fasit": null,
                         "fasitSteg": [
-                            "<strong>a)</strong><br>Kurven er en voksende funksjon med en avtagende veksthastighet.<br><br>Når $m=1000$: $T(1000) = 1.2 \\cdot 1000^{0.55} \\approx 53.8$ minutter.<br><br>Når $m=3000$: $T(3000) = 1.2 \\cdot 3000^{0.55} \\approx 98.4$ minutter.",
-                            "<strong>Svar:</strong> Kurven vokser gradvis fra $53.8$ til $98.4$.",
-                            "<strong>b)</strong><br>Vi regner ut steketiden for $m = 2000$.<br><br>$T(2000) = 1.2 \\cdot 2000^{0.55}$ (sett inn $2000$ for $m$)<br><br>$T(2000) \\approx 78.7$ minutter",
-                            "<strong>Svar:</strong> Steketiden er $78.7$ minutter.",
-                            "<strong>c)</strong><br>Vi regner først ut steketiden for $m = 2500$.<br><br>$T(2500) = 1.2 \\cdot 2500^{0.55} \\approx 89.0$ minutter (sett inn $2500$ for $m$)<br><br>Vi finner deretter differansen fra steketiden i b):<br><br>Forskjell $= T(2500) - T(2000) = 89.0 - 78.7 = 10.3$ minutter",
-                            "<strong>Svar:</strong> Forskjellen i steketid er $10.3$ minutter."
+                            "<strong>a)</strong><br>Kurven er en voksende funksjon med en avtagende veksthastighet.<br><br>Når $m=1000$: $T(1000) = 1.2 \\cdot 1000^{0.55} \\approx 53.6$ minutter.<br><br>Når $m=3000$: $T(3000) = 1.2 \\cdot 3000^{0.55} \\approx 98.1$ minutter.",
+                            "<strong>Svar:</strong> Kurven vokser gradvis fra $53.6$ til $98.1$.",
+                            "<strong>b)</strong><br>Vi regner ut steketiden for $m = 2000$.<br><br>$T(2000) = 1.2 \\cdot 2000^{0.55}$ (sett inn $2000$ for $m$)<br><br>$T(2000) \\approx 78.5$ minutter",
+                            "<strong>Svar:</strong> Steketiden er $78.5$ minutter.",
+                            "<strong>c)</strong><br>Vi regner først ut steketiden for $m = 2500$.<br><br>$T(2500) = 1.2 \\cdot 2500^{0.55} \\approx 88.7$ minutter (sett inn $2500$ for $m$)<br><br>Vi finner deretter differansen fra steketiden i b):<br><br>Forskjell $= T(2500) - T(2000) = 88.7 - 78.5 = 10.2$ minutter",
+                            "<strong>Svar:</strong> Forskjellen i steketid er $10.2$ minutter."
                         ],
                         "starter": ""
                     },
@@ -5234,8 +5234,8 @@ export const fagsok = [
                         "fasitSteg": [
                             "<strong>a)</strong><br>Vi setter $x = 5$ inn i formelen.<br><br>$A(5) = 3.14 \\cdot 5^{1.9}$<br><br>$A(5) \\approx 66.8$ (regn ut produktet)",
                             "<strong>Svar:</strong> Arealet er $66.8 \\text{ km}^2$.",
-                            "<strong>b)</strong><br>Vi setter $A(x) = 100$ inn i likningen og løser for $x$.<br><br>$3.14 \\cdot x^{1.9} = 100$<br><br>$x^{1.9} = \\frac{100}{3.14}$ (del begge sider på $3.14$)<br><br>$x = \\left(\\frac{100}{3.14}\\right)^{\\frac{1}{1.9}}$ (opphøy i invers brøk)<br><br>$x \\approx 6.13 \\text{ km}$",
-                            "<strong>Svar:</strong> Radiusen er $6.13 \\text{ km}$.",
+                            "<strong>b)</strong><br>Vi setter $A(x) = 100$ inn i likningen og løser for $x$.<br><br>$3.14 \\cdot x^{1.9} = 100$<br><br>$x^{1.9} = \\frac{100}{3.14}$ (del begge sider på $3.14$)<br><br>$x = \\left(\\frac{100}{3.14}\\right)^{\\frac{1}{1.9}}$ (opphøy i invers brøk)<br><br>$x \\approx 6.18 \\text{ km}$",
+                            "<strong>Svar:</strong> Radiusen er $6.18 \\text{ km}$.",
                             "<strong>c)</strong><br>Når radiusen $x$ øker med $15\\%$, multipliseres den med vekstfaktoren $1.15$.<br>Siden arealet er proporsjonalt med $x^{1.9}$, må vekstfaktoren for arealet være $1.15^{1.9}$.<br><br>Vekstfaktor $= 1.15^{1.9} \\approx 1.304$<br><br>Dette gir en økning på $30.4\\%$.",
                             "<strong>Svar:</strong> Arealet øker med $30.4\\%$."
                         ],
@@ -5249,12 +5249,12 @@ export const fagsok = [
                         "hint": "En negativ potensfunksjon flater gradvis ut for høye verdier av $x$.",
                         "fasit": null,
                         "fasitSteg": [
-                            "<strong>a)</strong><br>Vi setter inn $x = 500$ i funksjonen.<br><br>$C(500) = 150 \\cdot 500^{-0.15}$<br><br>$C(500) \\approx 57$ (regn ut produktet)",
-                            "<strong>Svar:</strong> Kapasiteten er ca $57\\%$.",
+                            "<strong>a)</strong><br>Vi setter inn $x = 500$ i funksjonen.<br><br>$C(500) = 150 \\cdot 500^{-0.15}$<br><br>$C(500) \\approx 59$ (regn ut produktet)",
+                            "<strong>Svar:</strong> Kapasiteten er ca $59\\%$.",
                             "<strong>b)</strong><br>Kapasiteten er en avtagende funksjon fordi eksponenten er negativ ($-0.15$).<br><br>$C(x) = 150 \\cdot x^{-0.15}$<br><br>Kurven synker raskt til å begynne med, men flater gradvis ut for høyere verdier av ladesykluser.",
                             "<strong>Svar:</strong> Det er en synkende kurve som gradvis flater ut.",
-                            "<strong>c)</strong><br>Vi setter kapasiteten $C(x) = 60$ og løser for antall ladesykluser $x$.<br><br>$150 \\cdot x^{-0.15} = 60$<br><br>$x^{-0.15} = \\frac{60}{150}$ (del på 150)<br><br>$x^{-0.15} = 0.4$ (forenkle)<br><br>$x = 0.4^{\\frac{1}{-0.15}}$ (opphøy begge sider)<br><br>$x \\approx 395$",
-                            "<strong>Svar:</strong> Det tar ca $395$ ladesykluser.",
+                            "<strong>c)</strong><br>Vi setter kapasiteten $C(x) = 60$ og løser for antall ladesykluser $x$.<br><br>$150 \\cdot x^{-0.15} = 60$<br><br>$x^{-0.15} = \\frac{60}{150}$ (del på 150)<br><br>$x^{-0.15} = 0.4$ (forenkle)<br><br>$x = 0.4^{\\frac{1}{-0.15}}$ (opphøy begge sider)<br><br>$x \\approx 450$",
+                            "<strong>Svar:</strong> Det tar ca $450$ ladesykluser.",
                             "<strong>d)</strong><br>Hvis syklusene øker med $30\\%$, er vekstfaktoren $1.3$. Endringen i kapasiteten vil da være $1.3^{-0.15}$.<br><br>$1.3^{-0.15} \\approx 0.961$<br><br>Dette gir en ny kapasitet på $96.1\\%$ av den forrige. Vi finner nedgangen:<br><br>$1 - 0.961 = 0.039 = 3.9\\%$",
                             "<strong>Svar:</strong> Nedgangen i kapasitet er $3.9\\%$."
                         ],

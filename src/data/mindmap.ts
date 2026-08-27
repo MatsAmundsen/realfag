@@ -93,8 +93,8 @@ export const HELHET_NODES: HelhetNode[] = [
   { id: "4D", label: "Rasjonale funksjoner", kapId: "kap4", subId: "4D" },
   { id: "4E", label: "Potensfunksjoner", kapId: "kap4", subId: "4E" },
   { id: "4F", label: "Eksponentialfunksjoner", kapId: "kap4", subId: "4F" },
-  { id: "4G", label: "Drøfting", kapId: "kap4", subId: "4G" },
-  { id: "4H", label: "Vekstfart og derivasjon", kapId: "kap4", subId: "4H" },
+  { id: "4G", label: "Vekstfart", kapId: "kap4", subId: "4G" },
+  { id: "4H", label: "Derivasjon", kapId: "kap4", subId: "4H" },
   { id: "5A", label: "To ukjente", kapId: "kap5", subId: "5A" },
   { id: "5B", label: "Modellering", kapId: "kap5", subId: "5B" },
   { id: "5C", label: "Tre ukjente", kapId: "kap5", subId: "5C" },
@@ -121,10 +121,10 @@ export const HELHET_EDGES: HelhetEdge[] = [
   { from: "3A", to: "4B" },
   { from: "3D", to: "3G" },
   { from: "3D", to: "4C" },
-  { from: "3G", to: "4H" },
-  { from: "4B", to: "4H" },
-  { from: "4C", to: "4G" },
-  { from: "4H", to: "4G" },
+  { from: "3G", to: "4G" },
+  { from: "4B", to: "4G" },
+  { from: "4C", to: "4H" },
+  { from: "4G", to: "4H" },
   { from: "3A", to: "5A" },
   { from: "4B", to: "5A" },
   { from: "5A", to: "5B" },
@@ -134,7 +134,7 @@ export const HELHET_EDGES: HelhetEdge[] = [
   { from: "5D", to: "5E" },
   { from: "3A", to: "5F" },
   { from: "5F", to: "5G" },
-  { from: "4G", to: "5G", dashed: true, label: "fortegn" },
+  { from: "4H", to: "5G", dashed: true, label: "fortegn" },
   { from: "5G", to: "5H" },
   { from: "3E", to: "5H" },
   { from: "4D", to: "5H", dashed: true },
@@ -171,6 +171,7 @@ export const CHAPTER_MAPS: Record<string, ChapterDetail> = {
           n("1B-k", "Kvadrattall 1, 4, 9, …", "1B"),
           n("1B-u", "Kubikktall 1, 8, 27, …", "1B"),
           n("1B-f", "Figurtall og mønstre", "1B"),
+          n("1B-sqrt", "Kvadratrøtter", "1B"),
         ],
       },
       {
@@ -204,7 +205,6 @@ export const CHAPTER_MAPS: Record<string, ChapterDetail> = {
         layout: "stack",
         nodes: [
           n("1E-std", "a · 10ⁿ", "1E"),
-          n("1E-sqrt", "Kvadratrøtter", "1E"),
         ],
       },
       {
@@ -425,24 +425,24 @@ export const CHAPTER_MAPS: Record<string, ChapterDetail> = {
         ],
       },
       {
-        id: "4H",
-        title: "4H Vekstfart og derivasjon",
-        subId: "4H",
-        layout: "stack",
-        nodes: [
-          n("4H-gjsn", "Gjennomsnittlig vekstfart Δy/Δx", "4H"),
-          n("4H-mom", "Momentan vekstfart f'(x)", "4H"),
-          n("4H-reg", "Derivasjonsregler xⁿ → n xⁿ⁻¹", "4H"),
-        ],
-      },
-      {
         id: "4G",
-        title: "4G Drøfting",
+        title: "4G Vekstfart",
         subId: "4G",
         layout: "stack",
         nodes: [
-          n("4G-for", "Fortegnsskjema for f'(x)", "4G"),
-          n("4G-eks", "Ekstremalpunkter min/maks", "4G"),
+          n("4G-gjsn", "Gjennomsnittlig vekstfart Δy/Δx", "4G"),
+          n("4G-mom", "Momentan vekstfart f'(x)", "4G"),
+          n("4G-reg", "Derivasjonsregler xⁿ → n xⁿ⁻¹", "4G"),
+        ],
+      },
+      {
+        id: "4H",
+        title: "4H Derivasjon",
+        subId: "4H",
+        layout: "stack",
+        nodes: [
+          n("4H-for", "Fortegnsskjema for f'(x)", "4H"),
+          n("4H-eks", "Ekstremalpunkter min/maks", "4H"),
         ],
       },
     ],
@@ -618,14 +618,14 @@ export const PREREQS: Record<string, Prereq> = {
     blurb: "Produktregelen og kvadratrot er første verktøy, før ABC.",
     inputs: [
       { label: "Faktorisering", subId: "2D", kapId: "kap2", role: "step" },
-      { label: "Kvadratrøtter", subId: "1E", kapId: "kap1", role: "basic" },
+      { label: "Kvadratrøtter", subId: "1B", kapId: "kap1", role: "basic" },
     ],
   },
   "3D": {
     title: "ABC-formelen",
     blurb: "Virker for alle andregradslikninger. Diskriminanten forteller hvor mange løsninger.",
     inputs: [
-      { label: "Kvadratrøtter", subId: "1E", kapId: "kap1", role: "basic" },
+      { label: "Kvadratrøtter", subId: "1B", kapId: "kap1", role: "basic" },
       { label: "Faktorisering 2. grad", subId: "2D", kapId: "kap2", role: "step" },
       { label: "Kvadratsetninger", subId: "2B", kapId: "kap2", role: "step" },
     ],
@@ -672,20 +672,20 @@ export const PREREQS: Record<string, Prereq> = {
     ],
   },
   "4G": {
-    title: "Funksjonsdrøfting",
-    blurb: "Fortegnsskjema for f' forteller hvor grafen stiger og synker.",
-    inputs: [
-      { label: "Derivasjonsregler", subId: "4H", kapId: "kap4", role: "step" },
-      { label: "Faktorisering", subId: "2D", kapId: "kap2", role: "step" },
-      { label: "Andregradsfunksjoner", subId: "4C", kapId: "kap4", role: "basic" },
-    ],
-  },
-  "4H": {
-    title: "Vekstfart og derivasjon",
+    title: "Vekstfart",
     blurb: "Fra gjennomsnittlig stigning til momentan vekstfart — definisjonen av f'(x).",
     inputs: [
       { label: "Stigningstall", subId: "4B", kapId: "kap4", role: "basic" },
       { label: "Polynomregning", subId: "2A", kapId: "kap2", role: "basic" },
+    ],
+  },
+  "4H": {
+    title: "Derivasjon",
+    blurb: "Fortegnsskjema for f' forteller hvor grafen stiger og synker.",
+    inputs: [
+      { label: "Derivasjonsregler", subId: "4G", kapId: "kap4", role: "step" },
+      { label: "Faktorisering", subId: "2D", kapId: "kap2", role: "step" },
+      { label: "Andregradsfunksjoner", subId: "4C", kapId: "kap4", role: "basic" },
     ],
   },
   "5A": {

@@ -110,14 +110,16 @@ export const VIDEO_BY_SUB: Record<string, { tittel: string; url: string }[]> = {
     { tittel: "Regnerekkefølge og parenteser", url: "https://www.youtube.com/watch?v=HCvi7QZBoGE" },
     { tittel: "Tallmengder og intervaller", url: "https://www.youtube.com/watch?v=4ey3raG716U" },
   ],
-  "1B": [{ tittel: "Figurtall og mønstre", url: "https://www.youtube.com/watch?v=Pm1Z8GJFqPw" }],
+  "1B": [
+    { tittel: "Figurtall og mønstre", url: "https://www.youtube.com/watch?v=Pm1Z8GJFqPw" },
+    { tittel: "Kvadratrøtter", url: "https://www.youtube.com/watch?v=NRx60-H6ZY0" },
+  ],
   "1C": [
     { tittel: "Primtall og faktorisering", url: "https://www.youtube.com/watch?v=iMmTOV6rKqg" },
     { tittel: "Brøkregning", url: "https://www.youtube.com/watch?v=2foqFiSTRPc" },
   ],
   "1D": [{ tittel: "Potenser", url: "https://www.youtube.com/watch?v=daQqN2aB7is" }],
   "1E": [
-    { tittel: "Kvadratrøtter", url: "https://www.youtube.com/watch?v=NRx60-H6ZY0" },
     { tittel: "Standardform", url: "https://www.youtube.com/watch?v=SSb_IddmrdE" },
   ],
   "1F": [{ tittel: "Implikasjon og ekvivalens", url: "https://www.youtube.com/watch?v=lnB4y3IyCRQ" }],

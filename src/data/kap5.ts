@@ -199,8 +199,8 @@ const dk5B: Delkapittel = {
       "Differansen $48-32=16$ kr er «rabatten» per billig kake.",
       [
         "<strong>a)</strong> $b+d=150$ og $32b+48d=5880$.",
-        "<strong>b)</strong> $d=150-b$. $32b+48(150-b)=5880$<br>$-16b+7200=5880$, $b=82$, $d=68$.",
-        "<strong>c)</strong> Ja: $7200-5880=1320$, og $1320/16=82$.<br><strong>Svar:</strong> $82$ til $32$ kr og $68$ til $48$ kr",
+        "<strong>b)</strong> $d=150-b$. $32b+48(150-b)=5880$<br>$-16b+7200=5880$, $b=82{,}5$, $d=67{,}5$.",
+        "<strong>c)</strong> Ja: $7200-5880=1320$, og $1320/16=82{,}5$.<br><strong>Svar:</strong> $82{,}5$ til $32$ kr og $67{,}5$ til $48$ kr",
       ],
     ),
     o(
@@ -234,7 +234,7 @@ const dk5C: Delkapittel = {
     q("Hvor mange uavhengige likninger trenger du vanligvis for tre ukjente?", ["1", "2", "3", "6"], 2, "Én uavhengig likning per ukjent."),
     q("Hvis du kan isolere $z$ fra én likning, er neste steg å", ["gjette $z$", "sette uttrykket inn i de andre likningene", "tegne i 3D", "gange med $z$"], 1, "Innsetting reduserer antallet ukjente."),
     q("Summen av tre likninger $2k+a+e=73$, $k+2a+e=71$, $k+a+2e=68$ gir", ["$k+a+e=53$", "$k+a+e=212$", "$k=0$", "ingenting nytt"], 0, "Venstre side blir $4(k+a+e)=212$."),
-    q("Et sett med tre like likninger har", ["alltid én løsning", "enten ingen, én linje av løsninger, eller alt rom", "alltid ingen løsning", "alltid tre løsninger"], 1, "Avhengige likninger gir færre krav."),
+    q("Et sett med tre like likninger har", ["alltid én løsning", "enten ingen, et plan av løsninger, eller hele rommet", "alltid ingen løsning", "alltid tre løsninger"], 1, "Avhengige likninger gir færre krav."),
   ],
   oppgaver: [
     o(
@@ -481,8 +481,8 @@ const dk5E: Delkapittel = {
       "Isoler $y$ fra den lineære likningen og sett inn. Da får du en andregradslikning.",
       [
         "<strong>a)</strong> $y=9-x$. $x^2-(9-x)=3$, $x^2+x-12=0$, $(x+4)(x-3)=0$. Par $(3,6)$ og $(-4,13)$.",
-        "<strong>b)</strong> $y=7-2x$. $x^2-(7-2x)=5$, $x^2+2x-12=0$, $(x+4)(x-3)=0$. Par $(3,1)$ og $(-4,15)$.",
-        "<strong>c)</strong> Den ene likningen er en parabel. Parabel og linje kan møtes i to punkt. To rette linjer møtes i høyst ett.<br><strong>Svar:</strong> a) $(3,6)$ og $(-4,13)$ b) $(3,1)$ og $(-4,15)$",
+        "<strong>b)</strong> $y=7-2x$. $x^2-(7-2x)=5$, $x^2+2x-12=0$, $x=-1\\pm\\sqrt{13}$. Par $(-1+\\sqrt{13},\\,9-2\\sqrt{13})$ og $(-1-\\sqrt{13},\\,9+2\\sqrt{13})$.",
+        "<strong>c)</strong> Den ene likningen er en parabel. Parabel og linje kan møtes i to punkt. To rette linjer møtes i høyst ett.<br><strong>Svar:</strong> a) $(3,6)$ og $(-4,13)$ b) $(-1+\\sqrt{13},\\,9-2\\sqrt{13})$ og $(-1-\\sqrt{13},\\,9+2\\sqrt{13})$",
       ],
     ),
     o(
@@ -620,12 +620,12 @@ const dk5G: Delkapittel = {
     ),
     o(
       "5.47",
-      "Figuren viser parabelen $f(x)=-(x+2)(x-5)$ og linjen $g(x)=4$. Parabelen skjærer $x$-aksen i $-2$ og $5$. Linja skjærer $f$ i $x=0$ og $x=3$.<br><br><strong>a)</strong> Løs $f(x)>0$.<br><br><strong>b)</strong> Løs $f(x)>4$.<br><br><strong>c)</strong> Løs $f(x)<g(x)$.",
+      "Figuren viser parabelen $f(x)=-(x+2)(x-5)$ og linjen $g(x)=4$. Parabelen skjærer $x$-aksen i $-2$ og $5$. Linja skjærer $f$ i $x=(3\\pm\\sqrt{33})/2$.<br><br><strong>a)</strong> Løs $f(x)>0$.<br><br><strong>b)</strong> Løs $f(x)>4$.<br><br><strong>c)</strong> Løs $f(x)<g(x)$.",
       "$f>4$ er der parabelen ligger over den vannrette linja.",
       [
         "<strong>a)</strong> Parabel ned, positiv mellom nullpunktene: $\\langle-2,5\\rangle$",
-        "<strong>b)</strong> Over $y=4$ mellom skjæringene: $\\langle 0,3\\rangle$",
-        "<strong>c)</strong> $f<4$ utenfor $[0,3]$: $\\langle-\\infty,0\\rangle\\cup\\langle 3,\\infty\\rangle$<br><strong>Svar:</strong> a) $\\langle-2,5\\rangle$ b) $\\langle 0,3\\rangle$ c) $\\langle-\\infty,0\\rangle\\cup\\langle 3,\\infty\\rangle$",
+        "<strong>b)</strong> Over $y=4$ mellom skjæringene: $\\langle(3-\\sqrt{33})/2,(3+\\sqrt{33})/2\\rangle$",
+        "<strong>c)</strong> $f<4$ utenfor det intervallet: $\\langle-\\infty,(3-\\sqrt{33})/2\\rangle\\cup\\langle(3+\\sqrt{33})/2,\\infty\\rangle$<br><strong>Svar:</strong> a) $\\langle-2,5\\rangle$ b) $\\langle(3-\\sqrt{33})/2,(3+\\sqrt{33})/2\\rangle$ c) utsiden av det",
       ],
     ),
     o(
@@ -701,7 +701,7 @@ const dk5H: Delkapittel = {
       [
         "<strong>a)</strong> Nullpunkt $4$, pol $-2$. $\\le 0$ mellom: $\\langle-2,4]$",
         "<strong>b)</strong> $\\dfrac{4-x}{x-1}\\ge 0$. Nullpunkt $4$, pol $1$. $x\\in\\langle 1,4]$",
-        "<strong>c)</strong> $\\dfrac{2-(4-x)}{4-x}<0$, $\\dfrac{x-2}{4-x}<0$. Nullpunkt $2$, pol $4$. $x\\in\\langle 2,4\\rangle$<br><strong>Svar:</strong> a) $\\langle-2,4]$ b) $\\langle 1,4]$ c) $\\langle 2,4\\rangle$",
+        "<strong>c)</strong> $\\dfrac{2-(4-x)}{4-x}<0$, $\\dfrac{x-2}{4-x}<0$. Nullpunkt $2$, pol $4$. $x\\in\\langle-\\infty,2\\rangle\\cup\\langle 4,\\infty\\rangle$<br><strong>Svar:</strong> a) $\\langle-2,4]$ b) $\\langle 1,4]$ c) $\\langle-\\infty,2\\rangle\\cup\\langle 4,\\infty\\rangle$",
       ],
     ),
     o(
