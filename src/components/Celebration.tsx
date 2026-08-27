@@ -9,6 +9,8 @@ export function CelebrationHost() {
   const dismiss = useProgressStore((s) => s.dismissCelebration);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const isQuizWin = celebration?.kind === "quiz";
+  const isQuizFail = celebration?.kind === "quiz-fail";
+  const isQuizClip = isQuizWin || isQuizFail;
 
   useEffect(() => {
     if (!celebration) return;
@@ -22,10 +24,12 @@ export function CelebrationHost() {
     canvas.width = window.innerWidth * dpr;
     canvas.height = window.innerHeight * dpr;
     ctx.scale(dpr, dpr);
-    const colors = isQuizWin
-      ? ["#fbbf24", "#f59e0b", "#fde68a", "#34d399", "#ffffff"]
-      : ["#6366f1", "#34d399", "#818cf8", "#e2e8f0", "#f59e0b"];
-    const bits = Array.from({ length: isQuizWin ? 72 : 90 }, () => ({
+    const colors = isQuizFail
+      ? ["#fb7185", "#f59e0b", "#ef4444", "#fde68a", "#ffffff"]
+      : isQuizWin
+        ? ["#fbbf24", "#f59e0b", "#fde68a", "#34d399", "#ffffff"]
+        : ["#6366f1", "#34d399", "#818cf8", "#e2e8f0", "#f59e0b"];
+    const bits = Array.from({ length: isQuizClip ? 72 : 90 }, () => ({
       x: Math.random() * window.innerWidth,
       y: -20 - Math.random() * 120,
       r: isQuizWin ? 2.5 + Math.random() * 3 : 3 + Math.random() * 4,
@@ -51,23 +55,23 @@ export function CelebrationHost() {
         ctx.fillRect(-b.r, -b.r / 2, b.r * 2, b.r);
         ctx.restore();
       });
-      if (frame < (isQuizWin ? 200 : 140)) raf = requestAnimationFrame(tick);
+      if (frame < (isQuizClip ? 200 : 140)) raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [celebration, isQuizWin]);
+  }, [celebration, isQuizWin, isQuizFail, isQuizClip]);
 
   if (!celebration) return null;
 
   return (
-    <div className={`cele-overlay${isQuizWin ? " is-quiz-win" : ""}`} role="dialog" aria-modal="true" aria-labelledby="cele-title">
+    <div className={`cele-overlay${isQuizWin ? " is-quiz-win" : ""}${isQuizFail ? " is-quiz-fail" : ""}`} role="dialog" aria-modal="true" aria-labelledby="cele-title">
       <canvas ref={canvasRef} className="cele-canvas" aria-hidden="true" />
       <div className="cele-card">
         <button type="button" className="quiz-close-btn cele-close" onClick={dismiss} aria-label="Lukk">
           <X size={18} />
         </button>
-        {isQuizWin ? (
-          <QuizClip kind="win" />
+        {isQuizClip ? (
+          <QuizClip kind={isQuizWin ? "win" : "fail"} />
         ) : (
           <div className="cele-mark">
             <Award size={28} />

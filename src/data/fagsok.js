@@ -325,7 +325,7 @@ export const fagsok = [
                     {
                         "id": "1.32",
                         "tittel": "Oppgave 1.32",
-                        "tekst": "<button onclick=\"window.goToRessurser()\" style=\"background-color: #10b981; box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2); transition: all 0.2s; color: white; padding: 5px 10px; border-radius: 5px; border: none; cursor: pointer; margin-bottom: 15px; font-weight: bold;\">📚 Lær rot-regler i Fagbiblioteket</button><br><br>Skriv så enkelt som mulig: $\\sqrt{45} - \\sqrt{20}$",
+                        "tekst": "<a class=\"hint-btn\" href=\"/ressurser\">Lær rot-regler i fagbiblioteket</a><br><br>Skriv så enkelt som mulig: $\\sqrt{45} - \\sqrt{20}$",
                         "bilde": null,
                         "hint": "Skriv $45$ og $20$ som produkt av to tall, der det ene tallet er et kvadrattall (f.eks. $9$ eller $4$).",
                         "fasit": null,
@@ -504,7 +504,7 @@ export const fagsok = [
                     {
                         "id": "1.39",
                         "tittel": "Oppgave 1.39",
-                        "tekst": "Vi har følgende tall-algoritme: <br>1) Velg et heltall. <br>2) Legg til 4. <br>3) Multipliser resultatet med 2. <br>4) Trekk fra 8.<br><br><strong>a)</strong><br>Utfør algoritmen med starttallet $5$. Hva blir svaret?<br><br><strong>b)</strong><br>Sett opp et algebraisk uttrykk med variabelen $x$ for å bevise hva sluttresultatet alltid vil bli.",
+                        "tekst": "Vi har følgende tall-algoritme:<ol><li>Velg et heltall.</li><li>Legg til 4.</li><li>Multipliser resultatet med 2.</li><li>Trekk fra 8.</li></ol><br><strong>a)</strong> Utfør algoritmen med starttallet $5$. Hva blir svaret?<br><br><strong>b)</strong> Sett opp et algebraisk uttrykk med variabelen $x$ for å bevise hva sluttresultatet alltid vil bli.",
                         "bilde": null,
                         "hint": "Pass på å sette parentes rundt $(x + 4)$ før du ganger uttrykket med $2$.",
                         "fasit": null,
@@ -569,7 +569,7 @@ export const fagsok = [
                     {
                         "id": "1.44",
                         "tittel": "Oppgave 1.44",
-                        "tekst": "<button onclick=\"window.goToRessurser()\" style=\"background-color: #10b981; box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2); transition: all 0.2s; color: white; padding: 5px 10px; border-radius: 5px; border: none; cursor: pointer; margin-bottom: 15px; font-weight: bold;\">📚 Lær brøkregning i Fagbiblioteket</button><br><br>Regn ut og forkort svaret så mye som mulig:<br>$\\frac{5}{12} + \\frac{1}{18}$",
+                        "tekst": "<a class=\"hint-btn\" href=\"/ressurser\">Lær brøkregning i fagbiblioteket</a><br><br>Regn ut og forkort svaret så mye som mulig:<br>$\\frac{5}{12} + \\frac{1}{18}$",
                         "bilde": null,
                         "hint": "Bruk minste felles multiplum (MFM) for $12$ og $18$ som du fant i forrige oppgave, for å finne fellesnevneren.",
                         "fasit": null,
@@ -582,7 +582,7 @@ export const fagsok = [
                     {
                         "id": "1.45",
                         "tittel": "Oppgave 1.45",
-                        "tekst": "<button onclick=\"window.goToRessurser()\" style=\"background-color: #10b981; box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2); transition: all 0.2s; color: white; padding: 5px 10px; border-radius: 5px; border: none; cursor: pointer; margin-bottom: 15px; font-weight: bold;\">📚 Lær brøkregning i Fagbiblioteket</button><br><br>Regn ut:<br><strong>a)</strong> $\\frac{3}{4} \\cdot \\frac{2}{5}$<br><br><strong>b)</strong> $\\frac{4}{7} : \\frac{2}{3}$",
+                        "tekst": "<a class=\"hint-btn\" href=\"/ressurser\">Lær brøkregning i fagbiblioteket</a><br><br>Regn ut:<br><strong>a)</strong> $\\frac{3}{4} \\cdot \\frac{2}{5}$<br><br><strong>b)</strong> $\\frac{4}{7} : \\frac{2}{3}$",
                         "bilde": null,
                         "hint": "Når vi ganger brøker, ganger vi teller med teller og nevner med nevner. <br>Når vi deler brøker, snur vi den bakerste brøken på hodet og ganger i stedet.",
                         "fasit": null,
@@ -813,7 +813,7 @@ export const fagsok = [
                     {
                         "id": "1.60",
                         "tittel": "Oppgave 1.60",
-                        "tekst": "<button onclick=\"window.goToRessurser()\" style=\"background-color: #10b981; box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2); transition: all 0.2s; color: white; padding: 5px 10px; border-radius: 5px; border: none; cursor: pointer; margin-bottom: 15px; font-weight: bold;\">📚 Lær rot-regler i Fagbiblioteket</button><br><br>Regn ut og skriv svaret så enkelt som mulig:<br><strong>a)</strong> $\\sqrt{2} \\cdot \\sqrt{8}$<br><br><strong>b)</strong> $\\frac{\\sqrt{50}}{\\sqrt{2}}$",
+                        "tekst": "<a class=\"hint-btn\" href=\"/ressurser\">Lær rot-regler i fagbiblioteket</a><br><br>Regn ut og skriv svaret så enkelt som mulig:<br><strong>a)</strong> $\\sqrt{2} \\cdot \\sqrt{8}$<br><br><strong>b)</strong> $\\frac{\\sqrt{50}}{\\sqrt{2}}$",
                         "bilde": null,
                         "hint": "Bruk rotreglene: $\\sqrt{a} \\cdot \\sqrt{b} = \\sqrt{a \\cdot b}$ og $\\frac{\\sqrt{a}}{\\sqrt{b}} = \\sqrt{\\frac{a}{b}}$.",
                         "fasit": null,
@@ -826,7 +826,7 @@ export const fagsok = [
                     {
                         "id": "1.61",
                         "tittel": "Oppgave 1.61",
-                        "tekst": "<button onclick=\"window.goToRessurser()\" style=\"background-color: #10b981; box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2); transition: all 0.2s; color: white; padding: 5px 10px; border-radius: 5px; border: none; cursor: pointer; margin-bottom: 15px; font-weight: bold;\">📚 Lær rot-regler i Fagbiblioteket</button><br><br>Forenkle uttrykket: $\\sqrt{72}$",
+                        "tekst": "<a class=\"hint-btn\" href=\"/ressurser\">Lær rot-regler i fagbiblioteket</a><br><br>Forenkle uttrykket: $\\sqrt{72}$",
                         "bilde": null,
                         "hint": "Prøv å skrive $72$ som et produkt av et kvadrattall og et annet tall. Kvadratallene er $1, 4, 9, 16, 25, 36, \\dots$",
                         "fasit": null,
@@ -4278,7 +4278,7 @@ export const fagsok = [
                     {
                         "id": "4.4",
                         "tittel": "Oppgave 4.4",
-                        "tekst": "Vi har en funksjon $h$.<br>1) Hva er $h(x)$ når $x = c$?<br>2) Hva er $x$ når $h(x) = d$?<br><br>a) Kan det finnes mer enn ett svar på spørsmål 1?<br><br>b) Kan det finnes mer enn ett svar på spørsmål 2? Begrunn kort.",
+                        "tekst": "Vi har en funksjon $h$.<ol><li>Hva er $h(x)$ når $x = c$?</li><li>Hva er $x$ når $h(x) = d$?</li></ol><br><strong>a)</strong> Kan det finnes mer enn ett svar på spørsmål 1?<br><br><strong>b)</strong> Kan det finnes mer enn ett svar på spørsmål 2? Begrunn kort.",
                         "bilde": null,
                         "hint": "Tenk på definisjonen av en funksjon. Kan samme $x$-verdi gi to forskjellige $y$-verdier?",
                         "fasit": null,

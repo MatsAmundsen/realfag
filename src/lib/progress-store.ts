@@ -11,7 +11,7 @@ import {
   touchStreak,
 } from "./progress";
 
-type CelebrationKind = "sub" | "kap" | "prove" | "exam" | "quiz" | "badge";
+type CelebrationKind = "sub" | "kap" | "prove" | "exam" | "quiz" | "quiz-fail" | "badge";
 
 export type Celebration = {
   kind: CelebrationKind;

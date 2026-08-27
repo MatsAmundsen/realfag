@@ -6,6 +6,77 @@ function o(id: string, tekst: string, hint: string, steg: string[]): Oppgave {
 
 /** Extra 1T-oppgaver som manglet i 1C (brøk) og i kapittel 2–3. */
 export const EXTRA: Record<string, Oppgave[]> = {
+  "1B": [
+    o(
+      "1.33",
+      "Primtall og faktorisering — start rolig og øk tempoet.<br><br><strong>a)</strong> Hva er et primtall? Er $1$ et primtall? Begrunn med én setning.<br><br><strong>b)</strong> Hvilke av tallene $2$, $9$, $11$, $15$, $17$ og $21$ er primtall?<br><br><strong>c)</strong> Primtallsfaktoriser $18$.<br><br><strong>d)</strong> Primtallsfaktoriser $48$.<br><br><strong>e)</strong> Skriv svaret i d) med potenser.",
+      "Del på de minste primtallene først: $2$, så $3$, så $5$, … Fortsett til du bare har primtall igjen.",
+      [
+        "<strong>a)</strong> Et primtall er et naturlig tall større enn $1$ som bare har faktorene $1$ og seg selv. $1$ har ikke to ulike faktorer, og regnes derfor ikke som primtall.<br><strong>Svar:</strong> et primtall har bare faktorene $1$ og seg selv; $1$ er ikke et primtall",
+        "<strong>b)</strong> $2$, $11$ og $17$ har bare faktorene $1$ og seg selv. $9=3\\cdot 3$, $15=3\\cdot 5$ og $21=3\\cdot 7$ er sammensatte.<br><strong>Svar:</strong> $2$, $11$ og $17$",
+        "<strong>c)</strong> $18=2\\cdot 9=2\\cdot 3\\cdot 3$.<br><strong>Svar:</strong> $18=2\\cdot 3^2$",
+        "<strong>d)</strong> $48=2\\cdot 24=2\\cdot 2\\cdot 12=2\\cdot 2\\cdot 2\\cdot 6=2\\cdot 2\\cdot 2\\cdot 2\\cdot 3$.<br><strong>Svar:</strong> $48=2\\cdot 2\\cdot 2\\cdot 2\\cdot 3$",
+        "<strong>e)</strong> Fire toere skrives $2^4$.<br><strong>Svar:</strong> $48=2^4\\cdot 3$",
+      ],
+    ),
+    o(
+      "1.34",
+      "Primtallsfaktoriser. Skriv svaret med potenser der det passer.<br><br><strong>a)</strong> $84$<br><br><strong>b)</strong> $360$<br><br><strong>c)</strong> $147$<br><br><strong>d)</strong> $242$<br><br><strong>e)</strong> $1001$",
+      "Del på $2$ så lenge tallet er partall. Bruk tverrsum for $3$. $1001$ er $7\\cdot 11\\cdot 13$.",
+      [
+        "<strong>a)</strong> $84\\div 2=42$, $42\\div 2=21$, $21\\div 3=7$.<br><strong>Svar:</strong> $84=2^2\\cdot 3\\cdot 7$",
+        "<strong>b)</strong> $360\\div 2=180\\div 2=90\\div 2=45$, $45\\div 3=15\\div 3=5$.<br><strong>Svar:</strong> $360=2^3\\cdot 3^2\\cdot 5$",
+        "<strong>c)</strong> $147\\div 3=49=7^2$.<br><strong>Svar:</strong> $147=3\\cdot 7^2$",
+        "<strong>d)</strong> $242\\div 2=121=11^2$.<br><strong>Svar:</strong> $242=2\\cdot 11^2$",
+        "<strong>e)</strong> $1001\\div 7=143$, $143\\div 11=13$.<br><strong>Svar:</strong> $1001=7\\cdot 11\\cdot 13$",
+      ],
+    ),
+    o(
+      "1.35",
+      "Bruk primtallsfaktorisering — ikke prøv deg fram med store gjetninger.<br><br><strong>a)</strong> Forklar med faktorisering hvorfor $180$ er delelig med $12$.<br><br><strong>b)</strong> Er $720$ et kvadrattall? Begrunn med eksponentene i faktoriseringen.",
+      "Skriv begge tall som produkt av primtall. Et kvadrattall har bare like eksponenter.",
+      [
+        "<strong>a)</strong> $180=2^2\\cdot 3^2\\cdot 5$ og $12=2^2\\cdot 3$. Alle faktorene i $12$ ligger i $180$, så $180:12=15$.<br><strong>Svar:</strong> $12$ er en faktor i $180$",
+        "<strong>b)</strong> $720=2^4\\cdot 3^2\\cdot 5$. Eksponenten til $5$ er oddetall, så $720$ er ikke et kvadrattall. (Et kvadrattall trenger bare like eksponenter.)<br><strong>Svar:</strong> nei",
+      ],
+    ),
+    o(
+      "1.36",
+      "Kvadratrot — grunnreglene. $\\sqrt{a}$ er det ikke-negative tallet som ganget med seg selv gir $a$.<br><br><strong>a)</strong> Regn ut $\\sqrt{36}$, $\\sqrt{1}$ og $\\sqrt{0}$.<br><br><strong>b)</strong> Hvorfor er $\\sqrt{-9}$ ikke et reelt tall?<br><br><strong>c)</strong> Produktregelen: vis at $\\sqrt{4\\cdot 9}=\\sqrt{4}\\cdot\\sqrt{9}$.<br><br><strong>d)</strong> Brøkregelen: regn ut $\\sqrt{\\dfrac{25}{49}}$.<br><br><strong>e)</strong> En vanlig feil: er $\\sqrt{9+16}=\\sqrt{9}+\\sqrt{16}$? Regn ut begge sider.",
+      "Rota av et produkt (eller en brøk) kan deles. Rota av en sum kan ikke. I reelle tall er $\\sqrt{a}$ bare definert for $a\\ge 0$.",
+      [
+        "<strong>a)</strong> $6^2=36$, $1^2=1$ og $0^2=0$. Vi tar den ikke-negative roten.<br><strong>Svar:</strong> $6$, $1$ og $0$",
+        "<strong>b)</strong> Ingen reelt tall ganget med seg selv gir et negativt tall. (Pluss ganger pluss er pluss, minus ganger minus er pluss.)<br><strong>Svar:</strong> $\\sqrt{-9}$ er ikke reell",
+        "<strong>c)</strong> Venstre: $\\sqrt{36}=6$. Høyre: $2\\cdot 3=6$. Samme verdi, så $\\sqrt{ab}=\\sqrt{a}\\cdot\\sqrt{b}$ (når $a,b\\ge 0$).<br><strong>Svar:</strong> begge sider blir $6$",
+        "<strong>d)</strong> $\\sqrt{\\dfrac{25}{49}}=\\dfrac{\\sqrt{25}}{\\sqrt{49}}=\\dfrac{5}{7}$.<br><strong>Svar:</strong> $\\dfrac{5}{7}$",
+        "<strong>e)</strong> Venstre: $\\sqrt{25}=5$. Høyre: $3+4=7$. $5\\ne 7$, så vi kan ikke splitte rota over pluss.<br><strong>Svar:</strong> nei, $5\\ne 7$",
+      ],
+    ),
+    o(
+      "1B-K1",
+      "Forenkle røtter. Trekk ut kvadrattall, og samle like røtter.<br><br><strong>a)</strong> $\\sqrt{12}$<br><br><strong>b)</strong> $\\sqrt{75}$<br><br><strong>c)</strong> $\\sqrt{8}\\cdot\\sqrt{18}$<br><br><strong>d)</strong> $3\\sqrt{7}+5\\sqrt{7}-\\sqrt{7}$<br><br><strong>e)</strong> $\\sqrt{50}-\\sqrt{8}$",
+      "Skriv tallet som (kvadrattall)$\\cdot$(rest). $\\sqrt{a^2 b}=a\\sqrt{b}$. Like røtter kan du plusse som vanlige ledd.",
+      [
+        "<strong>a)</strong> $\\sqrt{12}=\\sqrt{4\\cdot 3}=\\sqrt{4}\\cdot\\sqrt{3}=2\\sqrt{3}$.<br><strong>Svar:</strong> $2\\sqrt{3}$",
+        "<strong>b)</strong> $\\sqrt{75}=\\sqrt{25\\cdot 3}=5\\sqrt{3}$.<br><strong>Svar:</strong> $5\\sqrt{3}$",
+        "<strong>c)</strong> $\\sqrt{8}\\cdot\\sqrt{18}=\\sqrt{144}=12$. (Eller $\\sqrt{4\\cdot 2}\\cdot\\sqrt{9\\cdot 2}=2\\sqrt{2}\\cdot 3\\sqrt{2}=6\\cdot 2=12$.)<br><strong>Svar:</strong> $12$",
+        "<strong>d)</strong> $(3+5-1)\\sqrt{7}=7\\sqrt{7}$.<br><strong>Svar:</strong> $7\\sqrt{7}$",
+        "<strong>e)</strong> $\\sqrt{50}=5\\sqrt{2}$ og $\\sqrt{8}=2\\sqrt{2}$, så $5\\sqrt{2}-2\\sqrt{2}=3\\sqrt{2}$.<br><strong>Svar:</strong> $3\\sqrt{2}$",
+      ],
+    ),
+    o(
+      "1B-K2",
+      "Flere rot-regler: brøk, rasjonalisering og primtallsfaktorisering under rota.<br><br><strong>a)</strong> $\\sqrt{\\dfrac{36}{4}}$<br><br><strong>b)</strong> $\\dfrac{\\sqrt{50}}{\\sqrt{2}}$<br><br><strong>c)</strong> Rasjonaliser nevneren: $\\dfrac{1}{\\sqrt{3}}$<br><br><strong>d)</strong> $\\sqrt{\\dfrac{8}{18}}$ (forkort under rota først)<br><br><strong>e)</strong> Primtallsfaktoriser $720$ og bruk det til å forenkle $\\sqrt{720}$.",
+      "Rasjonaliser ved å gange med $\\sqrt{a}/\\sqrt{a}$. Under rota: partall-eksponenter kan trekkes ut.",
+      [
+        "<strong>a)</strong> $\\sqrt{\\dfrac{36}{4}}=\\dfrac{6}{2}=3$.<br><strong>Svar:</strong> $3$",
+        "<strong>b)</strong> $\\dfrac{\\sqrt{50}}{\\sqrt{2}}=\\sqrt{\\dfrac{50}{2}}=\\sqrt{25}=5$.<br><strong>Svar:</strong> $5$",
+        "<strong>c)</strong> $\\dfrac{1}{\\sqrt{3}}\\cdot\\dfrac{\\sqrt{3}}{\\sqrt{3}}=\\dfrac{\\sqrt{3}}{3}$.<br><strong>Svar:</strong> $\\dfrac{\\sqrt{3}}{3}$",
+        "<strong>d)</strong> $\\dfrac{8}{18}=\\dfrac{4}{9}$, så $\\sqrt{\\dfrac{4}{9}}=\\dfrac{2}{3}$.<br><strong>Svar:</strong> $\\dfrac{2}{3}$",
+        "<strong>e)</strong> $720=2^4\\cdot 3^2\\cdot 5$. Da $\\sqrt{720}=\\sqrt{2^4\\cdot 3^2\\cdot 5}=2^2\\cdot 3\\cdot\\sqrt{5}=12\\sqrt{5}$.<br><strong>Svar:</strong> $12\\sqrt{5}$",
+      ],
+    ),
+  ],
   "1C": [
     o(
       "1.46",
@@ -523,7 +594,7 @@ export const EXTRA: Record<string, Oppgave[]> = {
 
 export const SUB_TITLES: Record<string, string> = {
   "1A": "1A Tallmengder og regneregler",
-  "1B": "1B Figurtall og mønstre",
+  "1B": "1B Figurtall, primtall og kvadratrot",
   "1C": "1C Faktorer og brøk",
   "1D": "1D Potenser",
   "1E": "1E Standardform",

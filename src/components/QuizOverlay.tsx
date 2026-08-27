@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { X } from "lucide-react";
 import type { QuizQuestion } from "@/data/types";
 import { KatexHtml } from "./KatexHtml";
@@ -26,6 +27,19 @@ export function QuizOverlay({
   const failed = done && questions.length > 0 && score / questions.length < 0.5;
   const perfect = done && questions.length > 0 && score === questions.length;
 
+  useEffect(() => {
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [onClose]);
+
   function choose(i: number) {
     if (picked !== null || !q) return;
     setPicked(i);
@@ -43,6 +57,13 @@ export function QuizOverlay({
           body: `Alle ${questions.length} spørsmål riktig i ${title}. Prikkfri.`,
           badges: rec.newly,
         });
+      } else if (questions.length > 0 && score / questions.length < 0.5) {
+        fireCelebration({
+          kind: "quiz-fail",
+          title: "T-rexen tok hodet ditt",
+          body: `${score} av ${questions.length} riktig i ${title}. Under 50 % — les mer og prøv igjen.`,
+          badges: rec.newly,
+        });
       }
       return;
     }
@@ -51,16 +72,19 @@ export function QuizOverlay({
   }
 
   if (!q && !done) return null;
+  if (typeof document === "undefined") return null;
 
-  return (
+  const panel = (
     <>
       <div className="quiz-backdrop" onClick={onClose} />
-      <div className="quiz-overlay" role="dialog" aria-modal="true">
+      <div className="quiz-overlay" role="dialog" aria-modal="true" aria-labelledby="quiz-title">
         <div className="quiz-panel">
           <div className="quiz-panel-header">
             <div>
               <div className="quiz-panel-label">Quiz</div>
-              <h2 className="quiz-panel-title">{title}</h2>
+              <h2 id="quiz-title" className="quiz-panel-title">
+                {title}
+              </h2>
             </div>
             <button type="button" className="quiz-close-btn" onClick={onClose} aria-label="Lukk quiz">
               <X size={18} />
@@ -125,10 +149,10 @@ export function QuizOverlay({
                         key={i}
                         type="button"
                         className={cls}
+                        data-letter={letters[i]}
                         disabled={picked !== null}
                         onClick={() => choose(i)}
                       >
-                        <span>{letters[i]}</span>
                         <KatexHtml html={alt} as="span" />
                       </button>
                     );
@@ -152,25 +176,59 @@ export function QuizOverlay({
       </div>
     </>
   );
+
+  return createPortal(panel, document.body);
 }
 
 export function QuizClip({ kind }: { kind: "fail" | "win" }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [reduce, setReduce] = useState(false);
-  useEffect(() => {
-    setReduce(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
-  }, []);
+  const [broken, setBroken] = useState(false);
 
   const src = kind === "win" ? "/videos/quiz-win.mp4" : "/videos/quiz-rex.mp4";
   const poster = kind === "win" ? "/videos/quiz-win.jpg" : "/videos/quiz-rex.jpg";
   const caption = kind === "win" ? "Prikkfri. Du rir T-rexen ut." : "Game over. T-rexen spiste deg.";
   const alt = kind === "win" ? "Elev rir en T-rex gjennom klasserommet" : "En T-rex i klasserommet";
 
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReduce(mq.matches);
+    if (mq.matches) return;
+    const v = videoRef.current;
+    if (!v) return;
+    const tryPlay = () => {
+      const p = v.play();
+      if (p && typeof p.catch === "function") p.catch(() => setBroken(true));
+    };
+    v.muted = true;
+    v.loop = true;
+    v.playsInline = true;
+    tryPlay();
+    v.addEventListener("canplay", tryPlay);
+    v.addEventListener("loadeddata", tryPlay);
+    return () => {
+      v.removeEventListener("canplay", tryPlay);
+      v.removeEventListener("loadeddata", tryPlay);
+    };
+  }, [src]);
+
   return (
     <figure className={`quiz-rex${kind === "win" ? " is-win" : ""}`}>
-      {reduce ? (
+      {reduce || broken ? (
         <img src={poster} alt={alt} />
       ) : (
-        <video src={src} poster={poster} autoPlay muted playsInline preload="auto" />
+        <video
+          ref={videoRef}
+          key={src}
+          src={src}
+          poster={poster}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          onError={() => setBroken(true)}
+        />
       )}
       <figcaption>{caption}</figcaption>
     </figure>

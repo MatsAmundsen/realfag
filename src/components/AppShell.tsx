@@ -43,6 +43,22 @@ export function AppShell() {
   }, [hydrate]);
 
   useEffect(() => {
+    const nav = document.querySelector<HTMLElement>(".navbar");
+    const apply = () => {
+      const h = Math.round(nav?.getBoundingClientRect().height || 66);
+      document.documentElement.style.setProperty("--mg-nav-h", `${h}px`);
+    };
+    apply();
+    const ro = typeof ResizeObserver !== "undefined" && nav ? new ResizeObserver(apply) : null;
+    if (nav && ro) ro.observe(nav);
+    window.addEventListener("resize", apply);
+    return () => {
+      ro?.disconnect();
+      window.removeEventListener("resize", apply);
+    };
+  }, [menu, theme, pathname]);
+
+  useEffect(() => {
     if (theme === "light") document.documentElement.setAttribute("data-theme", "light");
     else document.documentElement.removeAttribute("data-theme");
     try {

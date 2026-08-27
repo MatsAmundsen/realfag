@@ -1,6 +1,8 @@
 import { fagsok as rawFagsok, fagstoff as rawFagstoff, programmeringData as rawProg } from "./fagsok.js";
-import type { Fagstoff, Kapittel, Oppgave } from "./types";
+import type { Delkapittel, Fagstoff, Kapittel, Oppgave } from "./types";
 import { EXTRA, SUB_TITLES } from "./extra-tasks";
+import { MORE23 } from "./extra-kap23";
+import { TASK_FIGURES } from "./task-figures";
 import { KAP3_OVEPROVE } from "./kap3-oveprove";
 import { KAP4_QUIZ } from "./kap4-quiz";
 import { KAP5 } from "./kap5";
@@ -10,29 +12,50 @@ import kvadratrotterHtml from "./fagstoff/kvadratrotter.html?raw";
 import programmeringHtml from "./fagstoff/programmering.html?raw";
 import videoerHtml from "./fagstoff/videoer.html?raw";
 
-export const fagsokRaw = (rawFagsok as Kapittel[]).map((kap) => {
-  const delkapitler = kap.delkapitler.map((dk) => ({
+function attachFigure(op: Oppgave): Oppgave {
+  const fig = TASK_FIGURES[op.id];
+  if (!fig || op.tekst.includes('class="task-figure"')) return op;
+  return { ...op, tekst: fig + op.tekst };
+}
+
+function withExtras(dk: Delkapittel): Delkapittel {
+  const extraList = [...(EXTRA[dk.id] || []), ...(MORE23[dk.id] || [])];
+  return {
     ...dk,
     tittel: SUB_TITLES[dk.id] || dk.tittel,
     quiz: KAP4_QUIZ[dk.id] ?? dk.quiz,
     oppgaver: [
-      ...dk.oppgaver,
-      ...(EXTRA[dk.id] || []).map((op, i, arr) => {
-        if (/^\d+\.\d+$/.test(op.id) && op.id.startsWith("1.")) return op;
-        if (/^\d+\.\d+$/.test(op.id)) {
-          return { ...op, tittel: `Ekstraøving ${i + 1}` } as Oppgave;
+      ...dk.oppgaver.map(attachFigure),
+      ...extraList.map((op, i, arr) => {
+        const withFig = attachFigure(op);
+        if (/^\d+\.\d+$/.test(withFig.id) && withFig.id.startsWith("1.")) return withFig;
+        if (/^\d+\.\d+$/.test(withFig.id)) {
+          return { ...withFig, tittel: `Ekstraøving ${i + 1}` } as Oppgave;
         }
         const n = arr.slice(0, i + 1).filter((x) => !/^\d+\.\d+$/.test(x.id)).length;
-        return { ...op, tittel: `Ekstraøving ${n}` } as Oppgave;
+        return { ...withFig, tittel: `Ekstraøving ${n}` } as Oppgave;
       }),
     ] as Oppgave[],
-  }));
+  };
+}
+
+export const fagsokRaw = (rawFagsok as Kapittel[]).map((kap) => {
+  const delkapitler = kap.delkapitler.map(withExtras);
   if (kap.id === "kap3") {
-    return { ...kap, delkapitler: [...delkapitler, KAP3_OVEPROVE] };
+    return { ...kap, delkapitler: [...delkapitler, withExtras(KAP3_OVEPROVE)] };
   }
   return { ...kap, delkapitler };
 });
-export const fagsok = [...fagsokRaw, KAP5];
+export const fagsok = [
+  ...fagsokRaw,
+  {
+    ...KAP5,
+    delkapitler: KAP5.delkapitler.map((dk) => ({
+      ...dk,
+      oppgaver: dk.oppgaver.map(attachFigure),
+    })),
+  },
+];
 export const fagstoff = (rawFagstoff as Fagstoff[]).map((f) => {
   const inline: Record<string, string> = {
     tallmengder: tallmengderHtml,

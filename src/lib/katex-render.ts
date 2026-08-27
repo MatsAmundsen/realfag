@@ -75,9 +75,10 @@ export function formatArticleHtml(html: string): string {
 }
 
 const PART_RE =
-  /(?:(?:<br\s*\/?>\s*)+|(?:^))(?:<strong>\s*)?([a-h1-9]\))(?:\s*<\/strong>)?(?:\s|&nbsp;)*/gi;
+  /(?:(?:<br\s*\/?>\s*)+|(?:^))(?:<strong>\s*)?([a-h]\))(?:\s*<\/strong>)?(?:\s|&nbsp;)*/gi;
 
-/** Split a)/b)/c) (og 1)/2)) ut som egne rader, slik at oppgaveteksten blir skannbar. */
+/** Split a)/b)/c) ut som egne rader, slik at oppgaveteksten blir skannbar.
+ *  Kun bokstaver — nummererte steg som «1) Velg et tall» skal ikke bli deloppgaver. */
 export function structureTaskParts(html: string): string {
   if (!html) return html;
   PART_RE.lastIndex = 0;
