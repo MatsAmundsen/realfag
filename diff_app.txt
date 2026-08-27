@@ -1,0 +1,65 @@
+--- app.js	2026-08-23 21:21:48
++++ /Users/m.g.a/kodeprosjekter/Re2fag/Matteguiden-1T 2/app.js	2026-08-25 07:58:46
+@@ -582,14 +582,30 @@
+ 
+ // ── Load ressurser ────────────────────────────────────────────
+ let ressurserLastet = false;
+-function loadRessurser() {
++async function loadRessurser() {
+     const container = document.getElementById('ressurser-container');
+     container.innerHTML = '';
+     if (typeof window.fagstoff === 'undefined' || !window.fagstoff.length) {
+         container.innerHTML = '<p>Ingen ressurser funnet.</p>';
+         return;
++    }
++
++    for (const tema of window.fagstoff) {
++        if (tema.src && !tema._loaded) {
++            try {
++                const res = await fetch(tema.src);
++                if (res.ok) {
++                    tema.html = await res.text();
++                    tema._loaded = true;
++                }
++            } catch (err) {
++                tema.html = '<p>Kunne ikke laste fagstoffet.</p>';
++            }
++        }
+     }
++
+     const nav = document.createElement('div');
++    nav.className = 'ressurs-tabs';
+     nav.style.cssText = 'display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem;';
+     const contentArea = document.createElement('div');
+ 
+@@ -601,14 +617,16 @@
+ 
+         const article = document.createElement('article');
+         article.className = 'task-card fagstoff-article';
++        article.dataset.fagId = tema.id;
+         article.style.display = i === 0 ? 'block' : 'none';
+-        article.innerHTML = `<h3 class="task-title" style="margin-bottom:1rem">${tema.tittel}</h3><div class="fagstoff-content">${tema.html}</div>`;
++        article.innerHTML = `<h3 class="task-title" style="margin-bottom:1rem">${tema.tittel}</h3><div class="fagstoff-content">${tema.html || ''}</div>`;
+ 
+         btn.addEventListener('click', () => {
+             nav.querySelectorAll('button').forEach(b => { b.style.background = ''; b.style.color = ''; });
+             btn.style.cssText = 'background:var(--primary);color:#fff;';
+             contentArea.querySelectorAll('article').forEach(a => a.style.display = 'none');
+             article.style.display = 'block';
++            renderKaTeX(article);
+         });
+ 
+         nav.appendChild(btn);
+@@ -617,6 +635,12 @@
+ 
+     container.appendChild(nav);
+     container.appendChild(contentArea);
++    container.addEventListener('click', (e) => {
++        const jump = e.target.closest('[data-brok-scroll]');
++        if (!jump) return;
++        const target = document.getElementById(jump.getAttribute('data-brok-scroll'));
++        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
++    });
+     renderKaTeX(container);
+ }
+ 

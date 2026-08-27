@@ -1,0 +1,12 @@
+--- data.js	2026-08-23 21:21:48
++++ /Users/m.g.a/kodeprosjekter/Re2fag/Matteguiden-1T 2/data.js	2026-08-25 07:58:46
+@@ -5620,7 +5620,8 @@
+     {
+         "id": "brokregning",
+         "tittel": "Fagbibliotek: Brøkregning",
+-        "html": "Brøk er et matematisk uttrykk som viser et delingsforhold mellom to tall: telleren (øverst) og nevneren (nederst). Her er en gjennomgang av de viktigste brøkreglene, fra enkle til avanserte.<br><br><h4>1. Legge sammen og trekke fra (Addisjon og subtraksjon)</h4><br>For å legge sammen eller trekke fra to brøker, <strong>må de ha samme nevner</strong> (fellesnevner).<br><br><strong>Eksempel (samme nevner):</strong><br>$\\frac{2}{5} + \\frac{1}{5} = \\frac{2 + 1}{5} = \\frac{3}{5}$<br><br><strong>Eksempel (ulik nevner):</strong><br>$\\frac{1}{3} + \\frac{1}{4}$<br><br>Her må vi finne et tall som både $3$ og $4$ går opp i (minste felles multiplum). Det er $12$. Vi *utvider* brøkene (ganger med samme tall oppe og nede):<br>$\\frac{1 \\cdot 4}{3 \\cdot 4} + \\frac{1 \\cdot 3}{4 \\cdot 3} = \\frac{4}{12} + \\frac{3}{12} = \\frac{7}{12}$<br><br><h4>2. Multiplikasjon av brøk (Ganging)</h4><br>Når vi ganger brøker, ganger vi bare teller med teller, og nevner med nevner. Vi trenger *ikke* fellesnevner!<br><br><strong>Eksempel:</strong><br>$\\frac{2}{3} \\cdot \\frac{4}{5} = \\frac{2 \\cdot 4}{3 \\cdot 5} = \\frac{8}{15}$<br><br><h4>3. Divisjon av brøk (Deling)</h4><br>Regelen for å dele to brøker er enkel: Snu den *siste* brøken på hodet, og gang dem sammen i stedet!<br><br><strong>Eksempel:</strong><br>$\\frac{3}{4} : \\frac{2}{5}$<br><br>Vi snur $\\frac{2}{5}$ opp ned til $\\frac{5}{2}$, og bytter deletegnet med et gangetegn:<br>$\\frac{3}{4} \\cdot \\frac{5}{2} = \\frac{3 \\cdot 5}{4 \\cdot 2} = \\frac{15}{8}$<br><br><h4>4. Algebraiske brøker (Brøk med bokstaver)</h4><br>Reglene er akkurat de samme selv om vi har $x$ og $y$ i stedet for tall.<br><br><strong>Eksempel (Ganging med bokstaver):</strong><br>$\\frac{x}{3} \\cdot \\frac{2}{y} = \\frac{x \\cdot 2}{3 \\cdot y} = \\frac{2x}{3y}$<br><br><strong>Eksempel (Utvide for fellesnevner):</strong><br>$\\frac{1}{x} + \\frac{2}{y}$<br>Fellesnevneren her blir $x \\cdot y = xy$.<br>$\\frac{1 \\cdot y}{x \\cdot y} + \\frac{2 \\cdot x}{y \\cdot x} = \\frac{y}{xy} + \\frac{2x}{xy} = \\frac{y + 2x}{xy}$"
++        "src": "fagstoff/brokregning.html",
++        "html": ""
+     },
+     {
+         "id": "kvadratrotter",
