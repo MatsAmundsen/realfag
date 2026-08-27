@@ -3907,14 +3907,7 @@ a.vid-nav-card {
     .kap-panel-head,
     .exam-how { grid-template-columns: 1fr; }
     .view-section .chapter-sidebar {
-        position: relative;
-        left: auto;
-        top: auto;
-        width: 100%;
-        height: auto;
-        max-height: none;
-        box-shadow: none;
-        margin-bottom: 1rem;
+        display: none;
     }
     .home-body #ukesplan-banner { width: calc(100% - 2rem); }
     .exam-grid.large, .kap-stack, .page-intro, .kart-wrap, .home-exams, .mm { padding-left: 1rem; padding-right: 1rem; }
