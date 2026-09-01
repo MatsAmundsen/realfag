@@ -108,25 +108,28 @@ export const CHAPTER_META: Record<
   },
 };
 
-export const VIDEO_BY_SUB: Record<string, { tittel: string; url: string }[]> = {
-  "1A": [
-    { tittel: "Regnerekkefølge og parenteser", url: "https://www.youtube.com/watch?v=HCvi7QZBoGE" },
-    { tittel: "Tallmengder og intervaller", url: "https://www.youtube.com/watch?v=4ey3raG716U" },
-  ],
-  "1B": [
-    { tittel: "Figurtall og mønstre", url: "https://www.youtube.com/watch?v=Pm1Z8GJFqPw" },
-    { tittel: "Kvadratrøtter", url: "https://www.youtube.com/watch?v=NRx60-H6ZY0" },
-  ],
-  "1C": [
-    { tittel: "Primtall og faktorisering", url: "https://www.youtube.com/watch?v=iMmTOV6rKqg" },
-    { tittel: "Brøkregning", url: "https://www.youtube.com/watch?v=2foqFiSTRPc" },
-  ],
+export type TemaVideo = { tittel: string; url: string };
+
+/** Én anbefalt forklaringsvideo per delkapittel. Første oppføring er den eleven får. */
+export const VIDEO_BY_SUB: Record<string, TemaVideo[]> = {
+  "1A": [{ tittel: "Regnerekkefølge og parenteser", url: "https://www.youtube.com/watch?v=HCvi7QZBoGE" }],
+  "1B": [{ tittel: "Kvadratrøtter", url: "https://www.youtube.com/watch?v=NRx60-H6ZY0" }],
+  "1C": [{ tittel: "Brøkregning", url: "https://www.youtube.com/watch?v=2foqFiSTRPc" }],
   "1D": [{ tittel: "Potenser", url: "https://www.youtube.com/watch?v=daQqN2aB7is" }],
-  "1E": [
-    { tittel: "Standardform", url: "https://www.youtube.com/watch?v=SSb_IddmrdE" },
-  ],
+  "1E": [{ tittel: "Standardform", url: "https://www.youtube.com/watch?v=SSb_IddmrdE" }],
   "1F": [{ tittel: "Implikasjon og ekvivalens", url: "https://www.youtube.com/watch?v=lnB4y3IyCRQ" }],
+  "2A": [{ tittel: "Regning med bokstavuttrykk", url: "https://www.youtube.com/watch?v=PA7Q18hLK0E" }],
+  "2B": [{ tittel: "Første kvadratsetning", url: "https://www.youtube.com/watch?v=LgDQ29AAfEM" }],
+  "2C": [{ tittel: "Felles faktor og faktorisering", url: "https://www.youtube.com/watch?v=7L7mYWpMY9U" }],
+  "2D": [{ tittel: "Faktorisering med kvadratsetninger", url: "https://www.youtube.com/watch?v=OmjOo1a4pLA" }],
+  "2E": [{ tittel: "Brudden brøk", url: "https://www.youtube.com/watch?v=Im0BPFxDwp8" }],
+  "2F": [{ tittel: "Formler og logikk for figurtall", url: "https://www.youtube.com/watch?v=f4v7perY_0o" }],
 };
+
+export function videoForSub(subId: string | null | undefined): TemaVideo | null {
+  if (!subId) return null;
+  return VIDEO_BY_SUB[subId]?.[0] ?? null;
+}
 
 export function findKap(id: string) {
   return fagsok.find((k) => k.id === id);

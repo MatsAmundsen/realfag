@@ -7,7 +7,7 @@ import { AppShell } from "@/components/AppShell";
 import appCss from "../styles.css?url";
 
 const APP_NAME = "Matteguiden 1T";
-const MG_BUILD = "2026-08-27-quiz-fix";
+const MG_BUILD = "2026-09-01-temavideo";
 
 const CRITICAL_CSS = `html,body{margin:0;background:#0a0f1e;color:#e2e8f0;font-family:Inter,system-ui,sans-serif;}
 .navbar{display:flex;align-items:center;justify-content:space-between;padding:.875rem 2rem;position:sticky;top:0;z-index:200;gap:1.5rem;background:rgba(10,15,30,.85);border-bottom:1px solid rgba(255,255,255,.07);}

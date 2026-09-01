@@ -4,6 +4,7 @@ import { Compass, Menu, Moon, Search, Sun, X } from "lucide-react";
 import { fagsok, UKESPLAN } from "@/data/content";
 import { useProgressStore } from "@/lib/progress-store";
 import { BadgeToast, CelebrationHost } from "./Celebration";
+import { VideoPlayerProvider } from "./VideoPlayer";
 
 const NAV = [
   { to: "/", label: "Hjem" },
@@ -116,7 +117,7 @@ export function AppShell() {
   }, [q]);
 
   return (
-    <>
+    <VideoPlayerProvider>
       <header className={`navbar${menu ? " menu-open" : ""}`}>
         <button
           type="button"
@@ -198,7 +199,7 @@ export function AppShell() {
       </div>
       <CelebrationHost />
       <BadgeToast />
-    </>
+    </VideoPlayerProvider>
   );
 }
 

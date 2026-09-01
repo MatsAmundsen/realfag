@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { X } from "lucide-react";
 import { fagstoff } from "@/data/content";
 import { KatexHtml } from "@/components/KatexHtml";
+import { useVideoPlayer } from "@/components/VideoPlayer";
 import { extractYoutubeId, runPythonEditor } from "@/lib/py-runner";
 
 type RessursSearch = { t?: string };
@@ -25,8 +25,8 @@ function RessurserPage() {
   const current = fagstoff.find((f) => f.id === tab) || fagstoff[0];
   const [html, setHtml] = useState(current?.html || "");
   const [loading, setLoading] = useState(false);
-  const [player, setPlayer] = useState<{ id: string; title: string } | null>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const player = useVideoPlayer();
 
   useEffect(() => {
     if (!current) return;
@@ -63,30 +63,6 @@ function RessurserPage() {
     };
   }, [current]);
 
-  useEffect(() => {
-    const w = window as Window & {
-      __mgOpenYoutube?: (id: string, title: string) => void;
-    };
-    w.__mgOpenYoutube = (id, title) => setPlayer({ id, title });
-    return () => {
-      if (w.__mgOpenYoutube) delete w.__mgOpenYoutube;
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!player) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setPlayer(null);
-    };
-    window.addEventListener("keydown", onKey);
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      window.removeEventListener("keydown", onKey);
-      document.body.style.overflow = prev;
-    };
-  }, [player]);
-
   function onContentClick(e: React.MouseEvent) {
     const raw = e.target;
     const el = raw instanceof Element ? raw : (raw as Node | null)?.parentElement;
@@ -108,7 +84,7 @@ function RessurserPage() {
           yt.querySelector(".vid-card-title")?.textContent?.trim() ||
           yt.textContent?.replace(/\s+/g, " ").trim() ||
           "Video";
-        setPlayer({ id, title });
+        player?.open({ tittel: title, url: yt.href });
       }
     }
   }
@@ -160,26 +136,6 @@ function RessurserPage() {
           </article>
         )}
       </div>
-      {player && (
-        <div className="yt-lightbox" role="dialog" aria-modal="true" aria-label={player.title} onClick={() => setPlayer(null)}>
-          <div className="yt-lightbox-card" onClick={(e) => e.stopPropagation()}>
-            <div className="yt-lightbox-bar">
-              <strong>{player.title}</strong>
-              <button type="button" className="quiz-close-btn" aria-label="Lukk video" onClick={() => setPlayer(null)}>
-                <X size={18} />
-              </button>
-            </div>
-            <div className="yt-lightbox-frame">
-              <iframe
-                src={`https://www.youtube-nocookie.com/embed/${player.id}?autoplay=1&rel=0`}
-                title={player.title}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              />
-            </div>
-          </div>
-        </div>
-      )}
     </section>
   );
 }

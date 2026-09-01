@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { CircleHelp, Video } from "lucide-react";
-import { CHAPTER_META, fagsok, findKap, findSub, VIDEO_BY_SUB } from "@/data/content";
+import { CircleHelp } from "lucide-react";
+import { CHAPTER_META, fagsok, findKap, findSub, videoForSub } from "@/data/content";
 import type { StudyMode } from "@/data/types";
 import { ChapterSidebar } from "@/components/ChapterSidebar";
+import { TopicVideoInvite } from "@/components/TopicVideoInvite";
 import { TaskCard } from "@/components/TaskCard";
 import { QuizOverlay } from "@/components/QuizOverlay";
 import { ModeToggle } from "@/components/ModeToggle";
@@ -24,7 +25,6 @@ function SubchapterPage() {
   const [quizOn, setQuizOn] = useState(false);
   const [mode, setMode] = useState<StudyMode>("prove");
   const [submitted, setSubmitted] = useState(false);
-  const videos = VIDEO_BY_SUB[subId] || [];
   const hasPrereq = Boolean(PREREQS[subId]);
 
   useEffect(() => {
@@ -37,6 +37,7 @@ function SubchapterPage() {
   }, [kapId, subId]);
 
   const oving = dk ? isOvingDelkap(dk) : false;
+  const topicVideo = !oving ? videoForSub(subId) : null;
   const sub = kap && dk ? countSubchapter(kap, dk, p) : { done: 0, total: 0, pct: 0 };
 
   const quizKey = `${kapId}/${subId}`;
@@ -124,18 +125,7 @@ function SubchapterPage() {
           </div>
         )}
 
-        {videos.length > 0 && (
-          <div className="sub-video-panel" style={{ display: "block" }}>
-            <p>
-              <Video size={14} /> Videoer til dette delkapittelet
-            </p>
-            {videos.map((v) => (
-              <a key={v.url} className="sub-video-link" href={v.url} target="_blank" rel="noreferrer">
-                {v.tittel}
-              </a>
-            ))}
-          </div>
-        )}
+        {topicVideo ? <TopicVideoInvite video={topicVideo} /> : null}
 
         {hasPrereq && !oving && (
           <details className="prereq-details">

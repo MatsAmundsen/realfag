@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { CHAPTER_META, fagsok } from "@/data/content";
+import { CHAPTER_META, fagsok, videoForSub } from "@/data/content";
 import { countChapter, isOvingDelkap } from "@/lib/progress";
 import { useProgressStore } from "@/lib/progress-store";
 
@@ -38,7 +38,11 @@ function OppgaverIndex() {
                     className={`sub-tile${isOvingDelkap(dk) ? " ove" : ""}`}
                   >
                     <strong>{isOvingDelkap(dk) ? "Øveprøve" : dk.tittel}</strong>
-                    <span>{dk.oppgaver.length} oppgaver{dk.quiz?.length ? " · quiz" : ""}</span>
+                    <span>
+                      {dk.oppgaver.length} oppgaver
+                      {dk.quiz?.length ? " · quiz" : ""}
+                      {videoForSub(dk.id) ? " · video" : ""}
+                    </span>
                   </Link>
                 ))}
               </div>

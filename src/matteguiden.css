@@ -2151,6 +2151,65 @@ a.brok-nav-card {
     text-decoration: underline;
 }
 
+.topic-video-invite {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0 0 1.15rem;
+    padding: 0.85rem 1rem;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+}
+.topic-video-thumb {
+    position: relative;
+    flex: 0 0 168px;
+    width: 168px;
+    aspect-ratio: 16 / 9;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    cursor: pointer;
+    background: #0b1220;
+}
+.topic-video-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.topic-video-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+    min-width: 0;
+}
+.topic-video-copy p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+.topic-video-copy strong {
+    font-size: 0.95rem;
+    font-weight: 650;
+    line-height: 1.3;
+}
+.topic-video-btn {
+    margin-top: 0.1rem;
+}
+@media (max-width: 640px) {
+    .topic-video-invite {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .topic-video-thumb {
+        width: 100%;
+        flex-basis: auto;
+    }
+}
+
 /* ============================================================
    PROGRESJON
    ============================================================ */

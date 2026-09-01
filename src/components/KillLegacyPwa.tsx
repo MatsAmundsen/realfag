@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const MG_BUILD = "2026-08-27-safari";
+const MG_BUILD = "2026-09-01-temavideo";
 
 function forceChrome() {
   const drawer = document.getElementById("mobile-nav-drawer");
