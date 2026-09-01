@@ -2,6 +2,7 @@ import { fagsok as rawFagsok, fagstoff as rawFagstoff, programmeringData as rawP
 import type { Delkapittel, Fagstoff, Kapittel, Oppgave } from "./types";
 import { EXTRA, SUB_TITLES } from "./extra-tasks";
 import { MORE23 } from "./extra-kap23";
+import { EXTRA_1D, EXTRA_1D_QUIZ } from "./extra-1d";
 import { TASK_FIGURES } from "./task-figures";
 import { KAP3_OVEPROVE } from "./kap3-oveprove";
 import { KAP4_QUIZ } from "./kap4-quiz";
@@ -19,11 +20,13 @@ function attachFigure(op: Oppgave): Oppgave {
 }
 
 function withExtras(dk: Delkapittel): Delkapittel {
-  const extraList = [...(EXTRA[dk.id] || []), ...(MORE23[dk.id] || [])];
+  const extraList = [...(EXTRA[dk.id] || []), ...(MORE23[dk.id] || []), ...(EXTRA_1D[dk.id] || [])];
+  const baseQuiz = KAP4_QUIZ[dk.id] ?? dk.quiz;
+  const extraQuiz = dk.id === "1D" ? EXTRA_1D_QUIZ : undefined;
   return {
     ...dk,
     tittel: SUB_TITLES[dk.id] || dk.tittel,
-    quiz: KAP4_QUIZ[dk.id] ?? dk.quiz,
+    quiz: extraQuiz?.length ? [...(baseQuiz ?? []), ...extraQuiz] : baseQuiz,
     oppgaver: [
       ...dk.oppgaver.map(attachFigure),
       ...extraList.map((op, i, arr) => {
