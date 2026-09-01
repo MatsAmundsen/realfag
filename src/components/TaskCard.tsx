@@ -1,13 +1,14 @@
 import { useEffect, useMemo, useState } from "react";
-import { Check, Lightbulb, ListOrdered } from "lucide-react";
+import { Check, Lightbulb, ListOrdered, Video } from "lucide-react";
 import type { Oppgave, StudyMode } from "@/data/types";
 import { KatexHtml } from "./KatexHtml";
 import { FunctionPlot } from "./FunctionPlot";
 import { useProgressStore } from "@/lib/progress-store";
 import { countChapter, countSubchapter, isOvingDelkap, taskKey } from "@/lib/progress";
-import { fagsok } from "@/data/content";
+import { fagsok, videoForSub } from "@/data/content";
 import { fireCelebration } from "@/lib/progress-store";
 import { extractPlots } from "@/lib/plot-fn";
+import { useVideoPlayer } from "./VideoPlayer";
 
 export function TaskCard({
   oppgave,
@@ -35,6 +36,8 @@ export function TaskCard({
   const [hintOn, setHintOn] = useState(false);
   const [solOn, setSolOn] = useState(false);
   const [step, setStep] = useState(0);
+  const player = useVideoPlayer();
+  const video = videoForSub(subId);
 
   const canHelp = mode === "ove" || reveal || !locked;
   const steps = (oppgave.fasitSteg || []).filter(Boolean);
@@ -110,6 +113,11 @@ export function TaskCard({
             <Lightbulb size={16} /> {hintOn ? "Skjul hint" : "Hint"}
           </button>
         )}
+        {canHelp && video && (
+          <button type="button" className="hint-btn" onClick={() => player?.open(video)}>
+            <Video size={16} /> Video
+          </button>
+        )}
         {canHelp && (steps.length > 0 || fasitHtml) && (
           <button
             type="button"
@@ -131,7 +139,11 @@ export function TaskCard({
         </button>
       </div>
       {!canHelp && (
-        <p className="locked-note">Hint og løsning vises når du leverer i prøvemodus.</p>
+        <p className="locked-note">
+          {video
+            ? "Hint, video og løsning vises når du leverer i prøvemodus."
+            : "Hint og løsning vises når du leverer i prøvemodus."}
+        </p>
       )}
       {hintOn && canHelp && (
         <KatexHtml html={oppgave.hint} className="hint-content visible" />
