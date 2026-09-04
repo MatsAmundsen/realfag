@@ -164,19 +164,79 @@ export function findSub(kapId: string, subId: string) {
   return kap?.delkapitler.find((d) => d.id === subId);
 }
 
-/** Uke 34–40 slik de allerede står i Matteguiden. Senere uker fylles fra Fremdriftsplan_1T når fila er tilgjengelig. */
-export type UkePlan = { kapId: string | null; subId: string | null; tekst: string };
+/** Fra Fremdriftsplan_1T.docx — PLAN 1T GR1 HØST 2026 (og vår 2027). */
+export type UkePlan = {
+  kapId: string | null;
+  subId: string | null;
+  tekst: string;
+  to?: "/eksamen";
+};
+
+function uke(tekst: string, subId: string | null = null, extra: Partial<UkePlan> = {}): UkePlan {
+  const kapNum = subId?.[0];
+  const exists = !!subId && kapNum !== undefined && kapNum >= "1" && kapNum <= "5";
+  return {
+    tekst,
+    kapId: exists ? `kap${kapNum}` : null,
+    subId: exists ? subId : null,
+    ...extra,
+  };
+}
 
 export const UKESPLAN: Record<number, UkePlan> = {
-  34: { kapId: null, subId: null, tekst: "Tirsdag: grilling og oppstart. Torsdag: Strandheim." },
-  35: { kapId: "kap1", subId: "1A", tekst: "Tirsdag: kapittel 1A. Torsdag: 1B og 1D." },
-  36: { kapId: "kap1", subId: "1E", tekst: "Tirsdag: Osloprøve. Torsdag: kapittel 1E." },
-  37: { kapId: "kap2", subId: "2B", tekst: "Tirsdag: kapittel 2B. Torsdag: 2C." },
-  38: { kapId: "kap2", subId: "2D", tekst: "Tirsdag: kapittel 2D. Torsdag: 2E og 2F." },
-  39: { kapId: "kap2", subId: "2F", tekst: "Tirsdag: kapittel 2F. Torsdag: prøve." },
-  40: { kapId: null, subId: null, tekst: "Høstferie. Lad batteriene." },
+  34: uke("Tirsdag: grilling og oppstart. Torsdag: Strandheim."),
+  35: uke("Tirsdag: kapittel 1A. Torsdag: 1B og 1D.", "1A"),
+  36: uke(
+    "Tirsdag: kapittel 1E. Torsdag: Osloprøve / kartleggingsprøve. Fredag: fagdag (1C, 1F, 2A, 2B og programmering).",
+    "1E",
+  ),
+  37: uke("Tirsdag: kapittel 2B. Torsdag: 2C.", "2B"),
+  38: uke("Tirsdag: kapittel 2D. Torsdag: 2E og 2F.", "2D"),
+  39: uke("Mandag: frist for å bytte fag. Tirsdag: kapittel 2F og repetisjon. Torsdag: prøve.", "2F"),
+  40: uke("Høstferie."),
+  41: uke("Tirsdag: kapittel 3A. Torsdag: 3B og 3C.", "3A"),
+  42: uke("Tirsdag: kapittel 3C og 3D. Torsdag: 3D.", "3C"),
+  43: uke("Tirsdag: kapittel 3E. Torsdag: 3F. Fredag: fagdag.", "3E"),
+  44: uke("Tirsdag: kapittel 3F. Torsdag: OD.", "3F"),
+  45: uke("Tirsdag: kapittel 3G. Torsdag: vurdering.", "3G"),
+  46: uke("Tirsdag: kapittel 4A. Torsdag: 4A.", "4A"),
+  47: uke("Tirsdag: kapittel 4B. Torsdag: mulig prøve.", "4B"),
+  48: uke("Tirsdag: kapittel 4C. Torsdag: 4D.", "4C"),
+  49: uke("Tirsdag: kapittel 4E. Torsdag: 4F. Fredag: fagdag / heldags.", "4E"),
+  50: uke("Tirsdag: kapittel 4G. Torsdag: 4G og 4H.", "4G"),
+  51: uke("Tirsdag: kapittel 4H. Onsdag: juleavslutning. Torsdag: siste skoledag.", "4H"),
+  52: uke("Juleferie."),
+  1: uke("Tirsdag: kapittel 5A. Torsdag: 5B.", "5A"),
+  2: uke("Tirsdag: kapittel 5C. Torsdag: 5D.", "5C"),
+  3: uke("Tirsdag: kapittel 5E. Torsdag: prøve.", "5E"),
+  4: uke("Tirsdag: kapittel 5F. Torsdag: kapittel 6A.", "5F"),
+  5: uke("Tirsdag: kapittel 6B. Torsdag: 6B. Fredag: fagdag (5E, 5F og 6A)."),
+  6: uke("Tirsdag: kapittel 6B · temauke. Torsdag: 6B · temauke."),
+  7: uke("Tirsdag: kapittel 6C. Torsdag: kapittel 7A."),
+  8: uke("Vinterferie."),
+  9: uke("Tirsdag: kapittel 7A. Torsdag: 7B."),
+  10: uke("Tirsdag: kapittel 7C. Torsdag: 7C."),
+  11: uke("Tirsdag: kapittel 7D. Torsdag: 7E."),
+  12: uke("Påskeferie."),
+  13: uke("Tirsdag: kapittel 7F. Torsdag: 7G."),
+  14: uke("Tirsdag: repetisjon. Torsdag: repetisjon. Fredag: fagdag / heldags?"),
+  15: uke("Tirsdag: gjennomgang av resterende teori. Torsdag: gjennomgang av resterende teori."),
+  16: uke("Tirsdag: øving mot eksamen. Torsdag: øving mot eksamen.", null, { to: "/eksamen" }),
+  17: uke("Skriftlig eksamen.", null, { to: "/eksamen" }),
+  18: uke("Skriftlig eksamen.", null, { to: "/eksamen" }),
 };
+
+/** Skoleåret: høst 34–52, deretter vår 1–18. */
+export function schoolYearWeekOrder(a: number, b: number) {
+  const ay = a >= 34 ? 0 : 1;
+  const by = b >= 34 ? 0 : 1;
+  if (ay !== by) return ay - by;
+  return a - b;
+}
 
 export const UKESPLAN_WEEKS = Object.keys(UKESPLAN)
   .map(Number)
-  .sort((a, b) => a - b);
+  .sort(schoolYearWeekOrder);
+
+export const UKESPLAN_HOST = UKESPLAN_WEEKS.filter((w) => w >= 34);
+export const UKESPLAN_VAR = UKESPLAN_WEEKS.filter((w) => w < 34);
