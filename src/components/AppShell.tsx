@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, Outlet, useRouterState } from "@tanstack/react-router";
 import { Compass, Menu, Moon, Search, Sun, X } from "lucide-react";
-import { fagsok, UKESPLAN } from "@/data/content";
+import { fagsok, UKESPLAN, UKESPLAN_WEEKS } from "@/data/content";
 import { useProgressStore } from "@/lib/progress-store";
 import { BadgeToast, CelebrationHost } from "./Celebration";
 import { VideoPlayerProvider } from "./VideoPlayer";
@@ -226,34 +226,69 @@ export function MathFloats() {
   );
 }
 
+function currentIsoWeek() {
+  const now = new Date();
+  const t = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
+  const day = t.getUTCDay() || 7;
+  t.setUTCDate(t.getUTCDate() + 4 - day);
+  const yearStart = new Date(Date.UTC(t.getUTCFullYear(), 0, 1));
+  return Math.ceil(((t.getTime() - yearStart.getTime()) / 86400000 + 1) / 7);
+}
+
 export function WeekBanner() {
+  const first = UKESPLAN_WEEKS[0] ?? 34;
+  const last = UKESPLAN_WEEKS[UKESPLAN_WEEKS.length - 1] ?? 40;
   const [week, setWeek] = useState(() => {
-    const now = new Date();
-    const t = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
-    const day = t.getUTCDay() || 7;
-    t.setUTCDate(t.getUTCDate() + 4 - day);
-    const yearStart = new Date(Date.UTC(t.getUTCFullYear(), 0, 1));
-    return Math.ceil(((t.getTime() - yearStart.getTime()) / 86400000 + 1) / 7);
+    const now = currentIsoWeek();
+    if (UKESPLAN[now]) return now;
+    const upcoming = UKESPLAN_WEEKS.find((w) => w >= now);
+    return upcoming ?? last;
   });
   const plan = UKESPLAN[week];
+  const iso = currentIsoWeek();
+
+  function step(delta: number) {
+    const i = UKESPLAN_WEEKS.indexOf(week);
+    if (i < 0) {
+      setWeek(delta > 0 ? last : first);
+      return;
+    }
+    const next = UKESPLAN_WEEKS[i + delta];
+    if (next != null) setWeek(next);
+  }
+
   return (
     <div id="ukesplan-banner">
       <div className="banner-content">
         <div className="week-nav">
-          <button type="button" className="week-nav-btn" onClick={() => setWeek((w) => w - 1)} aria-label="Forrige uke">
+          <button type="button" className="week-nav-btn" onClick={() => step(-1)} aria-label="Forrige uke" disabled={week <= first}>
             ‹
           </button>
-          <span className="week-badge">Uke {week}</span>
-          <button type="button" className="week-nav-btn" onClick={() => setWeek((w) => w + 1)} aria-label="Neste uke">
+          <span className="week-badge">Uke {week}{week === iso ? " · nå" : ""}</span>
+          <button type="button" className="week-nav-btn" onClick={() => step(1)} aria-label="Neste uke" disabled={week >= last}>
             ›
           </button>
         </div>
-        <p id="week-text">{plan?.tekst || "Ingen planlagt økt denne uken — velg et kapittel og fortsett der du slapp."}</p>
+        <p id="week-text">{plan?.tekst || "Ingen planlagt økt denne uken."}</p>
         {plan?.kapId && plan.subId && (
           <Link to="/oppgaver/$kapId/$subId" params={{ kapId: plan.kapId, subId: plan.subId }} className="hint-btn">
             Åpne økten
           </Link>
         )}
+      </div>
+      <div className="week-strip" role="tablist" aria-label="Uker i fremdriftsplanen">
+        {UKESPLAN_WEEKS.map((w) => (
+          <button
+            key={w}
+            type="button"
+            role="tab"
+            aria-selected={w === week}
+            className={`week-chip${w === week ? " is-active" : ""}${w === iso ? " is-now" : ""}`}
+            onClick={() => setWeek(w)}
+          >
+            {w}
+          </button>
+        ))}
       </div>
     </div>
   );

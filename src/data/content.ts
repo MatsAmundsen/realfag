@@ -1,6 +1,8 @@
 import { fagsok as rawFagsok, fagstoff as rawFagstoff, programmeringData as rawProg } from "./fagsok.js";
 import type { Delkapittel, Fagstoff, Kapittel, Oppgave } from "./types";
 import { EXTRA, SUB_TITLES } from "./extra-tasks";
+
+export { SUB_TITLES };
 import { MORE23 } from "./extra-kap23";
 import { EXTRA_1D, EXTRA_1D_QUIZ } from "./extra-1d";
 import { TASK_FIGURES } from "./task-figures";
@@ -162,12 +164,19 @@ export function findSub(kapId: string, subId: string) {
   return kap?.delkapitler.find((d) => d.id === subId);
 }
 
-export const UKESPLAN: Record<number, { kapId: string | null; subId: string | null; tekst: string }> = {
-  34: { kapId: null, subId: null, tekst: "Uke 34 — Tirsdag: grilling og oppstart. Torsdag: Strandheim." },
-  35: { kapId: "kap1", subId: "1A", tekst: "Uke 35 — Tirsdag: kapittel 1A. Torsdag: 1B/1D." },
-  36: { kapId: "kap1", subId: "1E", tekst: "Uke 36 — Tirsdag: Osloprøve. Torsdag: kapittel 1E." },
-  37: { kapId: "kap2", subId: "2B", tekst: "Uke 37 — Tirsdag: kapittel 2B. Torsdag: 2C." },
-  38: { kapId: "kap2", subId: "2D", tekst: "Uke 38 — Tirsdag: kapittel 2D. Torsdag: 2E/F." },
-  39: { kapId: "kap2", subId: "2F", tekst: "Uke 39 — Tirsdag: kapittel 2F. Torsdag: prøve." },
-  40: { kapId: null, subId: null, tekst: "Uke 40 — Høstferie. Lad batteriene." },
+/** Uke 34–40 slik de allerede står i Matteguiden. Senere uker fylles fra Fremdriftsplan_1T når fila er tilgjengelig. */
+export type UkePlan = { kapId: string | null; subId: string | null; tekst: string };
+
+export const UKESPLAN: Record<number, UkePlan> = {
+  34: { kapId: null, subId: null, tekst: "Tirsdag: grilling og oppstart. Torsdag: Strandheim." },
+  35: { kapId: "kap1", subId: "1A", tekst: "Tirsdag: kapittel 1A. Torsdag: 1B og 1D." },
+  36: { kapId: "kap1", subId: "1E", tekst: "Tirsdag: Osloprøve. Torsdag: kapittel 1E." },
+  37: { kapId: "kap2", subId: "2B", tekst: "Tirsdag: kapittel 2B. Torsdag: 2C." },
+  38: { kapId: "kap2", subId: "2D", tekst: "Tirsdag: kapittel 2D. Torsdag: 2E og 2F." },
+  39: { kapId: "kap2", subId: "2F", tekst: "Tirsdag: kapittel 2F. Torsdag: prøve." },
+  40: { kapId: null, subId: null, tekst: "Høstferie. Lad batteriene." },
 };
+
+export const UKESPLAN_WEEKS = Object.keys(UKESPLAN)
+  .map(Number)
+  .sort((a, b) => a - b);
