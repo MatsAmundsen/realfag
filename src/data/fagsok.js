@@ -60,7 +60,7 @@ export const fagsok = [
                         "fasit": null,
                         "fasitSteg": [
                             "<strong>a)</strong><br>Vi skal omgjøre ulikheten $-2 \\leq x < 8$ til et intervall:<br><br>$-2 \\leq x \\rightarrow$ betyr at $x$ kan være lik $-2$, så vi bruker lukket klamme $[$<br><br>$x < 8 \\rightarrow$ betyr at $x$ ikke kan være helt lik $8$, så vi bruker åpen vinkelhake $\\rangle$<br><br><strong>Svar:</strong> $x \\in [-2, 8\\rangle$",
-                            "<strong>b)</strong><br>Her er fortegnslinjen som viser intervallet $[-2, 8\\rangle$:<br><br><img src=\"/images/fortegnslinje1.13.jpg\" alt=\"Fortegnslinje for intervallet [-2, 8)\" class=\"task-image\" style=\"max-width:100%; border-radius:8px; margin:1rem 0;\"><br><br>- Ved $x = -2$: Fylt sirkel fordi $-2$ er <strong>inkludert</strong> i intervallet ($\\leq$)<br>- Ved $x = 8$: Åpen sirkel fordi $8$ er <strong>ikke inkludert</strong> i intervallet ($<$)<br>- Den markerte linjen mellom $-2$ og $8$ viser alle verdier $x$ kan ta<br><br><strong>Svar:</strong> Fortegnslinjen viser at $x$ kan ta alle verdier fra og med $-2$ til (men ikke med) $8$."
+                            "<strong>b)</strong><br>Fortegnslinjen for intervallet $[-2, 8\\rangle$ har følgende egenskaper:<br><br>- Ved $x = -2$: Fylt sirkel fordi $-2$ er <strong>inkludert</strong> i intervallet ($\\leq$)<br>- Ved $x = 8$: Åpen sirkel fordi $8$ er <strong>ikke inkludert</strong> i intervallet ($<$)<br>- Den markerte linjen mellom $-2$ og $8$ viser alle verdier $x$ kan ta<br><br><strong>Svar:</strong> Fortegnslinjen viser at $x$ kan ta alle verdier fra og med $-2$ til (men ikke med) $8$."
                         ],
                         "starter": ""
                     },
@@ -4987,7 +4987,7 @@ export const fagsok = [
                         "id": "4.27",
                         "tittel": "Oppgave 4.27",
                         "tekst": "Figuren viser grafen til en rasjonal funksjon.<br><br>Hvilket av følgende uttrykk passer til grafen?<br><br><strong>1)</strong> $\\dfrac{x+1}{x-2}$<br><br><strong>2)</strong> $\\dfrac{x-1}{x+2}$<br><br><strong>3)</strong> $\\dfrac{2x+2}{x-2}$<br><br><strong>4)</strong> $\\dfrac{x+2}{x-1}$",
-                        "bilde": "/images/Bilde4.27.png",
+                        "bilde": null,
                         "hint": "Avles grafen. Hvor ligger den loddrette asymptoten, og hvor krysser den x-aksen (nullpunkt)?",
                         "fasit": null,
                         "fasitSteg": [
@@ -5194,7 +5194,7 @@ export const fagsok = [
                     {
                         "id": "4.33",
                         "tittel": "Oppgave 4.33",
-                        "tekst": "Steketiden er gitt ved $T(m) = 1.2 \\cdot m^{0.55}$, der $m$ er massen i gram.<br><br><strong>a)</strong> Skisser grafen i intervallet fra $m = 1000$ til $m = 3000$.<br><br><strong>b)</strong> Hva er steketiden for $2000 \\text{ g}$?<br><br><strong>c)</strong> Hva er forskjellen i steketid mellom $2500 \\text{ g}$ og $2000 \\text{ g}$?",
+                        "tekst": "Steketiden er gitt ved $T(m) = 1.2 \\cdot m^{0.55}$, der $m$ er massen i gram.<br><br>Grafen vises under.<br><br><strong>a)</strong> Skisser grafen i intervallet fra $m = 1000$ til $m = 3000$.<br><br><strong>b)</strong> Hva er steketiden for $2000 \\text{ g}$?<br><br><strong>c)</strong> Hva er forskjellen i steketid mellom $2500 \\text{ g}$ og $2000 \\text{ g}$?",
                         "bilde": null,
                         "hint": "Eksponenten $0.55$ er positiv og under $1$, så grafen stiger, men slakker av.",
                         "fasit": null,
@@ -5664,7 +5664,7 @@ export const fagsok = [
                     {
                         "id": "4.47",
                         "tittel": "Oppgave 4.47",
-                        "tekst": "Temperaturen i en industriovn er gitt ved $T(t) = 200 - 180 \\cdot 0.92^t$.<br><br><strong>a)</strong> Finn gjennomsnittsfarten i intervallet $[0, 10]$.<br><strong>b)</strong> Finn momentan vekstfart når $t=5$, $t=10$ og $t=15$. Hva forteller svarene deg?",
+                        "tekst": "Temperaturen i en industriovn er gitt ved $T(t) = 200 - 180 \\cdot 0.92^t$ for $D_T = [0, 20]$. Grafen vises under.<br><br><strong>a)</strong> Finn gjennomsnittsfarten i intervallet $[0, 10]$.<br><strong>b)</strong> Finn momentan vekstfart når $t=5$, $t=10$ og $t=15$. Hva forteller svarene deg?",
                         "bilde": null,
                         "hint": "For å finne momentan vekstfart i b) må vi finne $T'(t)$.<br>Siden uttrykket inneholder en eksponentialfunksjon med grunntall $0.92$, bruker vi den naturlige logaritmen ($\\ln$) for å derivere:<br>$T'(t) = -180 \\cdot \\ln(0.92) \\cdot 0.92^t$",
                         "fasit": null,
@@ -5684,10 +5684,8 @@ export const fagsok = [
                         "hint": "For oppgave c, finn den deriverte $f'(x)$. Husk at momentan vekstfart er akkurat det samme som verdien til den deriverte $f'(x)$.",
                         "fasit": null,
                         "fasitSteg": [
-                            "<strong>a)</strong><br>*Skisse av graf mangler, men du kan lage en tabell med verdier fra $-4$ til $4$ og tegne grafen.*",
-                            "<strong>Svar:</strong> (Se din egen skisse)",
-                            "<strong>b)</strong><br>*Du kan finne stigningstallene ved å tegne tangentene i disse punktene og lese av hvor mange $y$-enheter grafen stiger per $x$-enhet.*",
-                            "<strong>Svar:</strong> Begge tangentene skal ha stigningstall $1$.",
+                            "<strong>a)</strong><br>Grafen til $f(x) = 0.25x^3 - 2x$ på intervallet $[-4, 4]$ har nullpunkter i $x = 0$ og $x = \\pm\\sqrt{8} \\approx \\pm 2.83$, lokalt toppunkt i $(-1.63, 2.18)$ og bunnpunkt i $(1.63, -2.18)$.",
+                            "<strong>b)</strong><br>Ved å tegne tangentene i punktene $(-2, 2)$ og $(2, -2)$ ser vi at begge linjene stiger med $1$ enhet i $y$-retning for hver enhet vi går til høyre.<br><br><strong>Svar:</strong> Begge tangentene har stigningstall $1$.",
                             "<strong>c)</strong><br>Vi finner momentan vekstfart ved å derivere funksjonen:<br>$f'(x) = 3 \\cdot 0.25x^{3-1} - 2 = 0.75x^2 - 2$<br><br>Setter inn $x = -2$:<br>$f'(-2) = 0.75 \\cdot (-2)^2 - 2 = 0.75 \\cdot 4 - 2 = 3 - 2 = 1$<br><br>Setter inn $x = 2$:<br>$f'(2) = 0.75 \\cdot 2^2 - 2 = 0.75 \\cdot 4 - 2 = 3 - 2 = 1$",
                             "<strong>Svar:</strong> Momentan vekstfart er $1$ for både $x=-2$ og $x=2$.",
                             "<strong>d)</strong><br>Vi setter momentan vekstfart, $f'(x)$, lik $0$ og løser for $x$:<br>$0.75x^2 - 2 = 0$<br><br>Flytter over tallet:<br>$0.75x^2 = 2$<br><br>Deler på $0.75$:<br>$x^2 = \\frac{2}{0.75} = \\frac{2}{\\frac{3}{4}} = \\frac{8}{3}$<br>$x^2 \\approx 2.67$<br><br>Tar kvadratroten av begge sider:<br>$x = \\pm \\sqrt{2.67} \\approx \\pm 1.63$<br><br>Dette er $x$-verdiene der funksjonen har et topp- eller bunnpunkt (tangenten er vannrett).",

@@ -83,10 +83,11 @@ export function figNumberLine(opts: {
   min: number;
   max: number;
   ticks: number[];
-  from: number;
-  to: number;
+  from?: number;
+  to?: number;
   openFrom?: boolean;
   openTo?: boolean;
+  noInterval?: boolean;
   caption: string;
 }): string {
   const y = 70;
@@ -100,27 +101,34 @@ export function figNumberLine(opts: {
         <text x="${x}" y="${y + 26}" text-anchor="middle" font-size="13" fill="${ink}">${t}</text>`;
     })
     .join("");
-  const x1 = xAt(Math.max(opts.from, opts.min));
-  const x2 = xAt(Math.min(opts.to, opts.max));
-  const capFrom =
-    opts.from <= opts.min
-      ? `<polygon points="${pad - 8},${y} ${pad + 4},${y - 6} ${pad + 4},${y + 6}" fill="#6366f1"/>`
-      : "";
-  const capTo =
-    opts.to >= opts.max
-      ? `<polygon points="${w - pad + 8},${y} ${w - pad - 4},${y - 6} ${w - pad - 4},${y + 6}" fill="#6366f1"/>`
-      : "";
-  const end = (open: boolean | undefined, x: number) =>
-    `<circle cx="${x}" cy="${y}" r="7" fill="${open ? "var(--bg-surface,#111827)" : "#6366f1"}" stroke="#6366f1" stroke-width="2.4"/>`;
-  const showFrom = opts.from > opts.min && opts.from < opts.max;
-  const showTo = opts.to > opts.min && opts.to < opts.max;
+
+  let interval = "";
+  if (!opts.noInterval && opts.from != null && opts.to != null) {
+    const x1 = xAt(Math.max(opts.from, opts.min));
+    const x2 = xAt(Math.min(opts.to, opts.max));
+    const capFrom =
+      opts.from <= opts.min
+        ? `<polygon points="${pad - 8},${y} ${pad + 4},${y - 6} ${pad + 4},${y + 6}" fill="#6366f1"/>`
+        : "";
+    const capTo =
+      opts.to >= opts.max
+        ? `<polygon points="${w - pad + 8},${y} ${w - pad - 4},${y - 6} ${w - pad - 4},${y + 6}" fill="#6366f1"/>`
+        : "";
+    const end = (open: boolean | undefined, x: number) =>
+      `<circle cx="${x}" cy="${y}" r="7" fill="${open ? "var(--bg-surface,#111827)" : "#6366f1"}" stroke="#6366f1" stroke-width="2.4"/>`;
+    const showFrom = opts.from > opts.min && opts.from < opts.max;
+    const showTo = opts.to > opts.min && opts.to < opts.max;
+    interval = `
+      <line x1="${x1}" y1="${y}" x2="${x2}" y2="${y}" stroke="#6366f1" stroke-width="8" stroke-linecap="butt" opacity="0.45"/>
+      ${capFrom}${capTo}
+      ${showFrom ? end(opts.openFrom, xAt(opts.from)) : ""}
+      ${showTo ? end(opts.openTo, xAt(opts.to)) : ""}`;
+  }
+
   const svg = `
     <line x1="${pad}" y1="${y}" x2="${w - pad}" y2="${y}" stroke="${ink}" stroke-width="2"/>
     <polygon points="${w - pad + 10},${y} ${w - pad - 2},${y - 6} ${w - pad - 2},${y + 6}" fill="${ink}"/>
-    <line x1="${x1}" y1="${y}" x2="${x2}" y2="${y}" stroke="#6366f1" stroke-width="8" stroke-linecap="butt" opacity="0.45"/>
-    ${capFrom}${capTo}${ticks}
-    ${showFrom ? end(opts.openFrom, xAt(opts.from)) : ""}
-    ${showTo ? end(opts.openTo, xAt(opts.to)) : ""}`;
+    ${interval}${ticks}`;
   return wrapH(svg, opts.caption, opts.caption, 120);
 }
 
@@ -338,7 +346,552 @@ export function figLShape(caption: string): string {
   return wrapH(cells.join(""), caption, "L-form: kvadrat minus ett hjørne", 190);
 }
 
+/** Tomt koordinatsystem med akser og fire kvadranter. */
+export function figCoordinateGrid(caption: string): string {
+  const ox = 210;
+  const oy = 130;
+  const step = 38;
+  const gridLines: string[] = [];
+
+  for (let i = -4; i <= 4; i++) {
+    const x = ox + i * step;
+    gridLines.push(`<line x1="${x}" y1="20" x2="${x}" y2="240" stroke="${ink}" stroke-width="1" opacity="0.12"/>`);
+    if (i !== 0) {
+      gridLines.push(`<line x1="${x}" y1="${oy - 4}" x2="${x}" y2="${oy + 4}" stroke="${ink}" stroke-width="1.4"/>`);
+      gridLines.push(`<text x="${x}" y="${oy + 18}" text-anchor="middle" font-size="12" fill="${ink}" opacity="0.8">${i}</text>`);
+    }
+  }
+  for (let j = -2; j <= 2; j++) {
+    const y = oy - j * step;
+    gridLines.push(`<line x1="20" y1="${y}" x2="400" y2="${y}" stroke="${ink}" stroke-width="1" opacity="0.12"/>`);
+    if (j !== 0) {
+      gridLines.push(`<line x1="${ox - 4}" y1="${y}" x2="${ox + 4}" stroke="${ink}" stroke-width="1.4"/>`);
+      gridLines.push(`<text x="${ox - 10}" y="${y + 4}" text-anchor="end" font-size="12" fill="${ink}" opacity="0.8">${j}</text>`);
+    }
+  }
+
+  const svg = `
+    ${gridLines.join("")}
+    <!-- Akser -->
+    <line x1="20" y1="${oy}" x2="400" y2="${oy}" stroke="${ink}" stroke-width="2"/>
+    <polygon points="400,${oy} 390,${oy - 4} 390,${oy + 4}" fill="${ink}"/>
+    <text x="405" y="${oy + 4}" font-size="13" font-weight="700" fill="${ink}">x</text>
+
+    <line x1="${ox}" y1="240" x2="${ox}" y2="20" stroke="${ink}" stroke-width="2"/>
+    <polygon points="${ox},20 ${ox - 4},30 ${ox + 4},30" fill="${ink}"/>
+    <text x="${ox + 8}" y="24" font-size="13" font-weight="700" fill="${ink}">y</text>
+    <text x="${ox - 10}" y="${oy + 16}" text-anchor="end" font-size="12" fill="${ink}" opacity="0.7">0</text>
+
+    <!-- Kvadranter -->
+    <text x="${ox + 85}" y="${oy - 55}" text-anchor="middle" font-size="15" font-weight="800" fill="#6366f1" opacity="0.85">1. kvadrant (I)</text>
+    <text x="${ox - 85}" y="${oy - 55}" text-anchor="middle" font-size="15" font-weight="800" fill="#6366f1" opacity="0.85">2. kvadrant (II)</text>
+    <text x="${ox - 85}" y="${oy + 75}" text-anchor="middle" font-size="15" font-weight="800" fill="#6366f1" opacity="0.85">3. kvadrant (III)</text>
+    <text x="${ox + 85}" y="${oy + 75}" text-anchor="middle" font-size="15" font-weight="800" fill="#6366f1" opacity="0.85">4. kvadrant (IV)</text>
+  `;
+  return wrapH(svg, caption, "Koordinatsystem med akser og fire kvadranter", 260);
+}
+
+/** Definisjonsmengde, verdimengde og nullpunkt. */
+export function figDomainRange(caption: string): string {
+  const ox = 70;
+  const oy = 175;
+  const pathD = `M 118,133 Q 214,-15 339,220`;
+
+  const svg = `
+    <!-- Akser -->
+    <line x1="40" y1="${oy}" x2="390" y2="${oy}" stroke="${ink}" stroke-width="2"/>
+    <polygon points="390,${oy} 380,${oy - 4} 380,${oy + 4}" fill="${ink}"/>
+    <text x="395" y="${oy + 4}" font-size="13" font-weight="700" fill="${ink}">x</text>
+
+    <line x1="${ox}" y1="235" x2="${ox}" y2="30" stroke="${ink}" stroke-width="2"/>
+    <polygon points="${ox},30 ${ox - 4},40 ${ox + 4},40" fill="${ink}"/>
+    <text x="${ox + 6}" y="34" font-size="13" font-weight="700" fill="${ink}">y</text>
+    <text x="${ox - 8}" y="${oy + 14}" text-anchor="end" font-size="11" fill="${ink}" opacity="0.6">0</text>
+
+    <!-- D_f markering på x-aksen -->
+    <line x1="118" y1="${oy + 12}" x2="339" y2="${oy + 12}" stroke="#34d399" stroke-width="4" stroke-linecap="round"/>
+    <line x1="118" y1="${oy + 6}" x2="118" y2="${oy + 18}" stroke="#34d399" stroke-width="3"/>
+    <line x1="339" y1="${oy + 6}" x2="339" y2="${oy + 18}" stroke="#34d399" stroke-width="3"/>
+    <text x="228" y="${oy + 30}" text-anchor="middle" font-size="13" font-weight="700" fill="#34d399">D_f (definisjonsmengde på x-aksen)</text>
+
+    <!-- V_f markering på y-aksen -->
+    <line x1="${ox - 14}" y1="57" x2="${ox - 14}" y2="220" stroke="#818cf8" stroke-width="4" stroke-linecap="round"/>
+    <line x1="${ox - 20}" y1="57" x2="${ox - 8}" y2="57" stroke="#818cf8" stroke-width="3"/>
+    <line x1="${ox - 20}" y1="220" x2="${ox - 8}" y2="220" stroke="#818cf8" stroke-width="3"/>
+    <text x="${ox - 24}" y="140" text-anchor="end" font-size="12" font-weight="700" fill="#818cf8">V_f (verdimengde)</text>
+
+    <!-- Graf kurve -->
+    <path d="${pathD}" fill="none" stroke="#6366f1" stroke-width="3"/>
+
+    <!-- Endepunkter -->
+    <circle cx="118" cy="133" r="4.5" fill="#6366f1"/>
+    <circle cx="339" cy="220" r="4.5" fill="#6366f1"/>
+
+    <!-- Nullpunkt -->
+    <line x1="310" y1="${oy - 8}" x2="310" y2="${oy + 8}" stroke="#f59e0b" stroke-width="2"/>
+    <circle cx="310" cy="${oy}" r="5.5" fill="#f59e0b"/>
+    <text x="310" y="${oy - 14}" text-anchor="middle" font-size="12" font-weight="700" fill="#f59e0b">nullpunkt (y=0)</text>
+  `;
+  return wrapH(svg, caption, "Illustrasjon av definisjonsmengde, verdimengde og nullpunkt", 250);
+}
+
+/** Rutenett med en stiplet hjelpelinje som viser en rett linje. */
+export function figLinearGrid(caption: string): string {
+  const ox = 210;
+  const oy = 120;
+  const step = 36;
+  const gridLines: string[] = [];
+
+  for (let i = -4; i <= 4; i++) {
+    const x = ox + i * step;
+    gridLines.push(`<line x1="${x}" y1="20" x2="${x}" y2="220" stroke="${ink}" stroke-width="1" opacity="0.12"/>`);
+    if (i !== 0) {
+      gridLines.push(`<line x1="${x}" y1="${oy - 4}" x2="${x}" y2="${oy + 4}" stroke="${ink}" stroke-width="1.4"/>`);
+      gridLines.push(`<text x="${x}" y="${oy + 16}" text-anchor="middle" font-size="11" fill="${ink}" opacity="0.7">${i}</text>`);
+    }
+  }
+  for (let j = -2; j <= 2; j++) {
+    const y = oy - j * step;
+    gridLines.push(`<line x1="30" y1="${y}" x2="390" y2="${y}" stroke="${ink}" stroke-width="1" opacity="0.12"/>`);
+    if (j !== 0) {
+      gridLines.push(`<line x1="${ox - 4}" y1="${y}" x2="${ox + 4}" stroke="${ink}" stroke-width="1.4"/>`);
+      gridLines.push(`<text x="${ox - 8}" y="${y + 4}" text-anchor="end" font-size="11" fill="${ink}" opacity="0.7">${j}</text>`);
+    }
+  }
+
+  const svg = `
+    ${gridLines.join("")}
+    <!-- Akser -->
+    <line x1="30" y1="${oy}" x2="390" y2="${oy}" stroke="${ink}" stroke-width="2"/>
+    <polygon points="390,${oy} 380,${oy - 4} 380,${oy + 4}" fill="${ink}"/>
+    <text x="395" y="${oy + 4}" font-size="13" font-weight="700" fill="${ink}">x</text>
+
+    <line x1="${ox}" y1="220" x2="${ox}" y2="20" stroke="${ink}" stroke-width="2"/>
+    <polygon points="${ox},20 ${ox - 4},30 ${ox + 4},30" fill="${ink}"/>
+    <text x="${ox + 6}" y="24" font-size="13" font-weight="700" fill="${ink}">y</text>
+    <text x="${ox - 8}" y="${oy + 16}" text-anchor="end" font-size="11" fill="${ink}" opacity="0.7">0</text>
+
+    <!-- Stiplet referanselinje gjennom origo -->
+    <line x1="${ox - 3 * step}" y1="${oy + 3 * step * 0.7}" x2="${ox + 3 * step}" y2="${oy - 3 * step * 0.7}" stroke="#818cf8" stroke-width="2.2" stroke-dasharray="6 4"/>
+    <circle cx="${ox}" cy="${oy}" r="4" fill="#818cf8"/>
+    <text x="${ox + 75}" y="${oy - 55}" font-size="12" font-weight="700" fill="#818cf8">stiplet linje (rett linje)</text>
+  `;
+  return wrapH(svg, caption, "Rutenett med akser og en stiplet hjelpelinje", 240);
+}
+
+/** Parabel med sekanter og horisontal tangent. */
+export function figSecantsAndTangent(caption: string): string {
+  const svg = `
+    <!-- Akser -->
+    <line x1="40" y1="190" x2="390" y2="190" stroke="${ink}" stroke-width="1.8"/>
+    <polygon points="390,190 380,186 380,194" fill="${ink}"/>
+    <text x="395" y="194" font-size="12" font-weight="700" fill="${ink}">x</text>
+
+    <line x1="110" y1="225" x2="110" y2="30" stroke="${ink}" stroke-width="1.8"/>
+    <polygon points="110,30 106,40 114,40" fill="${ink}"/>
+    <text x="116" y="34" font-size="12" font-weight="700" fill="${ink}">y</text>
+
+    <!-- Ticks -->
+    <line x1="210" y1="186" x2="210" y2="194" stroke="${ink}" stroke-width="1.4"/>
+    <text x="210" y="206" text-anchor="middle" font-size="12" fill="${ink}">2</text>
+    <line x1="310" y1="186" x2="310" y2="194" stroke="${ink}" stroke-width="1.4"/>
+    <text x="310" y="206" text-anchor="middle" font-size="12" fill="${ink}">4</text>
+    <text x="102" y="206" text-anchor="end" font-size="12" fill="${ink}">0</text>
+
+    <line x1="106" y1="150" x2="114" y2="150" stroke="${ink}" stroke-width="1.4"/>
+    <text x="102" y="154" text-anchor="end" font-size="12" fill="${ink}">2</text>
+    <line x1="106" y1="70" x2="114" y2="70" stroke="${ink}" stroke-width="1.4"/>
+    <text x="102" y="74" text-anchor="end" font-size="12" fill="${ink}">6</text>
+
+    <!-- Parabel -->
+    <path d="M 85,195 Q 210,-55 335,195" fill="none" stroke="#6366f1" stroke-width="3"/>
+
+    <!-- Sekant [0, 2] stigning +2 -->
+    <line x1="85" y1="170" x2="235" y2="50" stroke="#34d399" stroke-width="2" stroke-dasharray="5 4"/>
+    <text x="135" y="98" font-size="11" font-weight="700" fill="#34d399">sekant [0,2] (stigning 2)</text>
+
+    <!-- Sekant [2, 4] stigning -2 -->
+    <line x1="185" y1="50" x2="335" y2="170" stroke="#f59e0b" stroke-width="2" stroke-dasharray="5 4"/>
+    <text x="285" y="98" font-size="11" font-weight="700" fill="#f59e0b">sekant [2,4] (stigning −2)</text>
+
+    <!-- Horisontal tangent i (2, 6) -->
+    <line x1="130" y1="70" x2="290" y2="70" stroke="#ec4899" stroke-width="2.2"/>
+    <text x="210" y="58" text-anchor="middle" font-size="11" font-weight="700" fill="#ec4899">tangent i (2,6) (stigning 0)</text>
+
+    <!-- Punkter -->
+    <circle cx="110" cy="150" r="4.5" fill="#34d399"/>
+    <text x="118" y="144" font-size="11" font-weight="700" fill="${ink}">(0,2)</text>
+    <circle cx="210" cy="70" r="5" fill="#ec4899"/>
+    <text x="210" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="${ink}">(2,6)</text>
+    <circle cx="310" cy="150" r="4.5" fill="#f59e0b"/>
+    <text x="318" y="144" font-size="11" font-weight="700" fill="${ink}">(4,2)</text>
+  `;
+  return wrapH(svg, caption, "Parabel f(x)=-x^2+4x+2 med sekanter og tangent", 235);
+}
+
+/** Tredjegradskurve f(x) = 0.25x^3 - 2x på [-4, 4]. */
+export function figCubicGraph(withTangents: boolean, caption: string): string {
+  const pts: [number, number][] = [];
+  for (let i = -40; i <= 40; i++) {
+    const x = i / 10;
+    const y = 0.25 * x * x * x - 2 * x;
+    const px = 210 + x * 40;
+    const py = 120 - y * 11.5;
+    pts.push([px, py]);
+  }
+  const d = pts.map((p, i) => `${i === 0 ? "M" : "L"} ${p[0].toFixed(1)},${p[1].toFixed(1)}`).join(" ");
+
+  let tangentsSvg = "";
+  if (withTangents) {
+    tangentsSvg = `
+      <!-- Tangent i x=-2 -->
+      <line x1="70" y1="114.2" x2="190" y2="79.8" stroke="#34d399" stroke-width="2.2"/>
+      <circle cx="130" cy="97" r="5" fill="#34d399"/>
+      <text x="120" y="86" font-size="11" font-weight="700" fill="#34d399">(−2, 2) stigning 1</text>
+
+      <!-- Tangent i x=2 -->
+      <line x1="230" y1="160.2" x2="350" y2="125.8" stroke="#f59e0b" stroke-width="2.2"/>
+      <circle cx="290" cy="143" r="5" fill="#f59e0b"/>
+      <text x="300" y="160" font-size="11" font-weight="700" fill="#f59e0b">(2, −2) stigning 1</text>
+    `;
+  }
+
+  const svg = `
+    <!-- Rutenett og akser -->
+    <line x1="30" y1="120" x2="390" y2="120" stroke="${ink}" stroke-width="1.8"/>
+    <polygon points="390,120 380,116 380,124" fill="${ink}"/>
+    <text x="395" y="124" font-size="12" font-weight="700" fill="${ink}">x</text>
+
+    <line x1="210" y1="230" x2="210" y2="15" stroke="${ink}" stroke-width="1.8"/>
+    <polygon points="210,15 206,25 214,25" fill="${ink}"/>
+    <text x="216" y="20" font-size="12" font-weight="700" fill="${ink}">y</text>
+
+    <!-- Ticks -->
+    <line x1="130" y1="116" x2="130" y2="124" stroke="${ink}" stroke-width="1.4"/>
+    <text x="130" y="136" text-anchor="middle" font-size="11" fill="${ink}">−2</text>
+    <line x1="290" y1="116" x2="290" y2="124" stroke="${ink}" stroke-width="1.4"/>
+    <text x="290" y="136" text-anchor="middle" font-size="11" fill="${ink}">2</text>
+    <text x="202" y="134" text-anchor="end" font-size="11" fill="${ink}">0</text>
+
+    <!-- Tredjegradskurve -->
+    <path d="${d}" fill="none" stroke="#6366f1" stroke-width="2.8"/>
+    ${tangentsSvg}
+  `;
+  return wrapH(svg, caption, "Grafen til f(x)=0.25x^3-2x", 245);
+}
+
+/** Enkel eller utfylt fortegnslinje. */
+export function figSignLine(opts: {
+  label?: string;
+  ticks: { label: string; kind?: "zero" | "pole" }[];
+  left?: string;
+  mids?: string[];
+  right?: string;
+  caption: string;
+}): string {
+  const w = 420;
+  const y = 45;
+  const pad = 60;
+  const n = opts.ticks.length;
+  const xs = opts.ticks.map((_, i) => pad + ((w - 2 * pad) * i) / Math.max(n - 1, 1));
+  const axis = `
+    <line x1="20" y1="${y}" x2="${w - 20}" y2="${y}" stroke="${ink}" stroke-width="2"/>
+    <polygon points="${w - 20},${y} ${w - 30},${y - 4} ${w - 30},${y + 4}" fill="${ink}"/>
+  `;
+  const lbl = opts.label
+    ? `<text x="18" y="${y - 12}" font-size="13" font-weight="700" fill="${ink}">${opts.label}</text>`
+    : "";
+  const marks = opts.ticks
+    .map((t, i) => {
+      const x = xs[i]!;
+      const dot =
+        t.kind === "pole"
+          ? `<text x="${x}" y="${y + 5}" text-anchor="middle" font-size="16" fill="${ink}">×</text>`
+          : `<circle cx="${x}" cy="${y}" r="5" fill="${ink}"/>`;
+      return `${dot}<text x="${x}" y="${y + 20}" text-anchor="middle" font-size="13" font-weight="700" fill="${ink}">${t.label}</text>`;
+    })
+    .join("");
+
+  let signs = "";
+  if (opts.left || opts.right || (opts.mids && opts.mids.length > 0)) {
+    const mids = opts.mids || [];
+    const segs: { x1: number; x2: number; s: string }[] = [
+      { x1: 25, x2: xs[0]! - 8, s: opts.left || "" },
+      ...mids.map((s, i) => ({ x1: xs[i]! + 8, x2: xs[i + 1]! - 8, s })),
+      { x1: xs[n - 1]! + 8, x2: w - 35, s: opts.right || "" },
+    ];
+    signs = segs
+      .filter((g) => g.s)
+      .map(
+        (g) =>
+          `<text x="${(g.x1 + g.x2) / 2}" y="${y - 10}" text-anchor="middle" font-size="14" font-weight="700" fill="${ink}">${g.s}</text>
+           <line x1="${g.x1}" y1="${y}" x2="${g.x2}" y2="${y}" stroke="${ink}" stroke-width="3.5" stroke-dasharray="${g.s === "−" || g.s === "-" ? "6 4" : "0"}" opacity="${g.s === "−" || g.s === "-" ? "0.6" : "1"}"/>`,
+      )
+      .join("");
+  }
+
+  const svg = `${lbl}${axis}${signs}${marks}`;
+  return wrapH(svg, opts.caption, opts.caption, 85);
+}
+
+/** To parallelle fortegnslinjer for to funksjoner (f.eks. g og g'). */
+export function figDualSignLine(opts: {
+  label1: string;
+  ticks1: { label: string; kind?: "zero" | "pole" }[];
+  left1?: string;
+  mids1?: string[];
+  right1?: string;
+  label2: string;
+  ticks2: { label: string; kind?: "zero" | "pole" }[];
+  left2?: string;
+  mids2?: string[];
+  right2?: string;
+  caption: string;
+}): string {
+  const w = 420;
+  function renderLine(
+    y: number,
+    label: string,
+    ticks: { label: string; kind?: "zero" | "pole" }[],
+    left?: string,
+    mids?: string[],
+    right?: string,
+  ) {
+    const pad = 65;
+    const n = ticks.length;
+    const xAtVal = (v: number) => pad + ((v - (-1)) / 6) * (w - 2 * pad);
+    const xs = ticks.map((t) => xAtVal(Number(t.label.replace("−", "-"))));
+
+    const axis = `
+      <line x1="20" y1="${y}" x2="${w - 20}" y2="${y}" stroke="${ink}" stroke-width="2"/>
+      <polygon points="${w - 20},${y} ${w - 30},${y - 4} ${w - 30},${y + 4}" fill="${ink}"/>
+    `;
+    const lbl = `<text x="18" y="${y - 12}" font-size="13" font-weight="700" fill="${ink}">${label}</text>`;
+    const marks = ticks
+      .map((t, i) => {
+        const x = xs[i]!;
+        const dot = `<circle cx="${x}" cy="${y}" r="5" fill="${ink}"/>`;
+        return `${dot}<text x="${x}" y="${y + 20}" text-anchor="middle" font-size="13" font-weight="700" fill="${ink}">${t.label}</text>`;
+      })
+      .join("");
+
+    let signs = "";
+    if (left || right || (mids && mids.length > 0)) {
+      const ms = mids || [];
+      const segs: { x1: number; x2: number; s: string }[] = [
+        { x1: 25, x2: xs[0]! - 8, s: left || "" },
+        ...ms.map((s, i) => ({ x1: xs[i]! + 8, x2: xs[i + 1]! - 8, s })),
+        { x1: xs[n - 1]! + 8, x2: w - 35, s: right || "" },
+      ];
+      signs = segs
+        .filter((g) => g.s)
+        .map(
+          (g) =>
+            `<text x="${(g.x1 + g.x2) / 2}" y="${y - 10}" text-anchor="middle" font-size="14" font-weight="700" fill="${ink}">${g.s}</text>
+             <line x1="${g.x1}" y1="${y}" x2="${g.x2}" y2="${y}" stroke="${ink}" stroke-width="3.5" stroke-dasharray="${g.s === "−" || g.s === "-" ? "6 4" : "0"}" opacity="${g.s === "−" || g.s === "-" ? "0.6" : "1"}"/>`,
+        )
+        .join("");
+    }
+    return `${lbl}${axis}${signs}${marks}`;
+  }
+
+  const line1 = renderLine(40, opts.label1, opts.ticks1, opts.left1, opts.mids1, opts.right1);
+  const line2 = renderLine(115, opts.label2, opts.ticks2, opts.left2, opts.mids2, opts.right2);
+  return wrapH(`${line1}${line2}`, opts.caption, opts.caption, 160);
+}
+
+/** Prikkmønster med manglende hjørner (for 2.58). */
+export function figDotPatternGrid(caption: string): string {
+  const sp = 20;
+  const ox1 = 90;
+  const oy1 = 50;
+  const dots1 = [];
+  for (let c = 0; c < 3; c++) {
+    const x = ox1 + c * sp;
+    const y = oy1;
+    const isCorner = c === 0 || c === 2;
+    if (isCorner) {
+      dots1.push(`<circle cx="${x}" cy="${y}" r="4" fill="none" stroke="${ink}" stroke-dasharray="2 2" stroke-width="1.2" opacity="0.4"/>`);
+    } else {
+      dots1.push(`<circle cx="${x}" cy="${y}" r="4.5" fill="#6366f1"/>`);
+    }
+  }
+
+  const ox2 = 240;
+  const oy2 = 40;
+  const dots2 = [];
+  for (let r = 0; r < 2; r++) {
+    for (let c = 0; c < 4; c++) {
+      const x = ox2 + c * sp;
+      const y = oy2 + r * sp;
+      const isCorner = r === 0 && (c === 0 || c === 3);
+      if (isCorner) {
+        dots2.push(`<circle cx="${x}" cy="${y}" r="4" fill="none" stroke="${ink}" stroke-dasharray="2 2" stroke-width="1.2" opacity="0.4"/>`);
+      } else {
+        dots2.push(`<circle cx="${x}" cy="${y}" r="4.5" fill="#34d399"/>`);
+      }
+    }
+  }
+
+  const svg = `
+    ${dots1.join("")}
+    <text x="${ox1 + sp}" y="${oy1 + 32}" text-anchor="middle" font-size="13" font-weight="700" fill="${ink}">Figur 1 (1 prikk)</text>
+
+    ${dots2.join("")}
+    <text x="${ox2 + 1.5 * sp}" y="${oy2 + sp + 32}" text-anchor="middle" font-size="13" font-weight="700" fill="${ink}">Figur 2 (6 prikker)</text>
+  `;
+  return wrapH(svg, caption, "Prikkmønster for figur 1 og figur 2", 115);
+}
+
+/** Kvadratsetning geometrisk: (a-b)^2. */
+export function figSquareIdentityMinus(caption: string): string {
+  const svg = `
+    <!-- Stort kvadrat a x a -->
+    <rect x="130" y="25" width="150" height="150" fill="none" stroke="${ink}" stroke-width="2"/>
+
+    <!-- Inner square (a-b)^2 -->
+    <rect x="130" y="25" width="110" height="110" fill="rgba(99,102,241,0.25)" stroke="${ink}" stroke-width="1.6"/>
+    <text x="185" y="85" text-anchor="middle" font-size="16" font-weight="800" fill="${ink}">(a − b)²</text>
+
+    <!-- Subtracted rectangle 1: right strip (a - b) x b -->
+    <rect x="240" y="25" width="40" height="110" fill="rgba(239,68,68,0.18)" stroke="${ink}" stroke-width="1.4"/>
+    <text x="260" y="85" text-anchor="middle" font-size="12" font-weight="700" fill="${ink}">ab</text>
+
+    <!-- Subtracted rectangle 2: bottom strip b x (a - b) -->
+    <rect x="130" y="135" width="110" height="40" fill="rgba(239,68,68,0.18)" stroke="${ink}" stroke-width="1.4"/>
+    <text x="185" y="160" text-anchor="middle" font-size="12" font-weight="700" fill="${ink}">ab</text>
+
+    <!-- Overlapping corner b^2 (subtracted twice, added back) -->
+    <rect x="240" y="135" width="40" height="40" fill="rgba(52,211,153,0.3)" stroke="${ink}" stroke-width="1.8"/>
+    <text x="260" y="160" text-anchor="middle" font-size="13" font-weight="800" fill="#34d399">+b²</text>
+
+    <!-- Side labels -->
+    <text x="185" y="18" text-anchor="middle" font-size="13" font-weight="700" fill="${ink}">a − b</text>
+    <text x="260" y="18" text-anchor="middle" font-size="13" font-weight="700" fill="${ink}">b</text>
+    <text x="118" y="85" text-anchor="end" font-size="13" font-weight="700" fill="${ink}">a − b</text>
+    <text x="118" y="160" text-anchor="end" font-size="13" font-weight="700" fill="${ink}">b</text>
+  `;
+  return wrapH(svg, caption, "Geometrisk tolkning av (a-b)^2", 205);
+}
+
+/** Rasjonal funksjon (x+2)/(x-1) med asymptoter og to greiner (for 4.27). */
+export function figRational427(caption: string): string {
+  const ox = 190;
+  const oy = 110;
+  const step = 28;
+  const asymX = ox + 1 * step;
+  const asymY = oy - 1 * step;
+
+  const leftPts = [];
+  for (let i = -50; i <= 6; i++) {
+    const x = i / 10;
+    const y = (x + 2) / (x - 1);
+    const px = ox + x * step;
+    const py = oy - y * step;
+    if (py >= -20 && py <= 240) leftPts.push([px, py]);
+  }
+  const dLeft = leftPts.map((p, i) => `${i === 0 ? "M" : "L"} ${p[0].toFixed(1)},${p[1].toFixed(1)}`).join(" ");
+
+  const rightPts = [];
+  for (let i = 13; i <= 60; i++) {
+    const x = i / 10;
+    const y = (x + 2) / (x - 1);
+    const px = ox + x * step;
+    const py = oy - y * step;
+    if (py >= -20 && py <= 240) rightPts.push([px, py]);
+  }
+  const dRight = rightPts.map((p, i) => `${i === 0 ? "M" : "L"} ${p[0].toFixed(1)},${p[1].toFixed(1)}`).join(" ");
+
+  const svg = `
+    <!-- Akser -->
+    <line x1="30" y1="${oy}" x2="390" y2="${oy}" stroke="${ink}" stroke-width="1.8"/>
+    <polygon points="390,${oy} 380,${oy - 4} 380,${oy + 4}" fill="${ink}"/>
+    <text x="395" y="${oy + 4}" font-size="12" font-weight="700" fill="${ink}">x</text>
+
+    <line x1="${ox}" y1="215" x2="${ox}" y2="20" stroke="${ink}" stroke-width="1.8"/>
+    <polygon points="${ox},20 ${ox - 4},30 ${ox + 4},30" fill="${ink}"/>
+    <text x="${ox + 6}" y="24" font-size="12" font-weight="700" fill="${ink}">y</text>
+
+    <!-- Ticks -->
+    <line x1="${ox - 2 * step}" y1="${oy - 3}" x2="${ox - 2 * step}" y2="${oy + 3}" stroke="${ink}"/>
+    <text x="${ox - 2 * step}" y="${oy + 16}" text-anchor="middle" font-size="11" fill="${ink}">−2</text>
+    <line x1="${asymX}" y1="${oy - 3}" x2="${asymX}" y2="${oy + 3}" stroke="${ink}"/>
+    <text x="${asymX}" y="${oy + 16}" text-anchor="middle" font-size="11" fill="${ink}">1</text>
+    <line x1="${ox - 3}" y1="${asymY}" x2="${ox + 3}" y2="${asymY}" stroke="${ink}"/>
+    <text x="${ox - 8}" y="${asymY + 4}" text-anchor="end" font-size="11" fill="${ink}">1</text>
+    <line x1="${ox - 3}" y1="${oy + 2 * step}" x2="${ox + 3}" y2="${oy + 2 * step}" stroke="${ink}"/>
+    <text x="${ox - 8}" y="${oy + 2 * step + 4}" text-anchor="end" font-size="11" fill="${ink}">−2</text>
+
+    <!-- Asymptoter -->
+    <line x1="${asymX}" y1="20" x2="${asymX}" y2="215" stroke="#ef4444" stroke-width="1.8" stroke-dasharray="5 4"/>
+    <text x="${asymX + 6}" y="32" font-size="11" font-weight="700" fill="#ef4444">x = 1</text>
+
+    <line x1="30" y1="${asymY}" x2="390" y2="${asymY}" stroke="#ef4444" stroke-width="1.8" stroke-dasharray="5 4"/>
+    <text x="340" y="${asymY - 6}" font-size="11" font-weight="700" fill="#ef4444">y = 1</text>
+
+    <!-- Kurver -->
+    <path d="${dLeft}" fill="none" stroke="#6366f1" stroke-width="2.6"/>
+    <path d="${dRight}" fill="none" stroke="#6366f1" stroke-width="2.6"/>
+
+    <!-- Nøkkelpunkter -->
+    <circle cx="${ox - 2 * step}" cy="${oy}" r="4.5" fill="#34d399"/>
+    <text x="${ox - 2 * step - 8}" y="${oy - 8}" text-anchor="end" font-size="11" font-weight="700" fill="#34d399">(−2, 0)</text>
+
+    <circle cx="${ox}" cy="${oy + 2 * step}" r="4.5" fill="#34d399"/>
+    <text x="${ox + 8}" y="${oy + 2 * step + 4}" font-size="11" font-weight="700" fill="#34d399">(0, −2)</text>
+  `;
+  return wrapH(svg, caption, "Graf til rasjonal funksjon med to greiner og stiplede asymptoter", 235);
+}
+
+/** Oddetall bygger kvadrater (for 1.31). */
+export function figSolarOddSquares(caption: string): string {
+  const s = 18;
+  const svg = `
+    <!-- 1x1 -->
+    <rect x="50" y="60" width="${s}" height="${s}" rx="2" fill="rgba(99,102,241,0.4)" stroke="${ink}" stroke-width="1.2"/>
+    <text x="${50 + s / 2}" y="105" text-anchor="middle" font-size="12" font-weight="700" fill="${ink}">1 = 1²</text>
+
+    <!-- 2x2 -->
+    <rect x="130" y="42" width="${s}" height="${s}" rx="2" fill="rgba(99,102,241,0.4)" stroke="${ink}" stroke-width="1.2"/>
+    <rect x="${130 + s}" y="42" width="${s}" height="${s}" rx="2" fill="rgba(52,211,153,0.4)" stroke="${ink}" stroke-width="1.2"/>
+    <rect x="130" y="${42 + s}" width="${s}" height="${s}" rx="2" fill="rgba(52,211,153,0.4)" stroke="${ink}" stroke-width="1.2"/>
+    <rect x="${130 + s}" y="${42 + s}" width="${s}" height="${s}" rx="2" fill="rgba(52,211,153,0.4)" stroke="${ink}" stroke-width="1.2"/>
+    <text x="${130 + s}" y="105" text-anchor="middle" font-size="12" font-weight="700" fill="${ink}">1+3 = 2²</text>
+
+    <!-- 3x3 -->
+    <rect x="250" y="24" width="${s}" height="${s}" rx="2" fill="rgba(99,102,241,0.4)" stroke="${ink}" stroke-width="1.2"/>
+    <rect x="${250 + s}" y="24" width="${s}" height="${s}" rx="2" fill="rgba(52,211,153,0.4)" stroke="${ink}" stroke-width="1.2"/>
+    <rect x="250" y="${24 + s}" width="${s}" height="${s}" rx="2" fill="rgba(52,211,153,0.4)" stroke="${ink}" stroke-width="1.2"/>
+    <rect x="${250 + s}" y="${24 + s}" width="${s}" height="${s}" rx="2" fill="rgba(52,211,153,0.4)" stroke="${ink}" stroke-width="1.2"/>
+    <rect x="${250 + 2 * s}" y="24" width="${s}" height="${s}" rx="2" fill="rgba(245,158,11,0.4)" stroke="${ink}" stroke-width="1.2"/>
+    <rect x="${250 + 2 * s}" y="${24 + s}" width="${s}" height="${s}" rx="2" fill="rgba(245,158,11,0.4)" stroke="${ink}" stroke-width="1.2"/>
+    <rect x="${250 + 2 * s}" y="${24 + 2 * s}" width="${s}" height="${s}" rx="2" fill="rgba(245,158,11,0.4)" stroke="${ink}" stroke-width="1.2"/>
+    <rect x="${250 + s}" y="${24 + 2 * s}" width="${s}" height="${s}" rx="2" fill="rgba(245,158,11,0.4)" stroke="${ink}" stroke-width="1.2"/>
+    <rect x="250" y="${24 + 2 * s}" width="${s}" height="${s}" rx="2" fill="rgba(245,158,11,0.4)" stroke="${ink}" stroke-width="1.2"/>
+    <text x="${250 + 1.5 * s}" y="105" text-anchor="middle" font-size="12" font-weight="700" fill="${ink}">1+3+5 = 3²</text>
+  `;
+  return wrapH(svg, caption, "Oddetall danner kvadrater", 125);
+}
+
 export const TASK_FIGURES: Record<string, string> = {
+  "1.13": figNumberLine({
+    min: -4,
+    max: 10,
+    ticks: [-2, 0, 8],
+    from: -2,
+    to: 8,
+    openFrom: false,
+    openTo: true,
+    caption: "Intervall $[-2, 8\\rangle$: lukket ved $-2$ (fylt sirkel) og åpen ved $8$ (åpen sirkel).",
+  }),
+  "1.14": figNumberLine({
+    min: -15,
+    max: 15,
+    ticks: [-12, 0, 12],
+    noInterval: true,
+    caption: "Tallinjen med markeringer for $-12$, $0$ og $12$.",
+  }),
+  "1.31": figSolarOddSquares("Mønster av oddetall: $1$, $1+3=4=2^2$, $1+3+5=9=3^2$."),
   "1.OP3": figSequence(
     [5, 8, 12, 17, 23],
     [3, 4, 5, 6],
@@ -358,6 +911,7 @@ export const TASK_FIGURES: Record<string, string> = {
   "2.15": figRightTriangle("2h", "h", "Arealet er halvparten av grunnlinje ganger høyde."),
   "2.19": figFrame("Rammens areal = ytre rektangel minus den indre åpningen."),
   "2.29": figRect("s + 2", "s − 1", "Kvadrat med side $s$ og rektangel med sider $s+2$ og $s-1$."),
+  "2.58": figDotPatternGrid("Prikkmønster med $n$ rader og $n+2$ prikker, der $2$ hjørneprikker mangler."),
   "2.OP3": figSquareIdentity("Geometrisk: $(a+b)^2 = a^2 + 2ab + b^2$."),
   "2.OP9": figRect("l = 12", "b = ?", "Areal $A=l\\cdot b=48$. Finn $b$."),
   "2.OP10": figSquareNumbers("Kvadrattall $n^2$ som $n\\times n$-prikker. Differansen mellom to naboer er den neste oddetallskanten."),
@@ -408,6 +962,32 @@ export const TASK_FIGURES: Record<string, string> = {
     openTo: false,
     caption: "Skisse til b): $x\\le -3$ er strålen $\\langle\\leftarrow,-3]$.",
   }),
+  "4.0": figCoordinateGrid("Tomt koordinatsystem med akser og fire kvadranter (I, II, III, IV)."),
+  "4.1": figDomainRange("Definisjonsmengde $D_f$ leses på $x$-aksen, verdimengde $V_f$ på $y$-aksen, og nullpunkt der grafen skjærer $x$-aksen."),
+  "4.8": figLinearGrid("Koordinatsystem med rutenett og en stiplet hjelpelinje som viser en rett linje."),
+  "4.27": figRational427("Graf til rasjonal funksjon med to greiner og stiplede asymptoter $x=1$ og $y=1$."),
+  "4.45": figSecantsAndTangent("Parabelen $f(x)=-x^2+4x+2$ med sekanter på $[0,2]$ og $[2,4]$, samt horisontal tangent i toppunktet $(2,6)$."),
+  "4.48": figCubicGraph(false, "Grafen til $f(x)=0{,}25x^3-2x$ i intervallet $[-4, 4]$."),
+  "4.52": figSignLine({
+    label: "f(x)",
+    ticks: [{ label: "−3", kind: "zero" }],
+    caption: "Fortegnslinje for $f(x)=x+3$ med nullpunkt i $x=-3$.",
+  }),
+  "4.53": figDualSignLine({
+    label1: "g(x)",
+    ticks1: [{ label: "0", kind: "zero" }, { label: "4", kind: "zero" }],
+    label2: "g'(x)",
+    ticks2: [{ label: "2", kind: "zero" }],
+    caption: "Fortegnslinjer for $g(x)$ og $g'(x)$ med markerte nullpunkter.",
+  }),
+  "4.54": figSignLine({
+    label: "f'(x)",
+    ticks: [{ label: "−1", kind: "zero" }, { label: "3", kind: "zero" }],
+    left: "−",
+    mids: ["+"],
+    right: "−",
+    caption: "Gitt fortegnslinje for den deriverte $f'(x)$.",
+  }),
   "5.OP1": figNumberLine({
     min: 0,
     max: 8,
@@ -419,4 +999,43 @@ export const TASK_FIGURES: Record<string, string> = {
     caption: "Løsningen $x>3$ er den åpne strålen $\\langle 3,\\infty\\rangle$.",
   }),
   "5.OP8": figParallelLines("Når $k=4$ blir den andre linja $2x+y=2$ — parallell med $2x+y=5$, ingen skjæring."),
+};
+
+/** Pedagogiske fasit-figurer knyttet til spesifikke steg i løsningsforslag. */
+export const TASK_FASIT_FIGURES: Record<string, Record<number, string>> = {
+  "2.OP3": {
+    1: figSquareIdentityMinus("Geometrisk tolkning: $(a-b)^2 = a^2 - 2ab + b^2$. Kvadratet $b^2$ trekkes fra to ganger og må legges tilbake."),
+  },
+  "4.48": {
+    0: figCubicGraph(true, "Grafen til $f(x)=0{,}25x^3-2x$ med tangenter i $x=-2$ og $x=2$ (begge har stigningstall $1$)."),
+    1: figCubicGraph(true, "Grafen til $f(x)=0{,}25x^3-2x$ med tangenter i $x=-2$ og $x=2$ (begge har stigningstall $1$)."),
+  },
+  "4.52": {
+    1: figSignLine({
+      label: "f(x)",
+      ticks: [{ label: "−3", kind: "zero" }],
+      left: "−",
+      mids: [],
+      right: "+",
+      caption: "Fullført fortegnslinje for $f(x)=x+3$: negativ før $-3$, positiv etter.",
+    }),
+  },
+  "4.53": {
+    1: figSignLine({
+      label: "g(x)",
+      ticks: [{ label: "0", kind: "zero" }, { label: "4", kind: "zero" }],
+      left: "−",
+      mids: ["+"],
+      right: "−",
+      caption: "Fullført fortegnslinje for $g(x)$: negativ utenfor $[0, 4]$, positiv mellom.",
+    }),
+    2: figSignLine({
+      label: "g'(x)",
+      ticks: [{ label: "2", kind: "zero" }],
+      left: "+",
+      mids: [],
+      right: "−",
+      caption: "Fullført fortegnslinje for $g'(x)$: positiv før $2$, negativ etter.",
+    }),
+  },
 };

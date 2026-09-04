@@ -3,7 +3,7 @@ import type { Delkapittel, Fagstoff, Kapittel, Oppgave } from "./types";
 import { EXTRA, SUB_TITLES } from "./extra-tasks";
 import { MORE23 } from "./extra-kap23";
 import { EXTRA_1D, EXTRA_1D_QUIZ } from "./extra-1d";
-import { TASK_FIGURES } from "./task-figures";
+import { TASK_FIGURES, TASK_FASIT_FIGURES } from "./task-figures";
 import { KAP3_OVEPROVE } from "./kap3-oveprove";
 import { KAP4_QUIZ } from "./kap4-quiz";
 import { KAP5 } from "./kap5";
@@ -14,9 +14,23 @@ import programmeringHtml from "./fagstoff/programmering.html?raw";
 import videoerHtml from "./fagstoff/videoer.html?raw";
 
 function attachFigure(op: Oppgave): Oppgave {
+  let updated = op;
   const fig = TASK_FIGURES[op.id];
-  if (!fig || op.tekst.includes('class="task-figure"')) return op;
-  return { ...op, tekst: fig + op.tekst };
+  if (fig && !op.tekst.includes('class="task-figure"')) {
+    updated = { ...updated, tekst: fig + updated.tekst };
+  }
+  const fasitFigs = TASK_FASIT_FIGURES[op.id];
+  if (fasitFigs && updated.fasitSteg?.length) {
+    const newSteg = [...updated.fasitSteg];
+    for (const [idxStr, fHtml] of Object.entries(fasitFigs)) {
+      const idx = Number(idxStr);
+      if (newSteg[idx] && !newSteg[idx].includes('class="task-figure"')) {
+        newSteg[idx] = fHtml + newSteg[idx];
+      }
+    }
+    updated = { ...updated, fasitSteg: newSteg };
+  }
+  return updated;
 }
 
 function withExtras(dk: Delkapittel): Delkapittel {
