@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, BookOpen, Compass, Trophy } from "lucide-react";
+import { ArrowRight, BookOpen, Compass, Play, Trophy } from "lucide-react";
 import { CHAPTER_META, fagsok } from "@/data/content";
 import { EXAMS } from "@/data/exams";
-import { countAll, countChapter, BADGE_META } from "@/lib/progress";
+import { countAll, countChapter, BADGE_META, studyTarget } from "@/lib/progress";
 import { useProgressStore } from "@/lib/progress-store";
 import { MathFloats, WeekBanner } from "@/components/AppShell";
 
@@ -11,7 +11,15 @@ export const Route = createFileRoute("/")({ component: Home });
 function Home() {
   const p = useProgressStore((s) => s.p);
   const all = countAll(fagsok, p);
+  const target = studyTarget(fagsok, p);
   const unlocked = Object.keys(BADGE_META).filter((id) => p.badges[id]);
+
+  const heroCta =
+    !target || target.kind === "start"
+      ? { kind: "start" as const, label: "Start med oppgaver" }
+      : target.kind === "done"
+        ? { kind: "done" as const, label: "Se eksamensarkivet" }
+        : { kind: "continue" as const, label: `Fortsett: ${target.title}` };
 
   return (
     <section className="view-section full-page">
@@ -28,9 +36,19 @@ function Home() {
             og alle 1T-eksamener fra 2023 til 2026.
           </p>
           <div className="hero-actions">
-            <Link to="/oppgaver" className="hero-cta">
-              Start med oppgaver <ArrowRight size={18} />
-            </Link>
+            {heroCta.kind === "done" || !target ? (
+              <Link to={heroCta.kind === "done" ? "/eksamen" : "/oppgaver"} className="hero-cta">
+                {heroCta.label} <ArrowRight size={18} />
+              </Link>
+            ) : (
+              <Link
+                to="/oppgaver/$kapId/$subId"
+                params={{ kapId: target.kapId, subId: target.subId }}
+                className="hero-cta"
+              >
+                {heroCta.label} <ArrowRight size={18} />
+              </Link>
+            )}
             <Link to="/eksamen" className="hint-btn">
               Eksamensarkiv
             </Link>
@@ -40,6 +58,60 @@ function Home() {
 
       <div className="home-body">
         <WeekBanner />
+
+        {target && (
+          <div className="home-guides">
+            {target.kind === "done" ? (
+              <Link to="/eksamen" className="guide-card guide-continue">
+                <span className="guide-icon" aria-hidden="true">
+                  <Play size={18} />
+                </span>
+                <span className="guide-kicker">Ferdig med oppgavene</span>
+                <strong className="guide-title">{target.title}</strong>
+                <span className="guide-meta">
+                  {target.chapterTitle} · alle delkapitler merket ferdig
+                </span>
+                <span className="guide-cta">
+                  Gå til eksamensarkivet <ArrowRight size={16} />
+                </span>
+              </Link>
+            ) : (
+              <Link
+                to="/oppgaver/$kapId/$subId"
+                params={{ kapId: target.kapId, subId: target.subId }}
+                className="guide-card guide-continue"
+              >
+                <span className="guide-icon" aria-hidden="true">
+                  <Play size={18} />
+                </span>
+                <span className="guide-kicker">
+                  {target.kind === "start" ? "Kom i gang" : "Fortsett der du slapp"}
+                </span>
+                <strong className="guide-title">{target.title}</strong>
+                <span className="guide-meta">
+                  {target.chapterTitle} · {target.done} av {target.total} oppgaver
+                </span>
+                <span className="guide-cta">
+                  Åpne delkapittelet <ArrowRight size={16} />
+                </span>
+              </Link>
+            )}
+
+            <Link to="/kunnskapskart" className="guide-card guide-kart">
+              <span className="guide-icon" aria-hidden="true">
+                <Compass size={18} />
+              </span>
+              <span className="guide-kicker">Oversikt</span>
+              <strong className="guide-title">Kunnskapskart</strong>
+              <span className="guide-meta">
+                Slik henger 1T sammen. Se hva du kan, og hopp rett til neste byggestein.
+              </span>
+              <span className="guide-cta">
+                Åpne kartet <ArrowRight size={16} />
+              </span>
+            </Link>
+          </div>
+        )}
 
         <div className="home-progress">
           <div className="progress-hero">

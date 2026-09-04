@@ -124,6 +124,7 @@ export function isOvingDelkap(dk: { id: string; tittel?: string }) {
 
 export type ChapterLike = {
   id: string;
+  tittel?: string;
   delkapitler: { id: string; tittel?: string; oppgaver: { id: string }[] }[];
 };
 
@@ -153,6 +154,70 @@ export function countAll(chapters: ChapterLike[], p: Progress) {
     total += c.total;
   });
   return { done, total, pct: total ? Math.round((done / total) * 100) : 0 };
+}
+
+export type StudyTarget = {
+  kind: "start" | "continue" | "done";
+  kapId: string;
+  subId: string;
+  title: string;
+  chapterTitle: string;
+  done: number;
+  total: number;
+};
+
+function parseTaskKey(key: string): { kapId: string; subId: string } | null {
+  const parts = key.split("/");
+  if (parts.length < 3 || parts[0] === "prog") return null;
+  return { kapId: parts[0]!, subId: parts[1]! };
+}
+
+/** Første uferdige delkapittel, eller det eleven jobbet sist med. */
+export function studyTarget(chapters: ChapterLike[], p: Progress): StudyTarget | null {
+  const flats = chapters.flatMap((kap) =>
+    kap.delkapitler
+      .filter((dk) => dk.oppgaver.length > 0)
+      .map((dk) => {
+        const c = countSubchapter(kap, dk, p);
+        return {
+          kapId: kap.id,
+          subId: dk.id,
+          title: dk.tittel || dk.id,
+          chapterTitle: kap.tittel || kap.id,
+          done: c.done,
+          total: c.total,
+        };
+      }),
+  );
+  if (!flats.length) return null;
+
+  const firstOpen = flats.find((s) => s.done < s.total) ?? flats[flats.length - 1]!;
+  const latest = Object.entries(p.tasks).reduce<{ key: string; at: number } | null>((best, [key, at]) => {
+    if (typeof at !== "number") return best;
+    if (!best || at > best.at) return { key, at };
+    return best;
+  }, null);
+
+  if (!latest) {
+    return { ...firstOpen, kind: "start", chapterTitle: firstOpen.chapterTitle };
+  }
+
+  const parsed = parseTaskKey(latest.key);
+  if (parsed) {
+    const idx = flats.findIndex((s) => s.kapId === parsed.kapId && s.subId === parsed.subId);
+    if (idx >= 0) {
+      const here = flats[idx]!;
+      if (here.done < here.total) return { ...here, kind: "continue" };
+      const after = flats.slice(idx + 1).find((s) => s.done < s.total);
+      if (after) return { ...after, kind: "continue" };
+    }
+  }
+
+  if (flats.every((s) => s.total > 0 && s.done >= s.total)) {
+    const last = flats[flats.length - 1]!;
+    return { ...last, kind: "done" };
+  }
+  return { ...firstOpen, kind: "continue" };
 }
 
 export function evaluateBadges(p: Progress, chapters: ChapterLike[]): string[] {

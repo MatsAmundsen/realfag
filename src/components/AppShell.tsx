@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, Outlet, useRouterState } from "@tanstack/react-router";
 import { Compass, Menu, Moon, Search, Sun, X } from "lucide-react";
-import { fagsok, UKESPLAN } from "@/data/content";
+import { fagsok, UKESPLAN, UKESPLAN_HOST, UKESPLAN_VAR, UKESPLAN_WEEKS } from "@/data/content";
 import { useProgressStore } from "@/lib/progress-store";
 import { BadgeToast, CelebrationHost } from "./Celebration";
 import { VideoPlayerProvider } from "./VideoPlayer";
@@ -226,34 +226,105 @@ export function MathFloats() {
   );
 }
 
+function currentIsoWeek() {
+  const now = new Date();
+  const t = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
+  const day = t.getUTCDay() || 7;
+  t.setUTCDate(t.getUTCDate() + 4 - day);
+  const yearStart = new Date(Date.UTC(t.getUTCFullYear(), 0, 1));
+  return Math.ceil(((t.getTime() - yearStart.getTime()) / 86400000 + 1) / 7);
+}
+
+function defaultPlanWeek() {
+  const now = currentIsoWeek();
+  if (UKESPLAN[now]) return now;
+  const last = UKESPLAN_WEEKS[UKESPLAN_WEEKS.length - 1] ?? 18;
+  const first = UKESPLAN_WEEKS[0] ?? 34;
+  if (now >= 26 && now <= 33) return first;
+  if (now >= 19 && now <= 25) return last;
+  if (now >= 34) {
+    return UKESPLAN_HOST.find((w) => w >= now) ?? UKESPLAN_VAR[0] ?? last;
+  }
+  return UKESPLAN_VAR.find((w) => w >= now) ?? last;
+}
+
+function WeekChip({
+  w,
+  week,
+  iso,
+  onPick,
+}: {
+  w: number;
+  week: number;
+  iso: number;
+  onPick: (w: number) => void;
+}) {
+  return (
+    <button
+      type="button"
+      role="tab"
+      aria-selected={w === week}
+      className={`week-chip${w === week ? " is-active" : ""}${w === iso ? " is-now" : ""}`}
+      onClick={() => onPick(w)}
+    >
+      {w}
+    </button>
+  );
+}
+
 export function WeekBanner() {
-  const [week, setWeek] = useState(() => {
-    const now = new Date();
-    const t = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
-    const day = t.getUTCDay() || 7;
-    t.setUTCDate(t.getUTCDate() + 4 - day);
-    const yearStart = new Date(Date.UTC(t.getUTCFullYear(), 0, 1));
-    return Math.ceil(((t.getTime() - yearStart.getTime()) / 86400000 + 1) / 7);
-  });
+  const [week, setWeek] = useState(defaultPlanWeek);
   const plan = UKESPLAN[week];
+  const iso = currentIsoWeek();
+  const idx = UKESPLAN_WEEKS.indexOf(week);
+
+  function step(delta: number) {
+    const next = UKESPLAN_WEEKS[idx + delta];
+    if (next != null) setWeek(next);
+  }
+
   return (
     <div id="ukesplan-banner">
       <div className="banner-content">
         <div className="week-nav">
-          <button type="button" className="week-nav-btn" onClick={() => setWeek((w) => w - 1)} aria-label="Forrige uke">
+          <button type="button" className="week-nav-btn" onClick={() => step(-1)} aria-label="Forrige uke" disabled={idx <= 0}>
             ‹
           </button>
-          <span className="week-badge">Uke {week}</span>
-          <button type="button" className="week-nav-btn" onClick={() => setWeek((w) => w + 1)} aria-label="Neste uke">
+          <span className="week-badge">Uke {week}{week === iso ? " · nå" : ""}</span>
+          <button
+            type="button"
+            className="week-nav-btn"
+            onClick={() => step(1)}
+            aria-label="Neste uke"
+            disabled={idx < 0 || idx >= UKESPLAN_WEEKS.length - 1}
+          >
             ›
           </button>
         </div>
-        <p id="week-text">{plan?.tekst || "Ingen planlagt økt denne uken — velg et kapittel og fortsett der du slapp."}</p>
-        {plan?.kapId && plan.subId && (
+        <p id="week-text">{plan?.tekst || "Ingen planlagt økt denne uken."}</p>
+        {plan?.to === "/eksamen" ? (
+          <Link to="/eksamen" className="hint-btn">
+            Eksamensarkiv
+          </Link>
+        ) : plan?.kapId && plan.subId ? (
           <Link to="/oppgaver/$kapId/$subId" params={{ kapId: plan.kapId, subId: plan.subId }} className="hint-btn">
             Åpne økten
           </Link>
-        )}
+        ) : null}
+      </div>
+      <div className="week-strips" aria-label="Uker i fremdriftsplanen">
+        <div className="week-strip" role="tablist" aria-label="Høst">
+          <span className="week-strip-label">Høst</span>
+          {UKESPLAN_HOST.map((w) => (
+            <WeekChip key={w} w={w} week={week} iso={iso} onPick={setWeek} />
+          ))}
+        </div>
+        <div className="week-strip" role="tablist" aria-label="Vår">
+          <span className="week-strip-label">Vår</span>
+          {UKESPLAN_VAR.map((w) => (
+            <WeekChip key={w} w={w} week={week} iso={iso} onPick={setWeek} />
+          ))}
+        </div>
       </div>
     </div>
   );
