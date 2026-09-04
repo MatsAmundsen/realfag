@@ -31,7 +31,15 @@ function fmt(n: number) {
   return String(r);
 }
 
-function GraphSvg({ spec, large }: { spec: PlotSpec; large?: boolean }) {
+function GraphSvg({
+  spec,
+  large,
+  showKeyPoints = false,
+}: {
+  spec: PlotSpec;
+  large?: boolean;
+  showKeyPoints?: boolean;
+}) {
   const uid = useId().replace(/:/g, "");
   const W = large ? 760 : 520;
   const H = large ? 500 : 320;
@@ -196,11 +204,13 @@ function GraphSvg({ spec, large }: { spec: PlotSpec; large?: boolean }) {
           });
         })}
       </g>
-      {spec.features.map((f, i) => {
+      {spec.features
+        .filter((f) => showKeyPoints || (f.kind !== "vertex" && f.kind !== "intercept"))
+        .map((f, i) => {
         const cx = xScale(f.x);
         const cy = yScale(f.y);
         if (cx < padL - 4 || cx > W - padR + 4 || cy < padT - 4 || cy > H - padB + 4) return null;
-        const label = large || f.kind === "vertex" || f.kind === "endpoint";
+        const label = large || f.kind === "endpoint";
         const flip = cx > W - 90;
         return (
           <g key={`f${i}`}>
@@ -248,12 +258,18 @@ function GraphSvg({ spec, large }: { spec: PlotSpec; large?: boolean }) {
   );
 }
 
-export function FunctionPlot({ spec }: { spec: PlotSpec }) {
+export function FunctionPlot({
+  spec,
+  showKeyPoints = false,
+}: {
+  spec: PlotSpec;
+  showKeyPoints?: boolean;
+}) {
   const [open, setOpen] = useState(false);
   return (
     <>
       <button type="button" className="fn-plot" onClick={() => setOpen(true)} aria-label="Forstørr grafen">
-        <GraphSvg spec={spec} />
+        <GraphSvg spec={spec} showKeyPoints={showKeyPoints} />
         <span className="fn-plot-legend">
           {spec.series.map((s, i) => (
             <span key={s.name} style={{ color: COLORS[i % COLORS.length] }}>
@@ -274,10 +290,12 @@ export function FunctionPlot({ spec }: { spec: PlotSpec }) {
                   <X size={18} />
                 </button>
               </header>
-              <GraphSvg spec={spec} large />
-              <p className="fn-lightbox-note">
-                Nullpunkt, ekstremalpunkt og endepunkt er merket. Klikk utenfor for å lukke.
-              </p>
+              <GraphSvg spec={spec} large showKeyPoints={showKeyPoints} />
+              {showKeyPoints && (
+                <p className="fn-lightbox-note">
+                  Nullpunkt, ekstremalpunkt og endepunkt er merket. Klikk utenfor for å lukke.
+                </p>
+              )}
             </div>
           </div>,
           document.body,

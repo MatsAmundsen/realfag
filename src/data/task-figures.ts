@@ -201,7 +201,7 @@ export function figSquareIdentity(caption: string): string {
 }
 
 /** Følge med differanser over pilene. */
-export function figSequence(terms: number[], diffs: number[], caption: string): string {
+export function figSequence(terms: number[], diffs: (number | string)[], caption: string): string {
   const gap = 78;
   const x0 = 28;
   const y = 58;
@@ -217,8 +217,9 @@ export function figSequence(terms: number[], diffs: number[], caption: string): 
       const x1 = x0 + 52 + i * gap;
       const x2 = x0 + (i + 1) * gap;
       const mx = (x1 + x2) / 2;
+      const lab = typeof d === "number" ? (d >= 0 ? `+${d}` : `${d}`) : String(d);
       return `<line x1="${x1}" y1="${y - 4}" x2="${x2}" y2="${y - 4}" stroke="#34d399" stroke-width="1.8" marker-end="url(#arr)"/>
-        <text x="${mx}" y="${y - 14}" text-anchor="middle" font-size="12" font-weight="700" fill="#34d399">+${d}</text>`;
+        <text x="${mx}" y="${y - 14}" text-anchor="middle" font-size="12" font-weight="700" fill="#34d399">${lab}</text>`;
     })
     .join("");
   const svg = `<defs><marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="#34d399"/></marker></defs>${boxes}${arrows}`;
@@ -342,12 +343,19 @@ export function figLShape(caption: string): string {
   cells.push(
     `<rect x="${140 + 3 * s}" y="28" width="${s - 3}" height="${s - 3}" rx="3" fill="none" stroke="${ink}" stroke-dasharray="4 3" stroke-width="1.4"/>`,
   );
-  cells.push(`<text x="196" y="168" text-anchor="middle" font-size="13" font-weight="700" fill="${ink}">figur 3: 4² − 1</text>`);
+  cells.push(`<text x="196" y="168" text-anchor="middle" font-size="13" font-weight="700" fill="${ink}">Figur 3</text>`);
   return wrapH(cells.join(""), caption, "L-form: kvadrat minus ett hjørne", 190);
 }
 
-/** Tomt koordinatsystem med akser og fire kvadranter. */
-export function figCoordinateGrid(caption: string): string {
+/** Tomt koordinatsystem med akser, eventuelle kvadranter eller inntegnede punkter/linjer. */
+export function figCoordinateGrid(
+  caption: string,
+  opts?: {
+    withQuadrants?: boolean;
+    points?: { x: number; y: number; label: string }[];
+    withLine?: boolean;
+  },
+): string {
   const ox = 210;
   const oy = 130;
   const step = 38;
@@ -370,6 +378,42 @@ export function figCoordinateGrid(caption: string): string {
     }
   }
 
+  let quadrantsSvg = "";
+  if (opts?.withQuadrants) {
+    quadrantsSvg = `
+      <!-- Kvadranter -->
+      <text x="${ox + 85}" y="${oy - 55}" text-anchor="middle" font-size="15" font-weight="800" fill="#6366f1" opacity="0.85">1. kvadrant (I)</text>
+      <text x="${ox - 85}" y="${oy - 55}" text-anchor="middle" font-size="15" font-weight="800" fill="#6366f1" opacity="0.85">2. kvadrant (II)</text>
+      <text x="${ox - 85}" y="${oy + 75}" text-anchor="middle" font-size="15" font-weight="800" fill="#6366f1" opacity="0.85">3. kvadrant (III)</text>
+      <text x="${ox + 85}" y="${oy + 75}" text-anchor="middle" font-size="15" font-weight="800" fill="#6366f1" opacity="0.85">4. kvadrant (IV)</text>
+    `;
+  }
+
+  let pointsSvg = "";
+  if (opts?.points?.length) {
+    pointsSvg = opts.points
+      .map((p) => {
+        const px = ox + p.x * step;
+        const py = oy - p.y * step;
+        return `<circle cx="${px}" cy="${py}" r="5" fill="#ec4899"/>
+          <text x="${px + 8}" y="${py - 8}" font-size="12" font-weight="700" fill="${ink}">${plain(p.label)}</text>`;
+      })
+      .join("");
+  }
+
+  let lineSvg = "";
+  if (opts?.withLine && opts?.points && opts.points.length >= 2) {
+    const p1 = opts.points[0]!;
+    const p2 = opts.points[1]!;
+    const m = (p2.y - p1.y) / (p2.x - p1.x);
+    const c = p1.y - m * p1.x;
+    const xLeft = -3;
+    const yLeft = m * xLeft + c;
+    const xRight = 2.5;
+    const yRight = m * xRight + c;
+    lineSvg = `<line x1="${ox + xLeft * step}" y1="${oy - yLeft * step}" x2="${ox + xRight * step}" y2="${oy - yRight * step}" stroke="#34d399" stroke-width="2.4"/>`;
+  }
+
   const svg = `
     ${gridLines.join("")}
     <!-- Akser -->
@@ -382,13 +426,11 @@ export function figCoordinateGrid(caption: string): string {
     <text x="${ox + 8}" y="24" font-size="13" font-weight="700" fill="${ink}">y</text>
     <text x="${ox - 10}" y="${oy + 16}" text-anchor="end" font-size="12" fill="${ink}" opacity="0.7">0</text>
 
-    <!-- Kvadranter -->
-    <text x="${ox + 85}" y="${oy - 55}" text-anchor="middle" font-size="15" font-weight="800" fill="#6366f1" opacity="0.85">1. kvadrant (I)</text>
-    <text x="${ox - 85}" y="${oy - 55}" text-anchor="middle" font-size="15" font-weight="800" fill="#6366f1" opacity="0.85">2. kvadrant (II)</text>
-    <text x="${ox - 85}" y="${oy + 75}" text-anchor="middle" font-size="15" font-weight="800" fill="#6366f1" opacity="0.85">3. kvadrant (III)</text>
-    <text x="${ox + 85}" y="${oy + 75}" text-anchor="middle" font-size="15" font-weight="800" fill="#6366f1" opacity="0.85">4. kvadrant (IV)</text>
+    ${lineSvg}
+    ${pointsSvg}
+    ${quadrantsSvg}
   `;
-  return wrapH(svg, caption, "Koordinatsystem med akser og fire kvadranter", 260);
+  return wrapH(svg, caption, caption, 260);
 }
 
 /** Definisjonsmengde, verdimengde og nullpunkt. */
@@ -435,8 +477,8 @@ export function figDomainRange(caption: string): string {
   return wrapH(svg, caption, "Illustrasjon av definisjonsmengde, verdimengde og nullpunkt", 250);
 }
 
-/** Rutenett med en stiplet hjelpelinje som viser en rett linje. */
-export function figLinearGrid(caption: string): string {
+/** Rutenett med akser og eventuell stiplet hjelpelinje som viser en rett linje. */
+export function figLinearGrid(caption: string, withLine = false): string {
   const ox = 210;
   const oy = 120;
   const step = 36;
@@ -459,6 +501,15 @@ export function figLinearGrid(caption: string): string {
     }
   }
 
+  const lineSvg = withLine
+    ? `
+      <!-- Stiplet referanselinje gjennom origo -->
+      <line x1="${ox - 3 * step}" y1="${oy + 3 * step * 0.7}" x2="${ox + 3 * step}" y2="${oy - 3 * step * 0.7}" stroke="#818cf8" stroke-width="2.2" stroke-dasharray="6 4"/>
+      <circle cx="${ox}" cy="${oy}" r="4" fill="#818cf8"/>
+      <text x="${ox + 75}" y="${oy - 55}" font-size="12" font-weight="700" fill="#818cf8">stiplet linje (rett linje)</text>
+    `
+    : "";
+
   const svg = `
     ${gridLines.join("")}
     <!-- Akser -->
@@ -471,16 +522,18 @@ export function figLinearGrid(caption: string): string {
     <text x="${ox + 6}" y="24" font-size="13" font-weight="700" fill="${ink}">y</text>
     <text x="${ox - 8}" y="${oy + 16}" text-anchor="end" font-size="11" fill="${ink}" opacity="0.7">0</text>
 
-    <!-- Stiplet referanselinje gjennom origo -->
-    <line x1="${ox - 3 * step}" y1="${oy + 3 * step * 0.7}" x2="${ox + 3 * step}" y2="${oy - 3 * step * 0.7}" stroke="#818cf8" stroke-width="2.2" stroke-dasharray="6 4"/>
-    <circle cx="${ox}" cy="${oy}" r="4" fill="#818cf8"/>
-    <text x="${ox + 75}" y="${oy - 55}" font-size="12" font-weight="700" fill="#818cf8">stiplet linje (rett linje)</text>
+    ${lineSvg}
   `;
-  return wrapH(svg, caption, "Rutenett med akser og en stiplet hjelpelinje", 240);
+  return wrapH(svg, caption, caption, 240);
 }
 
-/** Parabel med sekanter og horisontal tangent. */
-export function figSecantsAndTangent(caption: string): string {
+/** Parabel med sekanter og tangent. */
+export function figSecantsAndTangent(caption: string, opts?: { withSlopes?: boolean }): string {
+  const withSlopes = Boolean(opts?.withSlopes);
+  const sec1Text = withSlopes ? "sekant [0,2] (stigning 2)" : "sekant [0,2]";
+  const sec2Text = withSlopes ? "sekant [2,4] (stigning −2)" : "sekant [2,4]";
+  const tanText = withSlopes ? "tangent i (2,6) (stigning 0)" : "tangent i x = 2";
+
   const svg = `
     <!-- Akser -->
     <line x1="40" y1="190" x2="390" y2="190" stroke="${ink}" stroke-width="1.8"/>
@@ -506,17 +559,17 @@ export function figSecantsAndTangent(caption: string): string {
     <!-- Parabel -->
     <path d="M 85,195 Q 210,-55 335,195" fill="none" stroke="#6366f1" stroke-width="3"/>
 
-    <!-- Sekant [0, 2] stigning +2 -->
+    <!-- Sekant [0, 2] -->
     <line x1="85" y1="170" x2="235" y2="50" stroke="#34d399" stroke-width="2" stroke-dasharray="5 4"/>
-    <text x="135" y="98" font-size="11" font-weight="700" fill="#34d399">sekant [0,2] (stigning 2)</text>
+    <text x="135" y="98" font-size="11" font-weight="700" fill="#34d399">${sec1Text}</text>
 
-    <!-- Sekant [2, 4] stigning -2 -->
+    <!-- Sekant [2, 4] -->
     <line x1="185" y1="50" x2="335" y2="170" stroke="#f59e0b" stroke-width="2" stroke-dasharray="5 4"/>
-    <text x="285" y="98" font-size="11" font-weight="700" fill="#f59e0b">sekant [2,4] (stigning −2)</text>
+    <text x="285" y="98" font-size="11" font-weight="700" fill="#f59e0b">${sec2Text}</text>
 
-    <!-- Horisontal tangent i (2, 6) -->
+    <!-- Horisontal tangent -->
     <line x1="130" y1="70" x2="290" y2="70" stroke="#ec4899" stroke-width="2.2"/>
-    <text x="210" y="58" text-anchor="middle" font-size="11" font-weight="700" fill="#ec4899">tangent i (2,6) (stigning 0)</text>
+    <text x="210" y="58" text-anchor="middle" font-size="11" font-weight="700" fill="#ec4899">${tanText}</text>
 
     <!-- Punkter -->
     <circle cx="110" cy="150" r="4.5" fill="#34d399"/>
@@ -735,10 +788,10 @@ export function figDotPatternGrid(caption: string): string {
 
   const svg = `
     ${dots1.join("")}
-    <text x="${ox1 + sp}" y="${oy1 + 32}" text-anchor="middle" font-size="13" font-weight="700" fill="${ink}">Figur 1 (1 prikk)</text>
+    <text x="${ox1 + sp}" y="${oy1 + 32}" text-anchor="middle" font-size="13" font-weight="700" fill="${ink}">Figur 1</text>
 
     ${dots2.join("")}
-    <text x="${ox2 + 1.5 * sp}" y="${oy2 + sp + 32}" text-anchor="middle" font-size="13" font-weight="700" fill="${ink}">Figur 2 (6 prikker)</text>
+    <text x="${ox2 + 1.5 * sp}" y="${oy2 + sp + 32}" text-anchor="middle" font-size="13" font-weight="700" fill="${ink}">Figur 2</text>
   `;
   return wrapH(svg, caption, "Prikkmønster for figur 1 og figur 2", 115);
 }
@@ -775,7 +828,8 @@ export function figSquareIdentityMinus(caption: string): string {
 }
 
 /** Rasjonal funksjon (x+2)/(x-1) med asymptoter og to greiner (for 4.27). */
-export function figRational427(caption: string): string {
+export function figRational427(caption: string, opts?: { withKeyPoints?: boolean }): string {
+  const withKeyPoints = Boolean(opts?.withKeyPoints);
   const ox = 190;
   const oy = 110;
   const step = 28;
@@ -802,6 +856,24 @@ export function figRational427(caption: string): string {
   }
   const dRight = rightPts.map((p, i) => `${i === 0 ? "M" : "L"} ${p[0].toFixed(1)},${p[1].toFixed(1)}`).join(" ");
 
+  const asymptoteLabels = withKeyPoints
+    ? `
+      <text x="${asymX + 6}" y="32" font-size="11" font-weight="700" fill="#ef4444">x = 1</text>
+      <text x="340" y="${asymY - 6}" font-size="11" font-weight="700" fill="#ef4444">y = 1</text>
+    `
+    : "";
+
+  const keyPointsSvg = withKeyPoints
+    ? `
+      <!-- Nøkkelpunkter (nullpunkt og skjæring med y-aksen) -->
+      <circle cx="${ox - 2 * step}" cy="${oy}" r="4.5" fill="#34d399"/>
+      <text x="${ox - 2 * step - 8}" y="${oy - 8}" text-anchor="end" font-size="11" font-weight="700" fill="#34d399">(−2, 0)</text>
+
+      <circle cx="${ox}" cy="${oy + 2 * step}" r="4.5" fill="#34d399"/>
+      <text x="${ox + 8}" y="${oy + 2 * step + 4}" font-size="11" font-weight="700" fill="#34d399">(0, −2)</text>
+    `
+    : "";
+
   const svg = `
     <!-- Akser -->
     <line x1="30" y1="${oy}" x2="390" y2="${oy}" stroke="${ink}" stroke-width="1.8"/>
@@ -824,39 +896,37 @@ export function figRational427(caption: string): string {
 
     <!-- Asymptoter -->
     <line x1="${asymX}" y1="20" x2="${asymX}" y2="215" stroke="#ef4444" stroke-width="1.8" stroke-dasharray="5 4"/>
-    <text x="${asymX + 6}" y="32" font-size="11" font-weight="700" fill="#ef4444">x = 1</text>
+    ${asymptoteLabels}
 
     <line x1="30" y1="${asymY}" x2="390" y2="${asymY}" stroke="#ef4444" stroke-width="1.8" stroke-dasharray="5 4"/>
-    <text x="340" y="${asymY - 6}" font-size="11" font-weight="700" fill="#ef4444">y = 1</text>
 
     <!-- Kurver -->
     <path d="${dLeft}" fill="none" stroke="#6366f1" stroke-width="2.6"/>
     <path d="${dRight}" fill="none" stroke="#6366f1" stroke-width="2.6"/>
 
-    <!-- Nøkkelpunkter -->
-    <circle cx="${ox - 2 * step}" cy="${oy}" r="4.5" fill="#34d399"/>
-    <text x="${ox - 2 * step - 8}" y="${oy - 8}" text-anchor="end" font-size="11" font-weight="700" fill="#34d399">(−2, 0)</text>
-
-    <circle cx="${ox}" cy="${oy + 2 * step}" r="4.5" fill="#34d399"/>
-    <text x="${ox + 8}" y="${oy + 2 * step + 4}" font-size="11" font-weight="700" fill="#34d399">(0, −2)</text>
+    ${keyPointsSvg}
   `;
   return wrapH(svg, caption, "Graf til rasjonal funksjon med to greiner og stiplede asymptoter", 235);
 }
 
 /** Oddetall bygger kvadrater (for 1.31). */
-export function figSolarOddSquares(caption: string): string {
+export function figSolarOddSquares(caption: string, withFormula = false): string {
   const s = 18;
+  const lab1 = withFormula ? "1 = 1²" : "Rad 1";
+  const lab2 = withFormula ? "1+3 = 2²" : "Rad 2";
+  const lab3 = withFormula ? "1+3+5 = 3²" : "Rad 3";
+
   const svg = `
     <!-- 1x1 -->
     <rect x="50" y="60" width="${s}" height="${s}" rx="2" fill="rgba(99,102,241,0.4)" stroke="${ink}" stroke-width="1.2"/>
-    <text x="${50 + s / 2}" y="105" text-anchor="middle" font-size="12" font-weight="700" fill="${ink}">1 = 1²</text>
+    <text x="${50 + s / 2}" y="105" text-anchor="middle" font-size="12" font-weight="700" fill="${ink}">${lab1}</text>
 
     <!-- 2x2 -->
     <rect x="130" y="42" width="${s}" height="${s}" rx="2" fill="rgba(99,102,241,0.4)" stroke="${ink}" stroke-width="1.2"/>
     <rect x="${130 + s}" y="42" width="${s}" height="${s}" rx="2" fill="rgba(52,211,153,0.4)" stroke="${ink}" stroke-width="1.2"/>
     <rect x="130" y="${42 + s}" width="${s}" height="${s}" rx="2" fill="rgba(52,211,153,0.4)" stroke="${ink}" stroke-width="1.2"/>
     <rect x="${130 + s}" y="${42 + s}" width="${s}" height="${s}" rx="2" fill="rgba(52,211,153,0.4)" stroke="${ink}" stroke-width="1.2"/>
-    <text x="${130 + s}" y="105" text-anchor="middle" font-size="12" font-weight="700" fill="${ink}">1+3 = 2²</text>
+    <text x="${130 + s}" y="105" text-anchor="middle" font-size="12" font-weight="700" fill="${ink}">${lab2}</text>
 
     <!-- 3x3 -->
     <rect x="250" y="24" width="${s}" height="${s}" rx="2" fill="rgba(99,102,241,0.4)" stroke="${ink}" stroke-width="1.2"/>
@@ -868,7 +938,7 @@ export function figSolarOddSquares(caption: string): string {
     <rect x="${250 + 2 * s}" y="${24 + 2 * s}" width="${s}" height="${s}" rx="2" fill="rgba(245,158,11,0.4)" stroke="${ink}" stroke-width="1.2"/>
     <rect x="${250 + s}" y="${24 + 2 * s}" width="${s}" height="${s}" rx="2" fill="rgba(245,158,11,0.4)" stroke="${ink}" stroke-width="1.2"/>
     <rect x="250" y="${24 + 2 * s}" width="${s}" height="${s}" rx="2" fill="rgba(245,158,11,0.4)" stroke="${ink}" stroke-width="1.2"/>
-    <text x="${250 + 1.5 * s}" y="105" text-anchor="middle" font-size="12" font-weight="700" fill="${ink}">1+3+5 = 3²</text>
+    <text x="${250 + 1.5 * s}" y="105" text-anchor="middle" font-size="12" font-weight="700" fill="${ink}">${lab3}</text>
   `;
   return wrapH(svg, caption, "Oddetall danner kvadrater", 125);
 }
@@ -877,60 +947,29 @@ export const TASK_FIGURES: Record<string, string> = {
   "1.13": figNumberLine({
     min: -4,
     max: 10,
-    ticks: [-2, 0, 8],
-    from: -2,
-    to: 8,
-    openFrom: false,
-    openTo: true,
-    caption: "Intervall $[-2, 8\\rangle$: lukket ved $-2$ (fylt sirkel) og åpen ved $8$ (åpen sirkel).",
-  }),
-  "1.14": figNumberLine({
-    min: -15,
-    max: 15,
-    ticks: [-12, 0, 12],
+    ticks: [-4, -2, 0, 2, 4, 6, 8, 10],
     noInterval: true,
-    caption: "Tallinjen med markeringer for $-12$, $0$ og $12$.",
+    caption: "Tallinje med aksemarkeringer til oppgaven.",
   }),
-  "1.31": figSolarOddSquares("Mønster av oddetall: $1$, $1+3=4=2^2$, $1+3+5=9=3^2$."),
+  "1.31": figSolarOddSquares("Geometrisk oppbygning av solcellepanelene for rad 1, 2 og 3.", false),
   "1.OP3": figSequence(
     [5, 8, 12, 17, 23],
-    [3, 4, 5, 6],
-    "Differansene øker med $1$ for hvert steg: $+3$, $+4$, $+5$, $+6$, …",
+    ["?", "?", "?", "?"],
+    "De fem første leddene i tallfølgen.",
   ),
-  "1.OP5": figTank(2, 5, "Tanken er $\\tfrac{2}{5}$ full. Vi tømmer $\\tfrac{1}{4}$ av innholdet — ikke av hele tanken."),
-  "1.OP9": figNumberLine({
-    min: -4,
-    max: 6,
-    ticks: [-3, 0, 2, 5],
-    from: -3,
-    to: 2,
-    openFrom: false,
-    openTo: true,
-    caption: "Skisse til a): $-3\\le x<2$ er det lukkede-åpne intervallet $[-3,2\\rangle$.",
-  }),
-  "2.15": figRightTriangle("2h", "h", "Arealet er halvparten av grunnlinje ganger høyde."),
+  "1.OP5": figTank(2, 5, "Illustrasjon av vanntank fylt $\\tfrac{2}{5}$."),
+  "2.15": figRightTriangle("2h", "h", "Rettvinklet trekant med grunnlinje $2h$ og høyde $h$."),
   "2.19": figFrame("Rammens areal = ytre rektangel minus den indre åpningen."),
   "2.29": figRect("s + 2", "s − 1", "Kvadrat med side $s$ og rektangel med sider $s+2$ og $s-1$."),
-  "2.58": figDotPatternGrid("Prikkmønster med $n$ rader og $n+2$ prikker, der $2$ hjørneprikker mangler."),
-  "2.OP3": figSquareIdentity("Geometrisk: $(a+b)^2 = a^2 + 2ab + b^2$."),
+  "2.58": figDotPatternGrid("Prikkmønster for figur 1 og figur 2 med manglende hjørneprikker."),
   "2.OP9": figRect("l = 12", "b = ?", "Areal $A=l\\cdot b=48$. Finn $b$."),
-  "2.OP10": figSquareNumbers("Kvadrattall $n^2$ som $n\\times n$-prikker. Differansen mellom to naboer er den neste oddetallskanten."),
+  "2.OP10": figSquareNumbers("De fire første kvadrattallene som prikkmønstre."),
   "2.56": figStaircase("Figur $n$ er en trekant av $n$ rader med kvadrater — antall = $T_n$."),
-  "2.57": figLShape("Figur $3$: kvadrat med side $4$ der et hjørne med side $1$ er kuttet vekk. Areal $(n+1)^2-1$."),
+  "2.57": figLShape("Figur 3 i det L-formede mønsteret (et kvadrat der ett hjørne mangler)."),
   "3.2": figRect("lengde l", "bredde l − 35", "Fotballbane: omkrets $2(l+b)=350$ m."),
   "3.10": figRect("a + 10", "a", "Sauegjerde formet som rektangel med areal $140\\,\\mathrm{m}^2$."),
   "3.13": figRect("b + 4", "b", "Rektangel med areal $45\\,\\mathrm{cm}^2$. Lengden er $4$ cm lenger enn bredden."),
   "3.24": figRect("2b + 3", "b", "Omkrets $54$ cm. Lengde er $3$ mer enn dobbel bredde."),
-  "3.25": figNumberLine({
-    min: -6,
-    max: 8,
-    ticks: [-2, 0, 6],
-    from: -6,
-    to: -2,
-    openFrom: true,
-    openTo: false,
-    caption: "Skisse til b): $x\\le -2$ er strålen $\\langle\\leftarrow,-2]$.",
-  }),
   "3.29": figRect("x + 2", "x", "Areal $x(x+2)=48$. Finn sidene (positiv lengde)."),
   "3.34": figProportion(
     "4 personer",
@@ -940,11 +979,11 @@ export const TASK_FIGURES: Record<string, string> = {
     "Rett proporsjonal: mer folk $\\Rightarrow$ mer fløte, i samme forhold.",
   ),
   "3.40": figRect("b + 3", "b", "Hage med omkrets $46$ m. Lengden er $3$ m mer enn bredden."),
-  "3.46": figRightTriangle("x", "x + 7", "Rettvinklet trekant. Pythagoras: $x^2+(x+7)^2=13^2$."),
-  "3.54": figSimilarTriangles("Likeformede trekanter: alle sider i forhold $2$ (sjekk $3\\mapsto 6$ og $5\\mapsto 10$).") +
-    figShadow("Samme forhold: $\\dfrac{h}{6}=\\dfrac{10}{4}$. Skyggene er likeformede med stanga og treet."),
-  "3.OP2": figRect("3b + 4", "b", "Omkrets $2(l+b)=64$ cm. Lengde $=3b+4$."),
-  "3.OP3": figCircle("r", "Omkrets $C=2\\pi r$. Isoler $r$, og sett inn $C=10\\pi$."),
+  "3.46": figRightTriangle("x", "x + 7", "Rettvinklet trekant med kateter $x$ og $x+7$, og hypotenus $13$."),
+  "3.54": figSimilarTriangles("Likeformede trekanter: alle sider i samme forhold.") +
+    figShadow("Illustrasjon av likeformede trekanter: stang og tre med skygger."),
+  "3.OP2": figRect("3b + 4", "b", "Rektangel med bredde $b$ og lengde $3b+4$."),
+  "3.OP3": figCircle("r", "Sirkel med radius $r$ og omkrets $C = 10\\pi$."),
   "3.OP9": figProportion(
     "5 personer",
     "200 g ost",
@@ -952,34 +991,11 @@ export const TASK_FIGURES: Record<string, string> = {
     "?",
     "Rett proporsjonal: mer folk $\\Rightarrow$ mer ost, i samme forhold.",
   ),
-  "3.OP8": figNumberLine({
-    min: -6,
-    max: 6,
-    ticks: [-3, 0, 4],
-    from: -6,
-    to: -3,
-    openFrom: true,
-    openTo: false,
-    caption: "Skisse til b): $x\\le -3$ er strålen $\\langle\\leftarrow,-3]$.",
-  }),
-  "4.0": figCoordinateGrid("Tomt koordinatsystem med akser og fire kvadranter (I, II, III, IV)."),
-  "4.1": figDomainRange("Definisjonsmengde $D_f$ leses på $x$-aksen, verdimengde $V_f$ på $y$-aksen, og nullpunkt der grafen skjærer $x$-aksen."),
-  "4.8": figLinearGrid("Koordinatsystem med rutenett og en stiplet hjelpelinje som viser en rett linje."),
-  "4.27": figRational427("Graf til rasjonal funksjon med to greiner og stiplede asymptoter $x=1$ og $y=1$."),
-  "4.45": figSecantsAndTangent("Parabelen $f(x)=-x^2+4x+2$ med sekanter på $[0,2]$ og $[2,4]$, samt horisontal tangent i toppunktet $(2,6)$."),
+  "4.0": figCoordinateGrid("Tomt koordinatsystem med akser og rutenett."),
+  "4.8": figLinearGrid("Tomt koordinatsystem med rutenett og akser.", false),
+  "4.27": figRational427("Graf til rasjonal funksjon med to greiner og stiplede asymptoter.", { withKeyPoints: false }),
+  "4.45": figSecantsAndTangent("Parabelen $f(x)=-x^2+4x+2$ med sekanter på $[0,2]$ og $[2,4]$, samt tangent i $x=2$.", { withSlopes: false }),
   "4.48": figCubicGraph(false, "Grafen til $f(x)=0{,}25x^3-2x$ i intervallet $[-4, 4]$."),
-  "4.52": figSignLine({
-    label: "f(x)",
-    ticks: [{ label: "−3", kind: "zero" }],
-    caption: "Fortegnslinje for $f(x)=x+3$ med nullpunkt i $x=-3$.",
-  }),
-  "4.53": figDualSignLine({
-    label1: "g(x)",
-    ticks1: [{ label: "0", kind: "zero" }, { label: "4", kind: "zero" }],
-    label2: "g'(x)",
-    ticks2: [{ label: "2", kind: "zero" }],
-    caption: "Fortegnslinjer for $g(x)$ og $g'(x)$ med markerte nullpunkter.",
-  }),
   "4.54": figSignLine({
     label: "f'(x)",
     ticks: [{ label: "−1", kind: "zero" }, { label: "3", kind: "zero" }],
@@ -988,30 +1004,117 @@ export const TASK_FIGURES: Record<string, string> = {
     right: "−",
     caption: "Gitt fortegnslinje for den deriverte $f'(x)$.",
   }),
-  "5.OP1": figNumberLine({
-    min: 0,
-    max: 8,
-    ticks: [3, 5, 7],
-    from: 3,
-    to: 8,
-    openFrom: true,
-    openTo: true,
-    caption: "Løsningen $x>3$ er den åpne strålen $\\langle 3,\\infty\\rangle$.",
-  }),
-  "5.OP8": figParallelLines("Når $k=4$ blir den andre linja $2x+y=2$ — parallell med $2x+y=5$, ingen skjæring."),
 };
 
 /** Pedagogiske fasit-figurer knyttet til spesifikke steg i løsningsforslag. */
 export const TASK_FASIT_FIGURES: Record<string, Record<number, string>> = {
+  "1.13": {
+    1: figNumberLine({
+      min: -4,
+      max: 10,
+      ticks: [-2, 0, 8],
+      from: -2,
+      to: 8,
+      openFrom: false,
+      openTo: true,
+      caption: "Intervall $[-2, 8\\rangle$: lukket ved $-2$ (fylt sirkel) og åpen ved $8$ (åpen sirkel).",
+    }),
+  },
+  "1.14": {
+    0: figNumberLine({
+      min: -15,
+      max: 15,
+      ticks: [-12, 0, 12],
+      noInterval: true,
+      caption: "Tallinjen viser at både $-12$ og $12$ har avstand $12$ fra origo.",
+    }),
+  },
+  "1.31": {
+    1: figSolarOddSquares("Mønster av oddetall: $1=1^2$, $1+3=4=2^2$, $1+3+5=9=3^2$. Totalt antall paneler er $n^2$.", true),
+  },
+  "1.OP3": {
+    0: figSequence(
+      [5, 8, 12, 17, 23],
+      [3, 4, 5, 6],
+      "Differansene øker med $1$ for hvert steg: $+3$, $+4$, $+5$, $+6$, …",
+    ),
+  },
+  "1.OP9": {
+    0: figNumberLine({
+      min: -4,
+      max: 6,
+      ticks: [-3, 0, 2, 5],
+      from: -3,
+      to: 2,
+      openFrom: false,
+      openTo: true,
+      caption: "Intervallet $[-3, 2\\rangle$: lukket ved $-3$ og åpent ved $2$.",
+    }),
+  },
   "2.OP3": {
-    1: figSquareIdentityMinus("Geometrisk tolkning: $(a-b)^2 = a^2 - 2ab + b^2$. Kvadratet $b^2$ trekkes fra to ganger og må legges tilbake."),
+    0: figSquareIdentity("Geometrisk tolkning av 1. kvadratsetning: $(a+b)^2 = a^2 + 2ab + b^2$."),
+    1: figSquareIdentityMinus("Geometrisk tolkning av 2. kvadratsetning: $(a-b)^2 = a^2 - 2ab + b^2$. Kvadratet $b^2$ trekkes fra to ganger og må legges tilbake."),
+  },
+  "3.25": {
+    1: figNumberLine({
+      min: -6,
+      max: 8,
+      ticks: [-2, 0, 6],
+      from: -6,
+      to: -2,
+      openFrom: true,
+      openTo: false,
+      caption: "Løsningen for b): $x\\le -2$ er strålen $\\langle\\leftarrow,-2]$.",
+    }),
+  },
+  "3.OP8": {
+    1: figNumberLine({
+      min: -6,
+      max: 6,
+      ticks: [-3, 0, 4],
+      from: -6,
+      to: -3,
+      openFrom: true,
+      openTo: false,
+      caption: "Løsningen for b): $x\\le -3$ er strålen $\\langle\\leftarrow,-3]$.",
+    }),
+  },
+  "4.0": {
+    1: figCoordinateGrid("Koordinatsystem med de fire kvadrantene merket.", { withQuadrants: true }),
+    2: figCoordinateGrid("Punktene $(-1, -1)$ og $(1, 2)$ plassert i koordinatsystemet.", {
+      points: [
+        { x: -1, y: -1, label: "(-1, -1)" },
+        { x: 1, y: 2, label: "(1, 2)" },
+      ],
+    }),
+    3: figCoordinateGrid("Rett linje trukket gjennom koordinatene $(-1, -1)$ og $(1, 2)$.", {
+      points: [
+        { x: -1, y: -1, label: "(-1, -1)" },
+        { x: 1, y: 2, label: "(1, 2)" },
+      ],
+      withLine: true,
+    }),
+  },
+  "4.1": {
+    0: figDomainRange("Eksempel på definisjonsmengde $D_f$ og verdimengde $V_f$."),
+    2: figDomainRange("Eksempel på nullpunkt der grafen skjærer $x$-aksen ($y=0$)."),
+  },
+  "4.8": {
+    0: figLinearGrid("Eksempel på en lineær funksjon (rett linje) tegnet i koordinatsystemet.", true),
+  },
+  "4.27": {
+    0: figRational427("Loddrett asymptote $x=1$, vannrett asymptote $y=1$, og nullpunkt i $x=-2$.", { withKeyPoints: true }),
+  },
+  "4.45": {
+    0: figSecantsAndTangent("Sekanter på $[0, 2]$ og $[2, 4]$ med stigningstall henholdsvis $2$ og $-2$.", { withSlopes: true }),
+    2: figSecantsAndTangent("Tangenten i toppunktet $(2, 6)$ har stigningstall $0$.", { withSlopes: true }),
   },
   "4.48": {
     0: figCubicGraph(true, "Grafen til $f(x)=0{,}25x^3-2x$ med tangenter i $x=-2$ og $x=2$ (begge har stigningstall $1$)."),
     1: figCubicGraph(true, "Grafen til $f(x)=0{,}25x^3-2x$ med tangenter i $x=-2$ og $x=2$ (begge har stigningstall $1$)."),
   },
   "4.52": {
-    1: figSignLine({
+    2: figSignLine({
       label: "f(x)",
       ticks: [{ label: "−3", kind: "zero" }],
       left: "−",
@@ -1021,7 +1124,7 @@ export const TASK_FASIT_FIGURES: Record<string, Record<number, string>> = {
     }),
   },
   "4.53": {
-    1: figSignLine({
+    2: figSignLine({
       label: "g(x)",
       ticks: [{ label: "0", kind: "zero" }, { label: "4", kind: "zero" }],
       left: "−",
@@ -1029,7 +1132,7 @@ export const TASK_FASIT_FIGURES: Record<string, Record<number, string>> = {
       right: "−",
       caption: "Fullført fortegnslinje for $g(x)$: negativ utenfor $[0, 4]$, positiv mellom.",
     }),
-    2: figSignLine({
+    4: figSignLine({
       label: "g'(x)",
       ticks: [{ label: "2", kind: "zero" }],
       left: "+",
@@ -1037,5 +1140,20 @@ export const TASK_FASIT_FIGURES: Record<string, Record<number, string>> = {
       right: "−",
       caption: "Fullført fortegnslinje for $g'(x)$: positiv før $2$, negativ etter.",
     }),
+  },
+  "5.OP1": {
+    0: figNumberLine({
+      min: 0,
+      max: 8,
+      ticks: [3, 5, 7],
+      from: 3,
+      to: 8,
+      openFrom: true,
+      openTo: true,
+      caption: "Løsningen $x>3$ representert på tallinjen som intervallet $\\langle 3,\\infty\\rangle$.",
+    }),
+  },
+  "5.OP8": {
+    2: figParallelLines("Når $k=4$ er linjene $2x+y=5$ og $2x+y=2$ parallelle uten felles skjæringspunkt."),
   },
 };
