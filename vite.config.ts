@@ -145,6 +145,29 @@ function authPopupPlugin(): Plugin {
 // `0.0.0.0:8080` is the live-preview contract — don't change host/port.
 // The dev server starts once `src/router.tsx` and `src/routes/` exist — see
 // AGENTS.md § "First scaffold".
+function docxDownloadPlugin(): Plugin {
+  const mime =
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+  const filename = 'attachment; filename="Undervisningsopplegg-2A-og-2B.docx"';
+  const apply = (req: { url?: string }, res: { setHeader: (k: string, v: string) => void }, next: () => void) => {
+    const path = (req.url ?? "").split("?", 1)[0] ?? "";
+    if (path.endsWith(".docx")) {
+      res.setHeader("Content-Type", mime);
+      res.setHeader("Content-Disposition", filename);
+    }
+    next();
+  };
+  return {
+    name: "docx-download",
+    configureServer(server) {
+      server.middlewares.use(apply);
+    },
+    configurePreviewServer(server) {
+      server.middlewares.use(apply);
+    },
+  };
+}
+
 export default defineConfig(({ command, isPreview }) => {
   const ghPages =
     process.env.GH_PAGES === "1" || process.env.NITRO_PRESET === "github_pages";
@@ -168,6 +191,7 @@ export default defineConfig(({ command, isPreview }) => {
     appEnvPlugin(),
     // PWA head + ?install=1 tutorial page; runs before Start/Nitro.
     grokPwaPlugin(),
+    docxDownloadPlugin(),
     tailwindcss(),
     tanstackStart(
       ghPages
