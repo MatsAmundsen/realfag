@@ -93,7 +93,7 @@ function RessurserPage() {
     <section className="view-section full-page">
       <div className="page-intro">
         <h1>Ressurser</h1>
-        <p>Fagbibliotek med tallmengder, brøkregning, kvadratrøtter, programmering og temavideoer.</p>
+        <p>Fagbibliotek med tallmengder, brøkregning, kvadratrøtter, programmering, undervisningsopplegg og temavideoer.</p>
       </div>
       <nav className="res-tabs" aria-label="Fagbibliotek">
         {fagstoff.map((f) => (

@@ -127,6 +127,14 @@ function SubchapterPage() {
 
         {topicVideo ? <TopicVideoInvite video={topicVideo} /> : null}
 
+        {(subId === "2A" || subId === "2B") && (
+          <p>
+            <Link to="/ressurser" search={{ t: "opplegg-2a-2b" }} className="hint-btn">
+              Undervisningsopplegg for 2A og 2B
+            </Link>
+          </p>
+        )}
+
         {hasPrereq && !oving && (
           <details className="prereq-details">
             <summary>Hva må jeg kunne?</summary>
