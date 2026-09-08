@@ -12,6 +12,7 @@ import brokregningHtml from "./fagstoff/brokregning.html?raw";
 import kvadratrotterHtml from "./fagstoff/kvadratrotter.html?raw";
 import programmeringHtml from "./fagstoff/programmering.html?raw";
 import videoerHtml from "./fagstoff/videoer.html?raw";
+import opplegg2a2bHtml from "./fagstoff/opplegg-2a-2b.html?raw";
 
 function attachFigure(op: Oppgave): Oppgave {
   let updated = op;
@@ -80,6 +81,7 @@ export const fagstoff = (rawFagstoff as Fagstoff[]).map((f) => {
     kvadratrotter: kvadratrotterHtml,
     programmering: programmeringHtml,
     videoer: videoerHtml,
+    "opplegg-2a-2b": opplegg2a2bHtml,
   };
   if (inline[f.id]) return { ...f, html: inline[f.id], src: undefined };
   return f;
