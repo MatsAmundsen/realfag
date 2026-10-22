@@ -1,3 +1,5 @@
+import { KAP7_FIGURES } from "./kap7-figures";
+
 /** Pedagogiske SVG-figurer til oppgaver. Bruker currentColor så de følger tema. */
 
 /** SVG <text> kan ikke kjøre KaTeX — fjern $ og TeX-støy. */
@@ -912,21 +914,24 @@ export function figRational427(caption: string, opts?: { withKeyPoints?: boolean
 /** Oddetall bygger kvadrater (for 1.31). */
 export function figSolarOddSquares(caption: string, withFormula = false): string {
   const s = 18;
-  const lab1 = withFormula ? "1 = 1²" : "Rad 1";
-  const lab2 = withFormula ? "1+3 = 2²" : "Rad 2";
-  const lab3 = withFormula ? "1+3+5 = 3²" : "Rad 3";
+  // Figuren viser totalen etter n rader (1, 4, 9), ikke én enkelt rad.
+  const lab = (n: number, formula: string) =>
+    `<tspan x="X" dy="0">Etter rad ${n}</tspan>` + (withFormula ? `<tspan x="X" dy="15">${formula}</tspan>` : "");
+  const lab1 = lab(1, "1 = 1²");
+  const lab2 = lab(2, "1+3 = 2²");
+  const lab3 = lab(3, "1+3+5 = 3²");
 
   const svg = `
     <!-- 1x1 -->
     <rect x="50" y="60" width="${s}" height="${s}" rx="2" fill="rgba(99,102,241,0.4)" stroke="${ink}" stroke-width="1.2"/>
-    <text x="${50 + s / 2}" y="105" text-anchor="middle" font-size="12" font-weight="700" fill="${ink}">${lab1}</text>
+    <text x="${50 + s / 2}" y="105" text-anchor="middle" font-size="12" font-weight="700" fill="${ink}">${lab1.replace(/x="X"/g, `x="${50 + s / 2}"`)}</text>
 
     <!-- 2x2 -->
     <rect x="130" y="42" width="${s}" height="${s}" rx="2" fill="rgba(99,102,241,0.4)" stroke="${ink}" stroke-width="1.2"/>
     <rect x="${130 + s}" y="42" width="${s}" height="${s}" rx="2" fill="rgba(52,211,153,0.4)" stroke="${ink}" stroke-width="1.2"/>
     <rect x="130" y="${42 + s}" width="${s}" height="${s}" rx="2" fill="rgba(52,211,153,0.4)" stroke="${ink}" stroke-width="1.2"/>
     <rect x="${130 + s}" y="${42 + s}" width="${s}" height="${s}" rx="2" fill="rgba(52,211,153,0.4)" stroke="${ink}" stroke-width="1.2"/>
-    <text x="${130 + s}" y="105" text-anchor="middle" font-size="12" font-weight="700" fill="${ink}">${lab2}</text>
+    <text x="${130 + s}" y="105" text-anchor="middle" font-size="12" font-weight="700" fill="${ink}">${lab2.replace(/x="X"/g, `x="${130 + s}"`)}</text>
 
     <!-- 3x3 -->
     <rect x="250" y="24" width="${s}" height="${s}" rx="2" fill="rgba(99,102,241,0.4)" stroke="${ink}" stroke-width="1.2"/>
@@ -938,12 +943,33 @@ export function figSolarOddSquares(caption: string, withFormula = false): string
     <rect x="${250 + 2 * s}" y="${24 + 2 * s}" width="${s}" height="${s}" rx="2" fill="rgba(245,158,11,0.4)" stroke="${ink}" stroke-width="1.2"/>
     <rect x="${250 + s}" y="${24 + 2 * s}" width="${s}" height="${s}" rx="2" fill="rgba(245,158,11,0.4)" stroke="${ink}" stroke-width="1.2"/>
     <rect x="250" y="${24 + 2 * s}" width="${s}" height="${s}" rx="2" fill="rgba(245,158,11,0.4)" stroke="${ink}" stroke-width="1.2"/>
-    <text x="${250 + 1.5 * s}" y="105" text-anchor="middle" font-size="12" font-weight="700" fill="${ink}">${lab3}</text>
+    <text x="${250 + 1.5 * s}" y="105" text-anchor="middle" font-size="12" font-weight="700" fill="${ink}">${lab3.replace(/x="X"/g, `x="${250 + 1.5 * s}"`)}</text>
   `;
-  return wrapH(svg, caption, "Oddetall danner kvadrater", 125);
+  return wrapH(svg, caption, "Oddetall danner kvadrater", withFormula ? 140 : 125);
+}
+
+/** Paneler i trekantform: rad n har 2n−1 paneler (1, 3, 5), sentrert som en pyramide. */
+export function figTriangleRows(rows: number, caption: string): string {
+  const s = 22;
+  const cx = 130;
+  const y0 = 22;
+  const colors = ["rgba(99,102,241,0.4)", "rgba(52,211,153,0.4)", "rgba(245,158,11,0.4)", "rgba(236,72,153,0.4)"];
+  let out = "";
+  for (let n = 1; n <= rows; n++) {
+    const count = 2 * n - 1;
+    const y = y0 + (n - 1) * (s + 8);
+    const x0 = cx - (count * s) / 2;
+    for (let i = 0; i < count; i++) {
+      out += `<rect x="${x0 + i * s}" y="${y}" width="${s - 2}" height="${s - 2}" rx="2" fill="${colors[(n - 1) % colors.length]}" stroke="${ink}" stroke-width="1.2"/>`;
+    }
+    const word = count === 1 ? "panel" : "paneler";
+    out += `<text x="${cx + (2 * rows - 1) * s / 2 + 18}" y="${y + s / 2 + 4}" font-size="13" font-weight="700" fill="${ink}">Rad ${n}: ${count} ${word}</text>`;
+  }
+  return wrapH(out, caption, `Trekantformet jorde med ${rows} rader solcellepaneler: rad n har 2n−1 paneler`, y0 + rows * (s + 8) + 6);
 }
 
 export const TASK_FIGURES: Record<string, string> = {
+  ...KAP7_FIGURES,
   "1.13": figNumberLine({
     min: -4,
     max: 10,
@@ -951,7 +977,7 @@ export const TASK_FIGURES: Record<string, string> = {
     noInterval: true,
     caption: "Tallinje med aksemarkeringer til oppgaven.",
   }),
-  "1.31": figSolarOddSquares("Geometrisk oppbygning av solcellepanelene for rad 1, 2 og 3.", false),
+  "1.31": figTriangleRows(3, "Solcellepanelene på det trekantformede jordet: rad 1, 2 og 3."),
   "1.OP3": figSequence(
     [5, 8, 12, 17, 23],
     ["?", "?", "?", "?"],

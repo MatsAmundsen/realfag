@@ -54,13 +54,13 @@ export const fagsok = [
                     {
                         "id": "1.13",
                         "tittel": "Oppgave 1.13",
-                        "tekst": "La oss utforske intervaller på tallinjen.<br><br><strong>a)</strong> Skriv ulikheten $-2 \\leq x < 8$ ved hjelp av intervallnotasjon.<br><br><strong>b)</strong> Tegn en fortegnslinje og marker intervallet du fant i oppgave a).",
+                        "tekst": "La oss utforske intervaller på tallinjen.<br><br><strong>a)</strong> Skriv ulikheten $-2 \\leq x < 8$ ved hjelp av intervallnotasjon.<br><br><strong>b)</strong> Tegn en tallinje og marker intervallet du fant i oppgave a).",
                         "bilde": null,
                         "hint": "Bruk klammeparentes $[$ for 'mindre eller lik', og vinkelhake $\\rangle$ for 'mindre enn'.",
                         "fasit": null,
                         "fasitSteg": [
                             "<strong>a)</strong><br>Vi skal omgjøre ulikheten $-2 \\leq x < 8$ til et intervall:<br><br>$-2 \\leq x \\rightarrow$ betyr at $x$ kan være lik $-2$, så vi bruker lukket klamme $[$<br><br>$x < 8 \\rightarrow$ betyr at $x$ ikke kan være helt lik $8$, så vi bruker åpen vinkelhake $\\rangle$<br><br><strong>Svar:</strong> $x \\in [-2, 8\\rangle$",
-                            "<strong>b)</strong><br>Fortegnslinjen for intervallet $[-2, 8\\rangle$ har følgende egenskaper:<br><br>- Ved $x = -2$: Fylt sirkel fordi $-2$ er <strong>inkludert</strong> i intervallet ($\\leq$)<br>- Ved $x = 8$: Åpen sirkel fordi $8$ er <strong>ikke inkludert</strong> i intervallet ($<$)<br>- Den markerte linjen mellom $-2$ og $8$ viser alle verdier $x$ kan ta<br><br><strong>Svar:</strong> Fortegnslinjen viser at $x$ kan ta alle verdier fra og med $-2$ til (men ikke med) $8$."
+                            "<strong>b)</strong><br>Tallinjen for intervallet $[-2, 8\\rangle$ har følgende egenskaper:<br><br>- Ved $x = -2$: Fylt sirkel fordi $-2$ er <strong>inkludert</strong> i intervallet ($\\leq$)<br>- Ved $x = 8$: Åpen sirkel fordi $8$ er <strong>ikke inkludert</strong> i intervallet ($<$)<br>- Den markerte linjen mellom $-2$ og $8$ viser alle verdier $x$ kan ta<br><br><strong>Svar:</strong> Tallinjen viser at $x$ kan ta alle verdier fra og med $-2$ til (men ikke med) $8$."
                         ],
                         "starter": ""
                     },
@@ -300,7 +300,7 @@ export const fagsok = [
                     {
                         "id": "1.30",
                         "tittel": "Oppgave 1.30",
-                        "tekst": "Nedenfor ser du en visuell representasjon av kvadratiske ringmønstre. Figur 1 har $1$ prikk, Figur 2 har $4$, Figur 3 har $9$.<br><br><strong>a)</strong> Tegn Figur 4 basert på samme mønster.<br><br><strong>b)</strong> Hvor mange prikker vil Figur 7 bestå av totalt?",
+                        "tekst": "Nedenfor ser du en visuell representasjon av kvadratiske prikkmønstre. Figur 1 har $1$ prikk, Figur 2 har $4$, Figur 3 har $9$.<br><br><strong>a)</strong> Tegn Figur 4 basert på samme mønster.<br><br><strong>b)</strong> Hvor mange prikker vil Figur 7 bestå av totalt?",
                         "bilde": "/images/kvadratmonster1.30.jpg",
                         "hint": "Antall prikker øker med kvadratet av figurnummeret.",
                         "fasit": null,
@@ -341,7 +341,7 @@ export const fagsok = [
                     {
                         "sporsmal": "Hva er et primtall?",
                         "alternativer": [
-                            "Et tall som bare kan deles på 1 og seg selv",
+                            "Et naturlig tall større enn 1 som bare kan deles på 1 og seg selv",
                             "Et oddetall",
                             "Et tall som kan deles på 2",
                             "Et tall med mer enn to faktorer"
@@ -484,7 +484,7 @@ export const fagsok = [
                         "hint": "Del det største tallet med det minste. Hvis det blir en rest, deler du det minste tallet med resten. Fortsett til resten er null.",
                         "fasit": null,
                         "fasitSteg": [
-                            "<strong>a)</strong><br>Euklids algoritme er en systematisk metode for å finne den største felles faktoren (SFF) til to heltall. Den går ut på at man deler det største tallet på det minste og finner resten. Deretter deler man det minste tallet på resten. Man gjentar dette ved å alltid dele den forrige nevneren på den forrige resten, helt til resten blir null. Den siste divisoren (tallet man delte på) før resten ble null, er den største felles faktoren.",
+                            "<strong>a)</strong><br>Euklids algoritme er en systematisk metode for å finne den største felles faktoren (SFF) til to heltall. Den går ut på at man deler det største tallet på det minste og finner resten. Deretter deler man det minste tallet på resten. Man gjentar dette ved å alltid dele den forrige divisoren på resten, helt til resten blir null. Den siste divisoren (tallet man delte på) før resten ble null, er den største felles faktoren.",
                             "<strong>b)</strong><br>Vi skal finne SFF for $60$ og $24$ ved hjelp av Euklids algoritme.<br><br>$60 = 2 \\cdot 24 + 12$ (vi deler det største tallet, $60$, med det minste, $24$. Resten er $12$)<br>$\\downarrow$<br>$24 = 2 \\cdot 12 + 0$ (vi deler forrige divisor, $24$, på forrige rest, $12$. Resten er $0$)<br><br>Siden resten nå er $0$, er den største felles faktoren den siste divisoren vi brukte (tallet før resten ble null).<br><br><strong>Svar:</strong> $12$"
                         ],
                         "starter": ""
@@ -684,7 +684,7 @@ export const fagsok = [
                         "forklaring": "Det finnes en regel som sier at $a \\cdot b = SFF(a,b) \\cdot MFM(a,b)$. Dermed er produktet $3 \\cdot 60 = 180$."
                     },
                     {
-                        "sporsmal": "Forenkle brøkuttrykket $\\frac{x^2 - 4}{x - 2}$.",
+                        "sporsmal": "Forenkle brøkuttrykket $\\frac{x^2 - 4}{x - 2}$, der $x \\neq 2$.",
                         "alternativer": [
                             "$x - 2$",
                             "$x + 2$",
@@ -692,18 +692,18 @@ export const fagsok = [
                             "$x$"
                         ],
                         "riktigSvar": 1,
-                        "forklaring": "Telleren kan faktoriseres med konjugatsetningen (tredje kvadratsetning): $(x-2)(x+2)$. Når vi forkorter bort $(x-2)$, står vi igjen med $x+2$."
+                        "forklaring": "Telleren kan faktoriseres med konjugatsetningen (tredje kvadratsetning): $(x-2)(x+2)$. Når vi forkorter bort $(x-2)$, står vi igjen med $x+2$. Forkortingen gjelder bare for $x \\neq 2$, fordi vi ikke kan dele på null."
                     },
                     {
-                        "sporsmal": "Løs likningen $\\frac{x}{3} - \\frac{x}{4} = 2$.",
+                        "sporsmal": "Regn ut $\\frac{2}{3} + \\frac{1}{4}$.",
                         "alternativer": [
-                            "$x = 12$",
-                            "$x = 24$",
-                            "$x = 2$",
-                            "$x = 6$"
+                            "$\\frac{3}{7}$",
+                            "$\\frac{11}{12}$",
+                            "$\\frac{3}{12}$",
+                            "$\\frac{2}{12}$"
                         ],
                         "riktigSvar": 1,
-                        "forklaring": "Multipliser alle ledd med fellesnevneren 12: $4x - 3x = 24$, som gir $x = 24$."
+                        "forklaring": "Fellesnevner er $12$: $\\frac{2}{3} = \\frac{8}{12}$ og $\\frac{1}{4} = \\frac{3}{12}$. Summen blir $\\frac{8}{12} + \\frac{3}{12} = \\frac{11}{12}$."
                     },
                     {
                         "sporsmal": "Hvilken brøk er størst: $\\frac{5}{7}$ eller $\\frac{7}{10}$?",
@@ -751,7 +751,7 @@ export const fagsok = [
                         "tittel": "Oppgave 1.55",
                         "tekst": "Skriv tallene i stigende rekkefølge: $-3^2$, $3^{-1}$, $2^0$, $(-2)^2$",
                         "bilde": null,
-                        "hint": "Husk at ethvert tall opphøyd i $0$ er lik $1$. <br>$(-2)^2$ betyr $(-2) \\cdot (-2)$.<br>Legg merke til forskjellen på $-3^2$ og $(-3)^2$.",
+                        "hint": "Husk at ethvert tall ulikt $0$ opphøyd i $0$ er lik $1$ ($a^0 = 1$ for $a \\neq 0$). <br>$(-2)^2$ betyr $(-2) \\cdot (-2)$.<br>Legg merke til forskjellen på $-3^2$ og $(-3)^2$.",
                         "fasit": null,
                         "fasitSteg": [
                             "Vi beregner verdien av hvert enkelt uttrykk:<br><br>$-3^2$ <br>$= -(3 \\cdot 3)$ (fortegnet er ikke med i potensen når det ikke er parentes)<br>$= -9$<br><br>$3^{-1}$<br>$= \\frac{1}{3^1}$ (negativ eksponent betyr at tallet flyttes under brøkstreken)<br>$= \\frac{1}{3} \\approx 0.33$",
@@ -856,7 +856,7 @@ export const fagsok = [
                             "$x^5$",
                             "$x^6$",
                             "$x^8$",
-                            "$x^23$"
+                            "$x^{23}$"
                         ],
                         "riktigSvar": 1,
                         "forklaring": "Når vi opphøyer en potens i en ny eksponent, multipliserer vi eksponentene: $2 \\cdot 3 = 6$."
@@ -1200,7 +1200,7 @@ export const fagsok = [
                             "$9.46 \\cdot 10^{13}$",
                             "$9.46 \\cdot 10^{17}$",
                             "$94.6 \\cdot 10^{15}$",
-                            "$0.946 \\cdot 10^{18}$"
+                            "$9{,}46 \\cdot 10^{16}$"
                         ],
                         "riktigSvar": 1,
                         "forklaring": "Å gange med 100 er det samme som å gange med $10^2$. Da adderer vi 2 til eksponenten: $15 + 2 = 17$"
@@ -1243,7 +1243,7 @@ export const fagsok = [
                         "tittel": "Oppgave 1.90",
                         "tekst": "Vurder påstanden: \"Dersom $n$ er et primtall, så vil også $n + 2$ være et primtall.\" Finn et moteksempel som beviser at påstanden er feil.",
                         "bilde": null,
-                        "hint": "Et primtall kan kun deles på $1$ og seg selv. Prøv å sette inn primtallet $7$.",
+                        "hint": "Et primtall er et naturlig tall større enn $1$ som kun kan deles på $1$ og seg selv. Prøv å sette inn primtallet $7$.",
                         "fasit": null,
                         "fasitSteg": [
                             "Vi skal finne et moteksempel som beviser at påstanden \"Dersom $n$ er et primtall, så vil også $n + 2$ være et primtall\" er feil.<br><br>Vi tester med primtallet $n = 7$:<br><br>$n + 2$",
@@ -1273,7 +1273,7 @@ export const fagsok = [
                         "fasit": null,
                         "fasitSteg": [
                             "<strong>a)</strong><br>Uttrykket <code>tall % i == 0</code> bruker modulo-operatoren (<code>%</code>). Modulo gir oss <strong>resten</strong> etter en divisjon.<br>Når <code>tall % i == 0</code>, betyr det at <code>tall</code> kan deles på <code>i</code> uten at vi får en rest. Det betyr at <code>i</code> er en faktor (divisor) til <code>tall</code>. Hvis vi finner en faktor, betyr det at tallet ikke er et primtall (siden et primtall bare kan deles på 1 og seg selv).<br><br><strong>Svar:</strong> Det sjekker om <code>tall</code> er delelig med <code>i</code> uten å gi en rest, altså om <code>i</code> er en faktor i tallet.",
-                            "<strong>b)</strong><br>Man trenger ikke å sjekke alle tall opp til <code>tall</code>. Faktorer opptrer alltid i par, og det største tallet man trenger å sjekke er <strong>kvadratroten</strong> av tallet man sjekker.<br>For eksempel, hvis vi sjekker 36, er kvadratroten 6 ($6 \\cdot 6 = 36$). Hver faktor større enn 6 vil ha en partner som er mindre enn 6. Finner vi ingen faktorer opp til kvadratroten, vet vi med sikkerhet at tallet er et primtall.<br><br>Vi kan forbedre løkken i Python ved å importere <code>math</code>-modulen og bare sjekke opp til kvadratroten (vi runder av til nærmeste heltall oppover og legger til 1 for at <code>range</code> skal få med seg selve rottallet).<br><br><pre class=\"prog-code\"><code>import math<br><br>def er_primtall(tall):<br>    if tall &lt;= 1:<br>        return False<br>    <br>    grense = int(math.sqrt(tall)) + 1<br>    for i in range(2, grense):<br>        if tall % i == 0:<br>            return False<br>            <br>    return True</code></pre><br><br><strong>Svar:</strong> Man trenger bare å sjekke opp til kvadratroten av tallet. Løkken kan forbedres ved å endre den til <code>range(2, int(math.sqrt(tall)) + 1)</code>."
+                            "<strong>b)</strong><br>Man trenger ikke å sjekke alle tall opp til <code>tall</code>. Faktorer opptrer alltid i par, og det største tallet man trenger å sjekke er <strong>kvadratroten</strong> av tallet man sjekker.<br>For eksempel, hvis vi sjekker 36, er kvadratroten 6 ($6 \\cdot 6 = 36$). Hver faktor større enn 6 vil ha en partner som er mindre enn 6. Finner vi ingen faktorer opp til kvadratroten, vet vi med sikkerhet at tallet er et primtall.<br><br>Vi kan forbedre løkken i Python ved å importere <code>math</code>-modulen og bare sjekke opp til kvadratroten (<code>int()</code> kutter bort desimalene, altså runder ned, så vi legger til 1 for at <code>range</code> skal få med seg selve rottallet).<br><br><pre class=\"prog-code\"><code>import math<br><br>def er_primtall(tall):<br>    if tall &lt;= 1:<br>        return False<br>    <br>    grense = int(math.sqrt(tall)) + 1<br>    for i in range(2, grense):<br>        if tall % i == 0:<br>            return False<br>            <br>    return True</code></pre><br><br><strong>Svar:</strong> Man trenger bare å sjekke opp til kvadratroten av tallet. Løkken kan forbedres ved å endre den til <code>range(2, int(math.sqrt(tall)) + 1)</code>."
                         ],
                         "starter": ""
                     }
@@ -1425,7 +1425,7 @@ export const fagsok = [
                         "fasit": null,
                         "fasitSteg": [
                             "<strong>a)</strong><br>$-\\dfrac{1}{2}$ er en brøk, ikke et heltall, så $-\\dfrac{1}{2} \\notin \\mathbb{Z}$.<br><br>$\\sqrt{16} = 4$, og $4$ er et naturlig tall, så $\\sqrt{16} \\in \\mathbb{N}$.<br><br>$0{,}75 = \\dfrac{3}{4}$, som er en brøk av to heltall, så $0{,}75 \\in \\mathbb{Q}$.<br><br><strong>Svar:</strong> $\\notin$ · $\\in$ · $\\in$",
-                            "<strong>b)</strong><br>$\\mathbb{N}$ er mengden av <strong>naturlige tall</strong> (positive heltall, evt. med $0$ avhengig av definisjon): $1, 2, 3, \\ldots$<br><br>$\\mathbb{Z}$ er mengden av <strong>hele tall</strong>, som også inkluderer null og de negative: $\\ldots, -2, -1, 0, 1, 2, \\ldots$<br><br>Altså: alle naturlige tall er hele tall, men $\\mathbb{Z}$ er «større» fordi den også inneholder $0$ og negative tall.<br><br><strong>Svar:</strong> $\\mathbb{N}$ er de naturlige (positive) tallene; $\\mathbb{Z}$ er alle hele tall, inkludert negative og $0$.",
+                            "<strong>b)</strong><br>$\\mathbb{N}$ er mengden av <strong>naturlige tall</strong> (de positive heltallene, uten $0$): $1, 2, 3, \\ldots$<br><br>$\\mathbb{Z}$ er mengden av <strong>hele tall</strong>, som også inkluderer null og de negative: $\\ldots, -2, -1, 0, 1, 2, \\ldots$<br><br>Altså: alle naturlige tall er hele tall, men $\\mathbb{Z}$ er «større» fordi den også inneholder $0$ og negative tall.<br><br><strong>Svar:</strong> $\\mathbb{N}$ er de naturlige (positive) tallene; $\\mathbb{Z}$ er alle hele tall, inkludert negative og $0$.",
                             "<strong>c)</strong><br>Et tall i $\\mathbb{R}$ men ikke i $\\mathbb{Q}$ er et <strong>irrasjonalt tall</strong>, for eksempel $\\sqrt{2}$ eller $\\pi$.<br><br>$\\sqrt{2}$ kan ikke skrives som brøk $\\dfrac{p}{q}$ der $p$ og $q$ er heltall og $q \\neq 0$. Derfor ligger $\\sqrt{2}$ i $\\mathbb{R}$, men ikke i $\\mathbb{Q}$.<br><br><strong>Svar:</strong> F.eks. $\\sqrt{2}$ (eller $\\pi$) — irrasjonalt tall som ikke kan skrives som brøk av to heltall."
                         ],
                         "starter": ""
