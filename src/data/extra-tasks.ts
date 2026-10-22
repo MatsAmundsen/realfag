@@ -452,8 +452,6 @@ export const EXTRA: Record<string, Oppgave[]> = {
         "Gang med $(x-1)(x+1)$: $x(x+1)-2(x-1)=(x^2-1)$.<br>$x^2+x-2x+2=x^2-1$, $-x+2=-1$, $-x=-3$, $x=3$.<br>$x=3$ er tillatt.<br><strong>Svar:</strong> $x=3$",
       ],
     ),
-  ],
-  "3F": [
     o(
       "3.34",
       "En oppskrift til $4$ personer bruker $3$ dl fløte. Du skal lage mat til $6$ personer.<br><br><strong>a)</strong> Sett opp en proporsjon og finn hvor mye fløte du trenger.<br><br><strong>b)</strong> Hvor mange personer kan du lage mat til med $9$ dl fløte?",
@@ -612,7 +610,7 @@ export const SUB_TITLES: Record<string, string> = {
   "3C": "3C Andregradslikninger",
   "3D": "3D ABC-formelen",
   "3E": "3E Rasjonale likninger",
-  "3F": "3F Proporsjoner",
+  "3F": "3F Funksjoner og nullpunktfaktorisering",
   "3G": "3G Polynomdivisjon",
   "3OP": "Øveprøve",
   "4A": "4A Funksjonsbegrepet",

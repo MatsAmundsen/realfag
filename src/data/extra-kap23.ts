@@ -463,8 +463,6 @@ export const MORE23: Record<string, Oppgave[]> = {
         "<strong>e)</strong> $x\\neq 4$ og $x\\neq -4$. <strong>Svar:</strong> $x\\neq\\pm 4$",
       ],
     ),
-  ],
-  "3F": [
     o(
       "3.53",
       "Rett og omvendt proporsjonalitet.<br><br><strong>a)</strong> $y$ er proporsjonal med $x$, og $y=12$ når $x=4$. Finn $y$ når $x=10$.<br><br><strong>b)</strong> $y$ er omvendt proporsjonal med $x$, og $y=6$ når $x=2$. Finn $y$ når $x=8$.<br><br><strong>c)</strong> Et kart har målestokk $1:50000$. Hvor lang er en vei som er $4$ cm på kartet (i km)?<br><br><strong>d)</strong> $8$ malere bruker $6$ dager. Hvor mange dager trenger $12$ malere (samme tempo, omvendt proporsjonalt)?<br><br><strong>e)</strong> Sett opp proporsjonen i d) og løs.",

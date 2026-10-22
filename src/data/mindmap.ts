@@ -85,7 +85,7 @@ export const HELHET_NODES: HelhetNode[] = [
   { id: "3C", label: "Andregradslikninger", kapId: "kap3", subId: "3C" },
   { id: "3D", label: "ABC-formelen", kapId: "kap3", subId: "3D" },
   { id: "3E", label: "Rasjonale likninger", kapId: "kap3", subId: "3E" },
-  { id: "3F", label: "Proporsjoner", kapId: "kap3", subId: "3F" },
+  { id: "3F", label: "Funksjoner og nullpunktfaktorisering", kapId: "kap3", subId: "3F" },
   { id: "3G", label: "Polynomdivisjon", kapId: "kap3", subId: "3G" },
   { id: "4A", label: "Funksjonsbegrepet", kapId: "kap4", subId: "4A" },
   { id: "4B", label: "Lineære funksjoner", kapId: "kap4", subId: "4B" },
@@ -337,14 +337,15 @@ export const CHAPTER_MAPS: Record<string, ChapterDetail> = {
         nodes: [
           n("3E-def", "Definisjonsmengde", "3E"),
           n("3E-falsk", "Falske løsninger", "3E"),
+          n("3E-kryss", "Kryssmultiplikasjon", "3E"),
         ],
       },
       {
         id: "3F",
-        title: "3F Proporsjoner",
+        title: "3F Funksjoner og nullpunktfaktorisering",
         subId: "3F",
         layout: "stack",
-        nodes: [n("3F-kryss", "Kryssmultiplikasjon", "3F")],
+        nodes: [n("3F-null", "Nullpunktfaktorisering", "3F")],
       },
       {
         id: "3G",

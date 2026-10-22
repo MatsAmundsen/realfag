@@ -143,8 +143,16 @@ export const VIDEO_BY_SUB: Record<string, TemaVideo[]> = {
   "3B": [{ tittel: "Omskriving av formler", url: "https://www.youtube.com/watch?v=n5k-x-05X00" }],
   "3C": [{ tittel: "Andregradslikninger", url: "https://www.youtube.com/watch?v=0eyN7vknTW4" }],
   "3D": [{ tittel: "ABC-formelen og diskriminanten", url: "https://www.youtube.com/watch?v=zHQ2eauLwr4" }],
-  "3E": [{ tittel: "Rasjonale likninger", url: "https://www.youtube.com/watch?v=x3QZyL0KDME" }],
-  "3F": [{ tittel: "Forhold og proporsjoner", url: "https://www.youtube.com/watch?v=JDi2jAJaFkw" }],
+  "3E": [
+    { tittel: "Rasjonale likninger", url: "https://www.youtube.com/watch?v=x3QZyL0KDME" },
+    { tittel: "Forhold og proporsjoner", url: "https://www.youtube.com/watch?v=JDi2jAJaFkw" },
+  ],
+  "3F": [
+    { tittel: "Nullpunktfaktorisering", url: "https://www.youtube.com/watch?v=zR6ZtTSXXbk" },
+    { tittel: "Nullpunkter og faktorisering", url: "https://www.youtube.com/watch?v=iSXe8YreMMY" },
+    { tittel: "Nullpunkter og faktorisering", url: "https://www.youtube.com/watch?v=eQYkvZlI7ms" },
+    { tittel: "Nullpunktfaktorisering", url: "https://www.youtube.com/watch?v=U95jMFd-7ko" },
+  ],
   "3G": [{ tittel: "Polynomdivisjon", url: "https://www.youtube.com/watch?v=_w-hcv1buIU" }],
   "4A": [{ tittel: "Hva er en funksjon?", url: "https://www.youtube.com/watch?v=BCCZxWe57Eo" }],
   "4B": [{ tittel: "Lineære funksjoner", url: "https://www.youtube.com/watch?v=0qoEA0Kgobo" }],
