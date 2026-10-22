@@ -187,6 +187,10 @@ export const VIDEO_BY_SUB: Record<string, TemaVideo[]> = {
     { tittel: "Nullpunktfaktorisering", url: "https://www.youtube.com/watch?v=U95jMFd-7ko" },
   ],
   "3G": [{ tittel: "Polynomdivisjon", url: "https://www.youtube.com/watch?v=_w-hcv1buIU" }],
+  "3H": [
+    { tittel: "Ulikheter (1T)", url: "https://www.youtube.com/watch?v=xVUzi3WE65s" },
+    { tittel: "Andregradsulikheter med fortegnsskjema", url: "https://www.youtube.com/watch?v=7eSS4QaFAJ8" },
+  ],
   "4A": [{ tittel: "Hva er en funksjon?", url: "https://www.youtube.com/watch?v=BCCZxWe57Eo" }],
   "4B": [{ tittel: "Lineære funksjoner", url: "https://www.youtube.com/watch?v=0qoEA0Kgobo" }],
   "4C": [{ tittel: "Introduksjon til polynomfunksjoner", url: "https://www.youtube.com/watch?v=3oWCt9o6F4Q" }],

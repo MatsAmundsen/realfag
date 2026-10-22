@@ -70,7 +70,7 @@
     "alternativer": [
       "$x = 2$",
       "$x = 8$",
-      "$x = 0.5$",
+      "$x = 0{,}5$",
       "$x = 4$"
     ],
     "riktigSvar": 0,
@@ -124,12 +124,12 @@
     "sporsmal": "Løs $\\frac{1}{x} + \\frac{1}{2x} = 3$.",
     "alternativer": [
       "$x = 2$",
-      "$x = 0.5$",
-      "$x = 1.5$",
+      "$x = 0{,}5$",
+      "$x = 1{,}5$",
       "$x = 1$"
     ],
     "riktigSvar": 1,
-    "forklaring": "Fellesnevner er $2x$. Vi ganger alle ledd med $2x$. Da får vi $2 + 1 = 6x$. Dette gir $3 = 6x$, og deler vi på $6$ får vi $x = \\frac{3}{6} = 0.5$."
+    "forklaring": "Fellesnevner er $2x$. Vi ganger alle ledd med $2x$. Da får vi $2 + 1 = 6x$. Dette gir $3 = 6x$, og deler vi på $6$ får vi $x = \\frac{3}{6} = 0{,}5$."
   },
   {
     "sporsmal": "Hvorfor kan man ikke dele på $x$ på begge sider for å løse $x^2 = x$?",
@@ -141,5 +141,60 @@
     ],
     "riktigSvar": 2,
     "forklaring": "Når man deler på $x$, antar man at $x \\neq 0$. Men $x=0$ er en løsning til $x^2 = x$. Isteden bør man flytte over: $x^2 - x = 0$, og faktorisere $x(x-1)=0$."
+  },
+  {
+    "sporsmal": "Hva er en proporsjon?",
+    "alternativer": [
+      "En likning der to brøker er satt lik hverandre, f.eks. $\\frac{a}{b} = \\frac{c}{d}$",
+      "En funksjon som krysser origo",
+      "Et annet ord for en andregradslikning",
+      "En brøk som ikke kan forkortes"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "En proporsjon er et utsagn om at to forhold (brøker) er like store."
+  },
+  {
+    "sporsmal": "Hvordan fungerer 'kryssmultiplikasjon' for proporsjonen $\\frac{a}{b} = \\frac{c}{d}$?",
+    "alternativer": [
+      "Man ganger tellerne sammen: $a \\cdot c = b \\cdot d$",
+      "Man ganger over kors slik at $a \\cdot d = b \\cdot c$",
+      "Man bytter om på $b$ og $c$",
+      "Man legger sammen $a+d$ og $b+c$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Kryssmultiplikasjon går ut på å gange teller på venstre side med nevner på høyre side, og sette dette lik nevner på venstre side ganget med teller på høyre side: $a \\cdot d = b \\cdot c$. Dette er en snarvei for å gange begge sider med fellesnevneren $bd$."
+  },
+  {
+    "sporsmal": "Bruk kryssmultiplikasjon på likningen $\\frac{x}{3} = \\frac{4}{6}$. Hva blir likningen etter kryssmultiplisering?",
+    "alternativer": [
+      "$6x = 12$",
+      "$3x = 24$",
+      "$x = 2$",
+      "$4x = 18$"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Vi ganger over kors: $x \\cdot 6 = 3 \\cdot 4$. Dette forenkles til $6x = 12$."
+  },
+  {
+    "sporsmal": "Løs proporsjonen $\\frac{2}{x} = \\frac{5}{10}$.",
+    "alternativer": [
+      "$x = 2$",
+      "$x = 4$",
+      "$x = 5$",
+      "$x = 10$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Kryssmultiplikasjon gir $2 \\cdot 10 = 5 \\cdot x$. Da er $20 = 5x$, og deler vi på $5$ får vi $x = 4$."
+  },
+  {
+    "sporsmal": "Løs likningen $\\frac{x+1}{2} = \\frac{3}{x}$. (Husk at $x \\neq 0$)",
+    "alternativer": [
+      "$x = -2$ og $x = 3$",
+      "$x = 2$ og $x = -3$",
+      "$x = 1$ og $x = 6$",
+      "Bare $x = 2$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Kryssmultiplikasjon gir $x(x+1) = 2 \\cdot 3$, som blir $x^2 + x = 6$. Flytter vi over får vi $x^2 + x - 6 = 0$. ABC-formelen (eller faktorisering) gir røttene $x = 2$ og $x = -3$."
   }
 ]

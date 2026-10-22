@@ -135,11 +135,11 @@
     "sporsmal": "Hva er nullpunktene til funksjonen $f(x) = (x-4)(2x+1)$?",
     "alternativer": [
       "$x = 4$ og $x = -1$",
-      "$x = -4$ og $x = 0.5$",
-      "$x = 4$ og $x = -0.5$",
+      "$x = -4$ og $x = 0{,}5$",
+      "$x = 4$ og $x = -0{,}5$",
       "$x = 8$ og $x = 1$"
     ],
     "riktigSvar": 2,
-    "forklaring": "Vi setter $f(x) = 0$. Da gir nullproduktregelen $x - 4 = 0$ som gir $x=4$, og $2x + 1 = 0$ som gir $2x = -1$ og $x = -0.5$."
+    "forklaring": "Vi setter $f(x) = 0$. Da gir nullproduktregelen $x - 4 = 0$ som gir $x=4$, og $2x + 1 = 0$ som gir $2x = -1$ og $x = -0{,}5$."
   }
 ]
