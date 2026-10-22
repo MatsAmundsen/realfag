@@ -4014,3 +4014,49 @@ a.vid-nav-card {
     .mm-drawer, .mm-node, .mm-path-card { transition: none; }
 }
 
+
+/* Datatabeller i oppgaver (kap 6) */
+.data-table-wrap {
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 0.85rem 0;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--bg-surface);
+}
+.data-table-wrap:focus-visible { outline: 2px solid var(--primary-light); outline-offset: 2px; }
+.data-table {
+    border-collapse: collapse;
+    min-width: 100%;
+    font-size: 0.95rem;
+    font-variant-numeric: tabular-nums;
+}
+.data-table caption {
+    caption-side: top;
+    text-align: left;
+    padding: 0.55rem 0.85rem 0.4rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+.data-table th,
+.data-table td {
+    border-top: 1px solid var(--border);
+    padding: 0.55rem 0.8rem;
+    text-align: center;
+    white-space: nowrap;
+}
+.data-table td + td { border-left: 1px solid var(--border); }
+.data-table th[scope="row"] {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    text-align: left;
+    background: var(--primary-subtle);
+    background-color: color-mix(in srgb, var(--primary) 16%, var(--bg-surface));
+    color: var(--text-main);
+    font-weight: 600;
+    border-right: 1px solid var(--border);
+}

@@ -15,6 +15,17 @@ import kvadratrotterHtml from "./fagstoff/kvadratrotter.html?raw";
 import programmeringHtml from "./fagstoff/programmering.html?raw";
 import videoerHtml from "./fagstoff/videoer.html?raw";
 
+/** Datatabeller (kap 6): rullbar ramme på mobil, caption og th scope="row". Endrer ikke tallene. */
+function styleDataTables(html: string): string {
+  if (!html.includes("<table>")) return html;
+  return html.replace(/<table>([\s\S]*?)<\/table>/g, (_m, inner: string) => {
+    const heads = [...inner.matchAll(/<th>([\s\S]*?)<\/th>/g)].map((m) => m[1]);
+    const caption = heads.length ? `Datatabell: ${heads.join(" og ")}` : "Datatabell";
+    const body = inner.replace(/<th>/g, '<th scope="row">');
+    return `<div class="data-table-wrap" role="region" tabindex="0" aria-label="Tabell, kan rulles sidelengs"><table class="data-table"><caption>${caption}</caption>${body}</table></div>`;
+  });
+}
+
 function attachFigure(op: Oppgave): Oppgave {
   let updated = op;
   const fig = TASK_FIGURES[op.id];
@@ -31,6 +42,13 @@ function attachFigure(op: Oppgave): Oppgave {
       }
     }
     updated = { ...updated, fasitSteg: newSteg };
+  }
+  if (updated.tekst.includes("<table>") || updated.fasitSteg?.some((x) => x.includes("<table>"))) {
+    updated = {
+      ...updated,
+      tekst: styleDataTables(updated.tekst),
+      fasitSteg: updated.fasitSteg?.map(styleDataTables) ?? updated.fasitSteg,
+    };
   }
   return updated;
 }
