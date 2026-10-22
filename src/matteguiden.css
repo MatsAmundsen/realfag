@@ -4060,3 +4060,61 @@ a.vid-nav-card {
     font-weight: 600;
     border-right: 1px solid var(--border);
 }
+
+/* Sammendrag (6SM, 7SM) */
+.summary-view { display: grid; gap: 1rem; margin-top: 0.5rem; }
+.summary-toc { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.summary-toc a {
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+.summary-toc a:hover, .summary-toc a:focus-visible { border-color: var(--primary-light); color: var(--primary-light); }
+.summary-card {
+    scroll-margin-top: 5rem;
+    padding: 1.1rem 1.15rem 1rem;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--primary);
+    border-radius: 14px;
+    background: var(--bg-surface);
+    line-height: 1.7;
+}
+.summary-card.is-done { border-left-color: var(--accent); }
+.summary-title {
+    margin: 0 0 0.6rem;
+    font-family: "Plus Jakarta Sans", Inter, sans-serif;
+    font-size: 1.08rem;
+    line-height: 1.35;
+    color: var(--text-main);
+}
+.summary-body { overflow-x: auto; }
+.summary-tip {
+    margin: 0.85rem 0 0;
+    padding: 0.6rem 0.8rem;
+    border-radius: 10px;
+    background: color-mix(in srgb, var(--hint-color) 12%, transparent);
+    border-left: 3px solid var(--hint-color);
+    font-size: 0.92rem;
+}
+.summary-check { margin-top: 0.75rem; }
+.summary-check > summary { cursor: pointer; font-weight: 600; color: var(--primary-light); min-height: 44px; display: flex; align-items: center; }
+.summary-check-step { padding: 0.25rem 0 0.25rem 0.8rem; border-left: 2px solid var(--border); }
+.summary-read {
+    margin-top: 0.75rem;
+    min-height: 40px;
+    padding: 0.4rem 0.9rem;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-main);
+    font: inherit;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+.summary-read.is-on { border-color: var(--accent); color: var(--accent); }
+@media (min-width: 900px) { .summary-card { padding: 1.35rem 1.5rem 1.2rem; } }
