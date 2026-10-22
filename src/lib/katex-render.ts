@@ -45,9 +45,16 @@ export function formatTaskHtml(html: string): string {
     return `\u0000${stash.length - 1}\u0000`;
   });
 
-  s = s.replace(/\$\$([\s\S]+?)\$\$/g, (_, tex: string) => renderTex(tex, true));
-  s = s.replace(/\$([^$]+)\$/g, (_, tex: string) => renderTex(tex, false));
+  // Matte rendres og legges i stash, slik at * i formler (f.eks. a*b) ikke tolkes som kursiv/fet.
+  const stashMath = (rendered: string) => {
+    stash.push(rendered);
+    return `\u0000${stash.length - 1}\u0000`;
+  };
+  s = s.replace(/\$\$([\s\S]+?)\$\$/g, (_, tex: string) => stashMath(renderTex(tex, true)));
+  s = s.replace(/\$([^$]+)\$/g, (_, tex: string) => stashMath(renderTex(tex, false)));
   s = s.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+  // *kursiv*: krever tegn rett innenfor stjernene, så «2 * 3» ikke blir kursiv.
+  s = s.replace(/(^|[^*\w])\*(?![\s*])([^*\n<>]+?)(?<!\s)\*(?![*\w])/g, "$1<em>$2</em>");
   s = s.replace(/(^|>)(\s*)([a-h]\))(\s)/gi, "$1$2<strong>$3</strong>$4");
 
   s = structureTaskParts(s);

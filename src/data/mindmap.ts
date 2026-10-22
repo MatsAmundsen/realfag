@@ -65,6 +65,8 @@ export const OVERVIEW: { id: string; kapId: string; title: string; short: string
   { id: "kap3", kapId: "kap3", title: "Kapittel 3", short: "Likninger" },
   { id: "kap4", kapId: "kap4", title: "Kapittel 4", short: "Funksjoner" },
   { id: "kap5", kapId: "kap5", title: "Kapittel 5", short: "Likningssett" },
+  { id: "kap6", kapId: "kap6", title: "Kapittel 6", short: "Modellering" },
+  { id: "kap7", kapId: "kap7", title: "Kapittel 7", short: "Trigonometri" },
 ];
 
 export const HELHET_NODES: HelhetNode[] = [
@@ -103,6 +105,16 @@ export const HELHET_NODES: HelhetNode[] = [
   { id: "5F", label: "Førstegradsulikheter", kapId: "kap5", subId: "5F" },
   { id: "5G", label: "Fortegnslinje", kapId: "kap5", subId: "5G" },
   { id: "5H", label: "Rasjonale ulikheter", kapId: "kap5", subId: "5H" },
+  { id: "6A", label: "Matematiske modeller", kapId: "kap6", subId: "6A" },
+  { id: "6B", label: "Regresjon", kapId: "kap6", subId: "6B" },
+  { id: "6C", label: "Modellering i praksis", kapId: "kap6", subId: "6C" },
+  { id: "7A", label: "Pytagoras", kapId: "kap7", subId: "7A" },
+  { id: "7B", label: "Formlikhet", kapId: "kap7", subId: "7B" },
+  { id: "7C", label: "Tangens, sinus, cosinus", kapId: "kap7", subId: "7C" },
+  { id: "7D", label: "Enhetssirkelen", kapId: "kap7", subId: "7D" },
+  { id: "7E", label: "Arealsetningen", kapId: "kap7", subId: "7E" },
+  { id: "7F", label: "Sinussetningen", kapId: "kap7", subId: "7F" },
+  { id: "7G", label: "Cosinussetningen", kapId: "kap7", subId: "7G" },
 ];
 
 export const HELHET_EDGES: HelhetEdge[] = [
@@ -138,6 +150,18 @@ export const HELHET_EDGES: HelhetEdge[] = [
   { from: "5G", to: "5H" },
   { from: "3E", to: "5H" },
   { from: "4D", to: "5H", dashed: true },
+  { from: "4F", to: "6A" },
+  { from: "4B", to: "6B" },
+  { from: "6A", to: "6B" },
+  { from: "6B", to: "6C" },
+  { from: "5D", to: "6C", dashed: true },
+  { from: "7A", to: "7C" },
+  { from: "7B", to: "7C" },
+  { from: "7C", to: "7D" },
+  { from: "7D", to: "7E" },
+  { from: "7E", to: "7F" },
+  { from: "7D", to: "7G" },
+  { from: "7A", to: "7G", dashed: true },
 ];
 
 export const CHAPTER_MAPS: Record<string, ChapterDetail> = {
@@ -536,6 +560,124 @@ export const CHAPTER_MAPS: Record<string, ChapterDetail> = {
         nodes: [
           n("5H-pol", "Pol er aldri med i løsningen", "5H"),
           n("5H-flytt", "Flytt alt til venstre, felles nevner", "5H"),
+        ],
+      },
+    ],
+  },
+  kap6: {
+    kapId: "kap6",
+    title: "Kapittel 6 — modellering",
+    blurb: "Fra data til funksjon: velg modelltype, finn den med regresjon, og vurder hvor god den er.",
+    nextLabel: "Bygger på funksjoner (kap. 4) og likningssett (kap. 5)",
+    clusters: [
+      {
+        id: "6A",
+        title: "6A Matematiske modeller",
+        subId: "6A",
+        layout: "stack",
+        nodes: [
+          n("6A-type", "Lineær, eksponentiell, potens eller andregrad", "6A"),
+          n("6A-tolk", "Tolk konstantene i sammenhengen", "6A"),
+          n("6A-gyld", "Gyldighetsområde", "6A"),
+        ],
+      },
+      {
+        id: "6B",
+        title: "6B Regresjon",
+        subId: "6B",
+        layout: "stack",
+        nodes: [
+          n("6B-pkt", "Punktdiagram først", "6B"),
+          n("6B-gg", "Regresjon i GeoGebra", "6B"),
+          n("6B-velg", "Velg modell ut fra mønsteret", "6B"),
+        ],
+      },
+      {
+        id: "6C",
+        title: "6C Modellering i praksis",
+        subId: "6C",
+        layout: "stack",
+        nodes: [
+          n("6C-bruk", "Bruk modellen til å svare på spørsmål", "6C"),
+          n("6C-kritikk", "Vurder og kritiser modellen", "6C"),
+        ],
+      },
+    ],
+  },
+  kap7: {
+    kapId: "kap7",
+    title: "Kapittel 7 — trigonometri",
+    blurb: "Sider og vinkler i trekanter: Pytagoras, formlikhet, sinus, cosinus, tangens og de tre trekantsetningene.",
+    nextLabel: "Bygger på likninger (kap. 3)",
+    clusters: [
+      {
+        id: "7A",
+        title: "7A Pytagorassetningen",
+        subId: "7A",
+        layout: "stack",
+        nodes: [
+          n("7A-pyt", "a² + b² = c²", "7A"),
+          n("7A-omv", "Omvendt: sjekk om trekanten er rettvinklet", "7A"),
+        ],
+      },
+      {
+        id: "7B",
+        title: "7B Formlikhet",
+        subId: "7B",
+        layout: "stack",
+        nodes: [
+          n("7B-vink", "Like vinkler → formlike", "7B"),
+          n("7B-forh", "Samme forhold mellom sidene", "7B"),
+        ],
+      },
+      {
+        id: "7C",
+        title: "7C Tangens, sinus og cosinus",
+        subId: "7C",
+        layout: "stack",
+        nodes: [
+          n("7C-def", "Motstående, hosliggende, hypotenus", "7C"),
+          n("7C-inv", "Finn vinkel med tan⁻¹, sin⁻¹, cos⁻¹", "7C"),
+        ],
+      },
+      {
+        id: "7D",
+        title: "7D Enhetssirkelen",
+        subId: "7D",
+        layout: "stack",
+        nodes: [
+          n("7D-pkt", "Punktet (cos v, sin v)", "7D"),
+          n("7D-stump", "Stumpe vinkler: cos v < 0", "7D"),
+          n("7D-sup", "sin v = sin(180° − v)", "7D"),
+        ],
+      },
+      {
+        id: "7E",
+        title: "7E Arealsetningen",
+        subId: "7E",
+        layout: "stack",
+        nodes: [
+          n("7E-areal", "A = ½ab·sin C", "7E"),
+        ],
+      },
+      {
+        id: "7F",
+        title: "7F Sinussetningen",
+        subId: "7F",
+        layout: "stack",
+        nodes: [
+          n("7F-setn", "a / sin A = b / sin B", "7F"),
+          n("7F-to", "Tvetydig tilfelle: to trekanter", "7F"),
+        ],
+      },
+      {
+        id: "7G",
+        title: "7G Cosinussetningen",
+        subId: "7G",
+        layout: "stack",
+        nodes: [
+          n("7G-setn", "a² = b² + c² − 2bc·cos A", "7G"),
+          n("7G-vink", "Tre sider → vinkel", "7G"),
         ],
       },
     ],
