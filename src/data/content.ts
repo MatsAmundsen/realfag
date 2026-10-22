@@ -140,7 +140,7 @@ export const CHAPTER_META: Record<
     image: "/images/kap5.jpg",
     tint: "#22d3ee",
   },
-  // kap6/kap7: abstrakte omslag laget fra SVG (design/covers). Tint-kontrast mot #111827: rosa 6,7:1, rosa-rød #fb7185 6,6:1.
+  // kap6/kap7: omslag i samme fotostil som kap1–4 (1600×1200 JPEG). Tint-kontrast mot #111827: rosa 6,7:1, rosa-rød #fb7185 6,6:1.
   kap6: {
     short: "Modellering",
     blurb: "Matematiske modeller, regresjon og modellering i praksis",
