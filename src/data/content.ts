@@ -140,7 +140,7 @@ export const CHAPTER_META: Record<
     image: "/images/kap5.jpg",
     tint: "#22d3ee",
   },
-  // kap6/kap7: abstrakte omslag laget fra SVG (design/covers). Tint-kontrast mot #111827: rosa 6,7:1, oransje 7,8:1.
+  // kap6/kap7: abstrakte omslag laget fra SVG (design/covers). Tint-kontrast mot #111827: rosa 6,7:1, rosa-rød #fb7185 6,6:1.
   kap6: {
     short: "Modellering",
     blurb: "Matematiske modeller, regresjon og modellering i praksis",
@@ -151,7 +151,7 @@ export const CHAPTER_META: Record<
     short: "Trigonometri",
     blurb: "Pytagoras, formlikhet, sinus, cosinus, tangens og trekantsetningene",
     image: "/images/kap7.jpg",
-    tint: "#fb923c",
+    tint: "#fb7185",
   },
 };
 

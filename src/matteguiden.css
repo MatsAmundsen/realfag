@@ -3657,7 +3657,7 @@ a.vid-nav-card {
 .mm-kap4 { --mm: #a78bfa; --mm-soft: rgba(167,139,250,0.12); }
 .mm-kap5 { --mm: #22d3ee; --mm-soft: rgba(34,211,238,0.12); }
 .mm-kap6 { --mm: #f472b6; --mm-soft: rgba(244,114,182,0.12); }
-.mm-kap7 { --mm: #fb923c; --mm-soft: rgba(251,146,60,0.12); }
+.mm-kap7 { --mm: #fb7185; --mm-soft: rgba(251,113,133,0.12); }
 .mm-path-card.mm-exam { background: var(--primary-subtle); }
 .mm-path-card.mm-exam svg { color: var(--hint-color); }
 
@@ -4124,3 +4124,12 @@ a.vid-nav-card {
 }
 .summary-read.is-on { border-color: var(--accent); color: var(--accent); }
 @media (min-width: 900px) { .summary-card { padding: 1.35rem 1.5rem 1.2rem; } }
+
+/* Tonet rulle-kant: vises når tabellen kan rulles videre, forsvinner ved enden (ren CSS, ingen animasjon) */
+.data-table-wrap {
+  background:
+    linear-gradient(to left, var(--bg-surface) 30%, transparent) right center / 48px 100% no-repeat local,
+    linear-gradient(to left, color-mix(in srgb, var(--primary-light) 38%, transparent), transparent) right center / 28px 100% no-repeat scroll,
+    var(--bg-surface);
+}
+@media (prefers-reduced-motion: no-preference) { .data-table-wrap { scroll-behavior: smooth; } }
