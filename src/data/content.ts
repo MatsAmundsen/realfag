@@ -241,9 +241,15 @@ export const VIDEO_BY_SUB: Record<string, TemaVideo[]> = {
   ],
 };
 
+/** Alle temavideoer for et delkapittel (tom liste hvis ingen). */
+export function videosForSub(subId: string | null | undefined): TemaVideo[] {
+  if (!subId) return [];
+  return VIDEO_BY_SUB[subId] ?? [];
+}
+
+/** Første temavideo — brukes av videoknappen på hvert oppgavekort. */
 export function videoForSub(subId: string | null | undefined): TemaVideo | null {
-  if (!subId) return null;
-  return VIDEO_BY_SUB[subId]?.[0] ?? null;
+  return videosForSub(subId)[0] ?? null;
 }
 
 export function findKap(id: string) {

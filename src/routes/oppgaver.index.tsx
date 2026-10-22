@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { CHAPTER_META, fagsok, videoForSub } from "@/data/content";
+import { CHAPTER_META, fagsok, videosForSub } from "@/data/content";
 import { countChapter, isOvingDelkap } from "@/lib/progress";
 import { useProgressStore } from "@/lib/progress-store";
 
@@ -41,7 +41,7 @@ function OppgaverIndex() {
                     <span>
                       {dk.oppgaver.length} oppgaver
                       {dk.quiz?.length ? " · quiz" : ""}
-                      {videoForSub(dk.id) ? " · video" : ""}
+                      {(() => { const n = videosForSub(dk.id).length; return n > 1 ? ` · ${n} videoer` : n ? " · video" : ""; })()}
                     </span>
                   </Link>
                 ))}
