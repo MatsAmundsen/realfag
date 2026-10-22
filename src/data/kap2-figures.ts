@@ -64,8 +64,8 @@ export function figSecondSquare(caption: string): string {
 
 /** 2.OP3 c): a² − b² = (a + b)(a − b). L-formen klippes og legges om til et rektangel. */
 export function figDiffSquares(caption: string): string {
-  const x = 30, y = 40, a = 120, b = 45, c = a - b;
-  const rx = 240, ry = 62;
+  const x = 20, y = 40, a = 110, b = 40, c = a - b;
+  const rx = 210, ry = 62;
   const svg = `
     ${rect(x, y, a, c, P)}
     ${rect(x, y + c, c, b, A)}
@@ -76,7 +76,7 @@ export function figDiffSquares(caption: string): string {
     ${hdim(x, x + a, y - 14, "a")}
     ${vdim(x + a + 12, y, y + c, "a − b", true)}
     ${t(x + a / 2, y + a + 22, "a² − b²", { size: 14 })}
-    <path d="M${x + a + 58},${y + 60} L${rx - 12},${y + 60}" stroke="${INK}" stroke-width="1.6" fill="none"/>
+    <path d="M${x + a + 60},${y + 60} L${rx - 12},${y + 60}" stroke="${INK}" stroke-width="1.6" fill="none"/>
     <path d="M${rx - 18},${y + 54} L${rx - 10},${y + 60} L${rx - 18},${y + 66}" stroke="${INK}" stroke-width="1.6" fill="none"/>
     ${rect(rx, ry, a, c, P)}
     ${rect(rx + a, ry, b, c, A)}
@@ -84,7 +84,7 @@ export function figDiffSquares(caption: string): string {
     ${t(rx + a + b / 2, ry + c / 2, "b(a−b)", { size: 10 })}
     ${hdim(rx, rx + a, ry + c + 12, "a", true)}${hdim(rx + a, rx + a + b, ry + c + 12, "b", true)}
     ${hdim(rx, rx + a + b, ry - 14, "a + b")}
-    ${vdim(rx - 8, ry, ry + c, "a − b")}
+    ${vdim(rx + a + b + 10, ry, ry + c, "a − b", true)}
     ${t(rx + (a + b) / 2, ry + c + 50, "(a + b)(a − b)", { size: 14 })}`;
   return a11y(
     svg,
@@ -245,12 +245,12 @@ export function figLDots(caption: string): string {
     const m = n + 1;
     for (let r = 0; r < m; r++)
       for (let c = 0; c < m; c++) {
-        const cx = ox + c * sp, cy = 30 + (3 - m) * sp + r * sp;
+        const cx = ox + c * sp, cy = 30 + (4 - m) * sp + r * sp;
         out += r === 0 && c === m - 1
           ? `<circle cx="${cx}" cy="${cy}" r="5" fill="none" stroke="${INK}" stroke-width="1.2" stroke-dasharray="3 2" opacity="0.5"/>`
           : `<circle cx="${cx}" cy="${cy}" r="5" style="fill:var(--primary)"/>`;
       }
-    return out + t(ox + (n * sp) / 2, 30 + 3 * sp + 14, `n = ${n}`, { size: 13 });
+    return out + t(ox + (n * sp) / 2, 30 + 3 * sp + 16, `n = ${n}`, { size: 13 });
   };
   const svg = fig(50, 1) + fig(150, 2) + fig(270, 3);
   return a11y(
