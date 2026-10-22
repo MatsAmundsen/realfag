@@ -122,7 +122,7 @@ export const CHAPTER_META: Record<
     image: "/images/kap5.jpg",
     tint: "#22d3ee",
   },
-  // TODO DesignBOT: /images/kap6.jpg og /images/kap7.jpg mangler, og fargene er bare forslag.
+  // kap6/kap7: abstrakte omslag laget fra SVG (design/covers). Tint-kontrast mot #111827: rosa 6,7:1, oransje 7,8:1.
   kap6: {
     short: "Modellering",
     blurb: "Matematiske modeller, regresjon og modellering i praksis",
