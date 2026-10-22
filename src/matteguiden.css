@@ -3656,6 +3656,8 @@ a.vid-nav-card {
 .mm-kap3 { --mm: #f59e0b; --mm-soft: rgba(245,158,11,0.12); }
 .mm-kap4 { --mm: #a78bfa; --mm-soft: rgba(167,139,250,0.12); }
 .mm-kap5 { --mm: #22d3ee; --mm-soft: rgba(34,211,238,0.12); }
+.mm-kap6 { --mm: #f472b6; --mm-soft: rgba(244,114,182,0.12); }
+.mm-kap7 { --mm: #fb923c; --mm-soft: rgba(251,146,60,0.12); }
 .mm-path-card.mm-exam { background: var(--primary-subtle); }
 .mm-path-card.mm-exam svg { color: var(--hint-color); }
 
@@ -3687,7 +3689,9 @@ a.vid-nav-card {
 
 .mm-helhet-cols {
     display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    /* 7 kapitler: 4 + 3 på vanlig desktop, alle 7 på én rad på brede skjermer */
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: start;
     gap: 0.85rem;
 }
 .mm-helhet-col {
@@ -3710,6 +3714,8 @@ a.vid-nav-card {
 }
 .mm-helhet-head strong { display: block; font-size: 0.92rem; }
 .mm-helhet-head span { font-size: 0.72rem; color: var(--text-muted); }
+.mm-helhet-head { border-top: 3px solid var(--mm, var(--primary)); }
+@media (min-width: 1500px) { .mm-helhet-cols { grid-template-columns: repeat(7, minmax(0, 1fr)); } }
 .mm-helhet-col ul { list-style: none; padding: 0.55rem; display: flex; flex-direction: column; gap: 0.4rem; }
 .mm-helhet-col .mm-node {
     width: 100%;
