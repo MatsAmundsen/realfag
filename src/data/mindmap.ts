@@ -81,7 +81,7 @@ export const HELHET_NODES: HelhetNode[] = [
   { id: "2C", label: "Felles faktor", kapId: "kap2", subId: "2C" },
   { id: "2D", label: "Faktorisering", kapId: "kap2", subId: "2D" },
   { id: "2E", label: "Algebraiske brøker", kapId: "kap2", subId: "2E" },
-  { id: "2F", label: "Figurer og mønstre", kapId: "kap2", subId: "2F" },
+  { id: "2F", label: "Formler og figurtall", kapId: "kap2", subId: "2F" },
   { id: "3A", label: "Førstegradslikninger", kapId: "kap3", subId: "3A" },
   { id: "3B", label: "Formler", kapId: "kap3", subId: "3B" },
   { id: "3C", label: "Andregradslikninger", kapId: "kap3", subId: "3C" },
@@ -271,14 +271,18 @@ export const CHAPTER_MAPS: Record<string, ChapterDetail> = {
           n("2B-1", "(a+b)² = a² + 2ab + b²", "2B"),
           n("2B-2", "(a−b)² = a² − 2ab + b²", "2B"),
           n("2B-3", "(a+b)(a−b) = a² − b²", "2B"),
+          n("2B-id", "Identitet eller likning?", "2B"),
         ],
       },
       {
         id: "2C",
-        title: "2C Felles faktor",
+        title: "2C Felles faktor og bevis",
         subId: "2C",
         layout: "stack",
-        nodes: [n("2C-f", "Felles faktor utenfor parentes", "2C")],
+        nodes: [
+          n("2C-f", "Felles faktor utenfor parentes", "2C"),
+          n("2C-bevis", "Bevis og moteksempel", "2C"),
+        ],
       },
       {
         id: "2D",
@@ -302,7 +306,7 @@ export const CHAPTER_MAPS: Record<string, ChapterDetail> = {
       },
       {
         id: "2F",
-        title: "2F Figurer og mønstre",
+        title: "2F Formler og figurtall",
         subId: "2F",
         layout: "stack",
         nodes: [n("2F-fig", "Algebra bak figurtall", "2F")],
@@ -746,6 +750,14 @@ export const PREREQS: Record<string, Prereq> = {
     inputs: [
       { label: "Brøkregning", subId: "1C", kapId: "kap1", role: "basic" },
       { label: "Faktorisering", subId: "2D", kapId: "kap2", role: "step" },
+    ],
+  },
+  "2F": {
+    title: "Formler og figurtall",
+    blurb: "Beskriv et mønster med en formel i n. Bokstavregning og potenser gjør formelen enkel.",
+    inputs: [
+      { label: "Bokstavregning", subId: "2A", kapId: "kap2", role: "basic" },
+      { label: "Potenser", subId: "1D", kapId: "kap1", role: "basic" },
     ],
   },
   "3A": {
