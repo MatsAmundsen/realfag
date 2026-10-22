@@ -4133,3 +4133,13 @@ a.vid-nav-card {
     var(--bg-surface);
 }
 @media (prefers-reduced-motion: no-preference) { .data-table-wrap { scroll-behavior: smooth; } }
+
+/* Mobil: «Start quiz» ligger i flyten etter innholdet i stedet for å flyte over tabeller og rulle-kanten */
+@media (max-width: 600px) {
+  .quiz-fab {
+    position: static;
+    margin: 1.5rem auto calc(1.5rem + env(safe-area-inset-bottom, 0px));
+    width: fit-content;
+    animation: none;
+  }
+}
