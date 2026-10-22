@@ -3043,7 +3043,7 @@ export const fagsok = [
                     {
                         "id": "3.5",
                         "tittel": "Oppgave 3.5",
-                        "tekst": "Formel for baseball-kast: $V_b = 2a + \\frac{m \\cdot k}{3}$. Her er $a$ = akselerasjon, $m$ = masse, $k$ = kraft. En spiller kaster med hastighet 100 km/t ($V_b = 100$), ballen veier 0.15 kg ($m = 0.15$), og kraften er 30 N ($k = 30$). (Se bort fra enheter i utregningen).<br><br><strong>a)</strong> Hvor fort akselererer ballen?<br><br><strong>b)</strong> Skriv om formelen slik at den viser kraft ($k$).",
+                        "tekst": "Formelen nedenfor er en oppdiktet formel for et baseball-kast. Den er ikke en ekte fysikkformel, men brukes her for å øve på å regne med og skrive om formler: $V_b = 2a + \\frac{m \\cdot k}{3}$. Her er $a$ = akselerasjon, $m$ = masse, $k$ = kraft. En spiller kaster med hastighet 100 km/t ($V_b = 100$), ballen veier 0.15 kg ($m = 0.15$), og kraften er 30 N ($k = 30$). (Se bort fra enheter i utregningen).<br><br><strong>a)</strong> Hvor fort akselererer ballen?<br><br><strong>b)</strong> Skriv om formelen slik at den viser kraft ($k$).",
                         "bilde": null,
                         "hint": "Sett de oppgitte tallene inn i formelen og løs for den ukjente for å finne akselerasjonen. Når du skal skrive om formelen, må du isolere leddet med $k$ først.",
                         "fasit": null,
