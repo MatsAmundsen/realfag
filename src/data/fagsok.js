@@ -3659,6 +3659,29 @@ export const fagsok = [
                             "<strong>d)</strong><br>Vi starter med likningen:<br>$\\frac{2a}{a^2 - 9} = \\frac{a}{a - 3} - \\frac{2}{a + 3}$<br><br>Vi faktoriserer nevneren $a^2 - 9$ ved hjelp av konjugatsetningen ($a^2 - b^2 = (a - b)(a + b)$):<br>$a^2 - 9 = (a - 3)(a + 3)$<br><br>Likningen blir da:<br>$\\frac{2a}{(a - 3)(a + 3)} = \\frac{a}{a - 3} - \\frac{2}{a + 3}$<br><br>Fellesnevner er $(a - 3)(a + 3)$. For at likningen skal være definert, må $a \\neq 3$ og $a \\neq -3$.<br>Vi ganger alle ledd med fellesnevneren $(a - 3)(a + 3)$:<br><br>$2a = a \\cdot (a + 3) - 2 \\cdot (a - 3)$<br><br>$2a = a^2 + 3a - (2a - 6)$ (gang inn i parentesene)<br><br>$2a = a^2 + 3a - 2a + 6$ (løs opp minusparentesen)<br><br>$2a = a^2 + a + 6$ (trekk sammen leddene på høyre side)<br><br>$0 = a^2 + a - 2a + 6$ (flytt $2a$ over til høyre side)<br><br>$a^2 - a + 6 = 0$<br><br>Vi sjekker om det finnes løsninger for andregradslikningen $a^2 - a + 6 = 0$.<br>Vi finner diskriminanten ($b^2 - 4ac$):<br>$(-1)^2 - 4 \\cdot 1 \\cdot 6 = 1 - 24 = -23$<br><br>Siden tallet under rottegnet vil være negativt, har likningen ingen reelle løsninger.<br>Dermed finnes det ingen verdier for $a$ som oppfyller likningen.<br><br><strong>Svar:</strong> $L = \\emptyset$ (Ingen løsning)"
                         ],
                         "starter": ""
+                    },
+                    {
+                        "id": "3.16",
+                        "tittel": "Oppgave 3.16",
+                        "tekst": "Forklar hva som menes med proporsjoner i matematikk, vis med matematisk eksempel.",
+                        "bilde": null,
+                        "hint": "To brøker som er like store.",
+                        "fasit": "Proporsjoner betyr at forholdet mellom to verdier er konstant. <br><br>Vi kan sette to forhold opp mot hverandre som to brøker. Hvis de er like store, sier vi at de er proporsjonale. <br><br>Et matematisk eksempel er at $\\frac{x}{y} = k$ (hvor $k$ er en konstant).<br><br>Med tall kan vi skrive:<br>$\\frac{4}{2} = \\frac{10}{5}$<br><br>Dette stemmer fordi begge sidene gir verdien $2$.<br><br><strong>Svar:</strong> Proporsjon betyr at forholdet mellom to størrelser er konstant. For eksempel $\\frac{4}{2} = \\frac{10}{5}$.",
+                        "fasitSteg": null,
+                        "starter": ""
+                    },
+                    {
+                        "id": "3.17",
+                        "tittel": "Oppgave 3.17",
+                        "tekst": "Avgjør når disse matematiske uttrykkene er sanne:<br><br><strong>a)</strong> $\\frac{a}{5} = \\frac{3}{10}$<br><br><strong>b)</strong> $\\frac{10}{2b} = \\frac{4}{5}$",
+                        "bilde": null,
+                        "hint": "Bruk kryssmultiplikasjon for å løse likningene.",
+                        "fasit": null,
+                        "fasitSteg": [
+                            "<strong>a)</strong><br>Vi løser likningen for $a$:<br><br>$\\frac{a}{5} = \\frac{3}{10}$<br><br>$a \\cdot 10 = 3 \\cdot 5$ (kryssmultipliserer)<br><br>$10a = 15$ (regner ut høyre side)<br><br>$a = \\frac{15}{10}$ (deler på $10$ på begge sider)<br><br>$a = 1.5$<br><br><strong>Svar:</strong> $a = 1.5$",
+                            "<strong>b)</strong><br>Vi løser likningen for $b$:<br><br>$\\frac{10}{2b} = \\frac{4}{5}$<br><br>$10 \\cdot 5 = 4 \\cdot 2b$ (kryssmultipliserer)<br><br>$50 = 8b$ (forenkler begge sider)<br><br>$b = \\frac{50}{8}$ (deler på $8$ på begge sider)<br><br>$b = 6.25$<br><br><strong>Svar:</strong> $b = 6.25$"
+                        ],
+                        "starter": ""
                     }
                 ],
                 "quiz": [
@@ -3827,16 +3850,6 @@ export const fagsok = [
                         "starter": ""
                     },
                     {
-                        "id": "3.16",
-                        "tittel": "Oppgave 3.16",
-                        "tekst": "Forklar hva som menes med proporsjoner i matematikk, vis med matematisk eksempel.",
-                        "bilde": null,
-                        "hint": "To brøker som er like store.",
-                        "fasit": "Proporsjoner betyr at forholdet mellom to verdier er konstant. <br><br>Vi kan sette to forhold opp mot hverandre som to brøker. Hvis de er like store, sier vi at de er proporsjonale. <br><br>Et matematisk eksempel er at $\\frac{x}{y} = k$ (hvor $k$ er en konstant).<br><br>Med tall kan vi skrive:<br>$\\frac{4}{2} = \\frac{10}{5}$<br><br>Dette stemmer fordi begge sidene gir verdien $2$.<br><br><strong>Svar:</strong> Proporsjon betyr at forholdet mellom to størrelser er konstant. For eksempel $\\frac{4}{2} = \\frac{10}{5}$.",
-                        "fasitSteg": null,
-                        "starter": ""
-                    },
-                    {
                         "id": "3.16F",
                         "tittel": "Oppgave 3.16F",
                         "tekst": "Nedenfor er det skrevet 3 funksjoner. Er $-1$ et nullpunkt for funksjonene?<br><br><strong>a)</strong> $F(x) = 20x^2 + 5$<br><br><strong>b)</strong> $G(x) = x^2 + x$<br><br><strong>c)</strong> $H(x) = -5x^2 - 7x - 2$",
@@ -3847,19 +3860,6 @@ export const fagsok = [
                             "<strong>a)</strong><br>Vi skal sjekke om $x = -1$ er et nullpunkt for $F(x) = 20x^2 + 5$.<br><br>$F(-1) = 20 \\cdot (-1)^2 + 5$ (setter inn $-1$ for $x$)<br><br>$F(-1) = 20 \\cdot 1 + 5$ (siden $(-1)^2 = 1$)<br><br>$F(-1) = 20 + 5 = 25$<br><br>Siden svaret ikke er $0$, er ikke $-1$ et nullpunkt.<br><br><strong>Svar:</strong> Nei",
                             "<strong>b)</strong><br>Vi skal sjekke om $x = -1$ er et nullpunkt for $G(x) = x^2 + x$.<br><br>$G(-1) = (-1)^2 + (-1)$ (setter inn $-1$ for $x$)<br><br>$G(-1) = 1 - 1 = 0$<br><br>Siden svaret er $0$, er $-1$ et nullpunkt.<br><br><strong>Svar:</strong> Ja",
                             "<strong>c)</strong><br>Vi skal sjekke om $x = -1$ er et nullpunkt for $H(x) = -5x^2 - 7x - 2$.<br><br>$H(-1) = -5 \\cdot (-1)^2 - 7 \\cdot (-1) - 2$ (setter inn $-1$ for $x$)<br><br>$H(-1) = -5 \\cdot 1 + 7 - 2$ (siden $(-1)^2 = 1$ og $-7 \\cdot (-1) = 7$)<br><br>$H(-1) = -5 + 7 - 2 = 0$<br><br>Siden svaret er $0$, er $-1$ et nullpunkt.<br><br><strong>Svar:</strong> Ja"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "3.17",
-                        "tittel": "Oppgave 3.17",
-                        "tekst": "Avgjør når disse matematiske uttrykkene er sanne:<br><br><strong>a)</strong> $\\frac{a}{5} = \\frac{3}{10}$<br><br><strong>b)</strong> $\\frac{10}{2b} = \\frac{4}{5}$",
-                        "bilde": null,
-                        "hint": "Bruk kryssmultiplikasjon for å løse likningene.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>Vi løser likningen for $a$:<br><br>$\\frac{a}{5} = \\frac{3}{10}$<br><br>$a \\cdot 10 = 3 \\cdot 5$ (kryssmultipliserer)<br><br>$10a = 15$ (regner ut høyre side)<br><br>$a = \\frac{15}{10}$ (deler på $10$ på begge sider)<br><br>$a = 1.5$<br><br><strong>Svar:</strong> $a = 1.5$",
-                            "<strong>b)</strong><br>Vi løser likningen for $b$:<br><br>$\\frac{10}{2b} = \\frac{4}{5}$<br><br>$10 \\cdot 5 = 4 \\cdot 2b$ (kryssmultipliserer)<br><br>$50 = 8b$ (forenkler begge sider)<br><br>$b = \\frac{50}{8}$ (deler på $8$ på begge sider)<br><br>$b = 6.25$<br><br><strong>Svar:</strong> $b = 6.25$"
                         ],
                         "starter": ""
                     },
