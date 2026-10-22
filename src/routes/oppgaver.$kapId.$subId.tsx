@@ -6,6 +6,7 @@ import type { StudyMode } from "@/data/types";
 import { ChapterSidebar } from "@/components/ChapterSidebar";
 import { TopicVideoInvite } from "@/components/TopicVideoInvite";
 import { TaskCard } from "@/components/TaskCard";
+import { SummaryView } from "@/components/SummaryView";
 import { QuizOverlay } from "@/components/QuizOverlay";
 import { ModeToggle } from "@/components/ModeToggle";
 import { PrereqMini } from "@/components/PrereqMini";
@@ -74,6 +75,7 @@ function SubchapterPage() {
     );
   }
 
+  const isSummary = dk.id.endsWith("SM") && dk.oppgaver.every((o) => /\.S\d+$/.test(o.id));
   const effectiveMode: StudyMode = oving ? mode : "ove";
   const locked = oving && mode === "prove" && !submitted;
 
@@ -134,7 +136,7 @@ function SubchapterPage() {
           </details>
         )}
 
-        {dk.oppgaver.map((o, i) => (
+        {isSummary ? <SummaryView items={dk.oppgaver} kapId={kapId} subId={subId} /> : dk.oppgaver.map((o, i) => (
           <TaskCard
             key={o.id}
             oppgave={o}

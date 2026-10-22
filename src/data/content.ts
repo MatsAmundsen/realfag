@@ -7,11 +7,24 @@ import { TASK_FIGURES, TASK_FASIT_FIGURES } from "./task-figures";
 import { KAP3_OVEPROVE } from "./kap3-oveprove";
 import { KAP4_QUIZ } from "./kap4-quiz";
 import { KAP5 } from "./kap5";
+import { KAP6 } from "./kap6";
+import { KAP7 } from "./kap7";
 import tallmengderHtml from "./fagstoff/tallmengder.html?raw";
 import brokregningHtml from "./fagstoff/brokregning.html?raw";
 import kvadratrotterHtml from "./fagstoff/kvadratrotter.html?raw";
 import programmeringHtml from "./fagstoff/programmering.html?raw";
 import videoerHtml from "./fagstoff/videoer.html?raw";
+
+/** Datatabeller (kap 6): rullbar ramme på mobil, caption og th scope="row". Endrer ikke tallene. */
+function styleDataTables(html: string): string {
+  if (!html.includes("<table>")) return html;
+  return html.replace(/<table>([\s\S]*?)<\/table>/g, (_m, inner: string) => {
+    const heads = [...inner.matchAll(/<th>([\s\S]*?)<\/th>/g)].map((m) => m[1]);
+    const caption = heads.length ? `Datatabell: ${heads.join(" og ")}` : "Datatabell";
+    const body = inner.replace(/<th>/g, '<th scope="row">');
+    return `<div class="data-table-wrap" role="region" tabindex="0" aria-label="Tabell, kan rulles sidelengs"><table class="data-table"><caption>${caption}</caption>${body}</table></div>`;
+  });
+}
 
 function attachFigure(op: Oppgave): Oppgave {
   let updated = op;
@@ -29,6 +42,13 @@ function attachFigure(op: Oppgave): Oppgave {
       }
     }
     updated = { ...updated, fasitSteg: newSteg };
+  }
+  if (updated.tekst.includes("<table>") || updated.fasitSteg?.some((x) => x.includes("<table>"))) {
+    updated = {
+      ...updated,
+      tekst: styleDataTables(updated.tekst),
+      fasitSteg: updated.fasitSteg?.map(styleDataTables) ?? updated.fasitSteg,
+    };
   }
   return updated;
 }
@@ -65,13 +85,13 @@ export const fagsokRaw = (rawFagsok as Kapittel[]).map((kap) => {
 });
 export const fagsok = [
   ...fagsokRaw,
-  {
-    ...KAP5,
-    delkapitler: KAP5.delkapitler.map((dk) => ({
+  ...[KAP5, KAP6, KAP7].map((kap) => ({
+    ...kap,
+    delkapitler: kap.delkapitler.map((dk) => ({
       ...dk,
       oppgaver: dk.oppgaver.map(attachFigure),
     })),
-  },
+  })),
 ];
 export const fagstoff = (rawFagstoff as Fagstoff[]).map((f) => {
   const inline: Record<string, string> = {
@@ -120,6 +140,19 @@ export const CHAPTER_META: Record<
     image: "/images/kap5.jpg",
     tint: "#22d3ee",
   },
+  // kap6/kap7: abstrakte omslag laget fra SVG (design/covers). Tint-kontrast mot #111827: rosa 6,7:1, oransje 7,8:1.
+  kap6: {
+    short: "Modellering",
+    blurb: "Matematiske modeller, regresjon og modellering i praksis",
+    image: "/images/kap6.jpg",
+    tint: "#f472b6",
+  },
+  kap7: {
+    short: "Trigonometri",
+    blurb: "Pytagoras, formlikhet, sinus, cosinus, tangens og trekantsetningene",
+    image: "/images/kap7.jpg",
+    tint: "#fb923c",
+  },
 };
 
 export type TemaVideo = { tittel: string; url: string };
@@ -161,6 +194,48 @@ export const VIDEO_BY_SUB: Record<string, TemaVideo[]> = {
   "5F": [{ tittel: "Førstegradsulikheter", url: "https://www.youtube.com/watch?v=WvqUOhfhVSY" }],
   "5G": [{ tittel: "Fortegnsskjema og andregradsulikheter", url: "https://www.youtube.com/watch?v=7eSS4QaFAJ8" }],
   "5H": [{ tittel: "Rasjonale ulikheter", url: "https://www.youtube.com/watch?v=ZsbZLaN3aOc" }],
+  "6A": [
+    { tittel: "6A Matematiske modeller", url: "https://www.youtube.com/watch?v=BRm1_7hEsyw" },
+    { tittel: "1T matte 6A Modellering", url: "https://www.youtube.com/watch?v=BMWi_42D8rc" },
+  ],
+  "6B": [
+    { tittel: "6B Regresjon", url: "https://www.youtube.com/watch?v=KdSx6wcP_rk" },
+    { tittel: "Regresjon med GeoGebra", url: "https://www.youtube.com/watch?v=UwVtJPeqGO8" },
+    { tittel: "Matematikk 1T 3.4 Lineær regresjon: GeoGebra", url: "https://www.youtube.com/watch?v=8eTDmTwr_iE" },
+  ],
+  "6C": [
+    { tittel: "6C Modellering i praksis", url: "https://www.youtube.com/watch?v=Vt8GdJ1rrv0" },
+    { tittel: "Matte 1T 6C modellering i praksis", url: "https://www.youtube.com/watch?v=go8M0cD9HIA" },
+  ],
+  "7A": [
+    { tittel: "7A Pytagorassetningen", url: "https://www.youtube.com/watch?v=7w2Kg7Cv-Hk" },
+    { tittel: "Pytagoras' setning", url: "https://www.youtube.com/watch?v=d0qvxsfvpmU" },
+  ],
+  "7B": [
+    { tittel: "7B Formlikhet", url: "https://www.youtube.com/watch?v=YCNP_806dfY" },
+    { tittel: "Formlikhet", url: "https://www.youtube.com/watch?v=1_J1BgQDRO4" },
+    { tittel: "Formlikhet | Matematikk 1T", url: "https://www.youtube.com/watch?v=lwIAVOLt1nM" },
+  ],
+  "7C": [
+    { tittel: "7C Tangens, sinus og cosinus", url: "https://www.youtube.com/watch?v=AupBrBChCkQ" },
+    { tittel: "Matematikk 1T Trigonometri: Sinus, cosinus og tangens Del 1", url: "https://www.youtube.com/watch?v=AM35qPuGUu4" },
+  ],
+  "7D": [
+    { tittel: "7D Generell definisjon av sin v og cos v", url: "https://www.youtube.com/watch?v=0zULwO82b-U" },
+    { tittel: "Enhetssirkelen – alt du trenger å vite", url: "https://www.youtube.com/watch?v=ln6uZjGPiM4" },
+  ],
+  "7E": [
+    { tittel: "7E Arealsetningen", url: "https://www.youtube.com/watch?v=7XsCRohbrAk" },
+    { tittel: "Arealsetningen (1T)", url: "https://www.youtube.com/watch?v=g4388Bg_UNw" },
+  ],
+  "7F": [
+    { tittel: "7F Sinussetningen", url: "https://www.youtube.com/watch?v=kMYufFWcYAU" },
+    { tittel: "Matematikk 1T Sinussetningen Del 2", url: "https://www.youtube.com/watch?v=_S0OCNgZrQw" },
+  ],
+  "7G": [
+    { tittel: "7G Cosinussetningen", url: "https://www.youtube.com/watch?v=-cs5U12nK3I" },
+    { tittel: "Matematikk 1T Cosinussetningen", url: "https://www.youtube.com/watch?v=Fpi_mIrpWWk" },
+  ],
 };
 
 export function videoForSub(subId: string | null | undefined): TemaVideo | null {
