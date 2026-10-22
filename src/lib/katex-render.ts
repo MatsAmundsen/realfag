@@ -20,7 +20,8 @@ function renderTex(tex: string, display: boolean): string {
       displayMode: display,
       throwOnError: false,
       strict: false,
-      output: "html",
+      // htmlAndMathml: MathML for skjermlesere/tekstuttrekk, visuell HTML får aria-hidden.
+      output: "htmlAndMathml",
     });
   } catch {
     return display ? `$$${cleaned}$$` : `$${cleaned}$`;
