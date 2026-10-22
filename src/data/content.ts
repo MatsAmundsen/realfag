@@ -5,6 +5,7 @@ import { MORE23 } from "./extra-kap23";
 import { KAP2_NYE } from "./extra-kap2-nye";
 import { EXTRA_1D, EXTRA_1D_QUIZ } from "./extra-1d";
 import { TASK_FIGURES, TASK_FASIT_FIGURES } from "./task-figures";
+import { FIGURE_REPLACES_IMAGE } from "./kap2-figures";
 import { KAP3_OVEPROVE } from "./kap3-oveprove";
 import { KAP4_QUIZ } from "./kap4-quiz";
 import { KAP5 } from "./kap5";
@@ -32,6 +33,7 @@ function attachFigure(op: Oppgave): Oppgave {
   const fig = TASK_FIGURES[op.id];
   if (fig && !op.tekst.includes('class="task-figure"')) {
     updated = { ...updated, tekst: fig + updated.tekst };
+    if (FIGURE_REPLACES_IMAGE.has(op.id)) updated = { ...updated, bilde: null };
   }
   const fasitFigs = TASK_FASIT_FIGURES[op.id];
   if (fasitFigs && updated.fasitSteg?.length) {

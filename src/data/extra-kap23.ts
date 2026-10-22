@@ -1,5 +1,6 @@
 import type { Oppgave } from "./types";
-import { figRect, figSquareIdentity, figTriangleNumbers } from "./task-figures";
+import { FIG_2_55 } from "./kap2-figures";
+import { figSquareIdentity, figTriangleNumbers } from "./task-figures";
 
 function o(id: string, tekst: string, hint: string, steg: string[]): Oppgave {
   return { id, tittel: `Oppgave ${id}`, tekst, bilde: null, hint, fasit: null, fasitSteg: steg, starter: "" };
@@ -226,7 +227,7 @@ export const MORE23: Record<string, Oppgave[]> = {
     ),
     o(
       "2.55",
-      figRect("s + 3", "s", "Kvadrat med side $s$ og rektangel med sider $s$ og $s+3$.") +
+      FIG_2_55 +
         "Et kvadrat har side $s$. Ved siden av ligger et rektangel med samme høyde og $3$ lenger bredde.<br><br><strong>a)</strong> Uttrykk for kvadratets areal.<br><br><strong>b)</strong> Uttrykk for rektangelets areal.<br><br><strong>c)</strong> Hvor mye større er rektangelet, forenklet?<br><br><strong>d)</strong> For hvilken $s$ er rektangelets areal dobbelt så stort som kvadratets?<br><br><strong>e)</strong> Finn summen av omkretsen til kvadratet og omkretsen til rektangelet, hver figur for seg. Forenkle.",
       "Dobbel: $(s+3)s=2s^2$. Omkrets kvadrat $4s$, rektangel $2(s+s+3)$.",
       [
