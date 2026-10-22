@@ -3813,16 +3813,16 @@ export const fagsok = [
                 "oppgaver": [
                     {
                         "id": "3.15F",
-                        "tittel": "Oppgave 3.15F",
-                        "tekst": "Løs proporsjonene.<br><br><strong>a)</strong> $\\frac{x}{4} = \\frac{9}{12}$<br><br><strong>b)</strong> $\\frac{7}{x} = \\frac{21}{12}$<br><br><strong>c)</strong> $\\frac{x+2}{3} = \\frac{x-1}{2}$<br><br><strong>d)</strong> $\\frac{5}{x-1} = \\frac{10}{x+3}$",
+                        "tittel": "Oppgave 3.15F (Funksjoner)",
+                        "tekst": "<strong>a)</strong> Hva er en funksjon og hvordan skriver vi det i matematikk?<br><br><strong>b)</strong> Hva er et nullpunkt?<br><br><strong>c)</strong> Forklar nullpunktfaktorisering.<br><br><strong>d)</strong> Når er det vi benytter oss av denne metoden?",
                         "bilde": null,
-                        "hint": "Kryssmultipliser: $\\frac{a}{b} = \\frac{c}{d}$ gir $a \\cdot d = b \\cdot c$. Husk parenteser når telleren eller nevneren har flere ledd. I d) kan ikke $x$ være $1$ eller $-3$.",
+                        "hint": "Tenk på en funksjon som en regel der ett input ($x$) gir ett output ($y$).",
                         "fasit": null,
                         "fasitSteg": [
-                            "<strong>a)</strong><br>$\\frac{x}{4} = \\frac{9}{12}$<br><br>$12x = 4 \\cdot 9$ (kryssmultipliserer)<br><br>$12x = 36$<br><br>$x = 3$<br><br><strong>Svar:</strong> $x = 3$",
-                            "<strong>b)</strong><br>$\\frac{7}{x} = \\frac{21}{12}$<br><br>$7 \\cdot 12 = 21x$ (kryssmultipliserer)<br><br>$84 = 21x$<br><br>$x = 4$<br><br><strong>Svar:</strong> $x = 4$",
-                            "<strong>c)</strong><br>$\\frac{x+2}{3} = \\frac{x-1}{2}$<br><br>$2(x+2) = 3(x-1)$ (kryssmultipliserer, husk parenteser)<br><br>$2x + 4 = 3x - 3$<br><br>$4 + 3 = 3x - 2x$<br><br>$x = 7$<br><br><strong>Svar:</strong> $x = 7$",
-                            "<strong>d)</strong><br>Nevnerne kan ikke være $0$, så $x \\neq 1$ og $x \\neq -3$.<br><br>$\\frac{5}{x-1} = \\frac{10}{x+3}$<br><br>$5(x+3) = 10(x-1)$ (kryssmultipliserer)<br><br>$5x + 15 = 10x - 10$<br><br>$25 = 5x$<br><br>$x = 5$<br><br>Prøve: $\\frac{5}{5-1} = \\frac{5}{4}$ og $\\frac{10}{5+3} = \\frac{10}{8} = \\frac{5}{4}$. Det stemmer.<br><br><strong>Svar:</strong> $x = 5$"
+                            "<strong>a)</strong><br>En funksjon er en matematisk regel som tar en inn-verdi og gir nøyaktig én ut-verdi. Vi skriver det vanligvis som $f(x)$.",
+                            "<strong>b)</strong><br>Et nullpunkt er den eller de $x$-verdiene der grafen til funksjonen krysser $x$-aksen. Med andre ord, det er når funksjonsverdien er null ($y = 0$).",
+                            "<strong>c)</strong><br>Nullpunktfaktorisering er en metode for å faktorisere polynomer av andre grad (eller høyere).<br>Vi finner først nullpunktene $x_1$ og $x_2$, og deretter skriver vi uttrykket på formen $a(x-x_1)(x-x_2)$.",
+                            "<strong>d)</strong><br>Vi benytter oss ofte av denne metoden når vi skal forkorte brøkuttrykk som inneholder polynomer, eller når vi skal tegne fortegnsskjema for å løse ulikheter."
                         ],
                         "starter": ""
                     },
@@ -3839,14 +3839,14 @@ export const fagsok = [
                     {
                         "id": "3.16F",
                         "tittel": "Oppgave 3.16F",
-                        "tekst": "<strong>a)</strong> Saft og vann blandes i forholdet $1 : 4$. Hvor mye saft trenger du for å lage $2$ liter ferdig blanding?<br><br><strong>b)</strong> Du har $0{,}3$ liter saft. Hvor mye vann skal du bruke med samme forhold?<br><br><strong>c)</strong> I en klasse er forholdet mellom antall jenter og antall gutter $2 : 3$. Det er $30$ elever i klassen. Hvor mange jenter og hvor mange gutter er det?",
+                        "tekst": "Nedenfor er det skrevet 3 funksjoner. Er $-1$ et nullpunkt for funksjonene?<br><br><strong>a)</strong> $F(x) = 20x^2 + 5$<br><br><strong>b)</strong> $G(x) = x^2 + x$<br><br><strong>c)</strong> $H(x) = -5x^2 - 7x - 2$",
                         "bilde": null,
-                        "hint": "Forholdet $1 : 4$ betyr $1$ del saft og $4$ deler vann, altså $5$ deler til sammen. Tenk på samme måte i c).",
+                        "hint": "Regn ut $F(-1)$, $G(-1)$ og $H(-1)$. Hvis svaret er $0$, er det et nullpunkt.",
                         "fasit": null,
                         "fasitSteg": [
-                            "<strong>a)</strong><br>Blandingen består av $1 + 4 = 5$ like deler, der $1$ del er saft.<br><br>$\\frac{x}{2} = \\frac{1}{5}$<br><br>$5x = 2$<br><br>$x = 0{,}4$<br><br><strong>Svar:</strong> $0{,}4$ liter saft",
-                            "<strong>b)</strong><br>$\\frac{\\text{saft}}{\\text{vann}} = \\frac{1}{4}$, så $\\frac{0{,}3}{y} = \\frac{1}{4}$<br><br>$y = 4 \\cdot 0{,}3 = 1{,}2$<br><br><strong>Svar:</strong> $1{,}2$ liter vann",
-                            "<strong>c)</strong><br>Klassen deles i $2 + 3 = 5$ like deler. Hver del er $\\frac{30}{5} = 6$ elever.<br><br>Jenter: $2 \\cdot 6 = 12$. Gutter: $3 \\cdot 6 = 18$.<br><br>Kontroll: $12 + 18 = 30$ og $\\frac{12}{18} = \\frac{2}{3}$.<br><br><strong>Svar:</strong> $12$ jenter og $18$ gutter"
+                            "<strong>a)</strong><br>Vi skal sjekke om $x = -1$ er et nullpunkt for $F(x) = 20x^2 + 5$.<br><br>$F(-1) = 20 \\cdot (-1)^2 + 5$ (setter inn $-1$ for $x$)<br><br>$F(-1) = 20 \\cdot 1 + 5$ (siden $(-1)^2 = 1$)<br><br>$F(-1) = 20 + 5 = 25$<br><br>Siden svaret ikke er $0$, er ikke $-1$ et nullpunkt.<br><br><strong>Svar:</strong> Nei",
+                            "<strong>b)</strong><br>Vi skal sjekke om $x = -1$ er et nullpunkt for $G(x) = x^2 + x$.<br><br>$G(-1) = (-1)^2 + (-1)$ (setter inn $-1$ for $x$)<br><br>$G(-1) = 1 - 1 = 0$<br><br>Siden svaret er $0$, er $-1$ et nullpunkt.<br><br><strong>Svar:</strong> Ja",
+                            "<strong>c)</strong><br>Vi skal sjekke om $x = -1$ er et nullpunkt for $H(x) = -5x^2 - 7x - 2$.<br><br>$H(-1) = -5 \\cdot (-1)^2 - 7 \\cdot (-1) - 2$ (setter inn $-1$ for $x$)<br><br>$H(-1) = -5 \\cdot 1 + 7 - 2$ (siden $(-1)^2 = 1$ og $-7 \\cdot (-1) = 7$)<br><br>$H(-1) = -5 + 7 - 2 = 0$<br><br>Siden svaret er $0$, er $-1$ et nullpunkt.<br><br><strong>Svar:</strong> Ja"
                         ],
                         "starter": ""
                     },
@@ -3866,15 +3866,18 @@ export const fagsok = [
                     {
                         "id": "3.17F",
                         "tittel": "Oppgave 3.17F",
-                        "tekst": "<strong>a)</strong> Et kart har målestokk $1 : 25\\,000$. Avstanden mellom to hytter er $6$ cm på kartet. Hvor langt er det i virkeligheten? Svar i km.<br><br><strong>b)</strong> To steder ligger $4$ km fra hverandre. Hvor langt fra hverandre er de på et kart med målestokk $1 : 50\\,000$?<br><br><strong>c)</strong> En dag koster $100$ euro $1150$ kroner. Hvor mange kroner koster $340$ euro?<br><br><strong>d)</strong> Hvor mange euro får du for $2300$ kroner med samme kurs?",
+                        "tekst": "Faktoriser polynomet ved hjelp av nullpunktmetoden:<br><br><strong>a)</strong> $t^2 - 8t + 15$<br><br><strong>b)</strong> $x^2 - 7x + 10$<br><br><strong>c)</strong> $2m^2 + 5m - 12$<br><br><strong>d)</strong> $-z^2 + 4z + 12$<br><br><strong>e)</strong> $\\frac{p^2 - 2p - 8}{p^2 - 16}$<br><br><strong>f)</strong> $\\frac{3v^2 - 14v + 8}{v^2 - 6v + 8}$<br><br><strong>g)</strong> $\\frac{-2y^2 + 10y - 12}{2y^2 - 8y + 8}$",
                         "bilde": null,
-                        "hint": "Målestokk $1 : 25\\,000$ betyr at $1$ cm på kartet er $25\\,000$ cm i virkeligheten. Husk at $1$ km $= 100\\,000$ cm. Sett opp en proporsjon i c) og d).",
+                        "hint": "Bruk abc-formelen for å finne nullpunktene først, og sett deretter inn i $a(x-x_1)(x-x_2)$.",
                         "fasit": null,
                         "fasitSteg": [
-                            "<strong>a)</strong><br>$6 \\cdot 25\\,000 = 150\\,000$ cm<br><br>$150\\,000$ cm $= 1{,}5$ km (del på $100\\,000$)<br><br><strong>Svar:</strong> $1{,}5$ km",
-                            "<strong>b)</strong><br>$4$ km $= 400\\,000$ cm<br><br>$\\frac{400\\,000}{50\\,000} = 8$<br><br><strong>Svar:</strong> $8$ cm",
-                            "<strong>c)</strong><br>$\\frac{x}{340} = \\frac{1150}{100}$<br><br>$x = 340 \\cdot 11{,}5 = 3910$<br><br><strong>Svar:</strong> $3910$ kroner",
-                            "<strong>d)</strong><br>$\\frac{y}{2300} = \\frac{100}{1150}$<br><br>$y = \\frac{2300 \\cdot 100}{1150} = 200$<br><br><strong>Svar:</strong> $200$ euro"
+                            "<strong>a)</strong><br>Vi skal faktorisere $t^2 - 8t + 15$.<br><br>Først finner vi nullpunktene ved abc-formelen, der $a=1$, $b=-8$ og $c=15$:<br><br>$t = \\frac{-(-8) \\pm \\sqrt{(-8)^2 - 4 \\cdot 1 \\cdot 15}}{2 \\cdot 1}$ (setter inn i formelen)<br><br>$t = \\frac{8 \\pm \\sqrt{64 - 60}}{2}$ (forenkler under roten)<br><br>$t = \\frac{8 \\pm \\sqrt{4}}{2} = \\frac{8 \\pm 2}{2}$ (trekker kvadratroten)<br><br>Dette gir nullpunktene $t_1 = 5$ og $t_2 = 3$.<br><br>Vi setter inn i formelen $a(t-t_1)(t-t_2)$:<br>$1(t-5)(t-3) = (t-3)(t-5)$<br><br><strong>Svar:</strong> $(t-3)(t-5)$",
+                            "<strong>b)</strong><br>Vi skal faktorisere $x^2 - 7x + 10$.<br><br>Finner nullpunktene ved abc-formelen ($a=1$, $b=-7$, $c=10$):<br><br>$x = \\frac{-(-7) \\pm \\sqrt{(-7)^2 - 4 \\cdot 1 \\cdot 10}}{2 \\cdot 1}$<br><br>$x = \\frac{7 \\pm \\sqrt{49 - 40}}{2}$<br><br>$x = \\frac{7 \\pm \\sqrt{9}}{2} = \\frac{7 \\pm 3}{2}$<br><br>Nullpunktene er $x_1 = 5$ og $x_2 = 2$.<br><br>Faktorisert uttrykk:<br>$(x-5)(x-2)$<br><br><strong>Svar:</strong> $(x-2)(x-5)$",
+                            "<strong>c)</strong><br>Vi skal faktorisere $2m^2 + 5m - 12$.<br><br>Finner nullpunktene ($a=2$, $b=5$, $c=-12$):<br><br>$m = \\frac{-5 \\pm \\sqrt{5^2 - 4 \\cdot 2 \\cdot (-12)}}{2 \\cdot 2}$<br><br>$m = \\frac{-5 \\pm \\sqrt{25 + 96}}{4}$<br><br>$m = \\frac{-5 \\pm \\sqrt{121}}{4} = \\frac{-5 \\pm 11}{4}$<br><br>Nullpunkter:<br>$m_1 = \\frac{6}{4} = 1.5$ og $m_2 = \\frac{-16}{4} = -4$<br><br>Settes inn i $a(m-m_1)(m-m_2)$:<br>$2(m - 1.5)(m - (-4))$<br>$2(m - 1.5)(m + 4)$<br><br>Vi ganger $2$-tallet inn i den første parentesen for å få heltall:<br>$(2m - 3)(m + 4)$<br><br><strong>Svar:</strong> $(2m - 3)(m + 4)$",
+                            "<strong>d)</strong><br>Vi skal faktorisere $-z^2 + 4z + 12$.<br><br>Finner nullpunktene ($a=-1$, $b=4$, $c=12$):<br><br>$z = \\frac{-4 \\pm \\sqrt{4^2 - 4 \\cdot (-1) \\cdot 12}}{2 \\cdot (-1)}$<br><br>$z = \\frac{-4 \\pm \\sqrt{16 + 48}}{-2}$<br><br>$z = \\frac{-4 \\pm \\sqrt{64}}{-2} = \\frac{-4 \\pm 8}{-2}$<br><br>Nullpunkter:<br>$z_1 = \\frac{4}{-2} = -2$ og $z_2 = \\frac{-12}{-2} = 6$<br><br>Settes inn i $a(z-z_1)(z-z_2)$:<br>$-1(z - (-2))(z - 6) = -(z + 2)(z - 6)$<br><br><strong>Svar:</strong> $-(z + 2)(z - 6)$",
+                            "<strong>e)</strong><br>Vi skal forkorte $\\frac{p^2 - 2p - 8}{p^2 - 16}$.<br><br>Først faktoriserer vi telleren $p^2 - 2p - 8$.<br>Nullpunkter: $p = \\frac{2 \\pm \\sqrt{4 - 4(1)(-8)}}{2} = \\frac{2 \\pm \\sqrt{36}}{2} = \\frac{2 \\pm 6}{2}$.<br>Dette gir $p_1 = 4$, $p_2 = -2$.<br>Teller faktorisert: $(p - 4)(p + 2)$.<br><br>Deretter faktoriserer vi nevneren $p^2 - 16$.<br>Dette er konjugatsetningen, $a^2 - b^2 = (a-b)(a+b)$.<br>Nevner faktorisert: $(p - 4)(p + 4)$.<br><br>Setter dette inn i brøken:<br>$\\frac{(p - 4)(p + 2)}{(p - 4)(p + 4)}$<br><br>Stryker felles faktor $(p - 4)$:<br>$\\frac{p + 2}{p + 4}$<br><br><strong>Svar:</strong> $\\frac{p + 2}{p + 4}$",
+                            "<strong>f)</strong><br>Vi skal forkorte $\\frac{3v^2 - 14v + 8}{v^2 - 6v + 8}$.<br><br>Teller: $3v^2 - 14v + 8$.<br>Nullpunkter: $v = \\frac{14 \\pm \\sqrt{(-14)^2 - 4 \\cdot 3 \\cdot 8}}{2 \\cdot 3} = \\frac{14 \\pm \\sqrt{196 - 96}}{6} = \\frac{14 \\pm 10}{6}$.<br>Dette gir $v_1 = 4$, $v_2 = \\frac{4}{6} = \\frac{2}{3}$.<br>Faktorisert: $3(v - 4)(v - \\frac{2}{3}) = (v - 4)(3v - 2)$.<br><br>Nevner: $v^2 - 6v + 8$.<br>Nullpunkter: $v = \\frac{6 \\pm \\sqrt{36 - 32}}{2} = \\frac{6 \\pm 2}{2}$.<br>Dette gir $v_1 = 4$, $v_2 = 2$.<br>Faktorisert: $(v - 4)(v - 2)$.<br><br>Setter inn i brøken:<br>$\\frac{(v - 4)(3v - 2)}{(v - 4)(v - 2)}$<br><br>Stryker felles faktor $(v - 4)$:<br>$\\frac{3v - 2}{v - 2}$<br><br><strong>Svar:</strong> $\\frac{3v - 2}{v - 2}$",
+                            "<strong>g)</strong><br>Vi skal forkorte $\\frac{-2y^2 + 10y - 12}{2y^2 - 8y + 8}$.<br><br>Teller: $-2y^2 + 10y - 12 = -2(y^2 - 5y + 6)$.<br>Nullpunkter for $y^2 - 5y + 6$: $y = \\frac{5 \\pm \\sqrt{25 - 24}}{2} = \\frac{5 \\pm 1}{2}$.<br>Dette gir $y_1 = 3$, $y_2 = 2$.<br>Teller faktorisert: $-2(y - 3)(y - 2)$.<br><br>Nevner: $2y^2 - 8y + 8 = 2(y^2 - 4y + 4)$.<br>Nullpunkter for $y^2 - 4y + 4$: $y = \\frac{4 \\pm \\sqrt{16 - 16}}{2} = 2$.<br>Nevner faktorisert: $2(y - 2)(y - 2)$.<br><br>Setter inn i brøken:<br>$\\frac{-2(y - 3)(y - 2)}{2(y - 2)(y - 2)}$<br><br>Forenkler brøken ved å dele på $2(y - 2)$ oppe og nede:<br>$\\frac{-1(y - 3)}{y - 2}$<br><br>Dette kan skrives som:<br>$\\frac{-y + 3}{y - 2} = \\frac{3 - y}{y - 2}$<br><br><strong>Svar:</strong> $\\frac{3 - y}{y - 2}$"
                         ],
                         "starter": ""
                     }

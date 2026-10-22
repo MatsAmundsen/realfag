@@ -453,13 +453,13 @@ export const MORE23: Record<string, Oppgave[]> = {
     ),
     o(
       "3.52",
-      "Fellesnevner $(x-2)(x+2)$ eller tilsvarende.<br><br><strong>a)</strong> $\\dfrac{3}{x-1}-\\dfrac{2}{x}=1$<br><br><strong>b)</strong> $\\dfrac{x}{x-4}+\\dfrac{2}{x+4}=1$<br><br><strong>c)</strong> $\\dfrac{5}{x^2-1}=\\dfrac{1}{x-1}$<br><br><strong>d)</strong> Sett prøve på a).<br><br><strong>e)</strong> Hvilke $x$ er forbudt i b)?",
+      "Løs likningene ved å gange med fellesnevneren.<br><br><strong>a)</strong> $\\dfrac{3}{x-1}-\\dfrac{2}{x}=1$<br><br><strong>b)</strong> $\\dfrac{x}{x-4}+\\dfrac{2}{x+4}=1$<br><br><strong>c)</strong> $\\dfrac{5}{x^2-1}=\\dfrac{1}{x-1}$<br><br><strong>d)</strong> Sett prøve på a).<br><br><strong>e)</strong> Hvilke $x$ er forbudt i b)?",
       "Skriv $x^2-1=(x-1)(x+1)$. Gang gjennom og samle $x$-ledd.",
       [
         "<strong>a)</strong> $3x-2(x-1)=x(x-1)$, $3x-2x+2=x^2-x$, $0=x^2-2x-2$, $x=1\\pm\\sqrt{3}$. Begge tillatt ($\\neq 0,1$).<br><strong>Svar:</strong> $x=1\\pm\\sqrt{3}$",
         "<strong>b)</strong> $x(x+4)+2(x-4)=(x-4)(x+4)$, $x^2+4x+2x-8=x^2-16$, $6x=-8$, $x=-\\dfrac{4}{3}$. OK.<br><strong>Svar:</strong> $x=-\\dfrac{4}{3}$",
         "<strong>c)</strong> $5=(x+1)$ for $x\\neq\\pm 1$, $x=4$. OK.<br><strong>Svar:</strong> $x=4$",
-        "<strong>d)</strong> Sett inn $1+\\sqrt{3}$ og $1-\\sqrt{3}$ i originalen — begge passer (mellomregning på kladdeark).<br><strong>Svar:</strong> begge røttene stemmer",
+        "<strong>d)</strong> Fra a) er $x=1\\pm\\sqrt{3}$.<br>$x=1+\\sqrt{3}$: $\\dfrac{3}{\\sqrt{3}}-\\dfrac{2}{1+\\sqrt{3}}=\\sqrt{3}-(\\sqrt{3}-1)=1$.<br>$x=1-\\sqrt{3}$: $\\dfrac{3}{-\\sqrt{3}}-\\dfrac{2}{1-\\sqrt{3}}=-\\sqrt{3}+(1+\\sqrt{3})=1$.<br>Venstre side blir $1$ i begge tilfeller.<br><strong>Svar:</strong> begge løsningene stemmer",
         "<strong>e)</strong> $x\\neq 4$ og $x\\neq -4$. <strong>Svar:</strong> $x\\neq\\pm 4$",
       ],
     ),
@@ -506,11 +506,11 @@ export const MORE23: Record<string, Oppgave[]> = {
     o(
       "3.56",
       "Restteoremet: $P(a)=0$ $\\Leftrightarrow$ $(x-a)$ er en faktor.<br><br><strong>a)</strong> $P(x)=x^3-4x^2+x+6$. Regn ut $P(2)$ og $P(-1)$.<br><br><strong>b)</strong> Hvilken av $(x-2)$ og $(x+1)$ er faktor i $P$?<br><br><strong>c)</strong> Del $P$ på den faktoren du fant, og faktoriser fullstendig.<br><br><strong>d)</strong> $Q(x)=x^3+x^2-4x-4$. Vis at $x=-1$ er rot, og faktoriser $Q$.<br><br><strong>e)</strong> Et tredjegradspolynom har røttene $-2$, $1$ og $3$, og $P(0)=-6$. Finn $P(x)$.",
-      "I e) $P(x)=ax(x+2)(x-1)(x-3)$ — nei, tre røtter: $P(x)=a(x+2)(x-1)(x-3)$. Bruk $P(0)=-6$.",
+      "Sett inn tallet for $x$ i a). I c) bruker du polynomdivisjon og faktoriserer kvotienten. I e) skriver du $P(x)=a(x+2)(x-1)(x-3)$ og bruker $P(0)=-6$ til å finne $a$.",
       [
         "<strong>a)</strong> $P(2)=8-16+2+6=0$. $P(-1)=-1-4-1+6=0$. Begge $0$.<br><strong>Svar:</strong> $P(2)=P(-1)=0$",
-        "<strong>b)</strong> Begge, siden begge gir rest $0$. <strong>Svar:</strong> begge",
-        "<strong>c)</strong> $P(x)=(x-2)(x+1)(x-3)$ (siste rot fra andregraden $x^2-3x-3$ vent — $P(x)=(x-2)(x^2-2x-3)=(x-2)(x-3)(x+1)$).<br><strong>Svar:</strong> $(x-2)(x-3)(x+1)$",
+        "<strong>b)</strong> Siden $P(2)=0$ og $P(-1)=0$, går både $(x-2)$ og $(x+1)$ opp i $P$.<br><strong>Svar:</strong> begge er faktorer",
+        "<strong>c)</strong> Vi deler på $(x-2)$: $(x^3-4x^2+x+6):(x-2)=x^2-2x-3$.<br>Kontroll: $(x-2)(x^2-2x-3)=x^3-2x^2-3x-2x^2+4x+6=x^3-4x^2+x+6$.<br>Kvotienten faktoriseres: $x^2-2x-3=(x-3)(x+1)$, siden $(-3)\\cdot 1=-3$ og $-3+1=-2$.<br>$P(x)=(x-2)(x-3)(x+1)$<br><strong>Svar:</strong> $P(x)=(x-2)(x-3)(x+1)$",
         "<strong>d)</strong> $Q(-1)=-1+1+4-4=0$. $Q(x)=(x+1)(x^2-4)=(x+1)(x-2)(x+2)$.<br><strong>Svar:</strong> $(x+1)(x-2)(x+2)$",
         "<strong>e)</strong> $P(0)=a(2)(-1)(-3)=6a=-6$, $a=-1$. $P(x)=-(x+2)(x-1)(x-3)$.<br><strong>Svar:</strong> $P(x)=-(x+2)(x-1)(x-3)$",
       ],
