@@ -84,7 +84,7 @@ export const HELHET_NODES: HelhetNode[] = [
   { id: "3B", label: "Formler", kapId: "kap3", subId: "3B" },
   { id: "3C", label: "Andregradslikninger", kapId: "kap3", subId: "3C" },
   { id: "3D", label: "ABC-formelen", kapId: "kap3", subId: "3D" },
-  { id: "3E", label: "Rasjonale likninger", kapId: "kap3", subId: "3E" },
+  { id: "3E", label: "Rasjonale likninger, ekvivalens og proporsjoner", kapId: "kap3", subId: "3E" },
   { id: "3F", label: "Funksjoner og nullpunktfaktorisering", kapId: "kap3", subId: "3F" },
   { id: "3G", label: "Polynomdivisjon", kapId: "kap3", subId: "3G" },
   { id: "4A", label: "Funksjonsbegrepet", kapId: "kap4", subId: "4A" },
@@ -331,7 +331,7 @@ export const CHAPTER_MAPS: Record<string, ChapterDetail> = {
       },
       {
         id: "3E",
-        title: "3E Rasjonale likninger",
+        title: "3E Rasjonale likninger, ekvivalens og proporsjoner",
         subId: "3E",
         layout: "stack",
         nodes: [
@@ -632,7 +632,7 @@ export const PREREQS: Record<string, Prereq> = {
     ],
   },
   "3E": {
-    title: "Rasjonale likninger",
+    title: "Rasjonale likninger, ekvivalens og proporsjoner",
     blurb: "Gang med fellesnevner, men sjekk definisjonsmengden — ellers får du falske løsninger.",
     inputs: [
       { label: "Algebraiske brøker", subId: "2E", kapId: "kap2", role: "step" },
@@ -741,7 +741,7 @@ export const PREREQS: Record<string, Prereq> = {
     title: "Rasjonale ulikheter",
     blurb: "Poler er aldri med. Flytt alt til venstre og les fortegnslinja.",
     inputs: [
-      { label: "Rasjonale likninger", subId: "3E", kapId: "kap3", role: "step" },
+      { label: "Rasjonale likninger, ekvivalens og proporsjoner", subId: "3E", kapId: "kap3", role: "step" },
       { label: "Fortegnslinje", subId: "5G", kapId: "kap5", role: "step" },
     ],
   },

@@ -609,7 +609,7 @@ export const SUB_TITLES: Record<string, string> = {
   "3B": "3B Formler",
   "3C": "3C Andregradslikninger",
   "3D": "3D ABC-formelen",
-  "3E": "3E Rasjonale likninger",
+  "3E": "3E Rasjonale likninger, ekvivalens og proporsjoner",
   "3F": "3F Funksjoner og nullpunktfaktorisering",
   "3G": "3G Polynomdivisjon",
   "3OP": "Øveprøve",
