@@ -3043,12 +3043,12 @@ export const fagsok = [
                     {
                         "id": "3.5",
                         "tittel": "Oppgave 3.5",
-                        "tekst": "Formelen nedenfor er en oppdiktet formel for et baseball-kast. Den er ikke en ekte fysikkformel, men brukes her for å øve på å regne med og skrive om formler: $V_b = 2a + \\frac{m \\cdot k}{3}$. Her er $a$ = akselerasjon, $m$ = masse, $k$ = kraft. En spiller kaster med hastighet 100 km/t ($V_b = 100$), ballen veier 0.15 kg ($m = 0.15$), og kraften er 30 N ($k = 30$). (Se bort fra enheter i utregningen).<br><br><strong>a)</strong> Hvor fort akselererer ballen?<br><br><strong>b)</strong> Skriv om formelen slik at den viser kraft ($k$).",
+                        "tekst": "Formelen nedenfor er en oppdiktet formel for et baseball-kast. Den er ikke en ekte fysikkformel, men brukes her for å øve på å regne med og skrive om formler: $V_b = 2a + \\frac{m \\cdot k}{3}$. Her er $a$ = akselerasjon, $m$ = masse, $k$ = kraft. En spiller kaster med hastighet 100 km/t ($V_b = 100$), ballen veier 0{,}15 kg ($m = 0{,}15$), og kraften er 30 N ($k = 30$). (Se bort fra enheter i utregningen).<br><br><strong>a)</strong> Hvor fort akselererer ballen?<br><br><strong>b)</strong> Skriv om formelen slik at den viser kraft ($k$).",
                         "bilde": null,
                         "hint": "Sett de oppgitte tallene inn i formelen og løs for den ukjente for å finne akselerasjonen. Når du skal skrive om formelen, må du isolere leddet med $k$ først.",
                         "fasit": null,
                         "fasitSteg": [
-                            "<strong>a)</strong> <br>Vi skal finne akselerasjonen $a$ ved å sette inn de kjente verdiene $V_b = 100$, $m = 0.15$ og $k = 30$ i formelen:<br><br>$V_b = 2a + \\frac{m \\cdot k}{3}$<br><br>$100 = 2a + \\frac{0.15 \\cdot 30}{3}$ (sett inn verdiene)<br><br>$100 = 2a + \\frac{4.5}{3}$ (regn ut telleren: $0.15 \\cdot 30 = 4.5$)<br><br>$100 = 2a + 1.5$ (regn ut brøken: $\\frac{4.5}{3} = 1.5$)<br><br>$100 - 1.5 = 2a$ (flytt $1.5$ over til venstre side)<br><br>$98.5 = 2a$ (trekk fra)<br><br>$a = \\frac{98.5}{2}$ (del på $2$ for å isolere $a$)<br><br>$a = 49.25$<br><br><strong>Svar:</strong> $a = 49.25$",
+                            "<strong>a)</strong> <br>Vi skal finne akselerasjonen $a$ ved å sette inn de kjente verdiene $V_b = 100$, $m = 0{,}15$ og $k = 30$ i formelen:<br><br>$V_b = 2a + \\frac{m \\cdot k}{3}$<br><br>$100 = 2a + \\frac{0{,}15 \\cdot 30}{3}$ (sett inn verdiene)<br><br>$100 = 2a + \\frac{4{,}5}{3}$ (regn ut telleren: $0{,}15 \\cdot 30 = 4{,}5$)<br><br>$100 = 2a + 1{,}5$ (regn ut brøken: $\\frac{4{,}5}{3} = 1{,}5$)<br><br>$100 - 1{,}5 = 2a$ (flytt $1{,}5$ over til venstre side)<br><br>$98{,}5 = 2a$ (trekk fra)<br><br>$a = \\frac{98{,}5}{2}$ (del på $2$ for å isolere $a$)<br><br>$a = 49{,}25$<br><br><strong>Svar:</strong> $a = 49{,}25$",
                             "<strong>b)</strong> <br>Vi skal skrive om formelen for å uttrykke kraften $k$ ved de andre variablene.<br><br>$V_b = 2a + \\frac{m \\cdot k}{3}$<br><br>$V_b - 2a = \\frac{m \\cdot k}{3}$ (flytt leddet med $a$ over for å samle leddet med $k$)<br><br>$3 \\cdot (V_b - 2a) = m \\cdot k$ (gang med $3$ på begge sider for å fjerne brøken)<br><br>$3V_b - 6a = m \\cdot k$ (gang inn $3$ i parentesen)<br><br>$k = \\frac{3V_b - 6a}{m}$ (del med $m$ for å isolere $k$)<br><br>Alternativt kan man skrive svaret med parentesen:<br>$k = \\frac{3(V_b - 2a)}{m}$<br><br><strong>Svar:</strong> $k = \\frac{3(V_b - 2a)}{m}$"
                         ],
                         "starter": ""
@@ -3059,7 +3059,7 @@ export const fagsok = [
                         "tekst": "$\\frac{1}{T} = \\frac{2}{T_A} + \\frac{2}{T_B}$. Finn en formel for $T$.",
                         "bilde": null,
                         "hint": "Finn fellesnevner ($T_A \\cdot T_B$) for brøkene på høyre side og sett dem på felles brøkstrek.",
-                        "fasit": "Vi skal løse ut for $T$. Det første vi gjør er å utvide brøkene på høyre side slik at vi kan slå dem sammen. Fellesnevneren er $T_A \\cdot T_B$.<br><br>$\\frac{1}{T} = \\frac{2}{T_A} + \\frac{2}{T_B}$<br><br>$\\frac{1}{T} = \\frac{2 \\cdot T_B}{T_A \\cdot T_B} + \\frac{2 \\cdot T_A}{T_B \\cdot T_A}$ (utvid første brøk med $T_B$ og andre med $T_A$)<br><br>$\\frac{1}{T} = \\frac{2T_B + 2T_A}{T_A \\cdot T_B}$ (sett på felles brøkstrek)<br><br>Siden vi har en brøk på hver side der nevnerne på hver sin side korresponderer med tellerne hvis vi snur dem på hodet, kan vi snu brøkene på begge sider (ta den inverse):<br><br>$T = \\frac{T_A \\cdot T_B}{2T_B + 2T_A}$<br><br>Trekker vi ut $2$ fra leddene i nevneren (faktorisering), får vi et enda ryddigere uttrykk:<br><br>$T = \\frac{T_A \\cdot T_B}{2(T_A + T_B)}$<br><br><strong>Svar:</strong> $T = \\frac{T_A \\cdot T_B}{2(T_A + T_B)}$",
+                        "fasit": "Vi skal løse ut for $T$. Det første vi gjør er å utvide brøkene på høyre side slik at vi kan slå dem sammen. Fellesnevneren er $T_A \\cdot T_B$.<br><br>$\\frac{1}{T} = \\frac{2}{T_A} + \\frac{2}{T_B}$<br><br>$\\frac{1}{T} = \\frac{2 \\cdot T_B}{T_A \\cdot T_B} + \\frac{2 \\cdot T_A}{T_B \\cdot T_A}$ (utvid første brøk med $T_B$ og andre med $T_A$)<br><br>$\\frac{1}{T} = \\frac{2T_B + 2T_A}{T_A \\cdot T_B}$ (sett på felles brøkstrek)<br><br>Nå står det én brøk på hver side. Når to brøker er like, er også de omvendte brøkene like (så lenge ingen av dem er $0$). Vi snur derfor begge brøkene:<br><br>$T = \\frac{T_A \\cdot T_B}{2T_B + 2T_A}$<br><br>Trekker vi ut $2$ fra leddene i nevneren (faktorisering), får vi et enda ryddigere uttrykk:<br><br>$T = \\frac{T_A \\cdot T_B}{2(T_A + T_B)}$<br><br><strong>Svar:</strong> $T = \\frac{T_A \\cdot T_B}{2(T_A + T_B)}$",
                         "fasitSteg": null,
                         "starter": ""
                     }
@@ -3269,16 +3269,6 @@ export const fagsok = [
                             "<strong>e)</strong><br>Vi skal løse $(k - 3)(k + 8) = 0$<br><br>Her har vi allerede to ferdige faktorer som multipliseres og blir null. Vi bruker produktregelen direkte:<br><br>Enten:<br>$k - 3 = 0$<br>$k = 3$ (flytt $-3$ til høyre side)<br><br>Eller:<br>$k + 8 = 0$<br>$k = -8$ (flytt $8$ til høyre side)<br><br><strong>Svar:</strong> $k = 3$ eller $k = -8$"
                         ],
                         "starter": ""
-                    },
-                    {
-                        "id": "3.10",
-                        "tittel": "Oppgave 3.10",
-                        "tekst": "En bonde har inngjerdet sauene sine på et område formet som et rektangel med et areal på $140 \\text{ m}^2$. Bredden er ukjent ($a$). Lengden er bredden pluss $10$ meter. <br><br>Regn ut bredden og lengden.",
-                        "bilde": null,
-                        "hint": "Areal av et rektangel = lengde $\\cdot$ bredde. Sett opp en likning med informasjonen du har, og løs den som en andregradslikning.",
-                        "fasit": "Vi vet at arealet av et rektangel er lengde multiplisert med bredde.<br><br>Bredde: $a$<br>Lengde: $a + 10$<br>Areal: $140$<br><br>Vi setter opp en likning for arealet:<br><br>$a \\cdot (a + 10) = 140$ (areal $=$ bredde $\\cdot$ lengde)<br><br>$a^2 + 10a = 140$ (gang $a$ inn i parentesen)<br><br>$a^2 + 10a - 140 = 0$ (flytt $140$ til venstre side for å få en standard andregradslikning på formen $ax^2 + bx + c = 0$)<br><br>Vi bruker ABC-formelen for å løse likningen, der $A = 1$, $B = 10$, og $C = -140$:<br><br>$a = \\frac{-B \\pm \\sqrt{B^2 - 4AC}}{2A}$<br><br>$a = \\frac{-10 \\pm \\sqrt{10^2 - 4 \\cdot 1 \\cdot (-140)}}{2 \\cdot 1}$ (sett inn verdiene)<br><br>$a = \\frac{-10 \\pm \\sqrt{100 - (-560)}}{2}$ (regn ut inni roten)<br><br>$a = \\frac{-10 \\pm \\sqrt{100 + 560}}{2}$<br><br>$a = \\frac{-10 \\pm \\sqrt{660}}{2}$<br><br>$a \\approx \\frac{-10 \\pm 25.69}{2}$<br><br>Dette gir oss to mulige svar for $a$:<br><br>$a_1 \\approx \\frac{-10 + 25.69}{2} = \\frac{15.69}{2} \\approx 7.85$<br><br>$a_2 \\approx \\frac{-10 - 25.69}{2} = \\frac{-35.69}{2} \\approx -17.85$<br><br>Siden en fysisk bredde ikke kan være et negativt tall, forkaster vi $a_2 \\approx -17.85$. <br><br>Bredden er derfor ca. $7.85$ meter.<br>Lengden er da $a + 10 \\approx 7.85 + 10 = 17.85$ meter.<br><br><strong>Svar:</strong> Bredden er ca. $7.85$ meter og lengden er ca. $17.85$ meter.",
-                        "fasitSteg": null,
-                        "starter": ""
                     }
                 ],
                 "quiz": [
@@ -3352,7 +3342,7 @@ export const fagsok = [
                         "sporsmal": "Hvordan faktoriserer man uttrykket $x^2 - 5x$?",
                         "alternativer": [
                             "$(x - 5)(x + 5)$",
-                            "$(x - 2,5)^2$",
+                            "$(x - 2{,}5)^2$",
                             "$x(x - 5)$",
                             "Man kan ikke faktorisere det"
                         ],
@@ -3443,6 +3433,16 @@ export const fagsok = [
                 "tittel": "Delkapittel 3D",
                 "oppgaver": [
                     {
+                        "id": "3.10",
+                        "tittel": "Oppgave 3.10",
+                        "tekst": "En bonde har inngjerdet sauene sine på et område formet som et rektangel med et areal på $144 \\text{ m}^2$. Bredden er ukjent, vi kaller den $x$. Lengden er bredden pluss $10$ meter. <br><br>Regn ut bredden og lengden.",
+                        "bilde": null,
+                        "hint": "Areal av et rektangel = lengde $\\cdot$ bredde. Sett opp en likning med informasjonen du har, og løs den som en andregradslikning.",
+                        "fasit": "Vi vet at arealet av et rektangel er lengde multiplisert med bredde.<br><br>Bredde: $x$<br>Lengde: $x + 10$<br>Areal: $144$<br><br>Vi setter opp en likning for arealet:<br><br>$x \\cdot (x + 10) = 144$ (areal $=$ bredde $\\cdot$ lengde)<br><br>$x^2 + 10x = 144$ (gang $x$ inn i parentesen)<br><br>$x^2 + 10x - 144 = 0$ (flytt $144$ til venstre side for å få en andregradslikning på formen $ax^2 + bx + c = 0$)<br><br>Vi bruker abc-formelen med $a = 1$, $b = 10$ og $c = -144$:<br><br>$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$<br><br>$x = \\frac{-10 \\pm \\sqrt{10^2 - 4 \\cdot 1 \\cdot (-144)}}{2 \\cdot 1}$ (sett inn verdiene)<br><br>$x = \\frac{-10 \\pm \\sqrt{100 + 576}}{2}$ (regn ut inni roten)<br><br>$x = \\frac{-10 \\pm \\sqrt{676}}{2}$<br><br>$x = \\frac{-10 \\pm 26}{2}$ (siden $26^2 = 676$)<br><br>Dette gir to løsninger:<br><br>$x_1 = \\frac{-10 + 26}{2} = \\frac{16}{2} = 8$<br><br>$x_2 = \\frac{-10 - 26}{2} = \\frac{-36}{2} = -18$<br><br>En bredde kan ikke være negativ, så vi forkaster $x_2 = -18$.<br><br>Bredden er $8$ meter.<br>Lengden er $x + 10 = 8 + 10 = 18$ meter.<br><br>Kontroll: $8 \\cdot 18 = 144$.<br><br><strong>Svar:</strong> Bredden er $8$ meter og lengden er $18$ meter.",
+                        "fasitSteg": null,
+                        "starter": ""
+                    },
+                    {
                         "id": "3.11",
                         "tittel": "Oppgave 3.11",
                         "tekst": "<strong>a)</strong> Skriv opp ABC-formelen og vis et regneeksempel.<br><br><strong>b)</strong> Når har ABC-formelen ulikt antall løsninger?",
@@ -3458,16 +3458,16 @@ export const fagsok = [
                     {
                         "id": "3.12",
                         "tittel": "Oppgave 3.12",
-                        "tekst": "Bruk abc-formelen til å løse likningen:<br><br><strong>a)</strong> $2x^2 - 8x + 6 = 0$<br><br><strong>b)</strong> $a^2 - 3a = 4$<br><br><strong>c)</strong> $c^2 - 10c + 25 = 0$<br><br><strong>d)</strong> $2x^2 + 5x - 3 = 0$<br><br><strong>e)</strong> Forenkle brøken: $\\frac{2y^2 + 5y - 3}{y^2 + 5y + 6}$",
+                        "tekst": "Bruk abc-formelen til å løse likningen:<br><br><strong>a)</strong> $2x^2 - 8x + 6 = 0$<br><br><strong>b)</strong> $x^2 - 3x = 4$<br><br><strong>c)</strong> $x^2 - 10x + 25 = 0$<br><br><strong>d)</strong> $2x^2 + 5x - 3 = 0$<br><br><strong>e)</strong> Forenkle brøken: $\\frac{2y^2 + 5y - 3}{y^2 + 5y + 6}$",
                         "bilde": null,
                         "hint": "For å forenkle brøken i <strong>e)</strong>, må du faktorisere både teller og nevner ved å finne nullpunktene først.",
                         "fasit": null,
                         "fasitSteg": [
                             "<strong>a)</strong><br>Vi løser $2x^2 - 8x + 6 = 0$ med abc-formelen ($a=2, b=-8, c=6$):<br><br>$x = \\frac{-(-8) \\pm \\sqrt{(-8)^2 - 4 \\cdot 2 \\cdot 6}}{2 \\cdot 2}$ (setter inn verdier)<br><br>$x = \\frac{8 \\pm \\sqrt{64 - 48}}{4}$ (forenkler potenser og produkter)<br><br>$x = \\frac{8 \\pm \\sqrt{16}}{4}$ (forenkler diskriminanten)<br><br>$x = \\frac{8 \\pm 4}{4}$ (regner ut roten)<br><br>$x = \\frac{12}{4} = 3$ eller $x = \\frac{4}{4} = 1$<br><br><strong>Svar:</strong> $x = 1$ eller $x = 3$",
-                            "<strong>b)</strong><br>Vi flytter alle ledd til én side for å løse $a^2 - 3a = 4$:<br><br>$a^2 - 3a - 4 = 0$ (flytter 4 til venstre side)<br><br>Her er $a=1, b=-3, c=-4$:<br>$a = \\frac{-(-3) \\pm \\sqrt{(-3)^2 - 4 \\cdot 1 \\cdot (-4)}}{2 \\cdot 1}$ (setter inn i abc-formelen)<br><br>$a = \\frac{3 \\pm \\sqrt{9 + 16}}{2}$ (forenkler)<br><br>$a = \\frac{3 \\pm \\sqrt{25}}{2}$<br><br>$a = \\frac{3 \\pm 5}{2}$<br><br>$a = \\frac{8}{2} = 4$ eller $a = \\frac{-2}{2} = -1$<br><br><strong>Svar:</strong> $a = 4$ eller $a = -1$",
-                            "<strong>c)</strong><br>Vi løser $c^2 - 10c + 25 = 0$ med abc-formelen ($a=1, b=-10, c=25$):<br><br>$c = \\frac{-(-10) \\pm \\sqrt{(-10)^2 - 4 \\cdot 1 \\cdot 25}}{2 \\cdot 1}$<br><br>$c = \\frac{10 \\pm \\sqrt{100 - 100}}{2}$<br><br>$c = \\frac{10 \\pm 0}{2}$<br><br>$c = \\frac{10}{2} = 5$<br><br><strong>Svar:</strong> $c = 5$",
+                            "<strong>b)</strong><br>Vi flytter alle ledd til én side for å løse $x^2 - 3x = 4$:<br><br>$x^2 - 3x - 4 = 0$ (flytter 4 til venstre side)<br><br>Her er $a=1, b=-3, c=-4$:<br>$x = \\frac{-(-3) \\pm \\sqrt{(-3)^2 - 4 \\cdot 1 \\cdot (-4)}}{2 \\cdot 1}$ (setter inn i abc-formelen)<br><br>$x = \\frac{3 \\pm \\sqrt{9 + 16}}{2}$ (forenkler)<br><br>$x = \\frac{3 \\pm \\sqrt{25}}{2}$<br><br>$x = \\frac{3 \\pm 5}{2}$<br><br>$x = \\frac{8}{2} = 4$ eller $x = \\frac{-2}{2} = -1$<br><br><strong>Svar:</strong> $x = 4$ eller $x = -1$",
+                            "<strong>c)</strong><br>Vi løser $x^2 - 10x + 25 = 0$ med abc-formelen ($a=1, b=-10, c=25$):<br><br>$x = \\frac{-(-10) \\pm \\sqrt{(-10)^2 - 4 \\cdot 1 \\cdot 25}}{2 \\cdot 1}$<br><br>$x = \\frac{10 \\pm \\sqrt{100 - 100}}{2}$<br><br>$x = \\frac{10 \\pm 0}{2}$<br><br>$x = \\frac{10}{2} = 5$<br><br><strong>Svar:</strong> $x = 5$",
                             "<strong>d)</strong><br>Vi løser $2x^2 + 5x - 3 = 0$ med abc-formelen ($a=2, b=5, c=-3$):<br><br>$x = \\frac{-5 \\pm \\sqrt{5^2 - 4 \\cdot 2 \\cdot (-3)}}{2 \\cdot 2}$<br><br>$x = \\frac{-5 \\pm \\sqrt{25 + 24}}{4}$<br><br>$x = \\frac{-5 \\pm \\sqrt{49}}{4}$<br><br>$x = \\frac{-5 \\pm 7}{4}$<br><br>$x = \\frac{2}{4} = \\frac{1}{2}$ eller $x = \\frac{-12}{4} = -3$<br><br><strong>Svar:</strong> $x = \\frac{1}{2}$ eller $x = -3$",
-                            "<strong>e)</strong><br>Først faktoriserer vi telleren $2y^2 + 5y - 3$:<br>Dette er samme uttrykk som i <strong>d)</strong>, så vi har nullpunktene $y = \\frac{1}{2}$ og $y = -3$.<br>Faktorisert form er $a(y - y_1)(y - y_2) = 2(y - \\frac{1}{2})(y + 3) = (2y - 1)(y + 3)$.<br><br>Deretter faktoriserer vi nevneren $y^2 + 5y + 6$:<br>Her ser vi at $2 + 3 = 5$ og $2 \\cdot 3 = 6$, altså er $(y + 2)(y + 3)$ faktoriseringen.<br>(Alternativt bruker du abc-formelen til å finne nullpunktene $y = -2$ og $y = -3$).<br><br>Nå setter vi uttrykkene tilbake i brøken:<br>$\\frac{(2y - 1)(y + 3)}{(y + 2)(y + 3)}$ (faktorisert form for teller og nevner)<br><br>$\\frac{2y - 1}{y + 2}$ (vi forkorter felles faktor $(y + 3)$)<br><br><strong>Svar:</strong> $\\frac{2y - 1}{y + 2}$"
+                            "<strong>e)</strong><br>Først faktoriserer vi telleren $2y^2 + 5y - 3$:<br>Dette er samme uttrykk som i <strong>d)</strong>, så vi har nullpunktene $y = \\frac{1}{2}$ og $y = -3$.<br>Faktorisert form er $a(y - y_1)(y - y_2) = 2(y - \\frac{1}{2})(y + 3) = (2y - 1)(y + 3)$.<br><br>Deretter faktoriserer vi nevneren $y^2 + 5y + 6$:<br>Her ser vi at $2 + 3 = 5$ og $2 \\cdot 3 = 6$, altså er $(y + 2)(y + 3)$ faktoriseringen.<br>(Alternativt bruker du abc-formelen til å finne nullpunktene $y = -2$ og $y = -3$).<br><br>Nå setter vi uttrykkene tilbake i brøken:<br>$\\frac{(2y - 1)(y + 3)}{(y + 2)(y + 3)}$ (faktorisert form for teller og nevner)<br><br>$\\frac{2y - 1}{y + 2}$ (vi forkorter felles faktor $(y + 3)$)<br><br>Nevneren i den opprinnelige brøken er $0$ for $y = -2$ og $y = -3$, så brøken er bare definert for $y \\neq -3$ og $y \\neq -2$. Det gjelder også etter at vi har forkortet.<br><br><strong>Svar:</strong> $\\frac{2y - 1}{y + 2}$, der $y \\neq -3$ og $y \\neq -2$"
                         ],
                         "starter": ""
                     },
@@ -3476,8 +3476,8 @@ export const fagsok = [
                         "tittel": "Oppgave 3.13",
                         "tekst": "Et rektangel har et areal på $45$ kvadratcentimeter. Lengden er $4$ cm lengre enn bredden. Finn sidene ved å sette opp og løse en andregradslikning.",
                         "bilde": null,
-                        "hint": "La bredden være $b$. Arealet = $b \\cdot (b + 4)$.",
-                        "fasit": "Vi vet at arealet av et rektangel er lengde ganger bredde, og arealet er $45$.<br><br>$A = \\text{lengde} \\cdot \\text{bredde} = 45$<br><br>Vi lar bredden være $b$. Da er lengden $b + 4$ (siden lengden er $4$ cm lengre enn bredden).<br><br>$b \\cdot (b + 4) = 45$ (setter opp likningen for areal)<br><br>$b^2 + 4b = 45$ (ganger $b$ inn i parentesen)<br><br>$b^2 + 4b - 45 = 0$ (flytter 45 over til venstre side for å få en vanlig andregradslikning)<br><br>Nå bruker vi abc-formelen med $a=1, b=4, c=-45$:<br><br>$b = \\frac{-4 \\pm \\sqrt{4^2 - 4 \\cdot 1 \\cdot (-45)}}{2 \\cdot 1}$ (setter inn verdier i formelen)<br><br>$b = \\frac{-4 \\pm \\sqrt{16 + 180}}{2}$ (forenkler under roten)<br><br>$b = \\frac{-4 \\pm \\sqrt{196}}{2}$ (legger sammen)<br><br>$b = \\frac{-4 \\pm 14}{2}$ (kvadratroten av 196 er 14)<br><br>$b = \\frac{10}{2} = 5$ eller $b = \\frac{-18}{2} = -9$<br><br>Siden en sidelengde ($b$) ikke kan være negativ i virkeligheten, kan vi forkaste $b = -9$. Da er bredden $5$ cm.<br><br>Lengden er da $b + 4 = 5 + 4 = 9$ cm.<br><br><strong>Svar:</strong> Bredden er $5$ cm og lengden er $9$ cm.",
+                        "hint": "La bredden være $x$. Arealet = $x \\cdot (x + 4)$.",
+                        "fasit": "Vi vet at arealet av et rektangel er lengde ganger bredde, og arealet er $45$.<br><br>$A = \\text{lengde} \\cdot \\text{bredde} = 45$<br><br>Vi lar bredden være $x$. Da er lengden $x + 4$ (siden lengden er $4$ cm lengre enn bredden).<br><br>$x \\cdot (x + 4) = 45$ (setter opp likningen for areal)<br><br>$x^2 + 4x = 45$ (ganger $x$ inn i parentesen)<br><br>$x^2 + 4x - 45 = 0$ (flytter 45 over til venstre side for å få en vanlig andregradslikning)<br><br>Nå bruker vi abc-formelen med $a=1, b=4, c=-45$:<br><br>$x = \\frac{-4 \\pm \\sqrt{4^2 - 4 \\cdot 1 \\cdot (-45)}}{2 \\cdot 1}$ (setter inn verdier i formelen)<br><br>$x = \\frac{-4 \\pm \\sqrt{16 + 180}}{2}$ (forenkler under roten)<br><br>$x = \\frac{-4 \\pm \\sqrt{196}}{2}$ (legger sammen)<br><br>$x = \\frac{-4 \\pm 14}{2}$ (kvadratroten av 196 er 14)<br><br>$x = \\frac{10}{2} = 5$ eller $x = \\frac{-18}{2} = -9$<br><br>Siden en sidelengde ikke kan være negativ, forkaster vi $x = -9$. Da er bredden $5$ cm.<br><br>Lengden er da $x + 4 = 5 + 4 = 9$ cm.<br><br><strong>Svar:</strong> Bredden er $5$ cm og lengden er $9$ cm.",
                         "fasitSteg": null,
                         "starter": ""
                     }
@@ -3619,12 +3619,12 @@ export const fagsok = [
                         "sporsmal": "Hva er nullpunktene til funksjonen $f(x) = (x-4)(2x+1)$?",
                         "alternativer": [
                             "$x = 4$ og $x = -1$",
-                            "$x = -4$ og $x = 0.5$",
-                            "$x = 4$ og $x = -0.5$",
+                            "$x = -4$ og $x = 0{,}5$",
+                            "$x = 4$ og $x = -0{,}5$",
                             "$x = 8$ og $x = 1$"
                         ],
                         "riktigSvar": 2,
-                        "forklaring": "Vi setter $f(x) = 0$. Da gir nullproduktregelen $x - 4 = 0$ som gir $x=4$, og $2x + 1 = 0$ som gir $2x = -1$ og $x = -0.5$."
+                        "forklaring": "Vi setter $f(x) = 0$. Da gir nullproduktregelen $x - 4 = 0$ som gir $x=4$, og $2x + 1 = 0$ som gir $2x = -1$ og $x = -0{,}5$."
                     }
                 ]
             },
@@ -3673,13 +3673,29 @@ export const fagsok = [
                     {
                         "id": "3.17",
                         "tittel": "Oppgave 3.17",
-                        "tekst": "Avgjør når disse matematiske uttrykkene er sanne:<br><br><strong>a)</strong> $\\frac{a}{5} = \\frac{3}{10}$<br><br><strong>b)</strong> $\\frac{10}{2b} = \\frac{4}{5}$",
+                        "tekst": "Løs proporsjonene:<br><br><strong>a)</strong> $\\frac{a}{5} = \\frac{3}{10}$<br><br><strong>b)</strong> $\\frac{10}{2b} = \\frac{4}{5}$",
                         "bilde": null,
                         "hint": "Bruk kryssmultiplikasjon for å løse likningene.",
                         "fasit": null,
                         "fasitSteg": [
-                            "<strong>a)</strong><br>Vi løser likningen for $a$:<br><br>$\\frac{a}{5} = \\frac{3}{10}$<br><br>$a \\cdot 10 = 3 \\cdot 5$ (kryssmultipliserer)<br><br>$10a = 15$ (regner ut høyre side)<br><br>$a = \\frac{15}{10}$ (deler på $10$ på begge sider)<br><br>$a = 1.5$<br><br><strong>Svar:</strong> $a = 1.5$",
-                            "<strong>b)</strong><br>Vi løser likningen for $b$:<br><br>$\\frac{10}{2b} = \\frac{4}{5}$<br><br>$10 \\cdot 5 = 4 \\cdot 2b$ (kryssmultipliserer)<br><br>$50 = 8b$ (forenkler begge sider)<br><br>$b = \\frac{50}{8}$ (deler på $8$ på begge sider)<br><br>$b = 6.25$<br><br><strong>Svar:</strong> $b = 6.25$"
+                            "<strong>a)</strong><br>Vi løser likningen for $a$:<br><br>$\\frac{a}{5} = \\frac{3}{10}$<br><br>$a \\cdot 10 = 3 \\cdot 5$ (kryssmultipliserer)<br><br>$10a = 15$ (regner ut høyre side)<br><br>$a = \\frac{15}{10}$ (deler på $10$ på begge sider)<br><br>$a = 1{,}5$<br><br><strong>Svar:</strong> $a = 1{,}5$",
+                            "<strong>b)</strong><br>Vi løser likningen for $b$:<br><br>$\\frac{10}{2b} = \\frac{4}{5}$<br><br>$10 \\cdot 5 = 4 \\cdot 2b$ (kryssmultipliserer)<br><br>$50 = 8b$ (forenkler begge sider)<br><br>$b = \\frac{50}{8}$ (deler på $8$ på begge sider)<br><br>$b = 6{,}25$<br><br><strong>Svar:</strong> $b = 6{,}25$"
+                        ],
+                        "starter": ""
+                    },
+                    {
+                        "id": "3.60",
+                        "tittel": "Oppgave 3.60 (Ekvivalens)",
+                        "tekst": "Avgjør om overgangen er en ekvivalens ($\\Leftrightarrow$), altså om de to likningene har nøyaktig de samme løsningene. Hvis ikke, forklar hva som går tapt eller kommer i tillegg.<br><br><strong>a)</strong> $2x + 4 = 10 \\quad \\text{og} \\quad x = 3$<br><br><strong>b)</strong> $x^2 = 9 \\quad \\text{og} \\quad x = 3$<br><br><strong>c)</strong> $x^2 = x \\quad \\text{og} \\quad x = 1$ (vi delte på $x$)<br><br><strong>d)</strong> $(x - 2)(x + 1) = 0 \\quad \\text{og} \\quad x = 2 \\ \\text{eller} \\ x = -1$<br><br><strong>e)</strong> $\\frac{x}{x - 2} = \\frac{2}{x - 2} \\quad \\text{og} \\quad x = 2$ (vi ganget med $x - 2$)",
+                        "bilde": null,
+                        "hint": "Finn løsningsmengden til hver av de to likningene og sammenlign. Å dele på et uttrykk som kan være $0$, eller å gange med et uttrykk som kan være $0$, er ikke alltid en ekvivalens.",
+                        "fasit": null,
+                        "fasitSteg": [
+                            "<strong>a)</strong><br>$2x + 4 = 10 \\Leftrightarrow 2x = 6 \\Leftrightarrow x = 3$. Begge likningene har bare løsningen $x = 3$.<br><br><strong>Svar:</strong> Ja, ekvivalens.",
+                            "<strong>b)</strong><br>$x^2 = 9$ har løsningene $x = 3$ og $x = -3$, fordi $(-3)^2 = 9$. Likningen $x = 3$ mister løsningen $x = -3$. Vi har bare $x = 3 \\Rightarrow x^2 = 9$, ikke omvendt.<br><br><strong>Svar:</strong> Nei. Riktig er $x^2 = 9 \\Leftrightarrow x = 3 \\ \\text{eller} \\ x = -3$.",
+                            "<strong>c)</strong><br>$x^2 = x \\Leftrightarrow x^2 - x = 0 \\Leftrightarrow x(x - 1) = 0 \\Leftrightarrow x = 0 \\ \\text{eller} \\ x = 1$. Når vi deler på $x$, mister vi løsningen $x = 0$ (vi kan ikke dele på $0$).<br><br><strong>Svar:</strong> Nei, løsningen $x = 0$ går tapt.",
+                            "<strong>d)</strong><br>Et produkt er $0$ hvis og bare hvis minst én av faktorene er $0$: $x - 2 = 0$ eller $x + 1 = 0$.<br><br><strong>Svar:</strong> Ja, ekvivalens.",
+                            "<strong>e)</strong><br>Venstre likning er bare definert for $x \\neq 2$. For $x \\neq 2$ gir den $x = 2$, som ikke er tillatt. Altså har den ingen løsning: $L = \\emptyset$. Likningen $x = 2$ har løsningen $x = 2$. Når vi ganget med $x - 2$, fikk vi en falsk løsning. Overgangen er bare en implikasjon ($\\Rightarrow$).<br><br><strong>Svar:</strong> Nei, $x = 2$ er en falsk løsning. Den opprinnelige likningen har $L = \\emptyset$."
                         ],
                         "starter": ""
                     }
@@ -3756,7 +3772,7 @@ export const fagsok = [
                         "alternativer": [
                             "$x = 2$",
                             "$x = 8$",
-                            "$x = 0.5$",
+                            "$x = 0{,}5$",
                             "$x = 4$"
                         ],
                         "riktigSvar": 0,
@@ -3810,12 +3826,12 @@ export const fagsok = [
                         "sporsmal": "Løs $\\frac{1}{x} + \\frac{1}{2x} = 3$.",
                         "alternativer": [
                             "$x = 2$",
-                            "$x = 0.5$",
-                            "$x = 1.5$",
+                            "$x = 0{,}5$",
+                            "$x = 1{,}5$",
                             "$x = 1$"
                         ],
                         "riktigSvar": 1,
-                        "forklaring": "Fellesnevner er $2x$. Vi ganger alle ledd med $2x$. Da får vi $2 + 1 = 6x$. Dette gir $3 = 6x$, og deler vi på $6$ får vi $x = \\frac{3}{6} = 0.5$."
+                        "forklaring": "Fellesnevner er $2x$. Vi ganger alle ledd med $2x$. Da får vi $2 + 1 = 6x$. Dette gir $3 = 6x$, og deler vi på $6$ får vi $x = \\frac{3}{6} = 0{,}5$."
                     },
                     {
                         "sporsmal": "Hvorfor kan man ikke dele på $x$ på begge sider for å løse $x^2 = x$?",
@@ -3827,62 +3843,7 @@ export const fagsok = [
                         ],
                         "riktigSvar": 2,
                         "forklaring": "Når man deler på $x$, antar man at $x \\neq 0$. Men $x=0$ er en løsning til $x^2 = x$. Isteden bør man flytte over: $x^2 - x = 0$, og faktorisere $x(x-1)=0$."
-                    }
-                ]
-            },
-            {
-                "id": "3F",
-                "tittel": "Delkapittel 3F",
-                "oppgaver": [
-                    {
-                        "id": "3.15F",
-                        "tittel": "Oppgave 3.15F (Funksjoner)",
-                        "tekst": "<strong>a)</strong> Hva er en funksjon og hvordan skriver vi det i matematikk?<br><br><strong>b)</strong> Hva er et nullpunkt?<br><br><strong>c)</strong> Forklar nullpunktfaktorisering.<br><br><strong>d)</strong> Når er det vi benytter oss av denne metoden?",
-                        "bilde": null,
-                        "hint": "Tenk på en funksjon som en regel der ett input ($x$) gir ett output ($y$).",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>En funksjon er en matematisk regel som tar en inn-verdi og gir nøyaktig én ut-verdi. Vi skriver det vanligvis som $f(x)$.",
-                            "<strong>b)</strong><br>Et nullpunkt er den eller de $x$-verdiene der grafen til funksjonen krysser $x$-aksen. Med andre ord, det er når funksjonsverdien er null ($y = 0$).",
-                            "<strong>c)</strong><br>Nullpunktfaktorisering er en metode for å faktorisere polynomer av andre grad (eller høyere).<br>Vi finner først nullpunktene $x_1$ og $x_2$, og deretter skriver vi uttrykket på formen $a(x-x_1)(x-x_2)$.",
-                            "<strong>d)</strong><br>Vi benytter oss ofte av denne metoden når vi skal forkorte brøkuttrykk som inneholder polynomer, eller når vi skal tegne fortegnsskjema for å løse ulikheter."
-                        ],
-                        "starter": ""
                     },
-                    {
-                        "id": "3.16F",
-                        "tittel": "Oppgave 3.16F",
-                        "tekst": "Nedenfor er det skrevet 3 funksjoner. Er $-1$ et nullpunkt for funksjonene?<br><br><strong>a)</strong> $F(x) = 20x^2 + 5$<br><br><strong>b)</strong> $G(x) = x^2 + x$<br><br><strong>c)</strong> $H(x) = -5x^2 - 7x - 2$",
-                        "bilde": null,
-                        "hint": "Regn ut $F(-1)$, $G(-1)$ og $H(-1)$. Hvis svaret er $0$, er det et nullpunkt.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>Vi skal sjekke om $x = -1$ er et nullpunkt for $F(x) = 20x^2 + 5$.<br><br>$F(-1) = 20 \\cdot (-1)^2 + 5$ (setter inn $-1$ for $x$)<br><br>$F(-1) = 20 \\cdot 1 + 5$ (siden $(-1)^2 = 1$)<br><br>$F(-1) = 20 + 5 = 25$<br><br>Siden svaret ikke er $0$, er ikke $-1$ et nullpunkt.<br><br><strong>Svar:</strong> Nei",
-                            "<strong>b)</strong><br>Vi skal sjekke om $x = -1$ er et nullpunkt for $G(x) = x^2 + x$.<br><br>$G(-1) = (-1)^2 + (-1)$ (setter inn $-1$ for $x$)<br><br>$G(-1) = 1 - 1 = 0$<br><br>Siden svaret er $0$, er $-1$ et nullpunkt.<br><br><strong>Svar:</strong> Ja",
-                            "<strong>c)</strong><br>Vi skal sjekke om $x = -1$ er et nullpunkt for $H(x) = -5x^2 - 7x - 2$.<br><br>$H(-1) = -5 \\cdot (-1)^2 - 7 \\cdot (-1) - 2$ (setter inn $-1$ for $x$)<br><br>$H(-1) = -5 \\cdot 1 + 7 - 2$ (siden $(-1)^2 = 1$ og $-7 \\cdot (-1) = 7$)<br><br>$H(-1) = -5 + 7 - 2 = 0$<br><br>Siden svaret er $0$, er $-1$ et nullpunkt.<br><br><strong>Svar:</strong> Ja"
-                        ],
-                        "starter": ""
-                    },
-                    {
-                        "id": "3.17F",
-                        "tittel": "Oppgave 3.17F",
-                        "tekst": "Faktoriser polynomet ved hjelp av nullpunktmetoden:<br><br><strong>a)</strong> $t^2 - 8t + 15$<br><br><strong>b)</strong> $x^2 - 7x + 10$<br><br><strong>c)</strong> $2m^2 + 5m - 12$<br><br><strong>d)</strong> $-z^2 + 4z + 12$<br><br><strong>e)</strong> $\\frac{p^2 - 2p - 8}{p^2 - 16}$<br><br><strong>f)</strong> $\\frac{3v^2 - 14v + 8}{v^2 - 6v + 8}$<br><br><strong>g)</strong> $\\frac{-2y^2 + 10y - 12}{2y^2 - 8y + 8}$",
-                        "bilde": null,
-                        "hint": "Bruk abc-formelen for å finne nullpunktene først, og sett deretter inn i $a(x-x_1)(x-x_2)$.",
-                        "fasit": null,
-                        "fasitSteg": [
-                            "<strong>a)</strong><br>Vi skal faktorisere $t^2 - 8t + 15$.<br><br>Først finner vi nullpunktene ved abc-formelen, der $a=1$, $b=-8$ og $c=15$:<br><br>$t = \\frac{-(-8) \\pm \\sqrt{(-8)^2 - 4 \\cdot 1 \\cdot 15}}{2 \\cdot 1}$ (setter inn i formelen)<br><br>$t = \\frac{8 \\pm \\sqrt{64 - 60}}{2}$ (forenkler under roten)<br><br>$t = \\frac{8 \\pm \\sqrt{4}}{2} = \\frac{8 \\pm 2}{2}$ (trekker kvadratroten)<br><br>Dette gir nullpunktene $t_1 = 5$ og $t_2 = 3$.<br><br>Vi setter inn i formelen $a(t-t_1)(t-t_2)$:<br>$1(t-5)(t-3) = (t-3)(t-5)$<br><br><strong>Svar:</strong> $(t-3)(t-5)$",
-                            "<strong>b)</strong><br>Vi skal faktorisere $x^2 - 7x + 10$.<br><br>Finner nullpunktene ved abc-formelen ($a=1$, $b=-7$, $c=10$):<br><br>$x = \\frac{-(-7) \\pm \\sqrt{(-7)^2 - 4 \\cdot 1 \\cdot 10}}{2 \\cdot 1}$<br><br>$x = \\frac{7 \\pm \\sqrt{49 - 40}}{2}$<br><br>$x = \\frac{7 \\pm \\sqrt{9}}{2} = \\frac{7 \\pm 3}{2}$<br><br>Nullpunktene er $x_1 = 5$ og $x_2 = 2$.<br><br>Faktorisert uttrykk:<br>$(x-5)(x-2)$<br><br><strong>Svar:</strong> $(x-2)(x-5)$",
-                            "<strong>c)</strong><br>Vi skal faktorisere $2m^2 + 5m - 12$.<br><br>Finner nullpunktene ($a=2$, $b=5$, $c=-12$):<br><br>$m = \\frac{-5 \\pm \\sqrt{5^2 - 4 \\cdot 2 \\cdot (-12)}}{2 \\cdot 2}$<br><br>$m = \\frac{-5 \\pm \\sqrt{25 + 96}}{4}$<br><br>$m = \\frac{-5 \\pm \\sqrt{121}}{4} = \\frac{-5 \\pm 11}{4}$<br><br>Nullpunkter:<br>$m_1 = \\frac{6}{4} = 1.5$ og $m_2 = \\frac{-16}{4} = -4$<br><br>Settes inn i $a(m-m_1)(m-m_2)$:<br>$2(m - 1.5)(m - (-4))$<br>$2(m - 1.5)(m + 4)$<br><br>Vi ganger $2$-tallet inn i den første parentesen for å få heltall:<br>$(2m - 3)(m + 4)$<br><br><strong>Svar:</strong> $(2m - 3)(m + 4)$",
-                            "<strong>d)</strong><br>Vi skal faktorisere $-z^2 + 4z + 12$.<br><br>Finner nullpunktene ($a=-1$, $b=4$, $c=12$):<br><br>$z = \\frac{-4 \\pm \\sqrt{4^2 - 4 \\cdot (-1) \\cdot 12}}{2 \\cdot (-1)}$<br><br>$z = \\frac{-4 \\pm \\sqrt{16 + 48}}{-2}$<br><br>$z = \\frac{-4 \\pm \\sqrt{64}}{-2} = \\frac{-4 \\pm 8}{-2}$<br><br>Nullpunkter:<br>$z_1 = \\frac{4}{-2} = -2$ og $z_2 = \\frac{-12}{-2} = 6$<br><br>Settes inn i $a(z-z_1)(z-z_2)$:<br>$-1(z - (-2))(z - 6) = -(z + 2)(z - 6)$<br><br><strong>Svar:</strong> $-(z + 2)(z - 6)$",
-                            "<strong>e)</strong><br>Vi skal forkorte $\\frac{p^2 - 2p - 8}{p^2 - 16}$.<br><br>Først faktoriserer vi telleren $p^2 - 2p - 8$.<br>Nullpunkter: $p = \\frac{2 \\pm \\sqrt{4 - 4(1)(-8)}}{2} = \\frac{2 \\pm \\sqrt{36}}{2} = \\frac{2 \\pm 6}{2}$.<br>Dette gir $p_1 = 4$, $p_2 = -2$.<br>Teller faktorisert: $(p - 4)(p + 2)$.<br><br>Deretter faktoriserer vi nevneren $p^2 - 16$.<br>Dette er konjugatsetningen, $a^2 - b^2 = (a-b)(a+b)$.<br>Nevner faktorisert: $(p - 4)(p + 4)$.<br><br>Setter dette inn i brøken:<br>$\\frac{(p - 4)(p + 2)}{(p - 4)(p + 4)}$<br><br>Stryker felles faktor $(p - 4)$:<br>$\\frac{p + 2}{p + 4}$<br><br><strong>Svar:</strong> $\\frac{p + 2}{p + 4}$",
-                            "<strong>f)</strong><br>Vi skal forkorte $\\frac{3v^2 - 14v + 8}{v^2 - 6v + 8}$.<br><br>Teller: $3v^2 - 14v + 8$.<br>Nullpunkter: $v = \\frac{14 \\pm \\sqrt{(-14)^2 - 4 \\cdot 3 \\cdot 8}}{2 \\cdot 3} = \\frac{14 \\pm \\sqrt{196 - 96}}{6} = \\frac{14 \\pm 10}{6}$.<br>Dette gir $v_1 = 4$, $v_2 = \\frac{4}{6} = \\frac{2}{3}$.<br>Faktorisert: $3(v - 4)(v - \\frac{2}{3}) = (v - 4)(3v - 2)$.<br><br>Nevner: $v^2 - 6v + 8$.<br>Nullpunkter: $v = \\frac{6 \\pm \\sqrt{36 - 32}}{2} = \\frac{6 \\pm 2}{2}$.<br>Dette gir $v_1 = 4$, $v_2 = 2$.<br>Faktorisert: $(v - 4)(v - 2)$.<br><br>Setter inn i brøken:<br>$\\frac{(v - 4)(3v - 2)}{(v - 4)(v - 2)}$<br><br>Stryker felles faktor $(v - 4)$:<br>$\\frac{3v - 2}{v - 2}$<br><br><strong>Svar:</strong> $\\frac{3v - 2}{v - 2}$",
-                            "<strong>g)</strong><br>Vi skal forkorte $\\frac{-2y^2 + 10y - 12}{2y^2 - 8y + 8}$.<br><br>Teller: $-2y^2 + 10y - 12 = -2(y^2 - 5y + 6)$.<br>Nullpunkter for $y^2 - 5y + 6$: $y = \\frac{5 \\pm \\sqrt{25 - 24}}{2} = \\frac{5 \\pm 1}{2}$.<br>Dette gir $y_1 = 3$, $y_2 = 2$.<br>Teller faktorisert: $-2(y - 3)(y - 2)$.<br><br>Nevner: $2y^2 - 8y + 8 = 2(y^2 - 4y + 4)$.<br>Nullpunkter for $y^2 - 4y + 4$: $y = \\frac{4 \\pm \\sqrt{16 - 16}}{2} = 2$.<br>Nevner faktorisert: $2(y - 2)(y - 2)$.<br><br>Setter inn i brøken:<br>$\\frac{-2(y - 3)(y - 2)}{2(y - 2)(y - 2)}$<br><br>Forenkler brøken ved å dele på $2(y - 2)$ oppe og nede:<br>$\\frac{-1(y - 3)}{y - 2}$<br><br>Dette kan skrives som:<br>$\\frac{-y + 3}{y - 2} = \\frac{3 - y}{y - 2}$<br><br><strong>Svar:</strong> $\\frac{3 - y}{y - 2}$"
-                        ],
-                        "starter": ""
-                    }
-                ],
-                "quiz": [
                     {
                         "sporsmal": "Hva er en proporsjon?",
                         "alternativer": [
@@ -3937,83 +3898,149 @@ export const fagsok = [
                         ],
                         "riktigSvar": 1,
                         "forklaring": "Kryssmultiplikasjon gir $x(x+1) = 2 \\cdot 3$, som blir $x^2 + x = 6$. Flytter vi over får vi $x^2 + x - 6 = 0$. ABC-formelen (eller faktorisering) gir røttene $x = 2$ og $x = -3$."
+                    }
+                ]
+            },
+            {
+                "id": "3F",
+                "tittel": "Delkapittel 3F",
+                "oppgaver": [
+                    {
+                        "id": "3.57",
+                        "tittel": "Oppgave 3.57 (Funksjoner)",
+                        "tekst": "<strong>a)</strong> Hva er en funksjon og hvordan skriver vi det i matematikk?<br><br><strong>b)</strong> Hva er et nullpunkt?<br><br><strong>c)</strong> Forklar nullpunktfaktorisering.<br><br><strong>d)</strong> Når er det vi benytter oss av denne metoden?",
+                        "bilde": null,
+                        "hint": "Tenk på en funksjon som en regel der ett input ($x$) gir ett output ($y$).",
+                        "fasit": null,
+                        "fasitSteg": [
+                            "<strong>a)</strong><br>En funksjon er en matematisk regel som tar en inn-verdi og gir nøyaktig én ut-verdi. Vi skriver det vanligvis som $f(x)$.",
+                            "<strong>b)</strong><br>Et nullpunkt er den eller de $x$-verdiene der grafen til funksjonen krysser eller berører $x$-aksen. Med andre ord, det er når funksjonsverdien er null ($y = 0$).",
+                            "<strong>c)</strong><br>Nullpunktfaktorisering er en metode for å faktorisere polynomer av andre grad (eller høyere).<br>Vi finner først nullpunktene $x_1$ og $x_2$, og deretter skriver vi uttrykket på formen $a(x-x_1)(x-x_2)$.",
+                            "<strong>d)</strong><br>Vi benytter oss ofte av denne metoden når vi skal forkorte brøkuttrykk som inneholder polynomer, eller når vi skal tegne fortegnsskjema for å løse ulikheter."
+                        ],
+                        "starter": ""
                     },
                     {
-                        "sporsmal": "Hva er hovedideen bak å løse en ulikhet med nullpunktmetoden (også kalt fortegnsskjema)?",
+                        "id": "3.58",
+                        "tittel": "Oppgave 3.58",
+                        "tekst": "Nedenfor er det skrevet 3 funksjoner. Er $-1$ et nullpunkt for funksjonene?<br><br><strong>a)</strong> $F(x) = 20x^2 + 5$<br><br><strong>b)</strong> $G(x) = x^2 + x$<br><br><strong>c)</strong> $H(x) = -5x^2 - 7x - 2$",
+                        "bilde": null,
+                        "hint": "Regn ut $F(-1)$, $G(-1)$ og $H(-1)$. Hvis svaret er $0$, er det et nullpunkt.",
+                        "fasit": null,
+                        "fasitSteg": [
+                            "<strong>a)</strong><br>Vi skal sjekke om $x = -1$ er et nullpunkt for $F(x) = 20x^2 + 5$.<br><br>$F(-1) = 20 \\cdot (-1)^2 + 5$ (setter inn $-1$ for $x$)<br><br>$F(-1) = 20 \\cdot 1 + 5$ (siden $(-1)^2 = 1$)<br><br>$F(-1) = 20 + 5 = 25$<br><br>Siden svaret ikke er $0$, er ikke $-1$ et nullpunkt.<br><br><strong>Svar:</strong> Nei",
+                            "<strong>b)</strong><br>Vi skal sjekke om $x = -1$ er et nullpunkt for $G(x) = x^2 + x$.<br><br>$G(-1) = (-1)^2 + (-1)$ (setter inn $-1$ for $x$)<br><br>$G(-1) = 1 - 1 = 0$<br><br>Siden svaret er $0$, er $-1$ et nullpunkt.<br><br><strong>Svar:</strong> Ja",
+                            "<strong>c)</strong><br>Vi skal sjekke om $x = -1$ er et nullpunkt for $H(x) = -5x^2 - 7x - 2$.<br><br>$H(-1) = -5 \\cdot (-1)^2 - 7 \\cdot (-1) - 2$ (setter inn $-1$ for $x$)<br><br>$H(-1) = -5 \\cdot 1 + 7 - 2$ (siden $(-1)^2 = 1$ og $-7 \\cdot (-1) = 7$)<br><br>$H(-1) = -5 + 7 - 2 = 0$<br><br>Siden svaret er $0$, er $-1$ et nullpunkt.<br><br><strong>Svar:</strong> Ja"
+                        ],
+                        "starter": ""
+                    },
+                    {
+                        "id": "3.59",
+                        "tittel": "Oppgave 3.59",
+                        "tekst": "Faktoriser polynomet ved hjelp av nullpunktmetoden:<br><br><strong>a)</strong> $t^2 - 8t + 15$<br><br><strong>b)</strong> $x^2 - 7x + 10$<br><br><strong>c)</strong> $2m^2 + 5m - 12$<br><br><strong>d)</strong> $-z^2 + 4z + 12$<br><br><strong>e)</strong> $\\frac{p^2 - 2p - 8}{p^2 - 16}$<br><br><strong>f)</strong> $\\frac{3v^2 - 14v + 8}{v^2 - 6v + 8}$<br><br><strong>g)</strong> $\\frac{-2y^2 + 10y - 12}{2y^2 - 8y + 8}$",
+                        "bilde": null,
+                        "hint": "Bruk abc-formelen for å finne nullpunktene først, og sett deretter inn i $a(x-x_1)(x-x_2)$.",
+                        "fasit": null,
+                        "fasitSteg": [
+                            "<strong>a)</strong><br>Vi skal faktorisere $t^2 - 8t + 15$.<br><br>Først finner vi nullpunktene ved abc-formelen, der $a=1$, $b=-8$ og $c=15$:<br><br>$t = \\frac{-(-8) \\pm \\sqrt{(-8)^2 - 4 \\cdot 1 \\cdot 15}}{2 \\cdot 1}$ (setter inn i formelen)<br><br>$t = \\frac{8 \\pm \\sqrt{64 - 60}}{2}$ (forenkler under roten)<br><br>$t = \\frac{8 \\pm \\sqrt{4}}{2} = \\frac{8 \\pm 2}{2}$ (trekker kvadratroten)<br><br>Dette gir nullpunktene $t_1 = 5$ og $t_2 = 3$.<br><br>Vi setter inn i formelen $a(t-t_1)(t-t_2)$:<br>$1(t-5)(t-3) = (t-3)(t-5)$<br><br><strong>Svar:</strong> $(t-3)(t-5)$",
+                            "<strong>b)</strong><br>Vi skal faktorisere $x^2 - 7x + 10$.<br><br>Finner nullpunktene ved abc-formelen ($a=1$, $b=-7$, $c=10$):<br><br>$x = \\frac{-(-7) \\pm \\sqrt{(-7)^2 - 4 \\cdot 1 \\cdot 10}}{2 \\cdot 1}$<br><br>$x = \\frac{7 \\pm \\sqrt{49 - 40}}{2}$<br><br>$x = \\frac{7 \\pm \\sqrt{9}}{2} = \\frac{7 \\pm 3}{2}$<br><br>Nullpunktene er $x_1 = 5$ og $x_2 = 2$.<br><br>Faktorisert uttrykk:<br>$(x-5)(x-2)$<br><br><strong>Svar:</strong> $(x-2)(x-5)$",
+                            "<strong>c)</strong><br>Vi skal faktorisere $2m^2 + 5m - 12$.<br><br>Finner nullpunktene ($a=2$, $b=5$, $c=-12$):<br><br>$m = \\frac{-5 \\pm \\sqrt{5^2 - 4 \\cdot 2 \\cdot (-12)}}{2 \\cdot 2}$<br><br>$m = \\frac{-5 \\pm \\sqrt{25 + 96}}{4}$<br><br>$m = \\frac{-5 \\pm \\sqrt{121}}{4} = \\frac{-5 \\pm 11}{4}$<br><br>Nullpunkter:<br>$m_1 = \\frac{6}{4} = 1{,}5$ og $m_2 = \\frac{-16}{4} = -4$<br><br>Settes inn i $a(m-m_1)(m-m_2)$:<br>$2(m - 1{,}5)(m - (-4))$<br>$2(m - 1{,}5)(m + 4)$<br><br>Vi ganger $2$-tallet inn i den første parentesen for å få heltall:<br>$(2m - 3)(m + 4)$<br><br><strong>Svar:</strong> $(2m - 3)(m + 4)$",
+                            "<strong>d)</strong><br>Vi skal faktorisere $-z^2 + 4z + 12$.<br><br>Finner nullpunktene ($a=-1$, $b=4$, $c=12$):<br><br>$z = \\frac{-4 \\pm \\sqrt{4^2 - 4 \\cdot (-1) \\cdot 12}}{2 \\cdot (-1)}$<br><br>$z = \\frac{-4 \\pm \\sqrt{16 + 48}}{-2}$<br><br>$z = \\frac{-4 \\pm \\sqrt{64}}{-2} = \\frac{-4 \\pm 8}{-2}$<br><br>Nullpunkter:<br>$z_1 = \\frac{4}{-2} = -2$ og $z_2 = \\frac{-12}{-2} = 6$<br><br>Settes inn i $a(z-z_1)(z-z_2)$:<br>$-1(z - (-2))(z - 6) = -(z + 2)(z - 6)$<br><br><strong>Svar:</strong> $-(z + 2)(z - 6)$",
+                            "<strong>e)</strong><br>Vi skal forkorte $\\frac{p^2 - 2p - 8}{p^2 - 16}$.<br><br>Først faktoriserer vi telleren $p^2 - 2p - 8$.<br>Nullpunkter: $p = \\frac{2 \\pm \\sqrt{4 - 4(1)(-8)}}{2} = \\frac{2 \\pm \\sqrt{36}}{2} = \\frac{2 \\pm 6}{2}$.<br>Dette gir $p_1 = 4$, $p_2 = -2$.<br>Teller faktorisert: $(p - 4)(p + 2)$.<br><br>Deretter faktoriserer vi nevneren $p^2 - 16$.<br>Dette er konjugatsetningen, $a^2 - b^2 = (a-b)(a+b)$.<br>Nevner faktorisert: $(p - 4)(p + 4)$.<br><br>Setter dette inn i brøken:<br>$\\frac{(p - 4)(p + 2)}{(p - 4)(p + 4)}$<br><br>Stryker felles faktor $(p - 4)$:<br>$\\frac{p + 2}{p + 4}$<br><br><strong>Svar:</strong> $\\frac{p + 2}{p + 4}$",
+                            "<strong>f)</strong><br>Vi skal forkorte $\\frac{3v^2 - 14v + 8}{v^2 - 6v + 8}$.<br><br>Teller: $3v^2 - 14v + 8$.<br>Nullpunkter: $v = \\frac{14 \\pm \\sqrt{(-14)^2 - 4 \\cdot 3 \\cdot 8}}{2 \\cdot 3} = \\frac{14 \\pm \\sqrt{196 - 96}}{6} = \\frac{14 \\pm 10}{6}$.<br>Dette gir $v_1 = 4$, $v_2 = \\frac{4}{6} = \\frac{2}{3}$.<br>Faktorisert: $3(v - 4)(v - \\frac{2}{3}) = (v - 4)(3v - 2)$.<br><br>Nevner: $v^2 - 6v + 8$.<br>Nullpunkter: $v = \\frac{6 \\pm \\sqrt{36 - 32}}{2} = \\frac{6 \\pm 2}{2}$.<br>Dette gir $v_1 = 4$, $v_2 = 2$.<br>Faktorisert: $(v - 4)(v - 2)$.<br><br>Setter inn i brøken:<br>$\\frac{(v - 4)(3v - 2)}{(v - 4)(v - 2)}$<br><br>Stryker felles faktor $(v - 4)$:<br>$\\frac{3v - 2}{v - 2}$<br><br><strong>Svar:</strong> $\\frac{3v - 2}{v - 2}$",
+                            "<strong>g)</strong><br>Vi skal forkorte $\\frac{-2y^2 + 10y - 12}{2y^2 - 8y + 8}$.<br><br>Teller: $-2y^2 + 10y - 12 = -2(y^2 - 5y + 6)$.<br>Nullpunkter for $y^2 - 5y + 6$: $y = \\frac{5 \\pm \\sqrt{25 - 24}}{2} = \\frac{5 \\pm 1}{2}$.<br>Dette gir $y_1 = 3$, $y_2 = 2$.<br>Teller faktorisert: $-2(y - 3)(y - 2)$.<br><br>Nevner: $2y^2 - 8y + 8 = 2(y^2 - 4y + 4)$.<br>Nullpunkter for $y^2 - 4y + 4$: $y = \\frac{4 \\pm \\sqrt{16 - 16}}{2} = 2$.<br>Nevner faktorisert: $2(y - 2)(y - 2)$.<br><br>Setter inn i brøken:<br>$\\frac{-2(y - 3)(y - 2)}{2(y - 2)(y - 2)}$<br><br>Forenkler brøken ved å dele på $2(y - 2)$ oppe og nede:<br>$\\frac{-1(y - 3)}{y - 2}$<br><br>Dette kan skrives som:<br>$\\frac{-y + 3}{y - 2} = \\frac{3 - y}{y - 2}$<br><br>Nevneren $2(y-2)^2$ er $0$ for $y = 2$, så uttrykket er bare definert for $y \\neq 2$.<br><br><strong>Svar:</strong> $\\frac{3 - y}{y - 2}$, der $y \\neq 2$"
+                        ],
+                        "starter": ""
+                    }
+                ],
+                "quiz": [
+                    {
+                        "sporsmal": "Hva er et nullpunkt for en funksjon $f$?",
                         "alternativer": [
-                            "Man setter alt lik 0, faktoriserer uttrykket, og undersøker fortegnet til hver faktor på en tallinje",
-                            "Man ganger med 0 for å fjerne alle tall",
-                            "Man kryssmultipliserer ulikheten",
-                            "Man gjetter på et tall til man treffer 0"
+                            "En $x$-verdi der $f(x) = 0$",
+                            "Verdien $f(0)$",
+                            "Det laveste punktet på grafen",
+                            "Et punkt der grafen krysser $y$-aksen"
                         ],
                         "riktigSvar": 0,
-                        "forklaring": "Nullpunktmetoden handler om å samle alt på én side (slik at man har $0$ på andre siden), faktorisere uttrykket, og sette opp et fortegnsskjema for faktorene for å se hvor hele uttrykket er positivt eller negativt."
+                        "forklaring": "Et nullpunkt er en $x$-verdi der funksjonsverdien er null, altså $f(x)=0$. På grafen er det der grafen krysser eller berører $x$-aksen. $f(0)$ er der grafen krysser $y$-aksen."
                     },
                     {
-                        "sporsmal": "For å løse $x^2 - 4 > 0$, faktoriserer du til $(x-2)(x+2) > 0$. Hva viser fortegnsskjemaet at løsningen er?",
+                        "sporsmal": "Er $x = 2$ et nullpunkt for $f(x) = x^2 - 5x + 6$?",
                         "alternativer": [
-                            "$x > 2$",
-                            "$-2 < x < 2$",
-                            "$x < -2$ eller $x > 2$",
-                            "$x = -2$ og $x = 2$"
+                            "Ja, fordi $f(2) = 0$",
+                            "Nei, fordi $f(2) = 6$",
+                            "Nei, fordi $f(2) = -2$",
+                            "Det kan ikke avgjøres uten graf"
+                        ],
+                        "riktigSvar": 0,
+                        "forklaring": "Vi setter inn: $f(2) = 2^2 - 5 \\cdot 2 + 6 = 4 - 10 + 6 = 0$. Altså er $x=2$ et nullpunkt."
+                    },
+                    {
+                        "sporsmal": "Hva er $f(-1)$ når $f(x) = 2x^2 - 3x + 1$?",
+                        "alternativer": [
+                            "$0$",
+                            "$2$",
+                            "$6$",
+                            "$-4$"
                         ],
                         "riktigSvar": 2,
-                        "forklaring": "Uttrykket har nullpunkter i $x=-2$ og $x=2$. Siden det er en parabel som 'smiler' (positivt $x^2$-ledd), er grafen over x-aksen (positiv) før $-2$ og etter $2$. Løsningen er $x < -2 \\cup x > 2$."
+                        "forklaring": "$f(-1) = 2 \\cdot (-1)^2 - 3 \\cdot (-1) + 1 = 2 + 3 + 1 = 6$."
                     },
                     {
-                        "sporsmal": "Hva skjer med ulikhetstegnet hvis vi deler eller ganger med et negativt tall på begge sider av en ulikhet?",
+                        "sporsmal": "Polynomet $2x^2 - 4x - 6$ har nullpunktene $x = -1$ og $x = 3$. Hva er nullpunktfaktoriseringen?",
                         "alternativer": [
-                            "Ingenting, ulikhetstegnet forblir det samme",
-                            "Ulikhetstegnet snus",
-                            "Ulikhetstegnet blir til et likhetstegn",
-                            "Det er ikke lov å dele en ulikhet med et negativt tall"
+                            "$(x + 1)(x - 3)$",
+                            "$2(x + 1)(x - 3)$",
+                            "$2(x - 1)(x + 3)$",
+                            "$(2x + 1)(x - 3)$"
                         ],
                         "riktigSvar": 1,
-                        "forklaring": "Når vi multipliserer eller dividerer med et negativt tall, snur ulikheten. For eksempel blir $-2x > 4$ til $x < -2$ etter at vi har delt på $-2$."
+                        "forklaring": "Vi bruker $a(x - x_1)(x - x_2)$ med $a = 2$: $2(x - (-1))(x - 3) = 2(x + 1)(x - 3)$. Kontroll: $2(x^2 - 2x - 3) = 2x^2 - 4x - 6$."
                     },
                     {
-                        "sporsmal": "Løs ulikheten $2x - 6 < 0$.",
+                        "sporsmal": "Hvorfor må vi ta med tallet $a$ foran i $a(x - x_1)(x - x_2)$?",
                         "alternativer": [
-                            "$x > 3$",
-                            "$x < 3$",
-                            "$x = 3$",
-                            "$x < -3$"
+                            "Fordi ellers får vi feil nullpunkter",
+                            "Fordi $(x - x_1)(x - x_2)$ alltid har $x^2$-koeffisient $1$, mens polynomet har koeffisient $a$",
+                            "Det trenger vi bare når $a$ er negativ",
+                            "Fordi $a$ er summen av nullpunktene"
                         ],
                         "riktigSvar": 1,
-                        "forklaring": "Vi flytter over $-6$ og får $2x < 6$. Deler på $2$ og får $x < 3$."
+                        "forklaring": "Ganger vi ut $(x - x_1)(x - x_2)$, blir leddet med $x^2$ lik $1 \\cdot x^2$. For at uttrykket skal bli lik $ax^2 + bx + c$, må vi gange med $a$. Nullpunktene endres ikke av $a$."
                     },
                     {
-                        "sporsmal": "Løs ulikheten $-3x > 12$.",
+                        "sporsmal": "Faktoriser $x^2 + x - 12$.",
                         "alternativer": [
-                            "$x > -4$",
-                            "$x < 4$",
-                            "$x < -4$",
-                            "$x > 4$"
+                            "$(x - 4)(x + 3)$",
+                            "$(x + 4)(x - 3)$",
+                            "$(x + 6)(x - 2)$",
+                            "$(x - 12)(x + 1)$"
+                        ],
+                        "riktigSvar": 1,
+                        "forklaring": "Nullpunktene er $x = -4$ og $x = 3$ (abc-formelen: $x = \\frac{-1 \\pm \\sqrt{1 + 48}}{2} = \\frac{-1 \\pm 7}{2}$). Da er $x^2 + x - 12 = (x + 4)(x - 3)$."
+                    },
+                    {
+                        "sporsmal": "Forkort brøken $\\frac{x^2 - 9}{x^2 + x - 6}$.",
+                        "alternativer": [
+                            "$\\frac{x - 3}{x - 2}$, der $x \\neq -3$ og $x \\neq 2$",
+                            "$\\frac{x + 3}{x - 2}$",
+                            "$\\frac{3}{2}$",
+                            "$\\frac{x - 3}{x + 2}$"
+                        ],
+                        "riktigSvar": 0,
+                        "forklaring": "Teller: $x^2 - 9 = (x - 3)(x + 3)$. Nevner: $x^2 + x - 6 = (x + 3)(x - 2)$. Vi forkorter $(x + 3)$ og får $\\frac{x - 3}{x - 2}$. Brøken er ikke definert for $x = -3$ og $x = 2$."
+                    },
+                    {
+                        "sporsmal": "Hvilket av uttrykkene kan <strong>ikke</strong> faktoriseres i lineære faktorer med reelle tall?",
+                        "alternativer": [
+                            "$x^2 - 4$",
+                            "$x^2 + 2x + 1$",
+                            "$x^2 + 2x + 5$",
+                            "$x^2 - x - 2$"
                         ],
                         "riktigSvar": 2,
-                        "forklaring": "Vi deler på $-3$. Da må vi huske å snu ulikhetstegnet. Svaret blir $x < -4$."
-                    },
-                    {
-                        "sporsmal": "Du skal løse $\\frac{x-1}{x+3} \\geq 0$. Hvorfor kan du ikke bare gange begge sider med $(x+3)$?",
-                        "alternativer": [
-                            "Fordi 0 ganger $(x+3)$ ikke er lov",
-                            "Fordi vi ikke vet om $(x+3)$ er positivt eller negativt, og derfor vet vi ikke om vi må snu ulikhetstegnet",
-                            "Fordi da blir nevneren borte, og det er ikke lov",
-                            "Man kan gange med $(x+3)$, det er en helt grei metode"
-                        ],
-                        "riktigSvar": 1,
-                        "forklaring": "I en ulikhet må tegnet snus hvis vi ganger med et negativt tall. Siden vi ikke vet om $x+3$ er positivt eller negativt (det avhenger av $x$), er det tryggest å bruke fortegnsskjema."
-                    },
-                    {
-                        "sporsmal": "Hvis et uttrykk har faktoren $(x-3)^2$, hvordan vil fortegnslinjen se ut i et fortegnsskjema?",
-                        "alternativer": [
-                            "Stiplet (negativ) før 3, og hel (positiv) etter 3",
-                            "Hel (positiv) overalt",
-                            "Hel (positiv) før 3, null i 3, og hel (positiv) etter 3",
-                            "Den er stiplet overalt"
-                        ],
-                        "riktigSvar": 2,
-                        "forklaring": "Et tall opphøyd i andre blir aldri negativt. Linjen vil være hel, unntatt akkurat i punktet $x=3$ hvor den er 0."
+                        "forklaring": "For $x^2 + 2x + 5$ er diskriminanten $2^2 - 4 \\cdot 1 \\cdot 5 = -16 < 0$. Da finnes det ingen reelle nullpunkter, og uttrykket kan ikke nullpunktfaktoriseres."
                     }
                 ]
             },
@@ -4030,14 +4057,14 @@ export const fagsok = [
                         "fasit": null,
                         "fasitSteg": [
                             "<strong>a)</strong> <br>For å faktorisere polynomer av grad tre eller høyere, slik at vi kan løse likninger. Dette gjør vi ved å redusere polynomet til en lavere grad som vi deretter kan løse videre med andre metoder.",
-                            "<strong>b)</strong> <br>Vi må kjenne til eller kunne gjette minst ett av polynomets nullpunkter på forhånd for å ha noe å dele på. (Uten et kjent nullpunkt kan vi ikke starte polynomdivisjonen.)"
+                            "<strong>b)</strong> <br>Selve divisjonen kan vi alltid utføre, men da kan det bli en rest. For å <em>faktorisere</em> polynomet må vi dele på $(x - x_1)$ der $x_1$ er et nullpunkt, for bare da går divisjonen opp (rest $0$). Vi må derfor kjenne til eller kunne gjette minst ett nullpunkt på forhånd. Metoden gir heller ikke selv nullpunktene, og restpolynomet må løses videre med andre metoder."
                         ],
                         "starter": ""
                     },
                     {
                         "id": "3.19",
                         "tittel": "Oppgave 3.19",
-                        "tekst": "Utfør polynomdivisjon og skriv deretter alle svarene som et produkt av lineære faktorer:<br><br><strong>a)</strong> $(x^2 - 7x + 12) : (x - 3)$<br><br><strong>b)</strong> $(x^2 + 3x - 10) : (x + 5)$<br><br><strong>c)</strong> $(2x^2 - 5x + 7) : (x - 2)$<br><br><strong>d)</strong> $(x^3 - 2x^2 - 5x + 6) : (x - 1)$<br><br><strong>e)</strong> $(x^3 + 4x^2 + x - 6) : (x + 2)$",
+                        "tekst": "Utfør polynomdivisjon og skriv deretter polynomet som et produkt av lineære faktorer der det er mulig:<br><br><strong>a)</strong> $(x^2 - 7x + 12) : (x - 3)$<br><br><strong>b)</strong> $(x^2 + 3x - 10) : (x + 5)$<br><br><strong>c)</strong> $(2x^2 - 5x + 7) : (x - 2)$<br><br><strong>d)</strong> $(x^3 - 2x^2 - 5x + 6) : (x - 1)$<br><br><strong>e)</strong> $(x^3 + 4x^2 + x - 6) : (x + 2)$",
                         "bilde": null,
                         "hint": "Husk algoritmen: Del, gang tilbake, trekk fra, og gjenta. Husk at hvis divisjonen har rest (som i c), er det ikke et nullpunkt.",
                         "fasit": null,
@@ -4198,6 +4225,133 @@ export const fagsok = [
                         ],
                         "riktigSvar": 1,
                         "forklaring": "Faktoriseringsregelen er $a(x-x_1)(x-x_2)...$. Faktoren $a$ (her $-5$) kan være hva som helst, og endrer ikke hvor funksjonen krysser x-aksen (røttene)."
+                    }
+                ]
+            },
+            {
+                "id": "3H",
+                "tittel": "Delkapittel 3H",
+                "oppgaver": [
+                    {
+                        "id": "3.61",
+                        "tittel": "Oppgave 3.61 (Ulikheter)",
+                        "tekst": "Løs ulikhetene. Skriv svaret både med ulikhetstegn og som intervall.<br><br><strong>a)</strong> $3x + 2 > 11$<br><br><strong>b)</strong> $1 - 4x \\leq 9$<br><br><strong>c)</strong> $\\frac{x - 1}{2} < \\frac{x + 3}{4}$<br><br><strong>d)</strong> $2(x - 3) \\geq 5x + 6$",
+                        "bilde": null,
+                        "hint": "Løs som en likning, men snu ulikhetstegnet når du ganger eller deler med et negativt tall. I c) ganger du med fellesnevneren $4$ (positiv, så tegnet står).",
+                        "fasit": null,
+                        "fasitSteg": [
+                            "<strong>a)</strong><br>$3x + 2 > 11$<br>$3x > 9$ (trekk fra $2$)<br>$x > 3$ (del på $3$)<br><br><strong>Svar:</strong> $x > 3$, $x \\in \\langle 3, \\rightarrow \\rangle$",
+                            "<strong>b)</strong><br>$1 - 4x \\leq 9$<br>$-4x \\leq 8$ (trekk fra $1$)<br>$x \\geq -2$ (del på $-4$ og snu tegnet)<br><br><strong>Svar:</strong> $x \\geq -2$, $x \\in [-2, \\rightarrow \\rangle$",
+                            "<strong>c)</strong><br>$\\frac{x - 1}{2} < \\frac{x + 3}{4}$<br>$2(x - 1) < x + 3$ (gang med $4$)<br>$2x - 2 < x + 3$<br>$x < 5$<br><br><strong>Svar:</strong> $x < 5$, $x \\in \\langle \\leftarrow, 5 \\rangle$",
+                            "<strong>d)</strong><br>$2(x - 3) \\geq 5x + 6$<br>$2x - 6 \\geq 5x + 6$<br>$-3x \\geq 12$ (trekk fra $5x$ og legg til $6$)<br>$x \\leq -4$ (del på $-3$ og snu tegnet)<br><br><strong>Svar:</strong> $x \\leq -4$, $x \\in \\langle \\leftarrow, -4]$"
+                        ],
+                        "starter": ""
+                    },
+                    {
+                        "id": "3.62",
+                        "tittel": "Oppgave 3.62 (Ulikheter i praksis)",
+                        "tekst": "<strong>a)</strong> Mobilabonnement A koster $99$ kr per måned pluss $2$ kr per GB. Abonnement B koster $199$ kr per måned uansett forbruk. La $x$ være antall GB per måned. For hvilke $x$ er B billigst?<br><br><strong>b)</strong> Løs dobbeltulikheten $-3 < 2x + 1 \\leq 7$ og skriv svaret som intervall.",
+                        "bilde": null,
+                        "hint": "I a) setter du opp prisen for A som et uttrykk i $x$ og krever at B er lavere. I b) gjør du det samme med alle tre delene samtidig.",
+                        "fasit": null,
+                        "fasitSteg": [
+                            "<strong>a)</strong><br>Pris A: $99 + 2x$. Pris B: $199$.<br>B er billigst når $199 < 99 + 2x$.<br>$100 < 2x$<br>$x > 50$<br>Kontroll: ved $x = 50$ koster begge $199$ kr.<br><br><strong>Svar:</strong> B er billigst når du bruker mer enn $50$ GB per måned.",
+                            "<strong>b)</strong><br>$-3 < 2x + 1 \\leq 7$<br>$-4 < 2x \\leq 6$ (trekk fra $1$ i alle ledd)<br>$-2 < x \\leq 3$ (del på $2$)<br><br><strong>Svar:</strong> $-2 < x \\leq 3$, $x \\in \\langle -2, 3]$"
+                        ],
+                        "starter": ""
+                    },
+                    {
+                        "id": "3.63",
+                        "tittel": "Oppgave 3.63 (Fortegnsskjema)",
+                        "tekst": "Løs ulikhetene ved å faktorisere og lage fortegnsskjema.<br><br><strong>a)</strong> $x^2 - x - 6 < 0$<br><br><strong>b)</strong> $x^2 - 4x \\geq 0$<br><br><strong>c)</strong> $\\frac{x - 1}{x + 3} \\geq 0$",
+                        "bilde": null,
+                        "hint": "Flytt alt til én side, faktoriser og finn nullpunktene. Tegn én fortegnslinje per faktor. I c) kan nevneren aldri være $0$.",
+                        "fasit": null,
+                        "fasitSteg": [
+                            "<strong>a)</strong><br>$x^2 - x - 6 = (x - 3)(x + 2)$, nullpunkter $x = -2$ og $x = 3$.<br>Fortegn: for $x < -2$ er begge faktorene negative, så produktet er positivt. For $-2 < x < 3$ er $(x+2)$ positiv og $(x-3)$ negativ, så produktet er negativt. For $x > 3$ er produktet positivt.<br>Kontroll: $x = 0$ gir $-6 < 0$.<br><br><strong>Svar:</strong> $-2 < x < 3$, $x \\in \\langle -2, 3 \\rangle$",
+                            "<strong>b)</strong><br>$x^2 - 4x = x(x - 4)$, nullpunkter $x = 0$ og $x = 4$.<br>Produktet er positivt for $x < 0$ og $x > 4$, negativt mellom, og $0$ i nullpunktene (som er med fordi tegnet er $\\geq$).<br><br><strong>Svar:</strong> $x \\leq 0$ eller $x \\geq 4$, $x \\in \\langle \\leftarrow, 0] \\cup [4, \\rightarrow \\rangle$",
+                            "<strong>c)</strong><br>Telleren er $0$ for $x = 1$, nevneren er $0$ for $x = -3$ (ikke tillatt).<br>For $x < -3$ er begge negative, så brøken er positiv. For $-3 < x < 1$ er brøken negativ. For $x > 1$ er brøken positiv. $x = 1$ gir $0$, som er med.<br><br><strong>Svar:</strong> $x < -3$ eller $x \\geq 1$, $x \\in \\langle \\leftarrow, -3 \\rangle \\cup [1, \\rightarrow \\rangle$"
+                        ],
+                        "starter": ""
+                    }
+                ],
+                "quiz": [
+                    {
+                        "sporsmal": "Hva er hovedideen bak å løse en ulikhet med nullpunktmetoden (også kalt fortegnsskjema)?",
+                        "alternativer": [
+                            "Man setter alt lik 0, faktoriserer uttrykket, og undersøker fortegnet til hver faktor på en tallinje",
+                            "Man ganger med 0 for å fjerne alle tall",
+                            "Man kryssmultipliserer ulikheten",
+                            "Man gjetter på et tall til man treffer 0"
+                        ],
+                        "riktigSvar": 0,
+                        "forklaring": "Nullpunktmetoden handler om å samle alt på én side (slik at man har $0$ på andre siden), faktorisere uttrykket, og sette opp et fortegnsskjema for faktorene for å se hvor hele uttrykket er positivt eller negativt."
+                    },
+                    {
+                        "sporsmal": "For å løse $x^2 - 4 > 0$, faktoriserer du til $(x-2)(x+2) > 0$. Hva viser fortegnsskjemaet at løsningen er?",
+                        "alternativer": [
+                            "$x > 2$",
+                            "$-2 < x < 2$",
+                            "$x < -2$ eller $x > 2$",
+                            "$x = -2$ og $x = 2$"
+                        ],
+                        "riktigSvar": 2,
+                        "forklaring": "Uttrykket har nullpunkter i $x=-2$ og $x=2$. Siden det er en parabel som 'smiler' (positivt $x^2$-ledd), er grafen over x-aksen (positiv) før $-2$ og etter $2$. Løsningen er $x < -2$ eller $x > 2$."
+                    },
+                    {
+                        "sporsmal": "Hva skjer med ulikhetstegnet hvis vi deler eller ganger med et negativt tall på begge sider av en ulikhet?",
+                        "alternativer": [
+                            "Ingenting, ulikhetstegnet forblir det samme",
+                            "Ulikhetstegnet snus",
+                            "Ulikhetstegnet blir til et likhetstegn",
+                            "Det er ikke lov å dele en ulikhet med et negativt tall"
+                        ],
+                        "riktigSvar": 1,
+                        "forklaring": "Når vi multipliserer eller dividerer med et negativt tall, snur ulikheten. For eksempel blir $-2x > 4$ til $x < -2$ etter at vi har delt på $-2$."
+                    },
+                    {
+                        "sporsmal": "Løs ulikheten $2x - 6 < 0$.",
+                        "alternativer": [
+                            "$x > 3$",
+                            "$x < 3$",
+                            "$x = 3$",
+                            "$x < -3$"
+                        ],
+                        "riktigSvar": 1,
+                        "forklaring": "Vi flytter over $-6$ og får $2x < 6$. Deler på $2$ og får $x < 3$."
+                    },
+                    {
+                        "sporsmal": "Løs ulikheten $-3x > 12$.",
+                        "alternativer": [
+                            "$x > -4$",
+                            "$x < 4$",
+                            "$x < -4$",
+                            "$x > 4$"
+                        ],
+                        "riktigSvar": 2,
+                        "forklaring": "Vi deler på $-3$. Da må vi huske å snu ulikhetstegnet. Svaret blir $x < -4$."
+                    },
+                    {
+                        "sporsmal": "Du skal løse $\\frac{x-1}{x+3} \\geq 0$. Hvorfor kan du ikke bare gange begge sider med $(x+3)$?",
+                        "alternativer": [
+                            "Fordi 0 ganger $(x+3)$ ikke er lov",
+                            "Fordi vi ikke vet om $(x+3)$ er positivt eller negativt, og derfor vet vi ikke om vi må snu ulikhetstegnet",
+                            "Fordi da blir nevneren borte, og det er ikke lov",
+                            "Man kan gange med $(x+3)$, det er en helt grei metode"
+                        ],
+                        "riktigSvar": 1,
+                        "forklaring": "I en ulikhet må tegnet snus hvis vi ganger med et negativt tall. Siden vi ikke vet om $x+3$ er positivt eller negativt (det avhenger av $x$), er det tryggest å bruke fortegnsskjema."
+                    },
+                    {
+                        "sporsmal": "Hvis et uttrykk har faktoren $(x-3)^2$, hvordan vil fortegnslinjen se ut i et fortegnsskjema?",
+                        "alternativer": [
+                            "Stiplet (negativ) før 3, og hel (positiv) etter 3",
+                            "Hel (positiv) overalt",
+                            "Hel (positiv) før 3, null i 3, og hel (positiv) etter 3",
+                            "Den er stiplet overalt"
+                        ],
+                        "riktigSvar": 2,
+                        "forklaring": "Et tall opphøyd i andre blir aldri negativt. Linjen vil være hel, unntatt akkurat i punktet $x=3$ hvor den er 0."
                     }
                 ]
             }
