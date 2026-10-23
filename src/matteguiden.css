@@ -4174,3 +4174,11 @@ a.vid-nav-card {
 }
 .summary-read.is-on { border-color: var(--accent); color: var(--accent); }
 @media (min-width: 900px) { .summary-card { padding: 1.35rem 1.5rem 1.2rem; } }
+
+/* Videolisten: dempet tekst med nok kontrast (≥4,5:1) i begge temaer */
+.topic-video-more-btn small { color: #a5b4c8; }
+[data-theme="light"] .topic-video-more-btn small { color: #475569; }
+.topic-video-more-title { display: block; }
+.topic-video-copy p { color: #a5b4c8; }
+[data-theme="light"] .topic-video-copy p { color: #475569; }
+[data-theme="light"] .topic-video-btn { color: #4338ca; }
