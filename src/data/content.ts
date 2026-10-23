@@ -16,13 +16,17 @@ import programmeringHtml from "./fagstoff/programmering.html?raw";
 import videoerHtml from "./fagstoff/videoer.html?raw";
 
 /** Datatabeller (kap 6): rullbar ramme på mobil, caption og th scope="row". Endrer ikke tallene. */
+let dataTableSeq = 0;
 function styleDataTables(html: string): string {
   if (!html.includes("<table>")) return html;
   return html.replace(/<table>([\s\S]*?)<\/table>/g, (_m, inner: string) => {
     const heads = [...inner.matchAll(/<th>([\s\S]*?)<\/th>/g)].map((m) => m[1]);
     const caption = heads.length ? `Datatabell: ${heads.join(" og ")}` : "Datatabell";
     const body = inner.replace(/<th>/g, '<th scope="row">');
-    return `<div class="data-table-wrap" role="region" tabindex="0" aria-label="Tabell, kan rulles sidelengs"><table class="data-table"><caption>${caption}</caption>${body}</table></div>`;
+    const n = ++dataTableSeq;
+    const plain = caption.replace(/\$|\\[a-z]+|[{}]/g, "").replace(/\s+/g, " ").trim();
+    // Unikt navn per tabell (axe landmark-unique): flere regioner på samme side får ulike navn.
+    return `<div class="data-table-wrap" role="region" tabindex="0" aria-label="Tabell ${n}: ${plain} (kan rulles sidelengs)"><table class="data-table"><caption>${caption}</caption>${body}</table></div>`;
   });
 }
 
