@@ -77,7 +77,7 @@ export function figDiffSquares(caption: string): string {
     ${vdim(x + a + 12, y, y + c, "a − b", true)}
     ${hdim(x + c, x + a, y + a + 8, "b", true)}
     ${vdim(x - 10, y, y + a, "a")}
-    ${t(x + a / 2, y + a + 22, "a² − b²", { size: 14 })}
+    ${t(x + a / 2, y + a + 40, "a² − b²", { size: 14 })}
     <path d="M${x + a + 70},${y + 60} L${rx - 12},${y + 60}" stroke="${INK}" stroke-width="1.6" fill="none"/>
     <path d="M${rx - 18},${y + 54} L${rx - 10},${y + 60} L${rx - 18},${y + 66}" stroke="${INK}" stroke-width="1.6" fill="none"/>
     ${rect(rx, ry, a, c, P)}
@@ -93,7 +93,7 @@ export function figDiffSquares(caption: string): string {
     "Konjugatsetningen som arealfigur",
     "Til venstre et kvadrat med side a der hjørnekvadratet b i andre er fjernet. L-formen deles i et rektangel a ganger (a minus b) og et rektangel b ganger (a minus b). Til høyre er den minste biten flyttet inntil den store, og sammen danner de et rektangel med sider a pluss b og a minus b.",
     caption,
-    "0 0 420 230",
+    "-30 0 480 250",
   );
 }
 
