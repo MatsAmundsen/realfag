@@ -86,7 +86,7 @@ function fig71(): string {
 function fig711(): string {
   const g = 205;
   const p0: Pt = [75, g], p1: Pt = [75, g - 60], ps: Pt = [75 + 80, g];
-  const t0: Pt = [205, g], t1: Pt = [205, g - 150], ts: Pt = [205 + 195, g];
+  const t0: Pt = [205, g], t1: Pt = [205, g - 146], ts: Pt = [205 + 195, g];
   const svg = `<line x1="20" y1="${g}" x2="410" y2="${g}" stroke="${INK}" stroke-width="1.6" stroke-opacity="0.6"/>` +
     poly([p0, p1, ps]) + rightMark(p0, ps, p1, 11) + poly([t0, t1, ts]) + rightMark(t0, ts, t1) +
     `<line x1="${p0[0]}" y1="${g}" x2="${p1[0]}" y2="${p1[1]}" stroke="${INK}" stroke-width="5"/>` +
