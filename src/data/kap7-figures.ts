@@ -149,9 +149,9 @@ function fig738(): string {
   const A: Pt = [80, 205], B: Pt = [80 + c * s, 205];
   const C: Pt = [B[0] - a * s * Math.cos(B0), 205 - a * s * Math.sin(B0)];
   const g = centroid([A, B, C]);
-  const svg = poly([A, B, C]) + angleArc(A, B, C, "40°", 40) + angleArc(B, A, C, "75°", 30) +
-    sideLabel(B, C, g, "a = 8") + vertexLabel(A, g, "A") + vertexLabel(B, g, "B") + vertexLabel(C, g, "C");
-  return a11y(svg, "Trekant ABC", "Trekant ABC med vinkel A lik 40 grader, vinkel B lik 75 grader og siden a lik 8, motstående vinkel A.", "$\\angle A=40^\\circ$, $\\angle B=75^\\circ$ og $a=8$.", "0 0 420 235");
+  const svg = poly([A, B, C]) + angleArc(A, B, C, "40°", 40) + angleArc(B, A, C, "75°", 30) + angleArc(C, A, B, "?", 26) +
+    sideLabel(B, C, g, "a = 8") + sideLabel(A, C, g, "b = ?", true) + sideLabel(A, B, g, "c = ?", true) + vertexLabel(A, g, "A") + vertexLabel(B, g, "B") + vertexLabel(C, g, "C");
+  return a11y(svg, "Trekant ABC", "Trekant ABC med vinkel A lik 40 grader, vinkel B lik 75 grader og siden a lik 8, motstående vinkel A. Vinkel C og sidene b og c er ukjente.", "$\\angle A=40^\\circ$, $\\angle B=75^\\circ$ og $a=8$.", "0 0 420 235");
 }
 
 // 7.45 — b = 5, c = 7, ∠A = 60°, a ukjent.
