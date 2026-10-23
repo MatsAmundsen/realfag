@@ -144,7 +144,7 @@ export function figRect31(caption: string): string {
   return a11y(
     svg,
     "Rektangel med lengde 12 og ukjent bredde",
-    "Et rektangel med areal 48 og lengde 12. Bredden b er ukjent. Figuren er tegnet i målestokk.",
+    "Et rektangel med areal 48 og lengde 12. Bredden b er ukjent.",
     caption,
     "0 0 420 165",
   );
@@ -273,7 +273,7 @@ export const KAP2_FIGURES: Record<string, string> = {
   "2.30": figCompleteSquare("Arealmodell: $x^2+4x$ er kvadratet $(x+2)^2$ minus hjørnet $2^2=4$."),
   "2.37": figLDots("L-mønsteret fra oppgave 2.57 for $n=1$, $2$ og $3$."),
   "2.58": figDotPatternMissing("Prikkmønster for figur 1 og figur 2. De to hjørneprikkene i øverste rad mangler."),
-  "2.OP9": figRect31("Areal $A=l\\cdot b=48$. Finn $b$. Tegnet i forholdet $3:1$."),
+  "2.OP9": figRect31("Areal $A=l\\cdot b=48$. Finn $b$."),
 };
 
 /** Oppgaver der SVG-figuren erstatter et eldre bilde. */
