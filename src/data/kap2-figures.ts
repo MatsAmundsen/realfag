@@ -65,7 +65,7 @@ export function figSecondSquare(caption: string): string {
 /** 2.OP3 c): a² − b² = (a + b)(a − b). L-formen klippes og legges om til et rektangel. */
 export function figDiffSquares(caption: string): string {
   const x = 20, y = 40, a = 110, b = 40, c = a - b;
-  const rx = 210, ry = 62;
+  const rx = 240, ry = 62;
   const svg = `
     ${rect(x, y, a, c, P)}
     ${rect(x, y + c, c, b, A)}
@@ -75,8 +75,10 @@ export function figDiffSquares(caption: string): string {
     ${t(x + c / 2, y + c + b / 2, "b(a − b)", { size: 12 })}
     ${hdim(x, x + a, y - 14, "a")}
     ${vdim(x + a + 12, y, y + c, "a − b", true)}
+    ${hdim(x + c, x + a, y + a + 8, "b", true)}
+    ${vdim(x - 10, y, y + a, "a")}
     ${t(x + a / 2, y + a + 22, "a² − b²", { size: 14 })}
-    <path d="M${x + a + 60},${y + 60} L${rx - 12},${y + 60}" stroke="${INK}" stroke-width="1.6" fill="none"/>
+    <path d="M${x + a + 70},${y + 60} L${rx - 12},${y + 60}" stroke="${INK}" stroke-width="1.6" fill="none"/>
     <path d="M${rx - 18},${y + 54} L${rx - 10},${y + 60} L${rx - 18},${y + 66}" stroke="${INK}" stroke-width="1.6" fill="none"/>
     ${rect(rx, ry, a, c, P)}
     ${rect(rx + a, ry, b, c, A)}
