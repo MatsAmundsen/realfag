@@ -1195,11 +1195,11 @@ export const fagsok = [
                         "forklaring": "For å legge sammen tall på standardform må de ha samme eksponent. $3 \\cdot 10^3 = 0.3 \\cdot 10^4$. Da får vi $(5 + 0.3) \\cdot 10^4 = 5.3 \\cdot 10^4$."
                     },
                     {
-                        "sporsmal": "Hvis et lysår er ca $9.46 \\cdot 10^{15}$ meter, og en stjerne er 100 lysår unna, hvor mange meter er det?",
+                        "sporsmal": "Hvis et lysår er ca $9{,}46 \\cdot 10^{15}$ meter, og en stjerne er 100 lysår unna, hvor mange meter er det?",
                         "alternativer": [
-                            "$9.46 \\cdot 10^{13}$",
-                            "$9.46 \\cdot 10^{17}$",
-                            "$94.6 \\cdot 10^{15}$",
+                            "$9{,}46 \\cdot 10^{13}$",
+                            "$9{,}46 \\cdot 10^{17}$",
+                            "$94{,}6 \\cdot 10^{15}$",
                             "$9{,}46 \\cdot 10^{16}$"
                         ],
                         "riktigSvar": 1,
