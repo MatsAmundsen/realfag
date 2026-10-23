@@ -46,8 +46,8 @@ export function TopicVideoInvite({ videos }: { videos: TemaVideo[] }) {
                 <button type="button" className="topic-video-more-btn" onClick={() => player?.open(v)}>
                   {t ? <img src={t} alt="" loading="lazy" /> : <Video size={18} aria-hidden="true" />}
                   <span>
-                    <small>Video {i + 2}</small>
-                    {v.tittel}
+                    <small>Video {i + 2}</small>{" "}
+                    <span className="topic-video-more-title">{v.tittel}</span>
                   </span>
                 </button>
               </li>
