@@ -3799,7 +3799,7 @@ a.vid-nav-card {
     font: inherit;
 }
 .mm-helhet-head strong { display: block; font-size: 0.92rem; }
-.mm-helhet-head span { font-size: 0.72rem; color: var(--text-muted); }
+.mm-helhet-head span { font-size: 0.72rem; color: #94a3b8; }
 .mm-helhet-head { border-top: 3px solid var(--mm, var(--primary)); }
 @media (min-width: 1500px) { .mm-helhet-cols { grid-template-columns: repeat(7, minmax(0, 1fr)); } }
 .mm-helhet-col ul { list-style: none; padding: 0.55rem; display: flex; flex-direction: column; gap: 0.4rem; }
@@ -3827,8 +3827,8 @@ a.vid-nav-card {
     transition: border-color 160ms var(--ease-out), background 160ms var(--ease-out);
 }
 .mm-node strong { font-size: 0.78rem; color: var(--mm, var(--primary-light)); }
-.mm-node span { color: var(--text-muted); font-size: 0.75rem; }
-.mm-node em { font-style: normal; font-size: 0.7rem; color: var(--text-muted); }
+.mm-node span { color: #94a3b8; font-size: 0.75rem; }
+.mm-node em { font-style: normal; font-size: 0.7rem; color: #94a3b8; }
 .mm-node:hover { border-color: var(--mm, var(--border-hover)); background: var(--mm-soft, var(--primary-subtle)); }
 .mm-node.is-on { box-shadow: 0 0 0 1px var(--mm, var(--primary-light)); }
 .mm-node.done { border-color: rgba(52,211,153,0.4); }
@@ -4253,3 +4253,13 @@ a.vid-nav-card {
 [data-theme="light"] .mm-path-card em,
 [data-theme="light"] .mm-edge-from,
 [data-theme="light"] .mm-edge-to { color: #4338ca; }
+[data-theme="light"] .mm-helhet-head span,
+[data-theme="light"] .mm-node span,
+[data-theme="light"] .mm-node em { color: #475569; }
+/* Mørkere kapittelfarger i lyst tema, brukt som tekst i nodene */
+[data-theme="light"] .mm-kap1 { --mm: #4338ca; }
+[data-theme="light"] .mm-kap2 { --mm: #047857; }
+[data-theme="light"] .mm-kap3 { --mm: #b45309; }
+[data-theme="light"] .mm-kap4 { --mm: #6d28d9; }
+[data-theme="light"] .mm-kap5 { --mm: #0e7490; }
+[data-theme="light"] .mm-node strong { color: var(--mm, #4338ca); }

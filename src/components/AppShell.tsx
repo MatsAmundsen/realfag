@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, Outlet, useRouterState } from "@tanstack/react-router";
 import { Compass, Menu, Moon, Search, Sun, X } from "lucide-react";
 import { fagsok, UKESPLAN } from "@/data/content";
@@ -59,7 +59,13 @@ export function AppShell() {
     };
   }, [menu, theme, pathname]);
 
+  const themeReady = useRef(false);
   useEffect(() => {
+    // Første kjøring: temaet er allerede satt av THEME_INIT i <head>. Ikke rør det før lagret tema er lest.
+    if (!themeReady.current) {
+      themeReady.current = true;
+      return;
+    }
     if (theme === "light") document.documentElement.setAttribute("data-theme", "light");
     else document.documentElement.removeAttribute("data-theme");
     try {
