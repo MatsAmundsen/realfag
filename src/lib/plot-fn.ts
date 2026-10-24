@@ -33,6 +33,8 @@ export type PlotSpec = {
   yMax: number;
   features: PlotFeature[];
   asymptotes: PlotAsymptote[];
+  /** Valgfri tegnforklaring, én per serie. */
+  legend?: string[];
 };
 
 const MATH_IDS = new Set(["sin", "cos", "tan", "sqrt", "abs", "log", "exp", "min", "max", "pow", "PI", "E"]);
