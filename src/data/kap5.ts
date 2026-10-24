@@ -1,4 +1,5 @@
 import type { Delkapittel, Kapittel, Oppgave, QuizQuestion } from "./types";
+import { describeSigns } from "./kap5-figures";
 
 function o(id: string, tekst: string, hint: string, steg: string[]): Oppgave {
   return { id, tittel: `Oppgave ${id}`, tekst, bilde: null, hint, fasit: null, fasitSteg: steg, starter: "" };
@@ -43,7 +44,7 @@ function signSvg(
          <line x1="${g.x1}" y1="${y}" x2="${g.x2}" y2="${y}" stroke="currentColor" stroke-width="4" stroke-dasharray="${g.s === "−" || g.s === "-" ? "6 5" : "0"}" opacity="${g.s === "−" || g.s === "-" ? "0.55" : "1"}"/>`,
     )
     .join("");
-  return `<svg viewBox="0 0 ${w} 70" width="100%" role="img" aria-label="Fortegnslinje" style="max-width:34rem;margin:0.6rem 0">${axis}${signs}${marks}</svg>`;
+  return `<svg viewBox="0 0 ${w} 70" width="100%" role="img" aria-label="${describeSigns(ticks, [left, ...mids, right].map((g) => (g === "+" ? "+" : "−")))}" style="max-width:34rem;margin:0.6rem 0">${axis}${signs}${marks}</svg>`;
 }
 
 const dk5A: Delkapittel = {
