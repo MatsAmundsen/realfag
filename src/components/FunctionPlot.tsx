@@ -242,7 +242,7 @@ function GraphSvg({
           </g>
         );
       })}
-      {spec.legend && (
+      {spec.legend && large && (
         <g aria-hidden="true">
           <rect
             x={W - padR - (large ? 220 : 170) - 6}
@@ -313,7 +313,7 @@ export function FunctionPlot({
         <span className="fn-plot-legend">
           {spec.series.map((s, i) => (
             <span key={s.name} style={{ color: COLORS[i % COLORS.length] }}>
-              {s.name}
+              {spec.legend?.[i] ?? s.name}
             </span>
           ))}
           {spec.series.find((s) => s.clip) && <span className="fn-domain">D = definisjonsmengde</span>}
