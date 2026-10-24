@@ -101,7 +101,7 @@ export const HELHET_NODES: HelhetNode[] = [
   { id: "5A", label: "To ukjente", kapId: "kap5", subId: "5A" },
   { id: "5B", label: "Modellering", kapId: "kap5", subId: "5B" },
   { id: "5C", label: "Tre ukjente", kapId: "kap5", subId: "5C" },
-  { id: "5D", label: "Andregradsmodeller", kapId: "kap5", subId: "5D" },
+  { id: "5D", label: "Andregradsmodeller og polynomer", kapId: "kap5", subId: "5D" },
   { id: "5E", label: "Ikkelineære sett", kapId: "kap5", subId: "5E" },
   { id: "5F", label: "Førstegradsulikheter", kapId: "kap5", subId: "5F" },
   { id: "5G", label: "Fortegnslinje", kapId: "kap5", subId: "5G" },
@@ -528,7 +528,7 @@ export const CHAPTER_MAPS: Record<string, ChapterDetail> = {
       },
       {
         id: "5D",
-        title: "5D Andregradsmodeller",
+        title: "5D Andregradsmodeller og polynomer",
         subId: "5D",
         layout: "stack",
         nodes: [
@@ -543,7 +543,6 @@ export const CHAPTER_MAPS: Record<string, ChapterDetail> = {
         layout: "stack",
         nodes: [
           n("5E-par", "Linje og parabel", "5E"),
-          n("5E-sir", "Linje og sirkel: 0, 1 eller 2 treff", "5E"),
         ],
       },
       {
@@ -880,7 +879,7 @@ export const PREREQS: Record<string, Prereq> = {
     ],
   },
   "5D": {
-    title: "Andregradsmodeller",
+    title: "Andregradsmodeller og polynomer",
     blurb: "Tre punkt låser parabelen. Nullpunktene gir faktorform.",
     inputs: [
       { label: "ABC-formelen", subId: "3D", kapId: "kap3", role: "step" },
@@ -889,7 +888,7 @@ export const PREREQS: Record<string, Prereq> = {
   },
   "5E": {
     title: "Ikkelineære likningssett",
-    blurb: "Linje mot parabel eller sirkel. Diskriminanten styrer antallet treff.",
+    blurb: "Linje mot parabel. Diskriminanten styrer antallet treff.",
     inputs: [
       { label: "To ukjente", subId: "5A", kapId: "kap5", role: "basic" },
       { label: "Andregradslikninger", subId: "3C", kapId: "kap3", role: "step" },

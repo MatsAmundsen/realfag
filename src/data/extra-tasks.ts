@@ -789,7 +789,7 @@ export const SUB_TITLES: Record<string, string> = {
   "5A": "5A To ukjente",
   "5B": "5B Modellering med likningssett",
   "5C": "5C Tre ukjente",
-  "5D": "5D Andregradsmodeller",
+  "5D": "5D Andregradsmodeller og polynomer",
   "5E": "5E Ikkelineære likningssett",
   "5F": "5F Førstegradsulikheter",
   "5G": "5G Fortegnslinje og andregradsulikheter",
