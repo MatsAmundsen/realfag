@@ -1,8 +1,21 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { findExam } from "@/data/exams";
 import { ExamRunner } from "@/components/ExamRunner";
+import { seoHead } from "@/lib/seo";
 
-export const Route = createFileRoute("/eksamen/$examId")({ component: ExamPage });
+export const Route = createFileRoute("/eksamen/$examId")({
+  head: ({ params }) => {
+    const e = findExam(params.examId);
+    return seoHead(
+      `/eksamen/${params.examId}`,
+      e ? `${e.title} – eksamen 1T med løsning` : "Eksamen 1T",
+      e
+        ? `Øv på 1T-eksamen ${e.title.toLowerCase()} i matematikk 1T: oppgaver i del 1 og del 2 med hint og løsningsforslag.`
+        : "Tidligere eksamensoppgaver i matematikk 1T med hint og løsningsforslag.",
+    );
+  },
+  component: ExamPage,
+});
 
 function ExamPage() {
   const { examId } = Route.useParams();

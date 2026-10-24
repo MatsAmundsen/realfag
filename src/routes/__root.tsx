@@ -131,9 +131,6 @@ export const Route = createRootRoute({
       },
       { name: "theme-color", content: "#0a0f1e" },
       { name: "mg-build", content: MG_BUILD },
-      { httpEquiv: "Cache-Control", content: "no-cache, no-store, must-revalidate" },
-      { httpEquiv: "Pragma", content: "no-cache" },
-      { httpEquiv: "Expires", content: "0" },
     ],
     links: [
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },

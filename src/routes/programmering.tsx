@@ -1,8 +1,17 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { programmeringData } from "@/data/content";
 import { TaskCard } from "@/components/TaskCard";
+import { seoHead } from "@/lib/seo";
 
-export const Route = createFileRoute("/programmering")({ component: ProgrammeringPage });
+export const Route = createFileRoute("/programmering")({
+  head: () =>
+    seoHead(
+      "/programmering/",
+      "Programmering i 1T – Python-oppgaver",
+      "Programmeringsoppgaver i Python for matematikk 1T, med kode du kan kjøre direkte i nettleseren.",
+    ),
+  component: ProgrammeringPage,
+});
 
 function ProgrammeringPage() {
   return (

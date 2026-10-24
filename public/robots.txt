@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://matteguiden.no/sitemap.xml

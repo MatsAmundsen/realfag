@@ -3,8 +3,17 @@ import { CoverImage } from "../components/CoverImage";
 import { CHAPTER_META, fagsok, videosForSub } from "@/data/content";
 import { countChapter, isOvingDelkap } from "@/lib/progress";
 import { useProgressStore } from "@/lib/progress-store";
+import { seoHead } from "@/lib/seo";
 
-export const Route = createFileRoute("/oppgaver/")({ component: OppgaverIndex });
+export const Route = createFileRoute("/oppgaver/")({
+  head: () =>
+    seoHead(
+      "/oppgaver/",
+      "Oppgaver 1T – alle kapitler med løsning",
+      "Oppgaver i matematikk 1T sortert etter kapittel og delkapittel, med hint, fasit og quiz.",
+    ),
+  component: OppgaverIndex,
+});
 
 function OppgaverIndex() {
   const p = useProgressStore((s) => s.p);
