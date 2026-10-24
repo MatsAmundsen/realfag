@@ -1,112 +1,90 @@
 [
   {
-    "sporsmal": "Hva er grunnleggende sant om rett linje? (Spørsmål 1)",
+    "sporsmal": "I $f(x)=ax+b$ er $a$",
     "alternativer": [
-      "Det betyr at funksjonen alltid er 0.",
-      "Noe helt annet.",
-      "Det beskriver en fundamental egenskap ved rett linje.",
-      "Vet ikke."
+      "konstantleddet ($y$-skjæringen)",
+      "nullpunktet",
+      "definisjonsmengden",
+      "stigningstallet"
     ],
-    "riktigSvar": 2,
-    "forklaring": "Dette viser forståelse for rett linje."
+    "riktigSvar": 3,
+    "forklaring": "$a$ sier hvor mye $y$ øker når $x$ øker med $1$. $b$ er verdien når $x=0$."
   },
   {
-    "sporsmal": "Hva er grunnleggende sant om rett linje? (Spørsmål 2)",
+    "sporsmal": "En linje gjennom $(1,5)$ og $(4,-1)$ har stigningstall",
     "alternativer": [
-      "Noe helt annet.",
-      "Det betyr at funksjonen alltid er 0.",
-      "Det beskriver en fundamental egenskap ved rett linje.",
-      "Vet ikke."
+      "$2$",
+      "$-2$",
+      "$-1$",
+      "$3$"
     ],
-    "riktigSvar": 2,
-    "forklaring": "Dette viser forståelse for rett linje."
+    "riktigSvar": 1,
+    "forklaring": "$a=\\dfrac{-1-5}{4-1}=\\dfrac{-6}{3}=-2$."
   },
   {
-    "sporsmal": "Hva er grunnleggende sant om rett linje? (Spørsmål 3)",
+    "sporsmal": "Linja gjennom $(5,0)$ og $(0,3)$ har likning",
     "alternativer": [
-      "Noe helt annet.",
-      "Vet ikke.",
-      "Det beskriver en fundamental egenskap ved rett linje.",
-      "Det betyr at funksjonen alltid er 0."
+      "$y=\\dfrac{3}{5}x+3$",
+      "$y=-\\dfrac{5}{3}x+5$",
+      "$y=-\\dfrac{3}{5}x+3$",
+      "$y=3x+5$"
     ],
     "riktigSvar": 2,
-    "forklaring": "Dette viser forståelse for rett linje."
+    "forklaring": "$b=3$. $a=\\dfrac{0-3}{5-0}=-\\dfrac{3}{5}$. Altså $y=-\\dfrac{3}{5}x+3$."
   },
   {
-    "sporsmal": "Hva er grunnleggende sant om rett linje? (Spørsmål 4)",
+    "sporsmal": "To linjer er parallelle når de har",
     "alternativer": [
-      "Det beskriver en fundamental egenskap ved rett linje.",
-      "Vet ikke.",
-      "Noe helt annet.",
-      "Det betyr at funksjonen alltid er 0."
+      "motsatt stigningstall",
+      "samme konstantledd",
+      "samme stigningstall og ulike konstantledd",
+      "produkt av stigningstall lik $-1$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Samme helling, men forskjøvet. Produkt $-1$ gjelder vinkelrette linjer."
+  },
+  {
+    "sporsmal": "Linja $y=-3x+2$ står vinkelrett på en linje med stigningstall",
+    "alternativer": [
+      "$\\dfrac{1}{3}$",
+      "$-3$",
+      "$3$",
+      "$-\\dfrac{1}{3}$"
     ],
     "riktigSvar": 0,
-    "forklaring": "Dette viser forståelse for rett linje."
+    "forklaring": "Vinkelrett: $a_1\\cdot a_2=-1$, så $-3\\cdot a_2=-1$ og $a_2=\\dfrac{1}{3}$."
   },
   {
-    "sporsmal": "Gitt en funksjon $f(x)$ for rett linje, regn ut verdien. (Spørsmål 5)",
+    "sporsmal": "$15x+45y=900$ skjærer $y$-aksen i",
     "alternativer": [
-      "Vet ikke.",
-      "Svaret er umulig å finne.",
-      "Svaret kan utledes fra formelen for rett linje.",
-      "Noe helt annet."
-    ],
-    "riktigSvar": 2,
-    "forklaring": "Dette viser forståelse for rett linje."
-  },
-  {
-    "sporsmal": "Gitt en funksjon $f(x)$ for rett linje, regn ut verdien. (Spørsmål 6)",
-    "alternativer": [
-      "Noe helt annet.",
-      "Svaret er umulig å finne.",
-      "Vet ikke.",
-      "Svaret kan utledes fra formelen for rett linje."
+      "$(0,60)$",
+      "$(20,0)$",
+      "$(15,0)$",
+      "$(0,20)$"
     ],
     "riktigSvar": 3,
-    "forklaring": "Dette viser forståelse for rett linje."
+    "forklaring": "$x=0$ gir $45y=900$, $y=20$. Punktet er $(0,20)$."
   },
   {
-    "sporsmal": "Gitt en funksjon $f(x)$ for rett linje, regn ut verdien. (Spørsmål 7)",
+    "sporsmal": "$f(x)=x+2$ og $g(x)=-x+5$ skjærer hverandre når $x$ er",
     "alternativer": [
-      "Vet ikke.",
-      "Noe helt annet.",
-      "Svaret er umulig å finne.",
-      "Svaret kan utledes fra formelen for rett linje."
+      "$\\dfrac{3}{2}$",
+      "$2$",
+      "$7$",
+      "$0$"
     ],
-    "riktigSvar": 3,
-    "forklaring": "Dette viser forståelse for rett linje."
+    "riktigSvar": 0,
+    "forklaring": "$x+2=-x+5$, $2x=3$, $x=\\dfrac{3}{2}$. Da $y=\\dfrac{7}{2}$."
   },
   {
-    "sporsmal": "Gitt en funksjon $f(x)$ for rett linje, regn ut verdien. (Spørsmål 8)",
+    "sporsmal": "Likningen $px+qy=r$ ($q\\neq 0$) har stigningstall",
     "alternativer": [
-      "Noe helt annet.",
-      "Svaret kan utledes fra formelen for rett linje.",
-      "Svaret er umulig å finne.",
-      "Vet ikke."
-    ],
-    "riktigSvar": 1,
-    "forklaring": "Dette viser forståelse for rett linje."
-  },
-  {
-    "sporsmal": "En elev gjør en vanlig feil med rett linje. Hva er feilen? (Spørsmål 9)",
-    "alternativer": [
-      "Vet ikke.",
-      "Eleven glemmer en viktig detalj om rett linje.",
-      "Eleven gjør ingen feil.",
-      "Noe helt annet."
+      "$\\dfrac{p}{q}$",
+      "$-\\dfrac{p}{q}$",
+      "$\\dfrac{r}{q}$",
+      "$p$"
     ],
     "riktigSvar": 1,
-    "forklaring": "Dette viser forståelse for rett linje."
-  },
-  {
-    "sporsmal": "En elev gjør en vanlig feil med rett linje. Hva er feilen? (Spørsmål 10)",
-    "alternativer": [
-      "Noe helt annet.",
-      "Vet ikke.",
-      "Eleven glemmer en viktig detalj om rett linje.",
-      "Eleven gjør ingen feil."
-    ],
-    "riktigSvar": 2,
-    "forklaring": "Dette viser forståelse for rett linje."
+    "forklaring": "$qy=-px+r$, $y=-\\dfrac{p}{q}x+\\dfrac{r}{q}$."
   }
 ]

@@ -2,12 +2,16 @@ import { fagsok as rawFagsok, fagstoff as rawFagstoff, programmeringData as rawP
 import type { Delkapittel, Fagstoff, Kapittel, Oppgave } from "./types";
 import { EXTRA, SUB_TITLES } from "./extra-tasks";
 import { MORE23 } from "./extra-kap23";
+import { KAP2_NYE } from "./extra-kap2-nye";
 import { EXTRA_1D, EXTRA_1D_QUIZ } from "./extra-1d";
-import { TASK_FIGURES, TASK_FASIT_FIGURES } from "./task-figures";
+import { TASK_FIGURES, TASK_FASIT_FIGURES, TASK_FIGURE_REQUIRES } from "./task-figures";
+import { FIGURE_REPLACES_IMAGE } from "./kap2-figures";
 import { KAP3_OVEPROVE } from "./kap3-oveprove";
+import { KAP4_OVEPROVE } from "./kap4-oveprove";
 import { KAP4_QUIZ } from "./kap4-quiz";
 import { KAP5 } from "./kap5";
 import { KAP6 } from "./kap6";
+import { KAP6_EXTRA } from "./kap6-extra";
 import { KAP7 } from "./kap7";
 import tallmengderHtml from "./fagstoff/tallmengder.html?raw";
 import brokregningHtml from "./fagstoff/brokregning.html?raw";
@@ -33,8 +37,10 @@ function styleDataTables(html: string): string {
 function attachFigure(op: Oppgave): Oppgave {
   let updated = op;
   const fig = TASK_FIGURES[op.id];
-  if (fig && !op.tekst.includes('class="task-figure"')) {
+  const req = TASK_FIGURE_REQUIRES[op.id];
+  if (fig && (!req || req.test(op.tekst)) && !op.tekst.includes('class="task-figure"')) {
     updated = { ...updated, tekst: fig + updated.tekst };
+    if (FIGURE_REPLACES_IMAGE.has(op.id)) updated = { ...updated, bilde: null };
   }
   const fasitFigs = TASK_FASIT_FIGURES[op.id];
   if (fasitFigs && updated.fasitSteg?.length) {
@@ -58,7 +64,7 @@ function attachFigure(op: Oppgave): Oppgave {
 }
 
 function withExtras(dk: Delkapittel): Delkapittel {
-  const extraList = [...(EXTRA[dk.id] || []), ...(MORE23[dk.id] || []), ...(EXTRA_1D[dk.id] || [])];
+  const extraList = [...(EXTRA[dk.id] || []), ...(MORE23[dk.id] || []), ...(KAP2_NYE[dk.id] || []), ...(EXTRA_1D[dk.id] || []), ...(KAP6_EXTRA[dk.id] || [])];
   const baseQuiz = KAP4_QUIZ[dk.id] ?? dk.quiz;
   const extraQuiz = dk.id === "1D" ? EXTRA_1D_QUIZ : undefined;
   return {
@@ -85,17 +91,25 @@ export const fagsokRaw = (rawFagsok as Kapittel[]).map((kap) => {
   if (kap.id === "kap3") {
     return { ...kap, delkapitler: [...delkapitler, withExtras(KAP3_OVEPROVE)] };
   }
+  if (kap.id === "kap4") {
+    return { ...kap, delkapitler: [...delkapitler, withExtras(KAP4_OVEPROVE)] };
+  }
   return { ...kap, delkapitler };
 });
 export const fagsok = [
   ...fagsokRaw,
-  ...[KAP5, KAP6, KAP7].map((kap) => ({
-    ...kap,
-    delkapitler: kap.delkapitler.map((dk) => ({
-      ...dk,
-      oppgaver: dk.oppgaver.map(attachFigure),
-    })),
-  })),
+  ...[KAP5, KAP6, KAP7].map((kap) =>
+    // Kap. 6 går gjennom withExtras: figurer + ekstraøvinger (KAP6_EXTRA).
+    kap.id === "kap6"
+      ? { ...kap, delkapitler: kap.delkapitler.map(withExtras) }
+      : {
+          ...kap,
+          delkapitler: kap.delkapitler.map((dk) => ({
+            ...dk,
+            oppgaver: dk.oppgaver.map(attachFigure),
+          })),
+        },
+  ),
 ];
 export const fagstoff = (rawFagstoff as Fagstoff[]).map((f) => {
   const inline: Record<string, string> = {
@@ -170,18 +184,30 @@ export const VIDEO_BY_SUB: Record<string, TemaVideo[]> = {
   "1E": [{ tittel: "Standardform", url: "https://www.youtube.com/watch?v=SSb_IddmrdE" }],
   "1F": [{ tittel: "Implikasjon og ekvivalens", url: "https://www.youtube.com/watch?v=lnB4y3IyCRQ" }],
   "2A": [{ tittel: "Regning med bokstavuttrykk", url: "https://www.youtube.com/watch?v=PA7Q18hLK0E" }],
-  "2B": [{ tittel: "Første kvadratsetning", url: "https://www.youtube.com/watch?v=LgDQ29AAfEM" }],
+  "2B": [{ tittel: "Første kvadratsetning", url: "https://www.youtube.com/watch?v=LgDQ29AAfEM" }, { tittel: "Andre kvadratsetning", url: "https://www.youtube.com/watch?v=vKmPyzXwm_A" }, { tittel: "Konjugatsetningen", url: "https://www.youtube.com/watch?v=isqqIJYcnB0" }],
   "2C": [{ tittel: "Felles faktor og faktorisering", url: "https://www.youtube.com/watch?v=7L7mYWpMY9U" }],
-  "2D": [{ tittel: "Faktorisering med kvadratsetninger", url: "https://www.youtube.com/watch?v=OmjOo1a4pLA" }],
-  "2E": [{ tittel: "Brudden brøk", url: "https://www.youtube.com/watch?v=Im0BPFxDwp8" }],
-  "2F": [{ tittel: "Formler og logikk for figurtall", url: "https://www.youtube.com/watch?v=f4v7perY_0o" }],
+  "2D": [{ tittel: "Faktorisering med kvadratsetninger", url: "https://www.youtube.com/watch?v=OmjOo1a4pLA" }, { tittel: "Gjenkjenne fullstendige kvadrater", url: "https://www.youtube.com/watch?v=B9vsG1QMy1o" }, { tittel: "Fullstendige kvadraters metode", url: "https://www.youtube.com/watch?v=7nri1E0v_xE" }],
+  "2E": [{ tittel: "Brøkregning med bokstaver", url: "https://www.youtube.com/watch?v=p2SeSghAyEE" }, { tittel: "Brudden brøk", url: "https://www.youtube.com/watch?v=Im0BPFxDwp8" }],
+  "2F": [{ tittel: "Formler for figurtall", url: "https://www.youtube.com/watch?v=f4v7perY_0o" }, { tittel: "Å lage formler og uttrykk", url: "https://www.youtube.com/watch?v=scwkoWmWDBY" }, { tittel: "Omgjøring av formler", url: "https://www.youtube.com/watch?v=bDZ7JL4ZUzY" }],
   "3A": [{ tittel: "3A Lineære likninger", url: "https://www.youtube.com/watch?v=T1a1-mbv4KQ" }],
   "3B": [{ tittel: "Omskriving av formler", url: "https://www.youtube.com/watch?v=n5k-x-05X00" }],
   "3C": [{ tittel: "Andregradslikninger", url: "https://www.youtube.com/watch?v=0eyN7vknTW4" }],
   "3D": [{ tittel: "ABC-formelen og diskriminanten", url: "https://www.youtube.com/watch?v=zHQ2eauLwr4" }],
-  "3E": [{ tittel: "Rasjonale likninger", url: "https://www.youtube.com/watch?v=x3QZyL0KDME" }],
-  "3F": [{ tittel: "Forhold og proporsjoner", url: "https://www.youtube.com/watch?v=JDi2jAJaFkw" }],
+  "3E": [
+    { tittel: "Rasjonale likninger", url: "https://www.youtube.com/watch?v=x3QZyL0KDME" },
+    { tittel: "Forhold og proporsjoner", url: "https://www.youtube.com/watch?v=JDi2jAJaFkw" },
+  ],
+  "3F": [
+    { tittel: "Nullpunktfaktorisering", url: "https://www.youtube.com/watch?v=zR6ZtTSXXbk" },
+    { tittel: "Nullpunkter og faktorisering", url: "https://www.youtube.com/watch?v=iSXe8YreMMY" },
+    { tittel: "Nullpunkter og faktorisering", url: "https://www.youtube.com/watch?v=eQYkvZlI7ms" },
+    { tittel: "Nullpunktfaktorisering", url: "https://www.youtube.com/watch?v=U95jMFd-7ko" },
+  ],
   "3G": [{ tittel: "Polynomdivisjon", url: "https://www.youtube.com/watch?v=_w-hcv1buIU" }],
+  "3H": [
+    { tittel: "Ulikheter (1T)", url: "https://www.youtube.com/watch?v=xVUzi3WE65s" },
+    { tittel: "Andregradsulikheter med fortegnsskjema", url: "https://www.youtube.com/watch?v=7eSS4QaFAJ8" },
+  ],
   "4A": [{ tittel: "Hva er en funksjon?", url: "https://www.youtube.com/watch?v=BCCZxWe57Eo" }],
   "4B": [{ tittel: "Lineære funksjoner", url: "https://www.youtube.com/watch?v=0qoEA0Kgobo" }],
   "4C": [{ tittel: "Introduksjon til polynomfunksjoner", url: "https://www.youtube.com/watch?v=3oWCt9o6F4Q" }],
@@ -190,7 +216,7 @@ export const VIDEO_BY_SUB: Record<string, TemaVideo[]> = {
   "4F": [{ tittel: "Eksponentialfunksjoner", url: "https://www.youtube.com/watch?v=QWsCuGz-38A" }],
   "4G": [{ tittel: "Gjennomsnittlig vekstfart", url: "https://www.youtube.com/watch?v=qdEO-jfua-4" }],
   "4H": [{ tittel: "Den deriverte", url: "https://www.youtube.com/watch?v=CRvOOOw80vQ" }],
-  "5A": [{ tittel: "5A Lineære likningssystemer", url: "https://www.youtube.com/watch?v=0w-kZMkIalc" }],
+  "5A": [{ tittel: "Lineære likningssystemer", url: "https://www.youtube.com/watch?v=0w-kZMkIalc" }],
   "5B": [{ tittel: "Likningssett, del 1", url: "https://www.youtube.com/watch?v=5tRVlUkNdOA" }],
   "5C": [{ tittel: "Likningssystemer med flere enn to ukjente", url: "https://www.youtube.com/watch?v=eSkmwkUAIh4" }],
   "5D": [{ tittel: "Praktisk bruk av andregradslikninger", url: "https://www.youtube.com/watch?v=rYpEIRjYwOI" }],
@@ -205,7 +231,7 @@ export const VIDEO_BY_SUB: Record<string, TemaVideo[]> = {
   "6B": [
     { tittel: "6B Regresjon", url: "https://www.youtube.com/watch?v=KdSx6wcP_rk" },
     { tittel: "Regresjon med GeoGebra", url: "https://www.youtube.com/watch?v=UwVtJPeqGO8" },
-    { tittel: "Matematikk 1T 3.4 Lineær regresjon: GeoGebra", url: "https://www.youtube.com/watch?v=8eTDmTwr_iE" },
+    { tittel: "Lineær regresjon i GeoGebra", url: "https://www.youtube.com/watch?v=8eTDmTwr_iE" },
   ],
   "6C": [
     { tittel: "6C Modellering i praksis", url: "https://www.youtube.com/watch?v=Vt8GdJ1rrv0" },
@@ -242,15 +268,15 @@ export const VIDEO_BY_SUB: Record<string, TemaVideo[]> = {
   ],
 };
 
-export function videoForSub(subId: string | null | undefined): TemaVideo | null {
-  if (!subId) return null;
-  return VIDEO_BY_SUB[subId]?.[0] ?? null;
-}
-
-/** Alle videoer for et delkapittel, i rekkefølgen de står i dataene. */
+/** Alle temavideoer for et delkapittel (tom liste hvis ingen). */
 export function videosForSub(subId: string | null | undefined): TemaVideo[] {
   if (!subId) return [];
   return VIDEO_BY_SUB[subId] ?? [];
+}
+
+/** Første temavideo — brukes av videoknappen på hvert oppgavekort. */
+export function videoForSub(subId: string | null | undefined): TemaVideo | null {
+  return videosForSub(subId)[0] ?? null;
 }
 
 export function findKap(id: string) {

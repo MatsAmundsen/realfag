@@ -1,0 +1,90 @@
+[
+  {
+    "sporsmal": "Hva gjør lineær regresjon?",
+    "alternativer": [
+      "Finner linjen gjennom de to første punktene",
+      "Finner toppunktet",
+      "Finner den linjen som passer best til alle punktene",
+      "Løser en likning"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Regresjon minimerer de samlede (kvadrerte) avvikene."
+  },
+  {
+    "sporsmal": "Verdiene dobles omtrent hvert tidssteg. Hvilken regresjon bør du prøve?",
+    "alternativer": [
+      "eksponentiell",
+      "lineær",
+      "andregrads",
+      "ingen"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Fast forhold mellom verdiene peker mot eksponentiell vekst."
+  },
+  {
+    "sporsmal": "Potensregresjon $a\\cdot x^b$ kan ikke brukes når",
+    "alternativer": [
+      "$x$-verdiene er store",
+      "dataene er få",
+      "$b<1$",
+      "noen $x$-verdier er $0$ eller negative"
+    ],
+    "riktigSvar": 3,
+    "forklaring": "Potensfunksjonen $x^b$ er bare definert for alle $b$ når $x>0$, og regresjonen forutsetter positive $x$- og $y$-verdier."
+  },
+  {
+    "sporsmal": "RegLin gir $y=2{,}5x+4$. Hva sier modellen om $x=6$?",
+    "alternativer": [
+      "$15$",
+      "$19$",
+      "$21$",
+      "$10$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "$2{,}5\\cdot 6+4=19$."
+  },
+  {
+    "sporsmal": "Hva er avviket (residualen) i et datapunkt?",
+    "alternativer": [
+      "modellverdi pluss målt verdi",
+      "målt verdi minus modellverdi",
+      "stigningstallet til modellen",
+      "$x$-verdien til punktet"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Avviket viser hvor langt punktet ligger over (positivt) eller under (negativt) modellen."
+  },
+  {
+    "sporsmal": "Punktene ligger på en kurve som først synker og så stiger. Hvilken regresjon bør du prøve?",
+    "alternativer": [
+      "lineær",
+      "eksponentiell",
+      "potens",
+      "andregrads"
+    ],
+    "riktigSvar": 3,
+    "forklaring": "En parabel har et bunnpunkt (eller toppunkt)."
+  },
+  {
+    "sporsmal": "Avvikene for en lineær modell er $+,-,-,-,+$ (fra venstre). Hva tyder det på?",
+    "alternativer": [
+      "Modellen passer perfekt",
+      "Dataene krummer, så en annen modelltype passer bedre",
+      "Vi har for mange datapunkter",
+      "Stigningstallet er negativt"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Et systematisk mønster i avvikene betyr at modellen bommer på formen."
+  },
+  {
+    "sporsmal": "Hvorfor er det lurt å la $x$ være antall år etter 2000 i stedet for årstallet?",
+    "alternativer": [
+      "Konstantleddet får en tydelig betydning og tallene blir små",
+      "Da blir modellen alltid eksponentiell",
+      "Da blir stigningstallet $0$",
+      "GeoGebra godtar ikke årstall"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Med $x=0$ i år 2000 er konstantleddet modellens verdi i 2000."
+  }
+]

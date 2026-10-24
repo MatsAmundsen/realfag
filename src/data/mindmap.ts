@@ -81,14 +81,15 @@ export const HELHET_NODES: HelhetNode[] = [
   { id: "2C", label: "Felles faktor", kapId: "kap2", subId: "2C" },
   { id: "2D", label: "Faktorisering", kapId: "kap2", subId: "2D" },
   { id: "2E", label: "Algebraiske brøker", kapId: "kap2", subId: "2E" },
-  { id: "2F", label: "Figurer og mønstre", kapId: "kap2", subId: "2F" },
+  { id: "2F", label: "Formler og figurtall", kapId: "kap2", subId: "2F" },
   { id: "3A", label: "Førstegradslikninger", kapId: "kap3", subId: "3A" },
   { id: "3B", label: "Formler", kapId: "kap3", subId: "3B" },
   { id: "3C", label: "Andregradslikninger", kapId: "kap3", subId: "3C" },
   { id: "3D", label: "ABC-formelen", kapId: "kap3", subId: "3D" },
-  { id: "3E", label: "Rasjonale likninger", kapId: "kap3", subId: "3E" },
-  { id: "3F", label: "Proporsjoner", kapId: "kap3", subId: "3F" },
+  { id: "3E", label: "Rasjonale likninger, ekvivalens og proporsjoner", kapId: "kap3", subId: "3E" },
+  { id: "3F", label: "Funksjoner og nullpunktfaktorisering", kapId: "kap3", subId: "3F" },
   { id: "3G", label: "Polynomdivisjon", kapId: "kap3", subId: "3G" },
+  { id: "3H", label: "Ulikheter", kapId: "kap3", subId: "3H" },
   { id: "4A", label: "Funksjonsbegrepet", kapId: "kap4", subId: "4A" },
   { id: "4B", label: "Lineære funksjoner", kapId: "kap4", subId: "4B" },
   { id: "4C", label: "Polynomfunksjoner", kapId: "kap4", subId: "4C" },
@@ -100,7 +101,7 @@ export const HELHET_NODES: HelhetNode[] = [
   { id: "5A", label: "To ukjente", kapId: "kap5", subId: "5A" },
   { id: "5B", label: "Modellering", kapId: "kap5", subId: "5B" },
   { id: "5C", label: "Tre ukjente", kapId: "kap5", subId: "5C" },
-  { id: "5D", label: "Andregradsmodeller", kapId: "kap5", subId: "5D" },
+  { id: "5D", label: "Andregradsmodeller og polynomer", kapId: "kap5", subId: "5D" },
   { id: "5E", label: "Ikkelineære sett", kapId: "kap5", subId: "5E" },
   { id: "5F", label: "Førstegradsulikheter", kapId: "kap5", subId: "5F" },
   { id: "5G", label: "Fortegnslinje", kapId: "kap5", subId: "5G" },
@@ -132,6 +133,7 @@ export const HELHET_EDGES: HelhetEdge[] = [
   { from: "2E", to: "3E" },
   { from: "3A", to: "4B" },
   { from: "3D", to: "3G" },
+  { from: "3A", to: "3H" },
   { from: "3D", to: "4C" },
   { from: "3G", to: "4G" },
   { from: "4B", to: "4G" },
@@ -271,14 +273,18 @@ export const CHAPTER_MAPS: Record<string, ChapterDetail> = {
           n("2B-1", "(a+b)² = a² + 2ab + b²", "2B"),
           n("2B-2", "(a−b)² = a² − 2ab + b²", "2B"),
           n("2B-3", "(a+b)(a−b) = a² − b²", "2B"),
+          n("2B-id", "Identitet eller likning?", "2B"),
         ],
       },
       {
         id: "2C",
-        title: "2C Felles faktor",
+        title: "2C Felles faktor og bevis",
         subId: "2C",
         layout: "stack",
-        nodes: [n("2C-f", "Felles faktor utenfor parentes", "2C")],
+        nodes: [
+          n("2C-f", "Felles faktor utenfor parentes", "2C"),
+          n("2C-bevis", "Bevis og moteksempel", "2C"),
+        ],
       },
       {
         id: "2D",
@@ -302,7 +308,7 @@ export const CHAPTER_MAPS: Record<string, ChapterDetail> = {
       },
       {
         id: "2F",
-        title: "2F Figurer og mønstre",
+        title: "2F Formler og figurtall",
         subId: "2F",
         layout: "stack",
         nodes: [n("2F-fig", "Algebra bak figurtall", "2F")],
@@ -355,20 +361,21 @@ export const CHAPTER_MAPS: Record<string, ChapterDetail> = {
       },
       {
         id: "3E",
-        title: "3E Rasjonale likninger",
+        title: "3E Rasjonale likninger, ekvivalens og proporsjoner",
         subId: "3E",
         layout: "stack",
         nodes: [
           n("3E-def", "Definisjonsmengde", "3E"),
           n("3E-falsk", "Falske løsninger", "3E"),
+          n("3E-kryss", "Kryssmultiplikasjon", "3E"),
         ],
       },
       {
         id: "3F",
-        title: "3F Proporsjoner",
+        title: "3F Funksjoner og nullpunktfaktorisering",
         subId: "3F",
         layout: "stack",
-        nodes: [n("3F-kryss", "Kryssmultiplikasjon", "3F")],
+        nodes: [n("3F-null", "Nullpunktfaktorisering", "3F")],
       },
       {
         id: "3G",
@@ -379,6 +386,16 @@ export const CHAPTER_MAPS: Record<string, ChapterDetail> = {
           n("3G-null", "Nullpunktsetningen — finn én x₁", "3G"),
           n("3G-div", "P(x) ÷ (x − x₁)", "3G"),
           n("3G-rest", "Løs restpolynomet med ABC", "3G"),
+        ],
+      },
+      {
+        id: "3H",
+        title: "3H Ulikheter",
+        subId: "3H",
+        layout: "stack",
+        nodes: [
+          n("3H-lin", "Lineære ulikheter og intervaller", "3H"),
+          n("3H-fort", "Fortegnsskjema", "3H"),
         ],
       },
     ],
@@ -445,7 +462,7 @@ export const CHAPTER_MAPS: Record<string, ChapterDetail> = {
         layout: "stack",
         nodes: [
           n("4F-exp", "f(x) = a · bˣ", "4F"),
-          n("4F-log", "Logaritmer log og ln", "4F"),
+          n("4F-log", "Logaritmer log og ln (valgfritt)", "4F", "Valgfritt i 1T. Likninger som bˣ = k kan løses grafisk eller digitalt (skjæring i GeoGebra)."),
         ],
       },
       {
@@ -456,8 +473,7 @@ export const CHAPTER_MAPS: Record<string, ChapterDetail> = {
         nodes: [
           n("4G-gjsn", "Gjennomsnittlig vekstfart Δy/Δx", "4G"),
           n("4G-mom", "Momentan vekstfart f'(x)", "4G"),
-          n("4G-reg", "Derivasjonsregler xⁿ → n xⁿ⁻¹", "4G"),
-        ],
+                  ],
       },
       {
         id: "4H",
@@ -465,6 +481,7 @@ export const CHAPTER_MAPS: Record<string, ChapterDetail> = {
         subId: "4H",
         layout: "stack",
         nodes: [
+          n("4G-reg", "Derivasjonsregler xⁿ → n xⁿ⁻¹", "4H"),
           n("4H-for", "Fortegnsskjema for f'(x)", "4H"),
           n("4H-eks", "Ekstremalpunkter min/maks", "4H"),
         ],
@@ -511,7 +528,7 @@ export const CHAPTER_MAPS: Record<string, ChapterDetail> = {
       },
       {
         id: "5D",
-        title: "5D Andregradsmodeller",
+        title: "5D Andregradsmodeller og polynomer",
         subId: "5D",
         layout: "stack",
         nodes: [
@@ -526,7 +543,6 @@ export const CHAPTER_MAPS: Record<string, ChapterDetail> = {
         layout: "stack",
         nodes: [
           n("5E-par", "Linje og parabel", "5E"),
-          n("5E-sir", "Linje og sirkel: 0, 1 eller 2 treff", "5E"),
         ],
       },
       {
@@ -748,6 +764,14 @@ export const PREREQS: Record<string, Prereq> = {
       { label: "Faktorisering", subId: "2D", kapId: "kap2", role: "step" },
     ],
   },
+  "2F": {
+    title: "Formler og figurtall",
+    blurb: "Beskriv et mønster med en formel i n. Bokstavregning og potenser gjør formelen enkel.",
+    inputs: [
+      { label: "Bokstavregning", subId: "2A", kapId: "kap2", role: "basic" },
+      { label: "Potenser", subId: "1D", kapId: "kap1", role: "basic" },
+    ],
+  },
   "3A": {
     title: "Førstegradslikninger",
     blurb: "Isoler x med omvendte regnearter. Prøv alltid svaret.",
@@ -773,7 +797,7 @@ export const PREREQS: Record<string, Prereq> = {
     ],
   },
   "3E": {
-    title: "Rasjonale likninger",
+    title: "Rasjonale likninger, ekvivalens og proporsjoner",
     blurb: "Gang med fellesnevner, men sjekk definisjonsmengden — ellers får du falske løsninger.",
     inputs: [
       { label: "Algebraiske brøker", subId: "2E", kapId: "kap2", role: "step" },
@@ -825,7 +849,7 @@ export const PREREQS: Record<string, Prereq> = {
     title: "Derivasjon",
     blurb: "Fortegnsskjema for f' forteller hvor grafen stiger og synker.",
     inputs: [
-      { label: "Derivasjonsregler", subId: "4G", kapId: "kap4", role: "step" },
+      { label: "Momentan vekstfart", subId: "4G", kapId: "kap4", role: "step" },
       { label: "Faktorisering", subId: "2D", kapId: "kap2", role: "step" },
       { label: "Andregradsfunksjoner", subId: "4C", kapId: "kap4", role: "basic" },
     ],
@@ -855,7 +879,7 @@ export const PREREQS: Record<string, Prereq> = {
     ],
   },
   "5D": {
-    title: "Andregradsmodeller",
+    title: "Andregradsmodeller og polynomer",
     blurb: "Tre punkt låser parabelen. Nullpunktene gir faktorform.",
     inputs: [
       { label: "ABC-formelen", subId: "3D", kapId: "kap3", role: "step" },
@@ -864,7 +888,7 @@ export const PREREQS: Record<string, Prereq> = {
   },
   "5E": {
     title: "Ikkelineære likningssett",
-    blurb: "Linje mot parabel eller sirkel. Diskriminanten styrer antallet treff.",
+    blurb: "Linje mot parabel. Diskriminanten styrer antallet treff.",
     inputs: [
       { label: "To ukjente", subId: "5A", kapId: "kap5", role: "basic" },
       { label: "Andregradslikninger", subId: "3C", kapId: "kap3", role: "step" },
@@ -882,7 +906,7 @@ export const PREREQS: Record<string, Prereq> = {
     title: "Rasjonale ulikheter",
     blurb: "Poler er aldri med. Flytt alt til venstre og les fortegnslinja.",
     inputs: [
-      { label: "Rasjonale likninger", subId: "3E", kapId: "kap3", role: "step" },
+      { label: "Rasjonale likninger, ekvivalens og proporsjoner", subId: "3E", kapId: "kap3", role: "step" },
       { label: "Fortegnslinje", subId: "5G", kapId: "kap5", role: "step" },
     ],
   },

@@ -1,4 +1,6 @@
 import { KAP7_FIGURES } from "./kap7-figures";
+import { KAP5_FIGURES, KAP5_FASIT_FIGURES } from "./kap5-figures";
+import { KAP2_FIGURES, figDiffSquares, figSecondSquare } from "./kap2-figures";
 
 /** Pedagogiske SVG-figurer til oppgaver. Bruker currentColor så de følger tema. */
 
@@ -199,7 +201,7 @@ export function figSquareIdentity(caption: string): string {
     <text x="225" y="222" text-anchor="middle" font-size="16" font-weight="800" fill="${ink}">b²</text>
     <text x="110" y="22" text-anchor="middle" font-size="14" font-weight="700" fill="${ink}">a</text>
     <text x="225" y="22" text-anchor="middle" font-size="14" font-weight="700" fill="${ink}">b</text>`;
-  return wrap(svg, caption, "Kvadrat med side a+b delt i a², 2ab og b²");
+  return wrapH(svg, caption, "Kvadrat med side a+b delt i a², 2ab og b²", 270);
 }
 
 /** Følge med differanser over pilene. */
@@ -248,40 +250,63 @@ export function figTank(filled: number, of: number, caption: string): string {
   return wrap(svg, caption, `Tank fylt ${filled} av ${of}`);
 }
 
-/** To likesidede trekanter. */
+/** To formlike rettvinklede trekanter, tegnet i målestokk: den store er nøyaktig 2 ganger den lille. */
 export function figSimilarTriangles(caption: string): string {
+  // 20 px per lengdeenhet. Liten: kateter 3 og 4. Stor: kateter 6 og 8 (= 2 · liten).
+  const u = 20;
+  const g = 196;
+  const sx = 50;
+  const bx = 210;
+  const small = `${sx},${g} ${sx + 3 * u},${g} ${sx},${g - 4 * u}`;
+  const big = `${bx},${g} ${bx + 6 * u},${g} ${bx},${g - 8 * u}`;
+  const lab = (x: number, y: number, t: string, a = "middle") =>
+    `<text x="${x}" y="${y}" text-anchor="${a}" font-size="14" font-weight="700" fill="${ink}">${t}</text>`;
   const svg = `
-    <polygon points="40,180 140,180 40,70" fill="rgba(99,102,241,0.14)" stroke="${ink}" stroke-width="2"/>
-    <rect x="40" y="160" width="16" height="16" fill="none" stroke="${ink}" stroke-width="1.4"/>
-    <text x="90" y="202" text-anchor="middle" font-size="14" font-weight="700" fill="${ink}">3</text>
-    <text x="26" y="130" text-anchor="middle" font-size="14" font-weight="700" fill="${ink}">4</text>
-    <text x="108" y="118" text-anchor="middle" font-size="14" font-weight="700" fill="${ink}">5</text>
-    <polygon points="200,180 360,180 200,50" fill="rgba(52,211,153,0.14)" stroke="${ink}" stroke-width="2"/>
-    <rect x="200" y="160" width="16" height="16" fill="none" stroke="${ink}" stroke-width="1.4"/>
-    <text x="280" y="202" text-anchor="middle" font-size="14" font-weight="700" fill="${ink}">6</text>
-    <text x="186" y="118" text-anchor="middle" font-size="14" font-weight="700" fill="${ink}">x</text>
-    <text x="310" y="108" text-anchor="middle" font-size="14" font-weight="700" fill="${ink}">10</text>
-    <text x="90" y="28" text-anchor="middle" font-size="13" fill="${ink}">liten</text>
-    <text x="280" y="28" text-anchor="middle" font-size="13" fill="${ink}">stor (likeformet)</text>`;
-  return wrap(svg, caption, "To likeformede rettvinklede trekanter, faktor 2");
+    <polygon points="${small}" fill="rgba(99,102,241,0.14)" stroke="${ink}" stroke-width="2"/>
+    <rect x="${sx}" y="${g - 12}" width="12" height="12" fill="none" stroke="${ink}" stroke-width="1.4"/>
+    ${lab(sx + 1.5 * u, g + 18, "3")}
+    ${lab(sx - 8, g - 2 * u + 5, "4", "end")}
+    ${lab(sx + 1.5 * u + 10, g - 2 * u - 4, "5", "start")}
+    <polygon points="${big}" fill="rgba(52,211,153,0.14)" stroke="${ink}" stroke-width="2"/>
+    <rect x="${bx}" y="${g - 12}" width="12" height="12" fill="none" stroke="${ink}" stroke-width="1.4"/>
+    ${lab(bx + 3 * u, g + 18, "6")}
+    ${lab(bx - 8, g - 4 * u + 5, "x", "end")}
+    ${lab(bx + 3 * u + 12, g - 4 * u - 4, "10", "start")}
+    <text x="${sx + 1.5 * u}" y="${g - 4 * u - 16}" text-anchor="middle" font-size="13" fill="${ink}">liten</text>
+    <text x="${bx + 3 * u}" y="22" text-anchor="middle" font-size="13" fill="${ink}">stor (alle sider · 2)</text>`;
+  return wrap(svg, caption, "To formlike rettvinklede trekanter i målestokk. Den store har dobbelt så lange sider som den lille.");
 }
 
-/** Stang og tre med skygge. */
+/** Stang og tre med skygge, i målestokk (10 px per meter) og med parallelle solstråler. */
 export function figShadow(caption: string): string {
+  // Stang 6 m, skygge 4 m. Tre 15 m, skygge 10 m. Begge stråler har retning (4, 6), altså parallelle.
+  const m = 10;
+  const g = 200;
+  const px = 50;
+  const tx = 230;
+  const poleTop = g - 6 * m;
+  const treeTop = g - 15 * m;
+  const pTip = px + 4 * m;
+  const tTip = tx + 10 * m;
+  // Forleng strålene bakover langs samme retning (dx:dy = 4:6).
+  const ray = (x: number, y: number, x2: number, y2: number, back: number) =>
+    `<line x1="${x - 4 * back}" y1="${y - 6 * back}" x2="${x2}" y2="${y2}" stroke="#f59e0b" stroke-dasharray="5 4" stroke-width="1.6"/>`;
   const svg = `
-    <line x1="30" y1="170" x2="400" y2="170" stroke="${ink}" stroke-width="2"/>
-    <rect x="70" y="70" width="12" height="100" fill="rgba(99,102,241,0.55)" stroke="${ink}"/>
-    <text x="76" y="58" text-anchor="middle" font-size="13" font-weight="700" fill="${ink}">6 m</text>
-    <line x1="82" y1="170" x2="162" y2="170" stroke="#f59e0b" stroke-width="8" opacity="0.7"/>
-    <text x="122" y="196" text-anchor="middle" font-size="13" font-weight="700" fill="#f59e0b">4 m</text>
-    <polygon points="250,170 268,40 286,170" fill="rgba(52,211,153,0.35)" stroke="${ink}" stroke-width="1.6"/>
-    <text x="268" y="28" text-anchor="middle" font-size="14" font-weight="800" fill="#34d399">h = ?</text>
-    <line x1="268" y1="170" x2="388" y2="170" stroke="#f59e0b" stroke-width="8" opacity="0.7"/>
-    <text x="328" y="196" text-anchor="middle" font-size="13" font-weight="700" fill="#f59e0b">10 m</text>
-    <line x1="40" y1="24" x2="82" y2="70" stroke="#fde68a" stroke-dasharray="4 3" stroke-width="1.4"/>
-    <line x1="40" y1="24" x2="268" y2="40" stroke="#fde68a" stroke-dasharray="4 3" stroke-width="1.4"/>
-    <circle cx="36" cy="20" r="8" fill="#fbbf24"/>`;
-  return wrap(svg, caption, "Stang 6 m med skygge 4 m, tre med skygge 10 m");
+    <line x1="20" y1="${g}" x2="400" y2="${g}" stroke="${ink}" stroke-width="2"/>
+    <line x1="${px}" y1="${g}" x2="${px}" y2="${poleTop}" stroke="rgba(99,102,241,0.9)" stroke-width="5"/>
+    <text x="${px - 8}" y="${(g + poleTop) / 2 + 5}" text-anchor="end" font-size="13" font-weight="700" fill="${ink}">6 m</text>
+    <line x1="${px}" y1="${g}" x2="${pTip}" y2="${g}" stroke="#f59e0b" stroke-width="7" opacity="0.7"/>
+    <text x="${(px + pTip) / 2}" y="${g + 18}" text-anchor="middle" font-size="13" font-weight="700" fill="#f59e0b">4 m</text>
+    <line x1="${tx}" y1="${g}" x2="${tx}" y2="${treeTop + 20}" stroke="#a16207" stroke-width="6"/>
+    <ellipse cx="${tx}" cy="${treeTop + 22}" rx="16" ry="24" fill="rgba(52,211,153,0.35)" stroke="${ink}" stroke-width="1.4"/>
+    <circle cx="${tx}" cy="${treeTop}" r="2.5" fill="${ink}"/>
+    <text x="${tx - 22}" y="${(g + treeTop) / 2 + 20}" text-anchor="end" font-size="14" font-weight="800" fill="#34d399">h = ?</text>
+    <line x1="${tx}" y1="${g}" x2="${tTip}" y2="${g}" stroke="#f59e0b" stroke-width="7" opacity="0.7"/>
+    <text x="${(tx + tTip) / 2}" y="${g + 18}" text-anchor="middle" font-size="13" font-weight="700" fill="#f59e0b">10 m</text>
+    ${ray(px, poleTop, pTip, g, 5)}
+    ${ray(tx, treeTop, tTip, g, 1.5)}
+    <circle cx="24" cy="18" r="9" fill="#fbbf24"/>`;
+  return wrapH(svg, caption, "Stang 6 m med skygge 4 m og tre med skygge 10 m, tegnet i målestokk med parallelle solstråler", 225);
 }
 
 /** To proporsjonsstolper. */
@@ -635,6 +660,74 @@ export function figCubicGraph(withTangents: boolean, caption: string): string {
   return wrapH(svg, caption, "Grafen til f(x)=0.25x^3-2x", 245);
 }
 
+/** Startpunkt (x) for aksen i en fortegnslinje: gir plass til etiketten til venstre. */
+function signLineAxisStart(label?: string): number {
+  return label ? 10 + Math.ceil(label.length * 7.5) + 10 : 20;
+}
+
+let fpClipId = 0;
+
+/** Generell funksjonsgraf i et koordinatsystem med rutenett (brukes i kap. 4). */
+export function figFunctionPlot(opts: {
+  xmin: number;
+  xmax: number;
+  ymin: number;
+  ymax: number;
+  xstep: number;
+  ystep: number;
+  fns: { f: (x: number) => number; color: string; label: string; labelX: number; from?: number; to?: number; dash?: boolean; labelDy?: number }[];
+  points?: { x: number; y: number; label?: string; dx?: number; dy?: number; color?: string }[];
+  xName?: string;
+  yName?: string;
+  fmt?: (v: number) => string;
+  caption: string;
+  h?: number;
+}): string {
+  const h = opts.h ?? 300;
+  const L = 46, R = 396, T = 16, B = h - 30;
+  const sx = (x: number) => L + ((x - opts.xmin) / (opts.xmax - opts.xmin)) * (R - L);
+  const sy = (y: number) => B - ((y - opts.ymin) / (opts.ymax - opts.ymin)) * (B - T);
+  const fmt = opts.fmt ?? ((v: number) => String(Math.round(v * 100) / 100).replace("-", "−").replace(".", ","));
+  const parts: string[] = [];
+  const eps = 1e-9;
+  const clip = `fp-clip-${++fpClipId}`;
+  for (let x = Math.ceil(opts.xmin / opts.xstep) * opts.xstep; x <= opts.xmax + eps; x += opts.xstep) {
+    parts.push(`<line x1="${sx(x).toFixed(1)}" y1="${T}" x2="${sx(x).toFixed(1)}" y2="${B}" stroke="${ink}" stroke-width="0.6" opacity="0.18"/>`);
+    if (Math.abs(x) > eps || opts.ymin > 0 || opts.ymax < 0)
+      parts.push(`<text x="${sx(x).toFixed(1)}" y="${(opts.ymin <= 0 && opts.ymax >= 0 ? sy(0) : B) + 14}" text-anchor="middle" font-size="10" fill="${ink}">${fmt(x)}</text>`);
+  }
+  for (let y = Math.ceil(opts.ymin / opts.ystep) * opts.ystep; y <= opts.ymax + eps; y += opts.ystep) {
+    parts.push(`<line x1="${L}" y1="${sy(y).toFixed(1)}" x2="${R}" y2="${sy(y).toFixed(1)}" stroke="${ink}" stroke-width="0.6" opacity="0.18"/>`);
+    if (Math.abs(y) > eps || opts.xmin > 0 || opts.xmax < 0)
+      parts.push(`<text x="${(opts.xmin <= 0 && opts.xmax >= 0 ? sx(0) : L) - 5}" y="${(sy(y) + 3.5).toFixed(1)}" text-anchor="end" font-size="10" fill="${ink}">${fmt(y)}</text>`);
+  }
+  const ax = opts.ymin <= 0 && opts.ymax >= 0 ? sy(0) : B;
+  const ay = opts.xmin <= 0 && opts.xmax >= 0 ? sx(0) : L;
+  parts.push(`<line x1="${L}" y1="${ax}" x2="${R + 8}" y2="${ax}" stroke="${ink}" stroke-width="1.6"/>
+    <polygon points="${R + 12},${ax} ${R + 3},${ax - 4} ${R + 3},${ax + 4}" fill="${ink}"/>
+    <text x="${R + 4}" y="${ax - 8}" font-size="12" font-weight="700" fill="${ink}" text-anchor="end">${opts.xName ?? "x"}</text>
+    <line x1="${ay}" y1="${B}" x2="${ay}" y2="${T - 8}" stroke="${ink}" stroke-width="1.6"/>
+    <polygon points="${ay},${T - 12} ${ay - 4},${T - 3} ${ay + 4},${T - 3}" fill="${ink}"/>
+    <text x="${ay + 7}" y="${T - 2}" font-size="12" font-weight="700" fill="${ink}">${opts.yName ?? "y"}</text>`);
+  parts.push(`<defs><clipPath id="${clip}"><rect x="${L}" y="${T}" width="${R - L}" height="${B - T}"/></clipPath></defs>`);
+  for (const fn of opts.fns) {
+    const a = fn.from ?? opts.xmin, b = fn.to ?? opts.xmax;
+    const pts: string[] = [];
+    for (let i = 0; i <= 200; i++) {
+      const x = a + ((b - a) * i) / 200;
+      pts.push(`${i ? "L" : "M"} ${sx(x).toFixed(1)},${sy(fn.f(x)).toFixed(1)}`);
+    }
+    parts.push(`<path d="${pts.join(" ")}" fill="none" stroke="${fn.color}" stroke-width="${fn.dash ? 1.8 : 2.6}"${fn.dash ? ' stroke-dasharray="6 4"' : ""} clip-path="url(#${clip})"/>`);
+    const ly = Math.min(Math.max(sy(fn.f(fn.labelX)) + (fn.labelDy ?? -8), T + 10), B - 4);
+    parts.push(`<text x="${sx(fn.labelX).toFixed(1)}" y="${ly.toFixed(1)}" font-size="12" font-weight="700" fill="${fn.color}">${fn.label}</text>`);
+  }
+  for (const p of opts.points ?? []) {
+    parts.push(`<circle cx="${sx(p.x).toFixed(1)}" cy="${sy(p.y).toFixed(1)}" r="4" fill="${p.color ?? ink}"/>`);
+    if (p.label) parts.push(`<text x="${(sx(p.x) + (p.dx ?? 6)).toFixed(1)}" y="${(sy(p.y) + (p.dy ?? -6)).toFixed(1)}" font-size="11" font-weight="700" fill="${ink}">${p.label}</text>`);
+  }
+  return wrapH(parts.join(""), opts.caption, opts.caption, h);
+}
+
 /** Enkel eller utfylt fortegnslinje. */
 export function figSignLine(opts: {
   label?: string;
@@ -646,15 +739,17 @@ export function figSignLine(opts: {
 }): string {
   const w = 420;
   const y = 45;
-  const pad = 60;
+  // Etiketten står til venstre for aksen (ikke over), så den ikke kolliderer med fortegnet i første intervall.
+  const x0 = signLineAxisStart(opts.label);
+  const pad = Math.max(60, x0 + 45);
   const n = opts.ticks.length;
-  const xs = opts.ticks.map((_, i) => pad + ((w - 2 * pad) * i) / Math.max(n - 1, 1));
+  const xs = opts.ticks.map((_, i) => (n === 1 ? (pad + w - 60) / 2 : pad + ((w - pad - 60) * i) / (n - 1)));
   const axis = `
-    <line x1="20" y1="${y}" x2="${w - 20}" y2="${y}" stroke="${ink}" stroke-width="2"/>
+    <line x1="${x0}" y1="${y}" x2="${w - 20}" y2="${y}" stroke="${ink}" stroke-width="2"/>
     <polygon points="${w - 20},${y} ${w - 30},${y - 4} ${w - 30},${y + 4}" fill="${ink}"/>
   `;
   const lbl = opts.label
-    ? `<text x="18" y="${y - 12}" font-size="13" font-weight="700" fill="${ink}">${opts.label}</text>`
+    ? `<text x="10" y="${y + 5}" font-size="13" font-weight="700" fill="${ink}">${opts.label}</text>`
     : "";
   const marks = opts.ticks
     .map((t, i) => {
@@ -671,7 +766,7 @@ export function figSignLine(opts: {
   if (opts.left || opts.right || (opts.mids && opts.mids.length > 0)) {
     const mids = opts.mids || [];
     const segs: { x1: number; x2: number; s: string }[] = [
-      { x1: 25, x2: xs[0]! - 8, s: opts.left || "" },
+      { x1: x0 + 5, x2: xs[0]! - 8, s: opts.left || "" },
       ...mids.map((s, i) => ({ x1: xs[i]! + 8, x2: xs[i + 1]! - 8, s })),
       { x1: xs[n - 1]! + 8, x2: w - 35, s: opts.right || "" },
     ];
@@ -712,16 +807,17 @@ export function figDualSignLine(opts: {
     mids?: string[],
     right?: string,
   ) {
-    const pad = 65;
+    const x0 = signLineAxisStart(label);
+    const pad = Math.max(65, x0 + 45);
     const n = ticks.length;
-    const xAtVal = (v: number) => pad + ((v - (-1)) / 6) * (w - 2 * pad);
+    const xAtVal = (v: number) => pad + ((v - (-1)) / 6) * (w - pad - 65);
     const xs = ticks.map((t) => xAtVal(Number(t.label.replace("−", "-"))));
 
     const axis = `
-      <line x1="20" y1="${y}" x2="${w - 20}" y2="${y}" stroke="${ink}" stroke-width="2"/>
+      <line x1="${x0}" y1="${y}" x2="${w - 20}" y2="${y}" stroke="${ink}" stroke-width="2"/>
       <polygon points="${w - 20},${y} ${w - 30},${y - 4} ${w - 30},${y + 4}" fill="${ink}"/>
     `;
-    const lbl = `<text x="18" y="${y - 12}" font-size="13" font-weight="700" fill="${ink}">${label}</text>`;
+    const lbl = `<text x="10" y="${y + 5}" font-size="13" font-weight="700" fill="${ink}">${label}</text>`;
     const marks = ticks
       .map((t, i) => {
         const x = xs[i]!;
@@ -734,7 +830,7 @@ export function figDualSignLine(opts: {
     if (left || right || (mids && mids.length > 0)) {
       const ms = mids || [];
       const segs: { x1: number; x2: number; s: string }[] = [
-        { x1: 25, x2: xs[0]! - 8, s: left || "" },
+        { x1: x0 + 5, x2: xs[0]! - 8, s: left || "" },
         ...ms.map((s, i) => ({ x1: xs[i]! + 8, x2: xs[i + 1]! - 8, s })),
         { x1: xs[n - 1]! + 8, x2: w - 35, s: right || "" },
       ];
@@ -968,8 +1064,117 @@ export function figTriangleRows(rows: number, caption: string): string {
   return wrapH(out, caption, `Trekantformet jorde med ${rows} rader solcellepaneler: rad n har 2n−1 paneler`, y0 + rows * (s + 8) + 6);
 }
 
+/* ── Rikere kapittel 3-figurer (DesignBOT) ─────────────────────
+ * Farger via CSS-variabler i style=, så de følger mørk/lys modus.
+ * role="img" + <title>/<desc> (aria-labelledby) for skjermlesere. */
+const C = {
+  ink: "currentColor",
+  pri: "var(--primary-light, #818cf8)",
+  acc: "var(--accent, #34d399)",
+  hint: "var(--hint-color, #f59e0b)",
+  priFill: "var(--primary-glow, rgba(99,102,241,0.18))",
+  accFill: "var(--accent-glow, rgba(52,211,153,0.18))",
+};
+let figSeq = 0;
+function wrapA11y(svg: string, vb: string, title: string, desc: string, caption: string): string {
+  const id = `tf3-${++figSeq}`;
+  return `<figure class="task-figure"><svg xmlns="http://www.w3.org/2000/svg" viewBox="${vb}" width="100%" role="img" aria-labelledby="${id}-t ${id}-d" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif"><title id="${id}-t">${title}</title><desc id="${id}-d">${desc}</desc>${svg}</svg><figcaption>${caption}</figcaption></figure>`;
+}
+/** Målpil med pilspisser i begge ender (horisontal eller vertikal). */
+function dimArrow(x1: number, y1: number, x2: number, y2: number, color: string): string {
+  const h = 6;
+  const horiz = y1 === y2;
+  const heads = horiz
+    ? `<path d="M${x1 + h} ${y1 - h * 0.7} L${x1} ${y1} L${x1 + h} ${y1 + h * 0.7} M${x2 - h} ${y2 - h * 0.7} L${x2} ${y2} L${x2 - h} ${y2 + h * 0.7}"/>`
+    : `<path d="M${x1 - h * 0.7} ${y1 + h} L${x1} ${y1} L${x1 + h * 0.7} ${y1 + h} M${x2 - h * 0.7} ${y2 - h} L${x2} ${y2} L${x2 + h * 0.7} ${y2 - h}"/>`;
+  return `<g style="stroke:${color}" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}"/>${heads}</g>`;
+}
+/** Etikett med «pille»-bakgrunn så den alltid er lesbar. */
+function pill(x: number, y: number, text: string, color: string, w: number, anchor = "middle"): string {
+  const rx = anchor === "middle" ? x - w / 2 : anchor === "end" ? x - w : x;
+  return `<rect x="${rx}" y="${y - 15}" width="${w}" height="22" rx="11" style="fill:var(--bg-surface, #111827);stroke:${color}" stroke-width="1.2"/><text x="${rx + w / 2}" y="${y + 1}" text-anchor="middle" font-size="15" font-weight="700" style="fill:${color}">${text}</text>`;
+}
+
+/** 3.2: fotballbane med banemarkering, lengde l og bredde l − 35. */
+export function figFootballPitch(caption: string): string {
+  const x = 60, y = 40, w = 300, h = 200; // 105:70 ≈ 3:2
+  const cx = x + w / 2, cy = y + h / 2;
+  const line = `style="stroke:${C.ink}" stroke-width="1.6" fill="none" opacity="0.75"`;
+  const svg = `
+    <rect x="${x}" y="${y}" width="${w}" height="${h}" rx="3" style="fill:${C.accFill};stroke:${C.ink}" stroke-width="2.4"/>
+    ${[1, 3, 5].map((i) => `<rect x="${x + (i * w) / 6}" y="${y}" width="${w / 6}" height="${h}" style="fill:${C.acc}" opacity="0.07"/>`).join("")}
+    <line x1="${cx}" y1="${y}" x2="${cx}" y2="${y + h}" ${line}/>
+    <circle cx="${cx}" cy="${cy}" r="26" ${line}/>
+    <circle cx="${cx}" cy="${cy}" r="2.5" style="fill:${C.ink}" opacity="0.75"/>
+    <rect x="${x}" y="${cy - 58}" width="46" height="116" ${line}/>
+    <rect x="${x + w - 46}" y="${cy - 58}" width="46" height="116" ${line}/>
+    <rect x="${x}" y="${cy - 26}" width="16" height="52" ${line}/>
+    <rect x="${x + w - 16}" y="${cy - 26}" width="16" height="52" ${line}/>
+    <rect x="${x - 7}" y="${cy - 14}" width="7" height="28" ${line}/>
+    <rect x="${x + w}" y="${cy - 14}" width="7" height="28" ${line}/>
+    ${dimArrow(x, 22, x + w, 22, C.pri)}
+    ${pill(cx, 22, "lengde l", C.pri, 92)}
+    ${dimArrow(386, y, 386, y + h, C.hint)}
+    <g transform="translate(386 ${cy}) rotate(-90)">${pill(0, 5, "bredde l − 35", C.hint, 126)}</g>
+    <text x="${cx}" y="${y + h + 30}" text-anchor="middle" font-size="14" font-weight="600" style="fill:${C.ink}">Omkrets: l + (l − 35) + l + (l − 35) = 350 m</text>`;
+  return wrapA11y(
+    svg,
+    "0 0 420 280",
+    "Fotballbane sett ovenfra",
+    "Rektangulær fotballbane med midtlinje, midtsirkel, straffefelt og mål. Lengden er merket l, bredden er merket l minus 35. Hele omkretsen er 350 meter.",
+    caption,
+  );
+}
+
+/** 3.24: rektangel med omkrets 54 cm, sider b og 2b + 3. Bredden b vist som målestokk. */
+export function figRectPerimeter54(caption: string): string {
+  const x = 50, y = 42, b = 70, w = 2 * b + 30, h = b; // l = 2b + 3 skjematisk
+  const svg = `
+    <rect x="${x}" y="${y}" width="${w * 1.6}" height="${h * 1.6}" rx="4" style="fill:${C.priFill};stroke:${C.ink}" stroke-width="2.4"/>
+    ${dimArrow(x, 24, x + b * 1.6, 24, C.pri)}${dimArrow(x + b * 1.6, 24, x + 2 * b * 1.6, 24, C.pri)}${dimArrow(x + 2 * b * 1.6, 24, x + w * 1.6, 24, C.hint)}
+    <text x="${x + b * 0.8}" y="16" text-anchor="middle" font-size="14" font-weight="700" style="fill:${C.pri}">b</text>
+    <text x="${x + b * 2.4}" y="16" text-anchor="middle" font-size="14" font-weight="700" style="fill:${C.pri}">b</text>
+    <text x="${x + (2 * b + 15) * 1.6}" y="16" text-anchor="middle" font-size="14" font-weight="700" style="fill:${C.hint}">3</text>
+    ${pill(x + (w * 1.6) / 2, y + h * 0.8 + 6, "lengde 2b + 3", C.pri, 128)}
+    ${dimArrow(x + w * 1.6 + 18, y, x + w * 1.6 + 18, y + h * 1.6, C.acc)}
+    ${pill(x + w * 1.6 + 18, y + h * 0.8 + 6, "b", C.acc, 30)}
+    <text x="${x + (w * 1.6) / 2}" y="${y + h * 1.6 + 30}" text-anchor="middle" font-size="14" font-weight="600" style="fill:${C.ink}">Omkrets = 54 cm (hele kanten rundt)</text>`;
+  return wrapA11y(
+    svg,
+    "0 0 420 230",
+    "Rektangel med omkrets 54 cm",
+    "Rektangel der bredden er b og lengden er 2b pluss 3. Lengden er delt opp i to biter med lengde b og en bit med lengde 3. Omkretsen er 54 centimeter.",
+    caption,
+  );
+}
+
+/** 3.46 c: rettvinklet trekant, kateter x og x + 7, hypotenus 13. */
+export function figPythagoras13(caption: string): string {
+  // 5–12–13-proporsjoner (skjematisk): x kort katet, x + 7 lang katet.
+  const A = [80, 190], B = [80 + 12 * 21, 190], Cc = [80, 190 - 5 * 21];
+  const svg = `
+    <polygon points="${A} ${B} ${Cc}" style="fill:${C.accFill};stroke:${C.ink}" stroke-width="2.4" stroke-linejoin="round"/>
+    <path d="M${A[0]} ${A[1] - 18} h18 v18" style="stroke:${C.ink}" stroke-width="1.8" fill="none"/>
+    <circle cx="${A[0] + 9}" cy="${A[1] - 9}" r="1.8" style="fill:${C.ink}"/>
+    <line x1="${A[0]}" y1="${A[1]}" x2="${B[0]}" y2="${B[1]}" style="stroke:${C.pri}" stroke-width="4" stroke-linecap="round"/>
+    <line x1="${A[0]}" y1="${A[1]}" x2="${Cc[0]}" y2="${Cc[1]}" style="stroke:${C.hint}" stroke-width="4" stroke-linecap="round"/>
+    <line x1="${Cc[0]}" y1="${Cc[1]}" x2="${B[0]}" y2="${B[1]}" style="stroke:${C.acc}" stroke-width="4" stroke-linecap="round"/>
+    ${pill((A[0] + B[0]) / 2, 216, "x + 7", C.pri, 64)}
+    ${pill(44, (A[1] + Cc[1]) / 2 + 5, "x", C.hint, 30)}
+    <g transform="translate(${(Cc[0] + B[0]) / 2 + 6} ${(Cc[1] + B[1]) / 2 - 16}) rotate(22.6)">${pill(0, 5, "13", C.acc, 40)}</g>`;
+  return wrapA11y(
+    svg,
+    "0 62 420 170",
+    "Rettvinklet trekant",
+    "Rettvinklet trekant med rett vinkel nede til venstre. Den loddrette kateten er x, den vannrette kateten er x pluss 7, og hypotenusen er 13.",
+    caption,
+  );
+}
+
 export const TASK_FIGURES: Record<string, string> = {
   ...KAP7_FIGURES,
+  ...KAP5_FIGURES,
+  ...KAP2_FIGURES,
   "1.13": figNumberLine({
     min: -4,
     max: 10,
@@ -985,18 +1190,14 @@ export const TASK_FIGURES: Record<string, string> = {
   ),
   "1.OP5": figTank(2, 5, "Illustrasjon av vanntank fylt $\\tfrac{2}{5}$."),
   "2.15": figRightTriangle("2h", "h", "Rettvinklet trekant med grunnlinje $2h$ og høyde $h$."),
-  "2.19": figFrame("Rammens areal = ytre rektangel minus den indre åpningen."),
-  "2.29": figRect("s + 2", "s − 1", "Kvadrat med side $s$ og rektangel med sider $s+2$ og $s-1$."),
-  "2.58": figDotPatternGrid("Prikkmønster for figur 1 og figur 2 med manglende hjørneprikker."),
-  "2.OP9": figRect("l = 12", "b = ?", "Areal $A=l\\cdot b=48$. Finn $b$."),
   "2.OP10": figSquareNumbers("De fire første kvadrattallene som prikkmønstre."),
   "2.56": figStaircase("Figur $n$ er en trekant av $n$ rader med kvadrater — antall = $T_n$."),
   "2.57": figLShape("Figur 3 i det L-formede mønsteret (et kvadrat der ett hjørne mangler)."),
-  "3.2": figRect("lengde l", "bredde l − 35", "Fotballbane: omkrets $2(l+b)=350$ m."),
-  "3.10": figRect("a + 10", "a", "Sauegjerde formet som rektangel med areal $140\\,\\mathrm{m}^2$."),
-  "3.13": figRect("b + 4", "b", "Rektangel med areal $45\\,\\mathrm{cm}^2$. Lengden er $4$ cm lenger enn bredden."),
-  "3.24": figRect("2b + 3", "b", "Omkrets $54$ cm. Lengde er $3$ mer enn dobbel bredde."),
-  "3.29": figRect("x + 2", "x", "Areal $x(x+2)=48$. Finn sidene (positiv lengde)."),
+  "3.2": figFootballPitch("Fotballbane: omkrets $2(l+b)=350$ m."),
+  "3.10": figRect("x + 10", "x", "Sauegjerde formet som rektangel med areal $144\\,\\mathrm{m}^2$."),
+  "3.13": figRect("x + 4", "x", "Rektangel med areal $45\\,\\mathrm{cm}^2$. Lengden er $4$ cm lenger enn bredden."),
+  "3.24": figRectPerimeter54("Omkrets $54$ cm. Lengde er $3$ mer enn dobbel bredde."),
+  "3.29": figRect("x + 2", "x", "Rektangel med areal $48$. Den ene siden er $2$ lenger enn den andre."),
   "3.34": figProportion(
     "4 personer",
     "3 dl fløte",
@@ -1005,9 +1206,9 @@ export const TASK_FIGURES: Record<string, string> = {
     "Rett proporsjonal: mer folk $\\Rightarrow$ mer fløte, i samme forhold.",
   ),
   "3.40": figRect("b + 3", "b", "Hage med omkrets $46$ m. Lengden er $3$ m mer enn bredden."),
-  "3.46": figRightTriangle("x", "x + 7", "Rettvinklet trekant med kateter $x$ og $x+7$, og hypotenus $13$."),
-  "3.54": figSimilarTriangles("Likeformede trekanter: alle sider i samme forhold.") +
-    figShadow("Illustrasjon av likeformede trekanter: stang og tre med skygger."),
+  "3.46": figPythagoras13("Rettvinklet trekant med kateter $x$ og $x+7$, og hypotenus $13$."),
+  "3.54": figSimilarTriangles("a) Formlike trekanter i målestokk: den store har nøyaktig dobbelt så lange sider.") +
+    figShadow("b) Stang og tre i målestokk. Solstrålene er parallelle, så trekantene er formlike."),
   "3.OP2": figRect("3b + 4", "b", "Rektangel med bredde $b$ og lengde $3b+4$."),
   "3.OP3": figCircle("r", "Sirkel med radius $r$ og omkrets $C = 10\\pi$."),
   "3.OP9": figProportion(
@@ -1018,6 +1219,40 @@ export const TASK_FIGURES: Record<string, string> = {
     "Rett proporsjonal: mer folk $\\Rightarrow$ mer ost, i samme forhold.",
   ),
   "4.0": figCoordinateGrid("Tomt koordinatsystem med akser og rutenett."),
+  "4.3": figFunctionPlot({
+    xmin: -1, xmax: 5, ymin: -2, ymax: 8, xstep: 1, ystep: 1,
+    fns: [{ f: (x) => x * x - 4 * x + 3, color: "#6366f1", label: "g", labelX: 4.3 }],
+    caption: "Grafen til $g(x) = x^2 - 4x + 3$.",
+  }),
+  "4.9": figFunctionPlot({
+    xmin: -3, xmax: 6, ymin: -4, ymax: 5, xstep: 1, ystep: 1,
+    fns: [
+      { f: () => 3, color: "#64748b", label: "v", labelX: -2.8 },
+      { f: (x) => x - 2, color: "#6366f1", label: "f", labelX: 5.3 },
+      { f: (x) => -x + 2, color: "#34d399", label: "g", labelX: -2.6 },
+      { f: (x) => 2 * x - 2, color: "#f59e0b", label: "h", labelX: 3.2 },
+    ],
+    caption: "Grafene til $v(x) = 3$, $f(x) = x - 2$, $g(x) = -x + 2$ og $h(x) = 2x - 2$.",
+  }),
+  "4.33": figFunctionPlot({
+    xmin: 0, xmax: 3200, ymin: 0, ymax: 110, xstep: 500, ystep: 20,
+    fns: [{ f: (m) => 1.2 * Math.pow(m, 0.55), color: "#6366f1", label: "T", labelX: 2900, from: 1000, to: 3000 }],
+    xName: "m (g)",
+    yName: "T (min)",
+    fmt: (v) => String(v),
+    caption: "Grafen til $T(m) = 1{,}2 \\cdot m^{0{,}55}$ for $1000 \\le m \\le 3000$.",
+  }),
+  "4.47": figFunctionPlot({
+    xmin: 0, xmax: 20, ymin: 0, ymax: 220, xstep: 2, ystep: 20,
+    fns: [
+      { f: (t) => 200 - 180 * Math.pow(0.92, t), color: "#ef4444", label: "T", labelX: 18.6 },
+      { f: () => 200, color: "#64748b", label: "", labelX: 0 },
+    ],
+    xName: "t (min)",
+    yName: "T (°C)",
+    fmt: (v) => String(v),
+    caption: "Grafen til $T(t) = 200 - 180 \\cdot 0{,}92^t$ for $0 \\le t \\le 20$. Den grå linja er $T = 200$.",
+  }),
   "4.8": figLinearGrid("Tomt koordinatsystem med rutenett og akser.", false),
   "4.27": figRational427("Graf til rasjonal funksjon med to greiner og stiplede asymptoter.", { withKeyPoints: false }),
   "4.45": figSecantsAndTangent("Parabelen $f(x)=-x^2+4x+2$ med sekanter på $[0,2]$ og $[2,4]$, samt tangent i $x=2$.", { withSlopes: false }),
@@ -1034,6 +1269,7 @@ export const TASK_FIGURES: Record<string, string> = {
 
 /** Pedagogiske fasit-figurer knyttet til spesifikke steg i løsningsforslag. */
 export const TASK_FASIT_FIGURES: Record<string, Record<number, string>> = {
+  ...KAP5_FASIT_FIGURES,
   "1.13": {
     1: figNumberLine({
       min: -4,
@@ -1079,26 +1315,135 @@ export const TASK_FASIT_FIGURES: Record<string, Record<number, string>> = {
   },
   "2.OP3": {
     0: figSquareIdentity("Geometrisk tolkning av 1. kvadratsetning: $(a+b)^2 = a^2 + 2ab + b^2$."),
-    1: figSquareIdentityMinus("Geometrisk tolkning av 2. kvadratsetning: $(a-b)^2 = a^2 - 2ab + b^2$. Kvadratet $b^2$ trekkes fra to ganger og må legges tilbake."),
+    1: figSecondSquare("Geometrisk tolkning av 2. kvadratsetning: $(a-b)^2 = a^2 - 2ab + b^2$. Kvadratet $b^2$ trekkes fra to ganger og må legges tilbake."),
+    2: figDiffSquares("Geometrisk tolkning av konjugatsetningen: $a^2 - b^2 = (a+b)(a-b)$."),
   },
   "3.25": {
+    0: figNumberLine({
+      min: 0,
+      max: 9,
+      ticks: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+      from: 0,
+      to: 6,
+      openFrom: true,
+      openTo: true,
+      caption: "Løsningen for a): $x<6$ er strålen $\\langle\\leftarrow,6\\rangle$. Åpen ring: $6$ er ikke med.",
+    }),
     1: figNumberLine({
       min: -6,
-      max: 8,
-      ticks: [-2, 0, 6],
+      max: 3,
+      ticks: [-6, -5, -4, -3, -2, -1, 0, 1, 2, 3],
       from: -6,
       to: -2,
       openFrom: true,
       openTo: false,
-      caption: "Løsningen for b): $x\\le -2$ er strålen $\\langle\\leftarrow,-2]$.",
+      caption: "Løsningen for b): $x\\le -2$ er strålen $\\langle\\leftarrow,-2]$. Fylt ring: $-2$ er med.",
+    }),
+  },
+  "3.39": {
+    0: figNumberLine({
+      min: -2,
+      max: 7,
+      ticks: [-2, -1, 0, 1, 2, 3, 4, 5, 6, 7],
+      from: -2,
+      to: 3,
+      openFrom: true,
+      openTo: false,
+      caption: "a) $x\\le 3$: $\\langle\\leftarrow,3]$.",
+    }),
+    1: figNumberLine({
+      min: -6,
+      max: 3,
+      ticks: [-6, -5, -4, -3, -2, -1, 0, 1, 2, 3],
+      from: -6,
+      to: -2,
+      openFrom: true,
+      openTo: true,
+      caption: "b) $x<-2$: $\\langle\\leftarrow,-2\\rangle$.",
+    }),
+    2: figNumberLine({
+      min: -8,
+      max: 1,
+      ticks: [-8, -7, -6, -5, -4, -3, -2, -1, 0, 1],
+      from: -5,
+      to: 1,
+      openFrom: false,
+      openTo: true,
+      caption: "c) $x\\ge -5$: $[-5,\\rightarrow\\rangle$.",
+    }),
+    3: figNumberLine({
+      min: -5,
+      max: 4,
+      ticks: [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4],
+      from: -2,
+      to: 4,
+      openFrom: true,
+      openTo: true,
+      caption: "d) $x>-2$: $\\langle -2,\\rightarrow\\rangle$.",
+    }),
+    4: figNumberLine({
+      min: -2,
+      max: 6,
+      ticks: [-2, -1, 0, 1, 2, 3, 4, 5, 6],
+      from: -2,
+      to: 10 / 3,
+      openFrom: true,
+      openTo: false,
+      caption: "e) $x\\le \\frac{10}{3}\\approx 3{,}3$: $\\langle\\leftarrow,\\tfrac{10}{3}]$.",
+    }),
+  },
+  "3.61": {
+    3: figNumberLine({
+      min: -8,
+      max: 1,
+      ticks: [-8, -7, -6, -5, -4, -3, -2, -1, 0, 1],
+      from: -8,
+      to: -4,
+      openFrom: true,
+      openTo: false,
+      caption: "d) $x\\le -4$: $\\langle\\leftarrow,-4]$.",
+    }),
+  },
+  "3.62": {
+    1: figNumberLine({
+      min: -4,
+      max: 5,
+      ticks: [-4, -3, -2, -1, 0, 1, 2, 3, 4, 5],
+      from: -2,
+      to: 3,
+      openFrom: true,
+      openTo: false,
+      caption: "b) $-2<x\\le 3$: $\\langle -2,3]$. Åpen ring i $-2$, fylt ring i $3$.",
+    }),
+  },
+  "3.63": {
+    0: figNumberLine({
+      min: -4,
+      max: 5,
+      ticks: [-4, -3, -2, -1, 0, 1, 2, 3, 4, 5],
+      from: -2,
+      to: 3,
+      openFrom: true,
+      openTo: true,
+      caption: "a) $-2<x<3$: $\\langle -2,3\\rangle$. Endepunktene er ikke med fordi ulikheten er streng.",
     }),
   },
   "3.OP8": {
+    0: figNumberLine({
+      min: -1,
+      max: 8,
+      ticks: [-1, 0, 1, 2, 3, 4, 5, 6, 7, 8],
+      from: -1,
+      to: 4,
+      openFrom: true,
+      openTo: true,
+      caption: "Løsningen for a): $x<4$ er strålen $\\langle\\leftarrow,4\\rangle$.",
+    }),
     1: figNumberLine({
-      min: -6,
-      max: 6,
-      ticks: [-3, 0, 4],
-      from: -6,
+      min: -7,
+      max: 2,
+      ticks: [-7, -6, -5, -4, -3, -2, -1, 0, 1, 2],
+      from: -7,
       to: -3,
       openFrom: true,
       openTo: false,
@@ -1113,7 +1458,7 @@ export const TASK_FASIT_FIGURES: Record<string, Record<number, string>> = {
         { x: 1, y: 2, label: "(1, 2)" },
       ],
     }),
-    3: figCoordinateGrid("Rett linje trukket gjennom koordinatene $(-1, -1)$ og $(1, 2)$.", {
+    3: figCoordinateGrid("Rett linje trukket gjennom punktene $(-1, -1)$ og $(1, 2)$.", {
       points: [
         { x: -1, y: -1, label: "(-1, -1)" },
         { x: 1, y: 2, label: "(1, 2)" },
@@ -1183,3 +1528,223 @@ export const TASK_FASIT_FIGURES: Record<string, Record<number, string>> = {
     2: figParallelLines("Når $k=4$ er linjene $2x+y=5$ og $2x+y=2$ parallelle uten felles skjæringspunkt."),
   },
 };
+
+/** Noen id-er finnes både som ekstraoppgave og som md-oppgave med annet innhold.
+ * Figuren vises bare når oppgaveteksten faktisk handler om den. */
+export const TASK_FIGURE_REQUIRES: Record<string, RegExp> = {
+  "3.24": /54/,
+  "3.46": /hypotenus/i,
+};
+
+// ---------------------------------------------------------------------------
+// Kapittel 6 — Modellering: punktdiagram (scatter), modeller og avvik.
+// Alle modeller er regnet ut med numpy (polyfit / log-lineær tilpasning, som RegLin/RegEksp/RegPot/RegPoly).
+
+const K6 = { data: "#0ea5e9", lin: "#6366f1", exp: "#f59e0b", alt: "#34d399", grense: "#ef4444" };
+
+/** Punktdiagram for måledata, eventuelt med regresjonsmodeller og hjelpelinjer. */
+export function figScatter(opts: {
+  xs: number[];
+  ys: number[];
+  xmin: number;
+  xmax: number;
+  ymin: number;
+  ymax: number;
+  xstep: number;
+  ystep: number;
+  models?: { f: (x: number) => number; label: string; labelX: number; labelDy?: number; color?: string; from?: number; to?: number }[];
+  hlines?: { y: number; label: string; labelX: number }[];
+  marks?: { x: number; y: number; label?: string; dx?: number; dy?: number }[];
+  xName?: string;
+  yName?: string;
+  fmt?: (v: number) => string;
+  caption: string;
+  h?: number;
+}): string {
+  return figFunctionPlot({
+    xmin: opts.xmin, xmax: opts.xmax, ymin: opts.ymin, ymax: opts.ymax, xstep: opts.xstep, ystep: opts.ystep,
+    fns: [
+      ...(opts.hlines ?? []).map((l) => ({ f: () => l.y, color: K6.grense, label: l.label, labelX: l.labelX, dash: true })),
+      ...(opts.models ?? []).map((m, i) => ({ ...m, color: m.color ?? [K6.lin, K6.exp, K6.alt][i % 3] })),
+    ],
+    points: [
+      ...opts.xs.map((x, i) => ({ x, y: opts.ys[i], color: K6.data })),
+      ...(opts.marks ?? []),
+    ],
+    xName: opts.xName, yName: opts.yName, fmt: opts.fmt, caption: opts.caption, h: opts.h,
+  });
+}
+
+/** Hage inntil en husvegg: to sider x og én side 60 − 2x (oppgave 6.18). */
+export function figGardenWall(caption: string): string {
+  const svg = `
+    <rect x="60" y="20" width="300" height="16" fill="rgba(100,116,139,0.35)" stroke="${ink}" stroke-width="1.6"/>
+    <text x="210" y="32" text-anchor="middle" font-size="12" font-weight="700" fill="${ink}">Husvegg (ikke gjerde)</text>
+    <rect x="90" y="36" width="240" height="110" fill="rgba(52,211,153,0.15)" stroke="none"/>
+    <polyline points="90,36 90,146 330,146 330,36" fill="none" stroke="#16a34a" stroke-width="3" stroke-dasharray="7 4"/>
+    <text x="78" y="96" text-anchor="end" font-size="15" font-weight="700" fill="${ink}">x</text>
+    <text x="342" y="96" font-size="15" font-weight="700" fill="${ink}">x</text>
+    <text x="210" y="168" text-anchor="middle" font-size="15" font-weight="700" fill="${ink}">60 − 2x</text>
+    <text x="210" y="96" text-anchor="middle" font-size="13" fill="${ink}">Hage</text>`;
+  return wrapH(svg, caption, "Rektangulær hage inntil en husvegg. Gjerde på tre sider: to sider med lengde x og én side med lengde 60 minus 2x.", 180);
+}
+
+const fmtTus = (v: number) => String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g, " ").replace("-", "−");
+const fmtK = (v: number) => String(Math.round(v * 100) / 100).replace("-", "−").replace(".", ",");
+
+const D69 = { xs: [1, 2, 3, 4, 5, 6], ys: [12, 15, 19, 21, 26, 28] };
+const D610 = { xs: [0, 1, 2, 3, 4, 5], ys: [500, 640, 830, 1050, 1370, 1750] };
+const D611 = { xs: [30, 40, 50, 60, 70, 80], ys: [9, 15, 23, 33, 44, 57] };
+const D612 = { xs: [0.25, 0.5, 1, 1.5, 2], ys: [1.0, 1.42, 2.01, 2.45, 2.84] };
+const D613 = { xs: [0, 1, 2, 3, 4, 5], ys: [20, 26, 33, 43, 56, 72] };
+const D614 = { xs: [0, 10, 20, 30, 40, 50], ys: [3.2, 3.6, 3.9, 4.1, 4.2, 4.5] };
+const D621 = { xs: [12, 15, 18, 21, 24, 27], ys: [110, 150, 185, 230, 260, 300] };
+const DOP5 = { xs: [2, 4, 6, 8, 10], ys: [31, 27, 24, 19, 16] };
+const DOP8 = { xs: [1, 2, 3, 4, 5], ys: [4.2, 33.5, 113, 268, 524] };
+const DOP9 = { xs: [0, 0.5, 1, 1.5, 2, 2.5], ys: [1.8, 6.9, 9.6, 9.9, 7.8, 3.3] };
+const D6B1 = { xs: [1, 2, 3, 4, 5], ys: [0.4, -0.2, 0.3, -0.3, 0.2] };
+const D6B2 = { xs: [30, 40, 50, 60, 70, 80], ys: [2.905, -0.724, -2.352, -1.981, -0.61, 2.762] };
+const D6B3 = { xs: [0, 1, 2, 3, 4, 5], ys: [80, 62, 49, 38, 30, 23] };
+const D6B4 = { xs: [1, 5, 10, 50, 100], ys: [70, 234, 394, 1317, 2214] };
+
+const ax69 = { ...D69, xmin: 0, xmax: 7, ymin: 0, ymax: 35, xstep: 1, ystep: 5, xName: "x (timer)", yName: "y (poeng)" };
+const ax610 = { ...D610, xmin: 0, xmax: 6, ymin: 0, ymax: 2000, xstep: 1, ystep: 250, xName: "x (timer)", yName: "N", fmt: fmtTus };
+const ax611 = { ...D611, xmin: 20, xmax: 90, ymin: 0, ymax: 70, xstep: 10, ystep: 10, xName: "v (km/h)", yName: "s (m)" };
+const ax612 = { ...D612, xmin: 0, xmax: 2.5, ymin: 0, ymax: 3.5, xstep: 0.5, ystep: 0.5, xName: "l (m)", yName: "T (s)", fmt: fmtK };
+const ax613 = { ...D613, xmin: 0, xmax: 6, ymin: 0, ymax: 90, xstep: 1, ystep: 10, xName: "x (uke)", yName: "y (hundre)" };
+const ax614 = { ...D614, xmin: 0, xmax: 60, ymin: 3, ymax: 5, xstep: 10, ystep: 0.5, xName: "x (år etter 1950)", yName: "millioner", fmt: fmtK };
+const ax621 = { ...D621, xmin: 10, xmax: 30, ymin: 0, ymax: 350, xstep: 2, ystep: 50, xName: "x (°C)", yName: "y (is)" };
+const axOP5 = { ...DOP5, xmin: 0, xmax: 20, ymin: 0, ymax: 40, xstep: 2, ystep: 5, xName: "x (dager)", yName: "y (liter)" };
+const axOP8 = { ...DOP8, xmin: 0, xmax: 6, ymin: 0, ymax: 600, xstep: 1, ystep: 100, xName: "r (cm)", yName: "m (g)" };
+const axOP9 = { ...DOP9, xmin: 0, xmax: 3, ymin: 0, ymax: 12, xstep: 0.5, ystep: 2, xName: "t (s)", yName: "h (m)", fmt: fmtK };
+const ax6B3 = { ...D6B3, xmin: 0, xmax: 8, ymin: 0, ymax: 90, xstep: 1, ystep: 10, xName: "x (min)", yName: "y (°C)" };
+const ax6B4 = { ...D6B4, xmin: 0, xmax: 110, ymin: 0, ymax: 2500, xstep: 10, ystep: 500, xName: "m (kg)", yName: "E (kcal)", fmt: fmtTus };
+
+const lin613 = (x: number) => 10.29 * x + 15.95;
+const exp613 = (x: number) => 19.98 * 1.292 ** x;
+const lin610 = (x: number) => 247.4 * x + 404.8;
+const exp610 = (x: number) => 499 * 1.285 ** x;
+
+Object.assign(TASK_FIGURES, {
+  "6.9": figScatter({ ...ax69, caption: "Punktdiagram: øvingstimer $x$ og poeng $y$." }),
+  "6.10": figScatter({ ...ax610, caption: "Punktdiagram: antall bakterier $N$ etter $x$ timer." }),
+  "6.11": figScatter({ ...ax611, caption: "Punktdiagram: bremselengde $s$ ved fart $v$." }),
+  "6.12": figScatter({ ...ax612, caption: "Punktdiagram: svingetid $T$ for pendellengde $l$." }),
+  "6.13": figScatter({ ...ax613, caption: "Punktdiagram: bestillinger $y$ (i hundre) i uke $x$." }),
+  "6.14": figScatter({ ...ax614, caption: "Punktdiagram: folketallet i Norge (millioner), $x$ år etter 1950." }),
+  "6.18": figGardenWall("Hagen ligger inntil husveggen. Gjerdet (stiplet) går langs tre sider."),
+  "6.21": figScatter({ ...ax621, caption: "Punktdiagram: temperatur $x$ og antall solgte is $y$." }),
+  "6.OP5": figScatter({ ...axOP5, caption: "Punktdiagram: liter vann $y$ i tønna etter $x$ dager." }),
+  "6.OP7": figScatter({ ...ax610, caption: "Punktdiagram: antall bakterier $N$ etter $x$ timer." }),
+  "6.OP8": figScatter({ ...axOP8, caption: "Punktdiagram: masse $m$ for kuler med radius $r$." }),
+  "6.OP9": figScatter({ ...axOP9, caption: "Punktdiagram: høyden $h$ til ballen etter $t$ sekunder." }),
+  "6A.1": figFunctionPlot({
+    xmin: 0, xmax: 10, ymin: 0, ymax: 11, xstep: 1, ystep: 1,
+    fns: [
+      { f: (x) => 2 + 0.8 * x, color: K6.lin, label: "f", labelX: 9.3 },
+      { f: (x) => 10 * 0.75 ** x, color: K6.exp, label: "g", labelX: 0.5 },
+      { f: (x) => -0.4 * (x - 5) ** 2 + 10, color: K6.alt, label: "h", labelX: 4.8 },
+      { f: (x) => 2.4 * Math.sqrt(x), color: K6.grense, label: "k", labelX: 9.4 },
+    ],
+    caption: "Fire grafer $f$, $g$, $h$ og $k$.",
+  }),
+  "6B.3": figScatter({ ...ax6B3, caption: "Punktdiagram: temperaturen $y$ i teen etter $x$ minutter." }),
+  "6B.4": figScatter({ ...ax6B4, caption: "Punktdiagram: energibehov $E$ for dyr med masse $m$." }),
+});
+
+Object.assign(TASK_FASIT_FIGURES, {
+  "6.2": { 2: figFunctionPlot({
+    xmin: 0, xmax: 10, ymin: 0, ymax: 400, xstep: 1, ystep: 50, xName: "x (år)", yName: "V (1000 kr)",
+    fns: [
+      { f: () => 150, color: K6.grense, label: "150", labelX: 8.6, dash: true },
+      { f: (x) => 350 * 0.88 ** x, color: K6.lin, label: "V", labelX: 1 },
+    ],
+    points: [{ x: 6.63, y: 150, label: "(6,63; 150)", dx: 6, dy: -8 }],
+    caption: "$V(x)=350\\,000\\cdot 0{,}88^x$ (i tusen kr) skjærer linjen $150$ (tusen kr) i $x\\approx 6{,}63$.",
+  }) },
+  "6.4": { 1: figFunctionPlot({
+    xmin: 0, xmax: 3.5, ymin: 0, ymax: 14, xstep: 0.5, ystep: 2, xName: "t (s)", yName: "h (m)", fmt: fmtK,
+    fns: [{ f: (t) => -4.9 * t * t + 14 * t + 1.5, color: K6.lin, label: "h", labelX: 0.35, from: 0, to: 2.96 }],
+    points: [{ x: 1.43, y: 11.5, label: "topp (1,43; 11,5)", dx: 8, dy: -6 }, { x: 2.96, y: 0, label: "2,96", dx: 6, dy: -8 }],
+    caption: "Høyden $h(t)$: toppunkt i $(1{,}43;\\ 11{,}5)$, treffer bakken ved $t\\approx 2{,}96$.",
+  }) },
+  "6.9": { 0: figScatter({ ...ax69, models: [{ f: (x) => 3.29 * x + 8.67, label: "y = 3,29x + 8,67", labelX: 3.6, labelDy: 24 }], caption: "Punktene med regresjonslinjen $y\\approx 3{,}29x+8{,}67$." }) },
+  "6.10": { 0: figScatter({ ...ax610, models: [{ f: exp610, label: "N = 499·1,285ˣ", labelX: 1.5, labelDy: 26, color: K6.exp }], caption: "Punktene med modellen $N\\approx 499\\cdot 1{,}285^x$." }) },
+  "6.11": { 1: figScatter({ ...ax611, models: [{ f: (v) => 0.0084 * v * v + 0.04 * v + 0.15, label: "andregradsmodell", labelX: 60, labelDy: 30, color: K6.alt }], caption: "Punktene med modellen $s\\approx 0{,}0084v^2+0{,}040v+0{,}15$." }) },
+  "6.12": { 0: figScatter({ ...ax612, models: [{ f: (l) => 2.01 * l ** 0.501, label: "T = 2,01·l^0,501", labelX: 1.2, labelDy: 28, from: 0.001 }], caption: "Punktene med modellen $T\\approx 2{,}01\\cdot l^{0{,}501}$." }) },
+  "6.13": { 1: figScatter({ ...ax613, models: [{ f: lin613, label: "lineær", labelX: 5.15, labelDy: 24 }, { f: exp613, label: "eksponentiell", labelX: 1.5, labelDy: 22 }], caption: "Lineær modell (blå) og eksponentiell modell (oransje) sammen med punktene." }) },
+  "6.14": { 0: figScatter({ ...ax614, models: [{ f: (x) => 0.0243 * x + 3.3095, label: "f", labelX: 55 }], caption: "Punktene med regresjonslinjen $f(x)\\approx 0{,}0243x+3{,}3095$." }) },
+  "6.16": { 2: figFunctionPlot({
+    xmin: 0, xmax: 40, ymin: 0, ymax: 100, xstep: 5, ystep: 10, xName: "t (min)", yName: "K (°C)",
+    fns: [
+      { f: () => 40, color: K6.grense, label: "40 °C", labelX: 33, dash: true },
+      { f: () => 20, color: "#64748b", label: "romtemperatur", labelX: 2, dash: true },
+      { f: (t) => 20 + 70 * 0.92 ** t, color: K6.lin, label: "K", labelX: 3 },
+    ],
+    points: [{ x: 15, y: 40, label: "(15; 40)", dx: 6, dy: -8 }],
+    caption: "$K(t)=20+70\\cdot 0{,}92^t$ er $40\\,^\\circ$C etter ca. $15$ min og nærmer seg $20\\,^\\circ$C.",
+  }) },
+  "6.17": { 1: figFunctionPlot({
+    xmin: 0, xmax: 160, ymin: 0, ymax: 50000, xstep: 20, ystep: 10000, xName: "p (kr)", yName: "I (kr)", fmt: fmtTus,
+    fns: [{ f: (p) => -8 * p * p + 1200 * p, color: K6.lin, label: "I", labelX: 20, from: 0, to: 150 }],
+    points: [{ x: 75, y: 45000, label: "topp (75; 45 000)", dx: -50, dy: -8 }],
+    caption: "Inntekten $I(p)=-8p^2+1200p$ har toppunkt i $(75,\\ 45\\,000)$.",
+  }) },
+  "6.18": { 1: figFunctionPlot({
+    xmin: 0, xmax: 32, ymin: 0, ymax: 500, xstep: 5, ystep: 100, xName: "x (m)", yName: "A (m²)",
+    fns: [{ f: (x) => x * (60 - 2 * x), color: K6.alt, label: "A", labelX: 4, from: 0, to: 30 }],
+    points: [{ x: 15, y: 450, label: "topp (15; 450)", dx: -40, dy: -8 }],
+    caption: "$A(x)=x(60-2x)$ har toppunkt i $(15,\\ 450)$.",
+  }) },
+  "6.19": { 1: figFunctionPlot({
+    xmin: 0, xmax: 200, ymin: 0, ymax: 400, xstep: 20, ystep: 50, xName: "x (min)", yName: "kr",
+    fns: [
+      { f: (x) => 0.5 * x + 199, color: K6.lin, label: "A", labelX: 185 },
+      { f: (x) => 1.5 * x + 99, color: K6.exp, label: "B", labelX: 175 },
+    ],
+    points: [{ x: 100, y: 249, label: "(100; 249)", dx: 6, dy: 16 }],
+    caption: "Abonnement A og B koster like mye, $249$ kr, ved $100$ minutter.",
+  }) },
+  "6.20": { 2: figFunctionPlot({
+    xmin: 0, xmax: 12, ymin: 0, ymax: 450, xstep: 1, ystep: 50, xName: "t (timer)", yName: "M (mg)",
+    fns: [
+      { f: () => 100, color: K6.grense, label: "100 mg", labelX: 10.4, dash: true },
+      { f: (t) => 400 * 0.85 ** t, color: K6.lin, label: "M", labelX: 1 },
+    ],
+    points: [{ x: 8.53, y: 100, label: "(8,53; 100)", dx: -72, dy: -10 }],
+    caption: "$M(t)=400\\cdot 0{,}85^t$ er under $100$ mg etter ca. $8{,}53$ timer.",
+  }) },
+  "6.21": { 0: figScatter({ ...ax621, models: [{ f: (x) => 12.62 * x - 40.24, label: "y = 12,62x − 40,24", labelX: 19, labelDy: 28 }], caption: "Punktene med regresjonslinjen $y\\approx 12{,}62x-40{,}24$." }) },
+  "6.OP5": { 1: figScatter({ ...axOP5, models: [{ f: (x) => -1.9 * x + 34.8, label: "y = −1,90x + 34,80", labelX: 9 }], marks: [{ x: 18.3, y: 0 }], caption: "Regresjonslinjen treffer $y=0$ ved $x\\approx 18{,}3$." }) },
+  "6.OP6": { 1: figFunctionPlot({
+    xmin: 0, xmax: 60, ymin: 0, ymax: 180, xstep: 10, ystep: 20, xName: "t (min)", yName: "T (°C)",
+    fns: [
+      { f: () => 40, color: K6.grense, label: "40 °C", labelX: 52, dash: true },
+      { f: (t) => 22 + 148 * 0.95 ** t, color: K6.lin, label: "T", labelX: 3 },
+    ],
+    points: [{ x: 41.1, y: 40, label: "(41,1; 40)", dx: 4, dy: -10 }],
+    caption: "$T(t)=22+148\\cdot 0{,}95^t$ er $40\\,^\\circ$C etter ca. $41$ min.",
+  }) },
+  "6.OP7": { 1: figScatter({ ...ax610, models: [{ f: lin610, label: "lineær", labelX: 5.1, labelDy: 24 }, { f: exp610, label: "eksponentiell", labelX: 1.4, labelDy: 22 }], caption: "Lineær modell (blå) og eksponentiell modell (oransje) sammen med punktene." }) },
+  "6.OP8": { 0: figScatter({ ...axOP8, models: [{ f: (r) => 4.196 * r ** 2.999, label: "m = 4,20·r³", labelX: 4.3, labelDy: 40, from: 0 }], caption: "Punktene med modellen $m\\approx 4{,}20\\cdot r^{3}$." }) },
+  "6.OP9": { 1: figScatter({ ...axOP9, models: [{ f: (t) => -4.8 * t * t + 12.6 * t + 1.8, label: "h", labelX: 2.75, color: K6.alt, from: 0, to: 2.76 }], marks: [{ x: 1.3125, y: 10.07, label: "topp", dx: 6, dy: -8 }], caption: "Andregradsmodellen $h(t)\\approx -4{,}8t^2+12{,}6t+1{,}8$ med toppunkt og nullpunkt." }) },
+  "6B.1": { 2: figScatter({ ...D6B1, xmin: 0, xmax: 6, ymin: -0.5, ymax: 0.5, xstep: 1, ystep: 0.1, xName: "x", yName: "avvik", fmt: fmtK, h: 240, caption: "Avviksplott: avvikene ligger tilfeldig rundt $0$ uten mønster." }) },
+  "6B.2": { 1: figScatter({ ...D6B2, xmin: 20, xmax: 90, ymin: -3, ymax: 3, xstep: 10, ystep: 1, xName: "v", yName: "avvik", h: 240, caption: "Avviksplott for den lineære modellen: mønsteret $+,-,-,-,-,+$ viser at dataene krummer." }) },
+  "6B.3": { 1: figScatter({ ...ax6B3, models: [{ f: (x) => 79.95 * 0.781 ** x, label: "y = 79,95·0,781ˣ", labelX: 3.5, labelDy: -26, color: K6.exp }], caption: "Punktene med modellen $y\\approx 79{,}95\\cdot 0{,}781^x$." }) },
+  "6B.4": { 0: figScatter({ ...ax6B4, models: [{ f: (m) => 70 * m ** 0.75, label: "E = 70·m^0,75", labelX: 60, labelDy: 24, from: 0 }], caption: "Punktene med modellen $E\\approx 70\\cdot m^{0{,}75}$." }) },
+  "6C.1": { 1: figFunctionPlot({
+    xmin: 0, xmax: 16, ymin: 0, ymax: 6000, xstep: 2, ystep: 1000, xName: "x (timer)", yName: "antall", fmt: fmtTus,
+    fns: [
+      { f: (x) => 1200 + 150 * x, color: K6.lin, label: "A", labelX: 15.2 },
+      { f: (x) => 800 * 1.12 ** x, color: K6.exp, label: "B", labelX: 14.3 },
+    ],
+    points: [{ x: 11.39, y: 2908, label: "x ≈ 11,4", dx: -64, dy: -10 }],
+    caption: "Kultur B går forbi kultur A etter ca. $11{,}4$ timer.",
+  }) },
+  "6C.4": { 2: figFunctionPlot({
+    xmin: 0, xmax: 500, ymin: 0, ymax: 14000, xstep: 50, ystep: 2000, xName: "p (kr)", yName: "I (kr)", fmt: fmtTus,
+    fns: [{ f: (p) => -0.21 * p * p + 102.4 * p, color: K6.lin, label: "I", labelX: 40, from: 0, to: 487.6 }],
+    points: [{ x: 243.8, y: 12483, label: "topp (244; 12 483)", dx: -50, dy: -10 }],
+    caption: "Inntekten $I(p)\\approx -0{,}21p^2+102{,}4p$ er størst for $p\\approx 244$ kr.",
+  }) },
+});

@@ -1,0 +1,79 @@
+[
+  {
+    "sporsmal": "$K(t)=20+70\\cdot 0{,}9^t$. Hva nærmer $K$ seg når $t$ blir stor?",
+    "alternativer": [
+      "$0$",
+      "$20$",
+      "$70$",
+      "$90$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "$0{,}9^t\\to 0$."
+  },
+  {
+    "sporsmal": "Inntekt $I(p)=-5p^2+500p$ er størst for",
+    "alternativer": [
+      "$p=50$",
+      "$p=25$",
+      "$p=100$",
+      "$p=500$"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "$p=-\\dfrac{500}{2\\cdot(-5)}=50$."
+  },
+  {
+    "sporsmal": "En modell gir negativt antall solgte varer for noen $x$. Hva betyr det?",
+    "alternativer": [
+      "Modellen er feil overalt",
+      "Vi må runde av",
+      "Disse $x$-verdiene er utenfor gyldighetsområdet",
+      "Vi må bruke eksponentiell modell"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Modeller har begrenset gyldighet."
+  },
+  {
+    "sporsmal": "Hvordan finner du når to lineære prismodeller koster like mye?",
+    "alternativer": [
+      "Legger modellene sammen",
+      "Bruker regresjon",
+      "Finner toppunktet",
+      "Setter modellene lik hverandre og løser"
+    ],
+    "riktigSvar": 3,
+    "forklaring": "Løs $A(x)=B(x)$, eller finn skjæringspunktet grafisk."
+  },
+  {
+    "sporsmal": "$M(t)=400\\cdot 0{,}85^t$. Hvor mange prosent brytes ned per time?",
+    "alternativer": [
+      "$85\\,\\%$",
+      "$0{,}85\\,\\%$",
+      "$15\\,\\%$",
+      "$40\\,\\%$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "$1-0{,}85=0{,}15$."
+  },
+  {
+    "sporsmal": "Arealet av en hage er $A(x)=x(60-2x)$. Hvilket gyldighetsområde er rimelig?",
+    "alternativer": [
+      "$0<x<60$",
+      "$x>0$",
+      "alle reelle tall",
+      "$0<x<30$"
+    ],
+    "riktigSvar": 3,
+    "forklaring": "Begge sidene $x$ og $60-2x$ må være positive."
+  },
+  {
+    "sporsmal": "Å bruke modellen innenfor området der vi har data, kalles",
+    "alternativer": [
+      "interpolering",
+      "ekstrapolering",
+      "regresjon",
+      "avrunding"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Interpolering er tryggere enn ekstrapolering."
+  }
+]

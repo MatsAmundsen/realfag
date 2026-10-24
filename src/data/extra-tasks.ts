@@ -224,7 +224,7 @@ export const EXTRA: Record<string, Oppgave[]> = {
     o(
       "2.18",
       "Løs opp parentesene og trekk sammen.<br><br><strong>a)</strong> $(x+3)(x-1)$<br><br><strong>b)</strong> $2(x-4)(x+1)$<br><br><strong>c)</strong> $(2a-3)^2 - (a+1)(a-1)$",
-      "FOIL / kvadratsetning. Trekk sammen like ledd til slutt.",
+      "Gang hvert ledd i den første parentesen med hvert ledd i den andre, eller bruk en kvadratsetning. Trekk sammen like ledd til slutt.",
       [
         "<strong>a)</strong> $x^2-x+3x-3=x^2+2x-3$.<br><strong>Svar:</strong> $x^2+2x-3$",
         "<strong>b)</strong> Først $(x-4)(x+1)=x^2-3x-4$, gange med $2$: $2x^2-6x-8$.<br><strong>Svar:</strong> $2x^2-6x-8$",
@@ -322,8 +322,8 @@ export const EXTRA: Record<string, Oppgave[]> = {
       "Faktoriser teller (og nevner) før du stryker felles faktorer.",
       [
         "<strong>a)</strong> $\\dfrac{4(2x-3)}{4}=2x-3$. <strong>Svar:</strong> $2x-3$",
-        "<strong>b)</strong> $\\dfrac{(x-3)(x+3)}{x-3}=x+3$. <strong>Svar:</strong> $x+3$",
-        "<strong>c)</strong> $\\dfrac{2x(x+3)}{2x}=x+3$. <strong>Svar:</strong> $x+3$",
+        "<strong>b)</strong> $\\dfrac{(x-3)(x+3)}{x-3}=x+3$. <strong>Svar:</strong> $x+3$, $x\\neq 3$",
+        "<strong>c)</strong> $\\dfrac{2x(x+3)}{2x}=x+3$. <strong>Svar:</strong> $x+3$, $x\\neq 0$",
       ],
     ),
     o(
@@ -331,8 +331,8 @@ export const EXTRA: Record<string, Oppgave[]> = {
       "Trekk sammen til én brøk.<br><br><strong>a)</strong> $\\dfrac{2}{x}+\\dfrac{3}{2x}$<br><br><strong>b)</strong> $\\dfrac{x}{x+1}-\\dfrac{1}{x+1}$",
       "Fellesnevner. I b) er nevneren allerede lik.",
       [
-        "<strong>a)</strong> Fellesnevner $2x$: $\\dfrac{4}{2x}+\\dfrac{3}{2x}=\\dfrac{7}{2x}$.<br><strong>Svar:</strong> $\\dfrac{7}{2x}$",
-        "<strong>b)</strong> $\\dfrac{x-1}{x+1}$.<br><strong>Svar:</strong> $\\dfrac{x-1}{x+1}$",
+        "<strong>a)</strong> Fellesnevner $2x$: $\\dfrac{4}{2x}+\\dfrac{3}{2x}=\\dfrac{7}{2x}$.<br><strong>Svar:</strong> $\\dfrac{7}{2x}$, $x\\neq 0$",
+        "<strong>b)</strong> $\\dfrac{x-1}{x+1}$.<br><strong>Svar:</strong> $\\dfrac{x-1}{x+1}$, $x\\neq -1$",
       ],
     ),
   ],
@@ -353,9 +353,9 @@ export const EXTRA: Record<string, Oppgave[]> = {
       "Løs likningene og sett prøve.<br><br><strong>a)</strong> $5x-7=2x+8$<br><br><strong>b)</strong> $3(x-2)=2x+9$<br><br><strong>c)</strong> $\\dfrac{x}{4}-\\dfrac{x}{6}=1$",
       "Samle $x$ på én side. I c) gang med fellesnevner $12$.",
       [
-        "<strong>a)</strong> $5x-2x=8+7$, $3x=15$, $x=5$. Prøve: $25-7=10+8=18$.<br><strong>Svar:</strong> $x=5$",
-        "<strong>b)</strong> $3x-6=2x+9$, $x=15$.<br><strong>Svar:</strong> $x=15$",
-        "<strong>c)</strong> Gang med $12$: $3x-2x=12$, $x=12$.<br><strong>Svar:</strong> $x=12$",
+        "<strong>a)</strong> $5x-2x=8+7$, $3x=15$, $x=5$. Prøve: VS $=5\\cdot 5-7=18$, HS $=2\\cdot 5+8=18$.<br><strong>Svar:</strong> $x=5$",
+        "<strong>b)</strong> $3x-6=2x+9$, $3x-2x=9+6$, $x=15$. Prøve: VS $=3\\cdot 13=39$, HS $=30+9=39$.<br><strong>Svar:</strong> $x=15$",
+        "<strong>c)</strong> Gang hvert ledd med $12$: $12\\cdot\\dfrac{x}{4}-12\\cdot\\dfrac{x}{6}=12$, altså $3x-2x=12$, $x=12$. Prøve: $3-2=1$.<br><strong>Svar:</strong> $x=12$",
       ],
     ),
     o(
@@ -364,15 +364,6 @@ export const EXTRA: Record<string, Oppgave[]> = {
       "Omkrets $2(l+b)=54$. $l=2b+3$.",
       [
         "$2((2b+3)+b)=54$, $2(3b+3)=54$, $3b+3=27$, $3b=24$, $b=8$.<br>Lengde $2\\cdot 8+3=19$.<br><strong>Svar:</strong> bredde $8$ cm, lengde $19$ cm.",
-      ],
-    ),
-    o(
-      "3.25",
-      "Løs ulikheten og skriv svaret både med ulikhetstegn og som intervall.<br><br><strong>a)</strong> $2x-5 < 7$<br><br><strong>b)</strong> $4-3x \\geq 10$",
-      "Samme flytteregler som for likninger. Når du ganger/deler med et negativt tall, snur ulikheten.",
-      [
-        "<strong>a)</strong> $2x<12$, $x<6$. Intervall: $\\langle\\leftarrow, 6\\rangle$.<br><strong>Svar:</strong> $x<6$, $x\\in\\langle\\leftarrow,6\\rangle$",
-        "<strong>b)</strong> $-3x\\geq 6$. Del på $-3$ og snu: $x\\leq -2$.<br><strong>Svar:</strong> $x\\leq -2$, $x\\in\\langle\\leftarrow,-2]$",
       ],
     ),
   ],
@@ -391,7 +382,7 @@ export const EXTRA: Record<string, Oppgave[]> = {
       "$\\dfrac{1}{R}=\\dfrac{1}{R_1}+\\dfrac{1}{R_2}$. Isoler $R$.",
       "Fellesnevner $R_1 R_2$ på høyre side, deretter inverter begge sider.",
       [
-        "$\\dfrac{1}{R}=\\dfrac{R_2+R_1}{R_1 R_2}$, så $R=\\dfrac{R_1 R_2}{R_1+R_2}$.<br><strong>Svar:</strong> $R=\\dfrac{R_1 R_2}{R_1+R_2}$",
+        "Fellesnevner $R_1R_2$: $\\dfrac{1}{R}=\\dfrac{R_2}{R_1R_2}+\\dfrac{R_1}{R_1R_2}=\\dfrac{R_2+R_1}{R_1 R_2}$.<br>Når to brøker er like, er også de omvendte brøkene like, så $R=\\dfrac{R_1 R_2}{R_1+R_2}$.<br><strong>Svar:</strong> $R=\\dfrac{R_1 R_2}{R_1+R_2}$",
       ],
     ),
   ],
@@ -401,8 +392,8 @@ export const EXTRA: Record<string, Oppgave[]> = {
       "Løs.<br><br><strong>a)</strong> $x^2=25$<br><br><strong>b)</strong> $(x-3)(x+1)=0$<br><br><strong>c)</strong> $x^2-6x=0$",
       "Husk $\\pm$ når du tar kvadratrot. Produktregelen: et av faktorene er $0$.",
       [
-        "<strong>a)</strong> $x=\\pm 5$. <strong>Svar:</strong> $x=-5$ eller $x=5$",
-        "<strong>b)</strong> $x=3$ eller $x=-1$. <strong>Svar:</strong> $x=3$ eller $x=-1$",
+        "<strong>a)</strong> $x=\\sqrt{25}=5$ eller $x=-\\sqrt{25}=-5$, siden både $5^2$ og $(-5)^2$ er $25$. <strong>Svar:</strong> $x=-5$ eller $x=5$",
+        "<strong>b)</strong> Et produkt er $0$ når en av faktorene er $0$: $x-3=0$ eller $x+1=0$, altså $x=3$ eller $x=-1$. <strong>Svar:</strong> $x=3$ eller $x=-1$",
         "<strong>c)</strong> $x(x-6)=0$, så $x=0$ eller $x=6$. <strong>Svar:</strong> $x=0$ eller $x=6$",
       ],
     ),
@@ -430,7 +421,7 @@ export const EXTRA: Record<string, Oppgave[]> = {
       "Likningen $x^2-6x+k=0$ har nøyaktig én løsning. Finn $k$ og løsningen.",
       "Én løsning $\\Leftrightarrow$ diskriminanten er $0$.",
       [
-        "$D=36-4k=0$, $k=9$. Da $x=\\dfrac{6}{2}=3$.<br><strong>Svar:</strong> $k=9$ og $x=3$",
+        "$a=1$, $b=-6$, $c=k$. $D=(-6)^2-4\\cdot 1\\cdot k=36-4k$. Én løsning når $D=0$: $36-4k=0$, $k=9$.<br>Da er $x^2-6x+9=(x-3)^2=0$, så $x=3$.<br><strong>Svar:</strong> $k=9$ og $x=3$",
       ],
     ),
   ],
@@ -452,24 +443,22 @@ export const EXTRA: Record<string, Oppgave[]> = {
         "Gang med $(x-1)(x+1)$: $x(x+1)-2(x-1)=(x^2-1)$.<br>$x^2+x-2x+2=x^2-1$, $-x+2=-1$, $-x=-3$, $x=3$.<br>$x=3$ er tillatt.<br><strong>Svar:</strong> $x=3$",
       ],
     ),
-  ],
-  "3F": [
     o(
       "3.34",
       "En oppskrift til $4$ personer bruker $3$ dl fløte. Du skal lage mat til $6$ personer.<br><br><strong>a)</strong> Sett opp en proporsjon og finn hvor mye fløte du trenger.<br><br><strong>b)</strong> Hvor mange personer kan du lage mat til med $9$ dl fløte?",
       "Mengde og antall personer er proporsjonale. $\\dfrac{3}{4}=\\dfrac{x}{6}$.",
       [
-        "<strong>a)</strong> $\\dfrac{3}{4}=\\dfrac{x}{6}$, $x=\\dfrac{3\\cdot 6}{4}=4.5$.<br><strong>Svar:</strong> $4.5$ dl.",
+        "<strong>a)</strong> $\\dfrac{3}{4}=\\dfrac{x}{6}$, $x=\\dfrac{3\\cdot 6}{4}=4{,}5$.<br><strong>Svar:</strong> $4{,}5$ dl.",
         "<strong>b)</strong> $\\dfrac{3}{4}=\\dfrac{9}{n}$, $3n=36$, $n=12$.<br><strong>Svar:</strong> $12$ personer.",
       ],
     ),
     o(
       "3.35",
-      "En bil bruker $0.6$ liter bensin per mil. Bensintanken rommer $48$ liter.<br><br><strong>a)</strong> Hvor langt kan bilen kjøre på en full tank?<br><br><strong>b)</strong> Hvor mye bensin trengs til $250$ km? (Ett mil $=10$ km.)",
+      "En bil bruker $0{,}6$ liter bensin per mil. Bensintanken rommer $48$ liter.<br><br><strong>a)</strong> Hvor langt kan bilen kjøre på en full tank?<br><br><strong>b)</strong> Hvor mye bensin trengs til $250$ km? (Én mil $=10$ km.)",
       "Forbruket er proporsjonalt med distansen.",
       [
-        "<strong>a)</strong> $48/0.6=80$ mil $=800$ km.<br><strong>Svar:</strong> $800$ km.",
-        "<strong>b)</strong> $250$ km $=25$ mil. $25\\cdot 0.6=15$.<br><strong>Svar:</strong> $15$ liter.",
+        "<strong>a)</strong> $48:0{,}6=80$ mil $=800$ km.<br><strong>Svar:</strong> $800$ km.",
+        "<strong>b)</strong> $250$ km $=25$ mil. $25\\cdot 0{,}6=15$.<br><strong>Svar:</strong> $15$ liter.",
       ],
     ),
   ],
@@ -479,7 +468,7 @@ export const EXTRA: Record<string, Oppgave[]> = {
       "Utfør polynomdivisjonen $(x^2+5x+6):(x+2)$ og sett prøve.",
       "Hvor mange ganger går $x$ i $x^2$? Gang tilbake og trekk fra.",
       [
-        "$(x^2+5x+6):(x+2)=x+3$ fordi $(x+2)(x+3)=x^2+5x+6$.<br><strong>Svar:</strong> $x+3$",
+        "$x^2:x=x$. Gang tilbake: $x(x+2)=x^2+2x$. Trekk fra: $(x^2+5x)-(x^2+2x)=3x$, trekk ned $6$: $3x+6$.<br>$3x:x=3$. Gang tilbake: $3(x+2)=3x+6$. Rest $0$.<br>Prøve: $(x+2)(x+3)=x^2+5x+6$.<br><strong>Svar:</strong> $x+3$",
       ],
     ),
     o(
@@ -487,8 +476,61 @@ export const EXTRA: Record<string, Oppgave[]> = {
       "Polynomet $P(x)=x^3-2x^2-5x+6$ har et nullpunkt $x=1$.<br><br><strong>a)</strong> Del $P(x)$ på $(x-1)$.<br><br><strong>b)</strong> Faktoriser $P(x)$ fullstendig.",
       "Restteoremet: $P(1)=0$ betyr at $(x-1)$ går opp. Faktoriser andregraden etterpå.",
       [
-        "<strong>a)</strong> $(x^3-2x^2-5x+6):(x-1)=x^2-x-6$.<br><strong>Svar:</strong> $x^2-x-6$",
+        "<strong>a)</strong> $x^3:x=x^2$, $x^2(x-1)=x^3-x^2$, rest $-x^2-5x$. $-x^2:x=-x$, $-x(x-1)=-x^2+x$, rest $-6x+6$. $-6x:x=-6$, $-6(x-1)=-6x+6$, rest $0$.<br>$(x^3-2x^2-5x+6):(x-1)=x^2-x-6$.<br><strong>Svar:</strong> $x^2-x-6$",
         "<strong>b)</strong> $x^2-x-6=(x-3)(x+2)$.<br>Dermed $P(x)=(x-1)(x-3)(x+2)$.<br><strong>Svar:</strong> $(x-1)(x-3)(x+2)$",
+      ],
+    ),
+  ],
+  "3H": [
+    o(
+      "3.25",
+      "Løs ulikheten og skriv svaret både med ulikhetstegn og som intervall.<br><br><strong>a)</strong> $2x-5 < 7$<br><br><strong>b)</strong> $4-3x \\geq 10$",
+      "Samme flytteregler som for likninger. Når du ganger/deler med et negativt tall, snur ulikheten.",
+      [
+        "<strong>a)</strong> $2x<12$, $x<6$. Intervall: $\\langle\\leftarrow, 6\\rangle$.<br><strong>Svar:</strong> $x<6$, $x\\in\\langle\\leftarrow,6\\rangle$",
+        "<strong>b)</strong> $-3x\\geq 6$. Del på $-3$ og snu: $x\\leq -2$.<br><strong>Svar:</strong> $x\\leq -2$, $x\\in\\langle\\leftarrow,-2]$",
+      ],
+    ),
+  ],
+  "4A": [
+    o(
+      "4A.9",
+      "Gitt $f(x)=3-2x$ med $D_f=[-1,4]$.<br><br><strong>a)</strong> Regn ut $f(-1)$ og $f(4)$.<br><br><strong>b)</strong> Finn verdimengden $V_f$.<br><br><strong>c)</strong> Løs $f(x)=0$.",
+      "Grafen er en synkende rett linje, så største og minste verdi ligger i endepunktene.",
+      [
+        "<strong>a)</strong> $f(-1)=3+2=5$, $f(4)=3-8=-5$.<br><strong>Svar:</strong> $f(-1)=5$, $f(4)=-5$",
+        "<strong>b)</strong> Linja synker, så verdiene går fra $-5$ til $5$.<br><strong>Svar:</strong> $V_f=[-5,5]$",
+        "<strong>c)</strong> $3-2x=0$ gir $x=1{,}5$, som ligger i $D_f$.<br><strong>Svar:</strong> $x=1{,}5$",
+      ],
+    ),
+    o(
+      "4A.10",
+      "Avgjør om sammenhengen gir $y$ som en funksjon av $x$. Begrunn.<br><br><strong>a)</strong> $y=x^2$<br><br><strong>b)</strong> $x=y^2$<br><br><strong>c)</strong> $y=\\sqrt{x}$",
+      "Sjekk om én $x$-verdi kan gi to ulike $y$-verdier.",
+      [
+        "<strong>a)</strong> Hver $x$ gir nøyaktig én verdi $x^2$.<br><strong>Svar:</strong> ja",
+        "<strong>b)</strong> $x=4$ gir $y=2$ og $y=-2$.<br><strong>Svar:</strong> nei",
+        "<strong>c)</strong> $\\sqrt{x}$ er ett bestemt tall for hver $x\\ge 0$.<br><strong>Svar:</strong> ja, med $D=[0,\\rightarrow\\rangle$",
+      ],
+    ),
+    o(
+      "4A.11",
+      "En taxitur koster $P(x)=45+18x$ kroner, der $x$ er antall kilometer. Selskapet kjører turer på høyst $50$ km.<br><br><strong>a)</strong> Hva koster en tur på $12$ km?<br><br><strong>b)</strong> Hvor langt kan du kjøre for $360$ kr?<br><br><strong>c)</strong> Finn $D_P$ og $V_P$.",
+      "I b) løser du $45+18x=360$.",
+      [
+        "<strong>a)</strong> $P(12)=45+216=261$.<br><strong>Svar:</strong> $261$ kr",
+        "<strong>b)</strong> $18x=315$, $x=17{,}5$.<br><strong>Svar:</strong> $17{,}5$ km",
+        "<strong>c)</strong> $P(0)=45$ og $P(50)=945$.<br><strong>Svar:</strong> $D_P=[0,50]$, $V_P=[45,945]$",
+      ],
+    ),
+    o(
+      "4A.12",
+      "Gitt $g(x)=\\sqrt{x-2}$.<br><br><strong>a)</strong> Finn den største mulige definisjonsmengden.<br><br><strong>b)</strong> Regn ut $g(6)$.<br><br><strong>c)</strong> Finn $V_g$.",
+      "Det som står under rottegnet, kan ikke være negativt.",
+      [
+        "<strong>a)</strong> $x-2\\ge 0$ gir $x\\ge 2$.<br><strong>Svar:</strong> $D_g=[2,\\rightarrow\\rangle$",
+        "<strong>b)</strong> $g(6)=\\sqrt{4}=2$.<br><strong>Svar:</strong> $g(6)=2$",
+        "<strong>c)</strong> $g(2)=0$, og $g$ vokser uten grense.<br><strong>Svar:</strong> $V_g=[0,\\rightarrow\\rangle$",
       ],
     ),
   ],
@@ -565,6 +607,44 @@ export const EXTRA: Record<string, Oppgave[]> = {
       ],
     ),
   ],
+  "4E": [
+    o(
+      "4E.7",
+      "Gitt $f(x)=2x^3$.<br><br><strong>a)</strong> Regn ut $f(2)$ og $f(-1)$.<br><br><strong>b)</strong> Løs $f(x)=54$.",
+      "Del på $2$ og ta tredjeroten.",
+      [
+        "<strong>a)</strong> $f(2)=2\\cdot 8=16$, $f(-1)=-2$.<br><strong>Svar:</strong> $16$ og $-2$",
+        "<strong>b)</strong> $x^3=27$, $x=3$.<br><strong>Svar:</strong> $x=3$",
+      ],
+    ),
+    o(
+      "4E.8",
+      "Arealet av et blad er omtrent $A=0{,}1\\cdot x^{1{,}5}$, der $x$ er lengden.<br><br><strong>a)</strong> Hvor mange ganger større blir arealet når lengden dobles?<br><br><strong>b)</strong> Hvorfor avhenger ikke svaret av hvilken lengde du starter med?",
+      "$A(2x)=0{,}1\\cdot(2x)^{1{,}5}=2^{1{,}5}\\cdot A(x)$.",
+      [
+        "<strong>a)</strong> $2^{1{,}5}\\approx 2{,}83$.<br><strong>Svar:</strong> ca. $2{,}83$ ganger",
+        "<strong>b)</strong> Faktoren $2^{1{,}5}$ kommer ut av potensen uansett $x$. En fast prosentvis endring i $x$ gir en fast prosentvis endring i $A$.<br><strong>Svar:</strong> fordi $(2x)^{1{,}5}=2^{1{,}5}x^{1{,}5}$",
+      ],
+    ),
+    o(
+      "4E.9",
+      "En potensfunksjon $f(x)=a\\cdot x^b$ går gjennom $(1,3)$ og $(2,12)$. Finn $a$ og $b$.",
+      "Sett inn $x=1$ først.",
+      [
+        "$f(1)=a=3$. Da er $3\\cdot 2^b=12$, $2^b=4$, $b=2$.<br><strong>Svar:</strong> $f(x)=3x^2$",
+      ],
+    ),
+    o(
+      "4E.10",
+      "Svingetiden til en pendel er $T(L)=2{,}0\\cdot L^{0{,}5}$ sekunder, der $L$ er lengden i meter.<br><br><strong>a)</strong> Regn ut $T(0{,}25)$.<br><br><strong>b)</strong> Hvor lang må pendelen være for at $T=3$ s?<br><br><strong>c)</strong> Hva skjer med $T$ når lengden firedobles?",
+      "$L^{0{,}5}=\\sqrt{L}$.",
+      [
+        "<strong>a)</strong> $2\\cdot\\sqrt{0{,}25}=2\\cdot 0{,}5=1$.<br><strong>Svar:</strong> $1$ s",
+        "<strong>b)</strong> $\\sqrt{L}=1{,}5$, $L=2{,}25$.<br><strong>Svar:</strong> $2{,}25$ m",
+        "<strong>c)</strong> $\\sqrt{4L}=2\\sqrt{L}$.<br><strong>Svar:</strong> svingetiden dobles",
+      ],
+    ),
+  ],
   "4F": [
     o(
       "4F.8",
@@ -590,6 +670,87 @@ export const EXTRA: Record<string, Oppgave[]> = {
       ],
     ),
   ],
+  "4G": [
+    o(
+      "4G.7",
+      "Gitt $f(x)=x^2+1$.<br><br><strong>a)</strong> Finn gjennomsnittlig vekstfart på $[1,3]$.<br><br><strong>b)</strong> Finn gjennomsnittlig vekstfart på $[1;1{,}1]$.<br><br><strong>c)</strong> Bruk b) til å anslå den momentane vekstfarten i $x=1$.",
+      "$\\dfrac{f(x_2)-f(x_1)}{x_2-x_1}$.",
+      [
+        "<strong>a)</strong> $f(1)=2$, $f(3)=10$. $\\dfrac{10-2}{2}=4$.<br><strong>Svar:</strong> $4$",
+        "<strong>b)</strong> $f(1{,}1)=2{,}21$. $\\dfrac{2{,}21-2}{0{,}1}=2{,}1$.<br><strong>Svar:</strong> $2{,}1$",
+        "<strong>c)</strong> Jo mindre intervallet er, desto nærmere kommer vi tangentens stigningstall.<br><strong>Svar:</strong> omtrent $2$",
+      ],
+    ),
+    o(
+      "4G.8",
+      "Temperaturen $T$ (°C) ble målt hver annen time:<br><br>$t$ (timer): $0$, $2$, $4$, $6$<br>$T$: $5$, $9$, $15$, $17$<br><br><strong>a)</strong> Finn gjennomsnittlig vekstfart i hvert av de tre intervallene.<br><br><strong>b)</strong> Når steg temperaturen raskest?<br><br><strong>c)</strong> Finn gjennomsnittlig vekstfart fra $t=0$ til $t=6$.",
+      "Del endringen i temperatur på $2$ timer.",
+      [
+        "<strong>a)</strong> $\\dfrac{4}{2}=2$, $\\dfrac{6}{2}=3$, $\\dfrac{2}{2}=1$.<br><strong>Svar:</strong> $2$, $3$ og $1$ °C per time",
+        "<strong>b)</strong> <strong>Svar:</strong> mellom $t=2$ og $t=4$",
+        "<strong>c)</strong> $\\dfrac{17-5}{6}=2$.<br><strong>Svar:</strong> $2$ °C per time",
+      ],
+    ),
+    o(
+      "4G.9",
+      "En ball kastes rett opp. Høyden er $h(t)=20t-5t^2$ meter etter $t$ sekunder.<br><br><strong>a)</strong> Finn gjennomsnittlig vekstfart på $[0,2]$ og tolk svaret.<br><br><strong>b)</strong> Finn gjennomsnittlig vekstfart på $[1{,}9;\\,2{,}1]$.<br><br><strong>c)</strong> Hva forteller b) om ballen når $t=2$?",
+      "Et lite intervall rundt $t=2$ gir et godt anslag for den momentane vekstfarten.",
+      [
+        "<strong>a)</strong> $h(0)=0$, $h(2)=20$. $\\dfrac{20}{2}=10$.<br><strong>Svar:</strong> $10$ m/s; i snitt stiger ballen $10$ meter per sekund de to første sekundene",
+        "<strong>b)</strong> $h(1{,}9)=h(2{,}1)=19{,}95$, så $\\dfrac{0}{0{,}2}=0$.<br><strong>Svar:</strong> $0$",
+        "<strong>c)</strong> Tangenten er vannrett: ballen står stille i toppen.<br><strong>Svar:</strong> ballen er på toppen ($20$ m) når $t=2$",
+      ],
+    ),
+    o(
+      "4G.10",
+      "Du setter $5000$ kr i banken med $4\\,\\%$ rente per år: $B(t)=5000\\cdot 1{,}04^t$.<br><br><strong>a)</strong> Finn gjennomsnittlig vekstfart de fem første årene.<br><br><strong>b)</strong> Finn gjennomsnittlig vekstfart fra år $10$ til år $15$.<br><br><strong>c)</strong> Forklar forskjellen.",
+      "Bruk kalkulator eller GeoGebra.",
+      [
+        "<strong>a)</strong> $\\dfrac{B(5)-B(0)}{5}\\approx\\dfrac{6083-5000}{5}\\approx 217$.<br><strong>Svar:</strong> ca. $217$ kr per år",
+        "<strong>b)</strong> $\\dfrac{B(15)-B(10)}{5}\\approx\\dfrac{9005-7401}{5}\\approx 321$.<br><strong>Svar:</strong> ca. $321$ kr per år",
+        "<strong>c)</strong> Renten beregnes av et stadig større beløp, så økningen i kroner blir større for hvert år.<br><strong>Svar:</strong> eksponentiell vekst gir økende vekstfart",
+      ],
+    ),
+  ],
+  "4H": [
+    o(
+      "4H.9",
+      "Deriver.<br><br><strong>a)</strong> $f(x)=4x^3-2x^2+x-7$<br><br><strong>b)</strong> $g(x)=\\dfrac{1}{2}x^4-3x$<br><br><strong>c)</strong> $h(x)=(x-1)(x+3)$",
+      "Gang ut parentesene i c) først.",
+      [
+        "<strong>a)</strong> <strong>Svar:</strong> $f'(x)=12x^2-4x+1$",
+        "<strong>b)</strong> <strong>Svar:</strong> $g'(x)=2x^3-3$",
+        "<strong>c)</strong> $h(x)=x^2+2x-3$.<br><strong>Svar:</strong> $h'(x)=2x+2$",
+      ],
+    ),
+    o(
+      "4H.10",
+      "Gitt $f(x)=x^2-6x+5$.<br><br><strong>a)</strong> Finn bunnpunktet ved hjelp av $f'(x)$.<br><br><strong>b)</strong> Finn likningen for tangenten i punktet der $x=1$.",
+      "Tangent: $y-f(1)=f'(1)(x-1)$.",
+      [
+        "<strong>a)</strong> $f'(x)=2x-6=0$ gir $x=3$. $f'$ skifter fra negativ til positiv. $f(3)=9-18+5=-4$.<br><strong>Svar:</strong> bunnpunkt $(3,-4)$",
+        "<strong>b)</strong> $f(1)=0$, $f'(1)=-4$. $y=-4(x-1)$.<br><strong>Svar:</strong> $y=-4x+4$",
+      ],
+    ),
+    o(
+      "4H.11",
+      "Gitt $f(x)=-x^3+3x$.<br><br><strong>a)</strong> Løs $f'(x)=0$.<br><br><strong>b)</strong> Lag fortegnslinje for $f'$ og finn topp- og bunnpunktet.",
+      "$f'(x)=-3x^2+3=-3(x-1)(x+1)$.",
+      [
+        "<strong>a)</strong> $-3x^2+3=0$, $x^2=1$.<br><strong>Svar:</strong> $x=-1$ og $x=1$",
+        "<strong>b)</strong> $f'$ er negativ for $x<-1$, positiv mellom $-1$ og $1$ og negativ for $x>1$. $f(-1)=-2$, $f(1)=2$.<br><strong>Svar:</strong> bunnpunkt $(-1,-2)$, toppunkt $(1,2)$",
+      ],
+    ),
+    o(
+      "4H.12",
+      "Overskuddet ved å selge $x$ enheter er $O(x)=-0{,}02x^2+12x-500$ kroner.<br><br><strong>a)</strong> Finn $O'(100)$ og tolk tallet.<br><br><strong>b)</strong> Hvor mange enheter gir størst overskudd, og hvor stort er det?",
+      "$O'(x)=-0{,}04x+12$.",
+      [
+        "<strong>a)</strong> $O'(100)=-4+12=8$. Ved $100$ enheter øker overskuddet med omtrent $8$ kr per ekstra enhet.<br><strong>Svar:</strong> $O'(100)=8$",
+        "<strong>b)</strong> $O'(x)=0$ gir $x=300$. $O(300)=-1800+3600-500=1300$.<br><strong>Svar:</strong> $300$ enheter gir $1300$ kr",
+      ],
+    ),
+  ],
 };
 
 export const SUB_TITLES: Record<string, string> = {
@@ -602,19 +763,21 @@ export const SUB_TITLES: Record<string, string> = {
   "1OP": "Øveprøve",
   "2A": "2A Forenkle uttrykk",
   "2B": "2B Kvadratsetninger",
-  "2C": "2C Felles faktor",
+  "2C": "2C Felles faktor og bevis",
   "2D": "2D Faktorisering",
   "2E": "2E Algebraiske brøker",
-  "2F": "2F Figurer og mønstre",
+  "2F": "2F Formler og figurtall",
   "2OP": "Øveprøve",
   "3A": "3A Førstegradslikninger",
   "3B": "3B Formler",
   "3C": "3C Andregradslikninger",
   "3D": "3D ABC-formelen",
-  "3E": "3E Rasjonale likninger",
-  "3F": "3F Proporsjoner",
+  "3E": "3E Rasjonale likninger, ekvivalens og proporsjoner",
+  "3F": "3F Funksjoner og nullpunktfaktorisering",
   "3G": "3G Polynomdivisjon",
+  "3H": "3H Ulikheter",
   "3OP": "Øveprøve",
+  "4OP": "Øveprøve",
   "4A": "4A Funksjonsbegrepet",
   "4B": "4B Lineære funksjoner",
   "4C": "4C Polynomfunksjoner",
@@ -626,7 +789,7 @@ export const SUB_TITLES: Record<string, string> = {
   "5A": "5A To ukjente",
   "5B": "5B Modellering med likningssett",
   "5C": "5C Tre ukjente",
-  "5D": "5D Andregradsmodeller",
+  "5D": "5D Andregradsmodeller og polynomer",
   "5E": "5E Ikkelineære likningssett",
   "5F": "5F Førstegradsulikheter",
   "5G": "5G Fortegnslinje og andregradsulikheter",

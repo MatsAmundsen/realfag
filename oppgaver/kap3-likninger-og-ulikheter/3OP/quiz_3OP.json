@@ -1,0 +1,90 @@
+[
+  {
+    "sporsmal": "Løs $5x-3=2x+9$.",
+    "alternativer": [
+      "$x=2$",
+      "$x=4$",
+      "$x=6$",
+      "$x=12$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "$5x-2x=9+3$, $3x=12$, $x=4$."
+  },
+  {
+    "sporsmal": "Hva skjer med ulikheten når du deler på et negativt tall?",
+    "alternativer": [
+      "Ingenting",
+      "Ulikheten snur",
+      "Løsningen blir 0",
+      "Ulikheten blir en likning"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Når du ganger eller deler med et negativt tall, må ulikhetstegnet snus."
+  },
+  {
+    "sporsmal": "Hvor mange løsninger har $x^2-6x+9=0$?",
+    "alternativer": [
+      "Ingen",
+      "Én",
+      "To ulike",
+      "Uendelig mange"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "$D=36-36=0$, så nøyaktig én løsning ($x=3$)."
+  },
+  {
+    "sporsmal": "ABC-formelen er $x=\\dfrac{-b\\pm\\sqrt{b^2-4ac}}{2a}$. Hva kalles $b^2-4ac$?",
+    "alternativer": [
+      "Koeffisienten",
+      "Diskriminanten",
+      "Konstantleddet",
+      "Nullpunktet"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Diskriminanten $D=b^2-4ac$ avgjør antall reelle løsninger."
+  },
+  {
+    "sporsmal": "Når du løser $\\dfrac{x+1}{x-2}=4$, hvilken verdi er forbudt?",
+    "alternativer": [
+      "$x=0$",
+      "$x=1$",
+      "$x=2$",
+      "$x=4$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Nevneren $x-2$ kan ikke være $0$, så $x\\neq 2$."
+  },
+  {
+    "sporsmal": "Faktoriser $x^2-5x+6$.",
+    "alternativer": [
+      "$(x-1)(x-6)$",
+      "$(x-2)(x-3)$",
+      "$(x+2)(x+3)$",
+      "$(x-6)(x+1)$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "To tall med produkt $6$ og sum $-5$ er $-2$ og $-3$."
+  },
+  {
+    "sporsmal": "Hvis $P(3)=0$, hva vet du om polynomet $P$?",
+    "alternativer": [
+      "$(x+3)$ er en faktor",
+      "$(x-3)$ er en faktor",
+      "Polynomet har grad 3",
+      "Polynomet har ingen reelle røtter"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Restteoremet: $P(a)=0$ $\\Leftrightarrow$ $(x-a)$ er en faktor. Her $a=3$."
+  },
+  {
+    "sporsmal": "$\\dfrac{3}{4}=\\dfrac{x}{12}$. Hva er $x$?",
+    "alternativer": [
+      "$6$",
+      "$8$",
+      "$9$",
+      "$16$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Kryssprodukt: $3\\cdot 12=4x$, $x=9$."
+  }
+]

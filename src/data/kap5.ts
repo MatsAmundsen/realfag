@@ -1,4 +1,5 @@
 import type { Delkapittel, Kapittel, Oppgave, QuizQuestion } from "./types";
+import { describeSigns } from "./kap5-figures";
 
 function o(id: string, tekst: string, hint: string, steg: string[]): Oppgave {
   return { id, tittel: `Oppgave ${id}`, tekst, bilde: null, hint, fasit: null, fasitSteg: steg, starter: "" };
@@ -43,7 +44,7 @@ function signSvg(
          <line x1="${g.x1}" y1="${y}" x2="${g.x2}" y2="${y}" stroke="currentColor" stroke-width="4" stroke-dasharray="${g.s === "−" || g.s === "-" ? "6 5" : "0"}" opacity="${g.s === "−" || g.s === "-" ? "0.55" : "1"}"/>`,
     )
     .join("");
-  return `<svg viewBox="0 0 ${w} 70" width="100%" role="img" aria-label="Fortegnslinje" style="max-width:34rem;margin:0.6rem 0">${axis}${signs}${marks}</svg>`;
+  return `<svg viewBox="0 0 ${w} 70" width="100%" role="img" aria-label="${describeSigns(ticks, [left, ...mids, right].map((g) => (g === "+" ? "+" : "−")))}" style="max-width:34rem;margin:0.6rem 0">${axis}${signs}${marks}</svg>`;
 }
 
 const dk5A: Delkapittel = {
@@ -87,7 +88,7 @@ const dk5A: Delkapittel = {
       "Løs settet. Gang med fellesnevner først.<br>$$\\begin{cases}\\dfrac{1}{2}x+y=4\\\\ x-\\dfrac{1}{3}y=1\\end{cases}$$<br>Grafene til $f(x)=4-\\dfrac{1}{2}x$ og $g(x)=3x-3$ vises under.",
       "Gang den første med $2$ og den andre med $3$.",
       [
-        "Fra den første: $y=4-\\dfrac{x}{2}$.<br>$x-\\dfrac{1}{3}\\left(4-\\dfrac{x}{2}\\right)=1$<br>$\\dfrac{7x}{6}=\\dfrac{7}{3}$<br>$x=2$, $y=3$.<br><strong>Svar:</strong> $(2,3)$",
+        "Gang den første med $2$: $x+2y=8$.<br>Gang den andre med $3$: $3x-y=3$, altså $y=3x-3$.<br>Sett inn: $x+2(3x-3)=8$<br>$7x-6=8$<br>$7x=14$, $x=2$, $y=3\\cdot 2-3=3$.<br><strong>Svar:</strong> $(2,3)$",
       ],
     ),
     o(
@@ -101,7 +102,7 @@ const dk5A: Delkapittel = {
     ),
     o(
       "5.6",
-      "Grafene til $f(x)=2x+1$ og $g(x)=2x-4$ er tegnet under.<br><br><strong>a)</strong> Hvor mange skjæringspunkt har linjene?<br><br><strong>b)</strong> Hva sier det om likningssettet $y=2x+1$, $y=2x-4$?<br><br><strong>c)</strong> Endre konstantleddet i $g$ slik at settene får uendelig mange løsninger.",
+      "Grafene til $f(x)=2x+1$ og $g(x)=2x-4$ er tegnet under.<br><br><strong>a)</strong> Hvor mange skjæringspunkt har linjene?<br><br><strong>b)</strong> Hva sier det om likningssettet $y=2x+1$, $y=2x-4$?<br><br><strong>c)</strong> Endre konstantleddet i $g$ slik at settet får uendelig mange løsninger.",
       "Samme stigningstall betyr parallelle linjer — med mindre de er samme linje.",
       [
         "<strong>a)</strong> Ingen. Linjene er parallelle.",
@@ -111,7 +112,7 @@ const dk5A: Delkapittel = {
     ),
     o(
       "5.7",
-      "Vi har settet<br>$$\\begin{cases}mx+y=4\\\\ 2x+y=6\\end{cases}$$<br>der $m$ er et reelt tall.<br>Når $m=1$: $f(x)=4-x$ og $g(x)=6-2x$ (én løsning). Når $m=2$: $p(x)=4-2x$ sammen med $g$ (parallelle).<br><br><strong>a)</strong> Trekk likningene fra hverandre. Hva får du for $x$?<br><br><strong>b)</strong> For hvilke $m$ har settet nøyaktig én løsning?<br><br><strong>c)</strong> For hvilke $m$ har settet ingen løsning?<br><br><strong>d)</strong> Kan $m$ gi uendelig mange løsninger? Begrunn.",
+      "Vi har settet<br>$$\\begin{cases}mx+y=4\\\\ 2x+y=6\\end{cases}$$<br>der $m$ er et reelt tall.<br><br><strong>a)</strong> Trekk likningene fra hverandre. Hva får du for $x$?<br><br><strong>b)</strong> For hvilke $m$ har settet nøyaktig én løsning?<br><br><strong>c)</strong> For hvilke $m$ har settet ingen løsning?<br><br><strong>d)</strong> Kan $m$ gi uendelig mange løsninger? Begrunn.",
       "Når $m=2$ forsvinner $x$. Da sitter du igjen med et utsagn som enten er sant eller usant.",
       [
         "<strong>a)</strong> $(m-2)x=-2$, så $x=\\dfrac{-2}{m-2}$ når $m\\neq 2$.",
@@ -130,6 +131,27 @@ const dk5A: Delkapittel = {
         "<strong>c)</strong> $3-4=-1$ og $9+2=11$.<br><strong>Svar:</strong> $(3,2)$",
       ],
     ),
+
+    o(
+      "5A.9",
+      "Løs likningssettet med CAS.<br>$$\\begin{cases}0{,}4x+1{,}5y=8{,}4\\\\ 2{,}5x-0{,}8y=11{,}8\\end{cases}$$<br><br><strong>a)</strong> Skriv kommandoen du bruker i CAS.<br><br><strong>b)</strong> Hva gir CAS som svar?<br><br><strong>c)</strong> Kontroller svaret ved å sette det inn i begge likningene.",
+      "I GeoGebra-CAS kan du skrive likningene i krøllparentes og bruke Løs med begge de ukjente.",
+      [
+        "<strong>a)</strong> Løs({0.4x+1.5y=8.4, 2.5x-0.8y=11.8},{x,y})",
+        "<strong>b)</strong> CAS gir $x=6$ og $y=4$.",
+        "<strong>c)</strong> $0{,}4\\cdot 6+1{,}5\\cdot 4=2{,}4+6=8{,}4$ og $2{,}5\\cdot 6-0{,}8\\cdot 4=15-3{,}2=11{,}8$. Begge stemmer.<br><strong>Svar:</strong> $(6,4)$",
+      ],
+    ),
+    o(
+      "5A.10",
+      "<strong>Eksempel steg for steg:</strong> addisjonsmetoden.<br>$$\\begin{cases}3x+4y=10\\\\ 5x-2y=8\\end{cases}$$<br><br><strong>a)</strong> Hva må du gange den andre likningen med for at $y$ skal falle bort når du legger sammen?<br><br><strong>b)</strong> Legg sammen og finn $x$.<br><br><strong>c)</strong> Finn $y$, og kontroller.",
+      "Koeffisientene foran $y$ er $4$ og $-2$. De må bli motsatte tall.",
+      [
+        "<strong>a)</strong> Gang med $2$: $10x-4y=16$. Nå står $4y$ og $-4y$ mot hverandre.",
+        "<strong>b)</strong> $(3x+4y)+(10x-4y)=10+16$<br>$13x=26$<br>$x=2$.",
+        "<strong>c)</strong> Sett inn i den første: $3\\cdot 2+4y=10$, $4y=4$, $y=1$.<br>Kontroll i den andre: $5\\cdot 2-2\\cdot 1=8$. Stemmer.<br><strong>Svar:</strong> $(2,1)$",
+      ],
+    ),
   ],
 };
 
@@ -139,7 +161,7 @@ const dk5B: Delkapittel = {
   quiz: [
     q("I en modell $P=ar+b$ med to gitte punkt er $a$ og $b$", ["frie", "bestemt entydig av de to punktene", "alltid 1 og 0", "umulige å finne"], 1, "To punkt på en linje gir to likninger og to ukjente."),
     q("«$25\\,\\%$ av guttene» i et sett skrives", ["$0{,}25g$", "$25g$", "$g+25$", "$g/25$"], 0, "Prosent er desimaltall i likningen."),
-    q("Hvorfor trenger vi to likninger for å finne to priser?", ["Fordi vi liker ekstra arbeid", "To ukjente krever to uavhengige opplysninger", "Priser er alltid hele tall", "Grafen må være en parabel"], 1, "Ett krav per ukjent, og kravene må være ulike."),
+    q("Hvorfor trenger vi to likninger for å finne to priser?", ["Fordi én likning bare kan inneholde én ukjent", "To ukjente krever to uavhengige opplysninger", "Priser er alltid hele tall", "Grafen må være en parabel"], 1, "Ett krav per ukjent, og kravene må være ulike."),
     q("Hvis du bare kjenner totalsummen $e+v=210$, kan du finne $e$ og $v$?", ["Ja, entydig", "Nei, uendelig mange par passer", "Bare hvis $e=v$", "Bare grafisk"], 1, "Én likning med to ukjente har uendelig mange løsninger."),
     q("En familie betaler $1428$ kr etter $15\\,\\%$ rabatt. Beløpet før rabatt er", ["$1428\\cdot 0{,}15$", "$1428 / 0{,}85$", "$1428\\cdot 1{,}15$", "$1428 / 0{,}15$"], 1, "De betalte $85\\,\\%$ av ordinær pris, så $1428/0{,}85=1680$."),
   ],
@@ -166,11 +188,11 @@ const dk5B: Delkapittel = {
     ),
     o(
       "5.11",
-      "Et juicebar selger eplemost og appelsinmost. $3$ L eple og $2$ L appelsin kostet $86$ kr. $1$ L eple og $4$ L appelsin kostet $92$ kr.<br><br><strong>a)</strong> Sett opp settet for literprisene $e$ og $a$.<br><br><strong>b)</strong> Finn prisene.<br><br><strong>c)</strong> Hva koster $2$ L eple og $3$ L appelsin?",
+      "En juicebar selger eplemost og appelsinmost. $3$ L eple og $2$ L appelsin kostet $86$ kr. $1$ L eple og $4$ L appelsin kostet $92$ kr.<br><br><strong>a)</strong> Sett opp settet for literprisene $e$ og $a$.<br><br><strong>b)</strong> Finn prisene.<br><br><strong>c)</strong> Hva koster $2$ L eple og $3$ L appelsin?",
       "Hver kunde gir én likning.",
       [
         "<strong>a)</strong> $3e+2a=86$ og $e+4a=92$.",
-        "<strong>b)</strong> $e=92-4a$. $276-10a=86$, $a=19$, $e=16$.",
+        "<strong>b)</strong> $e=92-4a$. $3(92-4a)+2a=86$<br>$276-12a+2a=86$<br>$-10a=-190$<br>$a=19$, $e=92-76=16$.",
         "<strong>c)</strong> $32+57=89$ kr.<br><strong>Svar:</strong> eple $16$ kr/L, appelsin $19$ kr/L",
       ],
     ),
@@ -195,17 +217,17 @@ const dk5B: Delkapittel = {
     ),
     o(
       "5.14",
-      "En kafé solgte $150$ kaker. Noen til $32$ kr og resten til $48$ kr. Kassen viste $5880$ kr.<br><br><strong>a)</strong> Sett opp et sett.<br><br><strong>b)</strong> Finn antall av hver type.<br><br><strong>c)</strong> En kollega sier: «Hvis alle hadde kostet $48$ kr, ville inntekten vært $7200$ kr. Differansen forteller hvor mange som var billige.» Stemmer det?",
+      "En kafé solgte $150$ kaker. Noen til $32$ kr og resten til $48$ kr. Kassen viste $5888$ kr.<br><br><strong>a)</strong> Sett opp et sett.<br><br><strong>b)</strong> Finn antall av hver type.<br><br><strong>c)</strong> En kollega sier: «Hvis alle hadde kostet $48$ kr, ville inntekten vært $7200$ kr. Differansen forteller hvor mange som var billige.» Stemmer det?",
       "Differansen $48-32=16$ kr er «rabatten» per billig kake.",
       [
-        "<strong>a)</strong> $b+d=150$ og $32b+48d=5880$.",
-        "<strong>b)</strong> $d=150-b$. $32b+48(150-b)=5880$<br>$-16b+7200=5880$, $b=82{,}5$, $d=67{,}5$.",
-        "<strong>c)</strong> Ja: $7200-5880=1320$, og $1320/16=82{,}5$.<br><strong>Svar:</strong> $82{,}5$ til $32$ kr og $67{,}5$ til $48$ kr",
+        "<strong>a)</strong> $b+d=150$ og $32b+48d=5888$.",
+        "<strong>b)</strong> $d=150-b$. $32b+48(150-b)=5888$<br>$32b+7200-48b=5888$<br>$-16b=-1312$<br>$b=82$, $d=150-82=68$.<br>Kontroll: $32\\cdot 82+48\\cdot 68=2624+3264=5888$.",
+        "<strong>c)</strong> Ja: $7200-5888=1312$, og $1312/16=82$. Hver billig kake «mangler» $16$ kr.<br><strong>Svar:</strong> $82$ til $32$ kr og $68$ til $48$ kr",
       ],
     ),
     o(
       "5.15",
-      "En linje gjennom $(0,80)$ og $(10,130)$ beskriver inntekt $I$ i kroner som funksjon av antall solgte $x$. En annen linje gjennom $(0,40)$ og $(10,90)$ beskriver kostnad $K$.<br>Kontrollgraf: $I(x)=5x+80$ og $K(x)=5x+40$ — er linjene parallelle?<br><br><strong>a)</strong> Finn $I(x)$ og $K(x)$ fra punktene (uten å lese av kontrollgrafen først).<br><br><strong>b)</strong> Når er inntekten lik kostnaden?<br><br><strong>c)</strong> Hva betyr det for butikken?",
+      "En linje gjennom $(0,80)$ og $(10,130)$ beskriver inntekt $I$ i kroner som funksjon av antall solgte $x$. En annen linje gjennom $(0,40)$ og $(10,90)$ beskriver kostnad $K$.<br>Figuren viser grafene til $I$ og $K$. Bruk den til å kontrollere svarene dine.<!-- plot: I(x)=5x+80 --><!-- plot: K(x)=5x+40 --><br><br><strong>a)</strong> Finn $I(x)$ og $K(x)$ fra punktene. Regn først, og kontroller etterpå med figuren.<br><br><strong>b)</strong> Når er inntekten lik kostnaden?<br><br><strong>c)</strong> Hva betyr det for butikken?",
       "Stigningstall: $\\Delta y/\\Delta x$.",
       [
         "<strong>a)</strong> $I(x)=5x+80$, $K(x)=5x+40$.",
@@ -216,12 +238,12 @@ const dk5B: Delkapittel = {
 
     o(
       "5B.7",
-      "Et alpinsenter selger voksenbillett og barnebillett.<br>Familien Lien betaler $980$ kr for <strong>én voksen og tre barn</strong>.<br><br>Familien Nygård er medlemmer i skiklubben og får $15\\,\\%$ rabatt på hele beløpet. Etter rabatten betaler de $1428$ kr for <strong>tre voksne og fire barn</strong>.<br><br>La $v$ være voksenpris og $b$ barnepris (før rabatt).<br><br><strong>a)</strong> Sett opp et likningssett. Husk at rabatten bare gjelder Nygård.<br><br><strong>b)</strong> Finn $v$ og $b$.<br><br><strong>c)</strong> Hva ville Lien ha betalt med samme $15\\,\\%$ rabatt?",
-      "Rabatt på $15\\,\\%$ betyr at Nygård betaler $85\\,\\%$ av ordinær pris. Del $1428$ på $0{,}85$.",
+      "Et alpinsenter selger voksenbillett og barnebillett.<br>Familien Lien betaler $760$ kr for <strong>én voksen og tre barn</strong>.<br><br>Familien Nygård er medlemmer i skiklubben og får $15\\,\\%$ rabatt på hele beløpet. Etter rabatten betaler de $1258$ kr for <strong>tre voksne og fire barn</strong>.<br><br>La $v$ være voksenpris og $b$ barnepris (før rabatt).<br><br><strong>a)</strong> Sett opp et likningssett. Husk at rabatten bare gjelder Nygård.<br><br><strong>b)</strong> Finn $v$ og $b$.<br><br><strong>c)</strong> Hva ville Lien ha betalt med samme $15\\,\\%$ rabatt?",
+      "Rabatt på $15\\,\\%$ betyr at Nygård betaler $85\\,\\%$ av ordinær pris. Del $1258$ på $0{,}85$.",
       [
-        "<strong>a)</strong> $v+3b=980$ og $0{,}85(3v+4b)=1428$, altså $3v+4b=1680$.",
-        "<strong>b)</strong> $v=980-3b$. $3(980-3b)+4b=1680$<br>$2940-5b=1680$, $b=252$, $v=224$.",
-        "<strong>c)</strong> $0{,}85\\cdot 980=833$ kr.<br><strong>Svar:</strong> voksen $224$ kr, barn $252$ kr; Lien med rabatt $833$ kr",
+        "<strong>a)</strong> $v+3b=760$ og $0{,}85(3v+4b)=1258$, altså $3v+4b=\\dfrac{1258}{0{,}85}=1480$.",
+        "<strong>b)</strong> $v=760-3b$. $3(760-3b)+4b=1480$<br>$2280-9b+4b=1480$<br>$-5b=-800$<br>$b=160$, $v=760-480=280$.",
+        "<strong>c)</strong> $0{,}85\\cdot 760=646$ kr.<br><strong>Svar:</strong> voksen $280$ kr, barn $160$ kr; Lien med rabatt $646$ kr",
       ],
     ),
   ],
@@ -234,7 +256,7 @@ const dk5C: Delkapittel = {
     q("Hvor mange uavhengige likninger trenger du vanligvis for tre ukjente?", ["1", "2", "3", "6"], 2, "Én uavhengig likning per ukjent."),
     q("Hvis du kan isolere $z$ fra én likning, er neste steg å", ["gjette $z$", "sette uttrykket inn i de andre likningene", "tegne i 3D", "gange med $z$"], 1, "Innsetting reduserer antallet ukjente."),
     q("Summen av tre likninger $2k+a+e=73$, $k+2a+e=71$, $k+a+2e=68$ gir", ["$k+a+e=53$", "$k+a+e=212$", "$k=0$", "ingenting nytt"], 0, "Venstre side blir $4(k+a+e)=212$."),
-    q("Et sett med tre like likninger har", ["alltid én løsning", "enten ingen, et plan av løsninger, eller hele rommet", "alltid ingen løsning", "alltid tre løsninger"], 1, "Avhengige likninger gir færre krav."),
+    q("Et sett der alle tre likningene er den samme likningen (for eksempel $x+y+z=6$ tre ganger), har", ["nøyaktig én løsning", "uendelig mange løsninger", "ingen løsning", "nøyaktig tre løsninger"], 1, "Det er egentlig bare ett krav. Alle punkt som passer i den ene likningen, passer i alle tre."),
   ],
   oppgaver: [
     o(
@@ -262,7 +284,7 @@ const dk5C: Delkapittel = {
       "Løs<br>$$\\begin{cases}\\dfrac{x}{2}+y+z=6\\\\ x+\\dfrac{y}{2}=5\\\\ y+z=4\\end{cases}$$",
       "Den siste gir $z=4-y$. Den midterste gir $x$ uttrykt med $y$.",
       [
-        "$z=4-y$, $x=5-\\dfrac{y}{2}$.<br>$\\dfrac{1}{2}\\left(5-\\dfrac{y}{2}\\right)+y+(4-y)=6$<br>$\\dfrac{5}{2}+4-\\dfrac{y}{4}=6$<br>$y=2$, $x=4$, $z=2$.<br><strong>Svar:</strong> $(4,2,2)$",
+        "$z=4-y$, $x=5-\\dfrac{y}{2}$.<br>$\\dfrac{1}{2}\\left(5-\\dfrac{y}{2}\\right)+y+(4-y)=6$<br>$\\dfrac{5}{2}-\\dfrac{y}{4}+y+4-y=6$<br>$\\dfrac{13}{2}-\\dfrac{y}{4}=6$<br>$\\dfrac{y}{4}=\\dfrac{1}{2}$<br>$y=2$, $x=4$, $z=2$.<br><strong>Svar:</strong> $(4,2,2)$",
       ],
     ),
     o(
@@ -296,7 +318,7 @@ const dk5C: Delkapittel = {
       "Hvorfor trenger vi tre uavhengige likninger for tre ukjente?<br><br><strong>a)</strong> Gi et eksempel med bare to likninger og tre ukjente som har uendelig mange løsninger.<br><br><strong>b)</strong> Hva skjer hvis den tredje likningen strider mot de to første?",
       "Tenk geometrisk: tre plan i rommet.",
       [
-        "<strong>a)</strong> $x+y+z=1$ og $x=0$. Da er $y+z=1$, uendelig mange par $(y,z)$.",
+        "<strong>a)</strong> $x+y+z=1$ og $x=0$. Da er $y+z=1$, uendelig mange par $(y,z)$. Alle tripler $(0,t,1-t)$ der $t$ er et reelt tall, er løsninger.",
         "<strong>b)</strong> Da har settet ingen løsning (parallelle, motstridende plan).<br><strong>Svar:</strong> tre uavhengige krav, ellers for få eller motstrid",
       ],
     ),
@@ -305,7 +327,7 @@ const dk5C: Delkapittel = {
 
 const dk5D: Delkapittel = {
   id: "5D",
-  tittel: "5D Andregradsmodeller",
+  tittel: "5D Andregradsmodeller og polynomer",
   quiz: [
     q("Hvor mange punkt trenger du vanligvis for å bestemme $ax^2+bx+c$?", ["1", "2", "3", "4"], 2, "Tre ukjente $a,b,c$ krever tre punkt."),
     q("Hvis $x^2+px+q=0$ har røttene $4$ og $-1$, er $q$", ["$4$", "$-4$", "$3$", "$-3$"], 1, "Produktet av røttene er $q$: $4\\cdot(-1)=-4$."),
@@ -315,7 +337,7 @@ const dk5D: Delkapittel = {
   oppgaver: [
     o(
       "5.23",
-      "Totalkostnaden $K$ (kroner) ved $n$ enheter modelleres med $an^2+bn+c$.<br>Vi vet $K(10)=400$, $K(20)=900$ og $K(30)=1600$.<br><br><strong>a)</strong> Sett opp settet for $a$, $b$ og $c$.<br><br><strong>b)</strong> Finn $K(n)$.<br><br><strong>c)</strong> Hva betyr $K(0)$?<br><br>Kontrollgraf: treffer $f(x)=x^2+20x+100$ de tre punktene ved $x=10$, $x=20$ og $x=30$?",
+      "Totalkostnaden $K$ (kroner) ved $n$ enheter modelleres med $an^2+bn+c$.<br>Vi vet $K(10)=400$, $K(20)=900$ og $K(30)=1600$.<br><br><strong>a)</strong> Sett opp settet for $a$, $b$ og $c$.<br><br><strong>b)</strong> Finn $K(n)$.<br><br><strong>c)</strong> Hva betyr $K(0)$?<br><br>Figuren viser grafen til $K$. Bruk den til å kontrollere svaret ditt i <strong>b)</strong>.<!-- plot: K(x)=x^2+20x+100 -->",
       "Trekk likningene parvis slik at $c$ faller bort.",
       [
         "<strong>a)</strong> $100a+10b+c=400$, $400a+20b+c=900$, $900a+30b+c=1600$.",
@@ -335,7 +357,7 @@ const dk5D: Delkapittel = {
     ),
     o(
       "5.25",
-      "Funksjonen $f$ er av typen $ax^2+bx+c$ og oppfyller $f(1)=6$, $f(2)=11$ og $f(3)=18$.<br>Kontrollgraf: treffer $h(x)=x^2+2x+3$ punktene $(1, 6)$, $(2, 11)$ og $(3, 18)$?<br><br><strong>a)</strong> Sett opp settet.<br><br><strong>b)</strong> Finn $f(x)$.<br><br><strong>c)</strong> Les av $f(0)$ fra uttrykket — og fra grafen.",
+      "Funksjonen $f$ er av typen $ax^2+bx+c$ og oppfyller $f(1)=6$, $f(2)=11$ og $f(3)=18$.<br>Figuren viser grafen til $f$. Bruk den til å kontrollere svaret ditt.<!-- plot: f(x)=x^2+2x+3 --><br><br><strong>a)</strong> Sett opp settet.<br><br><strong>b)</strong> Finn $f(x)$.<br><br><strong>c)</strong> Les av $f(0)$ fra uttrykket — og fra grafen.",
       "Trekk likningene fra hverandre for å fjerne $c$.",
       [
         "<strong>a)</strong> $a+b+c=6$, $4a+2b+c=11$, $9a+3b+c=18$.",
@@ -345,8 +367,8 @@ const dk5D: Delkapittel = {
     ),
     o(
       "5.26",
-      "En tredjegradsfunksjon $p$ har nullpunktene $x=-1$, $x=2$ og $x=4$, og $p(0)=-16$.<br>Kontrollgraf: treffer $q(x)=-2(x+1)(x-2)(x-4)$ nullpunktene og $(0,-16)$?<br><br><strong>a)</strong> Hvorfor kan vi skrive $p$ som $a(x+1)(x-2)(x-4)$?<br><br><strong>b)</strong> Bestem $a$.<br><br><strong>c)</strong> Regn ut $p(1)$. Ligger grafen over eller under $x$-aksen der?",
-      "Sett $x=0$ inn i faktorformen.",
+      "En tredjegradsfunksjon $p$ har nullpunktene $x=-1$, $x=2$ og $x=4$, og $p(0)=-16$.<br>Figuren viser grafen til $p$. Bruk den til å kontrollere svaret ditt.<!-- plot: p(x)=-2(x+1)(x-2)(x-4) --><br><br><strong>a)</strong> Hvorfor kan vi skrive $p$ som $a(x+1)(x-2)(x-4)$?<br><br><strong>b)</strong> Bestem $a$.<br><br><strong>c)</strong> Regn ut $p(1)$. Ligger grafen over eller under $x$-aksen der?",
+      "Polynom av grad 3: hvert nullpunkt $r$ gir en faktor $(x-r)$. Sett $x=0$ inn i faktorformen for å finne $a$.",
       [
         "<strong>a)</strong> Nullpunktene gir faktorene. $a$ skalerer (og eventuelt speiler).",
         "<strong>b)</strong> $p(0)=a(1)(-2)(-4)=8a=-16$, $a=-2$. $p(x)=-2(x+1)(x-2)(x-4)$.",
@@ -356,7 +378,7 @@ const dk5D: Delkapittel = {
     o(
       "5.27",
       "Figuren viser parabelen $h(x)=-x^2+4x+1$.<br><br><strong>a)</strong> Finn toppunktet.<br><br><strong>b)</strong> Finn nullpunktene (eksakt, ikke bare avlest).<br><br><strong>c)</strong> For hvilke $x$ er $h(x)>0$?",
-      "Toppunktet ligger på $x=-b/(2a)$. ABC-formelen gir nullpunktene.",
+      "Repetisjon fra kapittel 3 og 4: toppunktet ligger på $x=-b/(2a)$. ABC-formelen gir nullpunktene.",
       [
         "<strong>a)</strong> $a=-1$, $b=4$, $x=-4/(-2)=2$. $h(2)=-4+8+1=5$. Toppunkt $(2,5)$.",
         "<strong>b)</strong> $x=\\dfrac{-4\\pm\\sqrt{16+4}}{-2}=\\dfrac{-4\\pm\\sqrt{20}}{-2}=2\\pm\\sqrt{5}$.",
@@ -365,7 +387,7 @@ const dk5D: Delkapittel = {
     ),
     o(
       "5.28",
-      "En parabel $f$ av typen $ax^2+bx+c$ går gjennom $(0,-6)$, $(-2,0)$ og $(3,0)$.<br>Kontrollgraf: $h(x)=(x+2)(x-3)$ — går den gjennom de tre punktene?<br><br><strong>a)</strong> Hvorfor er $c=-6$?<br><br><strong>b)</strong> Skriv $f$ på faktorform og finn $a$.<br><br><strong>c)</strong> Finn $f(1)$.",
+      "En parabel $f$ av typen $ax^2+bx+c$ går gjennom $(0,-6)$, $(-2,0)$ og $(3,0)$.<br>Figuren viser grafen til $f$. Bruk den til å kontrollere svaret ditt.<!-- plot: f(x)=(x+2)(x-3) --><br><br><strong>a)</strong> Hvorfor er $c=-6$?<br><br><strong>b)</strong> Skriv $f$ på faktorform og finn $a$.<br><br><strong>c)</strong> Finn $f(1)$.",
       "Nullpunktene gir faktorene. $f(0)=c$.",
       [
         "<strong>a)</strong> $f(0)=c=-6$.",
@@ -379,7 +401,7 @@ const dk5D: Delkapittel = {
       "Tre ukjente, tre uavhengige krav.",
       [
         "<strong>a)</strong> Uendelig mange parabler gjennom to punkt (familien har én fri parameter).",
-        "<strong>b)</strong> Da finnes det ingen annengradsfunksjon som treffer alle fire. Du må bytte modell (f.eks. tredjegrad).<br><strong>Svar:</strong> tre punkt låser $a,b,c$; et avvikende fjerde punkt knuser modellen",
+        "<strong>b)</strong> Da finnes det ingen annengradsfunksjon som treffer alle fire. Du må bytte modell (f.eks. tredjegrad).<br><strong>Svar:</strong> tre punkt låser $a,b,c$; et avvikende fjerde punkt betyr at modellen ikke passer lenger",
       ],
     ),
 
@@ -401,7 +423,7 @@ const dk5E: Delkapittel = {
   tittel: "5E Ikkelineære likningssett",
   quiz: [
     q("Settet $x+y=11$, $xy=24$ gir en likning som er", ["lineær", "av andre grad", "eksponential", "uten løsning"], 1, "$x(11-x)=24$ blir $x^2-11x+24=0$."),
-    q("En linje og en sirkel kan skjære hverandre i", ["alltid to punkt", "0, 1 eller 2 punkt", "alltid ett punkt", "tre punkt"], 1, "Diskriminanten styrer antallet."),
+    q("En linje og en parabel kan skjære hverandre i", ["alltid to punkt", "0, 1 eller 2 punkt", "alltid ett punkt", "tre punkt"], 1, "Diskriminanten styrer antallet."),
     q("$(x,y)=(3,8)$ og $(8,3)$ som løsninger på et rektangel-sett beskriver", ["to ulike rektangler", "samme rektangel med sidene byttet", "en sirkel", "ingen figur"], 1, "Lengde og bredde bytter plass."),
     q("Settet $y=x+2$ og $y=x^2+a$ har én løsning når diskriminanten er", ["negativ", "null", "positiv", "udefinert"], 1, "Tangering: $D=0$."),
   ],
@@ -418,11 +440,11 @@ const dk5E: Delkapittel = {
     ),
     o(
       "5.31",
-      "Løs settene. Oppgi alle par.<br><br><strong>a)</strong> $x=y+3$ og $xy=18$<br><br><strong>b)</strong> $x^2+y^2=25$ og $y=x-1$<br><br>I b) er sirkelen $u(x)=\\sqrt{25-x^2}$, $v(x)=-\\sqrt{25-x^2}$ og linja $f(x)=x-1$ tegnet under.",
-      "I b) er den første en sirkel med radius $5$ om origo.",
+      "Løs settene. Oppgi alle par.<br><br><strong>a)</strong> $x=y+3$ og $xy=18$<br><br><strong>b)</strong> $y=x^2-3$ og $y=x-1$<br><br>Grafene til $u(x)=x^2-3$ og $f(x)=x-1$ fra b) vises under.",
+      "I b) er den første en parabel og den andre en linje. Sett uttrykkene for $y$ lik hverandre.",
       [
         "<strong>a)</strong> $y(y+3)=18$, $y^2+3y-18=0$, $(y+6)(y-3)=0$. Par $(6,3)$ og $(-3,-6)$.",
-        "<strong>b)</strong> $x^2+(x-1)^2=25$, $x^2-x-12=0$, $(x-4)(x+3)=0$. Par $(4,3)$ og $(-3,-4)$.<br><strong>Svar:</strong> a) $(6,3),(-3,-6)$ b) $(4,3),(-3,-4)$",
+        "<strong>b)</strong> $x^2-3=x-1$<br>$x^2-x-2=0$<br>$(x-2)(x+1)=0$. $x=2$ gir $y=1$, $x=-1$ gir $y=-2$. Par $(2,1)$ og $(-1,-2)$.<br><strong>Svar:</strong> a) $(6,3),(-3,-6)$ b) $(2,1),(-1,-2)$",
       ],
     ),
     o(
@@ -430,8 +452,8 @@ const dk5E: Delkapittel = {
       "Grafene til $f(x)=x^2-2$ og $g(x)=x+1$ er tegnet under.<br><br><strong>a)</strong> Les av skjæringspunktene fra grafen, og kontroller ved regning.<br><br><strong>b)</strong> Hvor mange løsninger har settet $y=x^2-2$, $y=x+1$?",
       "Sett $x^2-2=x+1$.",
       [
-        "<strong>a)</strong> $x^2-x-3=0$, $x=\\dfrac{1\\pm\\sqrt{13}}{2}$. To punkt.",
-        "<strong>b)</strong> To løsninger.<br><strong>Svar:</strong> to skjæringspunkt, $x=\\dfrac{1\\pm\\sqrt{13}}{2}$",
+        "<strong>a)</strong> $x^2-2=x+1$<br>$x^2-x-3=0$, $x=\\dfrac{1\\pm\\sqrt{13}}{2}$.<br>$y=x+1=\\dfrac{3\\pm\\sqrt{13}}{2}$. Punktene er $\\left(\\dfrac{1+\\sqrt{13}}{2},\\dfrac{3+\\sqrt{13}}{2}\\right)\\approx(2{,}30;\\,3{,}30)$ og $\\left(\\dfrac{1-\\sqrt{13}}{2},\\dfrac{3-\\sqrt{13}}{2}\\right)\\approx(-1{,}30;\\,-0{,}30)$.",
+        "<strong>b)</strong> To løsninger.<br><strong>Svar:</strong> to skjæringspunkt, $\\left(\\dfrac{1\\pm\\sqrt{13}}{2},\\dfrac{3\\pm\\sqrt{13}}{2}\\right)$",
       ],
     ),
     o(
@@ -466,12 +488,12 @@ const dk5E: Delkapittel = {
     ),
     o(
       "5.36",
-      "Et rektangel har areal $60$ m$^2$. Diagonalen er $13$ m.<br><br><strong>a)</strong> Sett opp et sett med sidene $x$ og $y$.<br><br><strong>b)</strong> Finn sidene.<br><br><strong>c)</strong> Finn omkretsen uten å bruke sidene hver for seg: vis at $(x+y)^2=x^2+y^2+2xy$.",
+      "Et rektangel har areal $60$ m$^2$. Diagonalen er $13$ m.<br><br><strong>a)</strong> Sett opp et sett med sidene $x$ og $y$.<br><br><strong>b)</strong> Vis at $(x+y)^2=x^2+y^2+2xy$. Bruk dette til å finne $x+y$ og omkretsen uten å finne sidene hver for seg.<br><br><strong>c)</strong> Finn sidene.",
       "Pytagoras: $x^2+y^2=169$. Produkt $xy=60$.",
       [
         "<strong>a)</strong> $xy=60$ og $x^2+y^2=13^2=169$.",
-        "<strong>b)</strong> $(x+y)^2=169+120=289$, $x+y=17$ (positivt). $x$ og $y$ er røttene i $t^2-17t+60=0$, $(t-5)(t-12)=0$. Sider $5$ m og $12$ m.",
-        "<strong>c)</strong> Omkrets $2\\cdot 17=34$ m, funnet fra $x+y$ uten å splitte.<br><strong>Svar:</strong> $5$ m og $12$ m, omkrets $34$ m",
+        "<strong>b)</strong> $(x+y)^2=(x+y)(x+y)=x^2+xy+yx+y^2=x^2+y^2+2xy$.<br>Innsatt: $(x+y)^2=169+2\\cdot 60=289$, så $x+y=17$. ($x+y=-17$ forkastes fordi sidelengder er positive.)<br>Omkrets $2(x+y)=2\\cdot 17=34$ m.",
+        "<strong>c)</strong> $x$ og $y$ har sum $17$ og produkt $60$, så de er røttene i $t^2-17t+60=0$, $(t-5)(t-12)=0$. Sider $5$ m og $12$ m.<br><strong>Svar:</strong> omkrets $34$ m, sider $5$ m og $12$ m",
       ],
     ),
 
@@ -511,7 +533,7 @@ const dk5F: Delkapittel = {
     o(
       "5.37",
       "Løs ulikhetene. Oppgi svaret som intervall.<br><br><strong>a)</strong> $3(x-2)<2x+5$<br><br><strong>b)</strong> $7-4x\\ge 2x-5$<br><br><strong>c)</strong> $\\dfrac{x+1}{2}>\\dfrac{2x-3}{5}$",
-      "Når du deler på et negativt tall, snur tegnet.",
+      "Når du ganger eller deler med et negativt tall, snur tegnet.",
       [
         "<strong>a)</strong> $3x-6<2x+5$, $x<11$. $\\langle-\\infty,11\\rangle$",
         "<strong>b)</strong> $12\\ge 6x$, $x\\le 2$. $\\langle-\\infty,2]$",
@@ -544,7 +566,7 @@ const dk5F: Delkapittel = {
       [
         "<strong>a)</strong> $92-2x>70$, $x<11$. De første $11$ minuttene (ikke $x=11$).",
         "<strong>b)</strong> $92-2x<60$, $x>16$.",
-        "<strong>c)</strong> Grafen krysser $y=70$ ved $x=11$ og $y=60$ ved $x=16$.<br><strong>Svar:</strong> over $70$ når $x\\in\\langle 0,11\\rangle$, under $60$ når $x>16$",
+        "<strong>c)</strong> Grafen krysser $y=70$ ved $x=11$ og $y=60$ ved $x=16$.<br><strong>Svar:</strong> over $70$ når $x\\in[0,11\\rangle$, under $60$ når $x>16$",
       ],
     ),
     o(
@@ -585,6 +607,27 @@ const dk5F: Delkapittel = {
         "<strong>c)</strong> $3-9\\le 3x$, $-6\\le 3x$, $x\\ge -2$. $[-2,\\infty\\rangle$.<br><strong>Svar:</strong> a) $-3<x\\le 5$ b) $[-1,4\\rangle$ c) $[-2,\\infty\\rangle$",
       ],
     ),
+
+    o(
+      "5F.9",
+      "En dobbel ulikhet sier at et uttrykk ligger mellom to tall.<br><br><strong>a)</strong> Løs $-3<2x+1\\le 5$.<br><br><strong>b)</strong> Skriv svaret som intervall.<br><br><strong>c)</strong> Er $x=-2$ og $x=2$ med i løsningen? Begrunn.",
+      "Gjør det samme med alle tre «sider» samtidig: trekk fra $1$, og del på $2$.",
+      [
+        "<strong>a)</strong> $-3-1<2x\\le 5-1$<br>$-4<2x\\le 4$<br>$-2<x\\le 2$.",
+        "<strong>b)</strong> $\\langle-2,2]$",
+        "<strong>c)</strong> $x=-2$ gir $2x+1=-3$, og $-3<-3$ er usant, så $-2$ er ikke med. $x=2$ gir $5\\le 5$, som er sant, så $2$ er med.<br><strong>Svar:</strong> $\\langle-2,2]$",
+      ],
+    ),
+    o(
+      "5F.10",
+      "<strong>Finn feilen.</strong> Ola løser ulikheten $-2x+6<10$ slik:<br>$-2x<4$<br>$x<-2$<br><br><strong>a)</strong> Test $x=0$ i den opprinnelige ulikheten. Passer det med svaret til Ola?<br><br><strong>b)</strong> Hvilken regel har Ola glemt?<br><br><strong>c)</strong> Skriv riktig løsning som intervall.",
+      "Hva skjer med ulikhetstegnet når du deler på et negativt tall?",
+      [
+        "<strong>a)</strong> $-2\\cdot 0+6=6<10$, så $x=0$ er en løsning. Men $0<-2$ er usant, så svaret til Ola kan ikke stemme.",
+        "<strong>b)</strong> Når du deler på $-2$, må ulikhetstegnet snus.",
+        "<strong>c)</strong> $-2x<4$ gir $x>-2$.<br><strong>Svar:</strong> $\\langle-2,\\infty\\rangle$",
+      ],
+    ),
   ],
 };
 
@@ -600,7 +643,7 @@ const dk5G: Delkapittel = {
   oppgaver: [
     o(
       "5.45",
-      `Et andregradsuttrykk $p$ har nullpunkt i $x=-3$ og $x=2$. $p$ er positiv mellom nullpunktene og negativ utenfor. $p(1)=8$.<br><br>${signSvg([{ label: "−3", kind: "zero" }, { label: "2", kind: "zero" }], "−", ["+"], "−")}<br><strong>a)</strong> Hvorfor må $p(x)=a(x+3)(x-2)$ ha $a<0$?<br><br><strong>b)</strong> Bestem $a$. Grafen til $f(x)=-2(x+3)(x-2)$ vises under.<br><br><strong>c)</strong> Løs $p(x)\\ge 0$.`,
+      `Et andregradsuttrykk $p$ har nullpunkt i $x=-3$ og $x=2$. $p$ er positiv mellom nullpunktene og negativ utenfor. $p(1)=8$.<br><br>${signSvg([{ label: "−3", kind: "zero" }, { label: "2", kind: "zero" }], "−", ["+"], "−")}<br><strong>a)</strong> Hvorfor må $p(x)=a(x+3)(x-2)$ ha $a<0$?<br><br><strong>b)</strong> Bestem $a$. Figuren viser grafen til $p$, så du kan kontrollere svaret.<!-- plot: p(x)=-2(x+3)(x-2) --><br><br><strong>c)</strong> Løs $p(x)\\ge 0$.`,
       "$(x+3)(x-2)$ er minus i midten. $a<0$ snur dette.",
       [
         "<strong>a)</strong> Faktorene kommer fra nullpunktene. Produktet er negativt mellom. $a<0$ gir pluss i midten.",
@@ -620,11 +663,11 @@ const dk5G: Delkapittel = {
     ),
     o(
       "5.47",
-      "Figuren viser parabelen $f(x)=-(x+2)(x-5)$ og linjen $g(x)=4$. Parabelen skjærer $x$-aksen i $-2$ og $5$. Linja skjærer $f$ i $x=(3\\pm\\sqrt{33})/2$.<br><br><strong>a)</strong> Løs $f(x)>0$.<br><br><strong>b)</strong> Løs $f(x)>4$.<br><br><strong>c)</strong> Løs $f(x)<g(x)$.",
-      "$f>4$ er der parabelen ligger over den vannrette linja.",
+      "Figuren viser parabelen $f(x)=-(x+2)(x-5)$ og linjen $g(x)=4$. Parabelen skjærer $x$-aksen i $-2$ og $5$.<br><br><strong>a)</strong> Løs $f(x)>0$.<br><br><strong>b)</strong> Løs $f(x)>4$.<br><br><strong>c)</strong> Løs $f(x)<g(x)$.",
+      "$f>4$ er der parabelen ligger over den vannrette linja. Finn skjæringene ved å løse $f(x)=4$ med abc-formelen.",
       [
         "<strong>a)</strong> Parabel ned, positiv mellom nullpunktene: $\\langle-2,5\\rangle$",
-        "<strong>b)</strong> Over $y=4$ mellom skjæringene: $\\langle(3-\\sqrt{33})/2,(3+\\sqrt{33})/2\\rangle$",
+        "<strong>b)</strong> $-(x+2)(x-5)=4$<br>$-x^2+3x+10=4$<br>$x^2-3x-6=0$<br>$x=\\dfrac{3\\pm\\sqrt{9+24}}{2}=\\dfrac{3\\pm\\sqrt{33}}{2}$.<br>Over $y=4$ mellom skjæringene: $\\langle(3-\\sqrt{33})/2,(3+\\sqrt{33})/2\\rangle$",
         "<strong>c)</strong> $f<4$ utenfor det intervallet: $\\langle-\\infty,(3-\\sqrt{33})/2\\rangle\\cup\\langle(3+\\sqrt{33})/2,\\infty\\rangle$<br><strong>Svar:</strong> a) $\\langle-2,5\\rangle$ b) $\\langle(3-\\sqrt{33})/2,(3+\\sqrt{33})/2\\rangle$ c) utsiden av det",
       ],
     ),
@@ -656,20 +699,50 @@ const dk5G: Delkapittel = {
     ),
     o(
       "5.51",
-      "Funksjonen $f(x)=x^3+x^2-2x$ krysser $x$-aksen tre steder (faktorform $x(x-1)(x+2)$).<br><br><strong>a)</strong> Les av nullpunktene.<br><br><strong>b)</strong> Løs $f(x)\\ge 0$ med fortegnslinje.<br><br><strong>c)</strong> Kontroller med et testpunkt i hvert intervall.",
+      "Funksjonen $f(x)=x^3+x^2-2x$ krysser $x$-aksen tre steder.<br><br><strong>a)</strong> Faktoriser $f(x)$ og finn nullpunktene.<br><br><strong>b)</strong> Løs $f(x)\\ge 0$ med fortegnslinje.<br><br><strong>c)</strong> Kontroller med et testpunkt i hvert intervall.",
       "Tre nullpunkt deler linja i fire deler.",
       [
-        "<strong>a)</strong> $x=0$, $x=1$, $x=-2$.",
+        "<strong>a)</strong> $f(x)=x(x^2+x-2)=x(x-1)(x+2)$. Nullpunkt: $x=0$, $x=1$, $x=-2$.",
         "<strong>b)</strong> Fortegn (ledende koeffisient $+$): $+$ på $[-2,0]$ og $[1,\\infty\\rangle$. Altså $x\\in[-2,0]\\cup[1,\\infty\\rangle$.",
-        "<strong>c)</strong> $x=-3$: $(-3)(-4)(-1)<0$. $x=-1$: $(-1)(-2)(1)>0$. $x=\\tfrac{1}{2}$: plus minus plus = minus. $x=2$: alle pluss.<br><strong>Svar:</strong> $[-2,0]\\cup[1,\\infty\\rangle$",
+        "<strong>c)</strong> $x=-3$: $(-3)(-4)(-1)<0$. $x=-1$: $(-1)(-2)(1)>0$. $x=\\tfrac{1}{2}$: pluss · minus · pluss = minus. $x=2$: alle pluss.<br><strong>Svar:</strong> $[-2,0]\\cup[1,\\infty\\rangle$",
       ],
     ),
     o(
       "5.52",
-      "Løs $(x-1)(x+4)<(x-1)$ ved å flytte alt til venstre — ikke del på $(x-1)$.",
+      "Løs $(x-1)(x+4)\\ge(x-1)$ ved å flytte alt til venstre — ikke del på $(x-1)$. Sammenlign med 5.48 b).",
       "Hvis du deler, må du splitte i tilfeller $x>1$ og $x<1$, og huske $x\\neq 1$.",
       [
-        "$(x-1)(x+4)-(x-1)<0$<br>$(x-1)(x+4-1)<0$<br>$(x-1)(x+3)<0$<br>$x\\in\\langle-3,1\\rangle$.<br><strong>Svar:</strong> $\\langle-3,1\\rangle$",
+        "$(x-1)(x+4)-(x-1)\\ge 0$<br>$(x-1)(x+4-1)\\ge 0$<br>$(x-1)(x+3)\\ge 0$<br>Nullpunkt $-3$ og $1$ (med). Pluss utenfor: $x\\in\\langle-\\infty,-3]\\cup[1,\\infty\\rangle$.<br>Hvis du hadde delt på $(x-1)$, ville du mistet $x=1$ og måttet snu tegnet for $x<1$.<br><strong>Svar:</strong> $\\langle-\\infty,-3]\\cup[1,\\infty\\rangle$",
+      ],
+    ),
+
+    o(
+      "5G.9",
+      "Noen andregradsuttrykk har ingen nullpunkt.<br><br><strong>a)</strong> Vis at $x^2+2x+5=0$ ikke har reelle løsninger.<br><br><strong>b)</strong> Løs $x^2+2x+5>0$ og $x^2+2x+5\\le 0$.<br><br><strong>c)</strong> Løs $-x^2+4x-5<0$.",
+      "Regn ut diskriminanten $b^2-4ac$. Uten nullpunkt skifter uttrykket aldri fortegn.",
+      [
+        "<strong>a)</strong> $b^2-4ac=4-20=-16<0$. Ingen reelle løsninger.",
+        "<strong>b)</strong> Parabelen vender opp ($a=1>0$) og krysser aldri $x$-aksen, så den ligger hele tiden over. $x^2+2x+5>0$ for alle $x$. $x^2+2x+5\\le 0$ har ingen løsning.",
+        "<strong>c)</strong> $b^2-4ac=16-20=-4<0$. Parabelen vender ned ($a=-1$) og ligger hele tiden under $x$-aksen. Ulikheten gjelder for alle $x$.<br><strong>Svar:</strong> a) $D<0$ b) alle $x$; ingen løsning c) alle $x$",
+      ],
+    ),
+    o(
+      "5G.10",
+      "Løs $x^2-4x-1\\ge 0$. Oppgi eksakt svar.<br><br><strong>a)</strong> Finn nullpunktene med abc-formelen.<br><br><strong>b)</strong> Lag fortegnslinje og løs ulikheten.",
+      "Uttrykket kan ikke faktoriseres med hele tall. Bruk $x=\\dfrac{-b\\pm\\sqrt{b^2-4ac}}{2a}$.",
+      [
+        "<strong>a)</strong> $x=\\dfrac{4\\pm\\sqrt{16+4}}{2}=\\dfrac{4\\pm\\sqrt{20}}{2}=\\dfrac{4\\pm 2\\sqrt{5}}{2}=2\\pm\\sqrt{5}$.",
+        "<strong>b)</strong> $a=1>0$: pluss utenfor nullpunktene, minus mellom. Nullpunktene er med fordi tegnet er $\\ge$.<br><strong>Svar:</strong> $\\langle-\\infty,2-\\sqrt{5}]\\cup[2+\\sqrt{5},\\infty\\rangle$",
+      ],
+    ),
+    o(
+      "5G.11",
+      "En ball kastes rett opp. Høyden etter $t$ sekunder er $h(t)=-5t^2+20t+1$ meter.<br><br><strong>a)</strong> Skriv en ulikhet som sier når ballen er høyere enn $16$ m.<br><br><strong>b)</strong> Løs ulikheten, og tolk svaret.<br><br><strong>c)</strong> Hvor lenge er ballen over $16$ m?",
+      "Flytt alt til én side og del på $-5$. Husk å snu tegnet.",
+      [
+        "<strong>a)</strong> $-5t^2+20t+1>16$",
+        "<strong>b)</strong> $-5t^2+20t-15>0$. Del på $-5$ og snu tegnet: $t^2-4t+3<0$, $(t-1)(t-3)<0$. Minus mellom nullpunktene: $t\\in\\langle 1,3\\rangle$. Ballen er over $16$ m mellom $1$ og $3$ sekunder etter kastet.",
+        "<strong>c)</strong> $3-1=2$ sekunder.<br><strong>Svar:</strong> $t\\in\\langle 1,3\\rangle$, altså i $2$ sekunder",
       ],
     ),
   ],
@@ -706,12 +779,12 @@ const dk5H: Delkapittel = {
     ),
     o(
       "5.55",
-      `Et rasjonalt uttrykk $Q$ har pol i $x=1$ og nullpunkt i $x=3$. Fortegnet er pluss når $x<1$, minus på $\\langle 1,3\\rangle$ og pluss når $x>3$. $Q(0)=6$.<br><br>${signSvg([{ label: "1", kind: "pole" }, { label: "3", kind: "zero" }], "+", ["−"], "+")}<br><strong>a)</strong> Hvorfor passer $a\\dfrac{x-3}{x-1}$ med $a>0$?<br><br><strong>b)</strong> Bestem $a$. Grafen til $R(x)=2\\dfrac{x-3}{x-1}$ vises under.<br><br><strong>c)</strong> Løs $Q(x)\\ge 0$.`,
+      `Et rasjonalt uttrykk $Q$ har pol i $x=1$ og nullpunkt i $x=3$. Fortegnet er pluss når $x<1$, minus på $\\langle 1,3\\rangle$ og pluss når $x>3$. $Q(0)=6$.<br><br>${signSvg([{ label: "1", kind: "pole" }, { label: "3", kind: "zero" }], "+", ["−"], "+")}<br><strong>a)</strong> Hvorfor passer $a\\dfrac{x-3}{x-1}$ med $a>0$?<br><br><strong>b)</strong> Bestem $a$. Figuren viser grafen til $Q$, så du kan kontrollere svaret.<!-- plot: Q(x)=2\\dfrac{x-3}{x-1} --><br><br><strong>c)</strong> Løs $Q(x)\\ge 0$.`,
       "Sett $x=0$ inn i faktorformen.",
       [
         "<strong>a)</strong> Polen og nullpunktet gir nevner og teller. For $a>0$ har $Q$ samme fortegn som brøken.",
         "<strong>b)</strong> $Q(0)=a\\dfrac{-3}{-1}=3a=6$, $a=2$.",
-        "<strong>c)</strong> $x\\in\\langle-\\infty,1\\rangle\\cup[3,\\infty\\rangle$.<br><strong>Svar:</strong> $Q(x)=2\\dfrac{x-3}{x-1}$",
+        "<strong>c)</strong> $x\\in\\langle-\\infty,1\\rangle\\cup[3,\\infty\\rangle$.<br><strong>Svar:</strong> $Q(x)=2\\dfrac{x-3}{x-1}$, $L=\\langle-\\infty,1\\rangle\\cup[3,\\infty\\rangle$",
       ],
     ),
     o(
@@ -725,7 +798,7 @@ const dk5H: Delkapittel = {
     o(
       "5.57",
       "Polynomet $P(x)=x^3+x^2-4x-4$. Grafen vises under.<br><br><strong>a)</strong> Vis at $x+2$ er en faktor.<br><br><strong>b)</strong> Faktoriser $P$ fullstendig.<br><br><strong>c)</strong> Løs $P(x)\\ge(x-2)(x+2)$.",
-      "Sett $x=-2$ inn i $P$. Del deretter på $(x+2)$.",
+      "Repetisjon fra 5G og kapittel 3 (polynomdivisjon): sett $x=-2$ inn i $P$. Del deretter på $(x+2)$.",
       [
         "<strong>a)</strong> $P(-2)=-8+4+8-4=0$.",
         "<strong>b)</strong> $P(x)=(x+2)(x^2-x-2)=(x+2)(x-2)(x+1)$.",
@@ -737,7 +810,7 @@ const dk5H: Delkapittel = {
       "Løs $\\dfrac{2-x}{x^2-36}<0$.",
       "Faktoriser nevneren: $(x-6)(x+6)$. Nullpunkt i telleren $x=2$.",
       [
-        "Nullpunkt $x=2$, poler $x=\\pm 6$.<br>Fortegnslinje med tre merker. Brøken er negativ på $\\langle-6,2\\rangle\\cup\\langle 6,\\infty\\rangle$.<br>(Test: $x=0$ gir $2/(-36)<0$; $x=10$ gir negativ over positiv = negativ; $x=4$ gir negativ over negativ = positiv.)<br><strong>Svar:</strong> $\\langle-6,2\\rangle\\cup\\langle 6,\\infty\\rangle$",
+        "Nullpunkt $x=2$, poler $x=\\pm 6$.<br>Fortegn på hvert intervall (teller $2-x$, nevner $(x-6)(x+6)$):<br>$\\langle-\\infty,-6\\rangle$: $+$ over $+$ = $+$<br>$\\langle-6,2\\rangle$: $+$ over $-$ = $-$<br>$\\langle 2,6\\rangle$: $-$ over $-$ = $+$<br>$\\langle 6,\\infty\\rangle$: $-$ over $+$ = $-$<br>Brøken er negativ på $\\langle-6,2\\rangle\\cup\\langle 6,\\infty\\rangle$.<br>(Test: $x=0$ gir $2/(-36)<0$; $x=10$ gir negativ over positiv = negativ; $x=4$ gir negativ over negativ = positiv.)<br><strong>Svar:</strong> $\\langle-6,2\\rangle\\cup\\langle 6,\\infty\\rangle$",
       ],
     ),
     o(
@@ -753,7 +826,18 @@ const dk5H: Delkapittel = {
       "Løs $\\dfrac{x^2-9}{x^2-7x+6}\\ge 0$.",
       "Faktoriser: teller $(x-3)(x+3)$, nevner $(x-6)(x-1)$.",
       [
-        "Nullpunkt $\\pm 3$ (med). Poler $1$ og $6$ (uten).<br>Fortegn $+$ utenfor ytterkantene og mellom $1$ og $3$ osv.<br>Løsning: $x\\in\\langle-\\infty,-3]\\cup\\langle 1,3]\\cup\\langle 6,\\infty\\rangle$.<br><strong>Svar:</strong> $\\langle-\\infty,-3]\\cup\\langle 1,3]\\cup\\langle 6,\\infty\\rangle$",
+        "Nullpunkt $\\pm 3$ (med). Poler $1$ og $6$ (uten).<br>Fortegn for $\\dfrac{(x+3)(x-3)}{(x-1)(x-6)}$:<br>$\\langle-\\infty,-3\\rangle$: $+$<br>$\\langle-3,1\\rangle$: $-$<br>$\\langle 1,3\\rangle$: $+$<br>$\\langle 3,6\\rangle$: $-$<br>$\\langle 6,\\infty\\rangle$: $+$<br>(Test: $x=0$ gir $\\dfrac{-9}{6}<0$, $x=2$ gir $\\dfrac{-5}{-4}>0$.)<br>Løsning: $x\\in\\langle-\\infty,-3]\\cup\\langle 1,3]\\cup\\langle 6,\\infty\\rangle$.<br><strong>Svar:</strong> $\\langle-\\infty,-3]\\cup\\langle 1,3]\\cup\\langle 6,\\infty\\rangle$",
+      ],
+    ),
+
+    o(
+      "5H.9",
+      "<strong>Finn feilen.</strong> Kari løser $\\dfrac{3}{x}>1$ ved å gange begge sider med $x$:<br>$3>x$, altså $x<3$.<br><br><strong>a)</strong> Test $x=-1$. Er det en løsning?<br><br><strong>b)</strong> Forklar hvorfor det er galt å gange med $x$.<br><br><strong>c)</strong> Løs ulikheten riktig.",
+      "Du vet ikke om $x$ er positiv eller negativ. Flytt heller $1$ over og bruk felles nevner.",
+      [
+        "<strong>a)</strong> $\\dfrac{3}{-1}=-3$, og $-3>1$ er usant. Men $-1<3$, så svaret til Kari tar med tall som ikke er løsninger.",
+        "<strong>b)</strong> Hvis $x<0$, må ulikhetstegnet snus når vi ganger med $x$. Kari har ikke delt i tilfeller, og har heller ikke tatt hensyn til at $x\\neq 0$.",
+        "<strong>c)</strong> $\\dfrac{3}{x}-1>0$<br>$\\dfrac{3-x}{x}>0$<br>Nullpunkt $x=3$, pol $x=0$. Fortegn: $-$ på $\\langle-\\infty,0\\rangle$, $+$ på $\\langle 0,3\\rangle$, $-$ på $\\langle 3,\\infty\\rangle$.<br><strong>Svar:</strong> $\\langle 0,3\\rangle$",
       ],
     ),
   ],
@@ -763,10 +847,10 @@ const dk5OP: Delkapittel = {
   id: "5OP",
   tittel: "Øveprøve",
   quiz: [
-    q("$5-2x<3x-10$ har løsning", ["$x<3$", "$x>3$", "$x=3$", "$x\\le 3$"], 1, "$15<5x$ gir $x>3$."),
-    q("Settet $x^2+y=10$, $x+y=4$ har", ["én løsning", "to løsninger", "ingen løsning", "uendelig mange"], 1, "Innsetting gir $x^2-x-6=0$ med to reelle røtter."),
-    q("$\\dfrac{x-3}{x+1}\\le 0$ har løsning", ["$[-1,3]$", "$\\langle-1,3]$", "$\\langle-1,3\\rangle$", "$(-\\infty,-1]$"], 1, "Inkluder nullpunktet $3$, ekskluder polen $-1$."),
-    q("To linjer $2x+y=5$ og $kx+2y=4$ er uten felles punkt når", ["$k=2$", "$k=4$", "$k=0$", "aldri"], 1, "$k=4$ gir parallell $2x+y=2$, som aldri møter $2x+y=5$."),
+    q("$4-3x<x-8$ har løsning", ["$x<3$", "$x>3$", "$x=3$", "$x\\le 3$"], 1, "$12<4x$ gir $x>3$."),
+    q("Settet $x^2+y=5$, $x+y=3$ har", ["én løsning", "to løsninger", "ingen løsning", "uendelig mange"], 1, "Innsetting gir $x^2-x-2=0$, altså $(x-2)(x+1)=0$, med to reelle røtter."),
+    q("$\\dfrac{x-2}{x+4}\\le 0$ har løsning", ["$[-4,2]$", "$\\langle-4,2]$", "$\\langle-4,2\\rangle$", "$\\langle-\\infty,-4]$"], 1, "Inkluder nullpunktet $2$, ekskluder polen $-4$."),
+    q("To linjer $3x+y=2$ og $kx+2y=7$ er uten felles punkt når", ["$k=3$", "$k=6$", "$k=0$", "aldri"], 1, "$k=6$ gir $6x+2y=7$, altså $3x+y=3{,}5$. Den er parallell med $3x+y=2$ og møter den aldri."),
     q("Parabel og linje skjærer i $x=2$ og $x=5$. Da er $f\\le g$ typisk", ["$\\langle-\\infty,2\\rangle$", "$[2,5]$ (parabel vender opp)", "bare $x=2$", "alle $x$"], 1, "En parabel som vender opp ligger under linjen mellom skjæringspunktene."),
     q("$10\\,\\%$ rabatt på $720$ kr gir å betale", ["$72$ kr", "$648$ kr", "$792$ kr", "$710$ kr"], 1, "$0{,}9\\cdot 720=648$."),
   ],

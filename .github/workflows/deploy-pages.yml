@@ -13,15 +13,17 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - name: Bygg dist
+          cache: npm
+      - name: Bygg som live (samme som sync.yml i MatsAmundsen.github.io)
         run: |
-          cp build.js build.cjs
-          cp scripts/prepare-dist.js scripts/prepare-dist.cjs
-          node build.cjs
-          node scripts/prepare-dist.cjs
+          npm ci
+          set +e
+          npm run build:pages
+          set -e
       - name: Bekreft innhold
         run: |
-          test -f dist/index.html
-          test -f dist/data.js
-          grep -q tallmengder dist/data.js
-          test -f dist/fagstoff/tallmengder.html
+          test -f .output/public/index.html
+          grep -q "hero-wrap" .output/public/index.html
+          grep -q "mg-build" .output/public/index.html
+          test -f .output/public/version.json
+          test -f .output/public/app.js

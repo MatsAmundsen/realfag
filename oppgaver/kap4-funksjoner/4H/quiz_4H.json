@@ -1,112 +1,90 @@
 [
   {
-    "sporsmal": "Hva er grunnleggende sant om ekstremalpunkter? (Spørsmål 1)",
+    "sporsmal": "Den deriverte $f'(x)$ beskriver",
     "alternativer": [
-      "Det beskriver en fundamental egenskap ved ekstremalpunkter.",
-      "Vet ikke.",
-      "Noe helt annet.",
-      "Det betyr at funksjonen alltid er 0."
+      "den momentane vekstfarten (tangentens stigningstall)",
+      "funksjonsverdien",
+      "arealet under grafen",
+      "nullpunktene"
     ],
     "riktigSvar": 0,
-    "forklaring": "Dette viser forståelse for ekstremalpunkter."
+    "forklaring": "Grafisk: hvor bratt grafen er akkurat i $x$."
   },
   {
-    "sporsmal": "Hva er grunnleggende sant om ekstremalpunkter? (Spørsmål 2)",
+    "sporsmal": "Hvis $f'(x)>0$ på et intervall, så er $f$",
     "alternativer": [
-      "Det betyr at funksjonen alltid er 0.",
-      "Vet ikke.",
-      "Noe helt annet.",
-      "Det beskriver en fundamental egenskap ved ekstremalpunkter."
-    ],
-    "riktigSvar": 3,
-    "forklaring": "Dette viser forståelse for ekstremalpunkter."
-  },
-  {
-    "sporsmal": "Hva er grunnleggende sant om ekstremalpunkter? (Spørsmål 3)",
-    "alternativer": [
-      "Det beskriver en fundamental egenskap ved ekstremalpunkter.",
-      "Det betyr at funksjonen alltid er 0.",
-      "Vet ikke.",
-      "Noe helt annet."
-    ],
-    "riktigSvar": 0,
-    "forklaring": "Dette viser forståelse for ekstremalpunkter."
-  },
-  {
-    "sporsmal": "Hva er grunnleggende sant om ekstremalpunkter? (Spørsmål 4)",
-    "alternativer": [
-      "Det beskriver en fundamental egenskap ved ekstremalpunkter.",
-      "Det betyr at funksjonen alltid er 0.",
-      "Vet ikke.",
-      "Noe helt annet."
-    ],
-    "riktigSvar": 0,
-    "forklaring": "Dette viser forståelse for ekstremalpunkter."
-  },
-  {
-    "sporsmal": "Gitt en funksjon $f(x)$ for ekstremalpunkter, regn ut verdien. (Spørsmål 5)",
-    "alternativer": [
-      "Svaret er umulig å finne.",
-      "Noe helt annet.",
-      "Svaret kan utledes fra formelen for ekstremalpunkter.",
-      "Vet ikke."
+      "avtakende der",
+      "konstant der",
+      "voksende der",
+      "negativ der"
     ],
     "riktigSvar": 2,
-    "forklaring": "Dette viser forståelse for ekstremalpunkter."
+    "forklaring": "Positiv stigning betyr at grafen går oppover. Fortegnet til $f$ selv avgjøres ikke av $f'$."
   },
   {
-    "sporsmal": "Gitt en funksjon $f(x)$ for ekstremalpunkter, regn ut verdien. (Spørsmål 6)",
+    "sporsmal": "Kandidater til ekstremalpunkt finner vi ved å",
     "alternativer": [
-      "Vet ikke.",
-      "Svaret er umulig å finne.",
-      "Noe helt annet.",
-      "Svaret kan utledes fra formelen for ekstremalpunkter."
-    ],
-    "riktigSvar": 3,
-    "forklaring": "Dette viser forståelse for ekstremalpunkter."
-  },
-  {
-    "sporsmal": "Gitt en funksjon $f(x)$ for ekstremalpunkter, regn ut verdien. (Spørsmål 7)",
-    "alternativer": [
-      "Svaret er umulig å finne.",
-      "Vet ikke.",
-      "Noe helt annet.",
-      "Svaret kan utledes fra formelen for ekstremalpunkter."
-    ],
-    "riktigSvar": 3,
-    "forklaring": "Dette viser forståelse for ekstremalpunkter."
-  },
-  {
-    "sporsmal": "Gitt en funksjon $f(x)$ for ekstremalpunkter, regn ut verdien. (Spørsmål 8)",
-    "alternativer": [
-      "Svaret er umulig å finne.",
-      "Svaret kan utledes fra formelen for ekstremalpunkter.",
-      "Noe helt annet.",
-      "Vet ikke."
+      "sette $f(x)=0$",
+      "sette $f'(x)=0$ (og sjekke endepunkt)",
+      "sette $x=0$",
+      "sette $f'(x)=1$"
     ],
     "riktigSvar": 1,
-    "forklaring": "Dette viser forståelse for ekstremalpunkter."
+    "forklaring": "Vannrett tangent: $f'(x)=0$. Deretter lager vi fortegnslinje for $f'$ for å avgjøre om det er toppunkt eller bunnpunkt."
   },
   {
-    "sporsmal": "En elev gjør en vanlig feil med ekstremalpunkter. Hva er feilen? (Spørsmål 9)",
+    "sporsmal": "Gitt $f(x)=5x-3$. Da er $f'(x)$ og $f'(2)$ lik",
     "alternativer": [
-      "Noe helt annet.",
-      "Vet ikke.",
-      "Eleven gjør ingen feil.",
-      "Eleven glemmer en viktig detalj om ekstremalpunkter."
+      "$5$ og $7$",
+      "$0$ og $-3$",
+      "$5x$ og $10$",
+      "$5$ og $5$"
     ],
     "riktigSvar": 3,
-    "forklaring": "Dette viser forståelse for ekstremalpunkter."
+    "forklaring": "Den deriverte av en lineær funksjon er stigningstallet, en konstant. $f'(2)=5$."
   },
   {
-    "sporsmal": "En elev gjør en vanlig feil med ekstremalpunkter. Hva er feilen? (Spørsmål 10)",
+    "sporsmal": "Gitt $f(x)=-7$. Da er $f'(x)$",
     "alternativer": [
-      "Eleven glemmer en viktig detalj om ekstremalpunkter.",
-      "Noe helt annet.",
-      "Vet ikke.",
-      "Eleven gjør ingen feil."
+      "$-7$",
+      "$0$",
+      "$-7x$",
+      "udefinert"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Konstant funksjon har vannrett graf, stigning $0$."
+  },
+  {
+    "sporsmal": "Gitt $g(x)=-x^2+4x$. Løsningen på $g'(x)=0$ er",
+    "alternativer": [
+      "$x=0$",
+      "$x=4$",
+      "$x=2$",
+      "$x=-2$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "$g'(x)=-2x+4=0$ gir $x=2$. Det er toppunktet."
+  },
+  {
+    "sporsmal": "$f'$ er negativ for $x<-1$, null i $x=-1$, positiv fram til $x=3$, null i $x=3$, og negativ etter. Da har $f$",
+    "alternativer": [
+      "toppunkt i $x=-1$ og bunnpunkt i $x=3$",
+      "bare nullpunkt i $\\pm 1$",
+      "ingen ekstremalpunkt",
+      "bunnpunkt i $x=-1$ og toppunkt i $x=3$"
+    ],
+    "riktigSvar": 3,
+    "forklaring": "Synkende $\\to$ bunnpunkt $\\to$ stigende $\\to$ toppunkt $\\to$ synkende."
+  },
+  {
+    "sporsmal": "Gitt $f'(x)=2x-4$. Hvor har $f$ et ekstremalpunkt, og hva slags?",
+    "alternativer": [
+      "Bunnpunkt i $x=2$",
+      "Toppunkt i $x=2$",
+      "Bunnpunkt i $x=-4$",
+      "Toppunkt i $x=4$"
     ],
     "riktigSvar": 0,
-    "forklaring": "Dette viser forståelse for ekstremalpunkter."
+    "forklaring": "$f'(x)=0$ gir $x=2$. $f'$ er negativ før $2$ og positiv etter, så grafen synker og så stiger: bunnpunkt."
   }
 ]

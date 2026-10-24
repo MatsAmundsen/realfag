@@ -62,7 +62,13 @@ function GraphSvg({
   const clip = spec.series.find((s) => s.clip)?.clip;
 
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} width="100%" role="img" aria-label="Graf til funksjonen" className="fn-svg">
+    <svg
+      viewBox={`0 0 ${W} ${H}`}
+      width="100%"
+      role="img"
+      aria-label={spec.legend ? `Grafer: ${spec.legend.join(", ")}` : "Graf til funksjonen"}
+      className="fn-svg"
+    >
       <defs>
         <marker id={arrow} markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto">
           <path d="M0,0 L8,3.5 L0,7 Z" fill="var(--text-muted)" />
@@ -236,6 +242,40 @@ function GraphSvg({
           </g>
         );
       })}
+      {spec.legend && large && (
+        <g aria-hidden="true">
+          <rect
+            x={W - padR - (large ? 220 : 170) - 6}
+            y={padT + 4}
+            width={large ? 220 : 170}
+            height={spec.legend.length * (large ? 20 : 16) + 8}
+            rx="6"
+            fill="var(--bg-elevated)"
+            stroke="var(--border)"
+            opacity="0.94"
+          />
+          {spec.legend.map((l, i) => (
+            <g key={`lg${i}`}>
+              <line
+                x1={W - padR - (large ? 220 : 170) + 2}
+                x2={W - padR - (large ? 220 : 170) + 20}
+                y1={padT + 16 + i * (large ? 20 : 16)}
+                y2={padT + 16 + i * (large ? 20 : 16)}
+                stroke={COLORS[i % COLORS.length]}
+                strokeWidth="3"
+              />
+              <text
+                x={W - padR - (large ? 220 : 170) + 26}
+                y={padT + 20 + i * (large ? 20 : 16)}
+                fill="var(--text-main)"
+                fontSize={large ? 13 : 11}
+              >
+                {l}
+              </text>
+            </g>
+          ))}
+        </g>
+      )}
       {spec.asymptotes.map((a, i) => {
         if (!large) return null;
         if (a.kind === "v" && a.x != null) {
@@ -273,7 +313,7 @@ export function FunctionPlot({
         <span className="fn-plot-legend">
           {spec.series.map((s, i) => (
             <span key={s.name} style={{ color: COLORS[i % COLORS.length] }}>
-              {s.name}
+              {spec.legend?.[i] ?? s.name}
             </span>
           ))}
           {spec.series.find((s) => s.clip) && <span className="fn-domain">D = definisjonsmengde</span>}
