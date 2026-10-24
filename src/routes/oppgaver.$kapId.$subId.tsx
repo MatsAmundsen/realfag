@@ -127,7 +127,7 @@ function SubchapterPage() {
           </div>
         )}
 
-        {topicVideos.length ? <TopicVideoInvite videos={topicVideos} /> : null}
+        {topicVideos.length > 0 ? <TopicVideoInvite videos={topicVideos} /> : null}
 
         {hasPrereq && !oving && (
           <details className="prereq-details">
