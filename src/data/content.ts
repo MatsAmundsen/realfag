@@ -247,6 +247,12 @@ export function videoForSub(subId: string | null | undefined): TemaVideo | null 
   return VIDEO_BY_SUB[subId]?.[0] ?? null;
 }
 
+/** Alle videoer for et delkapittel, i rekkefølgen de står i dataene. */
+export function videosForSub(subId: string | null | undefined): TemaVideo[] {
+  if (!subId) return [];
+  return VIDEO_BY_SUB[subId] ?? [];
+}
+
 export function findKap(id: string) {
   return fagsok.find((k) => k.id === id);
 }
