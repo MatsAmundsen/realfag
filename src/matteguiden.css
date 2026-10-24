@@ -3728,7 +3728,7 @@ a.vid-nav-card {
     text-decoration: none;
 }
 .mm-path-card strong { font-size: 0.92rem; }
-.mm-path-card span { font-size: 0.75rem; color: var(--text-muted); }
+.mm-path-card span { font-size: 0.75rem; color: #94a3b8; }
 .mm-path-card em { font-style: normal; font-size: 0.78rem; font-weight: 650; color: var(--primary-light); margin-top: auto; }
 .mm-path-card:hover { border-color: var(--border-hover); transform: translateY(-1px); }
 .mm-path-card:focus-visible { outline: 2px solid var(--primary-light); outline-offset: 2px; }
@@ -3742,7 +3742,7 @@ a.vid-nav-card {
 .mm-kap5 { --mm: #22d3ee; --mm-soft: rgba(34,211,238,0.12); }
 .mm-kap6 { --mm: #f472b6; --mm-soft: rgba(244,114,182,0.12); }
 .mm-kap7 { --mm: #fb7185; --mm-soft: rgba(251,113,133,0.12); }
-.mm-path-card.mm-exam { background: var(--primary-subtle); }
+.mm-path-card.mm-exam { background: linear-gradient(var(--primary-subtle), var(--primary-subtle)), var(--bg-surface); }
 .mm-path-card.mm-exam svg { color: var(--hint-color); }
 
 .mm-tabs {
@@ -3756,8 +3756,10 @@ a.vid-nav-card {
     background: var(--card-bg);
     color: var(--text-main);
     border-radius: 999px;
-    padding: 0.45rem 0.9rem;
+    padding: 0.45rem 0.75rem;
     min-height: 40px;
+    white-space: nowrap;
+    flex-shrink: 0;
     font: inherit;
     font-size: 0.85rem;
     display: inline-flex;
@@ -3840,7 +3842,7 @@ a.vid-nav-card {
     padding: 1.1rem 1.2rem 1.2rem;
 }
 .mm-edges h3 { font-size: 1rem; margin-bottom: 0.3rem; }
-.mm-edges p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.85rem; }
+.mm-edges p { color: #94a3b8; font-size: 0.85rem; margin-bottom: 0.85rem; }
 .mm-edges ul { list-style: none; display: flex; flex-wrap: wrap; gap: 0.45rem; }
 .mm-edges li {
     display: inline-flex;
@@ -3876,7 +3878,7 @@ a.vid-nav-card {
 .mm-edge-arrow.is-dash {
     background: repeating-linear-gradient(90deg, var(--primary-light), var(--primary-light) 3px, transparent 3px, transparent 6px);
 }
-.mm-edge-label { font-size: 0.68rem; color: var(--text-muted); }
+.mm-edge-label { font-size: 0.68rem; color: #94a3b8; }
 
 .mm-chapter-intro { margin-bottom: 1rem; }
 .mm-chapter-intro h2 { font-size: 1.15rem; margin-bottom: 0.3rem; }
@@ -4243,3 +4245,11 @@ a.vid-nav-card {
 
 /* Omslag i <picture>: bildet fyller fortsatt rammen */
 .photo-card picture, .kap-panel-head picture { display: block; }
+
+/* Kunnskapskart: tekst med minst 4,5:1 i lyst tema */
+[data-theme="light"] .mm-path-card span,
+[data-theme="light"] .mm-edges p,
+[data-theme="light"] .mm-edge-label { color: #475569; }
+[data-theme="light"] .mm-path-card em,
+[data-theme="light"] .mm-edge-from,
+[data-theme="light"] .mm-edge-to { color: #4338ca; }

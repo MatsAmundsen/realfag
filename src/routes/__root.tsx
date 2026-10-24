@@ -9,7 +9,7 @@ import appCss from "../styles.css?url";
 const APP_NAME = "Matteguiden 1T";
 const MG_BUILD = "2026-09-01-temavideo-alle";
 
-const CRITICAL_CSS = `html,body{margin:0;background:#0a0f1e;color:#e2e8f0;font-family:Inter,system-ui,sans-serif;}
+const CRITICAL_CSS = `:where(html,body){margin:0;background:#0a0f1e;color:#e2e8f0;font-family:Inter,system-ui,sans-serif;}
 .navbar{display:flex;align-items:center;justify-content:space-between;padding:.875rem 2rem;position:sticky;top:0;z-index:200;gap:1.5rem;background:rgba(10,15,30,.85);border-bottom:1px solid rgba(255,255,255,.07);}
 .desktop-nav{display:flex;align-items:center;gap:.25rem;flex-shrink:0;}
 .hamburger-btn{display:none;}
