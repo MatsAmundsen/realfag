@@ -17,6 +17,8 @@ export type PlotOverride = {
   extra?: { name: string; rhs: string }[];
   /** Tegnforklaring (samme rekkefølge som seriene). */
   legend?: string[];
+  /** Serienavn som tegnes stiplet, f.eks. referanselinjer. */
+  dashed?: string[];
   /** Marker startverdien (x = 0) på første graf. */
   markStart?: boolean;
 };
@@ -48,12 +50,13 @@ export const PLOT_OVERRIDES: Record<string, PlotOverride> = {
   "5.23": { nonNegative: true, x: [-1, 35], y: [-60, 1900] },
   "5.39": { nonNegative: true },
   "5.41": { nonNegative: true },
-  "5.40": { nonNegative: true, markStart: true, x: [0, 25], y: [40, 95] },
+  "5.40": { nonNegative: true, markStart: true, dashed: ["u(x)", "v(x)"], x: [0, 25], y: [40, 95] },
 };
 
 export function applyPlotOverride(spec: PlotSpec, o: PlotOverride): PlotSpec {
   const out: PlotSpec = { ...spec, series: spec.series.map((s) => ({ ...s })) };
   if (o.legend) out.legend = o.legend;
+  if (o.dashed) for (const s of out.series) if (o.dashed.includes(s.name)) s.dashed = true;
   if (o.x) [out.xMin, out.xMax] = o.x;
   if (o.y) [out.yMin, out.yMax] = o.y;
   if (o.nonNegative) {

@@ -52,6 +52,7 @@
 
 /* ── Light mode ───────────────────────────────────────────── */
 [data-theme="light"] {
+    --plot-c3:        #0284c7;
     --bg-deep:        #f0f4ff;
     --bg-surface:     #ffffff;
     --bg-elevated:    #f8faff;
