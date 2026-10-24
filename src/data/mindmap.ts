@@ -462,7 +462,7 @@ export const CHAPTER_MAPS: Record<string, ChapterDetail> = {
         layout: "stack",
         nodes: [
           n("4F-exp", "f(x) = a · bˣ", "4F"),
-          n("4F-log", "Logaritmer log og ln", "4F"),
+          n("4F-log", "Logaritmer log og ln (valgfritt)", "4F", "Valgfritt i 1T. Likninger som bˣ = k kan løses grafisk eller digitalt (skjæring i GeoGebra)."),
         ],
       },
       {
@@ -473,8 +473,7 @@ export const CHAPTER_MAPS: Record<string, ChapterDetail> = {
         nodes: [
           n("4G-gjsn", "Gjennomsnittlig vekstfart Δy/Δx", "4G"),
           n("4G-mom", "Momentan vekstfart f'(x)", "4G"),
-          n("4G-reg", "Derivasjonsregler xⁿ → n xⁿ⁻¹", "4G"),
-        ],
+                  ],
       },
       {
         id: "4H",
@@ -482,6 +481,7 @@ export const CHAPTER_MAPS: Record<string, ChapterDetail> = {
         subId: "4H",
         layout: "stack",
         nodes: [
+          n("4G-reg", "Derivasjonsregler xⁿ → n xⁿ⁻¹", "4H"),
           n("4H-for", "Fortegnsskjema for f'(x)", "4H"),
           n("4H-eks", "Ekstremalpunkter min/maks", "4H"),
         ],
@@ -849,7 +849,7 @@ export const PREREQS: Record<string, Prereq> = {
     title: "Derivasjon",
     blurb: "Fortegnsskjema for f' forteller hvor grafen stiger og synker.",
     inputs: [
-      { label: "Derivasjonsregler", subId: "4G", kapId: "kap4", role: "step" },
+      { label: "Momentan vekstfart", subId: "4G", kapId: "kap4", role: "step" },
       { label: "Faktorisering", subId: "2D", kapId: "kap2", role: "step" },
       { label: "Andregradsfunksjoner", subId: "4C", kapId: "kap4", role: "basic" },
     ],

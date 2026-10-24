@@ -5020,8 +5020,8 @@ export const fagsok = [
                             "<strong>Svar:</strong> En fallende eksponentialkurve som starter i $(0, 400000)$.",
                             "<strong>d)</strong><br>Vi setter $t = 4$ for å finne verdien etter $4$ år.<br><br>$V(4) = 400000 \\cdot 0{,}85^4$ (setter inn $t = 4$)<br><br>$V(4) \\approx 400000 \\cdot 0{,}5220$ (beregner potensen)<br><br>$V(4) \\approx 208802{,}5$ (ganger ut)",
                             "<strong>Svar:</strong> $208803$ kr",
-                            "<strong>e)</strong><br>Vi vil finne tiden $t$ når verdien $V(t)$ er halvparten av startverdien ($200000$).<br><br>$400000 \\cdot 0{,}85^t = 200000$ (setter funksjonen lik den halve verdien)<br><br>$0{,}85^t = \\frac{200000}{400000}$ (deler på $400000$ på begge sider)<br><br>$0{,}85^t = 0{,}5$ (forenkler brøken)<br><br>$\\lg(0{,}85^t) = \\lg(0{,}5)$ (tar logaritmen på begge sider for å hente ned eksponenten)<br><br>$t \\cdot \\lg(0{,}85) = \\lg(0{,}5)$ (bruker logaritmeregelen $\\lg(a^t) = t \\cdot \\lg a$)<br><br>$t = \\frac{\\lg(0{,}5)}{\\lg(0{,}85)}$ (isolerer $t$)<br><br>Alternativt: Løs $400000 \\cdot 0{,}85^t = 200000$ med et digitalt verktøy (f.eks. CAS i GeoGebra), eller tegn grafen og linja $y = 200000$ og finn skjæringspunktet.<br><br>$t \\approx 4{,}26$",
-                            "<strong>Svar:</strong> $4{,}26$ år"
+                            "<strong>e)</strong><br>Vi vil finne tiden $t$ når verdien $V(t)$ er halvparten av startverdien ($200000$), altså løse likningen $400000 \\cdot 0{,}85^t = 200000$.<br><br><strong>Grafisk/digitalt (hovedmetode):</strong><br>Tegn $V(t) = 400000 \\cdot 0{,}85^t$ og linja $y = 200000$ i GeoGebra. Bruk «Skjæring mellom to objekt». Skjæringspunktet er omtrent $(4{,}27;\\ 200000)$. (Du kan også skrive likningen i CAS og bruke «Løs numerisk».)<br><br>$t \\approx 4{,}27$<br><br><strong>Alternativ (med logaritmer):</strong><br>$0{,}85^t = \\frac{200000}{400000} = 0{,}5$ (deler på $400000$)<br>$\\lg(0{,}85^t) = \\lg(0{,}5)$ (tar logaritmen på begge sider)<br>$t \\cdot \\lg(0{,}85) = \\lg(0{,}5)$ (bruker $\\lg(a^t) = t \\cdot \\lg a$)<br>$t = \\frac{\\lg(0{,}5)}{\\lg(0{,}85)} \\approx 4{,}27$",
+                            "<strong>Svar:</strong> ca. $4{,}3$ år"
                         ],
                         "starter": ""
                     },
@@ -5282,6 +5282,76 @@ export const fagsok = [
                         "fasitSteg": [
                             "Vi tolker informasjonen fra oppgaven steg for steg:<br><br>1. Intervallet $x < -1$:<br>Når $f'(x) < 0$, betyr dette at grafen til selve funksjonen, $f(x)$, synker.<br><br>2. I punktet $x = -1$:<br>Her er $f'(x) = 0$. Siden funksjonen synker fram til dette punktet, og deretter (som vi ser i neste punkt) begynner å stige, vil $x = -1$ tilsvare et lokalt bunnpunkt på grafen til $f(x)$.<br><br>3. Intervallet mellom $x = -1$ og $x = 3$:<br>Når $f'(x)$ er positiv ($f'(x) > 0$), betyr dette at grafen til $f(x)$ stiger kontinuerlig over dette intervallet.<br><br>4. I punktet $x = 3$:<br>Her er $f'(x) = 0$ igjen. Fordi funksjonen steg fram til dette punktet og (som vi ser i neste punkt) begynner å synke, vil $x = 3$ tilsvare et lokalt toppunkt.<br><br>5. Intervallet $x > 3$:<br>Når $f'(x)$ igjen er negativ ($f'(x) < 0$), begynner $f(x)$ å synke.<br><br>Skissen din bør derfor vise en graf som synker ned i en \"dal\" (bunnpunkt) ved $x = -1$, stiger derfra opp til en \"bakketopp\" (toppunkt) ved $x = 3$, og synker nedover igjen for resten av verdiene. Det kan se ut som en s-lignende kurve, for eksempel en tredjegradsfunksjon med negativt fortegn på $x^3$-leddet.",
                             "<strong>Svar:</strong> Funksjonen synker fram til $x = -1$ (bunnpunkt), stiger mellom $x = -1$ og $x = 3$ (toppunkt i $x = 3$), og synker deretter for alle $x > 3$."
+                        ],
+                        "starter": ""
+                    },
+                    {
+                        "id": "4H.D1",
+                        "tittel": "Oppgave 4H.D1",
+                        "tekst": "Regelen for å derivere en potens med en konstant foran er $(a\\cdot x^n)' = n\\cdot a\\cdot x^{n-1}$: eksponenten ganges med tallet foran, og eksponenten blir én mindre.<br><br>Deriver funksjonene.<br><br><strong>a)</strong> $f(x) = x^5$<br><br><strong>b)</strong> $g(x) = 4x^3$<br><br><strong>c)</strong> $h(x) = -2x^6$<br><br><strong>d)</strong> $p(x) = 0{,}5x^4$",
+                        "bilde": null,
+                        "hint": "Gang eksponenten med tallet foran $x$, og trekk 1 fra eksponenten.",
+                        "fasit": null,
+                        "fasitSteg": [
+                            "<strong>a)</strong> $f'(x) = 5\\cdot x^{5-1} = 5x^4$<br><strong>Svar:</strong> $f'(x) = 5x^4$",
+                            "<strong>b)</strong> $g'(x) = 3\\cdot 4\\cdot x^{3-1} = 12x^2$<br><strong>Svar:</strong> $g'(x) = 12x^2$",
+                            "<strong>c)</strong> $h'(x) = 6\\cdot(-2)\\cdot x^{6-1} = -12x^5$<br><strong>Svar:</strong> $h'(x) = -12x^5$",
+                            "<strong>d)</strong> $p'(x) = 4\\cdot 0{,}5\\cdot x^{4-1} = 2x^3$<br><strong>Svar:</strong> $p'(x) = 2x^3$"
+                        ],
+                        "starter": ""
+                    },
+                    {
+                        "id": "4H.D2",
+                        "tittel": "Oppgave 4H.D2",
+                        "tekst": "Når en funksjon er en sum av flere ledd, kan vi derivere hvert ledd for seg (ledd for ledd). Husk at $(b\\cdot x)' = b$ og at en konstant har derivert $0$.<br><br>Deriver funksjonene.<br><br><strong>a)</strong> $f(x) = 2x^3 + 5x^2$<br><br><strong>b)</strong> $g(x) = x^4 - 3x^2 + 7x - 11$<br><br><strong>c)</strong> $h(x) = -x^3 + 0{,}5x^2 - 8$",
+                        "bilde": null,
+                        "hint": "Deriver ett ledd om gangen med regelen $(a\\cdot x^n)' = n\\cdot a\\cdot x^{n-1}$. Konstantleddet forsvinner.",
+                        "fasit": null,
+                        "fasitSteg": [
+                            "<strong>a)</strong> $f'(x) = 3\\cdot 2x^2 + 2\\cdot 5x = 6x^2 + 10x$<br><strong>Svar:</strong> $f'(x) = 6x^2 + 10x$",
+                            "<strong>b)</strong> $g'(x) = 4x^3 - 2\\cdot 3x + 7 - 0 = 4x^3 - 6x + 7$<br><strong>Svar:</strong> $g'(x) = 4x^3 - 6x + 7$",
+                            "<strong>c)</strong> $h'(x) = -3x^2 + 2\\cdot 0{,}5x - 0 = -3x^2 + x$<br><strong>Svar:</strong> $h'(x) = -3x^2 + x$"
+                        ],
+                        "starter": ""
+                    },
+                    {
+                        "id": "4H.D3",
+                        "tittel": "Oppgave 4H.D3",
+                        "tekst": "Gitt funksjonen $f(x) = x^3 - 4x$.<br><br><strong>a)</strong> Finn $f'(x)$.<br><br><strong>b)</strong> Regn ut $f'(-1)$, $f'(0)$ og $f'(2)$.<br><br><strong>c)</strong> Stiger eller synker grafen i hvert av disse punktene?",
+                        "bilde": null,
+                        "hint": "Deriver ledd for ledd. Sett deretter inn x-verdiene i $f'(x)$. Positivt stigningstall betyr at grafen stiger.",
+                        "fasit": null,
+                        "fasitSteg": [
+                            "<strong>a)</strong> $f'(x) = 3x^2 - 4$<br><strong>Svar:</strong> $f'(x) = 3x^2 - 4$",
+                            "<strong>b)</strong> $f'(-1) = 3\\cdot(-1)^2 - 4 = -1$<br>$f'(0) = 3\\cdot 0^2 - 4 = -4$<br>$f'(2) = 3\\cdot 2^2 - 4 = 8$<br><strong>Svar:</strong> $f'(-1) = -1$, $f'(0) = -4$ og $f'(2) = 8$",
+                            "<strong>c)</strong> Negativ derivert betyr at grafen synker, positiv betyr at den stiger.<br><strong>Svar:</strong> Grafen synker i $x = -1$ og $x = 0$, og stiger i $x = 2$."
+                        ],
+                        "starter": ""
+                    },
+                    {
+                        "id": "4H.D4",
+                        "tittel": "Oppgave 4H.D4",
+                        "tekst": "En elev skal derivere $f(x) = 3x^4 - 2x + 6$ og skriver<br><br>$f'(x) = 12x^4 - 2 + 6$.<br><br><strong>a)</strong> Forklar hvilke to feil eleven har gjort.<br><br><strong>b)</strong> Finn riktig $f'(x)$, og regn ut $f'(1)$.",
+                        "bilde": null,
+                        "hint": "Sjekk eksponenten i første ledd og hva som skjer med konstantleddet.",
+                        "fasit": null,
+                        "fasitSteg": [
+                            "<strong>a)</strong> I første ledd skal eksponenten bli én mindre: $(3x^4)' = 12x^3$, ikke $12x^4$. Konstantleddet $6$ har derivert $0$ og skal ikke være med.<br><strong>Svar:</strong> Eksponenten er ikke redusert, og konstanten er ikke fjernet.",
+                            "<strong>b)</strong> $f'(x) = 12x^3 - 2$<br>$f'(1) = 12\\cdot 1^3 - 2 = 10$<br><strong>Svar:</strong> $f'(x) = 12x^3 - 2$ og $f'(1) = 10$"
+                        ],
+                        "starter": ""
+                    },
+                    {
+                        "id": "4H.D5",
+                        "tittel": "Oppgave 4H.D5",
+                        "tekst": "Gitt funksjonen $g(x) = 2x^3 - 3x^2 - 12x + 1$.<br><br><strong>a)</strong> Finn $g'(x)$.<br><br><strong>b)</strong> Hva er stigningstallet til grafen der den skjærer y-aksen?<br><br><strong>c)</strong> Finn x-verdiene der grafen har vannrett tangent.",
+                        "bilde": null,
+                        "hint": "Grafen skjærer y-aksen i $x = 0$. Vannrett tangent betyr $g'(x) = 0$.",
+                        "fasit": null,
+                        "fasitSteg": [
+                            "<strong>a)</strong> $g'(x) = 3\\cdot 2x^2 - 2\\cdot 3x - 12 + 0 = 6x^2 - 6x - 12$<br><strong>Svar:</strong> $g'(x) = 6x^2 - 6x - 12$",
+                            "<strong>b)</strong> $g'(0) = -12$<br><strong>Svar:</strong> Stigningstallet er $-12$.",
+                            "<strong>c)</strong> $6x^2 - 6x - 12 = 0$<br>$x^2 - x - 2 = 0$ (del på 6)<br>$(x - 2)(x + 1) = 0$<br>$x = 2$ eller $x = -1$<br><strong>Svar:</strong> Vannrett tangent for $x = -1$ og $x = 2$."
                         ],
                         "starter": ""
                     },
