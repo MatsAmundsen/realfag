@@ -659,6 +659,74 @@ export function figCubicGraph(withTangents: boolean, caption: string): string {
   return wrapH(svg, caption, "Grafen til f(x)=0.25x^3-2x", 245);
 }
 
+/** Startpunkt (x) for aksen i en fortegnslinje: gir plass til etiketten til venstre. */
+function signLineAxisStart(label?: string): number {
+  return label ? 10 + Math.ceil(label.length * 7.5) + 10 : 20;
+}
+
+let fpClipId = 0;
+
+/** Generell funksjonsgraf i et koordinatsystem med rutenett (brukes i kap. 4). */
+export function figFunctionPlot(opts: {
+  xmin: number;
+  xmax: number;
+  ymin: number;
+  ymax: number;
+  xstep: number;
+  ystep: number;
+  fns: { f: (x: number) => number; color: string; label: string; labelX: number; from?: number; to?: number }[];
+  points?: { x: number; y: number; label?: string; dx?: number; dy?: number }[];
+  xName?: string;
+  yName?: string;
+  fmt?: (v: number) => string;
+  caption: string;
+  h?: number;
+}): string {
+  const h = opts.h ?? 300;
+  const L = 46, R = 396, T = 16, B = h - 30;
+  const sx = (x: number) => L + ((x - opts.xmin) / (opts.xmax - opts.xmin)) * (R - L);
+  const sy = (y: number) => B - ((y - opts.ymin) / (opts.ymax - opts.ymin)) * (B - T);
+  const fmt = opts.fmt ?? ((v: number) => String(Math.round(v * 100) / 100).replace("-", "−").replace(".", ","));
+  const parts: string[] = [];
+  const eps = 1e-9;
+  const clip = `fp-clip-${++fpClipId}`;
+  for (let x = Math.ceil(opts.xmin / opts.xstep) * opts.xstep; x <= opts.xmax + eps; x += opts.xstep) {
+    parts.push(`<line x1="${sx(x).toFixed(1)}" y1="${T}" x2="${sx(x).toFixed(1)}" y2="${B}" stroke="${ink}" stroke-width="0.6" opacity="0.18"/>`);
+    if (Math.abs(x) > eps || opts.ymin > 0 || opts.ymax < 0)
+      parts.push(`<text x="${sx(x).toFixed(1)}" y="${(opts.ymin <= 0 && opts.ymax >= 0 ? sy(0) : B) + 14}" text-anchor="middle" font-size="10" fill="${ink}">${fmt(x)}</text>`);
+  }
+  for (let y = Math.ceil(opts.ymin / opts.ystep) * opts.ystep; y <= opts.ymax + eps; y += opts.ystep) {
+    parts.push(`<line x1="${L}" y1="${sy(y).toFixed(1)}" x2="${R}" y2="${sy(y).toFixed(1)}" stroke="${ink}" stroke-width="0.6" opacity="0.18"/>`);
+    if (Math.abs(y) > eps || opts.xmin > 0 || opts.xmax < 0)
+      parts.push(`<text x="${(opts.xmin <= 0 && opts.xmax >= 0 ? sx(0) : L) - 5}" y="${(sy(y) + 3.5).toFixed(1)}" text-anchor="end" font-size="10" fill="${ink}">${fmt(y)}</text>`);
+  }
+  const ax = opts.ymin <= 0 && opts.ymax >= 0 ? sy(0) : B;
+  const ay = opts.xmin <= 0 && opts.xmax >= 0 ? sx(0) : L;
+  parts.push(`<line x1="${L}" y1="${ax}" x2="${R + 8}" y2="${ax}" stroke="${ink}" stroke-width="1.6"/>
+    <polygon points="${R + 12},${ax} ${R + 3},${ax - 4} ${R + 3},${ax + 4}" fill="${ink}"/>
+    <text x="${R + 4}" y="${ax - 8}" font-size="12" font-weight="700" fill="${ink}" text-anchor="end">${opts.xName ?? "x"}</text>
+    <line x1="${ay}" y1="${B}" x2="${ay}" y2="${T - 8}" stroke="${ink}" stroke-width="1.6"/>
+    <polygon points="${ay},${T - 12} ${ay - 4},${T - 3} ${ay + 4},${T - 3}" fill="${ink}"/>
+    <text x="${ay + 7}" y="${T - 2}" font-size="12" font-weight="700" fill="${ink}">${opts.yName ?? "y"}</text>`);
+  parts.push(`<defs><clipPath id="${clip}"><rect x="${L}" y="${T}" width="${R - L}" height="${B - T}"/></clipPath></defs>`);
+  for (const fn of opts.fns) {
+    const a = fn.from ?? opts.xmin, b = fn.to ?? opts.xmax;
+    const pts: string[] = [];
+    for (let i = 0; i <= 200; i++) {
+      const x = a + ((b - a) * i) / 200;
+      pts.push(`${i ? "L" : "M"} ${sx(x).toFixed(1)},${sy(fn.f(x)).toFixed(1)}`);
+    }
+    parts.push(`<path d="${pts.join(" ")}" fill="none" stroke="${fn.color}" stroke-width="2.6" clip-path="url(#${clip})"/>`);
+    const ly = Math.min(Math.max(sy(fn.f(fn.labelX)) - 8, T + 10), B - 4);
+    parts.push(`<text x="${sx(fn.labelX).toFixed(1)}" y="${ly.toFixed(1)}" font-size="12" font-weight="700" fill="${fn.color}">${fn.label}</text>`);
+  }
+  for (const p of opts.points ?? []) {
+    parts.push(`<circle cx="${sx(p.x).toFixed(1)}" cy="${sy(p.y).toFixed(1)}" r="4" fill="${ink}"/>`);
+    if (p.label) parts.push(`<text x="${(sx(p.x) + (p.dx ?? 6)).toFixed(1)}" y="${(sy(p.y) + (p.dy ?? -6)).toFixed(1)}" font-size="11" font-weight="700" fill="${ink}">${p.label}</text>`);
+  }
+  return wrapH(parts.join(""), opts.caption, opts.caption, h);
+}
+
 /** Enkel eller utfylt fortegnslinje. */
 export function figSignLine(opts: {
   label?: string;
@@ -670,15 +738,17 @@ export function figSignLine(opts: {
 }): string {
   const w = 420;
   const y = 45;
-  const pad = 60;
+  // Etiketten står til venstre for aksen (ikke over), så den ikke kolliderer med fortegnet i første intervall.
+  const x0 = signLineAxisStart(opts.label);
+  const pad = Math.max(60, x0 + 45);
   const n = opts.ticks.length;
-  const xs = opts.ticks.map((_, i) => pad + ((w - 2 * pad) * i) / Math.max(n - 1, 1));
+  const xs = opts.ticks.map((_, i) => (n === 1 ? (pad + w - 60) / 2 : pad + ((w - pad - 60) * i) / (n - 1)));
   const axis = `
-    <line x1="20" y1="${y}" x2="${w - 20}" y2="${y}" stroke="${ink}" stroke-width="2"/>
+    <line x1="${x0}" y1="${y}" x2="${w - 20}" y2="${y}" stroke="${ink}" stroke-width="2"/>
     <polygon points="${w - 20},${y} ${w - 30},${y - 4} ${w - 30},${y + 4}" fill="${ink}"/>
   `;
   const lbl = opts.label
-    ? `<text x="18" y="${y - 12}" font-size="13" font-weight="700" fill="${ink}">${opts.label}</text>`
+    ? `<text x="10" y="${y + 5}" font-size="13" font-weight="700" fill="${ink}">${opts.label}</text>`
     : "";
   const marks = opts.ticks
     .map((t, i) => {
@@ -695,7 +765,7 @@ export function figSignLine(opts: {
   if (opts.left || opts.right || (opts.mids && opts.mids.length > 0)) {
     const mids = opts.mids || [];
     const segs: { x1: number; x2: number; s: string }[] = [
-      { x1: 25, x2: xs[0]! - 8, s: opts.left || "" },
+      { x1: x0 + 5, x2: xs[0]! - 8, s: opts.left || "" },
       ...mids.map((s, i) => ({ x1: xs[i]! + 8, x2: xs[i + 1]! - 8, s })),
       { x1: xs[n - 1]! + 8, x2: w - 35, s: opts.right || "" },
     ];
@@ -736,16 +806,17 @@ export function figDualSignLine(opts: {
     mids?: string[],
     right?: string,
   ) {
-    const pad = 65;
+    const x0 = signLineAxisStart(label);
+    const pad = Math.max(65, x0 + 45);
     const n = ticks.length;
-    const xAtVal = (v: number) => pad + ((v - (-1)) / 6) * (w - 2 * pad);
+    const xAtVal = (v: number) => pad + ((v - (-1)) / 6) * (w - pad - 65);
     const xs = ticks.map((t) => xAtVal(Number(t.label.replace("−", "-"))));
 
     const axis = `
-      <line x1="20" y1="${y}" x2="${w - 20}" y2="${y}" stroke="${ink}" stroke-width="2"/>
+      <line x1="${x0}" y1="${y}" x2="${w - 20}" y2="${y}" stroke="${ink}" stroke-width="2"/>
       <polygon points="${w - 20},${y} ${w - 30},${y - 4} ${w - 30},${y + 4}" fill="${ink}"/>
     `;
-    const lbl = `<text x="18" y="${y - 12}" font-size="13" font-weight="700" fill="${ink}">${label}</text>`;
+    const lbl = `<text x="10" y="${y + 5}" font-size="13" font-weight="700" fill="${ink}">${label}</text>`;
     const marks = ticks
       .map((t, i) => {
         const x = xs[i]!;
@@ -758,7 +829,7 @@ export function figDualSignLine(opts: {
     if (left || right || (mids && mids.length > 0)) {
       const ms = mids || [];
       const segs: { x1: number; x2: number; s: string }[] = [
-        { x1: 25, x2: xs[0]! - 8, s: left || "" },
+        { x1: x0 + 5, x2: xs[0]! - 8, s: left || "" },
         ...ms.map((s, i) => ({ x1: xs[i]! + 8, x2: xs[i + 1]! - 8, s })),
         { x1: xs[n - 1]! + 8, x2: w - 35, s: right || "" },
       ];
@@ -1146,6 +1217,40 @@ export const TASK_FIGURES: Record<string, string> = {
     "Rett proporsjonal: mer folk $\\Rightarrow$ mer ost, i samme forhold.",
   ),
   "4.0": figCoordinateGrid("Tomt koordinatsystem med akser og rutenett."),
+  "4.3": figFunctionPlot({
+    xmin: -1, xmax: 5, ymin: -2, ymax: 8, xstep: 1, ystep: 1,
+    fns: [{ f: (x) => x * x - 4 * x + 3, color: "#6366f1", label: "g", labelX: 4.3 }],
+    caption: "Grafen til $g(x) = x^2 - 4x + 3$.",
+  }),
+  "4.9": figFunctionPlot({
+    xmin: -3, xmax: 6, ymin: -4, ymax: 5, xstep: 1, ystep: 1,
+    fns: [
+      { f: () => 3, color: "#64748b", label: "v", labelX: -2.8 },
+      { f: (x) => x - 2, color: "#6366f1", label: "f", labelX: 5.3 },
+      { f: (x) => -x + 2, color: "#34d399", label: "g", labelX: -2.6 },
+      { f: (x) => 2 * x - 2, color: "#f59e0b", label: "h", labelX: 3.2 },
+    ],
+    caption: "Grafene til $v(x) = 3$, $f(x) = x - 2$, $g(x) = -x + 2$ og $h(x) = 2x - 2$.",
+  }),
+  "4.33": figFunctionPlot({
+    xmin: 0, xmax: 3200, ymin: 0, ymax: 110, xstep: 500, ystep: 20,
+    fns: [{ f: (m) => 1.2 * Math.pow(m, 0.55), color: "#6366f1", label: "T", labelX: 2900, from: 1000, to: 3000 }],
+    xName: "m (g)",
+    yName: "T (min)",
+    fmt: (v) => String(v),
+    caption: "Grafen til $T(m) = 1{,}2 \\cdot m^{0{,}55}$ for $1000 \\le m \\le 3000$.",
+  }),
+  "4.47": figFunctionPlot({
+    xmin: 0, xmax: 20, ymin: 0, ymax: 220, xstep: 2, ystep: 20,
+    fns: [
+      { f: (t) => 200 - 180 * Math.pow(0.92, t), color: "#ef4444", label: "T", labelX: 18.6 },
+      { f: () => 200, color: "#64748b", label: "", labelX: 0 },
+    ],
+    xName: "t (min)",
+    yName: "T (°C)",
+    fmt: (v) => String(v),
+    caption: "Grafen til $T(t) = 200 - 180 \\cdot 0{,}92^t$ for $0 \\le t \\le 20$. Den grå linja er $T = 200$.",
+  }),
   "4.8": figLinearGrid("Tomt koordinatsystem med rutenett og akser.", false),
   "4.27": figRational427("Graf til rasjonal funksjon med to greiner og stiplede asymptoter.", { withKeyPoints: false }),
   "4.45": figSecantsAndTangent("Parabelen $f(x)=-x^2+4x+2$ med sekanter på $[0,2]$ og $[2,4]$, samt tangent i $x=2$.", { withSlopes: false }),
@@ -1350,7 +1455,7 @@ export const TASK_FASIT_FIGURES: Record<string, Record<number, string>> = {
         { x: 1, y: 2, label: "(1, 2)" },
       ],
     }),
-    3: figCoordinateGrid("Rett linje trukket gjennom koordinatene $(-1, -1)$ og $(1, 2)$.", {
+    3: figCoordinateGrid("Rett linje trukket gjennom punktene $(-1, -1)$ og $(1, 2)$.", {
       points: [
         { x: -1, y: -1, label: "(-1, -1)" },
         { x: 1, y: 2, label: "(1, 2)" },

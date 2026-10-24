@@ -7,6 +7,7 @@ import { EXTRA_1D, EXTRA_1D_QUIZ } from "./extra-1d";
 import { TASK_FIGURES, TASK_FASIT_FIGURES, TASK_FIGURE_REQUIRES } from "./task-figures";
 import { FIGURE_REPLACES_IMAGE } from "./kap2-figures";
 import { KAP3_OVEPROVE } from "./kap3-oveprove";
+import { KAP4_OVEPROVE } from "./kap4-oveprove";
 import { KAP4_QUIZ } from "./kap4-quiz";
 import { KAP5 } from "./kap5";
 import { KAP6 } from "./kap6";
@@ -88,6 +89,9 @@ export const fagsokRaw = (rawFagsok as Kapittel[]).map((kap) => {
   const delkapitler = kap.delkapitler.map(withExtras);
   if (kap.id === "kap3") {
     return { ...kap, delkapitler: [...delkapitler, withExtras(KAP3_OVEPROVE)] };
+  }
+  if (kap.id === "kap4") {
+    return { ...kap, delkapitler: [...delkapitler, withExtras(KAP4_OVEPROVE)] };
   }
   return { ...kap, delkapitler };
 });

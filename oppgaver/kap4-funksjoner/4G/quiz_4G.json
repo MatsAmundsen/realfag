@@ -1,112 +1,90 @@
 [
   {
-    "sporsmal": "Hva er grunnleggende sant om derivasjon? (Spørsmål 1)",
+    "sporsmal": "Gjennomsnittlig vekstfart til $f$ på $[x_1,x_2]$ er",
     "alternativer": [
-      "Noe helt annet.",
-      "Det betyr at funksjonen alltid er 0.",
-      "Vet ikke.",
-      "Det beskriver en fundamental egenskap ved derivasjon."
+      "$\\dfrac{f(x_2)}{x_2}$",
+      "$f(x_2)-f(x_1)$",
+      "stigningstallet til tangenten i $x_1$",
+      "$\\dfrac{f(x_2)-f(x_1)}{x_2-x_1}$"
     ],
     "riktigSvar": 3,
-    "forklaring": "Dette viser forståelse for derivasjon."
+    "forklaring": "Det er stigningstallet til sekanten gjennom de to punktene på grafen."
   },
   {
-    "sporsmal": "Hva er grunnleggende sant om derivasjon? (Spørsmål 2)",
+    "sporsmal": "Momentan vekstfart i et punkt er",
     "alternativer": [
-      "Det betyr at funksjonen alltid er 0.",
-      "Vet ikke.",
-      "Det beskriver en fundamental egenskap ved derivasjon.",
-      "Noe helt annet."
-    ],
-    "riktigSvar": 2,
-    "forklaring": "Dette viser forståelse for derivasjon."
-  },
-  {
-    "sporsmal": "Hva er grunnleggende sant om derivasjon? (Spørsmål 3)",
-    "alternativer": [
-      "Det beskriver en fundamental egenskap ved derivasjon.",
-      "Vet ikke.",
-      "Det betyr at funksjonen alltid er 0.",
-      "Noe helt annet."
-    ],
-    "riktigSvar": 0,
-    "forklaring": "Dette viser forståelse for derivasjon."
-  },
-  {
-    "sporsmal": "Hva er grunnleggende sant om derivasjon? (Spørsmål 4)",
-    "alternativer": [
-      "Noe helt annet.",
-      "Det beskriver en fundamental egenskap ved derivasjon.",
-      "Vet ikke.",
-      "Det betyr at funksjonen alltid er 0."
+      "gjennomsnittet over hele $D_f$",
+      "stigningstallet til tangenten i punktet",
+      "alltid $0$",
+      "det samme som $f(x)$"
     ],
     "riktigSvar": 1,
-    "forklaring": "Dette viser forståelse for derivasjon."
+    "forklaring": "Tangenten berører grafen i punktet, og stigningstallet dens viser hvor bratt grafen er akkurat der. Den kan anslås med gjennomsnittsfarten over et svært lite intervall rundt punktet."
   },
   {
-    "sporsmal": "Gitt en funksjon $f(x)$ for derivasjon, regn ut verdien. (Spørsmål 5)",
+    "sporsmal": "Gitt $f(x)=-x^2+4x+2$. Gjennomsnittsfarten på $[0,2]$ er",
     "alternativer": [
-      "Svaret er umulig å finne.",
-      "Vet ikke.",
-      "Noe helt annet.",
-      "Svaret kan utledes fra formelen for derivasjon."
+      "$0$",
+      "$-2$",
+      "$6$",
+      "$2$"
     ],
     "riktigSvar": 3,
-    "forklaring": "Dette viser forståelse for derivasjon."
+    "forklaring": "$f(0)=2$, $f(2)=6$. $\\dfrac{6-2}{2}=2$."
   },
   {
-    "sporsmal": "Gitt en funksjon $f(x)$ for derivasjon, regn ut verdien. (Spørsmål 6)",
+    "sporsmal": "I topp- eller bunnpunktet til en glatt funksjon er den momentane vekstfarten",
     "alternativer": [
-      "Svaret er umulig å finne.",
-      "Noe helt annet.",
-      "Svaret kan utledes fra formelen for derivasjon.",
-      "Vet ikke."
-    ],
-    "riktigSvar": 2,
-    "forklaring": "Dette viser forståelse for derivasjon."
-  },
-  {
-    "sporsmal": "Gitt en funksjon $f(x)$ for derivasjon, regn ut verdien. (Spørsmål 7)",
-    "alternativer": [
-      "Svaret er umulig å finne.",
-      "Vet ikke.",
-      "Noe helt annet.",
-      "Svaret kan utledes fra formelen for derivasjon."
-    ],
-    "riktigSvar": 3,
-    "forklaring": "Dette viser forståelse for derivasjon."
-  },
-  {
-    "sporsmal": "Gitt en funksjon $f(x)$ for derivasjon, regn ut verdien. (Spørsmål 8)",
-    "alternativer": [
-      "Svaret er umulig å finne.",
-      "Svaret kan utledes fra formelen for derivasjon.",
-      "Noe helt annet.",
-      "Vet ikke."
+      "$1$",
+      "$0$",
+      "udefinert",
+      "lik gjennomsnittsfarten overalt"
     ],
     "riktigSvar": 1,
-    "forklaring": "Dette viser forståelse for derivasjon."
+    "forklaring": "Tangenten er vannrett, så stigningstallet til tangenten er $0$."
   },
   {
-    "sporsmal": "En elev gjør en vanlig feil med derivasjon. Hva er feilen? (Spørsmål 9)",
+    "sporsmal": "En tangent i $(20,300)$ har stigningstall $15$. Den momentane vekstfarten når $x=20$ er",
     "alternativer": [
-      "Eleven glemmer en viktig detalj om derivasjon.",
-      "Vet ikke.",
-      "Noe helt annet.",
-      "Eleven gjør ingen feil."
+      "$300$",
+      "$20$",
+      "$15$",
+      "$\\dfrac{300}{20}$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Momentan vekstfart $=$ tangentens stigningstall i det punktet."
+  },
+  {
+    "sporsmal": "$f(20)=300$ og $f(40)=500$. Gjennomsnittsfarten på $[20,40]$ er",
+    "alternativer": [
+      "$10$",
+      "$15$",
+      "$200$",
+      "$20$"
     ],
     "riktigSvar": 0,
-    "forklaring": "Dette viser forståelse for derivasjon."
+    "forklaring": "$\\dfrac{500-300}{40-20}=\\dfrac{200}{20}=10$."
   },
   {
-    "sporsmal": "En elev gjør en vanlig feil med derivasjon. Hva er feilen? (Spørsmål 10)",
+    "sporsmal": "Gjennomsnittsfart $0$ på $[1,5]$ betyr at",
     "alternativer": [
-      "Noe helt annet.",
-      "Vet ikke.",
-      "Eleven gjør ingen feil.",
-      "Eleven glemmer en viktig detalj om derivasjon."
+      "grafen er vannrett overalt på intervallet",
+      "$f$ er konstant lik $0$",
+      "$f(1)=f(5)$",
+      "grafen er en rett linje"
     ],
-    "riktigSvar": 3,
-    "forklaring": "Dette viser forståelse for derivasjon."
+    "riktigSvar": 2,
+    "forklaring": "Telleren $f(5)-f(1)$ er $0$. Funksjonen kan stige og synke imellom (f.eks. en parabel)."
+  },
+  {
+    "sporsmal": "Gitt $f(x)=-x^2+4x+2$. Momentan vekstfart i $x=2$ er",
+    "alternativer": [
+      "$0$",
+      "$2$",
+      "$-2$",
+      "$6$"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Symmetrilinja $x=2$ går gjennom toppunktet, så tangenten er vannrett og har stigningstall $0$."
   }
 ]

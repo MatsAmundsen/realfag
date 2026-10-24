@@ -1,112 +1,90 @@
 [
   {
-    "sporsmal": "Hva er grunnleggende sant om funksjoner? (Spørsmål 1)",
+    "sporsmal": "Hva kjennetegner en funksjon $f$?",
     "alternativer": [
-      "Det betyr at funksjonen alltid er 0.",
-      "Det beskriver en fundamental egenskap ved funksjoner.",
-      "Vet ikke.",
-      "Noe helt annet."
+      "Hver $y$-verdi har nøyaktig én $x$-verdi",
+      "Hver $x$-verdi i definisjonsmengden har nøyaktig én $y$-verdi",
+      "Grafen må være en rett linje",
+      "Funksjonen må gå gjennom origo"
     ],
     "riktigSvar": 1,
-    "forklaring": "Dette viser forståelse for funksjoner."
+    "forklaring": "Definisjonen: til hver tillatt $x$ hører nøyaktig ett tall $f(x)$. Flere $x$ kan gi samme $y$."
   },
   {
-    "sporsmal": "Hva er grunnleggende sant om funksjoner? (Spørsmål 2)",
+    "sporsmal": "Hva er definisjonsmengden $D_f$?",
     "alternativer": [
-      "Det betyr at funksjonen alltid er 0.",
-      "Det beskriver en fundamental egenskap ved funksjoner.",
-      "Noe helt annet.",
-      "Vet ikke."
-    ],
-    "riktigSvar": 1,
-    "forklaring": "Dette viser forståelse for funksjoner."
-  },
-  {
-    "sporsmal": "Hva er grunnleggende sant om funksjoner? (Spørsmål 3)",
-    "alternativer": [
-      "Noe helt annet.",
-      "Det beskriver en fundamental egenskap ved funksjoner.",
-      "Det betyr at funksjonen alltid er 0.",
-      "Vet ikke."
-    ],
-    "riktigSvar": 1,
-    "forklaring": "Dette viser forståelse for funksjoner."
-  },
-  {
-    "sporsmal": "Hva er grunnleggende sant om funksjoner? (Spørsmål 4)",
-    "alternativer": [
-      "Det betyr at funksjonen alltid er 0.",
-      "Noe helt annet.",
-      "Det beskriver en fundamental egenskap ved funksjoner.",
-      "Vet ikke."
+      "Alle mulige $y$-verdier",
+      "Nullpunktene til grafen",
+      "Alle tillatte $x$-verdier",
+      "Skjæringspunktet med $y$-aksen"
     ],
     "riktigSvar": 2,
-    "forklaring": "Dette viser forståelse for funksjoner."
+    "forklaring": "$D_f$ er $x$-verdiene vi kan sette inn. Verdimengden $V_f$ er $y$-verdiene vi kan få ut."
   },
   {
-    "sporsmal": "Gitt en funksjon $f(x)$ for funksjoner, regn ut verdien. (Spørsmål 5)",
+    "sporsmal": "Et nullpunkt til grafen til $f$ er",
     "alternativer": [
-      "Vet ikke.",
-      "Noe helt annet.",
-      "Svaret kan utledes fra formelen for funksjoner.",
-      "Svaret er umulig å finne."
+      "der grafen skjærer $y$-aksen",
+      "et punkt der $f(x)=0$ (grafen skjærer $x$-aksen)",
+      "toppunktet",
+      "alltid origo"
     ],
-    "riktigSvar": 2,
-    "forklaring": "Dette viser forståelse for funksjoner."
+    "riktigSvar": 1,
+    "forklaring": "Nullpunkt betyr $y=0$, altså skjæring med $x$-aksen."
   },
   {
-    "sporsmal": "Gitt en funksjon $f(x)$ for funksjoner, regn ut verdien. (Spørsmål 6)",
+    "sporsmal": "Gitt $p(x)=5-\\sqrt{2x}$. Hva er $p(8)$?",
     "alternativer": [
-      "Noe helt annet.",
-      "Svaret er umulig å finne.",
-      "Vet ikke.",
-      "Svaret kan utledes fra formelen for funksjoner."
+      "$1$",
+      "$5$",
+      "$0$",
+      "udefinert"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "$p(8)=5-\\sqrt{16}=5-4=1$."
+  },
+  {
+    "sporsmal": "Kan likningen $f(c)=d$ ha mer enn én løsning for $c$, når $d$ er gitt?",
+    "alternativer": [
+      "Nei, en funksjon gir alltid bare én $x$ per $y$",
+      "Bare hvis $f$ er lineær",
+      "Bare hvis $d=0$",
+      "Ja, flere $x$ kan gi samme $y$ (f.eks. $x^2=4$)"
     ],
     "riktigSvar": 3,
-    "forklaring": "Dette viser forståelse for funksjoner."
+    "forklaring": "Én $x$ gir én $y$, men én $y$ kan komme fra flere $x$. Parabelen $y=x^2$ har $y=4$ både i $x=2$ og $x=-2$."
   },
   {
-    "sporsmal": "Gitt en funksjon $f(x)$ for funksjoner, regn ut verdien. (Spørsmål 7)",
+    "sporsmal": "Gitt $g(x)=x^2+2x-3$. Hva er $g(2k)$?",
     "alternativer": [
-      "Vet ikke.",
-      "Svaret er umulig å finne.",
-      "Noe helt annet.",
-      "Svaret kan utledes fra formelen for funksjoner."
+      "$4k^2+4k-3$",
+      "$2k^2+4k-3$",
+      "$4k^2+2k-3$",
+      "$k^2+4k-3$"
     ],
-    "riktigSvar": 3,
-    "forklaring": "Dette viser forståelse for funksjoner."
+    "riktigSvar": 0,
+    "forklaring": "$g(2k)=(2k)^2+2(2k)-3=4k^2+4k-3$. Husk parentes rundt $2k$."
   },
   {
-    "sporsmal": "Gitt en funksjon $f(x)$ for funksjoner, regn ut verdien. (Spørsmål 8)",
+    "sporsmal": "Gitt $B(t)=2\\pi t^2$. Hva er $B(2)$?",
     "alternativer": [
-      "Noe helt annet.",
-      "Svaret kan utledes fra formelen for funksjoner.",
-      "Svaret er umulig å finne.",
-      "Vet ikke."
-    ],
-    "riktigSvar": 1,
-    "forklaring": "Dette viser forståelse for funksjoner."
-  },
-  {
-    "sporsmal": "En elev gjør en vanlig feil med funksjoner. Hva er feilen? (Spørsmål 9)",
-    "alternativer": [
-      "Noe helt annet.",
-      "Eleven glemmer en viktig detalj om funksjoner.",
-      "Eleven gjør ingen feil.",
-      "Vet ikke."
-    ],
-    "riktigSvar": 1,
-    "forklaring": "Dette viser forståelse for funksjoner."
-  },
-  {
-    "sporsmal": "En elev gjør en vanlig feil med funksjoner. Hva er feilen? (Spørsmål 10)",
-    "alternativer": [
-      "Noe helt annet.",
-      "Vet ikke.",
-      "Eleven glemmer en viktig detalj om funksjoner.",
-      "Eleven gjør ingen feil."
+      "$2\\pi$",
+      "$4\\pi$",
+      "$8\\pi$",
+      "$16\\pi$"
     ],
     "riktigSvar": 2,
-    "forklaring": "Dette viser forståelse for funksjoner."
+    "forklaring": "$B(2)=2\\pi\\cdot 4=8\\pi$."
+  },
+  {
+    "sporsmal": "Hvilken påstand er sann for $g(x)=x^2-4x+3$?",
+    "alternativer": [
+      "Nullpunktene er $x=0$ og $x=4$",
+      "Grafen vender nedover",
+      "$g(0)=3$ er et nullpunkt",
+      "Nullpunktene er $x=1$ og $x=3$"
+    ],
+    "riktigSvar": 3,
+    "forklaring": "$(x-1)(x-3)=x^2-4x+3$. $g(0)=3$ er $y$-skjæringen, ikke et nullpunkt."
   }
 ]
