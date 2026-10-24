@@ -150,6 +150,12 @@ export const Route = createRootRoute({
     <html lang="nb" suppressHydrationWarning>
       <head>
         <HeadContent />
+        {/* Cloudflare Web Analytics (cookiefri, offentlig site-token) */}
+        <script
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token": "37390f50ff5a4d8d84eae033b26b11d0"}'
+        ></script>
         <style dangerouslySetInnerHTML={{ __html: CRITICAL_CSS }} />
       </head>
       <body>
