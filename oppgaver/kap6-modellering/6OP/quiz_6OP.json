@@ -1,0 +1,68 @@
+[
+  {
+    "sporsmal": "Hvilken modell har fast prosentvis vekst?",
+    "alternativer": [
+      "lineær",
+      "andregrads",
+      "potens",
+      "eksponentiell"
+    ],
+    "riktigSvar": 3,
+    "forklaring": "$a\\cdot b^x$."
+  },
+  {
+    "sporsmal": "$f(x)=-x^2+40x-300$ har toppunkt i",
+    "alternativer": [
+      "$x=20$",
+      "$x=40$",
+      "$x=10$",
+      "$x=-20$"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "$-\\dfrac{40}{-2}=20$."
+  },
+  {
+    "sporsmal": "Vekstfaktor for $3\\,\\%$ nedgang er",
+    "alternativer": [
+      "$1{,}03$",
+      "$0{,}97$",
+      "$0{,}3$",
+      "$-0{,}03$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "$1-0{,}03$."
+  },
+  {
+    "sporsmal": "RegLin gir $y=-1{,}9x+34{,}8$. Omtrent når er $y=0$?",
+    "alternativer": [
+      "$x\\approx 34{,}8$",
+      "$x\\approx -18{,}3$",
+      "$x\\approx 18{,}3$",
+      "$x\\approx 1{,}9$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "$x=\\dfrac{34{,}8}{1{,}9}\\approx 18{,}3$."
+  },
+  {
+    "sporsmal": "Hvilken modell passer til tabellen $5$, $10$, $20$, $40$?",
+    "alternativer": [
+      "lineær",
+      "potens",
+      "eksponentiell",
+      "andregrads"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Fast forhold $2$ mellom verdiene."
+  },
+  {
+    "sporsmal": "Målt verdi er $21$, og modellen gir $22$. Hva er avviket?",
+    "alternativer": [
+      "$1$",
+      "$43$",
+      "$21$",
+      "$-1$"
+    ],
+    "riktigSvar": 3,
+    "forklaring": "$21-22=-1$."
+  }
+]
