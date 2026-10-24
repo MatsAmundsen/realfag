@@ -9,8 +9,14 @@ import appCss from "../styles.css?url";
 const APP_NAME = "Matteguiden 1T";
 const MG_BUILD = "2026-09-01-temavideo-alle";
 
-const CRITICAL_CSS = `html,body{margin:0;background:#0a0f1e;color:#e2e8f0;font-family:Inter,system-ui,sans-serif;}
+// Setter lyst tema før første tegning, så siden ikke blinker mørkt før hydrering.
+const THEME_INIT = `try{if(localStorage.getItem("mg_theme")==="light")document.documentElement.setAttribute("data-theme","light")}catch(e){}`;
+
+const CRITICAL_CSS = `html,body{margin:0;font-family:Inter,system-ui,sans-serif;}
+:where(html,body){background:#0a0f1e;color:#e2e8f0;}
+:where([data-theme="light"],[data-theme="light"] body){background:#f0f4ff;color:#0f172a;}
 .navbar{display:flex;align-items:center;justify-content:space-between;padding:.875rem 2rem;position:sticky;top:0;z-index:200;gap:1.5rem;background:rgba(10,15,30,.85);border-bottom:1px solid rgba(255,255,255,.07);}
+:where([data-theme="light"]) .navbar{background:rgba(240,244,255,.8);}
 .desktop-nav{display:flex;align-items:center;gap:.25rem;flex-shrink:0;}
 .hamburger-btn{display:none;}
 .mobile-nav-drawer{position:fixed!important;top:0;left:0;bottom:0;width:min(300px,88vw);transform:translateX(-110%);visibility:hidden;pointer-events:none;z-index:5500;}
@@ -149,6 +155,7 @@ export const Route = createRootRoute({
   component: () => (
     <html lang="nb" suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT }} />
         <HeadContent />
         {/* Cloudflare Web Analytics (cookiefri, offentlig site-token) */}
         <script

@@ -2162,56 +2162,6 @@ a.brok-nav-card {
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
 }
-.topic-video-main {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-.topic-video-more {
-    list-style: none;
-    margin: 0;
-    padding: 0.75rem 0 0;
-    border-top: 1px solid var(--border);
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-    gap: 0.5rem;
-}
-.topic-video-more-btn {
-    display: flex;
-    align-items: center;
-    gap: 0.65rem;
-    width: 100%;
-    min-height: 44px;
-    padding: 0.4rem;
-    text-align: left;
-    font: inherit;
-    font-size: 0.88rem;
-    font-weight: 600;
-    line-height: 1.3;
-    color: var(--text-main);
-    background: transparent;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-}
-.topic-video-more-btn:hover,
-.topic-video-more-btn:focus-visible {
-    border-color: var(--primary-light);
-    background: var(--primary-subtle);
-}
-.topic-video-more-btn img {
-    flex: 0 0 72px;
-    width: 72px;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-    border-radius: 4px;
-}
-.topic-video-more-btn small {
-    display: block;
-    font-size: 0.72rem;
-    font-weight: 600;
-    color: var(--text-muted);
-}
 .topic-video-thumb {
     position: relative;
     flex: 0 0 168px;
@@ -2335,10 +2285,6 @@ a.brok-nav-card {
     }
 }
 @media (max-width: 640px) {
-    .topic-video-main {
-        flex-direction: column;
-        align-items: stretch;
-    }
     .topic-video-thumb {
         width: 100%;
         flex-basis: auto;
@@ -3727,7 +3673,10 @@ a.vid-nav-card {
    KUNNSKAPSKART
    ============================================================ */
 .mm {
+    width: 100%;
     max-width: 1200px;
+    min-width: 0;
+    box-sizing: border-box;
     margin: 0 auto;
     padding: 0 2rem 4rem;
     position: relative;
@@ -3780,9 +3729,10 @@ a.vid-nav-card {
     text-decoration: none;
 }
 .mm-path-card strong { font-size: 0.92rem; }
-.mm-path-card span { font-size: 0.75rem; color: var(--text-muted); }
+.mm-path-card span { font-size: 0.75rem; color: #94a3b8; }
 .mm-path-card em { font-style: normal; font-size: 0.78rem; font-weight: 650; color: var(--primary-light); margin-top: auto; }
 .mm-path-card:hover { border-color: var(--border-hover); transform: translateY(-1px); }
+.mm-path-card:focus-visible { outline: 2px solid var(--primary-light); outline-offset: 2px; }
 .mm-path-card.is-on { box-shadow: 0 0 0 1px var(--primary-light); }
 .mm-path-card.done { border-color: rgba(52,211,153,0.45); }
 .mm-path-card.mid { border-color: rgba(99,102,241,0.4); }
@@ -3793,7 +3743,7 @@ a.vid-nav-card {
 .mm-kap5 { --mm: #22d3ee; --mm-soft: rgba(34,211,238,0.12); }
 .mm-kap6 { --mm: #f472b6; --mm-soft: rgba(244,114,182,0.12); }
 .mm-kap7 { --mm: #fb7185; --mm-soft: rgba(251,113,133,0.12); }
-.mm-path-card.mm-exam { background: var(--primary-subtle); }
+.mm-path-card.mm-exam { background: linear-gradient(var(--primary-subtle), var(--primary-subtle)), var(--bg-surface); }
 .mm-path-card.mm-exam svg { color: var(--hint-color); }
 
 .mm-tabs {
@@ -3807,8 +3757,10 @@ a.vid-nav-card {
     background: var(--card-bg);
     color: var(--text-main);
     border-radius: 999px;
-    padding: 0.45rem 0.9rem;
+    padding: 0.45rem 0.75rem;
     min-height: 40px;
+    white-space: nowrap;
+    flex-shrink: 0;
     font: inherit;
     font-size: 0.85rem;
     display: inline-flex;
@@ -3848,7 +3800,7 @@ a.vid-nav-card {
     font: inherit;
 }
 .mm-helhet-head strong { display: block; font-size: 0.92rem; }
-.mm-helhet-head span { font-size: 0.72rem; color: var(--text-muted); }
+.mm-helhet-head span { font-size: 0.72rem; color: #94a3b8; }
 .mm-helhet-head { border-top: 3px solid var(--mm, var(--primary)); }
 @media (min-width: 1500px) { .mm-helhet-cols { grid-template-columns: repeat(7, minmax(0, 1fr)); } }
 .mm-helhet-col ul { list-style: none; padding: 0.55rem; display: flex; flex-direction: column; gap: 0.4rem; }
@@ -3876,8 +3828,8 @@ a.vid-nav-card {
     transition: border-color 160ms var(--ease-out), background 160ms var(--ease-out);
 }
 .mm-node strong { font-size: 0.78rem; color: var(--mm, var(--primary-light)); }
-.mm-node span { color: var(--text-muted); font-size: 0.75rem; }
-.mm-node em { font-style: normal; font-size: 0.7rem; color: var(--text-muted); }
+.mm-node span { color: #94a3b8; font-size: 0.75rem; }
+.mm-node em { font-style: normal; font-size: 0.7rem; color: #94a3b8; }
 .mm-node:hover { border-color: var(--mm, var(--border-hover)); background: var(--mm-soft, var(--primary-subtle)); }
 .mm-node.is-on { box-shadow: 0 0 0 1px var(--mm, var(--primary-light)); }
 .mm-node.done { border-color: rgba(52,211,153,0.4); }
@@ -3891,7 +3843,7 @@ a.vid-nav-card {
     padding: 1.1rem 1.2rem 1.2rem;
 }
 .mm-edges h3 { font-size: 1rem; margin-bottom: 0.3rem; }
-.mm-edges p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.85rem; }
+.mm-edges p { color: #94a3b8; font-size: 0.85rem; margin-bottom: 0.85rem; }
 .mm-edges ul { list-style: none; display: flex; flex-wrap: wrap; gap: 0.45rem; }
 .mm-edges li {
     display: inline-flex;
@@ -3927,7 +3879,7 @@ a.vid-nav-card {
 .mm-edge-arrow.is-dash {
     background: repeating-linear-gradient(90deg, var(--primary-light), var(--primary-light) 3px, transparent 3px, transparent 6px);
 }
-.mm-edge-label { font-size: 0.68rem; color: var(--text-muted); }
+.mm-edge-label { font-size: 0.68rem; color: #94a3b8; }
 
 .mm-chapter-intro { margin-bottom: 1rem; }
 .mm-chapter-intro h2 { font-size: 1.15rem; margin-bottom: 0.3rem; }
@@ -4136,6 +4088,10 @@ a.vid-nav-card {
 @media (max-width: 640px) {
     .mm-helhet-cols, .mm-clusters { grid-template-columns: 1fr; }
     .mm-tabs { overflow-x: auto; flex-wrap: nowrap; }
+    /* Læringsløypa brytes til to kolonner, så alle kapitlene er synlige uten sidelengs rulling */
+    .mm-path { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5rem; }
+    .mm-path-item { min-width: 0; }
+    .mm-path-card { min-width: 0; min-height: 44px; overflow-wrap: anywhere; }
     .mm-drawer {
         width: 100%;
         height: min(78vh, 640px);
@@ -4261,9 +4217,6 @@ a.vid-nav-card {
 @media (min-width: 900px) { .summary-card { padding: 1.35rem 1.5rem 1.2rem; } }
 
 /* Videolisten: dempet tekst med nok kontrast (≥4,5:1) i begge temaer */
-.topic-video-more-btn small { color: #a5b4c8; }
-[data-theme="light"] .topic-video-more-btn small { color: #475569; }
-.topic-video-more-title { display: block; }
 .topic-video-copy p { color: #a5b4c8; }
 [data-theme="light"] .topic-video-copy p { color: #475569; }
 [data-theme="light"] .topic-video-btn { color: #4338ca; }
@@ -4293,3 +4246,21 @@ a.vid-nav-card {
 
 /* Omslag i <picture>: bildet fyller fortsatt rammen */
 .photo-card picture, .kap-panel-head picture { display: block; }
+
+/* Kunnskapskart: tekst med minst 4,5:1 i lyst tema */
+[data-theme="light"] .mm-path-card span,
+[data-theme="light"] .mm-edges p,
+[data-theme="light"] .mm-edge-label { color: #475569; }
+[data-theme="light"] .mm-path-card em,
+[data-theme="light"] .mm-edge-from,
+[data-theme="light"] .mm-edge-to { color: #4338ca; }
+[data-theme="light"] .mm-helhet-head span,
+[data-theme="light"] .mm-node span,
+[data-theme="light"] .mm-node em { color: #475569; }
+/* Mørkere kapittelfarger i lyst tema, brukt som tekst i nodene */
+[data-theme="light"] .mm-kap1 { --mm: #4338ca; }
+[data-theme="light"] .mm-kap2 { --mm: #047857; }
+[data-theme="light"] .mm-kap3 { --mm: #b45309; }
+[data-theme="light"] .mm-kap4 { --mm: #6d28d9; }
+[data-theme="light"] .mm-kap5 { --mm: #0e7490; }
+[data-theme="light"] .mm-node strong { color: var(--mm, #4338ca); }
