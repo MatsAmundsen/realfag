@@ -1,134 +1,90 @@
 [
   {
-    "sporsmal": "Hva er en proporsjon?",
+    "sporsmal": "Hva er et nullpunkt for en funksjon $f$?",
     "alternativer": [
-      "En likning der to brøker er satt lik hverandre, f.eks. $\\frac{a}{b} = \\frac{c}{d}$",
-      "En funksjon som krysser origo",
-      "Et annet ord for en andregradslikning",
-      "En brøk som ikke kan forkortes"
+      "En $x$-verdi der $f(x) = 0$",
+      "Verdien $f(0)$",
+      "Det laveste punktet på grafen",
+      "Et punkt der grafen krysser $y$-aksen"
     ],
     "riktigSvar": 0,
-    "forklaring": "En proporsjon er et utsagn om at to forhold (brøker) er like store."
+    "forklaring": "Et nullpunkt er en $x$-verdi der funksjonsverdien er null, altså $f(x)=0$. På grafen er det der grafen krysser eller berører $x$-aksen. $f(0)$ er der grafen krysser $y$-aksen."
   },
   {
-    "sporsmal": "Hvordan fungerer 'kryssmultiplikasjon' for proporsjonen $\\frac{a}{b} = \\frac{c}{d}$?",
+    "sporsmal": "Er $x = 2$ et nullpunkt for $f(x) = x^2 - 5x + 6$?",
     "alternativer": [
-      "Man ganger tellerne sammen: $a \\cdot c = b \\cdot d$",
-      "Man ganger over kors slik at $a \\cdot d = b \\cdot c$",
-      "Man bytter om på $b$ og $c$",
-      "Man legger sammen $a+d$ og $b+c$"
-    ],
-    "riktigSvar": 1,
-    "forklaring": "Kryssmultiplikasjon går ut på å gange teller på venstre side med nevner på høyre side, og sette dette lik nevner på venstre side ganget med teller på høyre side: $a \\cdot d = b \\cdot c$. Dette er en snarvei for å gange begge sider med fellesnevneren $bd$."
-  },
-  {
-    "sporsmal": "Bruk kryssmultiplikasjon på likningen $\\frac{x}{3} = \\frac{4}{6}$. Hva blir likningen etter kryssmultiplisering?",
-    "alternativer": [
-      "$6x = 12$",
-      "$3x = 24$",
-      "$x = 2$",
-      "$4x = 18$"
+      "Ja, fordi $f(2) = 0$",
+      "Nei, fordi $f(2) = 6$",
+      "Nei, fordi $f(2) = -2$",
+      "Det kan ikke avgjøres uten graf"
     ],
     "riktigSvar": 0,
-    "forklaring": "Vi ganger over kors: $x \\cdot 6 = 3 \\cdot 4$. Dette forenkles til $6x = 12$."
+    "forklaring": "Vi setter inn: $f(2) = 2^2 - 5 \\cdot 2 + 6 = 4 - 10 + 6 = 0$. Altså er $x=2$ et nullpunkt."
   },
   {
-    "sporsmal": "Løs proporsjonen $\\frac{2}{x} = \\frac{5}{10}$.",
+    "sporsmal": "Hva er $f(-1)$ når $f(x) = 2x^2 - 3x + 1$?",
     "alternativer": [
-      "$x = 2$",
-      "$x = 4$",
-      "$x = 5$",
-      "$x = 10$"
+      "$0$",
+      "$2$",
+      "$6$",
+      "$-4$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "$f(-1) = 2 \\cdot (-1)^2 - 3 \\cdot (-1) + 1 = 2 + 3 + 1 = 6$."
+  },
+  {
+    "sporsmal": "Polynomet $2x^2 - 4x - 6$ har nullpunktene $x = -1$ og $x = 3$. Hva er nullpunktfaktoriseringen?",
+    "alternativer": [
+      "$(x + 1)(x - 3)$",
+      "$2(x + 1)(x - 3)$",
+      "$2(x - 1)(x + 3)$",
+      "$(2x + 1)(x - 3)$"
     ],
     "riktigSvar": 1,
-    "forklaring": "Kryssmultiplikasjon gir $2 \\cdot 10 = 5 \\cdot x$. Da er $20 = 5x$, og deler vi på $5$ får vi $x = 4$."
+    "forklaring": "Vi bruker $a(x - x_1)(x - x_2)$ med $a = 2$: $2(x - (-1))(x - 3) = 2(x + 1)(x - 3)$. Kontroll: $2(x^2 - 2x - 3) = 2x^2 - 4x - 6$."
   },
   {
-    "sporsmal": "Løs likningen $\\frac{x+1}{2} = \\frac{3}{x}$. (Husk at $x \\neq 0$)",
+    "sporsmal": "Hvorfor må vi ta med tallet $a$ foran i $a(x - x_1)(x - x_2)$?",
     "alternativer": [
-      "$x = -2$ og $x = 3$",
-      "$x = 2$ og $x = -3$",
-      "$x = 1$ og $x = 6$",
-      "Bare $x = 2$"
+      "Fordi ellers får vi feil nullpunkter",
+      "Fordi $(x - x_1)(x - x_2)$ alltid har $x^2$-koeffisient $1$, mens polynomet har koeffisient $a$",
+      "Det trenger vi bare når $a$ er negativ",
+      "Fordi $a$ er summen av nullpunktene"
     ],
     "riktigSvar": 1,
-    "forklaring": "Kryssmultiplikasjon gir $x(x+1) = 2 \\cdot 3$, som blir $x^2 + x = 6$. Flytter vi over får vi $x^2 + x - 6 = 0$. ABC-formelen (eller faktorisering) gir røttene $x = 2$ og $x = -3$."
+    "forklaring": "Ganger vi ut $(x - x_1)(x - x_2)$, blir leddet med $x^2$ lik $1 \\cdot x^2$. For at uttrykket skal bli lik $ax^2 + bx + c$, må vi gange med $a$. Nullpunktene endres ikke av $a$."
   },
   {
-    "sporsmal": "Hva er hovedideen bak å løse en ulikhet med nullpunktmetoden (også kalt fortegnsskjema)?",
+    "sporsmal": "Faktoriser $x^2 + x - 12$.",
     "alternativer": [
-      "Man setter alt lik 0, faktoriserer uttrykket, og undersøker fortegnet til hver faktor på en tallinje",
-      "Man ganger med 0 for å fjerne alle tall",
-      "Man kryssmultipliserer ulikheten",
-      "Man gjetter på et tall til man treffer 0"
+      "$(x - 4)(x + 3)$",
+      "$(x + 4)(x - 3)$",
+      "$(x + 6)(x - 2)$",
+      "$(x - 12)(x + 1)$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Nullpunktene er $x = -4$ og $x = 3$ (abc-formelen: $x = \\frac{-1 \\pm \\sqrt{1 + 48}}{2} = \\frac{-1 \\pm 7}{2}$). Da er $x^2 + x - 12 = (x + 4)(x - 3)$."
+  },
+  {
+    "sporsmal": "Forkort brøken $\\frac{x^2 - 9}{x^2 + x - 6}$.",
+    "alternativer": [
+      "$\\frac{x - 3}{x - 2}$, der $x \\neq -3$ og $x \\neq 2$",
+      "$\\frac{x + 3}{x - 2}$",
+      "$\\frac{3}{2}$",
+      "$\\frac{x - 3}{x + 2}$"
     ],
     "riktigSvar": 0,
-    "forklaring": "Nullpunktmetoden handler om å samle alt på én side (slik at man har $0$ på andre siden), faktorisere uttrykket, og sette opp et fortegnsskjema for faktorene for å se hvor hele uttrykket er positivt eller negativt."
+    "forklaring": "Teller: $x^2 - 9 = (x - 3)(x + 3)$. Nevner: $x^2 + x - 6 = (x + 3)(x - 2)$. Vi forkorter $(x + 3)$ og får $\\frac{x - 3}{x - 2}$. Brøken er ikke definert for $x = -3$ og $x = 2$."
   },
   {
-    "sporsmal": "For å løse $x^2 - 4 > 0$, faktoriserer du til $(x-2)(x+2) > 0$. Hva viser fortegnsskjemaet at løsningen er?",
+    "sporsmal": "Hvilket av uttrykkene kan <strong>ikke</strong> faktoriseres i lineære faktorer med reelle tall?",
     "alternativer": [
-      "$x > 2$",
-      "$-2 < x < 2$",
-      "$x < -2$ eller $x > 2$",
-      "$x = -2$ og $x = 2$"
+      "$x^2 - 4$",
+      "$x^2 + 2x + 1$",
+      "$x^2 + 2x + 5$",
+      "$x^2 - x - 2$"
     ],
     "riktigSvar": 2,
-    "forklaring": "Uttrykket har nullpunkter i $x=-2$ og $x=2$. Siden det er en parabel som 'smiler' (positivt $x^2$-ledd), er grafen over x-aksen (positiv) før $-2$ og etter $2$. Løsningen er $x < -2 \\cup x > 2$."
-  },
-  {
-    "sporsmal": "Hva skjer med ulikhetstegnet hvis vi deler eller ganger med et negativt tall på begge sider av en ulikhet?",
-    "alternativer": [
-      "Ingenting, ulikhetstegnet forblir det samme",
-      "Ulikhetstegnet snus",
-      "Ulikhetstegnet blir til et likhetstegn",
-      "Det er ikke lov å dele en ulikhet med et negativt tall"
-    ],
-    "riktigSvar": 1,
-    "forklaring": "Når vi multipliserer eller dividerer med et negativt tall, snur ulikheten. For eksempel blir $-2x > 4$ til $x < -2$ etter at vi har delt på $-2$."
-  },
-  {
-    "sporsmal": "Løs ulikheten $2x - 6 < 0$.",
-    "alternativer": [
-      "$x > 3$",
-      "$x < 3$",
-      "$x = 3$",
-      "$x < -3$"
-    ],
-    "riktigSvar": 1,
-    "forklaring": "Vi flytter over $-6$ og får $2x < 6$. Deler på $2$ og får $x < 3$."
-  },
-  {
-    "sporsmal": "Løs ulikheten $-3x > 12$.",
-    "alternativer": [
-      "$x > -4$",
-      "$x < 4$",
-      "$x < -4$",
-      "$x > 4$"
-    ],
-    "riktigSvar": 2,
-    "forklaring": "Vi deler på $-3$. Da må vi huske å snu ulikhetstegnet. Svaret blir $x < -4$."
-  },
-  {
-    "sporsmal": "Du skal løse $\\frac{x-1}{x+3} \\geq 0$. Hvorfor kan du ikke bare gange begge sider med $(x+3)$?",
-    "alternativer": [
-      "Fordi 0 ganger $(x+3)$ ikke er lov",
-      "Fordi vi ikke vet om $(x+3)$ er positivt eller negativt, og derfor vet vi ikke om vi må snu ulikhetstegnet",
-      "Fordi da blir nevneren borte, og det er ikke lov",
-      "Man kan gange med $(x+3)$, det er en helt grei metode"
-    ],
-    "riktigSvar": 1,
-    "forklaring": "I en ulikhet må tegnet snus hvis vi ganger med et negativt tall. Siden vi ikke vet om $x+3$ er positivt eller negativt (det avhenger av $x$), er det tryggest å bruke fortegnsskjema."
-  },
-  {
-    "sporsmal": "Hvis et uttrykk har faktoren $(x-3)^2$, hvordan vil fortegnslinjen se ut i et fortegnsskjema?",
-    "alternativer": [
-      "Stiplet (negativ) før 3, og hel (positiv) etter 3",
-      "Hel (positiv) overalt",
-      "Hel (positiv) før 3, null i 3, og hel (positiv) etter 3",
-      "Den er stiplet overalt"
-    ],
-    "riktigSvar": 2,
-    "forklaring": "Et tall opphøyd i andre blir aldri negativt. Linjen vil være hel, unntatt akkurat i punktet $x=3$ hvor den er 0."
+    "forklaring": "For $x^2 + 2x + 5$ er diskriminanten $2^2 - 4 \\cdot 1 \\cdot 5 = -16 < 0$. Da finnes det ingen reelle nullpunkter, og uttrykket kan ikke nullpunktfaktoriseres."
   }
 ]

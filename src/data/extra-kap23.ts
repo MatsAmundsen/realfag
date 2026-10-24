@@ -288,18 +288,6 @@ export const MORE23: Record<string, Oppgave[]> = {
       ],
     ),
     o(
-      "3.39",
-      "Løs ulikhetene. Skriv svaret både med ulikhetstegn og som intervall.<br><br><strong>a)</strong> $5x+2\\le 17$<br><br><strong>b)</strong> $1-4x>9$<br><br><strong>c)</strong> $3(x+2)\\ge x-4$<br><br><strong>d)</strong> $-2(x-3)<10$<br><br><strong>e)</strong> $\\dfrac{x}{2}-1\\le \\dfrac{x}{5}$",
-      "Samme flytting som likninger. Deler du på et negativt tall, snur tegnet.",
-      [
-        "<strong>a)</strong> $5x\\le 15$, $x\\le 3$. Intervall $(-\\infty,3]$.<br><strong>Svar:</strong> $x\\le 3$",
-        "<strong>b)</strong> $-4x>8$, $x<-2$. Intervall $\\langle\\leftarrow,-2\\rangle$.<br><strong>Svar:</strong> $x<-2$",
-        "<strong>c)</strong> $3x+6\\ge x-4$, $2x\\ge -10$, $x\\ge -5$.<br><strong>Svar:</strong> $x\\ge -5$",
-        "<strong>d)</strong> $-2x+6<10$, $-2x<4$, $x>-2$ (snudd).<br><strong>Svar:</strong> $x>-2$",
-        "<strong>e)</strong> Gang med $10$: $5x-10\\le 2x$, $3x\\le 10$, $x\\le \\dfrac{10}{3}$.<br><strong>Svar:</strong> $x\\le \\dfrac{10}{3}$",
-      ],
-    ),
-    o(
       "3.40",
       "Fra tekst til likning.<br><br><strong>a)</strong> Tre ganger et tall, minus $7$, er lik tallet pluss $11$. Finn tallet.<br><br><strong>b)</strong> Ida er $4$ år eldre enn Noah. Til sammen er de $30$ år. Hvor gamle er de?<br><br><strong>c)</strong> En rektangulær hage har omkrets $46$ m. Lengden er $3$ m mer enn bredden. Finn sidene.<br><br><strong>d)</strong> En billett koster $x$ kr for voksen og $x-40$ kr for barn. To voksne og tre barn koster $470$ kr. Finn $x$.<br><br><strong>e)</strong> Kontroller d) ved å sette inn.",
       "La den minste ukjente være $x$. Omkrets $2(l+b)$.",
@@ -377,13 +365,13 @@ export const MORE23: Record<string, Oppgave[]> = {
     ),
     o(
       "3.46",
-      "Tekstoppgaver som gir andregrad.<br><br><strong>a)</strong> Produktet av to påfølgende heltall er $72$. Finn tallene.<br><br><strong>b)</strong> Et kvadrat har $4$ mer side enn et annet. Differansen mellom arealene er $72$. Finn sidene.<br><br><strong>c)</strong> En rettvinklet trekant har kateter $x$ og $x+7$ og hypotenus $13$. Finn $x$ (Pythagoras).<br><br><strong>d)</strong> Hvorfor forkaster vi negative sider i a)–c)?<br><br><strong>e)</strong> Sett prøve på c).",
+      "Tekstoppgaver som gir andregrad.<br><br><strong>a)</strong> Produktet av to påfølgende heltall er $72$. Finn tallene.<br><br><strong>b)</strong> Et kvadrat har sider som er $4$ lengre enn sidene i et annet kvadrat. Differansen mellom arealene er $72$. Finn sidene.<br><br><strong>c)</strong> En rettvinklet trekant har kateter $x$ og $x+7$ og hypotenus $13$. Finn $x$ (Pythagoras).<br><br><strong>d)</strong> Hvorfor forkaster vi negative sider i b)–c)?<br><br><strong>e)</strong> Sett prøve på c).",
       "Påfølgende heltall: $n$ og $n+1$. Pythagoras: $x^2+(x+7)^2=13^2$.",
       [
         "<strong>a)</strong> $n(n+1)=72$, $n^2+n-72=0$, $(n+9)(n-8)=0$. $n=8$ (eller $-9$ og $-8$).<br><strong>Svar:</strong> $8$ og $9$ (eller $-9$ og $-8$)",
         "<strong>b)</strong> $(s+4)^2-s^2=72$, $8s+16=72$, $s=7$. Sider $7$ og $11$.<br><strong>Svar:</strong> $7$ og $11$",
         "<strong>c)</strong> $x^2+(x+7)^2=169$, $2x^2+14x+49=169$, $x^2+7x-60=0$, $(x+12)(x-5)=0$, $x=5$.<br><strong>Svar:</strong> $x=5$",
-        "<strong>d)</strong> Lengde kan ikke være negativ.<br><strong>Svar:</strong> lengde $>0$",
+        "<strong>d)</strong> I b) og c) er de ukjente lengder, og en lengde kan ikke være negativ. (I a) er $-9$ og $-8$ en gyldig løsning, fordi heltall kan være negative.)<br><strong>Svar:</strong> en lengde må være $>0$",
         "<strong>e)</strong> $5^2+12^2=25+144=169=13^2$.<br><strong>Svar:</strong> stemmer",
       ],
     ),
@@ -463,24 +451,22 @@ export const MORE23: Record<string, Oppgave[]> = {
         "<strong>e)</strong> $x\\neq 4$ og $x\\neq -4$. <strong>Svar:</strong> $x\\neq\\pm 4$",
       ],
     ),
-  ],
-  "3F": [
     o(
       "3.53",
-      "Rett og omvendt proporsjonalitet.<br><br><strong>a)</strong> $y$ er proporsjonal med $x$, og $y=12$ når $x=4$. Finn $y$ når $x=10$.<br><br><strong>b)</strong> $y$ er omvendt proporsjonal med $x$, og $y=6$ når $x=2$. Finn $y$ når $x=8$.<br><br><strong>c)</strong> Et kart har målestokk $1:50000$. Hvor lang er en vei som er $4$ cm på kartet (i km)?<br><br><strong>d)</strong> $8$ malere bruker $6$ dager. Hvor mange dager trenger $12$ malere (samme tempo, omvendt proporsjonalt)?<br><br><strong>e)</strong> Sett opp proporsjonen i d) og løs.",
+      "Rett og omvendt proporsjonalitet.<br><br><strong>a)</strong> $y$ er proporsjonal med $x$, og $y=12$ når $x=4$. Finn $y$ når $x=10$.<br><br><strong>b)</strong> $y$ er omvendt proporsjonal med $x$, og $y=6$ når $x=2$. Finn $y$ når $x=8$.<br><br><strong>c)</strong> Et kart har målestokk $1 : 50\\,000$. Hvor lang er en vei som er $4$ cm på kartet (i km)?<br><br><strong>d)</strong> $8$ malere bruker $6$ dager. Hvor mange dager trenger $12$ malere (samme tempo, omvendt proporsjonalt)?<br><br><strong>e)</strong> Sett opp proporsjonen i d) og løs.",
       "Rett: $\\dfrac{y}{x}=$ konstant. Omvendt: $xy=$ konstant. Flere folk $\\Rightarrow$ færre dager.",
       [
         "<strong>a)</strong> $\\dfrac{12}{4}=\\dfrac{y}{10}$, $y=30$. <strong>Svar:</strong> $30$",
         "<strong>b)</strong> $6\\cdot 2=y\\cdot 8$, $y=1{,}5$. <strong>Svar:</strong> $1{,}5$",
-        "<strong>c)</strong> $4\\cdot 50000=200000$ cm $=2$ km. <strong>Svar:</strong> $2$ km",
+        "<strong>c)</strong> $4\\cdot 50\\,000=200\\,000$ cm $=2$ km. <strong>Svar:</strong> $2$ km",
         "<strong>d)</strong> $8\\cdot 6=12\\cdot t$, $t=4$. <strong>Svar:</strong> $4$ dager",
         "<strong>e)</strong> $\\dfrac{8}{12}=\\dfrac{t}{6}$ ville vært rett proporsjonal og feil. Riktig er $8\\cdot 6=12t$.<br><strong>Svar:</strong> $t=4$",
       ],
     ),
     o(
       "3.54",
-      "Liknende figurer og proporsjoner.<br><br><strong>a)</strong> To like trekanter har sider $3$, $4$, $5$ og $6$, $x$, $10$. Finn $x$.<br><br><strong>b)</strong> En skygge av en $6$ m stang er $4$ m. Et tre kaster $10$ m skygge samtidig. Hvor høyt er treet?<br><br><strong>c)</strong> En oppskrift til $3$ dl saus bruker $2$ egg. Hvor mange egg til $7{,}5$ dl? (Du kan bruke halve egg i regningen.)<br><br><strong>d)</strong> Farten er konstant $90$ km/h. Hvor lang tid på $135$ km?<br><br><strong>e)</strong> $p$ er proporsjonal med $q^2$, og $p=12$ når $q=2$. Finn $p$ når $q=6$.",
-      "Like trekanter: sidene i samme forhold. $p=k q^2$, finn $k$ først.",
+      "Liknende figurer og proporsjoner.<br><br><strong>a)</strong> To formlike trekanter har sider $3$, $4$, $5$ og $6$, $x$, $10$. Finn $x$.<br><br><strong>b)</strong> En skygge av en $6$ m stang er $4$ m. Et tre kaster $10$ m skygge samtidig. Hvor høyt er treet?<br><br><strong>c)</strong> En oppskrift til $3$ dl saus bruker $2$ egg. Hvor mange egg til $7{,}5$ dl? (Du kan bruke halve egg i regningen.)<br><br><strong>d)</strong> Farten er konstant $90$ km/h. Hvor lang tid på $135$ km?<br><br><strong>e)</strong> $p$ er proporsjonal med $q^2$, og $p=12$ når $q=2$. Finn $p$ når $q=6$.",
+      "Formlike trekanter: sidene i samme forhold. $p=k q^2$, finn $k$ først.",
       [
         "<strong>a)</strong> $\\dfrac{x}{4}=\\dfrac{6}{3}=2$, $x=8$. (Eller $5\\mapsto 10$ bekrefter faktor $2$.)<br><strong>Svar:</strong> $x=8$",
         "<strong>b)</strong> $\\dfrac{h}{6}=\\dfrac{10}{4}$, $h=15$. <strong>Svar:</strong> $15$ m",
@@ -497,10 +483,10 @@ export const MORE23: Record<string, Oppgave[]> = {
       "Hvor mange ganger går $x$ i høyeste ledd? Rest $0$ betyr at divisoren er en faktor.",
       [
         "<strong>a)</strong> $x-3$, fordi $(x-2)(x-3)=x^2-5x+6$.<br><strong>Svar:</strong> $x-3$",
-        "<strong>b)</strong> $x-3$. <strong>Svar:</strong> $x-3$",
-        "<strong>c)</strong> $x^2+x+1$. <strong>Svar:</strong> $x^2+x+1$",
-        "<strong>d)</strong> $2x-1$. <strong>Svar:</strong> $2x-1$",
-        "<strong>e)</strong> $x^2-4=(x-2)(x+2)$. <strong>Svar:</strong> $x^2-4$",
+        "<strong>b)</strong> $x^2:x=x$, $x(x+4)=x^2+4x$, rest $-3x-12$. $-3x:x=-3$, $-3(x+4)=-3x-12$, rest $0$.<br>Prøve: $(x+4)(x-3)=x^2+x-12$.<br><strong>Svar:</strong> $x-3$",
+        "<strong>c)</strong> Skriv $x^3-1=x^3+0x^2+0x-1$. Divisjonen gir $x^2+x+1$ med rest $0$.<br>Prøve: $(x-1)(x^2+x+1)=x^3+x^2+x-x^2-x-1=x^3-1$.<br><strong>Svar:</strong> $x^2+x+1$",
+        "<strong>d)</strong> $2x^2:x=2x$, $2x(x+2)=2x^2+4x$, rest $-x-2$. $-x:x=-1$, $-1\\cdot(x+2)=-x-2$, rest $0$.<br>Prøve: $(x+2)(2x-1)=2x^2-x+4x-2=2x^2+3x-2$.<br><strong>Svar:</strong> $2x-1$",
+        "<strong>e)</strong> $x^3:x=x^2$, $x^2(x-3)=x^3-3x^2$, rest $-4x+12$. $-4x:x=-4$, $-4(x-3)=-4x+12$, rest $0$. Kvotienten er $x^2-4=(x-2)(x+2)$.<br>Prøve: $(x-3)(x^2-4)=x^3-4x-3x^2+12$.<br><strong>Svar:</strong> $x^2-4$",
       ],
     ),
     o(
@@ -513,6 +499,20 @@ export const MORE23: Record<string, Oppgave[]> = {
         "<strong>c)</strong> Vi deler på $(x-2)$: $(x^3-4x^2+x+6):(x-2)=x^2-2x-3$.<br>Kontroll: $(x-2)(x^2-2x-3)=x^3-2x^2-3x-2x^2+4x+6=x^3-4x^2+x+6$.<br>Kvotienten faktoriseres: $x^2-2x-3=(x-3)(x+1)$, siden $(-3)\\cdot 1=-3$ og $-3+1=-2$.<br>$P(x)=(x-2)(x-3)(x+1)$<br><strong>Svar:</strong> $P(x)=(x-2)(x-3)(x+1)$",
         "<strong>d)</strong> $Q(-1)=-1+1+4-4=0$. $Q(x)=(x+1)(x^2-4)=(x+1)(x-2)(x+2)$.<br><strong>Svar:</strong> $(x+1)(x-2)(x+2)$",
         "<strong>e)</strong> $P(0)=a(2)(-1)(-3)=6a=-6$, $a=-1$. $P(x)=-(x+2)(x-1)(x-3)$.<br><strong>Svar:</strong> $P(x)=-(x+2)(x-1)(x-3)$",
+      ],
+    ),
+  ],
+  "3H": [
+    o(
+      "3.39",
+      "Løs ulikhetene. Skriv svaret både med ulikhetstegn og som intervall.<br><br><strong>a)</strong> $5x+2\\le 17$<br><br><strong>b)</strong> $1-4x>9$<br><br><strong>c)</strong> $3(x+2)\\ge x-4$<br><br><strong>d)</strong> $-2(x-3)<10$<br><br><strong>e)</strong> $\\dfrac{x}{2}-1\\le \\dfrac{x}{5}$",
+      "Samme flytting som likninger. Deler du på et negativt tall, snur tegnet.",
+      [
+        "<strong>a)</strong> $5x\\le 15$, $x\\le 3$. Intervall $\\langle\\leftarrow,3]$.<br><strong>Svar:</strong> $x\\le 3$, $x\\in\\langle\\leftarrow,3]$",
+        "<strong>b)</strong> $-4x>8$, $x<-2$. Intervall $\\langle\\leftarrow,-2\\rangle$.<br><strong>Svar:</strong> $x<-2$, $x\\in\\langle\\leftarrow,-2\\rangle$",
+        "<strong>c)</strong> $3x+6\\ge x-4$, $2x\\ge -10$, $x\\ge -5$. Intervall $[-5,\\rightarrow\\rangle$.<br><strong>Svar:</strong> $x\\ge -5$, $x\\in[-5,\\rightarrow\\rangle$",
+        "<strong>d)</strong> $-2x+6<10$, $-2x<4$, $x>-2$ (del på $-2$ og snu tegnet). Intervall $\\langle -2,\\rightarrow\\rangle$.<br><strong>Svar:</strong> $x>-2$, $x\\in\\langle -2,\\rightarrow\\rangle$",
+        "<strong>e)</strong> Gang med $10$: $5x-10\\le 2x$, $3x\\le 10$, $x\\le \\dfrac{10}{3}$. Intervall $\\langle\\leftarrow,\\tfrac{10}{3}]$.<br><strong>Svar:</strong> $x\\le \\dfrac{10}{3}$, $x\\in\\langle\\leftarrow,\\tfrac{10}{3}]$",
       ],
     ),
   ],

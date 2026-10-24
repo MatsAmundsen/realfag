@@ -3,7 +3,7 @@ import type { Delkapittel, Fagstoff, Kapittel, Oppgave } from "./types";
 import { EXTRA, SUB_TITLES } from "./extra-tasks";
 import { MORE23 } from "./extra-kap23";
 import { EXTRA_1D, EXTRA_1D_QUIZ } from "./extra-1d";
-import { TASK_FIGURES, TASK_FASIT_FIGURES } from "./task-figures";
+import { TASK_FIGURES, TASK_FASIT_FIGURES, TASK_FIGURE_REQUIRES } from "./task-figures";
 import { KAP3_OVEPROVE } from "./kap3-oveprove";
 import { KAP4_QUIZ } from "./kap4-quiz";
 import { KAP5 } from "./kap5";
@@ -33,7 +33,8 @@ function styleDataTables(html: string): string {
 function attachFigure(op: Oppgave): Oppgave {
   let updated = op;
   const fig = TASK_FIGURES[op.id];
-  if (fig && !op.tekst.includes('class="task-figure"')) {
+  const req = TASK_FIGURE_REQUIRES[op.id];
+  if (fig && (!req || req.test(op.tekst)) && !op.tekst.includes('class="task-figure"')) {
     updated = { ...updated, tekst: fig + updated.tekst };
   }
   const fasitFigs = TASK_FASIT_FIGURES[op.id];
@@ -179,9 +180,21 @@ export const VIDEO_BY_SUB: Record<string, TemaVideo[]> = {
   "3B": [{ tittel: "Omskriving av formler", url: "https://www.youtube.com/watch?v=n5k-x-05X00" }],
   "3C": [{ tittel: "Andregradslikninger", url: "https://www.youtube.com/watch?v=0eyN7vknTW4" }],
   "3D": [{ tittel: "ABC-formelen og diskriminanten", url: "https://www.youtube.com/watch?v=zHQ2eauLwr4" }],
-  "3E": [{ tittel: "Rasjonale likninger", url: "https://www.youtube.com/watch?v=x3QZyL0KDME" }],
-  "3F": [{ tittel: "Forhold og proporsjoner", url: "https://www.youtube.com/watch?v=JDi2jAJaFkw" }],
+  "3E": [
+    { tittel: "Rasjonale likninger", url: "https://www.youtube.com/watch?v=x3QZyL0KDME" },
+    { tittel: "Forhold og proporsjoner", url: "https://www.youtube.com/watch?v=JDi2jAJaFkw" },
+  ],
+  "3F": [
+    { tittel: "Nullpunktfaktorisering", url: "https://www.youtube.com/watch?v=zR6ZtTSXXbk" },
+    { tittel: "Nullpunkter og faktorisering", url: "https://www.youtube.com/watch?v=iSXe8YreMMY" },
+    { tittel: "Nullpunkter og faktorisering", url: "https://www.youtube.com/watch?v=eQYkvZlI7ms" },
+    { tittel: "Nullpunktfaktorisering", url: "https://www.youtube.com/watch?v=U95jMFd-7ko" },
+  ],
   "3G": [{ tittel: "Polynomdivisjon", url: "https://www.youtube.com/watch?v=_w-hcv1buIU" }],
+  "3H": [
+    { tittel: "Ulikheter (1T)", url: "https://www.youtube.com/watch?v=xVUzi3WE65s" },
+    { tittel: "Andregradsulikheter med fortegnsskjema", url: "https://www.youtube.com/watch?v=7eSS4QaFAJ8" },
+  ],
   "4A": [{ tittel: "Hva er en funksjon?", url: "https://www.youtube.com/watch?v=BCCZxWe57Eo" }],
   "4B": [{ tittel: "Lineære funksjoner", url: "https://www.youtube.com/watch?v=0qoEA0Kgobo" }],
   "4C": [{ tittel: "Introduksjon til polynomfunksjoner", url: "https://www.youtube.com/watch?v=3oWCt9o6F4Q" }],

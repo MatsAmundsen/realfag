@@ -353,9 +353,9 @@ export const EXTRA: Record<string, Oppgave[]> = {
       "Løs likningene og sett prøve.<br><br><strong>a)</strong> $5x-7=2x+8$<br><br><strong>b)</strong> $3(x-2)=2x+9$<br><br><strong>c)</strong> $\\dfrac{x}{4}-\\dfrac{x}{6}=1$",
       "Samle $x$ på én side. I c) gang med fellesnevner $12$.",
       [
-        "<strong>a)</strong> $5x-2x=8+7$, $3x=15$, $x=5$. Prøve: $25-7=10+8=18$.<br><strong>Svar:</strong> $x=5$",
-        "<strong>b)</strong> $3x-6=2x+9$, $x=15$.<br><strong>Svar:</strong> $x=15$",
-        "<strong>c)</strong> Gang med $12$: $3x-2x=12$, $x=12$.<br><strong>Svar:</strong> $x=12$",
+        "<strong>a)</strong> $5x-2x=8+7$, $3x=15$, $x=5$. Prøve: VS $=5\\cdot 5-7=18$, HS $=2\\cdot 5+8=18$.<br><strong>Svar:</strong> $x=5$",
+        "<strong>b)</strong> $3x-6=2x+9$, $3x-2x=9+6$, $x=15$. Prøve: VS $=3\\cdot 13=39$, HS $=30+9=39$.<br><strong>Svar:</strong> $x=15$",
+        "<strong>c)</strong> Gang hvert ledd med $12$: $12\\cdot\\dfrac{x}{4}-12\\cdot\\dfrac{x}{6}=12$, altså $3x-2x=12$, $x=12$. Prøve: $3-2=1$.<br><strong>Svar:</strong> $x=12$",
       ],
     ),
     o(
@@ -364,15 +364,6 @@ export const EXTRA: Record<string, Oppgave[]> = {
       "Omkrets $2(l+b)=54$. $l=2b+3$.",
       [
         "$2((2b+3)+b)=54$, $2(3b+3)=54$, $3b+3=27$, $3b=24$, $b=8$.<br>Lengde $2\\cdot 8+3=19$.<br><strong>Svar:</strong> bredde $8$ cm, lengde $19$ cm.",
-      ],
-    ),
-    o(
-      "3.25",
-      "Løs ulikheten og skriv svaret både med ulikhetstegn og som intervall.<br><br><strong>a)</strong> $2x-5 < 7$<br><br><strong>b)</strong> $4-3x \\geq 10$",
-      "Samme flytteregler som for likninger. Når du ganger/deler med et negativt tall, snur ulikheten.",
-      [
-        "<strong>a)</strong> $2x<12$, $x<6$. Intervall: $\\langle\\leftarrow, 6\\rangle$.<br><strong>Svar:</strong> $x<6$, $x\\in\\langle\\leftarrow,6\\rangle$",
-        "<strong>b)</strong> $-3x\\geq 6$. Del på $-3$ og snu: $x\\leq -2$.<br><strong>Svar:</strong> $x\\leq -2$, $x\\in\\langle\\leftarrow,-2]$",
       ],
     ),
   ],
@@ -391,7 +382,7 @@ export const EXTRA: Record<string, Oppgave[]> = {
       "$\\dfrac{1}{R}=\\dfrac{1}{R_1}+\\dfrac{1}{R_2}$. Isoler $R$.",
       "Fellesnevner $R_1 R_2$ på høyre side, deretter inverter begge sider.",
       [
-        "$\\dfrac{1}{R}=\\dfrac{R_2+R_1}{R_1 R_2}$, så $R=\\dfrac{R_1 R_2}{R_1+R_2}$.<br><strong>Svar:</strong> $R=\\dfrac{R_1 R_2}{R_1+R_2}$",
+        "Fellesnevner $R_1R_2$: $\\dfrac{1}{R}=\\dfrac{R_2}{R_1R_2}+\\dfrac{R_1}{R_1R_2}=\\dfrac{R_2+R_1}{R_1 R_2}$.<br>Når to brøker er like, er også de omvendte brøkene like, så $R=\\dfrac{R_1 R_2}{R_1+R_2}$.<br><strong>Svar:</strong> $R=\\dfrac{R_1 R_2}{R_1+R_2}$",
       ],
     ),
   ],
@@ -401,8 +392,8 @@ export const EXTRA: Record<string, Oppgave[]> = {
       "Løs.<br><br><strong>a)</strong> $x^2=25$<br><br><strong>b)</strong> $(x-3)(x+1)=0$<br><br><strong>c)</strong> $x^2-6x=0$",
       "Husk $\\pm$ når du tar kvadratrot. Produktregelen: et av faktorene er $0$.",
       [
-        "<strong>a)</strong> $x=\\pm 5$. <strong>Svar:</strong> $x=-5$ eller $x=5$",
-        "<strong>b)</strong> $x=3$ eller $x=-1$. <strong>Svar:</strong> $x=3$ eller $x=-1$",
+        "<strong>a)</strong> $x=\\sqrt{25}=5$ eller $x=-\\sqrt{25}=-5$, siden både $5^2$ og $(-5)^2$ er $25$. <strong>Svar:</strong> $x=-5$ eller $x=5$",
+        "<strong>b)</strong> Et produkt er $0$ når en av faktorene er $0$: $x-3=0$ eller $x+1=0$, altså $x=3$ eller $x=-1$. <strong>Svar:</strong> $x=3$ eller $x=-1$",
         "<strong>c)</strong> $x(x-6)=0$, så $x=0$ eller $x=6$. <strong>Svar:</strong> $x=0$ eller $x=6$",
       ],
     ),
@@ -430,7 +421,7 @@ export const EXTRA: Record<string, Oppgave[]> = {
       "Likningen $x^2-6x+k=0$ har nøyaktig én løsning. Finn $k$ og løsningen.",
       "Én løsning $\\Leftrightarrow$ diskriminanten er $0$.",
       [
-        "$D=36-4k=0$, $k=9$. Da $x=\\dfrac{6}{2}=3$.<br><strong>Svar:</strong> $k=9$ og $x=3$",
+        "$a=1$, $b=-6$, $c=k$. $D=(-6)^2-4\\cdot 1\\cdot k=36-4k$. Én løsning når $D=0$: $36-4k=0$, $k=9$.<br>Da er $x^2-6x+9=(x-3)^2=0$, så $x=3$.<br><strong>Svar:</strong> $k=9$ og $x=3$",
       ],
     ),
   ],
@@ -452,24 +443,22 @@ export const EXTRA: Record<string, Oppgave[]> = {
         "Gang med $(x-1)(x+1)$: $x(x+1)-2(x-1)=(x^2-1)$.<br>$x^2+x-2x+2=x^2-1$, $-x+2=-1$, $-x=-3$, $x=3$.<br>$x=3$ er tillatt.<br><strong>Svar:</strong> $x=3$",
       ],
     ),
-  ],
-  "3F": [
     o(
       "3.34",
       "En oppskrift til $4$ personer bruker $3$ dl fløte. Du skal lage mat til $6$ personer.<br><br><strong>a)</strong> Sett opp en proporsjon og finn hvor mye fløte du trenger.<br><br><strong>b)</strong> Hvor mange personer kan du lage mat til med $9$ dl fløte?",
       "Mengde og antall personer er proporsjonale. $\\dfrac{3}{4}=\\dfrac{x}{6}$.",
       [
-        "<strong>a)</strong> $\\dfrac{3}{4}=\\dfrac{x}{6}$, $x=\\dfrac{3\\cdot 6}{4}=4.5$.<br><strong>Svar:</strong> $4.5$ dl.",
+        "<strong>a)</strong> $\\dfrac{3}{4}=\\dfrac{x}{6}$, $x=\\dfrac{3\\cdot 6}{4}=4{,}5$.<br><strong>Svar:</strong> $4{,}5$ dl.",
         "<strong>b)</strong> $\\dfrac{3}{4}=\\dfrac{9}{n}$, $3n=36$, $n=12$.<br><strong>Svar:</strong> $12$ personer.",
       ],
     ),
     o(
       "3.35",
-      "En bil bruker $0.6$ liter bensin per mil. Bensintanken rommer $48$ liter.<br><br><strong>a)</strong> Hvor langt kan bilen kjøre på en full tank?<br><br><strong>b)</strong> Hvor mye bensin trengs til $250$ km? (Ett mil $=10$ km.)",
+      "En bil bruker $0{,}6$ liter bensin per mil. Bensintanken rommer $48$ liter.<br><br><strong>a)</strong> Hvor langt kan bilen kjøre på en full tank?<br><br><strong>b)</strong> Hvor mye bensin trengs til $250$ km? (Én mil $=10$ km.)",
       "Forbruket er proporsjonalt med distansen.",
       [
-        "<strong>a)</strong> $48/0.6=80$ mil $=800$ km.<br><strong>Svar:</strong> $800$ km.",
-        "<strong>b)</strong> $250$ km $=25$ mil. $25\\cdot 0.6=15$.<br><strong>Svar:</strong> $15$ liter.",
+        "<strong>a)</strong> $48:0{,}6=80$ mil $=800$ km.<br><strong>Svar:</strong> $800$ km.",
+        "<strong>b)</strong> $250$ km $=25$ mil. $25\\cdot 0{,}6=15$.<br><strong>Svar:</strong> $15$ liter.",
       ],
     ),
   ],
@@ -479,7 +468,7 @@ export const EXTRA: Record<string, Oppgave[]> = {
       "Utfør polynomdivisjonen $(x^2+5x+6):(x+2)$ og sett prøve.",
       "Hvor mange ganger går $x$ i $x^2$? Gang tilbake og trekk fra.",
       [
-        "$(x^2+5x+6):(x+2)=x+3$ fordi $(x+2)(x+3)=x^2+5x+6$.<br><strong>Svar:</strong> $x+3$",
+        "$x^2:x=x$. Gang tilbake: $x(x+2)=x^2+2x$. Trekk fra: $(x^2+5x)-(x^2+2x)=3x$, trekk ned $6$: $3x+6$.<br>$3x:x=3$. Gang tilbake: $3(x+2)=3x+6$. Rest $0$.<br>Prøve: $(x+2)(x+3)=x^2+5x+6$.<br><strong>Svar:</strong> $x+3$",
       ],
     ),
     o(
@@ -487,8 +476,19 @@ export const EXTRA: Record<string, Oppgave[]> = {
       "Polynomet $P(x)=x^3-2x^2-5x+6$ har et nullpunkt $x=1$.<br><br><strong>a)</strong> Del $P(x)$ på $(x-1)$.<br><br><strong>b)</strong> Faktoriser $P(x)$ fullstendig.",
       "Restteoremet: $P(1)=0$ betyr at $(x-1)$ går opp. Faktoriser andregraden etterpå.",
       [
-        "<strong>a)</strong> $(x^3-2x^2-5x+6):(x-1)=x^2-x-6$.<br><strong>Svar:</strong> $x^2-x-6$",
+        "<strong>a)</strong> $x^3:x=x^2$, $x^2(x-1)=x^3-x^2$, rest $-x^2-5x$. $-x^2:x=-x$, $-x(x-1)=-x^2+x$, rest $-6x+6$. $-6x:x=-6$, $-6(x-1)=-6x+6$, rest $0$.<br>$(x^3-2x^2-5x+6):(x-1)=x^2-x-6$.<br><strong>Svar:</strong> $x^2-x-6$",
         "<strong>b)</strong> $x^2-x-6=(x-3)(x+2)$.<br>Dermed $P(x)=(x-1)(x-3)(x+2)$.<br><strong>Svar:</strong> $(x-1)(x-3)(x+2)$",
+      ],
+    ),
+  ],
+  "3H": [
+    o(
+      "3.25",
+      "Løs ulikheten og skriv svaret både med ulikhetstegn og som intervall.<br><br><strong>a)</strong> $2x-5 < 7$<br><br><strong>b)</strong> $4-3x \\geq 10$",
+      "Samme flytteregler som for likninger. Når du ganger/deler med et negativt tall, snur ulikheten.",
+      [
+        "<strong>a)</strong> $2x<12$, $x<6$. Intervall: $\\langle\\leftarrow, 6\\rangle$.<br><strong>Svar:</strong> $x<6$, $x\\in\\langle\\leftarrow,6\\rangle$",
+        "<strong>b)</strong> $-3x\\geq 6$. Del på $-3$ og snu: $x\\leq -2$.<br><strong>Svar:</strong> $x\\leq -2$, $x\\in\\langle\\leftarrow,-2]$",
       ],
     ),
   ],
@@ -611,9 +611,10 @@ export const SUB_TITLES: Record<string, string> = {
   "3B": "3B Formler",
   "3C": "3C Andregradslikninger",
   "3D": "3D ABC-formelen",
-  "3E": "3E Rasjonale likninger",
-  "3F": "3F Proporsjoner",
+  "3E": "3E Rasjonale likninger, ekvivalens og proporsjoner",
+  "3F": "3F Funksjoner og nullpunktfaktorisering",
   "3G": "3G Polynomdivisjon",
+  "3H": "3H Ulikheter",
   "3OP": "Øveprøve",
   "4A": "4A Funksjonsbegrepet",
   "4B": "4B Lineære funksjoner",
