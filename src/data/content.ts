@@ -11,6 +11,7 @@ import { KAP4_OVEPROVE } from "./kap4-oveprove";
 import { KAP4_QUIZ } from "./kap4-quiz";
 import { KAP5 } from "./kap5";
 import { KAP6 } from "./kap6";
+import { KAP6_EXTRA } from "./kap6-extra";
 import { KAP7 } from "./kap7";
 import tallmengderHtml from "./fagstoff/tallmengder.html?raw";
 import brokregningHtml from "./fagstoff/brokregning.html?raw";
@@ -63,7 +64,7 @@ function attachFigure(op: Oppgave): Oppgave {
 }
 
 function withExtras(dk: Delkapittel): Delkapittel {
-  const extraList = [...(EXTRA[dk.id] || []), ...(MORE23[dk.id] || []), ...(KAP2_NYE[dk.id] || []), ...(EXTRA_1D[dk.id] || [])];
+  const extraList = [...(EXTRA[dk.id] || []), ...(MORE23[dk.id] || []), ...(KAP2_NYE[dk.id] || []), ...(EXTRA_1D[dk.id] || []), ...(KAP6_EXTRA[dk.id] || [])];
   const baseQuiz = KAP4_QUIZ[dk.id] ?? dk.quiz;
   const extraQuiz = dk.id === "1D" ? EXTRA_1D_QUIZ : undefined;
   return {
@@ -97,13 +98,18 @@ export const fagsokRaw = (rawFagsok as Kapittel[]).map((kap) => {
 });
 export const fagsok = [
   ...fagsokRaw,
-  ...[KAP5, KAP6, KAP7].map((kap) => ({
-    ...kap,
-    delkapitler: kap.delkapitler.map((dk) => ({
-      ...dk,
-      oppgaver: dk.oppgaver.map(attachFigure),
-    })),
-  })),
+  ...[KAP5, KAP6, KAP7].map((kap) =>
+    // Kap. 6 går gjennom withExtras: figurer + ekstraøvinger (KAP6_EXTRA).
+    kap.id === "kap6"
+      ? { ...kap, delkapitler: kap.delkapitler.map(withExtras) }
+      : {
+          ...kap,
+          delkapitler: kap.delkapitler.map((dk) => ({
+            ...dk,
+            oppgaver: dk.oppgaver.map(attachFigure),
+          })),
+        },
+  ),
 ];
 export const fagstoff = (rawFagstoff as Fagstoff[]).map((f) => {
   const inline: Record<string, string> = {
@@ -225,7 +231,7 @@ export const VIDEO_BY_SUB: Record<string, TemaVideo[]> = {
   "6B": [
     { tittel: "6B Regresjon", url: "https://www.youtube.com/watch?v=KdSx6wcP_rk" },
     { tittel: "Regresjon med GeoGebra", url: "https://www.youtube.com/watch?v=UwVtJPeqGO8" },
-    { tittel: "Matematikk 1T 3.4 Lineær regresjon: GeoGebra", url: "https://www.youtube.com/watch?v=8eTDmTwr_iE" },
+    { tittel: "Lineær regresjon i GeoGebra", url: "https://www.youtube.com/watch?v=8eTDmTwr_iE" },
   ],
   "6C": [
     { tittel: "6C Modellering i praksis", url: "https://www.youtube.com/watch?v=Vt8GdJ1rrv0" },

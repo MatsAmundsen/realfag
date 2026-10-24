@@ -674,8 +674,8 @@ export function figFunctionPlot(opts: {
   ymax: number;
   xstep: number;
   ystep: number;
-  fns: { f: (x: number) => number; color: string; label: string; labelX: number; from?: number; to?: number }[];
-  points?: { x: number; y: number; label?: string; dx?: number; dy?: number }[];
+  fns: { f: (x: number) => number; color: string; label: string; labelX: number; from?: number; to?: number; dash?: boolean; labelDy?: number }[];
+  points?: { x: number; y: number; label?: string; dx?: number; dy?: number; color?: string }[];
   xName?: string;
   yName?: string;
   fmt?: (v: number) => string;
@@ -716,12 +716,12 @@ export function figFunctionPlot(opts: {
       const x = a + ((b - a) * i) / 200;
       pts.push(`${i ? "L" : "M"} ${sx(x).toFixed(1)},${sy(fn.f(x)).toFixed(1)}`);
     }
-    parts.push(`<path d="${pts.join(" ")}" fill="none" stroke="${fn.color}" stroke-width="2.6" clip-path="url(#${clip})"/>`);
-    const ly = Math.min(Math.max(sy(fn.f(fn.labelX)) - 8, T + 10), B - 4);
+    parts.push(`<path d="${pts.join(" ")}" fill="none" stroke="${fn.color}" stroke-width="${fn.dash ? 1.8 : 2.6}"${fn.dash ? ' stroke-dasharray="6 4"' : ""} clip-path="url(#${clip})"/>`);
+    const ly = Math.min(Math.max(sy(fn.f(fn.labelX)) + (fn.labelDy ?? -8), T + 10), B - 4);
     parts.push(`<text x="${sx(fn.labelX).toFixed(1)}" y="${ly.toFixed(1)}" font-size="12" font-weight="700" fill="${fn.color}">${fn.label}</text>`);
   }
   for (const p of opts.points ?? []) {
-    parts.push(`<circle cx="${sx(p.x).toFixed(1)}" cy="${sy(p.y).toFixed(1)}" r="4" fill="${ink}"/>`);
+    parts.push(`<circle cx="${sx(p.x).toFixed(1)}" cy="${sy(p.y).toFixed(1)}" r="4" fill="${p.color ?? ink}"/>`);
     if (p.label) parts.push(`<text x="${(sx(p.x) + (p.dx ?? 6)).toFixed(1)}" y="${(sy(p.y) + (p.dy ?? -6)).toFixed(1)}" font-size="11" font-weight="700" fill="${ink}">${p.label}</text>`);
   }
   return wrapH(parts.join(""), opts.caption, opts.caption, h);
@@ -1532,3 +1532,216 @@ export const TASK_FIGURE_REQUIRES: Record<string, RegExp> = {
   "3.24": /54/,
   "3.46": /hypotenus/i,
 };
+
+// ---------------------------------------------------------------------------
+// Kapittel 6 — Modellering: punktdiagram (scatter), modeller og avvik.
+// Alle modeller er regnet ut med numpy (polyfit / log-lineær tilpasning, som RegLin/RegEksp/RegPot/RegPoly).
+
+const K6 = { data: "#0ea5e9", lin: "#6366f1", exp: "#f59e0b", alt: "#34d399", grense: "#ef4444" };
+
+/** Punktdiagram for måledata, eventuelt med regresjonsmodeller og hjelpelinjer. */
+export function figScatter(opts: {
+  xs: number[];
+  ys: number[];
+  xmin: number;
+  xmax: number;
+  ymin: number;
+  ymax: number;
+  xstep: number;
+  ystep: number;
+  models?: { f: (x: number) => number; label: string; labelX: number; labelDy?: number; color?: string; from?: number; to?: number }[];
+  hlines?: { y: number; label: string; labelX: number }[];
+  marks?: { x: number; y: number; label?: string; dx?: number; dy?: number }[];
+  xName?: string;
+  yName?: string;
+  fmt?: (v: number) => string;
+  caption: string;
+  h?: number;
+}): string {
+  return figFunctionPlot({
+    xmin: opts.xmin, xmax: opts.xmax, ymin: opts.ymin, ymax: opts.ymax, xstep: opts.xstep, ystep: opts.ystep,
+    fns: [
+      ...(opts.hlines ?? []).map((l) => ({ f: () => l.y, color: K6.grense, label: l.label, labelX: l.labelX, dash: true })),
+      ...(opts.models ?? []).map((m, i) => ({ ...m, color: m.color ?? [K6.lin, K6.exp, K6.alt][i % 3] })),
+    ],
+    points: [
+      ...opts.xs.map((x, i) => ({ x, y: opts.ys[i], color: K6.data })),
+      ...(opts.marks ?? []),
+    ],
+    xName: opts.xName, yName: opts.yName, fmt: opts.fmt, caption: opts.caption, h: opts.h,
+  });
+}
+
+/** Hage inntil en husvegg: to sider x og én side 60 − 2x (oppgave 6.18). */
+export function figGardenWall(caption: string): string {
+  const svg = `
+    <rect x="60" y="20" width="300" height="16" fill="rgba(100,116,139,0.35)" stroke="${ink}" stroke-width="1.6"/>
+    <text x="210" y="32" text-anchor="middle" font-size="12" font-weight="700" fill="${ink}">Husvegg (ikke gjerde)</text>
+    <rect x="90" y="36" width="240" height="110" fill="rgba(52,211,153,0.15)" stroke="none"/>
+    <polyline points="90,36 90,146 330,146 330,36" fill="none" stroke="#16a34a" stroke-width="3" stroke-dasharray="7 4"/>
+    <text x="78" y="96" text-anchor="end" font-size="15" font-weight="700" fill="${ink}">x</text>
+    <text x="342" y="96" font-size="15" font-weight="700" fill="${ink}">x</text>
+    <text x="210" y="168" text-anchor="middle" font-size="15" font-weight="700" fill="${ink}">60 − 2x</text>
+    <text x="210" y="96" text-anchor="middle" font-size="13" fill="${ink}">Hage</text>`;
+  return wrapH(svg, caption, "Rektangulær hage inntil en husvegg. Gjerde på tre sider: to sider med lengde x og én side med lengde 60 minus 2x.", 180);
+}
+
+const fmtTus = (v: number) => String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g, " ").replace("-", "−");
+const fmtK = (v: number) => String(Math.round(v * 100) / 100).replace("-", "−").replace(".", ",");
+
+const D69 = { xs: [1, 2, 3, 4, 5, 6], ys: [12, 15, 19, 21, 26, 28] };
+const D610 = { xs: [0, 1, 2, 3, 4, 5], ys: [500, 640, 830, 1050, 1370, 1750] };
+const D611 = { xs: [30, 40, 50, 60, 70, 80], ys: [9, 15, 23, 33, 44, 57] };
+const D612 = { xs: [0.25, 0.5, 1, 1.5, 2], ys: [1.0, 1.42, 2.01, 2.45, 2.84] };
+const D613 = { xs: [0, 1, 2, 3, 4, 5], ys: [20, 26, 33, 43, 56, 72] };
+const D614 = { xs: [0, 10, 20, 30, 40, 50], ys: [3.2, 3.6, 3.9, 4.1, 4.2, 4.5] };
+const D621 = { xs: [12, 15, 18, 21, 24, 27], ys: [110, 150, 185, 230, 260, 300] };
+const DOP5 = { xs: [2, 4, 6, 8, 10], ys: [31, 27, 24, 19, 16] };
+const DOP8 = { xs: [1, 2, 3, 4, 5], ys: [4.2, 33.5, 113, 268, 524] };
+const DOP9 = { xs: [0, 0.5, 1, 1.5, 2, 2.5], ys: [1.8, 6.9, 9.6, 9.9, 7.8, 3.3] };
+const D6B1 = { xs: [1, 2, 3, 4, 5], ys: [0.4, -0.2, 0.3, -0.3, 0.2] };
+const D6B2 = { xs: [30, 40, 50, 60, 70, 80], ys: [2.905, -0.724, -2.352, -1.981, -0.61, 2.762] };
+const D6B3 = { xs: [0, 1, 2, 3, 4, 5], ys: [80, 62, 49, 38, 30, 23] };
+const D6B4 = { xs: [1, 5, 10, 50, 100], ys: [70, 234, 394, 1317, 2214] };
+
+const ax69 = { ...D69, xmin: 0, xmax: 7, ymin: 0, ymax: 35, xstep: 1, ystep: 5, xName: "x (timer)", yName: "y (poeng)" };
+const ax610 = { ...D610, xmin: 0, xmax: 6, ymin: 0, ymax: 2000, xstep: 1, ystep: 250, xName: "x (timer)", yName: "N", fmt: fmtTus };
+const ax611 = { ...D611, xmin: 20, xmax: 90, ymin: 0, ymax: 70, xstep: 10, ystep: 10, xName: "v (km/h)", yName: "s (m)" };
+const ax612 = { ...D612, xmin: 0, xmax: 2.5, ymin: 0, ymax: 3.5, xstep: 0.5, ystep: 0.5, xName: "l (m)", yName: "T (s)", fmt: fmtK };
+const ax613 = { ...D613, xmin: 0, xmax: 6, ymin: 0, ymax: 90, xstep: 1, ystep: 10, xName: "x (uke)", yName: "y (hundre)" };
+const ax614 = { ...D614, xmin: 0, xmax: 60, ymin: 3, ymax: 5, xstep: 10, ystep: 0.5, xName: "x (år etter 1950)", yName: "millioner", fmt: fmtK };
+const ax621 = { ...D621, xmin: 10, xmax: 30, ymin: 0, ymax: 350, xstep: 2, ystep: 50, xName: "x (°C)", yName: "y (is)" };
+const axOP5 = { ...DOP5, xmin: 0, xmax: 20, ymin: 0, ymax: 40, xstep: 2, ystep: 5, xName: "x (dager)", yName: "y (liter)" };
+const axOP8 = { ...DOP8, xmin: 0, xmax: 6, ymin: 0, ymax: 600, xstep: 1, ystep: 100, xName: "r (cm)", yName: "m (g)" };
+const axOP9 = { ...DOP9, xmin: 0, xmax: 3, ymin: 0, ymax: 12, xstep: 0.5, ystep: 2, xName: "t (s)", yName: "h (m)", fmt: fmtK };
+const ax6B3 = { ...D6B3, xmin: 0, xmax: 8, ymin: 0, ymax: 90, xstep: 1, ystep: 10, xName: "x (min)", yName: "y (°C)" };
+const ax6B4 = { ...D6B4, xmin: 0, xmax: 110, ymin: 0, ymax: 2500, xstep: 10, ystep: 500, xName: "m (kg)", yName: "E (kcal)", fmt: fmtTus };
+
+const lin613 = (x: number) => 10.29 * x + 15.95;
+const exp613 = (x: number) => 19.98 * 1.292 ** x;
+const lin610 = (x: number) => 247.4 * x + 404.8;
+const exp610 = (x: number) => 499 * 1.285 ** x;
+
+Object.assign(TASK_FIGURES, {
+  "6.9": figScatter({ ...ax69, caption: "Punktdiagram: øvingstimer $x$ og poeng $y$." }),
+  "6.10": figScatter({ ...ax610, caption: "Punktdiagram: antall bakterier $N$ etter $x$ timer." }),
+  "6.11": figScatter({ ...ax611, caption: "Punktdiagram: bremselengde $s$ ved fart $v$." }),
+  "6.12": figScatter({ ...ax612, caption: "Punktdiagram: svingetid $T$ for pendellengde $l$." }),
+  "6.13": figScatter({ ...ax613, caption: "Punktdiagram: bestillinger $y$ (i hundre) i uke $x$." }),
+  "6.14": figScatter({ ...ax614, caption: "Punktdiagram: folketallet i Norge (millioner), $x$ år etter 1950." }),
+  "6.18": figGardenWall("Hagen ligger inntil husveggen. Gjerdet (stiplet) går langs tre sider."),
+  "6.21": figScatter({ ...ax621, caption: "Punktdiagram: temperatur $x$ og antall solgte is $y$." }),
+  "6.OP5": figScatter({ ...axOP5, caption: "Punktdiagram: liter vann $y$ i tønna etter $x$ dager." }),
+  "6.OP7": figScatter({ ...ax610, caption: "Punktdiagram: antall bakterier $N$ etter $x$ timer." }),
+  "6.OP8": figScatter({ ...axOP8, caption: "Punktdiagram: masse $m$ for kuler med radius $r$." }),
+  "6.OP9": figScatter({ ...axOP9, caption: "Punktdiagram: høyden $h$ til ballen etter $t$ sekunder." }),
+  "6A.1": figFunctionPlot({
+    xmin: 0, xmax: 10, ymin: 0, ymax: 11, xstep: 1, ystep: 1,
+    fns: [
+      { f: (x) => 2 + 0.8 * x, color: K6.lin, label: "f", labelX: 9.3 },
+      { f: (x) => 10 * 0.75 ** x, color: K6.exp, label: "g", labelX: 0.5 },
+      { f: (x) => -0.4 * (x - 5) ** 2 + 10, color: K6.alt, label: "h", labelX: 4.8 },
+      { f: (x) => 2.4 * Math.sqrt(x), color: K6.grense, label: "k", labelX: 9.4 },
+    ],
+    caption: "Fire grafer $f$, $g$, $h$ og $k$.",
+  }),
+  "6B.3": figScatter({ ...ax6B3, caption: "Punktdiagram: temperaturen $y$ i teen etter $x$ minutter." }),
+  "6B.4": figScatter({ ...ax6B4, caption: "Punktdiagram: energibehov $E$ for dyr med masse $m$." }),
+});
+
+Object.assign(TASK_FASIT_FIGURES, {
+  "6.2": { 2: figFunctionPlot({
+    xmin: 0, xmax: 10, ymin: 0, ymax: 400, xstep: 1, ystep: 50, xName: "x (år)", yName: "V (1000 kr)",
+    fns: [
+      { f: () => 150, color: K6.grense, label: "150", labelX: 8.6, dash: true },
+      { f: (x) => 350 * 0.88 ** x, color: K6.lin, label: "V", labelX: 1 },
+    ],
+    points: [{ x: 6.63, y: 150, label: "(6,63; 150)", dx: 6, dy: -8 }],
+    caption: "$V(x)=350\\,000\\cdot 0{,}88^x$ (i tusen kr) skjærer linjen $150$ (tusen kr) i $x\\approx 6{,}63$.",
+  }) },
+  "6.4": { 1: figFunctionPlot({
+    xmin: 0, xmax: 3.5, ymin: 0, ymax: 14, xstep: 0.5, ystep: 2, xName: "t (s)", yName: "h (m)", fmt: fmtK,
+    fns: [{ f: (t) => -4.9 * t * t + 14 * t + 1.5, color: K6.lin, label: "h", labelX: 0.35, from: 0, to: 2.96 }],
+    points: [{ x: 1.43, y: 11.5, label: "topp (1,43; 11,5)", dx: 8, dy: -6 }, { x: 2.96, y: 0, label: "2,96", dx: 6, dy: -8 }],
+    caption: "Høyden $h(t)$: toppunkt i $(1{,}43;\\ 11{,}5)$, treffer bakken ved $t\\approx 2{,}96$.",
+  }) },
+  "6.9": { 0: figScatter({ ...ax69, models: [{ f: (x) => 3.29 * x + 8.67, label: "y = 3,29x + 8,67", labelX: 3.6, labelDy: 24 }], caption: "Punktene med regresjonslinjen $y\\approx 3{,}29x+8{,}67$." }) },
+  "6.10": { 0: figScatter({ ...ax610, models: [{ f: exp610, label: "N = 499·1,285ˣ", labelX: 1.5, labelDy: 26, color: K6.exp }], caption: "Punktene med modellen $N\\approx 499\\cdot 1{,}285^x$." }) },
+  "6.11": { 1: figScatter({ ...ax611, models: [{ f: (v) => 0.0084 * v * v + 0.04 * v + 0.15, label: "andregradsmodell", labelX: 60, labelDy: 30, color: K6.alt }], caption: "Punktene med modellen $s\\approx 0{,}0084v^2+0{,}040v+0{,}15$." }) },
+  "6.12": { 0: figScatter({ ...ax612, models: [{ f: (l) => 2.01 * l ** 0.501, label: "T = 2,01·l^0,501", labelX: 1.2, labelDy: 28, from: 0.001 }], caption: "Punktene med modellen $T\\approx 2{,}01\\cdot l^{0{,}501}$." }) },
+  "6.13": { 1: figScatter({ ...ax613, models: [{ f: lin613, label: "lineær", labelX: 5.15, labelDy: 24 }, { f: exp613, label: "eksponentiell", labelX: 1.5, labelDy: 22 }], caption: "Lineær modell (blå) og eksponentiell modell (oransje) sammen med punktene." }) },
+  "6.14": { 0: figScatter({ ...ax614, models: [{ f: (x) => 0.0243 * x + 3.3095, label: "f", labelX: 55 }], caption: "Punktene med regresjonslinjen $f(x)\\approx 0{,}0243x+3{,}3095$." }) },
+  "6.16": { 2: figFunctionPlot({
+    xmin: 0, xmax: 40, ymin: 0, ymax: 100, xstep: 5, ystep: 10, xName: "t (min)", yName: "K (°C)",
+    fns: [
+      { f: () => 40, color: K6.grense, label: "40 °C", labelX: 33, dash: true },
+      { f: () => 20, color: "#64748b", label: "romtemperatur", labelX: 2, dash: true },
+      { f: (t) => 20 + 70 * 0.92 ** t, color: K6.lin, label: "K", labelX: 3 },
+    ],
+    points: [{ x: 15, y: 40, label: "(15; 40)", dx: 6, dy: -8 }],
+    caption: "$K(t)=20+70\\cdot 0{,}92^t$ er $40\\,^\\circ$C etter ca. $15$ min og nærmer seg $20\\,^\\circ$C.",
+  }) },
+  "6.17": { 1: figFunctionPlot({
+    xmin: 0, xmax: 160, ymin: 0, ymax: 50000, xstep: 20, ystep: 10000, xName: "p (kr)", yName: "I (kr)", fmt: fmtTus,
+    fns: [{ f: (p) => -8 * p * p + 1200 * p, color: K6.lin, label: "I", labelX: 20, from: 0, to: 150 }],
+    points: [{ x: 75, y: 45000, label: "topp (75; 45 000)", dx: -50, dy: -8 }],
+    caption: "Inntekten $I(p)=-8p^2+1200p$ har toppunkt i $(75,\\ 45\\,000)$.",
+  }) },
+  "6.18": { 1: figFunctionPlot({
+    xmin: 0, xmax: 32, ymin: 0, ymax: 500, xstep: 5, ystep: 100, xName: "x (m)", yName: "A (m²)",
+    fns: [{ f: (x) => x * (60 - 2 * x), color: K6.alt, label: "A", labelX: 4, from: 0, to: 30 }],
+    points: [{ x: 15, y: 450, label: "topp (15; 450)", dx: -40, dy: -8 }],
+    caption: "$A(x)=x(60-2x)$ har toppunkt i $(15,\\ 450)$.",
+  }) },
+  "6.19": { 1: figFunctionPlot({
+    xmin: 0, xmax: 200, ymin: 0, ymax: 400, xstep: 20, ystep: 50, xName: "x (min)", yName: "kr",
+    fns: [
+      { f: (x) => 0.5 * x + 199, color: K6.lin, label: "A", labelX: 185 },
+      { f: (x) => 1.5 * x + 99, color: K6.exp, label: "B", labelX: 175 },
+    ],
+    points: [{ x: 100, y: 249, label: "(100; 249)", dx: 6, dy: 16 }],
+    caption: "Abonnement A og B koster like mye, $249$ kr, ved $100$ minutter.",
+  }) },
+  "6.20": { 2: figFunctionPlot({
+    xmin: 0, xmax: 12, ymin: 0, ymax: 450, xstep: 1, ystep: 50, xName: "t (timer)", yName: "M (mg)",
+    fns: [
+      { f: () => 100, color: K6.grense, label: "100 mg", labelX: 10.4, dash: true },
+      { f: (t) => 400 * 0.85 ** t, color: K6.lin, label: "M", labelX: 1 },
+    ],
+    points: [{ x: 8.53, y: 100, label: "(8,53; 100)", dx: -72, dy: -10 }],
+    caption: "$M(t)=400\\cdot 0{,}85^t$ er under $100$ mg etter ca. $8{,}53$ timer.",
+  }) },
+  "6.21": { 0: figScatter({ ...ax621, models: [{ f: (x) => 12.62 * x - 40.24, label: "y = 12,62x − 40,24", labelX: 19, labelDy: 28 }], caption: "Punktene med regresjonslinjen $y\\approx 12{,}62x-40{,}24$." }) },
+  "6.OP5": { 1: figScatter({ ...axOP5, models: [{ f: (x) => -1.9 * x + 34.8, label: "y = −1,90x + 34,80", labelX: 9 }], marks: [{ x: 18.3, y: 0 }], caption: "Regresjonslinjen treffer $y=0$ ved $x\\approx 18{,}3$." }) },
+  "6.OP6": { 1: figFunctionPlot({
+    xmin: 0, xmax: 60, ymin: 0, ymax: 180, xstep: 10, ystep: 20, xName: "t (min)", yName: "T (°C)",
+    fns: [
+      { f: () => 40, color: K6.grense, label: "40 °C", labelX: 52, dash: true },
+      { f: (t) => 22 + 148 * 0.95 ** t, color: K6.lin, label: "T", labelX: 3 },
+    ],
+    points: [{ x: 41.1, y: 40, label: "(41,1; 40)", dx: 4, dy: -10 }],
+    caption: "$T(t)=22+148\\cdot 0{,}95^t$ er $40\\,^\\circ$C etter ca. $41$ min.",
+  }) },
+  "6.OP7": { 1: figScatter({ ...ax610, models: [{ f: lin610, label: "lineær", labelX: 5.1, labelDy: 24 }, { f: exp610, label: "eksponentiell", labelX: 1.4, labelDy: 22 }], caption: "Lineær modell (blå) og eksponentiell modell (oransje) sammen med punktene." }) },
+  "6.OP8": { 0: figScatter({ ...axOP8, models: [{ f: (r) => 4.196 * r ** 2.999, label: "m = 4,20·r³", labelX: 4.3, labelDy: 40, from: 0 }], caption: "Punktene med modellen $m\\approx 4{,}20\\cdot r^{3}$." }) },
+  "6.OP9": { 1: figScatter({ ...axOP9, models: [{ f: (t) => -4.8 * t * t + 12.6 * t + 1.8, label: "h", labelX: 2.75, color: K6.alt, from: 0, to: 2.76 }], marks: [{ x: 1.3125, y: 10.07, label: "topp", dx: 6, dy: -8 }], caption: "Andregradsmodellen $h(t)\\approx -4{,}8t^2+12{,}6t+1{,}8$ med toppunkt og nullpunkt." }) },
+  "6B.1": { 2: figScatter({ ...D6B1, xmin: 0, xmax: 6, ymin: -0.5, ymax: 0.5, xstep: 1, ystep: 0.1, xName: "x", yName: "avvik", fmt: fmtK, h: 240, caption: "Avviksplott: avvikene ligger tilfeldig rundt $0$ uten mønster." }) },
+  "6B.2": { 1: figScatter({ ...D6B2, xmin: 20, xmax: 90, ymin: -3, ymax: 3, xstep: 10, ystep: 1, xName: "v", yName: "avvik", h: 240, caption: "Avviksplott for den lineære modellen: mønsteret $+,-,-,-,-,+$ viser at dataene krummer." }) },
+  "6B.3": { 1: figScatter({ ...ax6B3, models: [{ f: (x) => 79.95 * 0.781 ** x, label: "y = 79,95·0,781ˣ", labelX: 3.5, labelDy: -26, color: K6.exp }], caption: "Punktene med modellen $y\\approx 79{,}95\\cdot 0{,}781^x$." }) },
+  "6B.4": { 0: figScatter({ ...ax6B4, models: [{ f: (m) => 70 * m ** 0.75, label: "E = 70·m^0,75", labelX: 60, labelDy: 24, from: 0 }], caption: "Punktene med modellen $E\\approx 70\\cdot m^{0{,}75}$." }) },
+  "6C.1": { 1: figFunctionPlot({
+    xmin: 0, xmax: 16, ymin: 0, ymax: 6000, xstep: 2, ystep: 1000, xName: "x (timer)", yName: "antall", fmt: fmtTus,
+    fns: [
+      { f: (x) => 1200 + 150 * x, color: K6.lin, label: "A", labelX: 15.2 },
+      { f: (x) => 800 * 1.12 ** x, color: K6.exp, label: "B", labelX: 14.3 },
+    ],
+    points: [{ x: 11.39, y: 2908, label: "x ≈ 11,4", dx: -64, dy: -10 }],
+    caption: "Kultur B går forbi kultur A etter ca. $11{,}4$ timer.",
+  }) },
+  "6C.4": { 2: figFunctionPlot({
+    xmin: 0, xmax: 500, ymin: 0, ymax: 14000, xstep: 50, ystep: 2000, xName: "p (kr)", yName: "I (kr)", fmt: fmtTus,
+    fns: [{ f: (p) => -0.21 * p * p + 102.4 * p, color: K6.lin, label: "I", labelX: 40, from: 0, to: 487.6 }],
+    points: [{ x: 243.8, y: 12483, label: "topp (244; 12 483)", dx: -50, dy: -10 }],
+    caption: "Inntekten $I(p)\\approx -0{,}21p^2+102{,}4p$ er størst for $p\\approx 244$ kr.",
+  }) },
+});
