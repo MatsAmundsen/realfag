@@ -69,7 +69,7 @@
     "sporsmal": "Hvordan faktoriserer man uttrykket $x^2 - 5x$?",
     "alternativer": [
       "$(x - 5)(x + 5)$",
-      "$(x - 2,5)^2$",
+      "$(x - 2{,}5)^2$",
       "$x(x - 5)$",
       "Man kan ikke faktorisere det"
     ],

@@ -249,40 +249,63 @@ export function figTank(filled: number, of: number, caption: string): string {
   return wrap(svg, caption, `Tank fylt ${filled} av ${of}`);
 }
 
-/** To likesidede trekanter. */
+/** To formlike rettvinklede trekanter, tegnet i målestokk: den store er nøyaktig 2 ganger den lille. */
 export function figSimilarTriangles(caption: string): string {
+  // 20 px per lengdeenhet. Liten: kateter 3 og 4. Stor: kateter 6 og 8 (= 2 · liten).
+  const u = 20;
+  const g = 196;
+  const sx = 50;
+  const bx = 210;
+  const small = `${sx},${g} ${sx + 3 * u},${g} ${sx},${g - 4 * u}`;
+  const big = `${bx},${g} ${bx + 6 * u},${g} ${bx},${g - 8 * u}`;
+  const lab = (x: number, y: number, t: string, a = "middle") =>
+    `<text x="${x}" y="${y}" text-anchor="${a}" font-size="14" font-weight="700" fill="${ink}">${t}</text>`;
   const svg = `
-    <polygon points="40,180 140,180 40,70" fill="rgba(99,102,241,0.14)" stroke="${ink}" stroke-width="2"/>
-    <rect x="40" y="160" width="16" height="16" fill="none" stroke="${ink}" stroke-width="1.4"/>
-    <text x="90" y="202" text-anchor="middle" font-size="14" font-weight="700" fill="${ink}">3</text>
-    <text x="26" y="130" text-anchor="middle" font-size="14" font-weight="700" fill="${ink}">4</text>
-    <text x="108" y="118" text-anchor="middle" font-size="14" font-weight="700" fill="${ink}">5</text>
-    <polygon points="200,180 360,180 200,50" fill="rgba(52,211,153,0.14)" stroke="${ink}" stroke-width="2"/>
-    <rect x="200" y="160" width="16" height="16" fill="none" stroke="${ink}" stroke-width="1.4"/>
-    <text x="280" y="202" text-anchor="middle" font-size="14" font-weight="700" fill="${ink}">6</text>
-    <text x="186" y="118" text-anchor="middle" font-size="14" font-weight="700" fill="${ink}">x</text>
-    <text x="310" y="108" text-anchor="middle" font-size="14" font-weight="700" fill="${ink}">10</text>
-    <text x="90" y="28" text-anchor="middle" font-size="13" fill="${ink}">liten</text>
-    <text x="280" y="28" text-anchor="middle" font-size="13" fill="${ink}">stor (likeformet)</text>`;
-  return wrap(svg, caption, "To likeformede rettvinklede trekanter, faktor 2");
+    <polygon points="${small}" fill="rgba(99,102,241,0.14)" stroke="${ink}" stroke-width="2"/>
+    <rect x="${sx}" y="${g - 12}" width="12" height="12" fill="none" stroke="${ink}" stroke-width="1.4"/>
+    ${lab(sx + 1.5 * u, g + 18, "3")}
+    ${lab(sx - 8, g - 2 * u + 5, "4", "end")}
+    ${lab(sx + 1.5 * u + 10, g - 2 * u - 4, "5", "start")}
+    <polygon points="${big}" fill="rgba(52,211,153,0.14)" stroke="${ink}" stroke-width="2"/>
+    <rect x="${bx}" y="${g - 12}" width="12" height="12" fill="none" stroke="${ink}" stroke-width="1.4"/>
+    ${lab(bx + 3 * u, g + 18, "6")}
+    ${lab(bx - 8, g - 4 * u + 5, "x", "end")}
+    ${lab(bx + 3 * u + 12, g - 4 * u - 4, "10", "start")}
+    <text x="${sx + 1.5 * u}" y="${g - 4 * u - 16}" text-anchor="middle" font-size="13" fill="${ink}">liten</text>
+    <text x="${bx + 3 * u}" y="22" text-anchor="middle" font-size="13" fill="${ink}">stor (alle sider · 2)</text>`;
+  return wrap(svg, caption, "To formlike rettvinklede trekanter i målestokk. Den store har dobbelt så lange sider som den lille.");
 }
 
-/** Stang og tre med skygge. */
+/** Stang og tre med skygge, i målestokk (10 px per meter) og med parallelle solstråler. */
 export function figShadow(caption: string): string {
+  // Stang 6 m, skygge 4 m. Tre 15 m, skygge 10 m. Begge stråler har retning (4, 6), altså parallelle.
+  const m = 10;
+  const g = 200;
+  const px = 50;
+  const tx = 230;
+  const poleTop = g - 6 * m;
+  const treeTop = g - 15 * m;
+  const pTip = px + 4 * m;
+  const tTip = tx + 10 * m;
+  // Forleng strålene bakover langs samme retning (dx:dy = 4:6).
+  const ray = (x: number, y: number, x2: number, y2: number, back: number) =>
+    `<line x1="${x - 4 * back}" y1="${y - 6 * back}" x2="${x2}" y2="${y2}" stroke="#f59e0b" stroke-dasharray="5 4" stroke-width="1.6"/>`;
   const svg = `
-    <line x1="30" y1="170" x2="400" y2="170" stroke="${ink}" stroke-width="2"/>
-    <rect x="70" y="70" width="12" height="100" fill="rgba(99,102,241,0.55)" stroke="${ink}"/>
-    <text x="76" y="58" text-anchor="middle" font-size="13" font-weight="700" fill="${ink}">6 m</text>
-    <line x1="82" y1="170" x2="162" y2="170" stroke="#f59e0b" stroke-width="8" opacity="0.7"/>
-    <text x="122" y="196" text-anchor="middle" font-size="13" font-weight="700" fill="#f59e0b">4 m</text>
-    <polygon points="250,170 268,40 286,170" fill="rgba(52,211,153,0.35)" stroke="${ink}" stroke-width="1.6"/>
-    <text x="268" y="28" text-anchor="middle" font-size="14" font-weight="800" fill="#34d399">h = ?</text>
-    <line x1="268" y1="170" x2="388" y2="170" stroke="#f59e0b" stroke-width="8" opacity="0.7"/>
-    <text x="328" y="196" text-anchor="middle" font-size="13" font-weight="700" fill="#f59e0b">10 m</text>
-    <line x1="40" y1="24" x2="82" y2="70" stroke="#fde68a" stroke-dasharray="4 3" stroke-width="1.4"/>
-    <line x1="40" y1="24" x2="268" y2="40" stroke="#fde68a" stroke-dasharray="4 3" stroke-width="1.4"/>
-    <circle cx="36" cy="20" r="8" fill="#fbbf24"/>`;
-  return wrap(svg, caption, "Stang 6 m med skygge 4 m, tre med skygge 10 m");
+    <line x1="20" y1="${g}" x2="400" y2="${g}" stroke="${ink}" stroke-width="2"/>
+    <line x1="${px}" y1="${g}" x2="${px}" y2="${poleTop}" stroke="rgba(99,102,241,0.9)" stroke-width="5"/>
+    <text x="${px - 8}" y="${(g + poleTop) / 2 + 5}" text-anchor="end" font-size="13" font-weight="700" fill="${ink}">6 m</text>
+    <line x1="${px}" y1="${g}" x2="${pTip}" y2="${g}" stroke="#f59e0b" stroke-width="7" opacity="0.7"/>
+    <text x="${(px + pTip) / 2}" y="${g + 18}" text-anchor="middle" font-size="13" font-weight="700" fill="#f59e0b">4 m</text>
+    <line x1="${tx}" y1="${g}" x2="${tx}" y2="${treeTop + 20}" stroke="#a16207" stroke-width="6"/>
+    <ellipse cx="${tx}" cy="${treeTop + 22}" rx="16" ry="24" fill="rgba(52,211,153,0.35)" stroke="${ink}" stroke-width="1.4"/>
+    <circle cx="${tx}" cy="${treeTop}" r="2.5" fill="${ink}"/>
+    <text x="${tx - 22}" y="${(g + treeTop) / 2 + 20}" text-anchor="end" font-size="14" font-weight="800" fill="#34d399">h = ?</text>
+    <line x1="${tx}" y1="${g}" x2="${tTip}" y2="${g}" stroke="#f59e0b" stroke-width="7" opacity="0.7"/>
+    <text x="${(tx + tTip) / 2}" y="${g + 18}" text-anchor="middle" font-size="13" font-weight="700" fill="#f59e0b">10 m</text>
+    ${ray(px, poleTop, pTip, g, 5)}
+    ${ray(tx, treeTop, tTip, g, 1.5)}
+    <circle cx="24" cy="18" r="9" fill="#fbbf24"/>`;
+  return wrapH(svg, caption, "Stang 6 m med skygge 4 m og tre med skygge 10 m, tegnet i målestokk med parallelle solstråler", 225);
 }
 
 /** To proporsjonsstolper. */
@@ -969,6 +992,113 @@ export function figTriangleRows(rows: number, caption: string): string {
   return wrapH(out, caption, `Trekantformet jorde med ${rows} rader solcellepaneler: rad n har 2n−1 paneler`, y0 + rows * (s + 8) + 6);
 }
 
+/* ── Rikere kapittel 3-figurer (DesignBOT) ─────────────────────
+ * Farger via CSS-variabler i style=, så de følger mørk/lys modus.
+ * role="img" + <title>/<desc> (aria-labelledby) for skjermlesere. */
+const C = {
+  ink: "currentColor",
+  pri: "var(--primary-light, #818cf8)",
+  acc: "var(--accent, #34d399)",
+  hint: "var(--hint-color, #f59e0b)",
+  priFill: "var(--primary-glow, rgba(99,102,241,0.18))",
+  accFill: "var(--accent-glow, rgba(52,211,153,0.18))",
+};
+let figSeq = 0;
+function wrapA11y(svg: string, vb: string, title: string, desc: string, caption: string): string {
+  const id = `tf3-${++figSeq}`;
+  return `<figure class="task-figure"><svg xmlns="http://www.w3.org/2000/svg" viewBox="${vb}" width="100%" role="img" aria-labelledby="${id}-t ${id}-d" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif"><title id="${id}-t">${title}</title><desc id="${id}-d">${desc}</desc>${svg}</svg><figcaption>${caption}</figcaption></figure>`;
+}
+/** Målpil med pilspisser i begge ender (horisontal eller vertikal). */
+function dimArrow(x1: number, y1: number, x2: number, y2: number, color: string): string {
+  const h = 6;
+  const horiz = y1 === y2;
+  const heads = horiz
+    ? `<path d="M${x1 + h} ${y1 - h * 0.7} L${x1} ${y1} L${x1 + h} ${y1 + h * 0.7} M${x2 - h} ${y2 - h * 0.7} L${x2} ${y2} L${x2 - h} ${y2 + h * 0.7}"/>`
+    : `<path d="M${x1 - h * 0.7} ${y1 + h} L${x1} ${y1} L${x1 + h * 0.7} ${y1 + h} M${x2 - h * 0.7} ${y2 - h} L${x2} ${y2} L${x2 + h * 0.7} ${y2 - h}"/>`;
+  return `<g style="stroke:${color}" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}"/>${heads}</g>`;
+}
+/** Etikett med «pille»-bakgrunn så den alltid er lesbar. */
+function pill(x: number, y: number, text: string, color: string, w: number, anchor = "middle"): string {
+  const rx = anchor === "middle" ? x - w / 2 : anchor === "end" ? x - w : x;
+  return `<rect x="${rx}" y="${y - 15}" width="${w}" height="22" rx="11" style="fill:var(--bg-surface, #111827);stroke:${color}" stroke-width="1.2"/><text x="${rx + w / 2}" y="${y + 1}" text-anchor="middle" font-size="15" font-weight="700" style="fill:${color}">${text}</text>`;
+}
+
+/** 3.2: fotballbane med banemarkering, lengde l og bredde l − 35. */
+export function figFootballPitch(caption: string): string {
+  const x = 60, y = 40, w = 300, h = 200; // 105:70 ≈ 3:2
+  const cx = x + w / 2, cy = y + h / 2;
+  const line = `style="stroke:${C.ink}" stroke-width="1.6" fill="none" opacity="0.75"`;
+  const svg = `
+    <rect x="${x}" y="${y}" width="${w}" height="${h}" rx="3" style="fill:${C.accFill};stroke:${C.ink}" stroke-width="2.4"/>
+    ${[1, 3, 5].map((i) => `<rect x="${x + (i * w) / 6}" y="${y}" width="${w / 6}" height="${h}" style="fill:${C.acc}" opacity="0.07"/>`).join("")}
+    <line x1="${cx}" y1="${y}" x2="${cx}" y2="${y + h}" ${line}/>
+    <circle cx="${cx}" cy="${cy}" r="26" ${line}/>
+    <circle cx="${cx}" cy="${cy}" r="2.5" style="fill:${C.ink}" opacity="0.75"/>
+    <rect x="${x}" y="${cy - 58}" width="46" height="116" ${line}/>
+    <rect x="${x + w - 46}" y="${cy - 58}" width="46" height="116" ${line}/>
+    <rect x="${x}" y="${cy - 26}" width="16" height="52" ${line}/>
+    <rect x="${x + w - 16}" y="${cy - 26}" width="16" height="52" ${line}/>
+    <rect x="${x - 7}" y="${cy - 14}" width="7" height="28" ${line}/>
+    <rect x="${x + w}" y="${cy - 14}" width="7" height="28" ${line}/>
+    ${dimArrow(x, 22, x + w, 22, C.pri)}
+    ${pill(cx, 22, "lengde l", C.pri, 92)}
+    ${dimArrow(386, y, 386, y + h, C.hint)}
+    <g transform="translate(386 ${cy}) rotate(-90)">${pill(0, 5, "bredde l − 35", C.hint, 126)}</g>
+    <text x="${cx}" y="${y + h + 30}" text-anchor="middle" font-size="14" font-weight="600" style="fill:${C.ink}">Omkrets: l + (l − 35) + l + (l − 35) = 350 m</text>`;
+  return wrapA11y(
+    svg,
+    "0 0 420 280",
+    "Fotballbane sett ovenfra",
+    "Rektangulær fotballbane med midtlinje, midtsirkel, straffefelt og mål. Lengden er merket l, bredden er merket l minus 35. Hele omkretsen er 350 meter.",
+    caption,
+  );
+}
+
+/** 3.24: rektangel med omkrets 54 cm, sider b og 2b + 3. Bredden b vist som målestokk. */
+export function figRectPerimeter54(caption: string): string {
+  const x = 50, y = 42, b = 70, w = 2 * b + 30, h = b; // l = 2b + 3 skjematisk
+  const svg = `
+    <rect x="${x}" y="${y}" width="${w * 1.6}" height="${h * 1.6}" rx="4" style="fill:${C.priFill};stroke:${C.ink}" stroke-width="2.4"/>
+    ${dimArrow(x, 24, x + b * 1.6, 24, C.pri)}${dimArrow(x + b * 1.6, 24, x + 2 * b * 1.6, 24, C.pri)}${dimArrow(x + 2 * b * 1.6, 24, x + w * 1.6, 24, C.hint)}
+    <text x="${x + b * 0.8}" y="16" text-anchor="middle" font-size="14" font-weight="700" style="fill:${C.pri}">b</text>
+    <text x="${x + b * 2.4}" y="16" text-anchor="middle" font-size="14" font-weight="700" style="fill:${C.pri}">b</text>
+    <text x="${x + (2 * b + 15) * 1.6}" y="16" text-anchor="middle" font-size="14" font-weight="700" style="fill:${C.hint}">3</text>
+    ${pill(x + (w * 1.6) / 2, y + h * 0.8 + 6, "lengde 2b + 3", C.pri, 128)}
+    ${dimArrow(x + w * 1.6 + 18, y, x + w * 1.6 + 18, y + h * 1.6, C.acc)}
+    ${pill(x + w * 1.6 + 18, y + h * 0.8 + 6, "b", C.acc, 30)}
+    <text x="${x + (w * 1.6) / 2}" y="${y + h * 1.6 + 30}" text-anchor="middle" font-size="14" font-weight="600" style="fill:${C.ink}">Omkrets = 54 cm (hele kanten rundt)</text>`;
+  return wrapA11y(
+    svg,
+    "0 0 420 230",
+    "Rektangel med omkrets 54 cm",
+    "Rektangel der bredden er b og lengden er 2b pluss 3. Lengden er delt opp i to biter med lengde b og en bit med lengde 3. Omkretsen er 54 centimeter.",
+    caption,
+  );
+}
+
+/** 3.46 c: rettvinklet trekant, kateter x og x + 7, hypotenus 13. */
+export function figPythagoras13(caption: string): string {
+  // 5–12–13-proporsjoner (skjematisk): x kort katet, x + 7 lang katet.
+  const A = [80, 190], B = [80 + 12 * 21, 190], Cc = [80, 190 - 5 * 21];
+  const svg = `
+    <polygon points="${A} ${B} ${Cc}" style="fill:${C.accFill};stroke:${C.ink}" stroke-width="2.4" stroke-linejoin="round"/>
+    <path d="M${A[0]} ${A[1] - 18} h18 v18" style="stroke:${C.ink}" stroke-width="1.8" fill="none"/>
+    <circle cx="${A[0] + 9}" cy="${A[1] - 9}" r="1.8" style="fill:${C.ink}"/>
+    <line x1="${A[0]}" y1="${A[1]}" x2="${B[0]}" y2="${B[1]}" style="stroke:${C.pri}" stroke-width="4" stroke-linecap="round"/>
+    <line x1="${A[0]}" y1="${A[1]}" x2="${Cc[0]}" y2="${Cc[1]}" style="stroke:${C.hint}" stroke-width="4" stroke-linecap="round"/>
+    <line x1="${Cc[0]}" y1="${Cc[1]}" x2="${B[0]}" y2="${B[1]}" style="stroke:${C.acc}" stroke-width="4" stroke-linecap="round"/>
+    ${pill((A[0] + B[0]) / 2, 216, "x + 7", C.pri, 64)}
+    ${pill(44, (A[1] + Cc[1]) / 2 + 5, "x", C.hint, 30)}
+    <g transform="translate(${(Cc[0] + B[0]) / 2 + 6} ${(Cc[1] + B[1]) / 2 - 16}) rotate(22.6)">${pill(0, 5, "13", C.acc, 40)}</g>`;
+  return wrapA11y(
+    svg,
+    "0 62 420 170",
+    "Rettvinklet trekant",
+    "Rettvinklet trekant med rett vinkel nede til venstre. Den loddrette kateten er x, den vannrette kateten er x pluss 7, og hypotenusen er 13.",
+    caption,
+  );
+}
+
 export const TASK_FIGURES: Record<string, string> = {
   ...KAP7_FIGURES,
   ...KAP2_FIGURES,
@@ -990,11 +1120,11 @@ export const TASK_FIGURES: Record<string, string> = {
   "2.OP10": figSquareNumbers("De fire første kvadrattallene som prikkmønstre."),
   "2.56": figStaircase("Figur $n$ er en trekant av $n$ rader med kvadrater — antall = $T_n$."),
   "2.57": figLShape("Figur 3 i det L-formede mønsteret (et kvadrat der ett hjørne mangler)."),
-  "3.2": figRect("lengde l", "bredde l − 35", "Fotballbane: omkrets $2(l+b)=350$ m."),
-  "3.10": figRect("a + 10", "a", "Sauegjerde formet som rektangel med areal $140\\,\\mathrm{m}^2$."),
-  "3.13": figRect("b + 4", "b", "Rektangel med areal $45\\,\\mathrm{cm}^2$. Lengden er $4$ cm lenger enn bredden."),
-  "3.24": figRect("2b + 3", "b", "Omkrets $54$ cm. Lengde er $3$ mer enn dobbel bredde."),
-  "3.29": figRect("x + 2", "x", "Areal $x(x+2)=48$. Finn sidene (positiv lengde)."),
+  "3.2": figFootballPitch("Fotballbane: omkrets $2(l+b)=350$ m."),
+  "3.10": figRect("x + 10", "x", "Sauegjerde formet som rektangel med areal $144\\,\\mathrm{m}^2$."),
+  "3.13": figRect("x + 4", "x", "Rektangel med areal $45\\,\\mathrm{cm}^2$. Lengden er $4$ cm lenger enn bredden."),
+  "3.24": figRectPerimeter54("Omkrets $54$ cm. Lengde er $3$ mer enn dobbel bredde."),
+  "3.29": figRect("x + 2", "x", "Rektangel med areal $48$. Den ene siden er $2$ lenger enn den andre."),
   "3.34": figProportion(
     "4 personer",
     "3 dl fløte",
@@ -1003,9 +1133,9 @@ export const TASK_FIGURES: Record<string, string> = {
     "Rett proporsjonal: mer folk $\\Rightarrow$ mer fløte, i samme forhold.",
   ),
   "3.40": figRect("b + 3", "b", "Hage med omkrets $46$ m. Lengden er $3$ m mer enn bredden."),
-  "3.46": figRightTriangle("x", "x + 7", "Rettvinklet trekant med kateter $x$ og $x+7$, og hypotenus $13$."),
-  "3.54": figSimilarTriangles("Likeformede trekanter: alle sider i samme forhold.") +
-    figShadow("Illustrasjon av likeformede trekanter: stang og tre med skygger."),
+  "3.46": figPythagoras13("Rettvinklet trekant med kateter $x$ og $x+7$, og hypotenus $13$."),
+  "3.54": figSimilarTriangles("a) Formlike trekanter i målestokk: den store har nøyaktig dobbelt så lange sider.") +
+    figShadow("b) Stang og tre i målestokk. Solstrålene er parallelle, så trekantene er formlike."),
   "3.OP2": figRect("3b + 4", "b", "Rektangel med bredde $b$ og lengde $3b+4$."),
   "3.OP3": figCircle("r", "Sirkel med radius $r$ og omkrets $C = 10\\pi$."),
   "3.OP9": figProportion(
@@ -1081,23 +1211,131 @@ export const TASK_FASIT_FIGURES: Record<string, Record<number, string>> = {
     2: figDiffSquares("Geometrisk tolkning av konjugatsetningen: $a^2 - b^2 = (a+b)(a-b)$."),
   },
   "3.25": {
+    0: figNumberLine({
+      min: 0,
+      max: 9,
+      ticks: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+      from: 0,
+      to: 6,
+      openFrom: true,
+      openTo: true,
+      caption: "Løsningen for a): $x<6$ er strålen $\\langle\\leftarrow,6\\rangle$. Åpen ring: $6$ er ikke med.",
+    }),
     1: figNumberLine({
       min: -6,
-      max: 8,
-      ticks: [-2, 0, 6],
+      max: 3,
+      ticks: [-6, -5, -4, -3, -2, -1, 0, 1, 2, 3],
       from: -6,
       to: -2,
       openFrom: true,
       openTo: false,
-      caption: "Løsningen for b): $x\\le -2$ er strålen $\\langle\\leftarrow,-2]$.",
+      caption: "Løsningen for b): $x\\le -2$ er strålen $\\langle\\leftarrow,-2]$. Fylt ring: $-2$ er med.",
+    }),
+  },
+  "3.39": {
+    0: figNumberLine({
+      min: -2,
+      max: 7,
+      ticks: [-2, -1, 0, 1, 2, 3, 4, 5, 6, 7],
+      from: -2,
+      to: 3,
+      openFrom: true,
+      openTo: false,
+      caption: "a) $x\\le 3$: $\\langle\\leftarrow,3]$.",
+    }),
+    1: figNumberLine({
+      min: -6,
+      max: 3,
+      ticks: [-6, -5, -4, -3, -2, -1, 0, 1, 2, 3],
+      from: -6,
+      to: -2,
+      openFrom: true,
+      openTo: true,
+      caption: "b) $x<-2$: $\\langle\\leftarrow,-2\\rangle$.",
+    }),
+    2: figNumberLine({
+      min: -8,
+      max: 1,
+      ticks: [-8, -7, -6, -5, -4, -3, -2, -1, 0, 1],
+      from: -5,
+      to: 1,
+      openFrom: false,
+      openTo: true,
+      caption: "c) $x\\ge -5$: $[-5,\\rightarrow\\rangle$.",
+    }),
+    3: figNumberLine({
+      min: -5,
+      max: 4,
+      ticks: [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4],
+      from: -2,
+      to: 4,
+      openFrom: true,
+      openTo: true,
+      caption: "d) $x>-2$: $\\langle -2,\\rightarrow\\rangle$.",
+    }),
+    4: figNumberLine({
+      min: -2,
+      max: 6,
+      ticks: [-2, -1, 0, 1, 2, 3, 4, 5, 6],
+      from: -2,
+      to: 10 / 3,
+      openFrom: true,
+      openTo: false,
+      caption: "e) $x\\le \\frac{10}{3}\\approx 3{,}3$: $\\langle\\leftarrow,\\tfrac{10}{3}]$.",
+    }),
+  },
+  "3.61": {
+    3: figNumberLine({
+      min: -8,
+      max: 1,
+      ticks: [-8, -7, -6, -5, -4, -3, -2, -1, 0, 1],
+      from: -8,
+      to: -4,
+      openFrom: true,
+      openTo: false,
+      caption: "d) $x\\le -4$: $\\langle\\leftarrow,-4]$.",
+    }),
+  },
+  "3.62": {
+    1: figNumberLine({
+      min: -4,
+      max: 5,
+      ticks: [-4, -3, -2, -1, 0, 1, 2, 3, 4, 5],
+      from: -2,
+      to: 3,
+      openFrom: true,
+      openTo: false,
+      caption: "b) $-2<x\\le 3$: $\\langle -2,3]$. Åpen ring i $-2$, fylt ring i $3$.",
+    }),
+  },
+  "3.63": {
+    0: figNumberLine({
+      min: -4,
+      max: 5,
+      ticks: [-4, -3, -2, -1, 0, 1, 2, 3, 4, 5],
+      from: -2,
+      to: 3,
+      openFrom: true,
+      openTo: true,
+      caption: "a) $-2<x<3$: $\\langle -2,3\\rangle$. Endepunktene er ikke med fordi ulikheten er streng.",
     }),
   },
   "3.OP8": {
+    0: figNumberLine({
+      min: -1,
+      max: 8,
+      ticks: [-1, 0, 1, 2, 3, 4, 5, 6, 7, 8],
+      from: -1,
+      to: 4,
+      openFrom: true,
+      openTo: true,
+      caption: "Løsningen for a): $x<4$ er strålen $\\langle\\leftarrow,4\\rangle$.",
+    }),
     1: figNumberLine({
-      min: -6,
-      max: 6,
-      ticks: [-3, 0, 4],
-      from: -6,
+      min: -7,
+      max: 2,
+      ticks: [-7, -6, -5, -4, -3, -2, -1, 0, 1, 2],
+      from: -7,
       to: -3,
       openFrom: true,
       openTo: false,
@@ -1181,4 +1419,11 @@ export const TASK_FASIT_FIGURES: Record<string, Record<number, string>> = {
   "5.OP8": {
     2: figParallelLines("Når $k=4$ er linjene $2x+y=5$ og $2x+y=2$ parallelle uten felles skjæringspunkt."),
   },
+};
+
+/** Noen id-er finnes både som ekstraoppgave og som md-oppgave med annet innhold.
+ * Figuren vises bare når oppgaveteksten faktisk handler om den. */
+export const TASK_FIGURE_REQUIRES: Record<string, RegExp> = {
+  "3.24": /54/,
+  "3.46": /hypotenus/i,
 };

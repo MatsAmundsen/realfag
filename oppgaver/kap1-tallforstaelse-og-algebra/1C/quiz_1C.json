@@ -22,15 +22,15 @@
     "forklaring": "Gangen for 4: 4, 8, 12, 16... Gangen for 6: 6, 12, 18... Det minste felles multiplumet er 12."
   },
   {
-    "sporsmal": "Hvordan regner man ut $\\frac{2}{3} + \\frac{1}{4}$?",
+    "sporsmal": "Regn ut $\\frac{3}{4} - \\frac{1}{6}$",
     "alternativer": [
-      "$\\frac{3}{7}$",
+      "$\\frac{2}{2}$",
       "$\\frac{2}{12}$",
-      "$\\frac{11}{12}$",
-      "$\\frac{8}{3}$"
+      "$\\frac{7}{12}$",
+      "$\\frac{11}{12}$"
     ],
     "riktigSvar": 2,
-    "forklaring": "Vi må finne fellesnevner, som er 12. $\\frac{2 \\cdot 4}{3 \\cdot 4} + \\frac{1 \\cdot 3}{4 \\cdot 3} = \\frac{8}{12} + \\frac{3}{12} = \\frac{11}{12}$."
+    "forklaring": "Fellesnevneren er 12. $\\frac{3 \\cdot 3}{4 \\cdot 3} - \\frac{1 \\cdot 2}{6 \\cdot 2} = \\frac{9}{12} - \\frac{2}{12} = \\frac{7}{12}$."
   },
   {
     "sporsmal": "Hva er største felles faktor (SFF) for 18 og 24?",

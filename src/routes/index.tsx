@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { CoverImage } from "../components/CoverImage";
 import { ArrowRight, BookOpen, Compass, Trophy } from "lucide-react";
 import { CHAPTER_META, fagsok } from "@/data/content";
 import { EXAMS } from "@/data/exams";
@@ -83,7 +84,7 @@ function Home() {
                   params={{ kapId: kap.id, subId: first?.id || "1A" }}
                   className="chapter-card photo-card"
                 >
-                  <img src={meta?.image} alt="" />
+                  <CoverImage src={meta?.image} sizes="(max-width: 600px) 100vw, 400px" />
                   <div className="chapter-card-title">{kap.tittel}</div>
                   <div className="chapter-card-sub">{meta?.blurb}</div>
                   <div className="chapter-card-meta">

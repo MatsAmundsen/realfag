@@ -3707,7 +3707,7 @@ a.vid-nav-card {
 .mm-kap4 { --mm: #a78bfa; --mm-soft: rgba(167,139,250,0.12); }
 .mm-kap5 { --mm: #22d3ee; --mm-soft: rgba(34,211,238,0.12); }
 .mm-kap6 { --mm: #f472b6; --mm-soft: rgba(244,114,182,0.12); }
-.mm-kap7 { --mm: #fb923c; --mm-soft: rgba(251,146,60,0.12); }
+.mm-kap7 { --mm: #fb7185; --mm-soft: rgba(251,113,133,0.12); }
 .mm-path-card.mm-exam { background: var(--primary-subtle); }
 .mm-path-card.mm-exam svg { color: var(--hint-color); }
 
@@ -4182,3 +4182,29 @@ a.vid-nav-card {
 .topic-video-copy p { color: #a5b4c8; }
 [data-theme="light"] .topic-video-copy p { color: #475569; }
 [data-theme="light"] .topic-video-btn { color: #4338ca; }
+
+/* Tonet rulle-kant: vises når tabellen kan rulles videre, forsvinner ved enden (ren CSS, ingen animasjon) */
+.data-table-wrap {
+  background:
+    linear-gradient(to left, var(--bg-surface) 40%, transparent) right center / 56px 100% no-repeat local,
+    linear-gradient(to left, color-mix(in srgb, var(--primary-light) 55%, transparent), transparent) right center / 36px 100% no-repeat scroll,
+    var(--bg-surface);
+}
+@media (prefers-reduced-motion: no-preference) { .data-table-wrap { scroll-behavior: smooth; } }
+
+/* Mobil: «Start quiz» ligger i flyten etter innholdet i stedet for å flyte over tabeller og rulle-kanten */
+@media (max-width: 600px) {
+  .quiz-fab {
+    position: static;
+    margin: 1.5rem auto calc(1.5rem + env(safe-area-inset-bottom, 0px));
+    width: fit-content;
+    animation: none;
+  }
+}
+
+/* Lyst tema: kap6/kap7-farge som tekst i kunnskapskartet må ha minst 4,5:1 mot hvit */
+[data-theme="light"] .mm-kap6 { --mm: #be185d; --mm-soft: rgba(190,24,93,0.10); }
+[data-theme="light"] .mm-kap7 { --mm: #be123c; --mm-soft: rgba(190,18,60,0.10); }
+
+/* Omslag i <picture>: bildet fyller fortsatt rammen */
+.photo-card picture, .kap-panel-head picture { display: block; }

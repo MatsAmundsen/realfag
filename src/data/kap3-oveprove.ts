@@ -60,11 +60,11 @@ export const KAP3_OVEPROVE: Delkapittel = {
     o(
       "3.OP5",
       "Oppgave 5 — ABC-formelen",
-      "Løs med abc-formelen. Oppgi eksakt svar.<br><br><strong>a)</strong> $x^2-6x+4=0$<br><br><strong>b)</strong> $2x^2+x-6=0$",
+      "Løs med abc-formelen. Oppgi eksakt svar.<br><br><strong>a)</strong> $x^2-6x+4=0$<br><br><strong>b)</strong> $2x^2-5x-3=0$",
       "$x=\\dfrac{-b\\pm\\sqrt{b^2-4ac}}{2a}$. Forenkle rota.",
       [
         "<strong>a)</strong> $a=1,b=-6,c=4$. $D=36-16=20=4\\cdot 5$.<br>$x=\\dfrac{6\\pm 2\\sqrt{5}}{2}=3\\pm\\sqrt{5}$.<br><strong>Svar:</strong> $x=3+\\sqrt{5}$ eller $x=3-\\sqrt{5}$",
-        "<strong>b)</strong> $a=2,b=1,c=-6$. $D=1+48=49$.<br>$x=\\dfrac{-1\\pm 7}{4}$. $x=\\dfrac{6}{4}=\\dfrac{3}{2}$ eller $x=-2$.<br><strong>Svar:</strong> $x=\\dfrac{3}{2}$ eller $x=-2$",
+        "<strong>b)</strong> $a=2,b=-5,c=-3$. $D=(-5)^2-4\\cdot 2\\cdot(-3)=25+24=49$.<br>$x=\\dfrac{5\\pm 7}{4}$. $x=\\dfrac{12}{4}=3$ eller $x=\\dfrac{-2}{4}=-\\dfrac{1}{2}$.<br><strong>Svar:</strong> $x=3$ eller $x=-\\dfrac{1}{2}$",
       ],
     ),
     o(
@@ -80,11 +80,11 @@ export const KAP3_OVEPROVE: Delkapittel = {
     o(
       "3.OP7",
       "Oppgave 7 — Rasjonale likninger",
-      "Løs og sjekk for falske løsninger.<br><br><strong>a)</strong> $\\dfrac{x+2}{x-1}=3$<br><br><strong>b)</strong> $\\dfrac{2}{x}=\\dfrac{x}{8}$",
+      "Løs og sjekk for falske løsninger.<br><br><strong>a)</strong> $\\dfrac{x+2}{x-1}=3$<br><br><strong>b)</strong> $\\dfrac{3}{x}=\\dfrac{x}{12}$",
       "Gang med nevneren. $x$ kan ikke gjøre en nevner lik $0$.",
       [
         "<strong>a)</strong> $x+2=3(x-1)$, $x+2=3x-3$, $5=2x$, $x=\\dfrac{5}{2}$. Nevner OK.<br><strong>Svar:</strong> $x=\\dfrac{5}{2}$",
-        "<strong>b)</strong> $16=x^2$, $x=\\pm 4$. Ingen gir nevner $0$.<br><strong>Svar:</strong> $x=4$ eller $x=-4$",
+        "<strong>b)</strong> Gang med $12x$ (der $x\\neq 0$): $36=x^2$, $x=\\pm 6$. Ingen gir nevner $0$.<br><strong>Svar:</strong> $x=6$ eller $x=-6$",
       ],
     ),
     o(
@@ -93,7 +93,7 @@ export const KAP3_OVEPROVE: Delkapittel = {
       "Løs og skriv svaret både med ulikhetstegn og som intervall.<br><br><strong>a)</strong> $3x-4 < 8$<br><br><strong>b)</strong> $5-2x \\geq 11$",
       "Når du deler på et negativt tall, snur ulikheten.",
       [
-        "<strong>a)</strong> $3x<12$, $x<4$. Intervall $\\langle\\leftarrow,4\\rangle$.<br><strong>Svar:</strong> $x<4$",
+        "<strong>a)</strong> $3x<12$, $x<4$. Intervall $\\langle\\leftarrow,4\\rangle$.<br><strong>Svar:</strong> $x<4$, $x\\in\\langle\\leftarrow,4\\rangle$",
         "<strong>b)</strong> $-2x\\geq 6$. Del på $-2$ og snu: $x\\leq -3$.<br><strong>Svar:</strong> $x\\leq -3$, $x\\in\\langle\\leftarrow,-3]$",
       ],
     ),
@@ -110,12 +110,12 @@ export const KAP3_OVEPROVE: Delkapittel = {
     o(
       "3.OP10",
       "Oppgave 10 — Polynomdivisjon",
-      "Polynomet $P(x)=x^3-4x^2+x+6$ har et nullpunkt $x=2$.<br><br><strong>a)</strong> Vis at $P(2)=0$.<br><br><strong>b)</strong> Del $P(x)$ på $(x-2)$.<br><br><strong>c)</strong> Faktoriser $P(x)$ fullstendig.",
-      "Restteoremet: $P(2)=0$ betyr at $(x-2)$ går opp. Faktoriser andregraden etterpå.",
+      "Polynomet $P(x)=x^3-3x^2-6x+8$ har et nullpunkt $x=1$.<br><br><strong>a)</strong> Vis at $P(1)=0$.<br><br><strong>b)</strong> Del $P(x)$ på $(x-1)$.<br><br><strong>c)</strong> Faktoriser $P(x)$ fullstendig.",
+      "Restteoremet: $P(1)=0$ betyr at $(x-1)$ går opp. Faktoriser andregraden etterpå.",
       [
-        "<strong>a)</strong> $P(2)=8-16+2+6=0$.<br><strong>Svar:</strong> vist, $P(2)=0$.",
-        "<strong>b)</strong> $(x^3-4x^2+x+6):(x-2)=x^2-2x-3$.<br><strong>Svar:</strong> $x^2-2x-3$",
-        "<strong>c)</strong> $x^2-2x-3=(x-3)(x+1)$.<br>Dermed $P(x)=(x-2)(x-3)(x+1)$.<br><strong>Svar:</strong> $(x-2)(x-3)(x+1)$",
+        "<strong>a)</strong> $P(1)=1-3-6+8=0$.<br><strong>Svar:</strong> vist, $P(1)=0$.",
+        "<strong>b)</strong> $x^3:x=x^2$, $x^2(x-1)=x^3-x^2$, rest $-2x^2-6x$. $-2x^2:x=-2x$, $-2x(x-1)=-2x^2+2x$, rest $-8x+8$. $-8x:x=-8$, $-8(x-1)=-8x+8$, rest $0$.<br>$(x^3-3x^2-6x+8):(x-1)=x^2-2x-8$.<br><strong>Svar:</strong> $x^2-2x-8$",
+        "<strong>c)</strong> $x^2-2x-8=(x-4)(x+2)$, siden $(-4)\\cdot 2=-8$ og $-4+2=-2$.<br>Dermed $P(x)=(x-1)(x-4)(x+2)$.<br><strong>Svar:</strong> $(x-1)(x-4)(x+2)$",
       ],
     ),
   ],

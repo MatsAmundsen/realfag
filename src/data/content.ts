@@ -4,7 +4,7 @@ import { EXTRA, SUB_TITLES } from "./extra-tasks";
 import { MORE23 } from "./extra-kap23";
 import { KAP2_NYE } from "./extra-kap2-nye";
 import { EXTRA_1D, EXTRA_1D_QUIZ } from "./extra-1d";
-import { TASK_FIGURES, TASK_FASIT_FIGURES } from "./task-figures";
+import { TASK_FIGURES, TASK_FASIT_FIGURES, TASK_FIGURE_REQUIRES } from "./task-figures";
 import { FIGURE_REPLACES_IMAGE } from "./kap2-figures";
 import { KAP3_OVEPROVE } from "./kap3-oveprove";
 import { KAP4_QUIZ } from "./kap4-quiz";
@@ -18,20 +18,25 @@ import programmeringHtml from "./fagstoff/programmering.html?raw";
 import videoerHtml from "./fagstoff/videoer.html?raw";
 
 /** Datatabeller (kap 6): rullbar ramme på mobil, caption og th scope="row". Endrer ikke tallene. */
+let dataTableSeq = 0;
 function styleDataTables(html: string): string {
   if (!html.includes("<table>")) return html;
   return html.replace(/<table>([\s\S]*?)<\/table>/g, (_m, inner: string) => {
     const heads = [...inner.matchAll(/<th>([\s\S]*?)<\/th>/g)].map((m) => m[1]);
     const caption = heads.length ? `Datatabell: ${heads.join(" og ")}` : "Datatabell";
     const body = inner.replace(/<th>/g, '<th scope="row">');
-    return `<div class="data-table-wrap" role="region" tabindex="0" aria-label="Tabell, kan rulles sidelengs"><table class="data-table"><caption>${caption}</caption>${body}</table></div>`;
+    const n = ++dataTableSeq;
+    const plain = caption.replace(/\$|\\[a-z]+|[{}]/g, "").replace(/\s+/g, " ").trim();
+    // Unikt navn per tabell (axe landmark-unique): flere regioner på samme side får ulike navn.
+    return `<div class="data-table-wrap" role="region" tabindex="0" aria-label="Tabell ${n}: ${plain} (kan rulles sidelengs)"><table class="data-table"><caption>${caption}</caption>${body}</table></div>`;
   });
 }
 
 function attachFigure(op: Oppgave): Oppgave {
   let updated = op;
   const fig = TASK_FIGURES[op.id];
-  if (fig && !op.tekst.includes('class="task-figure"')) {
+  const req = TASK_FIGURE_REQUIRES[op.id];
+  if (fig && (!req || req.test(op.tekst)) && !op.tekst.includes('class="task-figure"')) {
     updated = { ...updated, tekst: fig + updated.tekst };
     if (FIGURE_REPLACES_IMAGE.has(op.id)) updated = { ...updated, bilde: null };
   }
@@ -143,7 +148,7 @@ export const CHAPTER_META: Record<
     image: "/images/kap5.jpg",
     tint: "#22d3ee",
   },
-  // kap6/kap7: abstrakte omslag laget fra SVG (design/covers). Tint-kontrast mot #111827: rosa 6,7:1, oransje 7,8:1.
+  // kap6/kap7: omslag i samme fotostil som kap1–4 (1600×1200 JPEG). Tint-kontrast mot #111827: rosa 6,7:1, rosa-rød #fb7185 6,6:1.
   kap6: {
     short: "Modellering",
     blurb: "Matematiske modeller, regresjon og modellering i praksis",
@@ -154,7 +159,7 @@ export const CHAPTER_META: Record<
     short: "Trigonometri",
     blurb: "Pytagoras, formlikhet, sinus, cosinus, tangens og trekantsetningene",
     image: "/images/kap7.jpg",
-    tint: "#fb923c",
+    tint: "#fb7185",
   },
 };
 
@@ -178,9 +183,21 @@ export const VIDEO_BY_SUB: Record<string, TemaVideo[]> = {
   "3B": [{ tittel: "Omskriving av formler", url: "https://www.youtube.com/watch?v=n5k-x-05X00" }],
   "3C": [{ tittel: "Andregradslikninger", url: "https://www.youtube.com/watch?v=0eyN7vknTW4" }],
   "3D": [{ tittel: "ABC-formelen og diskriminanten", url: "https://www.youtube.com/watch?v=zHQ2eauLwr4" }],
-  "3E": [{ tittel: "Rasjonale likninger", url: "https://www.youtube.com/watch?v=x3QZyL0KDME" }],
-  "3F": [{ tittel: "Forhold og proporsjoner", url: "https://www.youtube.com/watch?v=JDi2jAJaFkw" }],
+  "3E": [
+    { tittel: "Rasjonale likninger", url: "https://www.youtube.com/watch?v=x3QZyL0KDME" },
+    { tittel: "Forhold og proporsjoner", url: "https://www.youtube.com/watch?v=JDi2jAJaFkw" },
+  ],
+  "3F": [
+    { tittel: "Nullpunktfaktorisering", url: "https://www.youtube.com/watch?v=zR6ZtTSXXbk" },
+    { tittel: "Nullpunkter og faktorisering", url: "https://www.youtube.com/watch?v=iSXe8YreMMY" },
+    { tittel: "Nullpunkter og faktorisering", url: "https://www.youtube.com/watch?v=eQYkvZlI7ms" },
+    { tittel: "Nullpunktfaktorisering", url: "https://www.youtube.com/watch?v=U95jMFd-7ko" },
+  ],
   "3G": [{ tittel: "Polynomdivisjon", url: "https://www.youtube.com/watch?v=_w-hcv1buIU" }],
+  "3H": [
+    { tittel: "Ulikheter (1T)", url: "https://www.youtube.com/watch?v=xVUzi3WE65s" },
+    { tittel: "Andregradsulikheter med fortegnsskjema", url: "https://www.youtube.com/watch?v=7eSS4QaFAJ8" },
+  ],
   "4A": [{ tittel: "Hva er en funksjon?", url: "https://www.youtube.com/watch?v=BCCZxWe57Eo" }],
   "4B": [{ tittel: "Lineære funksjoner", url: "https://www.youtube.com/watch?v=0qoEA0Kgobo" }],
   "4C": [{ tittel: "Introduksjon til polynomfunksjoner", url: "https://www.youtube.com/watch?v=3oWCt9o6F4Q" }],
