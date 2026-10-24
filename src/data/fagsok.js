@@ -4368,13 +4368,13 @@ export const fagsok = [
                     {
                         "id": "4.0",
                         "tittel": "Oppgave 4.0",
-                        "tekst": "a) Tegn opp et koordinatsystem.<br><br>b) Tegn på 1, 2, 3 og 4 kvadrant.<br><br>c) Tegn på koordinatene $(-1, -1)$ og $(1, 2)$.<br><br>d) Trekk en rett linje gjennom koordinatene i c). Hva kalles det du har konstruert?",
+                        "tekst": "a) Tegn opp et koordinatsystem.<br><br>b) Marker 1., 2., 3. og 4. kvadrant.<br><br>c) Tegn inn punktene $(-1, -1)$ og $(1, 2)$.<br><br>d) Trekk en rett linje gjennom punktene i c). Hva kalles det du har konstruert?",
                         "bilde": null,
                         "hint": "1. kvadrant er oppe til høyre, hvor begge tall er positive.",
                         "fasit": null,
                         "fasitSteg": [
                             "<strong>a)</strong><br>Tegn $x$-akse (horisontal) og $y$-akse (vertikal). Kryss origo.",
-                            "<strong>b)</strong><br>1. kvadrant $(+, +)$, 2. kvadrant $(-, +)$, 3. kvadrant $(-, -)$, 4. kvadrant $(+, -)$. Plott punktene.",
+                            "<strong>b)</strong><br>1. kvadrant $(+, +)$, 2. kvadrant $(-, +)$, 3. kvadrant $(-, -)$, 4. kvadrant $(+, -)$. Kvadrantene nummereres mot klokka, med start oppe til høyre.",
                             "<strong>c)</strong><br>Marker punktet $(-1, -1)$ ved å gå 1 enhet til venstre og 1 ned fra origo. Marker $(1, 2)$ ved å gå 1 enhet til høyre og 2 opp.",
                             "<strong>d)</strong><br>En rett linje representerer grafen til en lineær funksjon.",
                             "<strong>Svar:</strong> En rett linje."
@@ -4455,7 +4455,7 @@ export const fagsok = [
                         "fasitSteg": [
                             "<strong>a)</strong><br>Vi setter $x = 8$ inn i funksjonen.<br><br>$p(8) = 5 - \\sqrt{2 \\cdot 8}$ (setter inn for $x$)<br>$p(8) = 5 - \\sqrt{16}$ (regner ut produktet under roten)<br>$p(8) = 5 - 4 = 1$ (tar kvadratroten og subtraherer)",
                             "<strong>Svar:</strong> $p(8) = 1$.",
-                            "<strong>b)</strong><br>Vi setter funksjonsuttrykket lik $3$.<br><br>$5 - \\sqrt{2x} = 3$<br>$5 - 3 = \\sqrt{2x}$ (flytter roten til høyre og tall til venstre)<br>$2 = \\sqrt{2x}$ (forenkler venstre side)<br>$2^2 = (\\sqrt{2x})^2$ (kvadrerer begge sider for å fjerne rottegnet)<br>$4 = 2x$ (deler på 2)<br>$x = \\frac{4}{2} = 2$<br><br><strong>Prøve:</strong> Vi setter $x = 2$ inn i den opprinnelige likningen:<br>$p(2) = 5 - \\sqrt{2 \\cdot 2} = 5 - 2 = 3$. Løsningen stemmer!",
+                            "<strong>b)</strong><br>Vi setter funksjonsuttrykket lik $3$.<br><br>$5 - \\sqrt{2x} = 3$<br>$5 - 3 = \\sqrt{2x}$ (flytter roten til høyre og tall til venstre)<br>$2 = \\sqrt{2x}$ (forenkler venstre side)<br>$2^2 = (\\sqrt{2x})^2$ (kvadrerer begge sider for å fjerne rottegnet)<br>$4 = 2x$<br>$x = \\frac{4}{2} = 2$ (deler på 2)<br><br><strong>Prøve:</strong> Vi setter $x = 2$ inn i den opprinnelige likningen:<br>$p(2) = 5 - \\sqrt{2 \\cdot 2} = 5 - 2 = 3$. Løsningen stemmer!",
                             "<strong>Svar:</strong> $x = 2$.",
                             "<strong>c)</strong><br><strong>Definisjonsmengde ($D_p$):</strong> <br>Uttrykket under rottegnet kan ikke være negativt fordi vi ikke kan ta kvadratroten av negative tall (i reelle tall).<br>$2x \\ge 0$<br>$x \\ge 0$ (deler på 2)<br><br><strong>Verdimengde ($V_p$):</strong> <br>Rottegnet $\\sqrt{2x}$ gir alltid et positivt svar (eller null).<br>Dermed trekker vi alltid noe positivt (eller null) fra tallet $5$.<br>Den aller største verdien for $p(x)$ skjer når rot-leddet er så lite som mulig (som er $0$).<br>Da får vi $p(x) = 5 - 0 = 5$. For alle andre verdier av $x > 0$ vil $p(x)$ være mindre enn $5$, og synke uendelig mot negative verdier.",
                             "<strong>Svar:</strong> Definisjonsmengden er $D_p = [0, \\rightarrow\\rangle$ og verdimengden er $V_p = \\langle\\leftarrow, 5]$."
@@ -4488,125 +4488,13 @@ export const fagsok = [
                         "fasit": null,
                         "fasitSteg": [
                             "<strong>a)</strong><br>Vi vet at grafen til $g$ går gjennom punktet $(2, 5)$. Det betyr at når $x = 2$, er $y = 5$, altså at $g(2) = 5$.<br>Vi setter dette inn i uttrykket for $g(x)$:<br><br>$g(2) = 2 \\cdot 2 + b = 5$ (setter inn $x=2$)<br>$4 + b = 5$ (regner ut produktet)<br>$b = 5 - 4$ (flytter 4 til høyre side og skifter fortegn)<br>$b = 1$<br><br>Vi har allerede $f(x)$ oppgitt. Nå som vi kjenner $b$, vet vi også $g(x)$.",
-                            "<strong>Svar:</strong> $f(x) = 0.5x^2 + 3x - 3$ og $g(x) = 2x + 1$.",
-                            "<strong>b)</strong><br>For å finne skjæringspunkt, setter vi funksjonene lik hverandre fordi de har samme $x$- og $y$-verdi der de krysser:<br>$f(x) = g(x)$<br><br>$0.5x^2 + 3x - 3 = 2x + 1$<br>$0.5x^2 + 3x - 2x - 3 - 1 = 0$ (flytter alt til venstre side)<br>$0.5x^2 + x - 4 = 0$ (trekker sammen leddene)<br><br>For å gjøre utregningen lettere, kan vi gange hele likningen med $2$:<br>$x^2 + 2x - 8 = 0$<br><br>Vi kan bruke abc-formelen, eller faktorisere ved å finne to tall som multiplisert gir $-8$ og addert gir $2$. Tallene er $4$ og $-2$.<br>$(x + 4)(x - 2) = 0$<br><br>Dette gir løsningene $x = -4$ og $x = 2$.<br>Vi kjenner allerede punktet der $x = 2$, så vi må finne $y$-verdien når $x = -4$.<br>Vi kan sette $x = -4$ inn i en av funksjonene (velger $g(x)$ siden den er enklest):<br>$g(-4) = 2 \\cdot (-4) + 1 = -8 + 1 = -7$.",
+                            "<strong>Svar:</strong> $f(x) = 0{,}5x^2 + 3x - 3$ og $g(x) = 2x + 1$.",
+                            "<strong>b)</strong><br>For å finne skjæringspunkt, setter vi funksjonene lik hverandre fordi de har samme $x$- og $y$-verdi der de krysser:<br>$f(x) = g(x)$<br><br>$0{,}5x^2 + 3x - 3 = 2x + 1$<br>$0{,}5x^2 + 3x - 2x - 3 - 1 = 0$ (flytter alt til venstre side)<br>$0{,}5x^2 + x - 4 = 0$ (trekker sammen leddene)<br><br>For å gjøre utregningen lettere, kan vi gange hele likningen med $2$:<br>$x^2 + 2x - 8 = 0$<br><br>Vi kan bruke abc-formelen, eller faktorisere ved å finne to tall som multiplisert gir $-8$ og addert gir $2$. Tallene er $4$ og $-2$.<br>$(x + 4)(x - 2) = 0$<br><br>Dette gir løsningene $x = -4$ og $x = 2$.<br>Vi kjenner allerede punktet der $x = 2$, så vi må finne $y$-verdien når $x = -4$.<br>Vi kan sette $x = -4$ inn i en av funksjonene (velger $g(x)$ siden den er enklest):<br>$g(-4) = 2 \\cdot (-4) + 1 = -8 + 1 = -7$.",
                             "<strong>Svar:</strong> Det andre skjæringspunktet er $(-4, -7)$.",
-                            "<strong>c)</strong><br>Vi tester om punktet $(1, 4)$ ligger på noen av grafene ved å sette inn $x = 1$ og sjekke om vi får ut $y = 4$.<br><br>For $f(x)$:<br>$f(1) = 0.5 \\cdot 1^2 + 3 \\cdot 1 - 3$<br>$f(1) = 0.5 + 3 - 3 = 0.5 \\ne 4$<br><br>For $g(x)$:<br>$g(1) = 2 \\cdot 1 + 1$<br>$g(1) = 3 \\ne 4$",
+                            "<strong>c)</strong><br>Vi tester om punktet $(1, 4)$ ligger på noen av grafene ved å sette inn $x = 1$ og sjekke om vi får ut $y = 4$.<br><br>For $f(x)$:<br>$f(1) = 0{,}5 \\cdot 1^2 + 3 \\cdot 1 - 3$<br>$f(1) = 0{,}5 + 3 - 3 = 0{,}5 \\ne 4$<br><br>For $g(x)$:<br>$g(1) = 2 \\cdot 1 + 1$<br>$g(1) = 3 \\ne 4$",
                             "<strong>Svar:</strong> Nei, punktet $(1, 4)$ ligger ikke på noen av grafene."
                         ],
                         "starter": ""
-                    }
-                ],
-                "quiz": [
-                    {
-                        "sporsmal": "Hva er grunnleggende sant om funksjoner? (Spørsmål 1)",
-                        "alternativer": [
-                            "Det betyr at funksjonen alltid er 0.",
-                            "Det beskriver en fundamental egenskap ved funksjoner.",
-                            "Vet ikke.",
-                            "Noe helt annet."
-                        ],
-                        "riktigSvar": 1,
-                        "forklaring": "Dette viser forståelse for funksjoner."
-                    },
-                    {
-                        "sporsmal": "Hva er grunnleggende sant om funksjoner? (Spørsmål 2)",
-                        "alternativer": [
-                            "Det betyr at funksjonen alltid er 0.",
-                            "Det beskriver en fundamental egenskap ved funksjoner.",
-                            "Noe helt annet.",
-                            "Vet ikke."
-                        ],
-                        "riktigSvar": 1,
-                        "forklaring": "Dette viser forståelse for funksjoner."
-                    },
-                    {
-                        "sporsmal": "Hva er grunnleggende sant om funksjoner? (Spørsmål 3)",
-                        "alternativer": [
-                            "Noe helt annet.",
-                            "Det beskriver en fundamental egenskap ved funksjoner.",
-                            "Det betyr at funksjonen alltid er 0.",
-                            "Vet ikke."
-                        ],
-                        "riktigSvar": 1,
-                        "forklaring": "Dette viser forståelse for funksjoner."
-                    },
-                    {
-                        "sporsmal": "Hva er grunnleggende sant om funksjoner? (Spørsmål 4)",
-                        "alternativer": [
-                            "Det betyr at funksjonen alltid er 0.",
-                            "Noe helt annet.",
-                            "Det beskriver en fundamental egenskap ved funksjoner.",
-                            "Vet ikke."
-                        ],
-                        "riktigSvar": 2,
-                        "forklaring": "Dette viser forståelse for funksjoner."
-                    },
-                    {
-                        "sporsmal": "Gitt en funksjon $f(x)$ for funksjoner, regn ut verdien. (Spørsmål 5)",
-                        "alternativer": [
-                            "Vet ikke.",
-                            "Noe helt annet.",
-                            "Svaret kan utledes fra formelen for funksjoner.",
-                            "Svaret er umulig å finne."
-                        ],
-                        "riktigSvar": 2,
-                        "forklaring": "Dette viser forståelse for funksjoner."
-                    },
-                    {
-                        "sporsmal": "Gitt en funksjon $f(x)$ for funksjoner, regn ut verdien. (Spørsmål 6)",
-                        "alternativer": [
-                            "Noe helt annet.",
-                            "Svaret er umulig å finne.",
-                            "Vet ikke.",
-                            "Svaret kan utledes fra formelen for funksjoner."
-                        ],
-                        "riktigSvar": 3,
-                        "forklaring": "Dette viser forståelse for funksjoner."
-                    },
-                    {
-                        "sporsmal": "Gitt en funksjon $f(x)$ for funksjoner, regn ut verdien. (Spørsmål 7)",
-                        "alternativer": [
-                            "Vet ikke.",
-                            "Svaret er umulig å finne.",
-                            "Noe helt annet.",
-                            "Svaret kan utledes fra formelen for funksjoner."
-                        ],
-                        "riktigSvar": 3,
-                        "forklaring": "Dette viser forståelse for funksjoner."
-                    },
-                    {
-                        "sporsmal": "Gitt en funksjon $f(x)$ for funksjoner, regn ut verdien. (Spørsmål 8)",
-                        "alternativer": [
-                            "Noe helt annet.",
-                            "Svaret kan utledes fra formelen for funksjoner.",
-                            "Svaret er umulig å finne.",
-                            "Vet ikke."
-                        ],
-                        "riktigSvar": 1,
-                        "forklaring": "Dette viser forståelse for funksjoner."
-                    },
-                    {
-                        "sporsmal": "En elev gjør en vanlig feil med funksjoner. Hva er feilen? (Spørsmål 9)",
-                        "alternativer": [
-                            "Noe helt annet.",
-                            "Eleven glemmer en viktig detalj om funksjoner.",
-                            "Eleven gjør ingen feil.",
-                            "Vet ikke."
-                        ],
-                        "riktigSvar": 1,
-                        "forklaring": "Dette viser forståelse for funksjoner."
-                    },
-                    {
-                        "sporsmal": "En elev gjør en vanlig feil med funksjoner. Hva er feilen? (Spørsmål 10)",
-                        "alternativer": [
-                            "Noe helt annet.",
-                            "Vet ikke.",
-                            "Eleven glemmer en viktig detalj om funksjoner.",
-                            "Eleven gjør ingen feil."
-                        ],
-                        "riktigSvar": 2,
-                        "forklaring": "Dette viser forståelse for funksjoner."
                     }
                 ]
             },
@@ -4631,14 +4519,15 @@ export const fagsok = [
                     {
                         "id": "4.9",
                         "tittel": "Oppgave 4.9",
-                        "tekst": "Figuren viser grafene $v(x) = 3$, $f(x) = x - 2$, $g(x) = -x + 2$ og $h(x) = 2x - 2$.<br><br><strong>a)</strong> Hvilke grafer krysser hverandre?<br><br><strong>b)</strong> Finn ett skjæringspunkt ved regning, og les av de andre på figuren.<br><br><strong>c)</strong> Hva betyr uttrykket $f(x) = v(x)$?",
+                        "tekst": "Figuren viser grafene $v(x) = 3$, $f(x) = x - 2$, $g(x) = -x + 2$ og $h(x) = 2x - 2$.<br><br><strong>a)</strong> Hvilke grafer krysser hverandre?<br><br><strong>b)</strong> Finn alle skjæringspunktene. Les av dem du kan på figuren, og kontroller ved regning.<br><br><strong>c)</strong> Hva betyr uttrykket $f(x) = v(x)$?",
                         "bilde": null,
                         "hint": "Stigningstallet avslører om to linjer er parallelle. Grafer som ikke er parallelle, vil alltid krysse hverandre på et eller annet punkt.",
                         "fasit": null,
                         "fasitSteg": [
                             "<strong>a)</strong><br>Grafer vil alltid krysse hverandre dersom de ikke er parallelle. Linjer er parallelle kun når de har nøyaktig samme stigningstall.<br>Vi ser på stigningstallene til funksjonene:<br>$v(x)$ har stigningstall $0$<br>$f(x)$ har stigningstall $1$<br>$g(x)$ har stigningstall $-1$<br>$h(x)$ har stigningstall $2$<br><br>Siden ingen av funksjonene har det samme stigningstallet, er ingen av dem parallelle.",
                             "<strong>Svar:</strong> Alle grafene vil krysse hverandre.",
-                            "<strong>b)</strong><br>For å finne ut akkurat når de krysser hverandre, setter vi funksjonsuttrykkene lik hverandre. Her er noen eksempler på utregning:<br><br>Når krysser $v(x)$ og $f(x)$ hverandre?<br>$f(x) = v(x)$<br>$x - 2 = 3$ (setter inn uttrykkene)<br>$x = 3 + 2$ (flytter over)<br>$x = 5$<br><br>Når krysser $f(x)$ og $g(x)$ hverandre?<br>$f(x) = g(x)$<br>$x - 2 = -x + 2$<br>$x + x = 2 + 2$<br>$2x = 4$<br>$x = \\frac{4}{2} = 2$<br><br>Man kan fortsette slik for å finne skjæringspunktet mellom to og to av de andre funksjonene.",
+                            "<strong>b)</strong><br>Vi setter funksjonsuttrykkene lik hverandre, to og to:<br><br>$f(x) = v(x)$: $x - 2 = 3 \\Rightarrow x = 5$, og $y = 3$. Punkt $(5, 3)$<br>$g(x) = v(x)$: $-x + 2 = 3 \\Rightarrow x = -1$, og $y = 3$. Punkt $(-1, 3)$<br>$h(x) = v(x)$: $2x - 2 = 3 \\Rightarrow x = 2{,}5$, og $y = 3$. Punkt $(2{,}5, 3)$<br>$f(x) = g(x)$: $x - 2 = -x + 2 \\Rightarrow 2x = 4 \\Rightarrow x = 2$, og $y = f(2) = 0$. Punkt $(2, 0)$<br>$f(x) = h(x)$: $x - 2 = 2x - 2 \\Rightarrow x = 0$, og $y = -2$. Punkt $(0, -2)$<br>$g(x) = h(x)$: $-x + 2 = 2x - 2 \\Rightarrow 3x = 4 \\Rightarrow x = \\frac{4}{3}$, og $y = -\\frac{4}{3} + 2 = \\frac{2}{3}$. Punkt $\\left(\\frac{4}{3}, \\frac{2}{3}\\right)$<br><br>De fem første kan leses av på figuren. Punktet $\\left(\\frac{4}{3}, \\frac{2}{3}\\right)$ har ikke heltallige koordinater og må finnes ved regning.",
+                            "<strong>Svar:</strong> $(5, 3)$, $(-1, 3)$, $(2{,}5, 3)$, $(2, 0)$, $(0, -2)$ og $\\left(\\frac{4}{3}, \\frac{2}{3}\\right)$.",
                             "<strong>c)</strong><br>Å skrive opp uttrykket $f(x) = v(x)$ er det samme som å spørre: \"For hvilken $x$-verdi gir funksjonen $f$ og funksjonen $v$ det samme $y$-resultatet?\". Løsningen på denne likningen gir oss $x$-koordinaten til det punktet hvor grafene skjærer hverandre.",
                             "<strong>Svar:</strong> Det betyr å finne den $x$-verdien der linjene $f$ og $v$ skjærer hverandre."
                         ],
@@ -4656,8 +4545,8 @@ export const fagsok = [
                             "<strong>Svar:</strong> $h(x) = -2x + 7$",
                             "<strong>b)</strong><br>For å sjekke om et bestemt punkt ligger på grafen, setter vi punktets $x$-verdi inn i funksjonen og ser om vi får punktets $y$-verdi som svar.<br><br>Vi setter inn $x = 3$:<br>$h(3) = -2 \\cdot 3 + 7$<br>$h(3) = -6 + 7$<br>$h(3) = 1$<br><br>Vi fikk $y = 1$, noe som stemmer perfekt med punktet $(3, 1)$.",
                             "<strong>Svar:</strong> Ja, punktet $(3, 1)$ ligger på grafen.",
-                            "<strong>c)</strong><br>Nullpunktet til en funksjon er den $x$-verdien der grafen skjærer $x$-aksen. På $x$-aksen er $y = 0$, så vi må løse likningen $h(x) = 0$.<br><br>$-2x + 7 = 0$<br>$7 = 2x$ (flytter $-2x$ til høyre side for å få positivt fortegn)<br>$x = \\frac{7}{2}$ (deler på $2$)<br>$x = 3.5$",
-                            "<strong>Svar:</strong> Nullpunktet er $x = 3.5$"
+                            "<strong>c)</strong><br>Nullpunktet til en funksjon er den $x$-verdien der grafen skjærer $x$-aksen. På $x$-aksen er $y = 0$, så vi må løse likningen $h(x) = 0$.<br><br>$-2x + 7 = 0$<br>$7 = 2x$ (flytter $-2x$ til høyre side for å få positivt fortegn)<br>$x = \\frac{7}{2}$ (deler på $2$)<br>$x = 3{,}5$",
+                            "<strong>Svar:</strong> Nullpunktet er $x = 3{,}5$"
                         ],
                         "starter": ""
                     },
@@ -4669,8 +4558,8 @@ export const fagsok = [
                         "hint": "Skjæring med $y$-aksen skjer der $x = 0$. Punktet $(0, 3)$ gir deg dermed konstantleddet $b$ direkte.",
                         "fasit": null,
                         "fasitSteg": [
-                            "En rett linje har alltid likningen $y = ax + b$.<br><br>Vi får oppgitt at linjen skjærer aksene i punktene $(5, 0)$ og $(0, 3)$.<br>Siden den går gjennom $(0, 3)$, vet vi at grafen skjærer $y$-aksen i $y = 3$. Konstantleddet $b$ er nemlig $y$-verdien når $x = 0$. Derfor har vi direkte at $b = 3$.<br><br>Nå mangler vi bare stigningstallet $a$. Vi bruker de to punktene $(0, 3)$ og $(5, 0)$ for å finne $a$:<br>$a = \\frac{y_2 - y_1}{x_2 - x_1}$<br><br>Vi setter inn verdiene:<br>$a = \\frac{0 - 3}{5 - 0}$<br>$a = \\frac{-3}{5}$<br>$a = -0.6$<br><br>Vi har nå både $a$ og $b$, og kan sette dem inn i den generelle formelen.",
-                            "<strong>Svar:</strong> $y = -0.6x + 3$"
+                            "En rett linje har alltid likningen $y = ax + b$.<br><br>Vi får oppgitt at linjen skjærer aksene i punktene $(5, 0)$ og $(0, 3)$.<br>Siden den går gjennom $(0, 3)$, vet vi at grafen skjærer $y$-aksen i $y = 3$. Konstantleddet $b$ er nemlig $y$-verdien når $x = 0$. Derfor har vi direkte at $b = 3$.<br><br>Nå mangler vi bare stigningstallet $a$. Vi bruker de to punktene $(0, 3)$ og $(5, 0)$ for å finne $a$:<br>$a = \\frac{y_2 - y_1}{x_2 - x_1}$<br><br>Vi setter inn verdiene:<br>$a = \\frac{0 - 3}{5 - 0}$<br>$a = \\frac{-3}{5}$<br>$a = -0{,}6$<br><br>Vi har nå både $a$ og $b$, og kan sette dem inn i den generelle formelen.",
+                            "<strong>Svar:</strong> $y = -0{,}6x + 3$"
                         ],
                         "starter": ""
                     },
@@ -4725,8 +4614,8 @@ export const fagsok = [
                         "fasitSteg": [
                             "<strong>a)</strong><br>Vi starter med å finne uttrykket for $f(x) = a_f x + b_f$:<br>Linjen går gjennom $(0, 2)$, noe som betyr at konstantleddet $b_f$ er $2$.<br>Vi finner stigningstallet $a_f$ ved å bruke topunktsformelen med de to oppgitte punktene:<br>$a_f = \\frac{6 - 2}{4 - 0} = \\frac{4}{4} = 1$<br>Dette gir oss funksjonen $f(x) = 1x + 2$, altså $f(x) = x + 2$.<br><br>Så finner vi uttrykket for $g(x) = a_g x + b_g$:<br>Linjen går gjennom $(0, 5)$, noe som betyr at konstantleddet $b_g$ er $5$.<br>Vi regner ut stigningstallet $a_g$ med de to oppgitte punktene:<br>$a_g = \\frac{0 - 5}{5 - 0} = \\frac{-5}{5} = -1$<br>Dette gir oss funksjonen $g(x) = -1x + 5$, altså $g(x) = -x + 5$.",
                             "<strong>Svar:</strong> $f(x) = x + 2$ og $g(x) = -x + 5$",
-                            "<strong>b)</strong><br>Vi setter funksjonsuttrykkene lik hverandre for å løse likningen $f(x) = g(x)$.<br><br>$x + 2 = -x + 5$<br><br>Vi samler $x$-ene på venstre side og tallene på høyre side:<br>$x + x = 5 - 2$<br><br>Vi slår sammen:<br>$2x = 3$<br><br>Vi deler på $2$ for å få $x$ alene:<br>$x = \\frac{3}{2} = 1.5$",
-                            "<strong>Svar:</strong> $x = 1.5$"
+                            "<strong>b)</strong><br>Vi setter funksjonsuttrykkene lik hverandre for å løse likningen $f(x) = g(x)$.<br><br>$x + 2 = -x + 5$<br><br>Vi samler $x$-ene på venstre side og tallene på høyre side:<br>$x + x = 5 - 2$<br><br>Vi slår sammen:<br>$2x = 3$<br><br>Vi deler på $2$ for å få $x$ alene:<br>$x = \\frac{3}{2} = 1{,}5$",
+                            "<strong>Svar:</strong> $x = 1{,}5$"
                         ],
                         "starter": ""
                     },
@@ -4743,118 +4632,6 @@ export const fagsok = [
                         ],
                         "starter": ""
                     }
-                ],
-                "quiz": [
-                    {
-                        "sporsmal": "Hva er grunnleggende sant om rett linje? (Spørsmål 1)",
-                        "alternativer": [
-                            "Det betyr at funksjonen alltid er 0.",
-                            "Noe helt annet.",
-                            "Det beskriver en fundamental egenskap ved rett linje.",
-                            "Vet ikke."
-                        ],
-                        "riktigSvar": 2,
-                        "forklaring": "Dette viser forståelse for rett linje."
-                    },
-                    {
-                        "sporsmal": "Hva er grunnleggende sant om rett linje? (Spørsmål 2)",
-                        "alternativer": [
-                            "Noe helt annet.",
-                            "Det betyr at funksjonen alltid er 0.",
-                            "Det beskriver en fundamental egenskap ved rett linje.",
-                            "Vet ikke."
-                        ],
-                        "riktigSvar": 2,
-                        "forklaring": "Dette viser forståelse for rett linje."
-                    },
-                    {
-                        "sporsmal": "Hva er grunnleggende sant om rett linje? (Spørsmål 3)",
-                        "alternativer": [
-                            "Noe helt annet.",
-                            "Vet ikke.",
-                            "Det beskriver en fundamental egenskap ved rett linje.",
-                            "Det betyr at funksjonen alltid er 0."
-                        ],
-                        "riktigSvar": 2,
-                        "forklaring": "Dette viser forståelse for rett linje."
-                    },
-                    {
-                        "sporsmal": "Hva er grunnleggende sant om rett linje? (Spørsmål 4)",
-                        "alternativer": [
-                            "Det beskriver en fundamental egenskap ved rett linje.",
-                            "Vet ikke.",
-                            "Noe helt annet.",
-                            "Det betyr at funksjonen alltid er 0."
-                        ],
-                        "riktigSvar": 0,
-                        "forklaring": "Dette viser forståelse for rett linje."
-                    },
-                    {
-                        "sporsmal": "Gitt en funksjon $f(x)$ for rett linje, regn ut verdien. (Spørsmål 5)",
-                        "alternativer": [
-                            "Vet ikke.",
-                            "Svaret er umulig å finne.",
-                            "Svaret kan utledes fra formelen for rett linje.",
-                            "Noe helt annet."
-                        ],
-                        "riktigSvar": 2,
-                        "forklaring": "Dette viser forståelse for rett linje."
-                    },
-                    {
-                        "sporsmal": "Gitt en funksjon $f(x)$ for rett linje, regn ut verdien. (Spørsmål 6)",
-                        "alternativer": [
-                            "Noe helt annet.",
-                            "Svaret er umulig å finne.",
-                            "Vet ikke.",
-                            "Svaret kan utledes fra formelen for rett linje."
-                        ],
-                        "riktigSvar": 3,
-                        "forklaring": "Dette viser forståelse for rett linje."
-                    },
-                    {
-                        "sporsmal": "Gitt en funksjon $f(x)$ for rett linje, regn ut verdien. (Spørsmål 7)",
-                        "alternativer": [
-                            "Vet ikke.",
-                            "Noe helt annet.",
-                            "Svaret er umulig å finne.",
-                            "Svaret kan utledes fra formelen for rett linje."
-                        ],
-                        "riktigSvar": 3,
-                        "forklaring": "Dette viser forståelse for rett linje."
-                    },
-                    {
-                        "sporsmal": "Gitt en funksjon $f(x)$ for rett linje, regn ut verdien. (Spørsmål 8)",
-                        "alternativer": [
-                            "Noe helt annet.",
-                            "Svaret kan utledes fra formelen for rett linje.",
-                            "Svaret er umulig å finne.",
-                            "Vet ikke."
-                        ],
-                        "riktigSvar": 1,
-                        "forklaring": "Dette viser forståelse for rett linje."
-                    },
-                    {
-                        "sporsmal": "En elev gjør en vanlig feil med rett linje. Hva er feilen? (Spørsmål 9)",
-                        "alternativer": [
-                            "Vet ikke.",
-                            "Eleven glemmer en viktig detalj om rett linje.",
-                            "Eleven gjør ingen feil.",
-                            "Noe helt annet."
-                        ],
-                        "riktigSvar": 1,
-                        "forklaring": "Dette viser forståelse for rett linje."
-                    },
-                    {
-                        "sporsmal": "En elev gjør en vanlig feil med rett linje. Hva er feilen? (Spørsmål 10)",
-                        "alternativer": [
-                            "Noe helt annet.",
-                            "Vet ikke.",
-                            "Eleven glemmer en viktig detalj om rett linje.",
-                            "Eleven gjør ingen feil."
-                        ],
-                        "riktigSvar": 2,
-                        "forklaring": "Dette viser forståelse for rett linje."
-                    }
                 ]
             },
             {
@@ -4869,7 +4646,7 @@ export const fagsok = [
                         "hint": "Graden bestemmes av den høyeste eksponenten til $x$.",
                         "fasit": null,
                         "fasitSteg": [
-                            "Polynomfunksjoner skrives generelt på formen:<br><br>$f(x) = a_n x^n + a_{n-1} x^{n-1} + \\dots + a_1 x + a_0$<br><br>hvor $n$ er graden til polynomet, og $a_n, a_{n-1}, \\dots, a_0$ er koeffisienter (tall).<br><br>Vi kan lage egne eksempler for ulike grader ved å velge en høyeste eksponent.<br><br>For en andregradsfunksjon må høyeste eksponent være $2$:<br>$f(x) = x^2$<br><br>For en tredjegradsfunksjon må høyeste eksponent være $3$:<br>$f(x) = x^3 - x$<br><br>For en fjerdegradsfunksjon må høyeste eksponent være $4$:<br>$f(x) = x^4 - 1$",
+                            "Polynomfunksjoner skrives generelt på formen:<br><br>$f(x) = a_n x^n + a_{n-1} x^{n-1} + \\dots + a_1 x + a_0$<br><br>hvor $n$ er graden til polynomet, og $a_n, a_{n-1}, \\dots, a_0$ er koeffisienter (tall), med $a_n \\neq 0$ (ellers ville graden vært lavere).<br><br>Vi kan lage egne eksempler for ulike grader ved å velge en høyeste eksponent.<br><br>For en andregradsfunksjon må høyeste eksponent være $2$:<br>$f(x) = x^2$<br><br>For en tredjegradsfunksjon må høyeste eksponent være $3$:<br>$f(x) = x^3 - x$<br><br>For en fjerdegradsfunksjon må høyeste eksponent være $4$:<br>$f(x) = x^4 - 1$",
                             "<strong>Svar:</strong> Generell form er $f(x) = a_n x^n + \\dots + a_0$. Eksempler kan være $f(x) = x^2$, $f(x) = x^3 - x$ og $f(x) = x^4 - 1$."
                         ],
                         "starter": ""
@@ -4877,17 +4654,17 @@ export const fagsok = [
                     {
                         "id": "4.18",
                         "tittel": "Oppgave 4.18",
-                        "tekst": "Temperaturen er gitt ved $T(t) = -0.2t^2 + 5.2t - 18.8$ (kl. 08:00 er $t=8$).<br><br><strong>a)</strong> Tegn grafen.<br><br><strong>b)</strong> Når var temperaturen høyest?<br><br><strong>c)</strong> Hva var temperaturen kl. 08:00 og 15:00?",
+                        "tekst": "Temperaturen er gitt ved $T(t) = -0{,}2t^2 + 5{,}2t - 18{,}8$ (kl. 08:00 er $t=8$).<br><br><strong>a)</strong> Tegn grafen.<br><br><strong>b)</strong> Når var temperaturen høyest?<br><br><strong>c)</strong> Hva var temperaturen kl. 08:00 og 15:00?",
                         "bilde": null,
                         "hint": "Høyeste temperatur er parabelens toppunkt, som kan finnes med formelen $t = \\frac{-b}{2a}$.",
                         "fasit": null,
                         "fasitSteg": [
-                            "<strong>a)</strong><br>Grafen til $T(t)$ er en parabel. Siden koeffisienten foran $t^2$ er negativ ($-0.2$), vender den hulerommet nedover (en \"sur\" parabel). Man kan tegne denne for hånd ved å lage en verditabell eller bruke et digitalt verktøy (f.eks. GeoGebra).",
+                            "<strong>a)</strong><br>Grafen til $T(t)$ er en parabel. Siden koeffisienten foran $t^2$ er negativ ($-0{,}2$), vender den hulerommet nedover (en \"sur\" parabel). Man kan tegne denne for hånd ved å lage en verditabell eller bruke et digitalt verktøy (f.eks. GeoGebra).",
                             "<strong>Svar:</strong> Grafen er en parabel som vender nedover.",
-                            "<strong>b)</strong><br>Vi skal finne tidspunktet $t$ når temperaturen er høyest. Dette tilsvarer toppunktet til parabelen.<br>Vi bruker formelen for symmetriaksen:<br>$t = \\frac{-b}{2a}$<br><br>Setter inn verdiene for $a = -0.2$ og $b = 5.2$:<br>$t = \\frac{-5.2}{2 \\cdot (-0.2)}$<br><br>$t = \\frac{-5.2}{-0.4}$<br><br>$t = 13$<br><br>Siden kl. 08:00 tilsvarer $t=8$, vil $t=13$ tilsvare kl. 13:00.<br><br>Vi finner også temperaturen på dette tidspunktet ved å sette inn $t = 13$ i funksjonen:<br>$T(13) = -0.2 \\cdot 13^2 + 5.2 \\cdot 13 - 18.8$<br><br>$T(13) = -0.2 \\cdot 169 + 67.6 - 18.8$<br><br>$T(13) = -33.8 + 67.6 - 18.8$<br><br>$T(13) = 15$",
-                            "<strong>Svar:</strong> Temperaturen var høyest kl. 13:00, og da var den $15.0^{\\circ}C$.",
-                            "<strong>c)</strong><br>Vi skal finne temperaturen kl. 08:00, som tilsvarer $t=8$:<br>$T(8) = -0.2 \\cdot 8^2 + 5.2 \\cdot 8 - 18.8$<br><br>$T(8) = -0.2 \\cdot 64 + 41.6 - 18.8$<br><br>$T(8) = -12.8 + 41.6 - 18.8$<br><br>$T(8) = 10.0$<br><br>Vi skal finne temperaturen kl. 15:00, som tilsvarer $t=15$:<br>$T(15) = -0.2 \\cdot 15^2 + 5.2 \\cdot 15 - 18.8$<br><br>$T(15) = -0.2 \\cdot 225 + 78.0 - 18.8$<br><br>$T(15) = -45.0 + 78.0 - 18.8$<br><br>$T(15) = 14.2$",
-                            "<strong>Svar:</strong> Temperaturen var $10.0^{\\circ}C$ kl. 08:00 og $14.2^{\\circ}C$ kl. 15:00."
+                            "<strong>b)</strong><br>Vi skal finne tidspunktet $t$ når temperaturen er høyest. Dette tilsvarer toppunktet til parabelen.<br>Vi bruker formelen for symmetriaksen:<br>$t = \\frac{-b}{2a}$<br><br>Setter inn verdiene for $a = -0{,}2$ og $b = 5{,}2$:<br>$t = \\frac{-5{,}2}{2 \\cdot (-0{,}2)}$<br><br>$t = \\frac{-5{,}2}{-0{,}4}$<br><br>$t = 13$<br><br>Siden kl. 08:00 tilsvarer $t=8$, vil $t=13$ tilsvare kl. 13:00.<br><br>Vi finner også temperaturen på dette tidspunktet ved å sette inn $t = 13$ i funksjonen:<br>$T(13) = -0{,}2 \\cdot 13^2 + 5{,}2 \\cdot 13 - 18{,}8$<br><br>$T(13) = -0{,}2 \\cdot 169 + 67{,}6 - 18{,}8$<br><br>$T(13) = -33{,}8 + 67{,}6 - 18{,}8$<br><br>$T(13) = 15$",
+                            "<strong>Svar:</strong> Temperaturen var høyest kl. 13:00, og da var den $15{,}0^{\\circ}\\text{C}$.",
+                            "<strong>c)</strong><br>Vi skal finne temperaturen kl. 08:00, som tilsvarer $t=8$:<br>$T(8) = -0{,}2 \\cdot 8^2 + 5{,}2 \\cdot 8 - 18{,}8$<br><br>$T(8) = -0{,}2 \\cdot 64 + 41{,}6 - 18{,}8$<br><br>$T(8) = -12{,}8 + 41{,}6 - 18{,}8$<br><br>$T(8) = 10{,}0$<br><br>Vi skal finne temperaturen kl. 15:00, som tilsvarer $t=15$:<br>$T(15) = -0{,}2 \\cdot 15^2 + 5{,}2 \\cdot 15 - 18{,}8$<br><br>$T(15) = -0{,}2 \\cdot 225 + 78{,}0 - 18{,}8$<br><br>$T(15) = -45{,}0 + 78{,}0 - 18{,}8$<br><br>$T(15) = 14{,}2$",
+                            "<strong>Svar:</strong> Temperaturen var $10{,}0^{\\circ}\\text{C}$ kl. 08:00 og $14{,}2^{\\circ}\\text{C}$ kl. 15:00."
                         ],
                         "starter": ""
                     },
@@ -4961,118 +4738,6 @@ export const fagsok = [
                         ],
                         "starter": ""
                     }
-                ],
-                "quiz": [
-                    {
-                        "sporsmal": "Hva er grunnleggende sant om andregradsuttrykk? (Spørsmål 1)",
-                        "alternativer": [
-                            "Det betyr at funksjonen alltid er 0.",
-                            "Noe helt annet.",
-                            "Det beskriver en fundamental egenskap ved andregradsuttrykk.",
-                            "Vet ikke."
-                        ],
-                        "riktigSvar": 2,
-                        "forklaring": "Dette viser forståelse for andregradsuttrykk."
-                    },
-                    {
-                        "sporsmal": "Hva er grunnleggende sant om andregradsuttrykk? (Spørsmål 2)",
-                        "alternativer": [
-                            "Det beskriver en fundamental egenskap ved andregradsuttrykk.",
-                            "Det betyr at funksjonen alltid er 0.",
-                            "Vet ikke.",
-                            "Noe helt annet."
-                        ],
-                        "riktigSvar": 0,
-                        "forklaring": "Dette viser forståelse for andregradsuttrykk."
-                    },
-                    {
-                        "sporsmal": "Hva er grunnleggende sant om andregradsuttrykk? (Spørsmål 3)",
-                        "alternativer": [
-                            "Noe helt annet.",
-                            "Det beskriver en fundamental egenskap ved andregradsuttrykk.",
-                            "Vet ikke.",
-                            "Det betyr at funksjonen alltid er 0."
-                        ],
-                        "riktigSvar": 1,
-                        "forklaring": "Dette viser forståelse for andregradsuttrykk."
-                    },
-                    {
-                        "sporsmal": "Hva er grunnleggende sant om andregradsuttrykk? (Spørsmål 4)",
-                        "alternativer": [
-                            "Noe helt annet.",
-                            "Det beskriver en fundamental egenskap ved andregradsuttrykk.",
-                            "Vet ikke.",
-                            "Det betyr at funksjonen alltid er 0."
-                        ],
-                        "riktigSvar": 1,
-                        "forklaring": "Dette viser forståelse for andregradsuttrykk."
-                    },
-                    {
-                        "sporsmal": "Gitt en funksjon $f(x)$ for andregradsuttrykk, regn ut verdien. (Spørsmål 5)",
-                        "alternativer": [
-                            "Svaret kan utledes fra formelen for andregradsuttrykk.",
-                            "Vet ikke.",
-                            "Svaret er umulig å finne.",
-                            "Noe helt annet."
-                        ],
-                        "riktigSvar": 0,
-                        "forklaring": "Dette viser forståelse for andregradsuttrykk."
-                    },
-                    {
-                        "sporsmal": "Gitt en funksjon $f(x)$ for andregradsuttrykk, regn ut verdien. (Spørsmål 6)",
-                        "alternativer": [
-                            "Svaret kan utledes fra formelen for andregradsuttrykk.",
-                            "Vet ikke.",
-                            "Noe helt annet.",
-                            "Svaret er umulig å finne."
-                        ],
-                        "riktigSvar": 0,
-                        "forklaring": "Dette viser forståelse for andregradsuttrykk."
-                    },
-                    {
-                        "sporsmal": "Gitt en funksjon $f(x)$ for andregradsuttrykk, regn ut verdien. (Spørsmål 7)",
-                        "alternativer": [
-                            "Vet ikke.",
-                            "Svaret kan utledes fra formelen for andregradsuttrykk.",
-                            "Svaret er umulig å finne.",
-                            "Noe helt annet."
-                        ],
-                        "riktigSvar": 1,
-                        "forklaring": "Dette viser forståelse for andregradsuttrykk."
-                    },
-                    {
-                        "sporsmal": "Gitt en funksjon $f(x)$ for andregradsuttrykk, regn ut verdien. (Spørsmål 8)",
-                        "alternativer": [
-                            "Vet ikke.",
-                            "Noe helt annet.",
-                            "Svaret kan utledes fra formelen for andregradsuttrykk.",
-                            "Svaret er umulig å finne."
-                        ],
-                        "riktigSvar": 2,
-                        "forklaring": "Dette viser forståelse for andregradsuttrykk."
-                    },
-                    {
-                        "sporsmal": "En elev gjør en vanlig feil med andregradsuttrykk. Hva er feilen? (Spørsmål 9)",
-                        "alternativer": [
-                            "Eleven gjør ingen feil.",
-                            "Eleven glemmer en viktig detalj om andregradsuttrykk.",
-                            "Noe helt annet.",
-                            "Vet ikke."
-                        ],
-                        "riktigSvar": 1,
-                        "forklaring": "Dette viser forståelse for andregradsuttrykk."
-                    },
-                    {
-                        "sporsmal": "En elev gjør en vanlig feil med andregradsuttrykk. Hva er feilen? (Spørsmål 10)",
-                        "alternativer": [
-                            "Eleven gjør ingen feil.",
-                            "Vet ikke.",
-                            "Noe helt annet.",
-                            "Eleven glemmer en viktig detalj om andregradsuttrykk."
-                        ],
-                        "riktigSvar": 3,
-                        "forklaring": "Dette viser forståelse for andregradsuttrykk."
-                    }
                 ]
             },
             {
@@ -5097,11 +4762,11 @@ export const fagsok = [
                         "tittel": "Oppgave 4.24",
                         "tekst": "Forklar hva en asymptote er, og de to hovedtypene.",
                         "bilde": null,
-                        "hint": "Tenk på en linje grafen nærmer seg, men aldri treffer.",
+                        "hint": "Tenk på en linje grafen nærmer seg mer og mer når $x$ eller $y$ blir svært stor.",
                         "fasit": null,
                         "fasitSteg": [
-                            "En asymptote er en rett linje som grafen til en funksjon nærmer seg uendelig mye uten noen gang å berøre.<br><br>Vi har to hovedtyper (i tillegg til skrå asymptote):<br><br><strong>1) Loddrett asymptote:</strong> <br>Oppstår når nevneren går mot $0$. Grafen stuper opp eller ned langs linjen.<br><br><strong>2) Vannrett asymptote:</strong> <br>Viser hvilken verdi grafen flater ut på for svært store eller små verdier av $x$.",
-                            "<strong>Svar:</strong> En asymptote er en linje grafen nærmer seg uten å treffe. Hovedtypene er loddrett (nevner mot $0$) og vannrett (verdien grafen flater ut på)."
+                            "En asymptote er en rett linje som grafen til en funksjon kommer vilkårlig nær når $x$ går mot et bestemt tall, eller når $x$ blir svært stor eller svært liten (negativ).<br><br>Vi har to hovedtyper (i tillegg til skrå asymptote):<br><br><strong>1) Loddrett asymptote:</strong> <br>Oppstår når nevneren går mot $0$. Grafen stuper opp eller ned langs linjen.<br><br><strong>2) Vannrett asymptote:</strong> <br>Viser hvilken verdi grafen flater ut på for svært store eller små verdier av $x$. Merk: Grafen kan godt krysse en vannrett asymptote for «vanlige» $x$-verdier, men en loddrett asymptote krysses aldri (funksjonen er ikke definert der).",
+                            "<strong>Svar:</strong> En asymptote er en linje grafen nærmer seg mer og mer. Hovedtypene er loddrett (nevner mot $0$) og vannrett (verdien grafen flater ut på)."
                         ],
                         "starter": ""
                     },
@@ -5113,8 +4778,8 @@ export const fagsok = [
                         "hint": "Sjekk telleren mot nevneren.",
                         "fasit": null,
                         "fasitSteg": [
-                            "<strong>Vannrett asymptote:</strong><br>Se på forholdet mellom leddene med høyest grad i teller og nevner (de deles på hverandre). <br>Svaret skrives som en horisontal linje:<br>$y = a$ (hvor $a$ er et tall)<br><br><strong>Loddrett asymptote:</strong><br>Finn den eller de $x$-verdiene som gjør at nevneren blir lik $0$ (mens telleren ikke er $0$).<br>Svaret skrives som en vertikal linje:<br>$x = b$ (hvor $b$ er et tall)",
-                            "<strong>Svar:</strong> Vannrett asymptote finnes ved å dele høyeste grad, skrives $y=a$. Loddrett asymptote finnes ved at nevner er $0$, skrives $x=b$."
+                            "<strong>Vannrett asymptote:</strong><br>Sammenlign graden i teller og nevner:<br>- <strong>Samme grad:</strong> Del leddene med høyest grad på hverandre, f.eks. $\\frac{3x}{x} = 3$.<br>- <strong>Høyest grad i nevneren:</strong> Vannrett asymptote $y = 0$.<br>- <strong>Høyest grad i telleren:</strong> Ingen vannrett asymptote.<br><br>Svaret skrives som en horisontal linje:<br>$y = a$ (hvor $a$ er et tall)<br><br><strong>Loddrett asymptote:</strong><br>Finn den eller de $x$-verdiene som gjør at nevneren blir lik $0$ (mens telleren ikke er $0$).<br>Svaret skrives som en vertikal linje:<br>$x = b$ (hvor $b$ er et tall)",
+                            "<strong>Svar:</strong> Vannrett asymptote finnes ved å sammenligne graden i teller og nevner (samme grad: del leddene med høyest grad; høyest grad i nevner: $y=0$; høyest grad i teller: ingen), og skrives $y=a$. Loddrett asymptote finnes ved at nevner er $0$, skrives $x=b$."
                         ],
                         "starter": ""
                     },
@@ -5130,7 +4795,7 @@ export const fagsok = [
                             "<strong>Svar:</strong> Nullpunkt er $x = 2$. y-skjæringen er i punktet $(0, -3)$.",
                             "<strong>b)</strong><br>Loddrett asymptote finner vi når nevneren er $0$:<br>$x + 2 = 0$<br>$x = -2$<br><br>Vannrett asymptote finner vi ved å se på leddene med høyest grad:<br>$\\frac{3x}{x} = 3$<br>$y = 3$",
                             "<strong>Svar:</strong> Loddrett asymptote er $x = -2$ og vannrett asymptote er $y = 3$.",
-                            "<strong>c)</strong><br>Definisjonsmengden er alle mulige $x$-verdier. Siden vi ikke kan dele på $0$, må $x <br>eq -2$:<br>$D_k = \\mathbb{R} \\setminus \\{-2\\}$<br><br>Verdimengden er alle mulige $y$-verdier. Grafen vil aldri treffe den vannrette asymptoten $y = 3$:<br>$V_k = \\mathbb{R} \\setminus \\{3\\}$",
+                            "<strong>c)</strong><br>Definisjonsmengden er alle mulige $x$-verdier. Siden vi ikke kan dele på $0$, må $x \\neq -2$:<br>$D_k = \\mathbb{R} \\setminus \\{-2\\}$<br><br>Verdimengden er alle mulige $y$-verdier. Grafen vil aldri treffe den vannrette asymptoten $y = 3$:<br>$V_k = \\mathbb{R} \\setminus \\{3\\}$",
                             "<strong>Svar:</strong> $D_k = \\mathbb{R} \\setminus \\{-2\\}$ og $V_k = \\mathbb{R} \\setminus \\{3\\}$.",
                             "<strong>d)</strong><br>Tegn asymptotene som stiplede linjer i et koordinatsystem:<br>- Loddrett linje i $x = -2$<br>- Vannrett linje i $y = 3$<br><br>Marker punktene fra oppgave a: $(2, 0)$ og $(0, -3)$.<br>Tegn kurvene i hjørnene slik at de går gjennom punktene og legger seg inntil asymptotene.",
                             "<strong>Svar:</strong> Grafen skisseres med asymptotene $x = -2$ og $y = 3$."
@@ -5153,13 +4818,13 @@ export const fagsok = [
                     {
                         "id": "4.28",
                         "tittel": "Oppgave 4.28",
-                        "tekst": "Vi har funksjonen $r(x) = \\frac{2x^2 - x - 3}{x - 1}$.<br><br><strong>a)</strong> Finn nullpunkt og y-skjæring.<br><br><strong>b)</strong> Finn loddrett asymptote.<br><br><strong>c)</strong> Bruk polynomdivisjon for å vise at funksjonen har skrå asymptote $y = 2x+1$.<br><br><strong>d)</strong> Har funksjonen en vannrett asymptote?",
+                        "tekst": "Vi har funksjonen $r(x) = \\frac{2x^2 - x - 3}{x - 1}$.<br><br><strong>a)</strong> Finn nullpunkt og y-skjæring.<br><br><strong>b)</strong> Finn loddrett asymptote.<br><br><strong>c)</strong> <em>(Utfordring)</em> Bruk polynomdivisjon for å vise at funksjonen har skrå asymptote $y = 2x+1$.<br><br><strong>d)</strong> Har funksjonen en vannrett asymptote?",
                         "bilde": null,
                         "hint": "Når telleren har høyere grad enn nevneren, får vi ingen vannrett asymptote, men ofte en skrå asymptote.",
                         "fasit": null,
                         "fasitSteg": [
-                            "<strong>a)</strong><br>Nullpunkt finner vi når telleren er lik $0$:<br>$2x^2 - x - 3 = 0$<br><br>Vi bruker abc-formelen:<br>$x = \\frac{-(-1) \\pm \\sqrt{(-1)^2 - 4 \\cdot 2 \\cdot (-3)}}{2 \\cdot 2}$<br>$x = \\frac{1 \\pm \\sqrt{1 + 24}}{4}$<br>$x = \\frac{1 \\pm 5}{4}$<br>Dette gir to løsninger: $x = 1.5$ og $x = -1$.<br><br>For y-skjæring setter vi inn $x = 0$:<br>$r(0) = \\frac{2 \\cdot 0^2 - 0 - 3}{0 - 1} = \\frac{-3}{-1} = 3$",
-                            "<strong>Svar:</strong> Nullpunktene er $x = 1.5$ og $x = -1$. y-skjæringen er $y = 3$.",
+                            "<strong>a)</strong><br>Nullpunkt finner vi når telleren er lik $0$:<br>$2x^2 - x - 3 = 0$<br><br>Vi bruker abc-formelen:<br>$x = \\frac{-(-1) \\pm \\sqrt{(-1)^2 - 4 \\cdot 2 \\cdot (-3)}}{2 \\cdot 2}$<br>$x = \\frac{1 \\pm \\sqrt{1 + 24}}{4}$<br>$x = \\frac{1 \\pm 5}{4}$<br>Dette gir to løsninger: $x = 1{,}5$ og $x = -1$.<br><br>For y-skjæring setter vi inn $x = 0$:<br>$r(0) = \\frac{2 \\cdot 0^2 - 0 - 3}{0 - 1} = \\frac{-3}{-1} = 3$",
+                            "<strong>Svar:</strong> Nullpunktene er $x = 1{,}5$ og $x = -1$. y-skjæringen er $y = 3$.",
                             "<strong>b)</strong><br>Loddrett asymptote finner vi når nevneren er $0$:<br>$x - 1 = 0$<br>$x = 1$",
                             "<strong>Svar:</strong> Loddrett asymptote er $x = 1$.",
                             "<strong>c)</strong><br>Vi utfører polynomdivisjonen $(2x^2 - x - 3) : (x - 1)$:<br><br>$(2x^2 - x - 3) : (x - 1) = 2x + 1$<br>$-(2x^2 - 2x)$<br>$\\rightarrow x - 3$<br>$-(x - 1)$<br>$\\rightarrow -2$ (dette er resten)<br><br>Vi kan dermed skrive om funksjonen på formen:<br>$r(x) = 2x + 1 - \\frac{2}{x - 1}$<br><br>Når $x$ blir uendelig stor (eller liten), vil brøken $-\\frac{2}{x - 1}$ gå mot $0$. Da vil grafen nærme seg linjen $y = 2x + 1$.",
@@ -5172,12 +4837,12 @@ export const fagsok = [
                     {
                         "id": "4.29",
                         "tittel": "Oppgave 4.29",
-                        "tekst": "Vi har funksjonen $b(x) = \\frac{ax+b}{cx-3}$. <br><br>Den har loddrett asymptote i $x=1.5$, vannrett asymptote i $y=2$, og grafen går gjennom punktet $(2, 5)$. Finn verdiene for $a$, $b$ og $c$.",
+                        "tekst": "Vi har funksjonen $f(x) = \\frac{ax+b}{cx-3}$. <br><br>Den har loddrett asymptote i $x=1{,}5$, vannrett asymptote i $y=2$, og grafen går gjennom punktet $(2, 5)$. Finn verdiene for $a$, $b$ og $c$.",
                         "bilde": null,
-                        "hint": "Loddrett asymptote betyr at nevneren er $0$ for den gitte $x$-verdien ($x=1.5$).<br>Vannrett asymptote finnes ved å dele leddene med høyest grad.",
+                        "hint": "Loddrett asymptote betyr at nevneren er $0$ for den gitte $x$-verdien ($x=1{,}5$).<br>Vannrett asymptote finnes ved å dele leddene med høyest grad.",
                         "fasit": null,
                         "fasitSteg": [
-                            "<strong>Steg 1: Finn $c$ fra loddrett asymptote</strong><br>Loddrett asymptote er $x = 1.5$. Da vet vi at nevneren er $0$:<br>$c \\cdot 1.5 - 3 = 0$<br>$1.5c = 3$<br>$c = \\frac{3}{1.5} = 2$<br><br><strong>Steg 2: Finn $a$ fra vannrett asymptote</strong><br>Vannrett asymptote finnes ved å se på forholdet mellom $x$-leddene:<br>$y = \\frac{ax}{cx} = \\frac{a}{c}$<br>Vi vet at den vannrette asymptoten er $y = 2$ og vi fant nettopp at $c = 2$:<br>$\\frac{a}{2} = 2$<br>$a = 2 \\cdot 2 = 4$<br><br><strong>Steg 3: Finn $b$ fra punktet $(2, 5)$</strong><br>Grafen går gjennom $(2, 5)$, som betyr at $y = 5$ når $x = 2$.<br>Vi setter inn for $x = 2$, $y = 5$, $a = 4$ og $c = 2$:<br>$b(x) = \\frac{4x + b}{2x - 3}$<br>$5 = \\frac{4 \\cdot 2 + b}{2 \\cdot 2 - 3}$<br>$5 = \\frac{8 + b}{4 - 3}$<br>$5 = \\frac{8 + b}{1}$<br>$5 = 8 + b$<br>$b = 5 - 8 = -3$",
+                            "<strong>Steg 1: Finn $c$ fra loddrett asymptote</strong><br>Loddrett asymptote er $x = 1{,}5$. Da vet vi at nevneren er $0$:<br>$c \\cdot 1{,}5 - 3 = 0$<br>$1{,}5c = 3$<br>$c = \\frac{3}{1{,}5} = 2$<br><br><strong>Steg 2: Finn $a$ fra vannrett asymptote</strong><br>Vannrett asymptote finnes ved å se på forholdet mellom $x$-leddene:<br>$y = \\frac{ax}{cx} = \\frac{a}{c}$<br>Vi vet at den vannrette asymptoten er $y = 2$ og vi fant nettopp at $c = 2$:<br>$\\frac{a}{2} = 2$<br>$a = 2 \\cdot 2 = 4$<br><br><strong>Steg 3: Finn $b$ fra punktet $(2, 5)$</strong><br>Grafen går gjennom $(2, 5)$, som betyr at $y = 5$ når $x = 2$.<br>Vi setter inn for $x = 2$, $y = 5$, $a = 4$ og $c = 2$:<br>$f(x) = \\frac{4x + b}{2x - 3}$<br>$5 = \\frac{4 \\cdot 2 + b}{2 \\cdot 2 - 3}$<br>$5 = \\frac{8 + b}{4 - 3}$<br>$5 = \\frac{8 + b}{1}$<br>$5 = 8 + b$<br>$b = 5 - 8 = -3$",
                             "<strong>Svar:</strong> Verdiene er $a = 4$, $b = -3$ og $c = 2$."
                         ],
                         "starter": ""
@@ -5185,7 +4850,7 @@ export const fagsok = [
                     {
                         "id": "4.30",
                         "tittel": "Oppgave 4.30",
-                        "tekst": "Gitt polynomet $P(x) = \\frac{x^4 - x^3 + 2x^2 - x + 3}{x^2 + 1}$.<br><br><strong>a)</strong> Utfør polynomdivisjon.<br><br><strong>b)</strong> Skriv funksjonen på rest-form og forklar grafens oppførsel for store verdier av $x$.",
+                        "tekst": "Gitt den rasjonale funksjonen $P(x) = \\frac{x^4 - x^3 + 2x^2 - x + 3}{x^2 + 1}$.<br><br><strong>a)</strong> Utfør polynomdivisjon.<br><br><strong>b)</strong> Skriv funksjonen på rest-form og forklar grafens oppførsel for store verdier av $x$.",
                         "bilde": null,
                         "hint": "Pass på at du gjør nøyaktige mellomregninger i divisjonen av $x^4$.",
                         "fasit": null,
@@ -5196,118 +4861,6 @@ export const fagsok = [
                             "<strong>Svar:</strong> På rest-form kan funksjonen skrives som $P(x) = x^2 - x + 1 + \\frac{2}{x^2 + 1}$. For store verdier av $x$ vil brøken gå mot $0$, og funksjonen vil oppføre seg som parabelen $y = x^2 - x + 1$."
                         ],
                         "starter": ""
-                    }
-                ],
-                "quiz": [
-                    {
-                        "sporsmal": "Hva er grunnleggende sant om rasjonale uttrykk? (Spørsmål 1)",
-                        "alternativer": [
-                            "Vet ikke.",
-                            "Det beskriver en fundamental egenskap ved rasjonale uttrykk.",
-                            "Det betyr at funksjonen alltid er 0.",
-                            "Noe helt annet."
-                        ],
-                        "riktigSvar": 1,
-                        "forklaring": "Dette viser forståelse for rasjonale uttrykk."
-                    },
-                    {
-                        "sporsmal": "Hva er grunnleggende sant om rasjonale uttrykk? (Spørsmål 2)",
-                        "alternativer": [
-                            "Vet ikke.",
-                            "Noe helt annet.",
-                            "Det betyr at funksjonen alltid er 0.",
-                            "Det beskriver en fundamental egenskap ved rasjonale uttrykk."
-                        ],
-                        "riktigSvar": 3,
-                        "forklaring": "Dette viser forståelse for rasjonale uttrykk."
-                    },
-                    {
-                        "sporsmal": "Hva er grunnleggende sant om rasjonale uttrykk? (Spørsmål 3)",
-                        "alternativer": [
-                            "Det betyr at funksjonen alltid er 0.",
-                            "Vet ikke.",
-                            "Det beskriver en fundamental egenskap ved rasjonale uttrykk.",
-                            "Noe helt annet."
-                        ],
-                        "riktigSvar": 2,
-                        "forklaring": "Dette viser forståelse for rasjonale uttrykk."
-                    },
-                    {
-                        "sporsmal": "Hva er grunnleggende sant om rasjonale uttrykk? (Spørsmål 4)",
-                        "alternativer": [
-                            "Vet ikke.",
-                            "Det betyr at funksjonen alltid er 0.",
-                            "Det beskriver en fundamental egenskap ved rasjonale uttrykk.",
-                            "Noe helt annet."
-                        ],
-                        "riktigSvar": 2,
-                        "forklaring": "Dette viser forståelse for rasjonale uttrykk."
-                    },
-                    {
-                        "sporsmal": "Gitt en funksjon $f(x)$ for rasjonale uttrykk, regn ut verdien. (Spørsmål 5)",
-                        "alternativer": [
-                            "Vet ikke.",
-                            "Noe helt annet.",
-                            "Svaret er umulig å finne.",
-                            "Svaret kan utledes fra formelen for rasjonale uttrykk."
-                        ],
-                        "riktigSvar": 3,
-                        "forklaring": "Dette viser forståelse for rasjonale uttrykk."
-                    },
-                    {
-                        "sporsmal": "Gitt en funksjon $f(x)$ for rasjonale uttrykk, regn ut verdien. (Spørsmål 6)",
-                        "alternativer": [
-                            "Svaret er umulig å finne.",
-                            "Vet ikke.",
-                            "Noe helt annet.",
-                            "Svaret kan utledes fra formelen for rasjonale uttrykk."
-                        ],
-                        "riktigSvar": 3,
-                        "forklaring": "Dette viser forståelse for rasjonale uttrykk."
-                    },
-                    {
-                        "sporsmal": "Gitt en funksjon $f(x)$ for rasjonale uttrykk, regn ut verdien. (Spørsmål 7)",
-                        "alternativer": [
-                            "Noe helt annet.",
-                            "Svaret er umulig å finne.",
-                            "Svaret kan utledes fra formelen for rasjonale uttrykk.",
-                            "Vet ikke."
-                        ],
-                        "riktigSvar": 2,
-                        "forklaring": "Dette viser forståelse for rasjonale uttrykk."
-                    },
-                    {
-                        "sporsmal": "Gitt en funksjon $f(x)$ for rasjonale uttrykk, regn ut verdien. (Spørsmål 8)",
-                        "alternativer": [
-                            "Noe helt annet.",
-                            "Svaret er umulig å finne.",
-                            "Vet ikke.",
-                            "Svaret kan utledes fra formelen for rasjonale uttrykk."
-                        ],
-                        "riktigSvar": 3,
-                        "forklaring": "Dette viser forståelse for rasjonale uttrykk."
-                    },
-                    {
-                        "sporsmal": "En elev gjør en vanlig feil med rasjonale uttrykk. Hva er feilen? (Spørsmål 9)",
-                        "alternativer": [
-                            "Eleven glemmer en viktig detalj om rasjonale uttrykk.",
-                            "Vet ikke.",
-                            "Noe helt annet.",
-                            "Eleven gjør ingen feil."
-                        ],
-                        "riktigSvar": 0,
-                        "forklaring": "Dette viser forståelse for rasjonale uttrykk."
-                    },
-                    {
-                        "sporsmal": "En elev gjør en vanlig feil med rasjonale uttrykk. Hva er feilen? (Spørsmål 10)",
-                        "alternativer": [
-                            "Noe helt annet.",
-                            "Eleven glemmer en viktig detalj om rasjonale uttrykk.",
-                            "Eleven gjør ingen feil.",
-                            "Vet ikke."
-                        ],
-                        "riktigSvar": 1,
-                        "forklaring": "Dette viser forståelse for rasjonale uttrykk."
                     }
                 ]
             },
@@ -5325,207 +4878,95 @@ export const fagsok = [
                         "fasitSteg": [
                             "<strong>a)</strong><br>Vi definerer den generelle formen for en potensfunksjon.<br><br>$f(x) = a \\cdot x^b$<br><br>Her er $a$ en skaleringsfaktor, $x$ er en variabel i grunntallet, og $b$ er en fast eksponent.",
                             "<strong>Svar:</strong> Formen er $f(x) = a \\cdot x^b$.",
-                            "<strong>b)</strong><br>Potensfunksjoner er hensiktsmessige å bruke når vi har sammenhenger der den relative veksten avhenger av grunnverdien.<br><br>Dette brukes typisk i fysikk og geometri. Et eksempel er sammenhengen mellom radius og areal eller volum.",
-                            "<strong>Svar:</strong> De brukes typisk i fysikk og geometri (f.eks. areal og volum)."
+                            "<strong>b)</strong><br>Potensfunksjoner er hensiktsmessige å bruke når vi har sammenhenger der en fast prosentvis endring i $x$ gir en fast prosentvis endring i $y$ (uansett startverdi). Øker $x$ med en faktor $k$, blir $y$ multiplisert med $k^b$.<br><br>Dette brukes typisk i fysikk og geometri. Et eksempel er sammenhengen mellom radius og areal eller volum.",
+                            "<strong>Svar:</strong> De passer når fast prosentvis endring i $x$ gir fast prosentvis endring i $y$, typisk i fysikk og geometri (f.eks. areal og volum)."
                         ],
                         "starter": ""
                     },
                     {
                         "id": "4.32",
                         "tittel": "Oppgave 4.32",
-                        "tekst": "Volum av en krystall er gitt ved funksjonen $V(t) = 2.5 \\cdot t^{0.6}$.<br><br><strong>a)</strong> Finn tiden $t$ som går før volumet er $V = 10 \\text{ cm}^3$.<br><br><strong>b)</strong> Hvor mange prosent vokser volumet i fjerde uke (fra $t=3$ til $t=4$)?",
+                        "tekst": "Volum av en krystall er gitt ved funksjonen $V(t) = 2{,}5 \\cdot t^{0{,}6}$, der $V$ er volumet i $\\text{cm}^3$ og $t$ er tiden i uker.<br><br><strong>a)</strong> Finn tiden $t$ som går før volumet er $V = 10 \\text{ cm}^3$.<br><br><strong>b)</strong> Hvor mange prosent vokser volumet i fjerde uke (fra $t=3$ til $t=4$)?",
                         "bilde": null,
                         "hint": "I del b regner du ut $V(4)$ og deler det på $V(3)$ for å finne vekstfaktoren.",
                         "fasit": null,
                         "fasitSteg": [
-                            "<strong>a)</strong><br>Vi setter inn verdien $V = 10$ i uttrykket og løser for $t$.<br><br>$2.5 \\cdot t^{0.6} = 10$<br><br>$t^{0.6} = \\frac{10}{2.5}$ (del på 2.5)<br><br>$t^{0.6} = 4$ (forenkle)<br><br>$t = 4^{\\frac{1}{0.6}}$ (opphøy begge sider i $\\frac{1}{0.6}$)<br><br>$t \\approx 10.1$ uker",
-                            "<strong>Svar:</strong> Tiden det tar før volumet er $10 \\text{ cm}^3$ er ca $10.1$ uker.",
-                            "<strong>b)</strong><br>Vi skal finne den prosentvise veksten fra $t = 3$ til $t = 4$.<br><br>$V(4) = 2.5 \\cdot 4^{0.6} \\approx 5.74$ (regn ut volumet ved uke 4)<br><br>$V(3) = 2.5 \\cdot 3^{0.6} \\approx 4.83$ (regn ut volumet ved uke 3)<br><br>Vi finner vekstfaktoren ved å dele:<br><br>$\\frac{V(4)}{V(3)} = \\frac{5.74}{4.83} \\approx 1.188$<br><br>Dette gir en vekstfaktor på $1.188$, som tilsvarer en økning på $18.8\\%$.",
-                            "<strong>Svar:</strong> Volumet vokser med $18.8\\%$."
+                            "<strong>a)</strong><br>Vi setter inn verdien $V = 10$ i uttrykket og løser for $t$.<br><br>$2{,}5 \\cdot t^{0{,}6} = 10$<br><br>$t^{0{,}6} = \\frac{10}{2{,}5}$ (del på $2{,}5$)<br><br>$t^{0{,}6} = 4$ (forenkle)<br><br>$t = 4^{\\frac{1}{0{,}6}}$ (opphøy begge sider i $\\frac{1}{0{,}6}$)<br><br>$t \\approx 10{,}1$ uker",
+                            "<strong>Svar:</strong> Tiden det tar før volumet er $10 \\text{ cm}^3$ er ca $10{,}1$ uker.",
+                            "<strong>b)</strong><br>Vi skal finne den prosentvise veksten fra $t = 3$ til $t = 4$.<br><br>$V(4) = 2{,}5 \\cdot 4^{0{,}6} \\approx 5{,}74$ (regn ut volumet ved uke 4)<br><br>$V(3) = 2{,}5 \\cdot 3^{0{,}6} \\approx 4{,}83$ (regn ut volumet ved uke 3)<br><br>Vi finner vekstfaktoren ved å dele:<br><br>$\\frac{V(4)}{V(3)} = \\frac{5{,}74}{4{,}83} \\approx 1{,}188$<br><br>Dette gir en vekstfaktor på $1{,}188$, som tilsvarer en økning på $18{,}8\\%$.",
+                            "<strong>Svar:</strong> Volumet vokser med $18{,}8\\%$."
                         ],
                         "starter": ""
                     },
                     {
                         "id": "4.33",
                         "tittel": "Oppgave 4.33",
-                        "tekst": "Steketiden er gitt ved $T(m) = 1.2 \\cdot m^{0.55}$, der $m$ er massen i gram.<br><br>Grafen vises under.<br><br><strong>a)</strong> Skisser grafen i intervallet fra $m = 1000$ til $m = 3000$.<br><br><strong>b)</strong> Hva er steketiden for $2000 \\text{ g}$?<br><br><strong>c)</strong> Hva er forskjellen i steketid mellom $2500 \\text{ g}$ og $2000 \\text{ g}$?",
+                        "tekst": "Steketiden er gitt ved $T(m) = 1{,}2 \\cdot m^{0{,}55}$, der $m$ er massen i gram.<br><br>$T$ er tiden i minutter. Grafen vises under.<br><br><strong>a)</strong> Bruk grafen og skisser den selv i intervallet fra $m = 1000$ til $m = 3000$.<br><br><strong>b)</strong> Hva er steketiden for $2000 \\text{ g}$?<br><br><strong>c)</strong> Hva er forskjellen i steketid mellom $2500 \\text{ g}$ og $2000 \\text{ g}$?",
                         "bilde": null,
-                        "hint": "Eksponenten $0.55$ er positiv og under $1$, så grafen stiger, men slakker av.",
+                        "hint": "Eksponenten $0{,}55$ er positiv og under $1$, så grafen stiger, men slakker av.",
                         "fasit": null,
                         "fasitSteg": [
-                            "<strong>a)</strong><br>Kurven er en voksende funksjon med en avtagende veksthastighet.<br><br>Når $m=1000$: $T(1000) = 1.2 \\cdot 1000^{0.55} \\approx 53.6$ minutter.<br><br>Når $m=3000$: $T(3000) = 1.2 \\cdot 3000^{0.55} \\approx 98.1$ minutter.",
-                            "<strong>Svar:</strong> Kurven vokser gradvis fra $53.6$ til $98.1$.",
-                            "<strong>b)</strong><br>Vi regner ut steketiden for $m = 2000$.<br><br>$T(2000) = 1.2 \\cdot 2000^{0.55}$ (sett inn $2000$ for $m$)<br><br>$T(2000) \\approx 78.5$ minutter",
-                            "<strong>Svar:</strong> Steketiden er $78.5$ minutter.",
-                            "<strong>c)</strong><br>Vi regner først ut steketiden for $m = 2500$.<br><br>$T(2500) = 1.2 \\cdot 2500^{0.55} \\approx 88.7$ minutter (sett inn $2500$ for $m$)<br><br>Vi finner deretter differansen fra steketiden i b):<br><br>Forskjell $= T(2500) - T(2000) = 88.7 - 78.5 = 10.2$ minutter",
-                            "<strong>Svar:</strong> Forskjellen i steketid er $10.2$ minutter."
+                            "<strong>a)</strong><br>Kurven er en voksende funksjon med en avtagende veksthastighet.<br><br>Når $m=1000$: $T(1000) = 1{,}2 \\cdot 1000^{0{,}55} \\approx 53{,}6$ minutter.<br><br>Når $m=3000$: $T(3000) = 1{,}2 \\cdot 3000^{0{,}55} \\approx 98{,}1$ minutter.",
+                            "<strong>Svar:</strong> Kurven vokser gradvis fra $53{,}6$ til $98{,}1$.",
+                            "<strong>b)</strong><br>Vi regner ut steketiden for $m = 2000$.<br><br>$T(2000) = 1{,}2 \\cdot 2000^{0{,}55}$ (sett inn $2000$ for $m$)<br><br>$T(2000) \\approx 78{,}5$ minutter",
+                            "<strong>Svar:</strong> Steketiden er $78{,}5$ minutter.",
+                            "<strong>c)</strong><br>Vi regner først ut steketiden for $m = 2500$.<br><br>$T(2500) = 1{,}2 \\cdot 2500^{0{,}55} \\approx 88{,}7$ minutter (sett inn $2500$ for $m$)<br><br>Vi finner deretter differansen fra steketiden i b):<br><br>Forskjell $= T(2500) - T(2000) = 88{,}7 - 78{,}5 = 10{,}2$ minutter",
+                            "<strong>Svar:</strong> Forskjellen i steketid er $10{,}2$ minutter."
                         ],
                         "starter": ""
                     },
                     {
                         "id": "4.34",
                         "tittel": "Oppgave 4.34",
-                        "tekst": "Etterspørselen som funksjon av prisen er gitt ved $E(p) = 25000 \\cdot p^{-1.2}$.<br><br><strong>a)</strong> Hva er etterspørselen for $p = 100$?<br><br><strong>b)</strong> Hvordan endres etterspørselen hvis prisen går opp med $10\\%$ (fra $100$ til $110$)?<br><br><strong>c)</strong> Hvordan endres etterspørselen hvis prisen går ned med $10\\%$ (fra $100$ til $90$)?",
+                        "tekst": "Etterspørselen som funksjon av prisen er gitt ved $E(p) = 25000 \\cdot p^{-1{,}2}$.<br><br><strong>a)</strong> Hva er etterspørselen for $p = 100$?<br><br><strong>b)</strong> Hvordan endres etterspørselen hvis prisen går opp med $10\\%$ (fra $100$ til $110$)?<br><br><strong>c)</strong> Hvordan endres etterspørselen hvis prisen går ned med $10\\%$ (fra $100$ til $90$)?",
                         "bilde": null,
                         "hint": "Negativ eksponent betyr at høyere pris gir lavere etterspørsel.",
                         "fasit": null,
                         "fasitSteg": [
-                            "<strong>a)</strong><br>Vi setter prisen $p = 100$ inn i funksjonen.<br><br>$E(100) = 25000 \\cdot 100^{-1.2}$<br><br>$E(100) \\approx 100$ (regnet ut tilnærmet)",
+                            "<strong>a)</strong><br>Vi setter prisen $p = 100$ inn i funksjonen.<br><br>$E(100) = 25000 \\cdot 100^{-1{,}2}$<br><br>$E(100) \\approx 100$ (regnet ut tilnærmet)",
                             "<strong>Svar:</strong> Etterspørselen er ca $100$ enheter.",
-                            "<strong>b)</strong><br>Når prisen øker med $10\\%$, multipliseres prisen med vekstfaktoren $1.10$.<br>Siden grunntallet øker med en faktor på $1.10$, vil etterspørselen endres med faktoren $1.10^{-1.2}$.<br><br>$1.10^{-1.2} \\approx 0.892$<br><br>Dette er en ny vekstfaktor for etterspørselen.<br><br>Endring i prosent $= (0.892 - 1) \\cdot 100\\% = -10.8\\%$",
-                            "<strong>Svar:</strong> Etterspørselen går ned med $10.8\\%$.",
-                            "<strong>c)</strong><br>Når prisen reduseres med $10\\%$, multipliseres prisen med vekstfaktoren $0.90$.<br>Siden grunntallet reduseres med en faktor på $0.90$, vil etterspørselen endres med faktoren $0.90^{-1.2}$.<br><br>$0.90^{-1.2} \\approx 1.135$<br><br>Dette er en ny vekstfaktor for etterspørselen.<br><br>Endring i prosent $= (1.135 - 1) \\cdot 100\\% = 13.5\\%$",
-                            "<strong>Svar:</strong> Etterspørselen øker med $13.5\\%$."
+                            "<strong>b)</strong><br>Når prisen øker med $10\\%$, multipliseres prisen med vekstfaktoren $1{,}10$.<br>Siden grunntallet øker med en faktor på $1{,}10$, vil etterspørselen endres med faktoren $1{,}10^{-1{,}2}$.<br><br>$1{,}10^{-1{,}2} \\approx 0{,}892$<br><br>Dette er en ny vekstfaktor for etterspørselen.<br><br>Endring i prosent $= (0{,}892 - 1) \\cdot 100\\% = -10{,}8\\%$",
+                            "<strong>Svar:</strong> Etterspørselen går ned med $10{,}8\\%$.",
+                            "<strong>c)</strong><br>Når prisen reduseres med $10\\%$, multipliseres prisen med vekstfaktoren $0{,}90$.<br>Siden grunntallet reduseres med en faktor på $0{,}90$, vil etterspørselen endres med faktoren $0{,}90^{-1{,}2}$.<br><br>$0{,}90^{-1{,}2} \\approx 1{,}135$<br><br>Dette er en ny vekstfaktor for etterspørselen.<br><br>Endring i prosent $= (1{,}135 - 1) \\cdot 100\\% = 13{,}5\\%$",
+                            "<strong>Svar:</strong> Etterspørselen øker med $13{,}5\\%$."
                         ],
                         "starter": ""
                     },
                     {
                         "id": "4.35",
                         "tittel": "Oppgave 4.35",
-                        "tekst": "Arealet av et oljeutslipp som funksjon av avstanden (radiusen) $x$ fra sentrum er gitt ved $A(x) = 3.14 \\cdot x^{1.9}$.<br><br><strong>a)</strong> Finn arealet når radius er $x = 5.0$.<br><br><strong>b)</strong> Finn radiusen når arealet er $A = 100$.<br><br><strong>c)</strong> Hva er den prosentvise økningen i arealet hvis radiusen øker med $15\\%$?",
+                        "tekst": "Arealet av et oljeutslipp som funksjon av avstanden (radiusen) $x$ fra sentrum er gitt ved $A(x) = 3{,}14 \\cdot x^{1{,}9}$, der $x$ er målt i km og $A$ i $\\text{km}^2$.<br><br><strong>a)</strong> Finn arealet når radius er $x = 5{,}0$.<br><br><strong>b)</strong> Finn radiusen når arealet er $A = 100 \\text{ km}^2$.<br><br><strong>c)</strong> Hva er den prosentvise økningen i arealet hvis radiusen øker med $15\\%$?",
                         "bilde": null,
-                        "hint": "I del c) må vekstfaktoren $1.15$ opphøyes i eksponenten $1.9$.",
+                        "hint": "I del c) må vekstfaktoren $1{,}15$ opphøyes i eksponenten $1{,}9$.",
                         "fasit": null,
                         "fasitSteg": [
-                            "<strong>a)</strong><br>Vi setter $x = 5$ inn i formelen.<br><br>$A(5) = 3.14 \\cdot 5^{1.9}$<br><br>$A(5) \\approx 66.8$ (regn ut produktet)",
-                            "<strong>Svar:</strong> Arealet er $66.8 \\text{ km}^2$.",
-                            "<strong>b)</strong><br>Vi setter $A(x) = 100$ inn i likningen og løser for $x$.<br><br>$3.14 \\cdot x^{1.9} = 100$<br><br>$x^{1.9} = \\frac{100}{3.14}$ (del begge sider på $3.14$)<br><br>$x = \\left(\\frac{100}{3.14}\\right)^{\\frac{1}{1.9}}$ (opphøy i invers brøk)<br><br>$x \\approx 6.18 \\text{ km}$",
-                            "<strong>Svar:</strong> Radiusen er $6.18 \\text{ km}$.",
-                            "<strong>c)</strong><br>Når radiusen $x$ øker med $15\\%$, multipliseres den med vekstfaktoren $1.15$.<br>Siden arealet er proporsjonalt med $x^{1.9}$, må vekstfaktoren for arealet være $1.15^{1.9}$.<br><br>Vekstfaktor $= 1.15^{1.9} \\approx 1.304$<br><br>Dette gir en økning på $30.4\\%$.",
-                            "<strong>Svar:</strong> Arealet øker med $30.4\\%$."
+                            "<strong>a)</strong><br>Vi setter $x = 5$ inn i formelen.<br><br>$A(5) = 3{,}14 \\cdot 5^{1{,}9}$<br><br>$A(5) \\approx 66{,}8$ (regn ut produktet)",
+                            "<strong>Svar:</strong> Arealet er ca. $66{,}8 \\text{ km}^2$.",
+                            "<strong>b)</strong><br>Vi setter $A(x) = 100$ inn i likningen og løser for $x$.<br><br>$3{,}14 \\cdot x^{1{,}9} = 100$<br><br>$x^{1{,}9} = \\frac{100}{3{,}14}$ (del begge sider på $3{,}14$)<br><br>$x = \\left(\\frac{100}{3{,}14}\\right)^{\\frac{1}{1{,}9}}$ (opphøy i invers brøk)<br><br>$x \\approx 6{,}18 \\text{ km}$",
+                            "<strong>Svar:</strong> Radiusen er $6{,}18 \\text{ km}$.",
+                            "<strong>c)</strong><br>Når radiusen $x$ øker med $15\\%$, multipliseres den med vekstfaktoren $1{,}15$.<br>Siden arealet er proporsjonalt med $x^{1{,}9}$, må vekstfaktoren for arealet være $1{,}15^{1{,}9}$.<br><br>Vekstfaktor $= 1{,}15^{1{,}9} \\approx 1{,}304$<br><br>Dette gir en økning på $30{,}4\\%$.",
+                            "<strong>Svar:</strong> Arealet øker med $30{,}4\\%$."
                         ],
                         "starter": ""
                     },
                     {
                         "id": "4.36",
                         "tittel": "Oppgave 4.36",
-                        "tekst": "Kapasiteten (i prosent) til et batteri etter $x$ ladesykluser er gitt ved $C(x) = 150 \\cdot x^{-0.15}$.<br><br><strong>a)</strong> Hva er kapasiteten etter $500$ ladesykluser?<br><br><strong>b)</strong> Skisser grafen for kapasiteten.<br><br><strong>c)</strong> Hvor mange ladesykluser tar det før kapasiteten er $60\\%$?<br><br><strong>d)</strong> Hvor stor er nedgangen i kapasitet hvis antall sykluser øker med $30\\%$?",
+                        "tekst": "Kapasiteten (i prosent) til et batteri etter $x$ ladesykluser er gitt ved $C(x) = 150 \\cdot x^{-0{,}15}$ for $x \\geq 15$. (For færre sykluser gir modellen over $100\\%$, så den gjelder ikke der.)<br><br><strong>a)</strong> Hva er kapasiteten etter $500$ ladesykluser?<br><br><strong>b)</strong> Skisser grafen for kapasiteten.<br><br><strong>c)</strong> Hvor mange ladesykluser tar det før kapasiteten er $60\\%$?<br><br><strong>d)</strong> Hvor stor er nedgangen i kapasitet hvis antall sykluser øker med $30\\%$?",
                         "bilde": null,
                         "hint": "En negativ potensfunksjon flater gradvis ut for høye verdier av $x$.",
                         "fasit": null,
                         "fasitSteg": [
-                            "<strong>a)</strong><br>Vi setter inn $x = 500$ i funksjonen.<br><br>$C(500) = 150 \\cdot 500^{-0.15}$<br><br>$C(500) \\approx 59$ (regn ut produktet)",
+                            "<strong>a)</strong><br>Vi setter inn $x = 500$ i funksjonen.<br><br>$C(500) = 150 \\cdot 500^{-0{,}15}$<br><br>$C(500) \\approx 59$ (regn ut produktet)",
                             "<strong>Svar:</strong> Kapasiteten er ca $59\\%$.",
-                            "<strong>b)</strong><br>Kapasiteten er en avtagende funksjon fordi eksponenten er negativ ($-0.15$).<br><br>$C(x) = 150 \\cdot x^{-0.15}$<br><br>Kurven synker raskt til å begynne med, men flater gradvis ut for høyere verdier av ladesykluser.",
+                            "<strong>b)</strong><br>Kapasiteten er en avtagende funksjon fordi eksponenten er negativ ($-0{,}15$).<br><br>$C(x) = 150 \\cdot x^{-0{,}15}$<br><br>Kurven synker raskt til å begynne med, men flater gradvis ut for høyere verdier av ladesykluser.",
                             "<strong>Svar:</strong> Det er en synkende kurve som gradvis flater ut.",
-                            "<strong>c)</strong><br>Vi setter kapasiteten $C(x) = 60$ og løser for antall ladesykluser $x$.<br><br>$150 \\cdot x^{-0.15} = 60$<br><br>$x^{-0.15} = \\frac{60}{150}$ (del på 150)<br><br>$x^{-0.15} = 0.4$ (forenkle)<br><br>$x = 0.4^{\\frac{1}{-0.15}}$ (opphøy begge sider)<br><br>$x \\approx 450$",
+                            "<strong>c)</strong><br>Vi setter kapasiteten $C(x) = 60$ og løser for antall ladesykluser $x$.<br><br>$150 \\cdot x^{-0{,}15} = 60$<br><br>$x^{-0{,}15} = \\frac{60}{150}$ (del på 150)<br><br>$x^{-0{,}15} = 0{,}4$ (forenkle)<br><br>$x = 0{,}4^{\\frac{1}{-0{,}15}}$ (opphøy begge sider)<br><br>$x \\approx 450$",
                             "<strong>Svar:</strong> Det tar ca $450$ ladesykluser.",
-                            "<strong>d)</strong><br>Hvis syklusene øker med $30\\%$, er vekstfaktoren $1.3$. Endringen i kapasiteten vil da være $1.3^{-0.15}$.<br><br>$1.3^{-0.15} \\approx 0.961$<br><br>Dette gir en ny kapasitet på $96.1\\%$ av den forrige. Vi finner nedgangen:<br><br>$1 - 0.961 = 0.039 = 3.9\\%$",
-                            "<strong>Svar:</strong> Nedgangen i kapasitet er $3.9\\%$."
+                            "<strong>d)</strong><br>Hvis syklusene øker med $30\\%$, er vekstfaktoren $1{,}3$. Endringen i kapasiteten vil da være $1{,}3^{-0{,}15}$.<br><br>$1{,}3^{-0{,}15} \\approx 0{,}961$<br><br>Dette gir en ny kapasitet på $96{,}1\\%$ av den forrige. Vi finner nedgangen:<br><br>$1 - 0{,}961 = 0{,}039 = 3{,}9\\%$",
+                            "<strong>Svar:</strong> Nedgangen i kapasitet er $3{,}9\\%$."
                         ],
                         "starter": ""
-                    }
-                ],
-                "quiz": [
-                    {
-                        "sporsmal": "Hva er grunnleggende sant om vekstfaktorer? (Spørsmål 1)",
-                        "alternativer": [
-                            "Vet ikke.",
-                            "Noe helt annet.",
-                            "Det betyr at funksjonen alltid er 0.",
-                            "Det beskriver en fundamental egenskap ved vekstfaktorer."
-                        ],
-                        "riktigSvar": 3,
-                        "forklaring": "Dette viser forståelse for vekstfaktorer."
-                    },
-                    {
-                        "sporsmal": "Hva er grunnleggende sant om vekstfaktorer? (Spørsmål 2)",
-                        "alternativer": [
-                            "Vet ikke.",
-                            "Noe helt annet.",
-                            "Det beskriver en fundamental egenskap ved vekstfaktorer.",
-                            "Det betyr at funksjonen alltid er 0."
-                        ],
-                        "riktigSvar": 2,
-                        "forklaring": "Dette viser forståelse for vekstfaktorer."
-                    },
-                    {
-                        "sporsmal": "Hva er grunnleggende sant om vekstfaktorer? (Spørsmål 3)",
-                        "alternativer": [
-                            "Vet ikke.",
-                            "Noe helt annet.",
-                            "Det betyr at funksjonen alltid er 0.",
-                            "Det beskriver en fundamental egenskap ved vekstfaktorer."
-                        ],
-                        "riktigSvar": 3,
-                        "forklaring": "Dette viser forståelse for vekstfaktorer."
-                    },
-                    {
-                        "sporsmal": "Hva er grunnleggende sant om vekstfaktorer? (Spørsmål 4)",
-                        "alternativer": [
-                            "Vet ikke.",
-                            "Noe helt annet.",
-                            "Det betyr at funksjonen alltid er 0.",
-                            "Det beskriver en fundamental egenskap ved vekstfaktorer."
-                        ],
-                        "riktigSvar": 3,
-                        "forklaring": "Dette viser forståelse for vekstfaktorer."
-                    },
-                    {
-                        "sporsmal": "Gitt en funksjon $f(x)$ for vekstfaktorer, regn ut verdien. (Spørsmål 5)",
-                        "alternativer": [
-                            "Svaret kan utledes fra formelen for vekstfaktorer.",
-                            "Svaret er umulig å finne.",
-                            "Vet ikke.",
-                            "Noe helt annet."
-                        ],
-                        "riktigSvar": 0,
-                        "forklaring": "Dette viser forståelse for vekstfaktorer."
-                    },
-                    {
-                        "sporsmal": "Gitt en funksjon $f(x)$ for vekstfaktorer, regn ut verdien. (Spørsmål 6)",
-                        "alternativer": [
-                            "Noe helt annet.",
-                            "Vet ikke.",
-                            "Svaret er umulig å finne.",
-                            "Svaret kan utledes fra formelen for vekstfaktorer."
-                        ],
-                        "riktigSvar": 3,
-                        "forklaring": "Dette viser forståelse for vekstfaktorer."
-                    },
-                    {
-                        "sporsmal": "Gitt en funksjon $f(x)$ for vekstfaktorer, regn ut verdien. (Spørsmål 7)",
-                        "alternativer": [
-                            "Noe helt annet.",
-                            "Vet ikke.",
-                            "Svaret er umulig å finne.",
-                            "Svaret kan utledes fra formelen for vekstfaktorer."
-                        ],
-                        "riktigSvar": 3,
-                        "forklaring": "Dette viser forståelse for vekstfaktorer."
-                    },
-                    {
-                        "sporsmal": "Gitt en funksjon $f(x)$ for vekstfaktorer, regn ut verdien. (Spørsmål 8)",
-                        "alternativer": [
-                            "Svaret kan utledes fra formelen for vekstfaktorer.",
-                            "Svaret er umulig å finne.",
-                            "Noe helt annet.",
-                            "Vet ikke."
-                        ],
-                        "riktigSvar": 0,
-                        "forklaring": "Dette viser forståelse for vekstfaktorer."
-                    },
-                    {
-                        "sporsmal": "En elev gjør en vanlig feil med vekstfaktorer. Hva er feilen? (Spørsmål 9)",
-                        "alternativer": [
-                            "Vet ikke.",
-                            "Eleven glemmer en viktig detalj om vekstfaktorer.",
-                            "Noe helt annet.",
-                            "Eleven gjør ingen feil."
-                        ],
-                        "riktigSvar": 1,
-                        "forklaring": "Dette viser forståelse for vekstfaktorer."
-                    },
-                    {
-                        "sporsmal": "En elev gjør en vanlig feil med vekstfaktorer. Hva er feilen? (Spørsmål 10)",
-                        "alternativer": [
-                            "Eleven glemmer en viktig detalj om vekstfaktorer.",
-                            "Eleven gjør ingen feil.",
-                            "Noe helt annet.",
-                            "Vet ikke."
-                        ],
-                        "riktigSvar": 0,
-                        "forklaring": "Dette viser forståelse for vekstfaktorer."
                     }
                 ]
             },
@@ -5553,50 +4994,50 @@ export const fagsok = [
                         "tittel": "Oppgave 4.38",
                         "tekst": "En bakteriekultur består av $10$ millioner bakterier. Antallet øker med $3 \\%$ daglig.<br><br><strong>a)</strong> Finn et uttrykk for antall bakterier, $B(x)$, etter $x$ dager.<br><br><strong>b)</strong> Finn antall bakterier etter ett år ($365$ dager).",
                         "bilde": null,
-                        "hint": "En økning på $3 \\%$ gir en vekstfaktor på $1 + \\frac{3}{100} = 1.03$.",
+                        "hint": "En økning på $3 \\%$ gir en vekstfaktor på $1 + \\frac{3}{100} = 1{,}03$.",
                         "fasit": null,
                         "fasitSteg": [
-                            "<strong>a)</strong><br>Vi bruker standardformen for en eksponentialfunksjon, $B(x) = a \\cdot b^x$.<br><br>$a = 10$ (startverdien er $10$ millioner)<br><br>$b = 1.03$ (vekstfaktoren tilsvarende $3 \\%$ økning)<br><br>$B(x) = 10 \\cdot 1.03^x$ (setter $a$ og $b$ inn i uttrykket)",
-                            "<strong>Svar:</strong> $B(x) = 10 \\cdot 1.03^x$",
-                            "<strong>b)</strong><br>Vi skal finne antall bakterier etter ett år, så vi setter $x = 365$.<br><br>$B(365) = 10 \\cdot 1.03^{365}$ (setter inn verdien for $x$)<br><br>$B(365) \\approx 10 \\cdot 48482.7$ (regner ut potensen)<br><br>$B(365) \\approx 484827$ (ganger med startverdien)<br><br>Siden startverdien $10$ var oppgitt i millioner, er svaret også i millioner.",
-                            "<strong>Svar:</strong> Omtrent $484827$ millioner bakterier"
+                            "<strong>a)</strong><br>Vi bruker standardformen for en eksponentialfunksjon, $B(x) = a \\cdot b^x$.<br><br>$a = 10$ (startverdien er $10$ millioner)<br><br>$b = 1{,}03$ (vekstfaktoren tilsvarende $3 \\%$ økning)<br><br>$B(x) = 10 \\cdot 1{,}03^x$ (setter $a$ og $b$ inn i uttrykket)",
+                            "<strong>Svar:</strong> $B(x) = 10 \\cdot 1{,}03^x$",
+                            "<strong>b)</strong><br>Vi skal finne antall bakterier etter ett år, så vi setter $x = 365$.<br><br>$B(365) = 10 \\cdot 1{,}03^{365}$ (setter inn verdien for $x$)<br><br>$B(365) \\approx 10 \\cdot 48482{,}7$ (regner ut potensen)<br><br>$B(365) \\approx 484827$ (ganger med startverdien)<br><br>Siden startverdien $10$ var oppgitt i millioner, er svaret også i millioner:<br>$484827 \\text{ millioner} = 484827 \\cdot 10^6 \\approx 4{,}85 \\cdot 10^{11}$",
+                            "<strong>Svar:</strong> Omtrent $4{,}85 \\cdot 10^{11}$ bakterier (ca. $484827$ millioner)"
                         ],
                         "starter": ""
                     },
                     {
                         "id": "4.39",
                         "tittel": "Oppgave 4.39",
-                        "tekst": "Verdien av en bil er gitt ved $V(t) = 400000 \\cdot 0.85^t$, hvor $t$ er antall år.<br><br><strong>a)</strong> Hva var bilens verdi som ny?<br><br><strong>b)</strong> Hva er den årlige prosentvise nedgangen i verdi?<br><br><strong>c)</strong> Skisser grafen til funksjonen.<br><br><strong>d)</strong> Hva er bilens verdi etter $4$ år?<br><br><strong>e)</strong> Hva er bilens halveringstid?",
+                        "tekst": "Verdien av en bil er gitt ved $V(t) = 400000 \\cdot 0{,}85^t$, hvor $t$ er antall år.<br><br><strong>a)</strong> Hva var bilens verdi som ny?<br><br><strong>b)</strong> Hva er den årlige prosentvise nedgangen i verdi?<br><br><strong>c)</strong> Skisser grafen til funksjonen.<br><br><strong>d)</strong> Hva er bilens verdi etter $4$ år?<br><br><strong>e)</strong> Hva er bilens halveringstid?",
                         "bilde": null,
-                        "hint": "En vekstfaktor under $1$ betyr prosentvis nedgang. Nedgangen finner du ved $1 - 0.85$.<br>For halveringstid setter du $V(t)$ lik halvparten av startverdien.",
+                        "hint": "En vekstfaktor under $1$ betyr prosentvis nedgang. Nedgangen finner du ved $1 - 0{,}85$.<br>For halveringstid setter du $V(t)$ lik halvparten av startverdien.",
                         "fasit": null,
                         "fasitSteg": [
-                            "<strong>a)</strong><br>Bilens verdi som ny er verdien når $t = 0$.<br><br>$V(0) = 400000 \\cdot 0.85^0$ (setter inn $t = 0$)<br><br>$V(0) = 400000 \\cdot 1$ (ethvert tall opphøyd i $0$ er $1$)<br><br>$V(0) = 400000$",
+                            "<strong>a)</strong><br>Bilens verdi som ny er verdien når $t = 0$.<br><br>$V(0) = 400000 \\cdot 0{,}85^0$ (setter inn $t = 0$)<br><br>$V(0) = 400000 \\cdot 1$ (ethvert tall opphøyd i $0$ er $1$)<br><br>$V(0) = 400000$",
                             "<strong>Svar:</strong> $400000$ kr",
-                            "<strong>b)</strong><br>Vekstfaktoren $b$ er $0.85$.<br><br>$p = (0.85 - 1) \\cdot 100 \\%$ (finner prosentvis endring)<br><br>$p = -0.15 \\cdot 100 \\% = -15 \\%$ (regner ut differansen og gjør om til prosent)<br><br>Det negative fortegnet betyr en nedgang.",
+                            "<strong>b)</strong><br>Vekstfaktoren $b$ er $0{,}85$.<br><br>$p = (0{,}85 - 1) \\cdot 100 \\%$ (finner prosentvis endring)<br><br>$p = -0{,}15 \\cdot 100 \\% = -15 \\%$ (regner ut differansen og gjør om til prosent)<br><br>Det negative fortegnet betyr en nedgang.",
                             "<strong>Svar:</strong> $15 \\%$ nedgang",
-                            "<strong>c)</strong><br>Funksjonen $V(t)$ er en eksponentialfunksjon med startverdi $400000$ og vekstfaktor under $1$.<br><br>Grafen starter dermed i y-aksen på verdien $400000$.<br><br>Fordi $b = 0.85 < 1$, vil grafen falle kontinuerlig når vi går mot høyre på x-aksen, men den vil aldri krysse x-aksen (den flater gradvis ut).",
+                            "<strong>c)</strong><br>Funksjonen $V(t)$ er en eksponentialfunksjon med startverdi $400000$ og vekstfaktor under $1$.<br><br>Grafen starter dermed i y-aksen på verdien $400000$.<br><br>Fordi $b = 0{,}85 < 1$, vil grafen falle kontinuerlig når vi går mot høyre på x-aksen, men den vil aldri krysse x-aksen (den flater gradvis ut).",
                             "<strong>Svar:</strong> En fallende eksponentialkurve som starter i $(0, 400000)$.",
-                            "<strong>d)</strong><br>Vi setter $t = 4$ for å finne verdien etter $4$ år.<br><br>$V(4) = 400000 \\cdot 0.85^4$ (setter inn $t = 4$)<br><br>$V(4) \\approx 400000 \\cdot 0.5220$ (beregner potensen)<br><br>$V(4) \\approx 208802.5$ (ganger ut)",
+                            "<strong>d)</strong><br>Vi setter $t = 4$ for å finne verdien etter $4$ år.<br><br>$V(4) = 400000 \\cdot 0{,}85^4$ (setter inn $t = 4$)<br><br>$V(4) \\approx 400000 \\cdot 0{,}5220$ (beregner potensen)<br><br>$V(4) \\approx 208802{,}5$ (ganger ut)",
                             "<strong>Svar:</strong> $208803$ kr",
-                            "<strong>e)</strong><br>Vi vil finne tiden $t$ når verdien $V(t)$ er halvparten av startverdien ($200000$).<br><br>$400000 \\cdot 0.85^t = 200000$ (setter funksjonen lik den halve verdien)<br><br>$0.85^t = \\frac{200000}{400000}$ (deler på $400000$ på begge sider)<br><br>$0.85^t = 0.5$ (forenkler brøken)<br><br>$\\ln(0.85^t) = \\ln(0.5)$ (tar den naturlige logaritmen på begge sider for å hente ned eksponenten)<br><br>$t \\cdot \\ln(0.85) = \\ln(0.5)$ (bruker logaritmeregel for potens)<br><br>$t = \\frac{\\ln(0.5)}{\\ln(0.85)}$ (isolerer $t$)<br><br>$t \\approx 4.26$",
-                            "<strong>Svar:</strong> $4.26$ år"
+                            "<strong>e)</strong><br>Vi vil finne tiden $t$ når verdien $V(t)$ er halvparten av startverdien ($200000$).<br><br>$400000 \\cdot 0{,}85^t = 200000$ (setter funksjonen lik den halve verdien)<br><br>$0{,}85^t = \\frac{200000}{400000}$ (deler på $400000$ på begge sider)<br><br>$0{,}85^t = 0{,}5$ (forenkler brøken)<br><br>$\\lg(0{,}85^t) = \\lg(0{,}5)$ (tar logaritmen på begge sider for å hente ned eksponenten)<br><br>$t \\cdot \\lg(0{,}85) = \\lg(0{,}5)$ (bruker logaritmeregelen $\\lg(a^t) = t \\cdot \\lg a$)<br><br>$t = \\frac{\\lg(0{,}5)}{\\lg(0{,}85)}$ (isolerer $t$)<br><br>Alternativt: Løs $400000 \\cdot 0{,}85^t = 200000$ med et digitalt verktøy (f.eks. CAS i GeoGebra), eller tegn grafen og linja $y = 200000$ og finn skjæringspunktet.<br><br>$t \\approx 4{,}26$",
+                            "<strong>Svar:</strong> $4{,}26$ år"
                         ],
                         "starter": ""
                     },
                     {
                         "id": "4.40",
                         "tittel": "Oppgave 4.40",
-                        "tekst": "En eksponentialfunksjon $f(x) = a \\cdot b^x$ går gjennom punktene $(0, 5)$ og $(3, 40)$.<br><br><strong>a)</strong> Bestem funksjonsuttrykket.<br><br><strong>b)</strong> Ligger punktet $(-1, 2.5)$ på grafen til $f$?<br><br><strong>c)</strong> Løs likningen $f(x) = 320$.",
+                        "tekst": "En eksponentialfunksjon $f(x) = a \\cdot b^x$ går gjennom punktene $(0, 5)$ og $(3, 40)$.<br><br><strong>a)</strong> Bestem funksjonsuttrykket.<br><br><strong>b)</strong> Ligger punktet $(-1, 2{,}5)$ på grafen til $f$?<br><br><strong>c)</strong> Løs likningen $f(x) = 320$.",
                         "bilde": null,
                         "hint": "Å sette inn $x=0$ gir deg startverdien $a$ direkte, siden $b^0 = 1$.",
                         "fasit": null,
                         "fasitSteg": [
                             "<strong>a)</strong><br>Punktet $(0, 5)$ forteller oss at $f(0) = 5$.<br><br>$a \\cdot b^0 = 5$ (setter inn punktet $(0, 5)$ i uttrykket)<br><br>$a \\cdot 1 = 5$ (fordi $b^0 = 1$)<br><br>$a = 5$ (nå vet vi startverdien)<br><br>Deretter bruker vi punktet $(3, 40)$:<br><br>$5 \\cdot b^3 = 40$ (setter inn $(3, 40)$ og $a = 5$)<br><br>$b^3 = \\frac{40}{5}$ (deler begge sider på $5$)<br><br>$b^3 = 8$ (forenkler brøken)<br><br>$b = \\sqrt[3]{8} = 2$ (tar tredjeroten på begge sider for å finne $b$)<br><br>Funksjonsuttrykket blir dermed $f(x) = 5 \\cdot 2^x$.",
                             "<strong>Svar:</strong> $f(x) = 5 \\cdot 2^x$",
-                            "<strong>b)</strong><br>For å sjekke om punktet ligger på grafen, setter vi inn $x = -1$ i funksjonen.<br><br>$f(-1) = 5 \\cdot 2^{-1}$ (setter $x = -1$ inn i $f(x)$)<br><br>$f(-1) = 5 \\cdot \\frac{1}{2}$ (bruker potensregelen for negativ eksponent: $2^{-1} = \\frac{1}{2}$)<br><br>$f(-1) = 2.5$ (ganger ut)<br><br>Siden y-verdien ble $2.5$, stemmer det at $(-1, 2.5)$ ligger på grafen.",
+                            "<strong>b)</strong><br>For å sjekke om punktet ligger på grafen, setter vi inn $x = -1$ i funksjonen.<br><br>$f(-1) = 5 \\cdot 2^{-1}$ (setter $x = -1$ inn i $f(x)$)<br><br>$f(-1) = 5 \\cdot \\frac{1}{2}$ (bruker potensregelen for negativ eksponent: $2^{-1} = \\frac{1}{2}$)<br><br>$f(-1) = 2{,}5$ (ganger ut)<br><br>Siden y-verdien ble $2{,}5$, stemmer det at $(-1, 2{,}5)$ ligger på grafen.",
                             "<strong>Svar:</strong> Ja, punktet ligger på grafen.",
-                            "<strong>c)</strong><br>Vi skal løse $f(x) = 320$:<br><br>$5 \\cdot 2^x = 320$ (setter inn uttrykket for $f(x)$)<br><br>$2^x = \\frac{320}{5}$ (deler på $5$ på begge sider for å isolere eksponentialuttrykket)<br><br>$2^x = 64$ (forenkler høyre side)<br><br>Siden vi vet at $2^6 = 64$, kan vi se at:<br><br>$x = 6$<br><br><strong>(Alternativ med logaritmer)</strong><br>$\\ln(2^x) = \\ln(64)$<br>$x \\cdot \\ln(2) = \\ln(64)$<br>$x = \\frac{\\ln(64)}{\\ln(2)} = 6$",
+                            "<strong>c)</strong><br>Vi skal løse $f(x) = 320$:<br><br>$5 \\cdot 2^x = 320$ (setter inn uttrykket for $f(x)$)<br><br>$2^x = \\frac{320}{5}$ (deler på $5$ på begge sider for å isolere eksponentialuttrykket)<br><br>$2^x = 64$ (forenkler høyre side)<br><br>Siden vi vet at $2^6 = 64$, kan vi se at:<br><br>$x = 6$<br><br><strong>(Alternativ med logaritmer)</strong><br>$\\lg(2^x) = \\lg(64)$<br>$x \\cdot \\lg(2) = \\lg(64)$<br>$x = \\frac{\\lg(64)}{\\lg(2)} = 6$",
                             "<strong>Svar:</strong> $x = 6$"
                         ],
                         "starter": ""
@@ -5609,7 +5050,7 @@ export const fagsok = [
                         "hint": "Finn vekstfaktoren ved å dele den nye verdien på den gamle verdien ($\\frac{10800}{12000}$).",
                         "fasit": null,
                         "fasitSteg": [
-                            "Først må vi finne vekstfaktoren for ett år (fra 2020 til 2021).<br><br>$b = \\frac{10800}{12000}$ (vekstfaktor er lik ny verdi delt på gammel verdi)<br><br>$b = 0.90$ (dette tilsvarer en nedgang på $10 \\%$ i året)<br><br>Vi kjenner nå startverdien $a = 12000$ (i 2020) og vekstfaktoren $b = 0.90$.<br>Fra 2020 til 2025 har det gått $5$ år, så $t = 5$.<br><br>$V(t) = a \\cdot b^t$ (standard eksponentialfunksjon for verdien)<br><br>$V(5) = 12000 \\cdot 0.90^5$ (setter inn $a = 12000, b = 0.90, t = 5$)<br><br>$V(5) = 12000 \\cdot 0.59049$ (regner ut potensen)<br><br>$V(5) \\approx 7085.88$ (ganger ut)<br><br>Avrundet til nærmeste hele krone blir dette $7086$ kr.",
+                            "Først må vi finne vekstfaktoren for ett år (fra 2020 til 2021).<br><br>$b = \\frac{10800}{12000}$ (vekstfaktor er lik ny verdi delt på gammel verdi)<br><br>$b = 0{,}90$ (dette tilsvarer en nedgang på $10 \\%$ i året)<br><br>Vi kjenner nå startverdien $a = 12000$ (i 2020) og vekstfaktoren $b = 0{,}90$.<br>Fra 2020 til 2025 har det gått $5$ år, så $t = 5$.<br><br>$V(t) = a \\cdot b^t$ (standard eksponentialfunksjon for verdien)<br><br>$V(5) = 12000 \\cdot 0{,}90^5$ (setter inn $a = 12000, b = 0{,}90, t = 5$)<br><br>$V(5) = 12000 \\cdot 0{,}59049$ (regner ut potensen)<br><br>$V(5) \\approx 7085{,}88$ (ganger ut)<br><br>Avrundet til nærmeste hele krone blir dette $7086$ kr.",
                             "<strong>Svar:</strong> $7086$ kr"
                         ],
                         "starter": ""
@@ -5622,11 +5063,11 @@ export const fagsok = [
                         "hint": "Når du regner bakover i tid fra en kjent verdi, kan du dele verdien på vekstfaktoren opphøyd i antall år. (Eller gange med vekstfaktoren opphøyd i et negativt antall år).",
                         "fasit": null,
                         "fasitSteg": [
-                            "<strong>a)</strong><br>En økning på $4 \\%$ gir en vekstfaktor på $b = 1.04$.<br>Fra 2015 til 2020 har det gått $5$ år ($t = 5$).<br>Startverdien for denne perioden er verdien i 2015, så $a = 25000$.<br><br>$V_{2020} = 25000 \\cdot 1.04^5$ (setter opp uttrykket for å finne verdi fremover i tid)<br><br>$V_{2020} = 25000 \\cdot 1.21665$ (regner ut potensen)<br><br>$V_{2020} \\approx 30416.3$ (ganger ut)",
+                            "<strong>a)</strong><br>En økning på $4 \\%$ gir en vekstfaktor på $b = 1{,}04$.<br>Fra 2015 til 2020 har det gått $5$ år ($t = 5$).<br>Startverdien for denne perioden er verdien i 2015, så $a = 25000$.<br><br>$V_{2020} = 25000 \\cdot 1{,}04^5$ (setter opp uttrykket for å finne verdi fremover i tid)<br><br>$V_{2020} = 25000 \\cdot 1{,}21665$ (regner ut potensen)<br><br>$V_{2020} \\approx 30416{,}3$ (ganger ut)",
                             "<strong>Svar:</strong> $30416$ kr",
-                            "<strong>b)</strong><br>Fra 2010 til 2015 er det $5$ år.<br>Hvis verdien i 2010 er startverdien $V_{2010}$, vet vi at:<br><br>$V_{2010} \\cdot 1.04^5 = 25000$ (verdien vokser i $5$ år frem til $25000$)<br><br>$V_{2010} = \\frac{25000}{1.04^5}$ (vi deler på $1.04^5$ på begge sider for å isolere $V_{2010}$)<br><br>$V_{2010} = 25000 \\cdot 1.04^{-5}$ (vi kan også se på dette som å gå $5$ år bakover i tid, $t = -5$)<br><br>$V_{2010} \\approx \\frac{25000}{1.21665}$<br><br>$V_{2010} \\approx 20548.2$",
+                            "<strong>b)</strong><br>Fra 2010 til 2015 er det $5$ år.<br>Hvis verdien i 2010 er startverdien $V_{2010}$, vet vi at:<br><br>$V_{2010} \\cdot 1{,}04^5 = 25000$ (verdien vokser i $5$ år frem til $25000$)<br><br>$V_{2010} = \\frac{25000}{1{,}04^5}$ (vi deler på $1{,}04^5$ på begge sider for å isolere $V_{2010}$)<br><br>$V_{2010} = 25000 \\cdot 1{,}04^{-5}$ (vi kan også se på dette som å gå $5$ år bakover i tid, $t = -5$)<br><br>$V_{2010} \\approx \\frac{25000}{1{,}21665}$<br><br>$V_{2010} \\approx 20548{,}2$",
                             "<strong>Svar:</strong> $20548$ kr",
-                            "<strong>c)</strong><br>Total vekstfaktor for hele tiårsperioden fra 2010 til 2020 finnes ved å opphøye den årlige vekstfaktoren i antall år ($10$ år).<br><br>$b_{total} = 1.04^{10}$ (regner ut total vekstfaktor)<br><br>$b_{total} \\approx 1.4802$<br><br>For å finne den prosentvise økningen trekker vi fra $1$ og gjør om til prosent:<br><br>$(1.4802 - 1) \\cdot 100 \\% = 0.4802 \\cdot 100 \\% = 48.02 \\%$",
+                            "<strong>c)</strong><br>Total vekstfaktor for hele tiårsperioden fra 2010 til 2020 finnes ved å opphøye den årlige vekstfaktoren i antall år ($10$ år).<br><br>$b_{total} = 1{,}04^{10}$ (regner ut total vekstfaktor)<br><br>$b_{total} \\approx 1{,}4802$<br><br>For å finne den prosentvise økningen trekker vi fra $1$ og gjør om til prosent:<br><br>$(1{,}4802 - 1) \\cdot 100 \\% = 0{,}4802 \\cdot 100 \\% = 48{,}02 \\%$",
                             "<strong>Svar:</strong> $48 \\%$ økning"
                         ],
                         "starter": ""
@@ -5634,131 +5075,19 @@ export const fagsok = [
                     {
                         "id": "4.43",
                         "tittel": "Oppgave 4.43",
-                        "tekst": "La $T$ være halveringstiden i funksjonen $f(t) = a \\cdot b^t$ hvor $0 < b < 1$.<br><br><strong>a)</strong> Forklar hvorfor $f(t+T) = 0.5 \\cdot f(t)$.<br><br><strong>b)</strong> Bruk likningen i a) til å vise at $b^T = 0.5$.<br><br><strong>c)</strong> Hva forteller dette resultatet deg om halveringstiden?",
+                        "tekst": "La $T$ være halveringstiden i funksjonen $f(t) = a \\cdot b^t$ hvor $0 < b < 1$.<br><br><strong>a)</strong> Forklar hvorfor $f(t+T) = 0{,}5 \\cdot f(t)$.<br><br><strong>b)</strong> Bruk likningen i a) til å vise at $b^T = 0{,}5$.<br><br><strong>c)</strong> Hva forteller dette resultatet deg om halveringstiden?",
                         "bilde": null,
                         "hint": "I b) må du sette inn $t+T$ og $t$ i det opprinnelige funksjonsuttrykket for $f$. Matematiske regler for potenser ($b^{x+y} = b^x \\cdot b^y$) vil også være nyttige for å se sammenhengen.",
                         "fasit": null,
                         "fasitSteg": [
-                            "<strong>a)</strong><br>Halveringstiden $T$ er definert som den tiden det tar før en verdi er halvert, uavhengig av når i forløpet man starter å måle. <br>Ved tidspunktet $t$ er verdien $f(t)$. Når det har gått ytterligere $T$ tidsenheter, er tiden $t+T$. Verdien må da være halvparten av hva den var ved tidspunktet $t$. <br>Derfor må $f(t+T)$ være lik $0.5$ ganget med $f(t)$.",
+                            "<strong>a)</strong><br>Halveringstiden $T$ er definert som den tiden det tar før en verdi er halvert, uavhengig av når i forløpet man starter å måle. <br>Ved tidspunktet $t$ er verdien $f(t)$. Når det har gått ytterligere $T$ tidsenheter, er tiden $t+T$. Verdien må da være halvparten av hva den var ved tidspunktet $t$. <br>Derfor må $f(t+T)$ være lik $0{,}5$ ganget med $f(t)$.",
                             "<strong>Svar:</strong> Etter $T$ tidsenheter har verdien alltid blitt halvparten av det den var ved ethvert starttidspunkt $t$.",
-                            "<strong>b)</strong><br>Vi tar utgangspunkt i likningen $f(t+T) = 0.5 \\cdot f(t)$. Vi setter funksjonsuttrykket $f(x) = a \\cdot b^x$ inn på begge sider:<br><br>$a \\cdot b^{t+T} = 0.5 \\cdot a \\cdot b^t$ (setter inn uttrykkene for $f$)<br><br>$a \\cdot b^t \\cdot b^T = 0.5 \\cdot a \\cdot b^t$ (bruker potensregelen $b^{x+y} = b^x \\cdot b^y$ på venstre side for å skille ut leddene)<br><br>$\\frac{a \\cdot b^t \\cdot b^T}{a \\cdot b^t} = \\frac{0.5 \\cdot a \\cdot b^t}{a \\cdot b^t}$ (deler på $a \\cdot b^t$ på begge sider)<br><br>$b^T = 0.5$ ($a$ og $b^t$ forkortes bort)<br><br>Dermed har vi vist at $b^T = 0.5$.",
-                            "<strong>Svar:</strong> $b^T = 0.5$",
+                            "<strong>b)</strong><br>Vi tar utgangspunkt i likningen $f(t+T) = 0{,}5 \\cdot f(t)$. Vi setter funksjonsuttrykket $f(x) = a \\cdot b^x$ inn på begge sider:<br><br>$a \\cdot b^{t+T} = 0{,}5 \\cdot a \\cdot b^t$ (setter inn uttrykkene for $f$)<br><br>$a \\cdot b^t \\cdot b^T = 0{,}5 \\cdot a \\cdot b^t$ (bruker potensregelen $b^{x+y} = b^x \\cdot b^y$ på venstre side for å skille ut leddene)<br><br>$\\frac{a \\cdot b^t \\cdot b^T}{a \\cdot b^t} = \\frac{0{,}5 \\cdot a \\cdot b^t}{a \\cdot b^t}$ (deler på $a \\cdot b^t$ på begge sider)<br><br>$b^T = 0{,}5$ ($a$ og $b^t$ forkortes bort)<br><br>Dermed har vi vist at $b^T = 0{,}5$.",
+                            "<strong>Svar:</strong> $b^T = 0{,}5$",
                             "<strong>c)</strong><br>Resultatet i b) inneholder verken $a$ (startverdien) eller $t$ (hvilket tidspunkt vi begynte å måle fra). Det avhenger kun av vekstfaktoren $b$ og halveringstiden $T$.",
                             "<strong>Svar:</strong> Dette forteller oss at halveringstiden er konstant og uavhengig av startverdien. Den avhenger kun av den faste vekstfaktoren."
                         ],
                         "starter": ""
-                    }
-                ],
-                "quiz": [
-                    {
-                        "sporsmal": "Hva er grunnleggende sant om eksponentiell vekst? (Spørsmål 1)",
-                        "alternativer": [
-                            "Det beskriver en fundamental egenskap ved eksponentiell vekst.",
-                            "Det betyr at funksjonen alltid er 0.",
-                            "Noe helt annet.",
-                            "Vet ikke."
-                        ],
-                        "riktigSvar": 0,
-                        "forklaring": "Dette viser forståelse for eksponentiell vekst."
-                    },
-                    {
-                        "sporsmal": "Hva er grunnleggende sant om eksponentiell vekst? (Spørsmål 2)",
-                        "alternativer": [
-                            "Vet ikke.",
-                            "Noe helt annet.",
-                            "Det betyr at funksjonen alltid er 0.",
-                            "Det beskriver en fundamental egenskap ved eksponentiell vekst."
-                        ],
-                        "riktigSvar": 3,
-                        "forklaring": "Dette viser forståelse for eksponentiell vekst."
-                    },
-                    {
-                        "sporsmal": "Hva er grunnleggende sant om eksponentiell vekst? (Spørsmål 3)",
-                        "alternativer": [
-                            "Vet ikke.",
-                            "Det betyr at funksjonen alltid er 0.",
-                            "Noe helt annet.",
-                            "Det beskriver en fundamental egenskap ved eksponentiell vekst."
-                        ],
-                        "riktigSvar": 3,
-                        "forklaring": "Dette viser forståelse for eksponentiell vekst."
-                    },
-                    {
-                        "sporsmal": "Hva er grunnleggende sant om eksponentiell vekst? (Spørsmål 4)",
-                        "alternativer": [
-                            "Det beskriver en fundamental egenskap ved eksponentiell vekst.",
-                            "Noe helt annet.",
-                            "Vet ikke.",
-                            "Det betyr at funksjonen alltid er 0."
-                        ],
-                        "riktigSvar": 0,
-                        "forklaring": "Dette viser forståelse for eksponentiell vekst."
-                    },
-                    {
-                        "sporsmal": "Gitt en funksjon $f(x)$ for eksponentiell vekst, regn ut verdien. (Spørsmål 5)",
-                        "alternativer": [
-                            "Vet ikke.",
-                            "Svaret er umulig å finne.",
-                            "Svaret kan utledes fra formelen for eksponentiell vekst.",
-                            "Noe helt annet."
-                        ],
-                        "riktigSvar": 2,
-                        "forklaring": "Dette viser forståelse for eksponentiell vekst."
-                    },
-                    {
-                        "sporsmal": "Gitt en funksjon $f(x)$ for eksponentiell vekst, regn ut verdien. (Spørsmål 6)",
-                        "alternativer": [
-                            "Vet ikke.",
-                            "Svaret kan utledes fra formelen for eksponentiell vekst.",
-                            "Svaret er umulig å finne.",
-                            "Noe helt annet."
-                        ],
-                        "riktigSvar": 1,
-                        "forklaring": "Dette viser forståelse for eksponentiell vekst."
-                    },
-                    {
-                        "sporsmal": "Gitt en funksjon $f(x)$ for eksponentiell vekst, regn ut verdien. (Spørsmål 7)",
-                        "alternativer": [
-                            "Vet ikke.",
-                            "Svaret kan utledes fra formelen for eksponentiell vekst.",
-                            "Noe helt annet.",
-                            "Svaret er umulig å finne."
-                        ],
-                        "riktigSvar": 1,
-                        "forklaring": "Dette viser forståelse for eksponentiell vekst."
-                    },
-                    {
-                        "sporsmal": "Gitt en funksjon $f(x)$ for eksponentiell vekst, regn ut verdien. (Spørsmål 8)",
-                        "alternativer": [
-                            "Svaret er umulig å finne.",
-                            "Noe helt annet.",
-                            "Svaret kan utledes fra formelen for eksponentiell vekst.",
-                            "Vet ikke."
-                        ],
-                        "riktigSvar": 2,
-                        "forklaring": "Dette viser forståelse for eksponentiell vekst."
-                    },
-                    {
-                        "sporsmal": "En elev gjør en vanlig feil med eksponentiell vekst. Hva er feilen? (Spørsmål 9)",
-                        "alternativer": [
-                            "Vet ikke.",
-                            "Eleven gjør ingen feil.",
-                            "Noe helt annet.",
-                            "Eleven glemmer en viktig detalj om eksponentiell vekst."
-                        ],
-                        "riktigSvar": 3,
-                        "forklaring": "Dette viser forståelse for eksponentiell vekst."
-                    },
-                    {
-                        "sporsmal": "En elev gjør en vanlig feil med eksponentiell vekst. Hva er feilen? (Spørsmål 10)",
-                        "alternativer": [
-                            "Eleven glemmer en viktig detalj om eksponentiell vekst.",
-                            "Noe helt annet.",
-                            "Eleven gjør ingen feil.",
-                            "Vet ikke."
-                        ],
-                        "riktigSvar": 0,
-                        "forklaring": "Dette viser forståelse for eksponentiell vekst."
                     }
                 ]
             },
@@ -5771,11 +5100,11 @@ export const fagsok = [
                         "tittel": "Oppgave 4.44",
                         "tekst": "Forklar begrepene: Gjennomsnittlig vekstfart, momentan vekstfart og hvordan de regnes ut.",
                         "bilde": null,
-                        "hint": "Gjennomsnittlig vekstfart gjelder over et tidsintervall. Momentan vekstfart er i ett nøyaktig øyeblikk.",
+                        "hint": "Gjennomsnittlig vekstfart gjelder over et intervall (sekant). Momentan vekstfart gjelder i ett punkt (tangent).",
                         "fasit": null,
                         "fasitSteg": [
-                            "Gjennomsnittlig vekstfart beskriver endringen over et helt intervall fra $x_1$ til $x_2$. Dette tilsvarer stigningstallet til en sekant som går gjennom disse to punktene på grafen.<br><br>Det regnes ut med formelen:<br>$\\frac{f(x_2) - f(x_1)}{x_2 - x_1}$<br><br>Momentan vekstfart beskriver endringen i akkurat ett bestemt punkt. Dette tilsvarer stigningstallet til tangenten i dette punktet. <br><br>Vi finner den momentane vekstfarten ved å derivere funksjonen, $f'(x)$, og sette inn $x$-verdien til punktet.",
-                            "<strong>Svar:</strong> Gjennomsnittlig vekstfart regnes med $\\frac{f(x_2) - f(x_1)}{x_2 - x_1}$, og momentan vekstfart med $f'(x)$."
+                            "Gjennomsnittlig vekstfart beskriver endringen over et helt intervall fra $x_1$ til $x_2$. Dette tilsvarer stigningstallet til en sekant som går gjennom disse to punktene på grafen.<br><br>Det regnes ut med formelen:<br>$\\frac{f(x_2) - f(x_1)}{x_2 - x_1}$<br><br>Momentan vekstfart beskriver endringen i akkurat ett bestemt punkt. Dette tilsvarer stigningstallet til tangenten i dette punktet.<br><br>Vi kan finne den momentane vekstfarten ved å<br>- tegne tangenten og lese av stigningstallet,<br>- bruke et digitalt verktøy (f.eks. kommandoen Tangent i GeoGebra), eller<br>- regne ut gjennomsnittlig vekstfart over et svært lite intervall rundt punktet, f.eks. fra $x - 0{,}1$ til $x + 0{,}1$.<br><br>I 4H lærer du å regne den ut eksakt med den deriverte, $f'(x)$.",
+                            "<strong>Svar:</strong> Gjennomsnittlig vekstfart regnes med $\\frac{f(x_2) - f(x_1)}{x_2 - x_1}$ (stigningstallet til sekanten). Momentan vekstfart er stigningstallet til tangenten, og finnes grafisk, digitalt eller tilnærmet med et svært lite intervall."
                         ],
                         "starter": ""
                     },
@@ -5784,16 +5113,16 @@ export const fagsok = [
                         "tittel": "Oppgave 4.45",
                         "tekst": "Gitt funksjonen $f(x) = -x^2 + 4x + 2$.<br><br><strong>a)</strong> Finn gjennomsnittsfarten i intervallene $[0, 2]$ og $[2, 4]$.<br><strong>b)</strong> Finn tangenten i punktet $(2, f(2))$. Hva er den momentane vekstfarten når $x=2$?<br><strong>c)</strong> Finn den momentane vekstfarten når $x=3$.<br><strong>d)</strong> Finn den momentane vekstfarten når $x=0$.",
                         "bilde": null,
-                        "hint": "Finn den deriverte $f'(x)$ for å løse oppgave b, c og d.",
+                        "hint": "Toppunktet til en parabel har vannrett tangent. For c) og d): Regn gjennomsnittlig vekstfart over et lite intervall rundt punktet, f.eks. $[2{,}9, 3{,}1]$.",
                         "fasit": null,
                         "fasitSteg": [
                             "<strong>a)</strong><br>Vi finner først funksjonsverdiene i endepunktene av intervallene:<br>$f(0) = -0^2 + 4 \\cdot 0 + 2 = 2$<br>$f(2) = -2^2 + 4 \\cdot 2 + 2 = -4 + 8 + 2 = 6$<br>$f(4) = -4^2 + 4 \\cdot 4 + 2 = -16 + 16 + 2 = 2$<br><br>Gjennomsnittlig vekstfart for $[0, 2]$:<br>$\\frac{f(2) - f(0)}{2 - 0} = \\frac{6 - 2}{2} = \\frac{4}{2} = 2$<br><br>Gjennomsnittlig vekstfart for $[2, 4]$:<br>$\\frac{f(4) - f(2)}{4 - 2} = \\frac{2 - 6}{2} = \\frac{-4}{2} = -2$",
                             "<strong>Svar:</strong> Gjennomsnittsfarten er $2$ i intervallet $[0, 2]$ og $-2$ i intervallet $[2, 4]$.",
-                            "<strong>b)</strong><br>Momentan vekstfart for $x=2$ er det samme som stigningstallet til tangenten i dette punktet. Dette finner vi ved å bruke den deriverte, $f'(x)$.<br><br>Vi deriverer funksjonen:<br>$f'(x) = -2x + 4$<br><br>Vi setter inn $x = 2$:<br>$f'(2) = -2 \\cdot 2 + 4 = -4 + 4 = 0$<br><br>Siden stigningstallet er $0$, har tangenten null stigning, som betyr at grafen har et toppunkt her.",
-                            "<strong>Svar:</strong> Den momentane vekstfarten når $x=2$ er $0$.",
-                            "<strong>c)</strong><br>Vi bruker den deriverte $f'(x) = -2x + 4$ fra oppgave b.<br><br>Setter inn $x = 3$:<br>$f'(3) = -2 \\cdot 3 + 4 = -6 + 4 = -2$",
+                            "<strong>b)</strong><br>$f(x) = -x^2 + 4x + 2$ er en parabel som «sur» (negativt tall foran $x^2$). Fra a) ser vi at $f(0) = f(4) = 2$, så symmetrilinja er $x = \\frac{0 + 4}{2} = 2$. Punktet $(2, 6)$ er derfor toppunktet.<br><br>I et toppunkt er tangenten vannrett, altså har den stigningstall $0$. Tangenten er linja $y = 6$.<br><br>Den momentane vekstfarten er stigningstallet til tangenten, altså $0$.",
+                            "<strong>Svar:</strong> Tangenten i $(2, 6)$ er $y = 6$. Den momentane vekstfarten når $x=2$ er $0$.",
+                            "<strong>c)</strong><br>Vi anslår den momentane vekstfarten med gjennomsnittlig vekstfart over et lite intervall rundt $x = 3$, f.eks. $[2{,}9, 3{,}1]$:<br>$f(2{,}9) = -2{,}9^2 + 4 \\cdot 2{,}9 + 2 = 5{,}19$<br>$f(3{,}1) = -3{,}1^2 + 4 \\cdot 3{,}1 + 2 = 4{,}79$<br><br>$\\frac{f(3{,}1) - f(2{,}9)}{3{,}1 - 2{,}9} = \\frac{4{,}79 - 5{,}19}{0{,}2} = \\frac{-0{,}4}{0{,}2} = -2$<br><br>For andregradsfunksjoner gir et symmetrisk intervall rundt punktet faktisk nøyaktig riktig svar. Du kan kontrollere med Tangent-kommandoen i GeoGebra.",
                             "<strong>Svar:</strong> Den momentane vekstfarten når $x=3$ er $-2$.",
-                            "<strong>d)</strong><br>Vi bruker igjen den deriverte $f'(x) = -2x + 4$.<br><br>Setter inn $x = 0$:<br>$f'(0) = -2 \\cdot 0 + 4 = 0 + 4 = 4$",
+                            "<strong>d)</strong><br>Vi bruker intervallet $[-0{,}1, 0{,}1]$ rundt $x = 0$:<br>$f(-0{,}1) = -0{,}01 - 0{,}4 + 2 = 1{,}59$<br>$f(0{,}1) = -0{,}01 + 0{,}4 + 2 = 2{,}39$<br><br>$\\frac{f(0{,}1) - f(-0{,}1)}{0{,}1 - (-0{,}1)} = \\frac{2{,}39 - 1{,}59}{0{,}2} = \\frac{0{,}8}{0{,}2} = 4$",
                             "<strong>Svar:</strong> Den momentane vekstfarten når $x=0$ er $4$."
                         ],
                         "starter": ""
@@ -5801,51 +5130,54 @@ export const fagsok = [
                     {
                         "id": "4.46",
                         "tittel": "Oppgave 4.46",
-                        "tekst": "En graf har en tangent i punktet $(20, 300)$ som har stigningstall $15$. Vi får i tillegg oppgitt at $f(40) = 500$.<br><br><strong>a)</strong> Hva er stigningstallet til tangenten?<br><strong>b)</strong> Hva er den momentane vekstfarten når $x=20$?<br><strong>c)</strong> Finn gjennomsnittsfarten i intervallet $[20, 40]$.",
+                        "tekst": "En graf har en tangent i punktet $(20, 300)$ som har stigningstall $15$. Vi får i tillegg oppgitt at $f(40) = 500$.<br><br><strong>a)</strong> Hva er den momentane vekstfarten når $x=20$? Finn likningen for tangenten.<br><strong>b)</strong> Bruk tangenten til å anslå $f(22)$.<br><strong>c)</strong> Finn gjennomsnittsfarten i intervallet $[20, 40]$.<br><strong>d)</strong> Gjennomsnittsfarten i c) er mindre enn den momentane vekstfarten i $x = 20$. Hva sier det om grafen mellom $x = 20$ og $x = 40$?",
                         "bilde": null,
                         "hint": "Tangentens stigningstall er nøyaktig det samme som den momentane vekstfarten i tangeringspunktet.",
                         "fasit": null,
                         "fasitSteg": [
-                            "<strong>a)</strong><br>Stigningstallet til tangenten er gitt i oppgaveteksten.<br>Grafen stiger med $15$ $y$-enheter per $x$-enhet akkurat i dette punktet.",
-                            "<strong>Svar:</strong> Stigningstallet til tangenten er $15$.",
-                            "<strong>b)</strong><br>Momentan vekstfart i et punkt er definert som stigningstallet til tangenten i det samme punktet.<br>Siden punktet har $x=20$ og vi vet fra oppgave a at stigningstallet her er $15$, er også den momentane vekstfarten $15$.",
-                            "<strong>Svar:</strong> Den momentane vekstfarten i $x=20$ er $15$.",
-                            "<strong>c)</strong><br>Vi vet at punktene for $x=20$ og $x=40$ er $(20, 300)$ og $(40, 500)$.<br>Gjennomsnittsfart over et intervall er stigningstallet til sekanten som går gjennom punktene:<br><br>$\\frac{f(x_2) - f(x_1)}{x_2 - x_1}$<br><br>Vi setter inn punktene vi har:<br>$\\frac{500 - 300}{40 - 20} = \\frac{200}{20} = 10$",
-                            "<strong>Svar:</strong> Gjennomsnittsfarten i intervallet $[20, 40]$ er $10$."
+                            "<strong>a)</strong><br>Momentan vekstfart i et punkt er stigningstallet til tangenten i punktet, altså $15$.<br><br>Tangenten er en rett linje $y = 15x + b$ gjennom $(20, 300)$:<br>$300 = 15 \\cdot 20 + b$<br>$300 = 300 + b$<br>$b = 0$",
+                            "<strong>Svar:</strong> Den momentane vekstfarten i $x=20$ er $15$, og tangenten er $y = 15x$.",
+                            "<strong>b)</strong><br>Nær tangeringspunktet ligger grafen nesten oppå tangenten. Vi setter $x = 22$ inn i tangenten:<br>$y = 15 \\cdot 22 = 330$",
+                            "<strong>Svar:</strong> $f(22) \\approx 330$",
+                            "<strong>c)</strong><br>Punktene for $x=20$ og $x=40$ er $(20, 300)$ og $(40, 500)$.<br>Gjennomsnittsfart over et intervall er stigningstallet til sekanten gjennom punktene:<br><br>$\\frac{f(x_2) - f(x_1)}{x_2 - x_1} = \\frac{500 - 300}{40 - 20} = \\frac{200}{20} = 10$",
+                            "<strong>Svar:</strong> Gjennomsnittsfarten i intervallet $[20, 40]$ er $10$.",
+                            "<strong>d)</strong><br>I starten av intervallet vokser funksjonen med $15$ per enhet, men i gjennomsnitt over hele intervallet bare med $10$ per enhet. Veksten må altså ha avtatt underveis.",
+                            "<strong>Svar:</strong> Grafen stiger, men stadig slakere mellom $x = 20$ og $x = 40$ (veksten avtar)."
                         ],
                         "starter": ""
                     },
                     {
                         "id": "4.47",
                         "tittel": "Oppgave 4.47",
-                        "tekst": "Temperaturen i en industriovn er gitt ved $T(t) = 200 - 180 \\cdot 0.92^t$ for $D_T = [0, 20]$. Grafen vises under.<br><br><strong>a)</strong> Finn gjennomsnittsfarten i intervallet $[0, 10]$.<br><strong>b)</strong> Finn momentan vekstfart når $t=5$, $t=10$ og $t=15$. Hva forteller svarene deg?",
+                        "tekst": "Temperaturen i en industriovn er gitt ved $T(t) = 200 - 180 \\cdot 0{,}92^t$ for $D_T = [0, 20]$, der $T$ er temperaturen i $^{\\circ}\\text{C}$ og $t$ er tiden i minutter. Grafen vises under.<br><br><strong>a)</strong> Finn gjennomsnittsfarten i intervallet $[0, 10]$.<br><strong>b)</strong> Bruk et digitalt verktøy til å finne momentan vekstfart når $t=5$, $t=10$ og $t=15$. Hva forteller svarene deg?",
                         "bilde": null,
-                        "hint": "For å finne momentan vekstfart i b) må vi finne $T'(t)$.<br>Siden uttrykket inneholder en eksponentialfunksjon med grunntall $0.92$, bruker vi den naturlige logaritmen ($\\ln$) for å derivere:<br>$T'(t) = -180 \\cdot \\ln(0.92) \\cdot 0.92^t$",
+                        "hint": "I b) kan du tegne grafen i GeoGebra og bruke kommandoen Tangent, f.eks. <code>Tangent(5, T)</code>, og lese av stigningstallet. Du kan også regne gjennomsnittlig vekstfart over et lite intervall, f.eks. $[4{,}9, 5{,}1]$.",
                         "fasit": null,
                         "fasitSteg": [
-                            "<strong>a)</strong><br>For å finne gjennomsnittsfarten over intervallet $[0, 10]$, regner vi ut gjennomsnittlig endring pr tidsenhet.<br><br>Finner først funksjonsverdiene:<br>$T(0) = 200 - 180 \\cdot 0.92^0 = 200 - 180 \\cdot 1 = 20$<br>$T(10) = 200 - 180 \\cdot 0.92^{10} \\approx 200 - 180 \\cdot 0.4344 \\approx 121.8$<br><br>Gjennomsnittlig vekstfart:<br>$\\frac{T(10) - T(0)}{10 - 0} \\approx \\frac{121.8 - 20}{10} = \\frac{101.8}{10} \\approx 10.2$",
-                            "<strong>Svar:</strong> Gjennomsnittlig vekstfart i intervallet $[0, 10]$ er omtrent $10.2$ grader/min.",
-                            "<strong>b)</strong><br>Vi finner momentan vekstfart ved å derivere $T(t)$:<br>$T'(t) = -180 \\cdot \\ln(0.92) \\cdot 0.92^t$<br>$T'(t) \\approx -180 \\cdot (-0.08338) \\cdot 0.92^t \\approx 15.01 \\cdot 0.92^t$<br><br>Nå kan vi regne ut vekstfarten på de ulike tidspunktene ved å sette dem inn i $T'(t)$.<br><br>For $t=5$:<br>$T'(5) = 15.01 \\cdot 0.92^5 \\approx 15.01 \\cdot 0.659 \\approx 9.9$<br><br>For $t=10$:<br>$T'(10) = 15.01 \\cdot 0.92^{10} \\approx 15.01 \\cdot 0.434 \\approx 6.5$<br><br>For $t=15$:<br>$T'(15) = 15.01 \\cdot 0.92^{15} \\approx 15.01 \\cdot 0.286 \\approx 4.3$<br><br>Jo lenger tid som har gått, jo lavere blir oppvarmingshastigheten. Grafen flater ut og temperaturen nærmer seg $200$ grader.",
-                            "<strong>Svar:</strong> Momentan vekstfart er $9.9$ for $t=5$, $6.5$ for $t=10$, og $4.3$ for $t=15$. Dette betyr at oppvarmingen går langsommere jo lenger ovnen står på."
+                            "<strong>a)</strong><br>For å finne gjennomsnittsfarten over intervallet $[0, 10]$, regner vi ut gjennomsnittlig endring pr tidsenhet.<br><br>Finner først funksjonsverdiene:<br>$T(0) = 200 - 180 \\cdot 0{,}92^0 = 200 - 180 \\cdot 1 = 20$<br>$T(10) = 200 - 180 \\cdot 0{,}92^{10} \\approx 200 - 180 \\cdot 0{,}4344 \\approx 121{,}8$<br><br>Gjennomsnittlig vekstfart:<br>$\\frac{T(10) - T(0)}{10 - 0} \\approx \\frac{121{,}8 - 20}{10} = \\frac{101{,}8}{10} \\approx 10{,}2$",
+                            "<strong>Svar:</strong> Gjennomsnittlig vekstfart i intervallet $[0, 10]$ er omtrent $10{,}2$ $^{\\circ}\\text{C}$ per minutt.",
+                            "<strong>b)</strong><br>Vi tegner $T(t) = 200 - 180 \\cdot 0{,}92^t$ i GeoGebra og lager tangenter med <code>Tangent(5, T)</code>, <code>Tangent(10, T)</code> og <code>Tangent(15, T)</code>. Stigningstallene til tangentene er:<br><br>$t = 5$: ca. $9{,}9$<br>$t = 10$: ca. $6{,}5$<br>$t = 15$: ca. $4{,}3$<br><br>Kontroll for $t = 5$ med et lite intervall:<br>$\\frac{T(5{,}1) - T(4{,}9)}{5{,}1 - 4{,}9} \\approx \\frac{89{,}06 - 87{,}08}{0{,}2} \\approx 9{,}9$<br><br>Jo lenger tid som har gått, jo lavere blir oppvarmingshastigheten. Grafen flater ut og temperaturen nærmer seg $200^{\\circ}\\text{C}$.",
+                            "<strong>Svar:</strong> Momentan vekstfart er ca. $9{,}9$, $6{,}5$ og $4{,}3$ $^{\\circ}\\text{C}$ per minutt for $t = 5$, $10$ og $15$. Dette betyr at oppvarmingen går langsommere jo lenger ovnen står på."
                         ],
                         "starter": ""
                     },
                     {
                         "id": "4.48",
                         "tittel": "Oppgave 4.48",
-                        "tekst": "Gitt funksjonen $f(x) = 0.25x^3 - 2x$.<br><br><strong>a)</strong> Skisser grafen i intervallet $[-4, 4]$.<br><strong>b)</strong> Tegn inn tangenter for $x=-2$ og $x=2$ og finn stigningstallene grafisk.<br><strong>c)</strong> Finn momentan vekstfart i $x=-2$ og $x=2$ ved regning.<br><strong>d)</strong> Når er momentan vekstfart lik $0$?<br><strong>e)</strong> Når er momentan vekstfart lik $1$?",
+                        "tekst": "Gitt funksjonen $f(x) = 0{,}25x^3 - 2x$.<br><br><strong>a)</strong> Skisser grafen i intervallet $[-4, 4]$.<br><strong>b)</strong> Tegn inn tangenter for $x=-2$ og $x=2$ og finn stigningstallene grafisk.<br><strong>c)</strong> Kontroller svaret i b) ved å regne ut gjennomsnittlig vekstfart i intervallet $[1{,}9, 2{,}1]$.<br><strong>d)</strong> Når er momentan vekstfart lik $0$? Bruk grafen eller et digitalt verktøy.<br><strong>e)</strong> Anslå momentan vekstfart i $x = 0$ ved å bruke intervallet $[-0{,}1, 0{,}1]$.",
                         "bilde": null,
-                        "hint": "For oppgave c, finn den deriverte $f'(x)$. Husk at momentan vekstfart er akkurat det samme som verdien til den deriverte $f'(x)$.",
+                        "hint": "Momentan vekstfart er stigningstallet til tangenten. Der grafen har topp- eller bunnpunkt, er tangenten vannrett.",
                         "fasit": null,
                         "fasitSteg": [
-                            "<strong>a)</strong><br>Grafen til $f(x) = 0.25x^3 - 2x$ på intervallet $[-4, 4]$ har nullpunkter i $x = 0$ og $x = \\pm\\sqrt{8} \\approx \\pm 2.83$, lokalt toppunkt i $(-1.63, 2.18)$ og bunnpunkt i $(1.63, -2.18)$.",
-                            "<strong>b)</strong><br>Ved å tegne tangentene i punktene $(-2, 2)$ og $(2, -2)$ ser vi at begge linjene stiger med $1$ enhet i $y$-retning for hver enhet vi går til høyre.<br><br><strong>Svar:</strong> Begge tangentene har stigningstall $1$.",
-                            "<strong>c)</strong><br>Vi finner momentan vekstfart ved å derivere funksjonen:<br>$f'(x) = 3 \\cdot 0.25x^{3-1} - 2 = 0.75x^2 - 2$<br><br>Setter inn $x = -2$:<br>$f'(-2) = 0.75 \\cdot (-2)^2 - 2 = 0.75 \\cdot 4 - 2 = 3 - 2 = 1$<br><br>Setter inn $x = 2$:<br>$f'(2) = 0.75 \\cdot 2^2 - 2 = 0.75 \\cdot 4 - 2 = 3 - 2 = 1$",
-                            "<strong>Svar:</strong> Momentan vekstfart er $1$ for både $x=-2$ og $x=2$.",
-                            "<strong>d)</strong><br>Vi setter momentan vekstfart, $f'(x)$, lik $0$ og løser for $x$:<br>$0.75x^2 - 2 = 0$<br><br>Flytter over tallet:<br>$0.75x^2 = 2$<br><br>Deler på $0.75$:<br>$x^2 = \\frac{2}{0.75} = \\frac{2}{\\frac{3}{4}} = \\frac{8}{3}$<br>$x^2 \\approx 2.67$<br><br>Tar kvadratroten av begge sider:<br>$x = \\pm \\sqrt{2.67} \\approx \\pm 1.63$<br><br>Dette er $x$-verdiene der funksjonen har et topp- eller bunnpunkt (tangenten er vannrett).",
-                            "<strong>Svar:</strong> Momentan vekstfart er $0$ for $x \\approx 1.63$ og $x \\approx -1.63$.",
-                            "<strong>e)</strong><br>Vi setter momentan vekstfart lik $1$ og løser for $x$:<br>$0.75x^2 - 2 = 1$<br><br>Flytter over tallet:<br>$0.75x^2 = 3$<br><br>Deler på $0.75$:<br>$x^2 = \\frac{3}{0.75} = 4$<br><br>Tar kvadratroten av begge sider:<br>$x = \\pm \\sqrt{4}$<br>$x = \\pm 2$",
-                            "<strong>Svar:</strong> Momentan vekstfart er $1$ når $x = -2$ og når $x = 2$."
+                            "<strong>a)</strong><br>Grafen til $f(x) = 0{,}25x^3 - 2x$ på intervallet $[-4, 4]$ har nullpunkter i $x = 0$ og $x = \\pm\\sqrt{8} \\approx \\pm 2{,}83$, lokalt toppunkt i $(-1{,}63, 2{,}18)$ og bunnpunkt i $(1{,}63, -2{,}18)$.",
+                            "<strong>b)</strong><br>Ved å tegne tangentene i punktene $(-2, 2)$ og $(2, -2)$ ser vi at begge linjene stiger med $1$ enhet i $y$-retning for hver enhet vi går til høyre.",
+                            "<strong>Svar:</strong> Begge tangentene har stigningstall $1$.",
+                            "<strong>c)</strong><br>$f(2{,}1) = 0{,}25 \\cdot 2{,}1^3 - 2 \\cdot 2{,}1 = 2{,}31525 - 4{,}2 = -1{,}88475$<br>$f(1{,}9) = 0{,}25 \\cdot 1{,}9^3 - 2 \\cdot 1{,}9 = 1{,}71475 - 3{,}8 = -2{,}08525$<br><br>$\\frac{f(2{,}1) - f(1{,}9)}{2{,}1 - 1{,}9} = \\frac{-1{,}88475 - (-2{,}08525)}{0{,}2} = \\frac{0{,}2005}{0{,}2} \\approx 1{,}0$<br><br>Grafen er symmetrisk om origo ($f(-x) = -f(x)$), så tangenten i $x = -2$ har samme stigningstall.",
+                            "<strong>Svar:</strong> Gjennomsnittlig vekstfart i $[1{,}9, 2{,}1]$ er ca. $1{,}0$, som stemmer med stigningstallet $1$ fra b).",
+                            "<strong>d)</strong><br>Momentan vekstfart er $0$ der tangenten er vannrett, altså i topp- og bunnpunktet. Med GeoGebra (Ekstremalpunkt) finner vi toppunkt ca. $(-1{,}63, 2{,}18)$ og bunnpunkt ca. $(1{,}63, -2{,}18)$.<br><br>I 4H kan du vise ved regning at de eksakte verdiene er $x = \\pm\\sqrt{\\frac{8}{3}} = \\pm\\frac{2\\sqrt{6}}{3}$.",
+                            "<strong>Svar:</strong> Momentan vekstfart er $0$ for $x = \\pm\\frac{2\\sqrt{6}}{3} \\approx \\pm 1{,}63$.",
+                            "<strong>e)</strong><br>$f(0{,}1) = 0{,}25 \\cdot 0{,}001 - 0{,}2 = -0{,}19975$<br>$f(-0{,}1) = -0{,}00025 + 0{,}2 = 0{,}19975$<br><br>$\\frac{f(0{,}1) - f(-0{,}1)}{0{,}2} = \\frac{-0{,}3995}{0{,}2} \\approx -2{,}0$",
+                            "<strong>Svar:</strong> Momentan vekstfart i $x = 0$ er ca. $-2$. Grafen synker der."
                         ],
                         "starter": ""
                     },
@@ -5854,125 +5186,13 @@ export const fagsok = [
                         "tittel": "Oppgave 4.49",
                         "tekst": "Skisser en andregradsfunksjon der momentan vekstfart er $-4$ i $x=1$, og der gjennomsnittsfarten i intervallet $[1, 5]$ er $0$.",
                         "bilde": null,
-                        "hint": "Hvis gjennomsnittsfarten over intervallet er $0$, betyr det at grafen verken har steget eller sunket totalt mellom de to punktene. Det vil si at y-verdiene må være like (for eksempel $f(1) = f(5)$). <br><br>I en parabel (andregradsfunksjon) vil symmetrilinjen ligge midt imellom to punkter med samme $y$-verdi.",
+                        "hint": "Hvis gjennomsnittsfarten over $[1, 5]$ er $0$, er $f(1) = f(5)$. Da ligger symmetrilinja midt mellom $1$ og $5$.<br><br>Nyttig fakta: For en andregradsfunksjon er momentan vekstfart i et punkt lik gjennomsnittsfarten over et intervall med punktet som midtpunkt (se 4.45).",
                         "fasit": null,
                         "fasitSteg": [
-                            "Gjennomsnittsfart lik $0$ i intervallet $[1, 5]$ betyr at funksjonen har samme $y$-verdi i $x=1$ og $x=5$. Siden grafen til en andregradsfunksjon (parabel) er symmetrisk, må symmetrilinjen ligge nøyaktig midt mellom disse punktene:<br><br>$\\frac{1 + 5}{2} = \\frac{6}{2} = 3$<br><br>Symmetrilinjen er dermed $x=3$. Parabelen har topp- eller bunnpunktet sitt her.<br><br>Vi vet også at den momentane vekstfarten, $f'(x)$, i $x=1$ er $-4$. Altså:<br>$f'(1) = -4$<br><br>Siden funksjonen er en andregradsfunksjon kan vi skrive den på formen $f(x) = ax^2 + bx + c$.<br>Da er den deriverte $f'(x) = 2ax + b$.<br><br>Ettersom symmetrilinjen, $x=3$, er der den deriverte er null ($f'(3) = 0$), får vi:<br>$2a \\cdot 3 + b = 0 \\Rightarrow 6a + b = 0 \\Rightarrow b = -6a$<br><br>Nå kan vi bruke at $f'(1) = -4$:<br>$2a \\cdot 1 + b = -4$<br>$2a - 6a = -4$<br>$-4a = -4$<br>$a = 1$<br><br>Vi finner $b$:<br>$b = -6 \\cdot 1 = -6$<br><br>Vi kan velge $c = 0$ for enkelhets skyld. Da får vi funksjonen:<br>$f(x) = x^2 - 6x$<br><br>Vi kan kontrollere svaret:<br>$f'(x) = 2x - 6$<br>$f'(1) = 2 \\cdot 1 - 6 = -4$ (Stemmer)<br><br>Gjennomsnittsfart i $[1, 5]$:<br>$f(1) = 1^2 - 6 \\cdot 1 = -5$<br>$f(5) = 5^2 - 6 \\cdot 5 = 25 - 30 = -5$<br>$\\frac{f(5) - f(1)}{5 - 1} = \\frac{-5 - (-5)}{4} = 0$ (Stemmer)",
-                            "<strong>Svar:</strong> En mulig funksjon som oppfyller kravene er $f(x) = x^2 - 6x$. Funksjonen snur i $x=3$."
+                            "Gjennomsnittsfart lik $0$ i intervallet $[1, 5]$ betyr at $f(1) = f(5)$. En parabel er symmetrisk, så symmetrilinja ligger midt mellom:<br><br>$\\frac{1 + 5}{2} = 3$<br><br>Vi kan derfor skrive funksjonen på formen $f(x) = a(x - 3)^2 + d$.<br><br>Momentan vekstfart i $x = 1$ er lik gjennomsnittsfarten over $[0, 2]$ (intervallet har $x = 1$ som midtpunkt):<br>$f(0) = 9a + d$<br>$f(2) = a + d$<br>$\\frac{f(2) - f(0)}{2 - 0} = \\frac{a + d - 9a - d}{2} = \\frac{-8a}{2} = -4a$<br><br>Dette skal være $-4$:<br>$-4a = -4 \\Rightarrow a = 1$<br><br>Vi kan velge $d$ fritt, f.eks. $d = -9$:<br>$f(x) = (x - 3)^2 - 9 = x^2 - 6x$<br><br>Kontroll av gjennomsnittsfart i $[1, 5]$:<br>$f(1) = 1 - 6 = -5$<br>$f(5) = 25 - 30 = -5$<br>$\\frac{f(5) - f(1)}{5 - 1} = \\frac{-5 - (-5)}{4} = 0$ (Stemmer)<br><br>Skissen er en parabel med bunnpunkt i $(3, -9)$ som går gjennom $(0, 0)$ og $(6, 0)$.",
+                            "<strong>Svar:</strong> En mulig funksjon er $f(x) = x^2 - 6x$, med bunnpunkt i $(3, -9)$. (Alle funksjoner $f(x) = (x-3)^2 + d$ oppfyller kravene.)"
                         ],
                         "starter": ""
-                    }
-                ],
-                "quiz": [
-                    {
-                        "sporsmal": "Hva er grunnleggende sant om derivasjon? (Spørsmål 1)",
-                        "alternativer": [
-                            "Noe helt annet.",
-                            "Det betyr at funksjonen alltid er 0.",
-                            "Vet ikke.",
-                            "Det beskriver en fundamental egenskap ved derivasjon."
-                        ],
-                        "riktigSvar": 3,
-                        "forklaring": "Dette viser forståelse for derivasjon."
-                    },
-                    {
-                        "sporsmal": "Hva er grunnleggende sant om derivasjon? (Spørsmål 2)",
-                        "alternativer": [
-                            "Det betyr at funksjonen alltid er 0.",
-                            "Vet ikke.",
-                            "Det beskriver en fundamental egenskap ved derivasjon.",
-                            "Noe helt annet."
-                        ],
-                        "riktigSvar": 2,
-                        "forklaring": "Dette viser forståelse for derivasjon."
-                    },
-                    {
-                        "sporsmal": "Hva er grunnleggende sant om derivasjon? (Spørsmål 3)",
-                        "alternativer": [
-                            "Det beskriver en fundamental egenskap ved derivasjon.",
-                            "Vet ikke.",
-                            "Det betyr at funksjonen alltid er 0.",
-                            "Noe helt annet."
-                        ],
-                        "riktigSvar": 0,
-                        "forklaring": "Dette viser forståelse for derivasjon."
-                    },
-                    {
-                        "sporsmal": "Hva er grunnleggende sant om derivasjon? (Spørsmål 4)",
-                        "alternativer": [
-                            "Noe helt annet.",
-                            "Det beskriver en fundamental egenskap ved derivasjon.",
-                            "Vet ikke.",
-                            "Det betyr at funksjonen alltid er 0."
-                        ],
-                        "riktigSvar": 1,
-                        "forklaring": "Dette viser forståelse for derivasjon."
-                    },
-                    {
-                        "sporsmal": "Gitt en funksjon $f(x)$ for derivasjon, regn ut verdien. (Spørsmål 5)",
-                        "alternativer": [
-                            "Svaret er umulig å finne.",
-                            "Vet ikke.",
-                            "Noe helt annet.",
-                            "Svaret kan utledes fra formelen for derivasjon."
-                        ],
-                        "riktigSvar": 3,
-                        "forklaring": "Dette viser forståelse for derivasjon."
-                    },
-                    {
-                        "sporsmal": "Gitt en funksjon $f(x)$ for derivasjon, regn ut verdien. (Spørsmål 6)",
-                        "alternativer": [
-                            "Svaret er umulig å finne.",
-                            "Noe helt annet.",
-                            "Svaret kan utledes fra formelen for derivasjon.",
-                            "Vet ikke."
-                        ],
-                        "riktigSvar": 2,
-                        "forklaring": "Dette viser forståelse for derivasjon."
-                    },
-                    {
-                        "sporsmal": "Gitt en funksjon $f(x)$ for derivasjon, regn ut verdien. (Spørsmål 7)",
-                        "alternativer": [
-                            "Svaret er umulig å finne.",
-                            "Vet ikke.",
-                            "Noe helt annet.",
-                            "Svaret kan utledes fra formelen for derivasjon."
-                        ],
-                        "riktigSvar": 3,
-                        "forklaring": "Dette viser forståelse for derivasjon."
-                    },
-                    {
-                        "sporsmal": "Gitt en funksjon $f(x)$ for derivasjon, regn ut verdien. (Spørsmål 8)",
-                        "alternativer": [
-                            "Svaret er umulig å finne.",
-                            "Svaret kan utledes fra formelen for derivasjon.",
-                            "Noe helt annet.",
-                            "Vet ikke."
-                        ],
-                        "riktigSvar": 1,
-                        "forklaring": "Dette viser forståelse for derivasjon."
-                    },
-                    {
-                        "sporsmal": "En elev gjør en vanlig feil med derivasjon. Hva er feilen? (Spørsmål 9)",
-                        "alternativer": [
-                            "Eleven glemmer en viktig detalj om derivasjon.",
-                            "Vet ikke.",
-                            "Noe helt annet.",
-                            "Eleven gjør ingen feil."
-                        ],
-                        "riktigSvar": 0,
-                        "forklaring": "Dette viser forståelse for derivasjon."
-                    },
-                    {
-                        "sporsmal": "En elev gjør en vanlig feil med derivasjon. Hva er feilen? (Spørsmål 10)",
-                        "alternativer": [
-                            "Noe helt annet.",
-                            "Vet ikke.",
-                            "Eleven gjør ingen feil.",
-                            "Eleven glemmer en viktig detalj om derivasjon."
-                        ],
-                        "riktigSvar": 3,
-                        "forklaring": "Dette viser forståelse for derivasjon."
                     }
                 ]
             },
@@ -6047,8 +5267,8 @@ export const fagsok = [
                             "<strong>Svar:</strong> $g'(x) = -2x + 4$. Fortegnslinjen for den deriverte har null i $x = 2$, er heltrukken før 2, og stiplet etter.",
                             "<strong>d)</strong><br>Vi setter inn verdien $x = 3$ i den deriverte funksjonen vi fant i c):<br><br>$g'(3) = -2 \\cdot 3 + 4$<br>$\\rightarrow g'(3) = -6 + 4$<br>$\\rightarrow g'(3) = -2$<br><br>Dette forteller oss at grafen til $g(x)$ synker med stigningstall -2 når $x = 3$.",
                             "<strong>Svar:</strong> $g'(3) = -2$",
-                            "<strong>e)</strong><br>Vi løser likningen ved å sette uttrykket for $g'(x)$ fra c) lik 0:<br><br>$g'(x) = 0$<br>$-2x + 4 = 0$ (Sett inn uttrykket for $g'(x)$)<br>$2x = 4$ (Flytt $-2x$ over til høyre side for å få et positivt ledd)<br>$x = \\frac{4}{2}$ (Del på 2 på begge sider)<br>$x = 2$<br><br>Denne løsningen gir oss x-verdien der grafen til $g$ har et bunn- eller toppunkt, noe vi også fant i c).",
-                            "<strong>Svar:</strong> $x = 2$"
+                            "<strong>e)</strong><br>Vi løser likningen ved å sette uttrykket for $g'(x)$ fra c) lik 0:<br><br>$g'(x) = 0$<br>$-2x + 4 = 0$ (Sett inn uttrykket for $g'(x)$)<br>$2x = 4$ (Flytt $-2x$ over til høyre side for å få et positivt ledd)<br>$x = \\frac{4}{2}$ (Del på 2 på begge sider)<br>$x = 2$<br><br>Denne løsningen gir oss x-verdien der grafen til $g$ har et toppunkt: Fra fortegnslinja i c) er $g'(x)$ positiv før $x = 2$ og negativ etter, så grafen stiger og deretter synker. Toppunktet er $(2, g(2)) = (2, 4)$.",
+                            "<strong>Svar:</strong> $x = 2$ (toppunkt i $(2, 4)$)"
                         ],
                         "starter": ""
                     },
@@ -6068,16 +5288,18 @@ export const fagsok = [
                     {
                         "id": "4.55",
                         "tittel": "Oppgave 4.55",
-                        "tekst": "Gitt funksjonen $f(x) = x^3 - 6x^2 + 9x + 2$.<br><br><strong>a)</strong> Finn stigningstallet for $x = 1$, $x = 2$, og $x = 3$.<br><br><strong>b)</strong> Finn verdien for $f'(1)$, $f'(2)$, og $f'(3)$.<br><br><strong>c)</strong> Finn stigningstallet i $x = 0$.<br><br><strong>d)</strong> Løs likningene $f(x) = 2$ og $f'(x) = 0$.",
+                        "tekst": "Gitt funksjonen $f(x) = x^3 - 6x^2 + 9x + 2$.<br><br><strong>a)</strong> Finn $f'(x)$.<br><br><strong>b)</strong> Finn stigningstallet til grafen for $x = 1$, $x = 2$ og $x = 3$. Hva sier svarene om grafen?<br><br><strong>c)</strong> Finn stigningstallet i punktet $(0, 2)$.<br><br><strong>d)</strong> Løs likningene $f(x) = 2$ og $f'(x) = 0$.",
                         "bilde": null,
-                        "hint": "Deriver funksjonen først. Husk at verdien til den deriverte og stigningstallet i et punkt beskriver nøyaktig det samme, så svarene på a) og b) vil bli identiske!",
+                        "hint": "Deriver ledd for ledd. Stigningstallet i et punkt er verdien til den deriverte i punktet.",
                         "fasit": null,
                         "fasitSteg": [
-                            "Vi starter med å finne uttrykket for den deriverte funksjonen, fordi dette gir oss stigningstallet for en gitt x-verdi:<br><br>$f(x) = x^3 - 6x^2 + 9x + 2$<br>$f'(x) = 3 \\cdot x^{3-1} - 6 \\cdot 2x^{2-1} + 9 \\cdot 1 + 0$ (Vi bruker potensregelen ledd for ledd)<br>$f'(x) = 3x^2 - 12x + 9$<br><br><strong>a)</strong> og <strong>b)</strong><br>Spørsmålene ber om akkurat det samme, da stigningstallet i et punkt er lik verdien til den deriverte funksjonen i det punktet.<br><br>Vi setter inn verdiene for x i uttrykket $f'(x) = 3x^2 - 12x + 9$:<br><br>For $x = 1$:<br>$f'(1) = 3(1)^2 - 12(1) + 9 = 3 - 12 + 9 = 0$<br><br>For $x = 2$:<br>$f'(2) = 3(2)^2 - 12(2) + 9 = 12 - 24 + 9 = -3$<br><br>For $x = 3$:<br>$f'(3) = 3(3)^2 - 12(3) + 9 = 27 - 36 + 9 = 0$",
-                            "<strong>Svar:</strong> <br>For $x = 1$ er stigningstallet (og $f'(1)$) lik $0$.<br>For $x = 2$ er stigningstallet (og $f'(2)$) lik $-3$.<br>For $x = 3$ er stigningstallet (og $f'(3)$) lik $0$.",
+                            "<strong>a)</strong><br>Vi deriverer ledd for ledd:<br><br>$f(x) = x^3 - 6x^2 + 9x + 2$<br>$f'(x) = 3 \\cdot x^{3-1} - 6 \\cdot 2x^{2-1} + 9 \\cdot 1 + 0$ (Vi bruker potensregelen ledd for ledd)<br>$f'(x) = 3x^2 - 12x + 9$",
+                            "<strong>Svar:</strong> $f'(x) = 3x^2 - 12x + 9$",
+                            "<strong>b)</strong><br>Stigningstallet i et punkt er lik verdien til den deriverte i punktet.<br><br>Vi setter inn verdiene for x i uttrykket $f'(x) = 3x^2 - 12x + 9$:<br><br>For $x = 1$:<br>$f'(1) = 3(1)^2 - 12(1) + 9 = 3 - 12 + 9 = 0$<br><br>For $x = 2$:<br>$f'(2) = 3(2)^2 - 12(2) + 9 = 12 - 24 + 9 = -3$<br><br>For $x = 3$:<br>$f'(3) = 3(3)^2 - 12(3) + 9 = 27 - 36 + 9 = 0$<br><br>I $x = 1$ og $x = 3$ er tangenten vannrett, mens grafen synker i $x = 2$.",
+                            "<strong>Svar:</strong> Stigningstallet er $0$ for $x = 1$, $-3$ for $x = 2$ og $0$ for $x = 3$. Grafen har vannrett tangent i $x = 1$ og $x = 3$ og synker mellom dem.",
                             "<strong>c)</strong><br>Stigningstallet i $x = 0$ tilsvarer verdien av $f'(0)$:<br><br>$f'(0) = 3(0)^2 - 12(0) + 9 = 9$",
-                            "<strong>Svar:</strong> Stigningstallet i origo ($x = 0$) er $9$.",
-                            "<strong>d)</strong><br>Først løser vi $f(x) = 2$:<br><br>$x^3 - 6x^2 + 9x + 2 = 2$ (Sett inn uttrykket for f(x))<br>$x^3 - 6x^2 + 9x = 0$ (Trekk fra 2 på begge sider)<br>$x(x^2 - 6x + 9) = 0$ (Faktoriser ut $x$)<br><br>Dette gir oss den første løsningen:<br>$x = 0$<br><br>Videre ser vi på den andre faktoren. Denne kan skrives om ved hjelp av 2. kvadratsetning:<br>$x^2 - 6x + 9 = (x - 3)^2 = 0$<br>$\\rightarrow x = 3$<br><br>Så løser vi $f'(x) = 0$:<br><br>Fra b) vet vi allerede at $f'(1) = 0$ og $f'(3) = 0$. Vi kan også vise dette ved utregning:<br>$3x^2 - 12x + 9 = 0$<br>$3(x^2 - 4x + 3) = 0$ (Faktoriser ut 3)<br>Bruker vi ABC-formelen for $x^2 - 4x + 3 = 0$, får vi:<br>$x = \\frac{-(-4) \\pm \\sqrt{(-4)^2 - 4 \\cdot 1 \\cdot 3}}{2 \\cdot 1}$<br>$x = \\frac{4 \\pm \\sqrt{16 - 12}}{2}$<br>$x = \\frac{4 \\pm \\sqrt{4}}{2} = \\frac{4 \\pm 2}{2}$<br>Dette gir $x = 3$ og $x = 1$.",
+                            "<strong>Svar:</strong> Stigningstallet i punktet $(0, 2)$ er $9$.",
+                            "<strong>d)</strong><br>Først løser vi $f(x) = 2$:<br><br>$x^3 - 6x^2 + 9x + 2 = 2$ (Sett inn uttrykket for f(x))<br>$x^3 - 6x^2 + 9x = 0$ (Trekk fra 2 på begge sider)<br>$x(x^2 - 6x + 9) = 0$ (Faktoriser ut $x$)<br><br>Dette gir oss den første løsningen:<br>$x = 0$<br><br>Videre ser vi på den andre faktoren. Denne kan skrives om ved hjelp av 2. kvadratsetning:<br>$x^2 - 6x + 9 = (x - 3)^2 = 0$<br>$\\rightarrow x = 3$<br><br>Så løser vi $f'(x) = 0$:<br><br>Fra b) vet vi allerede at $f'(1) = 0$ og $f'(3) = 0$. Vi kan også vise dette ved utregning:<br>$3x^2 - 12x + 9 = 0$<br>$3(x^2 - 4x + 3) = 0$ (Faktoriser ut 3)<br>Bruker vi abc-formelen for $x^2 - 4x + 3 = 0$, får vi:<br>$x = \\frac{-(-4) \\pm \\sqrt{(-4)^2 - 4 \\cdot 1 \\cdot 3}}{2 \\cdot 1}$<br>$x = \\frac{4 \\pm \\sqrt{16 - 12}}{2}$<br>$x = \\frac{4 \\pm \\sqrt{4}}{2} = \\frac{4 \\pm 2}{2}$<br>Dette gir $x = 3$ og $x = 1$.",
                             "<strong>Svar:</strong> <br>$f(x) = 2$ gir løsningene $x = 0$ og $x = 3$.<br>$f'(x) = 0$ gir løsningene $x = 1$ og $x = 3$."
                         ],
                         "starter": ""
@@ -6085,13 +5307,15 @@ export const fagsok = [
                     {
                         "id": "4.56",
                         "tittel": "Oppgave 4.56",
-                        "tekst": "Den deriverte funksjonen $f'(x)$ er linjen $y = 2x - 4$. Skisser grafen til funksjonen $f$ når vi vet at den går gjennom punktet $(0, 2)$.",
+                        "tekst": "Om en funksjon $f$ vet vi at den deriverte er $f'(x) = 2x - 4$, og at grafen går gjennom punktet $(0, 2)$. Ola påstår at $f(x) = x^2 - 4x + 2$.<br><br><strong>a)</strong> Vis at Olas funksjon har riktig derivert og går gjennom $(0, 2)$.<br><br><strong>b)</strong> Lag fortegnslinje for $f'(x)$, finn bunnpunktet og skisser grafen til $f$.",
                         "bilde": null,
-                        "hint": "Anti-deriver for å finne uttrykket til selve funksjonen. Tenk baklengs: Hva blir til $x$ og hva blir til en konstant når du deriverer? Hva blir f.eks. $x^2$ derivert?",
+                        "hint": "Deriver Olas funksjon og sammenlign med $2x - 4$. Sett inn $x = 0$. Bunnpunktet finner du der $f'(x) = 0$.",
                         "fasit": null,
                         "fasitSteg": [
-                            "Vi vet at den deriverte er $f'(x) = 2x - 4$. For å finne den opprinnelige funksjonen $f(x)$, må vi antiderivere:<br><br>Hvilket uttrykk gir $2x$ når vi deriverer det? Svaret er $x^2$.<br>Hvilket uttrykk gir $-4$ når vi deriverer det? Svaret er $-4x$.<br><br>Vi må også huske at en eventuell konstantverdi ($C$) forsvinner når vi deriverer. Funksjonen har derfor en generell form:<br>$f(x) = x^2 - 4x + C$<br><br>For å finne ut hva konstanten $C$ er, bruker vi opplysningen fra oppgaven om at grafen går gjennom punktet $(0, 2)$:<br>Når $x = 0$, skal $f(0) = 2$.<br><br>$f(0) = (0)^2 - 4(0) + C = 2$<br>$0 - 0 + C = 2$<br>$C = 2$<br><br>Nå har vi hele funksjonsuttrykket:<br>$f(x) = x^2 - 4x + 2$<br><br>Dette er en andregradsfunksjon (parabel). Vi kan analysere den for å lage en god skisse:<br>1. Den deriverte $f'(x) = 2x - 4 = 0$ gir $2x = 4 \\rightarrow x = 2$.<br>Dette betyr at grafen har et bunnpunkt (siden tallet foran $x^2$ er positivt, altså en \"smilende\" graf) for $x = 2$.<br>2. Verdien i bunnpunktet: $f(2) = (2)^2 - 4(2) + 2 = 4 - 8 + 2 = -2$. Bunnpunktet er i $(2, -2)$.<br>3. Y-skjæringen vet vi allerede fra oppgaven er i $(0, 2)$. Siden parabelen er symmetrisk om bunnpunktet i $x = 2$, går den også gjennom punktet $(4, 2)$.",
-                            "<strong>Svar:</strong> Funksjonen er parabelen $f(x) = x^2 - 4x + 2$. Den har bunnpunkt i $(2, -2)$ og y-skjæring i $(0, 2)$."
+                            "<strong>a)</strong><br>Vi deriverer Olas funksjon:<br>$f(x) = x^2 - 4x + 2$<br>$f'(x) = 2x - 4$ (stemmer)<br><br>Vi setter inn $x = 0$:<br>$f(0) = 0^2 - 4 \\cdot 0 + 2 = 2$, så grafen går gjennom $(0, 2)$.",
+                            "<strong>Svar:</strong> $f'(x) = 2x - 4$ og $f(0) = 2$, så funksjonen oppfyller begge kravene.",
+                            "<strong>b)</strong><br>$f'(x) = 2x - 4 = 0 \\Rightarrow x = 2$.<br>For $x < 2$ er $f'(x) < 0$ (grafen synker), og for $x > 2$ er $f'(x) > 0$ (grafen stiger). Altså er $x = 2$ et bunnpunkt.<br><br>$f(2) = 2^2 - 4 \\cdot 2 + 2 = -2$. Bunnpunktet er $(2, -2)$.<br><br>Grafen går gjennom $(0, 2)$ og, på grunn av symmetrien om $x = 2$, også gjennom $(4, 2)$.",
+                            "<strong>Svar:</strong> Bunnpunkt i $(2, -2)$. Grafen er en parabel som går gjennom $(0, 2)$, $(2, -2)$ og $(4, 2)$."
                         ],
                         "starter": ""
                     },
@@ -6107,118 +5331,6 @@ export const fagsok = [
                             "<strong>Svar:</strong> En parabel-skisse som passerer origo $(0, 0)$, har bunnpunkt ved en x-koordinat på 2 (f.eks. $(2, -4)$), og stiger opp igjen gjennom punktet $(4, 0)$."
                         ],
                         "starter": ""
-                    }
-                ],
-                "quiz": [
-                    {
-                        "sporsmal": "Hva er grunnleggende sant om ekstremalpunkter? (Spørsmål 1)",
-                        "alternativer": [
-                            "Det beskriver en fundamental egenskap ved ekstremalpunkter.",
-                            "Vet ikke.",
-                            "Noe helt annet.",
-                            "Det betyr at funksjonen alltid er 0."
-                        ],
-                        "riktigSvar": 0,
-                        "forklaring": "Dette viser forståelse for ekstremalpunkter."
-                    },
-                    {
-                        "sporsmal": "Hva er grunnleggende sant om ekstremalpunkter? (Spørsmål 2)",
-                        "alternativer": [
-                            "Det betyr at funksjonen alltid er 0.",
-                            "Vet ikke.",
-                            "Noe helt annet.",
-                            "Det beskriver en fundamental egenskap ved ekstremalpunkter."
-                        ],
-                        "riktigSvar": 3,
-                        "forklaring": "Dette viser forståelse for ekstremalpunkter."
-                    },
-                    {
-                        "sporsmal": "Hva er grunnleggende sant om ekstremalpunkter? (Spørsmål 3)",
-                        "alternativer": [
-                            "Det beskriver en fundamental egenskap ved ekstremalpunkter.",
-                            "Det betyr at funksjonen alltid er 0.",
-                            "Vet ikke.",
-                            "Noe helt annet."
-                        ],
-                        "riktigSvar": 0,
-                        "forklaring": "Dette viser forståelse for ekstremalpunkter."
-                    },
-                    {
-                        "sporsmal": "Hva er grunnleggende sant om ekstremalpunkter? (Spørsmål 4)",
-                        "alternativer": [
-                            "Det beskriver en fundamental egenskap ved ekstremalpunkter.",
-                            "Det betyr at funksjonen alltid er 0.",
-                            "Vet ikke.",
-                            "Noe helt annet."
-                        ],
-                        "riktigSvar": 0,
-                        "forklaring": "Dette viser forståelse for ekstremalpunkter."
-                    },
-                    {
-                        "sporsmal": "Gitt en funksjon $f(x)$ for ekstremalpunkter, regn ut verdien. (Spørsmål 5)",
-                        "alternativer": [
-                            "Svaret er umulig å finne.",
-                            "Noe helt annet.",
-                            "Svaret kan utledes fra formelen for ekstremalpunkter.",
-                            "Vet ikke."
-                        ],
-                        "riktigSvar": 2,
-                        "forklaring": "Dette viser forståelse for ekstremalpunkter."
-                    },
-                    {
-                        "sporsmal": "Gitt en funksjon $f(x)$ for ekstremalpunkter, regn ut verdien. (Spørsmål 6)",
-                        "alternativer": [
-                            "Vet ikke.",
-                            "Svaret er umulig å finne.",
-                            "Noe helt annet.",
-                            "Svaret kan utledes fra formelen for ekstremalpunkter."
-                        ],
-                        "riktigSvar": 3,
-                        "forklaring": "Dette viser forståelse for ekstremalpunkter."
-                    },
-                    {
-                        "sporsmal": "Gitt en funksjon $f(x)$ for ekstremalpunkter, regn ut verdien. (Spørsmål 7)",
-                        "alternativer": [
-                            "Svaret er umulig å finne.",
-                            "Vet ikke.",
-                            "Noe helt annet.",
-                            "Svaret kan utledes fra formelen for ekstremalpunkter."
-                        ],
-                        "riktigSvar": 3,
-                        "forklaring": "Dette viser forståelse for ekstremalpunkter."
-                    },
-                    {
-                        "sporsmal": "Gitt en funksjon $f(x)$ for ekstremalpunkter, regn ut verdien. (Spørsmål 8)",
-                        "alternativer": [
-                            "Svaret er umulig å finne.",
-                            "Svaret kan utledes fra formelen for ekstremalpunkter.",
-                            "Noe helt annet.",
-                            "Vet ikke."
-                        ],
-                        "riktigSvar": 1,
-                        "forklaring": "Dette viser forståelse for ekstremalpunkter."
-                    },
-                    {
-                        "sporsmal": "En elev gjør en vanlig feil med ekstremalpunkter. Hva er feilen? (Spørsmål 9)",
-                        "alternativer": [
-                            "Noe helt annet.",
-                            "Vet ikke.",
-                            "Eleven gjør ingen feil.",
-                            "Eleven glemmer en viktig detalj om ekstremalpunkter."
-                        ],
-                        "riktigSvar": 3,
-                        "forklaring": "Dette viser forståelse for ekstremalpunkter."
-                    },
-                    {
-                        "sporsmal": "En elev gjør en vanlig feil med ekstremalpunkter. Hva er feilen? (Spørsmål 10)",
-                        "alternativer": [
-                            "Eleven glemmer en viktig detalj om ekstremalpunkter.",
-                            "Noe helt annet.",
-                            "Vet ikke.",
-                            "Eleven gjør ingen feil."
-                        ],
-                        "riktigSvar": 0,
-                        "forklaring": "Dette viser forståelse for ekstremalpunkter."
                     }
                 ]
             }

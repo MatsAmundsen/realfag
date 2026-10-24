@@ -1,112 +1,90 @@
 [
   {
-    "sporsmal": "Hva er grunnleggende sant om vekstfaktorer? (Spørsmål 1)",
+    "sporsmal": "En potensfunksjon har formen",
     "alternativer": [
-      "Vet ikke.",
-      "Noe helt annet.",
-      "Det betyr at funksjonen alltid er 0.",
-      "Det beskriver en fundamental egenskap ved vekstfaktorer."
-    ],
-    "riktigSvar": 3,
-    "forklaring": "Dette viser forståelse for vekstfaktorer."
-  },
-  {
-    "sporsmal": "Hva er grunnleggende sant om vekstfaktorer? (Spørsmål 2)",
-    "alternativer": [
-      "Vet ikke.",
-      "Noe helt annet.",
-      "Det beskriver en fundamental egenskap ved vekstfaktorer.",
-      "Det betyr at funksjonen alltid er 0."
-    ],
-    "riktigSvar": 2,
-    "forklaring": "Dette viser forståelse for vekstfaktorer."
-  },
-  {
-    "sporsmal": "Hva er grunnleggende sant om vekstfaktorer? (Spørsmål 3)",
-    "alternativer": [
-      "Vet ikke.",
-      "Noe helt annet.",
-      "Det betyr at funksjonen alltid er 0.",
-      "Det beskriver en fundamental egenskap ved vekstfaktorer."
-    ],
-    "riktigSvar": 3,
-    "forklaring": "Dette viser forståelse for vekstfaktorer."
-  },
-  {
-    "sporsmal": "Hva er grunnleggende sant om vekstfaktorer? (Spørsmål 4)",
-    "alternativer": [
-      "Vet ikke.",
-      "Noe helt annet.",
-      "Det betyr at funksjonen alltid er 0.",
-      "Det beskriver en fundamental egenskap ved vekstfaktorer."
-    ],
-    "riktigSvar": 3,
-    "forklaring": "Dette viser forståelse for vekstfaktorer."
-  },
-  {
-    "sporsmal": "Gitt en funksjon $f(x)$ for vekstfaktorer, regn ut verdien. (Spørsmål 5)",
-    "alternativer": [
-      "Svaret kan utledes fra formelen for vekstfaktorer.",
-      "Svaret er umulig å finne.",
-      "Vet ikke.",
-      "Noe helt annet."
-    ],
-    "riktigSvar": 0,
-    "forklaring": "Dette viser forståelse for vekstfaktorer."
-  },
-  {
-    "sporsmal": "Gitt en funksjon $f(x)$ for vekstfaktorer, regn ut verdien. (Spørsmål 6)",
-    "alternativer": [
-      "Noe helt annet.",
-      "Vet ikke.",
-      "Svaret er umulig å finne.",
-      "Svaret kan utledes fra formelen for vekstfaktorer."
-    ],
-    "riktigSvar": 3,
-    "forklaring": "Dette viser forståelse for vekstfaktorer."
-  },
-  {
-    "sporsmal": "Gitt en funksjon $f(x)$ for vekstfaktorer, regn ut verdien. (Spørsmål 7)",
-    "alternativer": [
-      "Noe helt annet.",
-      "Vet ikke.",
-      "Svaret er umulig å finne.",
-      "Svaret kan utledes fra formelen for vekstfaktorer."
-    ],
-    "riktigSvar": 3,
-    "forklaring": "Dette viser forståelse for vekstfaktorer."
-  },
-  {
-    "sporsmal": "Gitt en funksjon $f(x)$ for vekstfaktorer, regn ut verdien. (Spørsmål 8)",
-    "alternativer": [
-      "Svaret kan utledes fra formelen for vekstfaktorer.",
-      "Svaret er umulig å finne.",
-      "Noe helt annet.",
-      "Vet ikke."
-    ],
-    "riktigSvar": 0,
-    "forklaring": "Dette viser forståelse for vekstfaktorer."
-  },
-  {
-    "sporsmal": "En elev gjør en vanlig feil med vekstfaktorer. Hva er feilen? (Spørsmål 9)",
-    "alternativer": [
-      "Vet ikke.",
-      "Eleven glemmer en viktig detalj om vekstfaktorer.",
-      "Noe helt annet.",
-      "Eleven gjør ingen feil."
+      "$f(x)=a\\cdot b^x$",
+      "$f(x)=a\\cdot x^b$",
+      "$f(x)=ax+b$",
+      "$f(x)=\\dfrac{a}{x+b}$"
     ],
     "riktigSvar": 1,
-    "forklaring": "Dette viser forståelse for vekstfaktorer."
+    "forklaring": "Eksponenten $b$ er konstant, basen er variabelen $x$. Ikke omvendt — det er eksponentialfunksjon."
   },
   {
-    "sporsmal": "En elev gjør en vanlig feil med vekstfaktorer. Hva er feilen? (Spørsmål 10)",
+    "sporsmal": "Potensfunksjoner passer særlig godt til",
     "alternativer": [
-      "Eleven glemmer en viktig detalj om vekstfaktorer.",
-      "Eleven gjør ingen feil.",
-      "Noe helt annet.",
-      "Vet ikke."
+      "rente og halveringstid",
+      "rettlinjet bevegelse",
+      "areal, volum og liknende geometri/fysikk",
+      "periodiske svingninger"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Areal $\\propto x^2$, volum $\\propto x^3$, mange empiriske lover er $a\\cdot x^b$."
+  },
+  {
+    "sporsmal": "$V(t)=2{,}5\\cdot t^{0{,}6}$. Når $V=10$, er $t$ nærmest",
+    "alternativer": [
+      "$4$",
+      "$16$",
+      "$25$",
+      "$10$"
+    ],
+    "riktigSvar": 3,
+    "forklaring": "$t^{0{,}6}=4$, $t=4^{1/0{,}6}=4^{5/3}\\approx 10{,}1$."
+  },
+  {
+    "sporsmal": "Hvis $A(x)=c\\cdot x^{1{,}9}$ og radiusen øker med $15\\,\\%$, øker arealet med omtrent",
+    "alternativer": [
+      "$15\\,\\%$",
+      "$1{,}9\\,\\%$",
+      "$115\\,\\%$",
+      "$30\\,\\%$"
+    ],
+    "riktigSvar": 3,
+    "forklaring": "Ny verdi: $1{,}15^{1{,}9}\\approx 1{,}304$, altså ca. $30\\,\\%$ økning."
+  },
+  {
+    "sporsmal": "Gitt $C(x)=150\\cdot x^{-0{,}15}$. Hva skjer når $x$ øker?",
+    "alternativer": [
+      "$C$ øker",
+      "$C$ er konstant",
+      "$C$ avtar (mot $0$)",
+      "$C$ blir negativ"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Negativ eksponent gir avtakende potensfunksjon for $x>0$."
+  },
+  {
+    "sporsmal": "$E(p)=25000\\cdot p^{-1{,}2}$. Etterspørselen ved $p=100$ er nærmest",
+    "alternativer": [
+      "$100$",
+      "$250$",
+      "$25$",
+      "$25000$"
     ],
     "riktigSvar": 0,
-    "forklaring": "Dette viser forståelse for vekstfaktorer."
+    "forklaring": "$100^{1{,}2}=100\\cdot 100^{0{,}2}\\approx 251$, og $25000/251\\approx 100$."
+  },
+  {
+    "sporsmal": "Hva skiller $f(x)=x^2$ fra $g(x)=2^x$?",
+    "alternativer": [
+      "$f$ er potensfunksjon (variabel i basen), $g$ er eksponentialfunksjon (variabel i eksponenten)",
+      "Ingenting, de er like",
+      "Begge er lineære",
+      "$f$ har asymptote, $g$ har ikke"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Hvem som er variabel — basen eller eksponenten — avgjør funksjonstypen."
+  },
+  {
+    "sporsmal": "For $x>0$ og $0<b<1$ er $f(x)=x^b$",
+    "alternativer": [
+      "avtakende og negativ",
+      "voksende, men avtakende stigning (flater ut)",
+      "en rett linje",
+      "udefinert"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "F.eks. $\\sqrt{x}=x^{1/2}$: vokser, men saktere og saktere."
   }
 ]

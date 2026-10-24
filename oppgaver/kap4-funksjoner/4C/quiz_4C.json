@@ -1,112 +1,90 @@
 [
   {
-    "sporsmal": "Hva er grunnleggende sant om andregradsuttrykk? (Spørsmål 1)",
+    "sporsmal": "Hvilket polynom er av tredje grad?",
     "alternativer": [
-      "Det betyr at funksjonen alltid er 0.",
-      "Noe helt annet.",
-      "Det beskriver en fundamental egenskap ved andregradsuttrykk.",
-      "Vet ikke."
-    ],
-    "riktigSvar": 2,
-    "forklaring": "Dette viser forståelse for andregradsuttrykk."
-  },
-  {
-    "sporsmal": "Hva er grunnleggende sant om andregradsuttrykk? (Spørsmål 2)",
-    "alternativer": [
-      "Det beskriver en fundamental egenskap ved andregradsuttrykk.",
-      "Det betyr at funksjonen alltid er 0.",
-      "Vet ikke.",
-      "Noe helt annet."
-    ],
-    "riktigSvar": 0,
-    "forklaring": "Dette viser forståelse for andregradsuttrykk."
-  },
-  {
-    "sporsmal": "Hva er grunnleggende sant om andregradsuttrykk? (Spørsmål 3)",
-    "alternativer": [
-      "Noe helt annet.",
-      "Det beskriver en fundamental egenskap ved andregradsuttrykk.",
-      "Vet ikke.",
-      "Det betyr at funksjonen alltid er 0."
-    ],
-    "riktigSvar": 1,
-    "forklaring": "Dette viser forståelse for andregradsuttrykk."
-  },
-  {
-    "sporsmal": "Hva er grunnleggende sant om andregradsuttrykk? (Spørsmål 4)",
-    "alternativer": [
-      "Noe helt annet.",
-      "Det beskriver en fundamental egenskap ved andregradsuttrykk.",
-      "Vet ikke.",
-      "Det betyr at funksjonen alltid er 0."
-    ],
-    "riktigSvar": 1,
-    "forklaring": "Dette viser forståelse for andregradsuttrykk."
-  },
-  {
-    "sporsmal": "Gitt en funksjon $f(x)$ for andregradsuttrykk, regn ut verdien. (Spørsmål 5)",
-    "alternativer": [
-      "Svaret kan utledes fra formelen for andregradsuttrykk.",
-      "Vet ikke.",
-      "Svaret er umulig å finne.",
-      "Noe helt annet."
-    ],
-    "riktigSvar": 0,
-    "forklaring": "Dette viser forståelse for andregradsuttrykk."
-  },
-  {
-    "sporsmal": "Gitt en funksjon $f(x)$ for andregradsuttrykk, regn ut verdien. (Spørsmål 6)",
-    "alternativer": [
-      "Svaret kan utledes fra formelen for andregradsuttrykk.",
-      "Vet ikke.",
-      "Noe helt annet.",
-      "Svaret er umulig å finne."
-    ],
-    "riktigSvar": 0,
-    "forklaring": "Dette viser forståelse for andregradsuttrykk."
-  },
-  {
-    "sporsmal": "Gitt en funksjon $f(x)$ for andregradsuttrykk, regn ut verdien. (Spørsmål 7)",
-    "alternativer": [
-      "Vet ikke.",
-      "Svaret kan utledes fra formelen for andregradsuttrykk.",
-      "Svaret er umulig å finne.",
-      "Noe helt annet."
-    ],
-    "riktigSvar": 1,
-    "forklaring": "Dette viser forståelse for andregradsuttrykk."
-  },
-  {
-    "sporsmal": "Gitt en funksjon $f(x)$ for andregradsuttrykk, regn ut verdien. (Spørsmål 8)",
-    "alternativer": [
-      "Vet ikke.",
-      "Noe helt annet.",
-      "Svaret kan utledes fra formelen for andregradsuttrykk.",
-      "Svaret er umulig å finne."
-    ],
-    "riktigSvar": 2,
-    "forklaring": "Dette viser forståelse for andregradsuttrykk."
-  },
-  {
-    "sporsmal": "En elev gjør en vanlig feil med andregradsuttrykk. Hva er feilen? (Spørsmål 9)",
-    "alternativer": [
-      "Eleven gjør ingen feil.",
-      "Eleven glemmer en viktig detalj om andregradsuttrykk.",
-      "Noe helt annet.",
-      "Vet ikke."
-    ],
-    "riktigSvar": 1,
-    "forklaring": "Dette viser forståelse for andregradsuttrykk."
-  },
-  {
-    "sporsmal": "En elev gjør en vanlig feil med andregradsuttrykk. Hva er feilen? (Spørsmål 10)",
-    "alternativer": [
-      "Eleven gjør ingen feil.",
-      "Vet ikke.",
-      "Noe helt annet.",
-      "Eleven glemmer en viktig detalj om andregradsuttrykk."
+      "$x^2+3x-1$",
+      "$5x-3$",
+      "$\\dfrac{1}{x}+x$",
+      "$2x^3-10x^2+14x-6$"
     ],
     "riktigSvar": 3,
-    "forklaring": "Dette viser forståelse for andregradsuttrykk."
+    "forklaring": "Graden er høyeste eksponent med koeffisient $\\neq 0$. Her $3$."
+  },
+  {
+    "sporsmal": "Nullpunktene til $g(x)=x^2+6x+5$ er",
+    "alternativer": [
+      "$x=1$ og $x=5$",
+      "$x=0$ og $x=-6$",
+      "$x=2$ og $x=3$",
+      "$x=-1$ og $x=-5$"
+    ],
+    "riktigSvar": 3,
+    "forklaring": "$(x+1)(x+5)=x^2+6x+5$."
+  },
+  {
+    "sporsmal": "Parabelen $g(x)=x^2+6x+5$ har",
+    "alternativer": [
+      "bunnpunkt i $(-3,-4)$",
+      "toppunkt i $(-3,-4)$",
+      "bunnpunkt i $(0,5)$",
+      "toppunkt i $(3,4)$"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "$a=1>0$, så den vender opp (bunnpunkt). Symmetrilinje $x=-\\dfrac{6}{2}=-3$, $g(-3)=-4$."
+  },
+  {
+    "sporsmal": "En parabel med toppunkt $(1,4)$ som skjærer $x$-aksen i $x=3$, kan skrives",
+    "alternativer": [
+      "$f(x)=(x-1)^2+4$",
+      "$f(x)=(x-3)^2$",
+      "$f(x)=-(x-1)^2+4$",
+      "$f(x)=x^2+4$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Toppunktform $a(x-1)^2+4$ med $a<0$ fordi den vender ned. $f(3)=0$ gir $a\\cdot 4+4=0$, $a=-1$."
+  },
+  {
+    "sporsmal": "Tredjegraden med nullpunkt $-2$, $1$ og $3$ og $h(0)=12$ er",
+    "alternativer": [
+      "$2(x+2)(x-1)(x-3)$",
+      "$(x+2)(x-1)(x-3)$",
+      "$-2(x+2)(x-1)(x-3)$",
+      "$x^3-12$"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "$h(0)=a(2)(-1)(-3)=6a=12$, så $a=2$."
+  },
+  {
+    "sporsmal": "Andreaksen er",
+    "alternativer": [
+      "$x$-aksen",
+      "$y$-aksen",
+      "symmetrilinjen til parabelen",
+      "linjen $y=x$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Andreaksen er $y$-aksen. Skjæring der: sett $x=0$."
+  },
+  {
+    "sporsmal": "$T(t)=-0{,}2t^2+5{,}2t-18{,}8$ har ekstremalpunkt når $t$ er",
+    "alternativer": [
+      "$8$",
+      "$15$",
+      "$13$",
+      "$5{,}2$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "$t=-\\dfrac{b}{2a}=-\\dfrac{5{,}2}{2\\cdot(-0{,}2)}=13$. Siden $a<0$ er det et toppunkt."
+  },
+  {
+    "sporsmal": "Hvis $P(x)=2(x-3)(x-1)^2$, hvor mange ulike nullpunkt har $P$?",
+    "alternativer": [
+      "$1$",
+      "$2$",
+      "$3$",
+      "$4$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Null i $x=3$ (enkel) og $x=1$ (dobbel rot). To ulike $x$-verdier."
   }
 ]

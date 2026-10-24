@@ -1,112 +1,90 @@
 [
   {
-    "sporsmal": "Hva er grunnleggende sant om rasjonale uttrykk? (Spørsmål 1)",
+    "sporsmal": "En rasjonal funksjon er",
     "alternativer": [
-      "Vet ikke.",
-      "Det beskriver en fundamental egenskap ved rasjonale uttrykk.",
-      "Det betyr at funksjonen alltid er 0.",
-      "Noe helt annet."
-    ],
-    "riktigSvar": 1,
-    "forklaring": "Dette viser forståelse for rasjonale uttrykk."
-  },
-  {
-    "sporsmal": "Hva er grunnleggende sant om rasjonale uttrykk? (Spørsmål 2)",
-    "alternativer": [
-      "Vet ikke.",
-      "Noe helt annet.",
-      "Det betyr at funksjonen alltid er 0.",
-      "Det beskriver en fundamental egenskap ved rasjonale uttrykk."
-    ],
-    "riktigSvar": 3,
-    "forklaring": "Dette viser forståelse for rasjonale uttrykk."
-  },
-  {
-    "sporsmal": "Hva er grunnleggende sant om rasjonale uttrykk? (Spørsmål 3)",
-    "alternativer": [
-      "Det betyr at funksjonen alltid er 0.",
-      "Vet ikke.",
-      "Det beskriver en fundamental egenskap ved rasjonale uttrykk.",
-      "Noe helt annet."
-    ],
-    "riktigSvar": 2,
-    "forklaring": "Dette viser forståelse for rasjonale uttrykk."
-  },
-  {
-    "sporsmal": "Hva er grunnleggende sant om rasjonale uttrykk? (Spørsmål 4)",
-    "alternativer": [
-      "Vet ikke.",
-      "Det betyr at funksjonen alltid er 0.",
-      "Det beskriver en fundamental egenskap ved rasjonale uttrykk.",
-      "Noe helt annet."
-    ],
-    "riktigSvar": 2,
-    "forklaring": "Dette viser forståelse for rasjonale uttrykk."
-  },
-  {
-    "sporsmal": "Gitt en funksjon $f(x)$ for rasjonale uttrykk, regn ut verdien. (Spørsmål 5)",
-    "alternativer": [
-      "Vet ikke.",
-      "Noe helt annet.",
-      "Svaret er umulig å finne.",
-      "Svaret kan utledes fra formelen for rasjonale uttrykk."
-    ],
-    "riktigSvar": 3,
-    "forklaring": "Dette viser forståelse for rasjonale uttrykk."
-  },
-  {
-    "sporsmal": "Gitt en funksjon $f(x)$ for rasjonale uttrykk, regn ut verdien. (Spørsmål 6)",
-    "alternativer": [
-      "Svaret er umulig å finne.",
-      "Vet ikke.",
-      "Noe helt annet.",
-      "Svaret kan utledes fra formelen for rasjonale uttrykk."
-    ],
-    "riktigSvar": 3,
-    "forklaring": "Dette viser forståelse for rasjonale uttrykk."
-  },
-  {
-    "sporsmal": "Gitt en funksjon $f(x)$ for rasjonale uttrykk, regn ut verdien. (Spørsmål 7)",
-    "alternativer": [
-      "Noe helt annet.",
-      "Svaret er umulig å finne.",
-      "Svaret kan utledes fra formelen for rasjonale uttrykk.",
-      "Vet ikke."
-    ],
-    "riktigSvar": 2,
-    "forklaring": "Dette viser forståelse for rasjonale uttrykk."
-  },
-  {
-    "sporsmal": "Gitt en funksjon $f(x)$ for rasjonale uttrykk, regn ut verdien. (Spørsmål 8)",
-    "alternativer": [
-      "Noe helt annet.",
-      "Svaret er umulig å finne.",
-      "Vet ikke.",
-      "Svaret kan utledes fra formelen for rasjonale uttrykk."
-    ],
-    "riktigSvar": 3,
-    "forklaring": "Dette viser forståelse for rasjonale uttrykk."
-  },
-  {
-    "sporsmal": "En elev gjør en vanlig feil med rasjonale uttrykk. Hva er feilen? (Spørsmål 9)",
-    "alternativer": [
-      "Eleven glemmer en viktig detalj om rasjonale uttrykk.",
-      "Vet ikke.",
-      "Noe helt annet.",
-      "Eleven gjør ingen feil."
+      "en brøk der teller og nevner er polynomer",
+      "et polynom",
+      "alltid $1/x$",
+      "en funksjon uten asymptoter"
     ],
     "riktigSvar": 0,
-    "forklaring": "Dette viser forståelse for rasjonale uttrykk."
+    "forklaring": "F.eks. $k(x)=\\dfrac{3x-6}{x+2}$. Polynomer er det spesialtilfellet der nevneren er konstant."
   },
   {
-    "sporsmal": "En elev gjør en vanlig feil med rasjonale uttrykk. Hva er feilen? (Spørsmål 10)",
+    "sporsmal": "Loddrett asymptote oppstår typisk der",
     "alternativer": [
-      "Noe helt annet.",
-      "Eleven glemmer en viktig detalj om rasjonale uttrykk.",
-      "Eleven gjør ingen feil.",
-      "Vet ikke."
+      "telleren er $0$",
+      "nevneren er $0$ og telleren ikke er $0$",
+      "$x\\to\\infty$",
+      "grafen skjærer $y$-aksen"
     ],
     "riktigSvar": 1,
-    "forklaring": "Dette viser forståelse for rasjonale uttrykk."
+    "forklaring": "Nevner mot $0$ gjør at funksjonsverdien skyter mot $\\pm\\infty$."
+  },
+  {
+    "sporsmal": "For $k(x)=\\dfrac{3x-6}{x+2}$ er den vannrette asymptoten",
+    "alternativer": [
+      "$x=-2$",
+      "$y=-3$",
+      "$y=0$",
+      "$y=3$"
+    ],
+    "riktigSvar": 3,
+    "forklaring": "Samme grad i teller og nevner: forholdet mellom ledende koeffisienter er $3/1=3$. Altså $y=3$."
+  },
+  {
+    "sporsmal": "For $k(x)=\\dfrac{3x-6}{x+2}$ er den loddrette asymptoten",
+    "alternativer": [
+      "$x=2$",
+      "$y=3$",
+      "$x=0$",
+      "$x=-2$"
+    ],
+    "riktigSvar": 3,
+    "forklaring": "Nevner $x+2=0$ gir $x=-2$. Telleren er da $3(-2)-6=-12\\neq 0$."
+  },
+  {
+    "sporsmal": "Nullpunktet til $k(x)=\\dfrac{3x-6}{x+2}$ er",
+    "alternativer": [
+      "$x=-2$",
+      "$x=2$",
+      "$x=0$",
+      "$x=3$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Teller $3x-6=0$ og $x\\neq -2$ gir $x=2$."
+  },
+  {
+    "sporsmal": "Definisjonsmengden til $k(x)=\\dfrac{3x-6}{x+2}$ er",
+    "alternativer": [
+      "$\\mathbb{R}$",
+      "$\\mathbb{R}\\setminus\\{2\\}$",
+      "$\\mathbb{R}\\setminus\\{-2\\}$",
+      "$x>0$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Alt er tillatt unntatt der nevneren er $0$."
+  },
+  {
+    "sporsmal": "Skrå asymptote kan oppstå når",
+    "alternativer": [
+      "teller og nevner har samme grad",
+      "nevneren har høyere grad enn telleren",
+      "telleren har nøyaktig én grad høyere enn nevneren",
+      "funksjonen er lineær"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Polynomdivisjon gir da $ax+b$ pluss en rest som går mot $0$. $y=ax+b$ er skrå asymptote."
+  },
+  {
+    "sporsmal": "$k(0)$ for $k(x)=\\dfrac{3x-6}{x+2}$ er",
+    "alternativer": [
+      "$-3$",
+      "$3$",
+      "$0$",
+      "udefinert"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "$k(0)=\\dfrac{-6}{2}=-3$. Dette er $y$-skjæringen."
   }
 ]

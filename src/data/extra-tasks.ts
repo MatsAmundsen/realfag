@@ -492,6 +492,48 @@ export const EXTRA: Record<string, Oppgave[]> = {
       ],
     ),
   ],
+  "4A": [
+    o(
+      "4A.9",
+      "Gitt $f(x)=3-2x$ med $D_f=[-1,4]$.<br><br><strong>a)</strong> Regn ut $f(-1)$ og $f(4)$.<br><br><strong>b)</strong> Finn verdimengden $V_f$.<br><br><strong>c)</strong> Løs $f(x)=0$.",
+      "Grafen er en synkende rett linje, så største og minste verdi ligger i endepunktene.",
+      [
+        "<strong>a)</strong> $f(-1)=3+2=5$, $f(4)=3-8=-5$.<br><strong>Svar:</strong> $f(-1)=5$, $f(4)=-5$",
+        "<strong>b)</strong> Linja synker, så verdiene går fra $-5$ til $5$.<br><strong>Svar:</strong> $V_f=[-5,5]$",
+        "<strong>c)</strong> $3-2x=0$ gir $x=1{,}5$, som ligger i $D_f$.<br><strong>Svar:</strong> $x=1{,}5$",
+      ],
+    ),
+    o(
+      "4A.10",
+      "Avgjør om sammenhengen gir $y$ som en funksjon av $x$. Begrunn.<br><br><strong>a)</strong> $y=x^2$<br><br><strong>b)</strong> $x=y^2$<br><br><strong>c)</strong> $y=\\sqrt{x}$",
+      "Sjekk om én $x$-verdi kan gi to ulike $y$-verdier.",
+      [
+        "<strong>a)</strong> Hver $x$ gir nøyaktig én verdi $x^2$.<br><strong>Svar:</strong> ja",
+        "<strong>b)</strong> $x=4$ gir $y=2$ og $y=-2$.<br><strong>Svar:</strong> nei",
+        "<strong>c)</strong> $\\sqrt{x}$ er ett bestemt tall for hver $x\\ge 0$.<br><strong>Svar:</strong> ja, med $D=[0,\\rightarrow\\rangle$",
+      ],
+    ),
+    o(
+      "4A.11",
+      "En taxitur koster $P(x)=45+18x$ kroner, der $x$ er antall kilometer. Selskapet kjører turer på høyst $50$ km.<br><br><strong>a)</strong> Hva koster en tur på $12$ km?<br><br><strong>b)</strong> Hvor langt kan du kjøre for $360$ kr?<br><br><strong>c)</strong> Finn $D_P$ og $V_P$.",
+      "I b) løser du $45+18x=360$.",
+      [
+        "<strong>a)</strong> $P(12)=45+216=261$.<br><strong>Svar:</strong> $261$ kr",
+        "<strong>b)</strong> $18x=315$, $x=17{,}5$.<br><strong>Svar:</strong> $17{,}5$ km",
+        "<strong>c)</strong> $P(0)=45$ og $P(50)=945$.<br><strong>Svar:</strong> $D_P=[0,50]$, $V_P=[45,945]$",
+      ],
+    ),
+    o(
+      "4A.12",
+      "Gitt $g(x)=\\sqrt{x-2}$.<br><br><strong>a)</strong> Finn den største mulige definisjonsmengden.<br><br><strong>b)</strong> Regn ut $g(6)$.<br><br><strong>c)</strong> Finn $V_g$.",
+      "Det som står under rottegnet, kan ikke være negativt.",
+      [
+        "<strong>a)</strong> $x-2\\ge 0$ gir $x\\ge 2$.<br><strong>Svar:</strong> $D_g=[2,\\rightarrow\\rangle$",
+        "<strong>b)</strong> $g(6)=\\sqrt{4}=2$.<br><strong>Svar:</strong> $g(6)=2$",
+        "<strong>c)</strong> $g(2)=0$, og $g$ vokser uten grense.<br><strong>Svar:</strong> $V_g=[0,\\rightarrow\\rangle$",
+      ],
+    ),
+  ],
   "4B": [
     o(
       "4B.7",
@@ -565,6 +607,44 @@ export const EXTRA: Record<string, Oppgave[]> = {
       ],
     ),
   ],
+  "4E": [
+    o(
+      "4E.7",
+      "Gitt $f(x)=2x^3$.<br><br><strong>a)</strong> Regn ut $f(2)$ og $f(-1)$.<br><br><strong>b)</strong> Løs $f(x)=54$.",
+      "Del på $2$ og ta tredjeroten.",
+      [
+        "<strong>a)</strong> $f(2)=2\\cdot 8=16$, $f(-1)=-2$.<br><strong>Svar:</strong> $16$ og $-2$",
+        "<strong>b)</strong> $x^3=27$, $x=3$.<br><strong>Svar:</strong> $x=3$",
+      ],
+    ),
+    o(
+      "4E.8",
+      "Arealet av et blad er omtrent $A=0{,}1\\cdot x^{1{,}5}$, der $x$ er lengden.<br><br><strong>a)</strong> Hvor mange ganger større blir arealet når lengden dobles?<br><br><strong>b)</strong> Hvorfor avhenger ikke svaret av hvilken lengde du starter med?",
+      "$A(2x)=0{,}1\\cdot(2x)^{1{,}5}=2^{1{,}5}\\cdot A(x)$.",
+      [
+        "<strong>a)</strong> $2^{1{,}5}\\approx 2{,}83$.<br><strong>Svar:</strong> ca. $2{,}83$ ganger",
+        "<strong>b)</strong> Faktoren $2^{1{,}5}$ kommer ut av potensen uansett $x$. En fast prosentvis endring i $x$ gir en fast prosentvis endring i $A$.<br><strong>Svar:</strong> fordi $(2x)^{1{,}5}=2^{1{,}5}x^{1{,}5}$",
+      ],
+    ),
+    o(
+      "4E.9",
+      "En potensfunksjon $f(x)=a\\cdot x^b$ går gjennom $(1,3)$ og $(2,12)$. Finn $a$ og $b$.",
+      "Sett inn $x=1$ først.",
+      [
+        "$f(1)=a=3$. Da er $3\\cdot 2^b=12$, $2^b=4$, $b=2$.<br><strong>Svar:</strong> $f(x)=3x^2$",
+      ],
+    ),
+    o(
+      "4E.10",
+      "Svingetiden til en pendel er $T(L)=2{,}0\\cdot L^{0{,}5}$ sekunder, der $L$ er lengden i meter.<br><br><strong>a)</strong> Regn ut $T(0{,}25)$.<br><br><strong>b)</strong> Hvor lang må pendelen være for at $T=3$ s?<br><br><strong>c)</strong> Hva skjer med $T$ når lengden firedobles?",
+      "$L^{0{,}5}=\\sqrt{L}$.",
+      [
+        "<strong>a)</strong> $2\\cdot\\sqrt{0{,}25}=2\\cdot 0{,}5=1$.<br><strong>Svar:</strong> $1$ s",
+        "<strong>b)</strong> $\\sqrt{L}=1{,}5$, $L=2{,}25$.<br><strong>Svar:</strong> $2{,}25$ m",
+        "<strong>c)</strong> $\\sqrt{4L}=2\\sqrt{L}$.<br><strong>Svar:</strong> svingetiden dobles",
+      ],
+    ),
+  ],
   "4F": [
     o(
       "4F.8",
@@ -587,6 +667,87 @@ export const EXTRA: Record<string, Oppgave[]> = {
         "<strong>a)</strong> $a b^{1}=6$ og $a b^{3}=24$. Del den siste på den første: $b^{2}=4$, så $b=2$ (siden $b>0$). Da $a\\cdot 2=6$, $a=3$.<br><strong>Svar:</strong> $f(x)=3\\cdot 2^x$",
         "<strong>b)</strong> Eksponentialen er et <em>produkt</em> $a\\cdot b^x$, derfor forsvinner $a$ når vi deler. Lineær er en <em>sum</em> $ax+b$, derfor trekker vi $y$-verdiene fra hverandre og deler på $\\Delta x$.<br><strong>Svar:</strong> deling fjerner $a$ i produktet; topunktsformelen fjerner $b$ i summen",
         "<strong>c)</strong> Startverdi $a=800$. Nedgang $12\\,\\%$ gir vekstfaktor $b=0{,}88$.<br><strong>Svar:</strong> $V(t)=800\\cdot 0{,}88^t$",
+      ],
+    ),
+  ],
+  "4G": [
+    o(
+      "4G.7",
+      "Gitt $f(x)=x^2+1$.<br><br><strong>a)</strong> Finn gjennomsnittlig vekstfart på $[1,3]$.<br><br><strong>b)</strong> Finn gjennomsnittlig vekstfart på $[1;1{,}1]$.<br><br><strong>c)</strong> Bruk b) til å anslå den momentane vekstfarten i $x=1$.",
+      "$\\dfrac{f(x_2)-f(x_1)}{x_2-x_1}$.",
+      [
+        "<strong>a)</strong> $f(1)=2$, $f(3)=10$. $\\dfrac{10-2}{2}=4$.<br><strong>Svar:</strong> $4$",
+        "<strong>b)</strong> $f(1{,}1)=2{,}21$. $\\dfrac{2{,}21-2}{0{,}1}=2{,}1$.<br><strong>Svar:</strong> $2{,}1$",
+        "<strong>c)</strong> Jo mindre intervallet er, desto nærmere kommer vi tangentens stigningstall.<br><strong>Svar:</strong> omtrent $2$",
+      ],
+    ),
+    o(
+      "4G.8",
+      "Temperaturen $T$ (°C) ble målt hver annen time:<br><br>$t$ (timer): $0$, $2$, $4$, $6$<br>$T$: $5$, $9$, $15$, $17$<br><br><strong>a)</strong> Finn gjennomsnittlig vekstfart i hvert av de tre intervallene.<br><br><strong>b)</strong> Når steg temperaturen raskest?<br><br><strong>c)</strong> Finn gjennomsnittlig vekstfart fra $t=0$ til $t=6$.",
+      "Del endringen i temperatur på $2$ timer.",
+      [
+        "<strong>a)</strong> $\\dfrac{4}{2}=2$, $\\dfrac{6}{2}=3$, $\\dfrac{2}{2}=1$.<br><strong>Svar:</strong> $2$, $3$ og $1$ °C per time",
+        "<strong>b)</strong> <strong>Svar:</strong> mellom $t=2$ og $t=4$",
+        "<strong>c)</strong> $\\dfrac{17-5}{6}=2$.<br><strong>Svar:</strong> $2$ °C per time",
+      ],
+    ),
+    o(
+      "4G.9",
+      "En ball kastes rett opp. Høyden er $h(t)=20t-5t^2$ meter etter $t$ sekunder.<br><br><strong>a)</strong> Finn gjennomsnittlig vekstfart på $[0,2]$ og tolk svaret.<br><br><strong>b)</strong> Finn gjennomsnittlig vekstfart på $[1{,}9;\\,2{,}1]$.<br><br><strong>c)</strong> Hva forteller b) om ballen når $t=2$?",
+      "Et lite intervall rundt $t=2$ gir et godt anslag for den momentane vekstfarten.",
+      [
+        "<strong>a)</strong> $h(0)=0$, $h(2)=20$. $\\dfrac{20}{2}=10$.<br><strong>Svar:</strong> $10$ m/s; i snitt stiger ballen $10$ meter per sekund de to første sekundene",
+        "<strong>b)</strong> $h(1{,}9)=h(2{,}1)=19{,}95$, så $\\dfrac{0}{0{,}2}=0$.<br><strong>Svar:</strong> $0$",
+        "<strong>c)</strong> Tangenten er vannrett: ballen står stille i toppen.<br><strong>Svar:</strong> ballen er på toppen ($20$ m) når $t=2$",
+      ],
+    ),
+    o(
+      "4G.10",
+      "Du setter $5000$ kr i banken med $4\\,\\%$ rente per år: $B(t)=5000\\cdot 1{,}04^t$.<br><br><strong>a)</strong> Finn gjennomsnittlig vekstfart de fem første årene.<br><br><strong>b)</strong> Finn gjennomsnittlig vekstfart fra år $10$ til år $15$.<br><br><strong>c)</strong> Forklar forskjellen.",
+      "Bruk kalkulator eller GeoGebra.",
+      [
+        "<strong>a)</strong> $\\dfrac{B(5)-B(0)}{5}\\approx\\dfrac{6083-5000}{5}\\approx 217$.<br><strong>Svar:</strong> ca. $217$ kr per år",
+        "<strong>b)</strong> $\\dfrac{B(15)-B(10)}{5}\\approx\\dfrac{9005-7401}{5}\\approx 321$.<br><strong>Svar:</strong> ca. $321$ kr per år",
+        "<strong>c)</strong> Renten beregnes av et stadig større beløp, så økningen i kroner blir større for hvert år.<br><strong>Svar:</strong> eksponentiell vekst gir økende vekstfart",
+      ],
+    ),
+  ],
+  "4H": [
+    o(
+      "4H.9",
+      "Deriver.<br><br><strong>a)</strong> $f(x)=4x^3-2x^2+x-7$<br><br><strong>b)</strong> $g(x)=\\dfrac{1}{2}x^4-3x$<br><br><strong>c)</strong> $h(x)=(x-1)(x+3)$",
+      "Gang ut parentesene i c) først.",
+      [
+        "<strong>a)</strong> <strong>Svar:</strong> $f'(x)=12x^2-4x+1$",
+        "<strong>b)</strong> <strong>Svar:</strong> $g'(x)=2x^3-3$",
+        "<strong>c)</strong> $h(x)=x^2+2x-3$.<br><strong>Svar:</strong> $h'(x)=2x+2$",
+      ],
+    ),
+    o(
+      "4H.10",
+      "Gitt $f(x)=x^2-6x+5$.<br><br><strong>a)</strong> Finn bunnpunktet ved hjelp av $f'(x)$.<br><br><strong>b)</strong> Finn likningen for tangenten i punktet der $x=1$.",
+      "Tangent: $y-f(1)=f'(1)(x-1)$.",
+      [
+        "<strong>a)</strong> $f'(x)=2x-6=0$ gir $x=3$. $f'$ skifter fra negativ til positiv. $f(3)=9-18+5=-4$.<br><strong>Svar:</strong> bunnpunkt $(3,-4)$",
+        "<strong>b)</strong> $f(1)=0$, $f'(1)=-4$. $y=-4(x-1)$.<br><strong>Svar:</strong> $y=-4x+4$",
+      ],
+    ),
+    o(
+      "4H.11",
+      "Gitt $f(x)=-x^3+3x$.<br><br><strong>a)</strong> Løs $f'(x)=0$.<br><br><strong>b)</strong> Lag fortegnslinje for $f'$ og finn topp- og bunnpunktet.",
+      "$f'(x)=-3x^2+3=-3(x-1)(x+1)$.",
+      [
+        "<strong>a)</strong> $-3x^2+3=0$, $x^2=1$.<br><strong>Svar:</strong> $x=-1$ og $x=1$",
+        "<strong>b)</strong> $f'$ er negativ for $x<-1$, positiv mellom $-1$ og $1$ og negativ for $x>1$. $f(-1)=-2$, $f(1)=2$.<br><strong>Svar:</strong> bunnpunkt $(-1,-2)$, toppunkt $(1,2)$",
+      ],
+    ),
+    o(
+      "4H.12",
+      "Overskuddet ved å selge $x$ enheter er $O(x)=-0{,}02x^2+12x-500$ kroner.<br><br><strong>a)</strong> Finn $O'(100)$ og tolk tallet.<br><br><strong>b)</strong> Hvor mange enheter gir størst overskudd, og hvor stort er det?",
+      "$O'(x)=-0{,}04x+12$.",
+      [
+        "<strong>a)</strong> $O'(100)=-4+12=8$. Ved $100$ enheter øker overskuddet med omtrent $8$ kr per ekstra enhet.<br><strong>Svar:</strong> $O'(100)=8$",
+        "<strong>b)</strong> $O'(x)=0$ gir $x=300$. $O(300)=-1800+3600-500=1300$.<br><strong>Svar:</strong> $300$ enheter gir $1300$ kr",
       ],
     ),
   ],
@@ -616,6 +777,7 @@ export const SUB_TITLES: Record<string, string> = {
   "3G": "3G Polynomdivisjon",
   "3H": "3H Ulikheter",
   "3OP": "Øveprøve",
+  "4OP": "Øveprøve",
   "4A": "4A Funksjonsbegrepet",
   "4B": "4B Lineære funksjoner",
   "4C": "4C Polynomfunksjoner",

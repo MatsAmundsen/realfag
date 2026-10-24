@@ -1,0 +1,68 @@
+[
+  {
+    "sporsmal": "Hva er stigningstallet til linja gjennom $(1,2)$ og $(3,8)$?",
+    "alternativer": [
+      "$2$",
+      "$3$",
+      "$6$",
+      "$\\dfrac{1}{3}$"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "$\\dfrac{8-2}{3-1}=3$."
+  },
+  {
+    "sporsmal": "Hvilken asymptote har $r(x)=\\dfrac{3x-1}{x+2}$ når $|x|$ blir stor?",
+    "alternativer": [
+      "$y=3$",
+      "$x=-2$",
+      "$y=-\\dfrac{1}{2}$",
+      "$y=0$"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Forholdet mellom ledd med høyest grad: $\\dfrac{3x}{x}=3$."
+  },
+  {
+    "sporsmal": "En størrelse avtar med $18\\,\\%$ per time. Vekstfaktoren er",
+    "alternativer": [
+      "$0{,}18$",
+      "$1{,}18$",
+      "$0{,}82$",
+      "$-0{,}18$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "$1-0{,}18=0{,}82$."
+  },
+  {
+    "sporsmal": "Gitt $f(x)=x^2-4x$. Hva er $f'(1)$?",
+    "alternativer": [
+      "$-3$",
+      "$2$",
+      "$0$",
+      "$-2$"
+    ],
+    "riktigSvar": 3,
+    "forklaring": "$f'(x)=2x-4$, $f'(1)=-2$."
+  },
+  {
+    "sporsmal": "Hvis $P(5)=0$, er en faktor i $P(x)$",
+    "alternativer": [
+      "$(x-5)$",
+      "$(x+5)$",
+      "$5x$",
+      "$(x^2-5)$"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Restteoremet: $P(a)=0$ betyr at $(x-a)$ er en faktor."
+  },
+  {
+    "sporsmal": "Gjennomsnittlig vekstfart til $f(x)=x^2$ på $[1,3]$ er",
+    "alternativer": [
+      "$2$",
+      "$8$",
+      "$4$",
+      "$9$"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "$\\dfrac{9-1}{3-1}=4$."
+  }
+]
