@@ -82,6 +82,8 @@ const SIGN_WORD = (s: string) => (s === "+" ? "positiv" : "negativ");
 const SPOKEN = (l: string) => l.replace("−", "minus ");
 
 /** Beskrivende tekst for en fortegnslinje: «positiv før −3, negativ mellom −3 og 1 …». */
+export const SIGN_RULE = "Fortegnslinje: fylt prikk er nullpunkt som er med, åpen prikk er nullpunkt som ikke er med, × er pol (aldri med).";
+
 export function describeSigns(ticks: { label: string; kind: "zero" | "pole"; included?: boolean }[], signs: string[]): string {
   const parts: string[] = [];
   parts.push(`${SIGN_WORD(signs[0]!)} før ${SPOKEN(ticks[0]!.label)}`);
@@ -92,14 +94,14 @@ export function describeSigns(ticks: { label: string; kind: "zero" | "pole"; inc
   const marks = ticks
     .map((t) =>
       t.kind === "pole"
-        ? `${SPOKEN(t.label)} er pol og er ikke med`
-        : `${SPOKEN(t.label)} er nullpunkt${t.included === false ? " og er ikke med" : t.included ? " og er med" : ""}`,
+        ? `${SPOKEN(t.label)} er pol, markert med kryss, aldri med`
+        : `${SPOKEN(t.label)} er nullpunkt${t.included === false ? ", åpen prikk, ikke med" : t.included ? ", fylt prikk, med" : ", fylt prikk"}`,
     )
     .join(", ");
-  return `Fortegnslinje: ${parts.join(", ")}. ${marks[0]!.toUpperCase()}${marks.slice(1)}.`;
+  return `Fortegnslinje: ${parts.join(", ")}. ${marks[0]!.toUpperCase()}${marks.slice(1)}. Regel: ${SIGN_RULE.replace(/^Fortegnslinje: /, "").replace("×", "kryss")}`;
 }
 
-/** Fortegnslinje for et rasjonalt uttrykk: fylt prikk = nullpunkt (med), × = pol (ikke med). */
+/** Fortegnslinje for et rasjonalt uttrykk: fylt prikk = nullpunkt med, åpen prikk = nullpunkt ikke med, × = pol (aldri med). */
 function signLine(label: string, ticks: Tick[], signs: string[], caption: string): string {
   const w = 420, y = 50, x0 = 20, x1 = w - 20;
   const n = ticks.length;
@@ -143,7 +145,7 @@ export function fig558Fasit(): string {
       { label: "6", kind: "pole" },
     ],
     ["+", "−", "+", "−"],
-    "Fortegnslinje: × er pol, hul prikk er nullpunkt som ikke er med (ulikheten er streng).",
+    SIGN_RULE,
   );
 }
 
@@ -158,7 +160,7 @@ export function fig560Fasit(): string {
       { label: "6", kind: "pole" },
     ],
     ["+", "−", "+", "−", "+"],
-    "Fortegnslinje: fylt prikk er nullpunkt som er med, × er pol som ikke er med.",
+    SIGN_RULE,
   );
 }
 
