@@ -331,7 +331,8 @@ export function FunctionPlot({
         <GraphSvg spec={spec} showKeyPoints={showKeyPoints} />
         <span className="fn-plot-legend">
           {spec.series.map((s, i) => (
-            <span key={s.name} style={{ color: COLORS[i % COLORS.length] }}>
+            <span key={s.name} style={{ color: "var(--text-main)", display: "inline-flex", alignItems: "center", gap: "0.35em" }}>
+              <span aria-hidden="true" style={{ display: "inline-block", width: "1.1em", height: "3px", borderRadius: "2px", background: COLORS[i % COLORS.length] }} />
               {spec.legend?.[i] ?? s.name}
             </span>
           ))}
