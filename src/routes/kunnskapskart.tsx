@@ -1,7 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { MindMap } from "@/components/MindMap";
+import { seoHead } from "@/lib/seo";
 
-export const Route = createFileRoute("/kunnskapskart")({ component: KartPage });
+export const Route = createFileRoute("/kunnskapskart")({
+  head: () =>
+    seoHead(
+      "/kunnskapskart/",
+      "Kunnskapskart 1T – sammenhenger mellom temaene",
+      "Interaktivt kunnskapskart for matematikk 1T som viser hvordan temaene og delkapitlene henger sammen.",
+    ),
+  component: KartPage,
+});
 
 function KartPage() {
   return (

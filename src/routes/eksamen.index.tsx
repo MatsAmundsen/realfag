@@ -2,8 +2,17 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Clock, FileText } from "lucide-react";
 import { EXAMS } from "@/data/exams";
 import { useProgressStore } from "@/lib/progress-store";
+import { seoHead } from "@/lib/seo";
 
-export const Route = createFileRoute("/eksamen/")({ component: EksamenIndex });
+export const Route = createFileRoute("/eksamen/")({
+  head: () =>
+    seoHead(
+      "/eksamen/",
+      "Eksamensarkiv 1T – tidligere eksamener med løsning",
+      "Tidligere eksamener i matematikk 1T (vår og høst) med oppgaver, hint og løsningsforslag. Øv i prøvemodus med tid.",
+    ),
+  component: EksamenIndex,
+});
 
 function EksamenIndex() {
   const exams = useProgressStore((s) => s.p.exams);

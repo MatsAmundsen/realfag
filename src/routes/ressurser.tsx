@@ -4,6 +4,7 @@ import { fagstoff } from "@/data/content";
 import { KatexHtml } from "@/components/KatexHtml";
 import { useVideoPlayer } from "@/components/VideoPlayer";
 import { extractYoutubeId, runPythonEditor } from "@/lib/py-runner";
+import { seoHead } from "@/lib/seo";
 
 type RessursSearch = { t?: string };
 
@@ -13,6 +14,12 @@ function readTab(search: RessursSearch) {
 }
 
 export const Route = createFileRoute("/ressurser")({
+  head: () =>
+    seoHead(
+      "/ressurser/",
+      "Ressurser 1T – fagstoff og temavideoer",
+      "Fagbibliotek for matematikk 1T: tallmengder, brøkregning, kvadratrøtter, programmering og temavideoer.",
+    ),
   validateSearch: (search: Record<string, unknown>): RessursSearch => ({
     t: typeof search.t === "string" ? search.t : undefined,
   }),

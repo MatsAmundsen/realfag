@@ -13,8 +13,20 @@ import { PrereqMini } from "@/components/PrereqMini";
 import { PREREQS } from "@/data/mindmap";
 import { countSubchapter, isOvingDelkap } from "@/lib/progress";
 import { useProgressStore } from "@/lib/progress-store";
+import { seoHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/oppgaver/$kapId/$subId")({
+  head: ({ params }) => {
+    const kap = findKap(params.kapId);
+    const dk = findSub(params.kapId, params.subId);
+    const kapNavn = CHAPTER_META[params.kapId]?.short ?? kap?.tittel ?? "Matematikk 1T";
+    const navn = dk?.tittel ?? params.subId;
+    return seoHead(
+      `/oppgaver/${params.kapId}/${params.subId}`,
+      `${navn} – ${kapNavn} | Oppgaver 1T`,
+      `Oppgaver med hint og løsning i ${navn} (${kapNavn}), matematikk 1T. Øv, ta quiz og følg fremgangen din.`,
+    );
+  },
   component: SubchapterPage,
 });
 

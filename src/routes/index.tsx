@@ -6,8 +6,17 @@ import { EXAMS } from "@/data/exams";
 import { countAll, countChapter, BADGE_META } from "@/lib/progress";
 import { useProgressStore } from "@/lib/progress-store";
 import { MathFloats, WeekBanner } from "@/components/AppShell";
+import { seoHead } from "@/lib/seo";
 
-export const Route = createFileRoute("/")({ component: Home });
+export const Route = createFileRoute("/")({
+  head: () =>
+    seoHead(
+      "/",
+      "Matteguiden 1T – oppgaver, quiz og eksamen i matematikk 1T",
+      "Gratis læringsressurs for vg1 matematikk 1T: oppgaver med løsning, quiz, øveprøver og eksamensarkiv for alle kapitler.",
+    ),
+  component: Home,
+});
 
 function Home() {
   const p = useProgressStore((s) => s.p);
