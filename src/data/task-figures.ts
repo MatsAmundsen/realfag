@@ -1,4 +1,5 @@
 import { KAP7_FIGURES } from "./kap7-figures";
+import { KAP2_FIGURES, figDiffSquares, figSecondSquare } from "./kap2-figures";
 
 /** Pedagogiske SVG-figurer til oppgaver. Bruker currentColor så de følger tema. */
 
@@ -199,7 +200,7 @@ export function figSquareIdentity(caption: string): string {
     <text x="225" y="222" text-anchor="middle" font-size="16" font-weight="800" fill="${ink}">b²</text>
     <text x="110" y="22" text-anchor="middle" font-size="14" font-weight="700" fill="${ink}">a</text>
     <text x="225" y="22" text-anchor="middle" font-size="14" font-weight="700" fill="${ink}">b</text>`;
-  return wrap(svg, caption, "Kvadrat med side a+b delt i a², 2ab og b²");
+  return wrapH(svg, caption, "Kvadrat med side a+b delt i a², 2ab og b²", 270);
 }
 
 /** Følge med differanser over pilene. */
@@ -1100,6 +1101,7 @@ export function figPythagoras13(caption: string): string {
 
 export const TASK_FIGURES: Record<string, string> = {
   ...KAP7_FIGURES,
+  ...KAP2_FIGURES,
   "1.13": figNumberLine({
     min: -4,
     max: 10,
@@ -1115,10 +1117,6 @@ export const TASK_FIGURES: Record<string, string> = {
   ),
   "1.OP5": figTank(2, 5, "Illustrasjon av vanntank fylt $\\tfrac{2}{5}$."),
   "2.15": figRightTriangle("2h", "h", "Rettvinklet trekant med grunnlinje $2h$ og høyde $h$."),
-  "2.19": figFrame("Rammens areal = ytre rektangel minus den indre åpningen."),
-  "2.29": figRect("s + 2", "s − 1", "Kvadrat med side $s$ og rektangel med sider $s+2$ og $s-1$."),
-  "2.58": figDotPatternGrid("Prikkmønster for figur 1 og figur 2 med manglende hjørneprikker."),
-  "2.OP9": figRect("l = 12", "b = ?", "Areal $A=l\\cdot b=48$. Finn $b$."),
   "2.OP10": figSquareNumbers("De fire første kvadrattallene som prikkmønstre."),
   "2.56": figStaircase("Figur $n$ er en trekant av $n$ rader med kvadrater — antall = $T_n$."),
   "2.57": figLShape("Figur 3 i det L-formede mønsteret (et kvadrat der ett hjørne mangler)."),
@@ -1209,7 +1207,8 @@ export const TASK_FASIT_FIGURES: Record<string, Record<number, string>> = {
   },
   "2.OP3": {
     0: figSquareIdentity("Geometrisk tolkning av 1. kvadratsetning: $(a+b)^2 = a^2 + 2ab + b^2$."),
-    1: figSquareIdentityMinus("Geometrisk tolkning av 2. kvadratsetning: $(a-b)^2 = a^2 - 2ab + b^2$. Kvadratet $b^2$ trekkes fra to ganger og må legges tilbake."),
+    1: figSecondSquare("Geometrisk tolkning av 2. kvadratsetning: $(a-b)^2 = a^2 - 2ab + b^2$. Kvadratet $b^2$ trekkes fra to ganger og må legges tilbake."),
+    2: figDiffSquares("Geometrisk tolkning av konjugatsetningen: $a^2 - b^2 = (a+b)(a-b)$."),
   },
   "3.25": {
     0: figNumberLine({

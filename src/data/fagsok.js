@@ -692,7 +692,7 @@ export const fagsok = [
                             "$x$"
                         ],
                         "riktigSvar": 1,
-                        "forklaring": "Telleren kan faktoriseres med konjugatsetningen (tredje kvadratsetning): $(x-2)(x+2)$. Når vi forkorter bort $(x-2)$, står vi igjen med $x+2$. Forkortingen gjelder bare for $x \\neq 2$, fordi vi ikke kan dele på null."
+                        "forklaring": "Telleren kan faktoriseres med konjugatsetningen (3. kvadratsetning): $(x-2)(x+2)$. Når vi forkorter bort $(x-2)$, står vi igjen med $x+2$. Forkortingen gjelder bare for $x \\neq 2$, fordi vi ikke kan dele på null."
                     },
                     {
                         "sporsmal": "Regn ut $\\frac{2}{3} + \\frac{1}{4}$.",
@@ -1717,9 +1717,9 @@ export const fagsok = [
                         "sporsmal": "En elev har regnet ut $x - 2(x - 4) = x - 2x - 8 = -x - 8$. Hvilken feil har eleven gjort?",
                         "alternativer": [
                             "Regnet $x - 2x$ feil",
-                            "Glemt å gange $-2$ med $-4$",
-                            "Gått surr i variablene",
-                            "Gangen minus og minus feil og fått minus istedenfor pluss"
+                            "Glemt å gange $-2$ med $x$",
+                            "Byttet fortegn på $x$ uten grunn",
+                            "Ganget minus med minus og fått minus i stedet for pluss"
                         ],
                         "riktigSvar": 3,
                         "forklaring": "Når $-2$ ganges med $-4$, blir det $+8$. Eleven har skrevet $-8$. Riktig svar er $-x + 8$."
@@ -1805,7 +1805,7 @@ export const fagsok = [
                         "tittel": "Oppgave 2.5",
                         "tekst": "Bruk kvadratsetningene til å regne ut eksakt:<br><br><strong>a)</strong> $(v + 5)^2$<br><br><strong>b)</strong> $(3a - 2)^2$<br><br><strong>c)</strong> $(4y + 3)(4y - 3)$",
                         "bilde": null,
-                        "hint": "Oppgave c er konjugatsetningen. Den gir deg differansen mellom to kvadrater.",
+                        "hint": "Oppgave c er konjugatsetningen (3. kvadratsetning). Den gir deg differansen mellom to kvadrater.",
                         "fasit": null,
                         "fasitSteg": [
                             "<strong>a)</strong><br>Vi bruker 1. kvadratsetning: $(a + b)^2 = a^2 + 2ab + b^2$<br>Her er $a = v$ og $b = 5$.<br><br>$(v + 5)^2 = v^2 + 2 \\cdot v \\cdot 5 + 5^2$ (setter inn i formelen)<br>$v^2 + 10v + 25$ (forenkler)<br><br><strong>Svar:</strong> $v^2 + 10v + 25$",
@@ -1934,7 +1934,7 @@ export const fagsok = [
                         "alternativer": [
                             "Vise at regelen bare gjelder for minus",
                             "Sette inn tall, for eksempel $a=2, b=3$, og vise at $25 \\neq 13$",
-                            "Si at mattelæreren har bestemt det",
+                            "Vise at regelen stemmer for $a=0$",
                             "Forklare at de har glemt å gange med 2"
                         ],
                         "riktigSvar": 1,
@@ -2180,14 +2180,14 @@ export const fagsok = [
                     {
                         "id": "2.11",
                         "tittel": "Oppgave 2.11",
-                        "tekst": "Faktoriser hvis det er mulig:<br><strong>a)</strong> $-b + \\frac{63}{7}$<br><br><strong>b)</strong> $a^2 - 6a - 12$<br><br><strong>c)</strong> $15 - 10v + v^2$",
+                        "tekst": "Faktoriser med hele tall hvis det er mulig:<br><br><strong>a)</strong> $-b + \\frac{63}{7}$<br><br><strong>b)</strong> $a^2 - 6a - 12$<br><br><strong>c)</strong> $15 - 10v + v^2$",
                         "bilde": null,
                         "hint": "Husk at fullstendige kvadrater krever at siste tall er kvadratet av halve det midterste tallet.",
                         "fasit": null,
                         "fasitSteg": [
-                            "<strong>a)</strong><br>Vi skal faktorisere uttrykket $-b + \\frac{63}{7}$.<br>Først forenkler vi brøken, siden $63$ delt på $7$ er $9$:<br>$-b + 9$<br>Dette uttrykket har ingen felles faktorer, og det passer ikke med noen av kvadratsetningene. Derfor kan det ikke faktoriseres videre.<br><br><strong>Svar:</strong> Kan ikke faktoriseres utover $-b + 9$",
-                            "<strong>b)</strong><br>Vi skal faktorisere uttrykket $a^2 - 6a - 12$.<br>Vi sjekker om det kan være et fullstendig kvadrat. Da måtte vi brukt andre kvadratsetning: $a^2 - 2ab + b^2$.<br>Midtleddet er $-6a$, noe som betyr at $2b = 6 \\rightarrow b = 3$.<br>Da burde det siste leddet vært $b^2 = 3^2 = 9$.<br>I stedet for $9$, er siste ledd $-12$. Uttrykket er derfor ikke et fullstendig kvadrat.<br>Siden vi heller ikke lett kan finne to heltall som har produkt $-12$ og sum $-6$, kan ikke uttrykket faktoriseres med heltall.<br><br><strong>Svar:</strong> Kan ikke faktoriseres",
-                            "<strong>c)</strong><br>Vi skal faktorisere uttrykket $15 - 10v + v^2$.<br>Først omskriver vi uttrykket slik at vi får potenser av $v$ i synkende rekkefølge:<br>$v^2 - 10v + 15$<br>Vi sjekker om dette kan være et fullstendig kvadrat ved å bruke andre kvadratsetning.<br>Her er midtleddet $-10v$, så vi tar halvparten av dette for å finne $b$: $\\frac{10}{2} = 5$.<br>Kvadratet av dette tallet er $5^2 = 25$.<br>Siden det siste leddet i uttrykket vårt er $15$ og ikke $25$, er ikke uttrykket et fullstendig kvadrat.<br>Vi finner heller ikke to heltall som gir produkt $15$ og sum $-10$.<br><br><strong>Svar:</strong> Kan ikke faktoriseres"
+                            "<strong>a)</strong><br>Vi skal faktorisere uttrykket $-b + \\frac{63}{7}$.<br>Først forenkler vi brøken, siden $63$ delt på $7$ er $9$:<br>$-b + 9$<br>Dette uttrykket har ingen felles faktorer, og det passer ikke med noen av kvadratsetningene. Vi kan likevel sette $-1$ utenfor: $-b + 9 = -(b - 9)$, eller skrive det som $9 - b$.<br><br><strong>Svar:</strong> $-(b - 9)$, altså $9 - b$",
+                            "<strong>b)</strong><br>Vi skal faktorisere uttrykket $a^2 - 6a - 12$.<br>Vi sjekker om det kan være et fullstendig kvadrat. Da måtte vi brukt andre kvadratsetning: $a^2 - 2ab + b^2$.<br>Midtleddet er $-6a$, noe som betyr at $2b = 6 \\rightarrow b = 3$.<br>Da burde det siste leddet vært $b^2 = 3^2 = 9$.<br>I stedet for $9$, er siste ledd $-12$. Uttrykket er derfor ikke et fullstendig kvadrat.<br>Siden vi heller ikke lett kan finne to heltall som har produkt $-12$ og sum $-6$, kan ikke uttrykket faktoriseres med hele tall.<br>(Med fullstendig kvadrat og konjugatsetningen går det likevel: $a^2-6a-12=(a-3)^2-21=(a-3-\\sqrt{21})(a-3+\\sqrt{21})$.)<br><br><strong>Svar:</strong> Kan ikke faktoriseres med hele tall",
+                            "<strong>c)</strong><br>Vi skal faktorisere uttrykket $15 - 10v + v^2$.<br>Først omskriver vi uttrykket slik at vi får potenser av $v$ i synkende rekkefølge:<br>$v^2 - 10v + 15$<br>Vi sjekker om dette kan være et fullstendig kvadrat ved å bruke andre kvadratsetning.<br>Her er midtleddet $-10v$, så vi tar halvparten av dette for å finne $b$: $\\frac{10}{2} = 5$.<br>Kvadratet av dette tallet er $5^2 = 25$.<br>Siden det siste leddet i uttrykket vårt er $15$ og ikke $25$, er ikke uttrykket et fullstendig kvadrat.<br>Vi finner heller ikke to hele tall som gir produkt $15$ og sum $-10$.<br>(Med fullstendig kvadrat og konjugatsetningen går det likevel: $v^2-10v+15=(v-5)^2-10=(v-5-\\sqrt{10})(v-5+\\sqrt{10})$.)<br><br><strong>Svar:</strong> Kan ikke faktoriseres med hele tall"
                         ],
                         "starter": ""
                     }
@@ -2322,15 +2322,15 @@ export const fagsok = [
                 "oppgaver": [
                     {
                         "id": "2.12",
-                        "tittel": "Oppgave 2.12",
-                        "tekst": "Sett tallene i stigende rekkefølge: $-\\frac{14}{7}$, $2.5$, $\\frac{1}{2}$, $\\frac{3}{4}$, $\\sqrt{1}$, $\\sqrt{25}$, $\\frac{12}{5}$",
+                        "tittel": "Oppgave 2.12 (oppvarming: brøk som tall)",
+                        "tekst": "Sett tallene i stigende rekkefølge: $-\\frac{14}{7}$, $2{,}5$, $\\frac{1}{2}$, $\\frac{3}{4}$, $\\sqrt{1}$, $\\sqrt{25}$, $\\frac{12}{5}$",
                         "bilde": null,
                         "hint": "Gjør alt om til desimaltall før du begynner å sortere dem.",
                         "fasit": null,
                         "fasitSteg": [
-                            "Vi gjør først alle tallene om til desimaltall for å enklere kunne sammenligne dem:<br><br>$-\\frac{14}{7} = -2$<br><br>$2.5 = 2.5$<br><br>$\\frac{1}{2} = 0.5$<br><br>$\\frac{3}{4} = 0.75$<br><br>$\\sqrt{1} = 1$<br><br>$\\sqrt{25} = 5$<br><br>$\\frac{12}{5} = \\frac{24}{10} = 2.4$",
-                            "Nå kan vi sortere desimaltallene i stigende rekkefølge (fra minst til størst):<br>$-2 < 0.5 < 0.75 < 1 < 2.4 < 2.5 < 5$",
-                            "Til slutt bytter vi tilbake til de opprinnelige formene.<br><br><strong>Svar:</strong> $-\\frac{14}{7}$, $\\frac{1}{2}$, $\\frac{3}{4}$, $\\sqrt{1}$, $\\frac{12}{5}$, $2.5$, $\\sqrt{25}$"
+                            "Vi gjør først alle tallene om til desimaltall for å enklere kunne sammenligne dem:<br><br>$-\\frac{14}{7} = -2$<br><br>$2{,}5 = 2{,}5$<br><br>$\\frac{1}{2} = 0{,}5$<br><br>$\\frac{3}{4} = 0{,}75$<br><br>$\\sqrt{1} = 1$<br><br>$\\sqrt{25} = 5$<br><br>$\\frac{12}{5} = \\frac{24}{10} = 2{,}4$",
+                            "Nå kan vi sortere desimaltallene i stigende rekkefølge (fra minst til størst):<br>$-2 < 0{,}5 < 0{,}75 < 1 < 2{,}4 < 2{,}5 < 5$",
+                            "Til slutt bytter vi tilbake til de opprinnelige formene.<br><br><strong>Svar:</strong> $-\\frac{14}{7}$, $\\frac{1}{2}$, $\\frac{3}{4}$, $\\sqrt{1}$, $\\frac{12}{5}$, $2{,}5$, $\\sqrt{25}$"
                         ],
                         "starter": ""
                     },
@@ -2343,8 +2343,8 @@ export const fagsok = [
                         "fasit": null,
                         "fasitSteg": [
                             "<strong>a)</strong><br>Vi skal forkorte brøken $\\frac{10a - 5}{5}$<br><br>$\\frac{10a - 5}{5}$<br><br>$\\rightarrow \\frac{5(2a - 1)}{5}$ (faktoriser ut 5 i telleren)<br><br>$\\rightarrow 2a - 1$ (stryk 5 i teller mot 5 i nevner)<br><br><strong>Svar:</strong> $2a - 1$",
-                            "<strong>b)</strong><br>Vi skal forkorte brøken $\\frac{12 - 6v}{6v}$<br><br>$\\frac{12 - 6v}{6v}$<br><br>$\\rightarrow \\frac{6(2 - v)}{6v}$ (faktoriser ut 6 i telleren)<br><br>$\\rightarrow \\frac{2 - v}{v}$ (stryk 6 i teller mot 6 i nevner)<br><br><strong>Svar:</strong> $\\frac{2 - v}{v}$",
-                            "<strong>c)</strong><br>Vi skal forkorte brøken $\\frac{36 - a^2}{6 + a}$<br><br>$\\frac{36 - a^2}{6 + a}$<br><br>$\\rightarrow \\frac{6^2 - a^2}{6 + a}$ (skriv 36 som $6^2$)<br><br>$\\rightarrow \\frac{(6 - a)(6 + a)}{6 + a}$ (bruk tredje kvadratsetning $x^2 - y^2 = (x-y)(x+y)$)<br><br>$\\rightarrow 6 - a$ (stryk $6 + a$ i teller mot $6 + a$ i nevner)<br><br><strong>Svar:</strong> $6 - a$"
+                            "<strong>b)</strong><br>Vi skal forkorte brøken $\\frac{12 - 6v}{6v}$<br><br>$\\frac{12 - 6v}{6v}$<br><br>$\\rightarrow \\frac{6(2 - v)}{6v}$ (faktoriser ut 6 i telleren)<br><br>$\\rightarrow \\frac{2 - v}{v}$ (stryk 6 i teller mot 6 i nevner)<br><br><strong>Svar:</strong> $\\frac{2 - v}{v}$, $v \\neq 0$",
+                            "<strong>c)</strong><br>Vi skal forkorte brøken $\\frac{36 - a^2}{6 + a}$<br><br>$\\frac{36 - a^2}{6 + a}$<br><br>$\\rightarrow \\frac{6^2 - a^2}{6 + a}$ (skriv 36 som $6^2$)<br><br>$\\rightarrow \\frac{(6 - a)(6 + a)}{6 + a}$ (bruk konjugatsetningen (3. kvadratsetning) $x^2 - y^2 = (x-y)(x+y)$)<br><br>$\\rightarrow 6 - a$ (stryk $6 + a$ i teller mot $6 + a$ i nevner)<br><br><strong>Svar:</strong> $6 - a$, $a \\neq -6$"
                         ],
                         "starter": ""
                     },
@@ -2357,10 +2357,10 @@ export const fagsok = [
                         "fasit": null,
                         "fasitSteg": [
                             "<strong>a)</strong><br>Vi skal trekke sammen $\\frac{2x}{3} + \\frac{x - 1}{4}$<br><br>Fellesnevner for 3 og 4 er 12.<br><br>$\\frac{2x \\cdot 4}{3 \\cdot 4} + \\frac{(x - 1) \\cdot 3}{4 \\cdot 3}$ (utvid begge brøkene for å få fellesnevner)<br><br>$\\rightarrow \\frac{8x}{12} + \\frac{3x - 3}{12}$ (gang ut i tellerne)<br><br>$\\rightarrow \\frac{8x + 3x - 3}{12}$ (sett på felles brøkstrek)<br><br>$\\rightarrow \\frac{11x - 3}{12}$ (trekk sammen like ledd i telleren)<br><br><strong>Svar:</strong> $\\frac{11x - 3}{12}$",
-                            "<strong>b)</strong><br>Vi skal regne ut $\\frac{1}{b^2} \\cdot \\frac{3b}{6}$<br><br>$\\frac{1 \\cdot 3b}{b^2 \\cdot 6}$ (gang teller med teller og nevner med nevner)<br><br>$\\rightarrow \\frac{3b}{6b^2}$ (trekk sammen)<br><br>$\\rightarrow \\frac{3 \\cdot b}{2 \\cdot 3 \\cdot b \\cdot b}$ (faktoriser teller og nevner)<br><br>$\\rightarrow \\frac{1}{2b}$ (stryk 3 og $b$ i teller og nevner)<br><br><strong>Svar:</strong> $\\frac{1}{2b}$",
+                            "<strong>b)</strong><br>Vi skal regne ut $\\frac{1}{b^2} \\cdot \\frac{3b}{6}$<br><br>$\\frac{1 \\cdot 3b}{b^2 \\cdot 6}$ (gang teller med teller og nevner med nevner)<br><br>$\\rightarrow \\frac{3b}{6b^2}$ (trekk sammen)<br><br>$\\rightarrow \\frac{3 \\cdot b}{2 \\cdot 3 \\cdot b \\cdot b}$ (faktoriser teller og nevner)<br><br>$\\rightarrow \\frac{1}{2b}$ (stryk 3 og $b$ i teller og nevner)<br><br><strong>Svar:</strong> $\\frac{1}{2b}$, $b \\neq 0$",
                             "<strong>c)</strong><br>Vi skal trekke sammen $\\frac{2 - z}{6} + \\frac{3 + z}{2}$<br><br>Fellesnevner for 6 og 2 er 6.<br><br>$\\frac{2 - z}{6} + \\frac{(3 + z) \\cdot 3}{2 \\cdot 3}$ (utvid den andre brøken med 3 for å få fellesnevner 6)<br><br>$\\rightarrow \\frac{2 - z}{6} + \\frac{9 + 3z}{6}$ (gang ut parentesen)<br><br>$\\rightarrow \\frac{2 - z + 9 + 3z}{6}$ (sett på felles brøkstrek)<br><br>$\\rightarrow \\frac{2z + 11}{6}$ (trekk sammen like ledd)<br><br><strong>Svar:</strong> $\\frac{2z + 11}{6}$",
-                            "<strong>d)</strong><br>Vi skal regne ut $\\frac{\\frac{3}{4b}}{\\frac{2}{4}}$<br><br>$\\frac{3}{4b} \\cdot \\frac{4}{2}$ (når vi deler på en brøk, snur vi den på hodet og multipliserer)<br><br>$\\rightarrow \\frac{3 \\cdot 4}{4b \\cdot 2}$ (gang teller med teller og nevner med nevner)<br><br>$\\rightarrow \\frac{12}{8b}$ (trekk sammen)<br><br>$\\rightarrow \\frac{3 \\cdot 4}{2b \\cdot 4}$ (faktoriser for å finne felles faktorer)<br><br>$\\rightarrow \\frac{3}{2b}$ (stryk 4 i teller og nevner)<br><br><strong>Svar:</strong> $\\frac{3}{2b}$",
-                            "<strong>e)</strong><br>Vi skal trekke sammen $\\frac{2}{b + 4} - \\frac{2b - 8}{b^2 - 16} + 4$<br><br>Vi starter med å forenkle den midterste brøken:<br>$\\frac{2b - 8}{b^2 - 16}$<br><br>$\\rightarrow \\frac{2(b - 4)}{(b - 4)(b + 4)}$ (faktoriser ut 2 i teller, bruk tredje kvadratsetning i nevner)<br><br>$\\rightarrow \\frac{2}{b + 4}$ (stryk $b - 4$ oppe og nede)<br><br>Nå setter vi dette inn i det opprinnelige uttrykket:<br>$\\frac{2}{b + 4} - \\frac{2}{b + 4} + 4$<br><br>$\\rightarrow 0 + 4 = 4$ (de to første brøkene er like og opphever hverandre)<br><br><strong>Svar:</strong> $4$"
+                            "<strong>d)</strong><br>Vi skal regne ut $\\frac{\\frac{3}{4b}}{\\frac{2}{4}}$<br><br>$\\frac{3}{4b} \\cdot \\frac{4}{2}$ (når vi deler på en brøk, snur vi den på hodet og multipliserer)<br><br>$\\rightarrow \\frac{3 \\cdot 4}{4b \\cdot 2}$ (gang teller med teller og nevner med nevner)<br><br>$\\rightarrow \\frac{12}{8b}$ (trekk sammen)<br><br>$\\rightarrow \\frac{3 \\cdot 4}{2b \\cdot 4}$ (faktoriser for å finne felles faktorer)<br><br>$\\rightarrow \\frac{3}{2b}$ (stryk 4 i teller og nevner)<br><br><strong>Svar:</strong> $\\frac{3}{2b}$, $b \\neq 0$",
+                            "<strong>e)</strong><br>Vi skal trekke sammen $\\frac{2}{b + 4} - \\frac{2b - 8}{b^2 - 16} + 4$<br><br>Vi starter med å forenkle den midterste brøken:<br>$\\frac{2b - 8}{b^2 - 16}$<br><br>$\\rightarrow \\frac{2(b - 4)}{(b - 4)(b + 4)}$ (faktoriser ut 2 i teller, bruk konjugatsetningen (3. kvadratsetning) i nevner)<br><br>$\\rightarrow \\frac{2}{b + 4}$ (stryk $b - 4$ oppe og nede)<br><br>Nå setter vi dette inn i det opprinnelige uttrykket:<br>$\\frac{2}{b + 4} - \\frac{2}{b + 4} + 4$<br><br>$\\rightarrow 0 + 4 = 4$ (de to første brøkene er like og opphever hverandre)<br><br>Uttrykket er bare definert når $b \\neq 4$ og $b \\neq -4$.<br><br><strong>Svar:</strong> $4$, $b \\neq \\pm 4$"
                         ],
                         "starter": ""
                     }
@@ -2441,7 +2441,7 @@ export const fagsok = [
                             "$x$"
                         ],
                         "riktigSvar": 0,
-                        "forklaring": "Telleren er en differanse av to kvadrater: $(x - 2)(x + 2)$. Da kan vi stryke faktoren $(x - 2)$ i teller mot nevner. Svaret er $x + 2$."
+                        "forklaring": "Telleren er en differanse av to kvadrater: $(x - 2)(x + 2)$. Da kan vi stryke faktoren $(x - 2)$ i teller mot nevner. Svaret er $x + 2$, gyldig for $x \\neq 2$."
                     },
                     {
                         "sporsmal": "Regn ut $\\frac{2}{x} \\cdot \\frac{x^2}{4}$.",
@@ -2452,7 +2452,7 @@ export const fagsok = [
                             "$\\frac{2+x^2}{x+4}$"
                         ],
                         "riktigSvar": 0,
-                        "forklaring": "Multipliser teller med teller og nevner med nevner: $\\frac{2x^2}{4x}$. Deler vi teller og nevner med $2x$, får vi $\\frac{x}{2}$."
+                        "forklaring": "Multipliser teller med teller og nevner med nevner: $\\frac{2x^2}{4x}$. Deler vi teller og nevner med $2x$, får vi $\\frac{x}{2}$ (for $x \\neq 0$)."
                     },
                     {
                         "sporsmal": "Regn ut $\\frac{3}{y} \\div \\frac{6}{y^2}$.",
@@ -2481,7 +2481,7 @@ export const fagsok = [
                         "alternativer": [
                             "$\\frac{x+1}{x-1}$",
                             "$1$",
-                            "$\\frac{x+1}{0}$",
+                            "$\\frac{x-1}{x+1}$",
                             "$-1$"
                         ],
                         "riktigSvar": 1,
@@ -2516,7 +2516,7 @@ export const fagsok = [
                         "fasitSteg": [
                             "<strong>a)</strong><br>Vi finner først tallene for de fire første:<br>$C_1 = 1$<br>$C_2 = 7$<br>$C_3 = 19$<br>$C_4 = 37$<br><br>Vi ser på økningen mellom hvert ledd:<br>$7 - 1 = 6$ (økning fra 1. til 2. ledd)<br>$19 - 7 = 12$ (økning fra 2. til 3. ledd)<br>$37 - 19 = 18$ (økning fra 3. til 4. ledd)<br><br>Økningen er $6$-gangen: $6, 12, 18$. Neste økning må derfor være $24$.<br><br>Vi legger $24$ til det fjerde tallet:<br>$C_5 = 37 + 24$<br><br>$C_5 = 61$<br><br><strong>Svar:</strong> $C_5 = 61$",
                             "<strong>b)</strong><br>Vi tester formelen $C_n = 3n^2 - 3n + 1$ for $n = 1, 2, 3, 4$:<br><br>For $n = 1$:<br>$C_1 = 3 \\cdot 1^2 - 3 \\cdot 1 + 1$<br>$C_1 = 3 \\cdot 1 - 3 + 1 = 1$ (stemmer overens med første tall)<br><br>For $n = 2$:<br>$C_2 = 3 \\cdot 2^2 - 3 \\cdot 2 + 1$<br>$C_2 = 3 \\cdot 4 - 6 + 1$<br>$C_2 = 12 - 6 + 1 = 7$ (stemmer overens med andre tall)<br><br>For $n = 3$:<br>$C_3 = 3 \\cdot 3^2 - 3 \\cdot 3 + 1$<br>$C_3 = 3 \\cdot 9 - 9 + 1$<br>$C_3 = 27 - 9 + 1 = 19$ (stemmer overens med tredje tall)<br><br>For $n = 4$:<br>$C_4 = 3 \\cdot 4^2 - 3 \\cdot 4 + 1$<br>$C_4 = 3 \\cdot 16 - 12 + 1$<br>$C_4 = 48 - 12 + 1 = 37$ (stemmer overens med fjerde tall)<br><br><strong>Svar:</strong> Formelen stemmer for alle de fire første tallene.",
-                            "<strong>c)</strong><br>Vi skal finne tall nummer 10, altså $C_{10}$. Vi setter inn $n = 10$ i formelen:<br><br>$C_{10} = 3 \\cdot 10^2 - 3 \\cdot 10 + 1$<br><br>$C_{10} = 3 \\cdot 100 - 30 + 1$ (regner ut potens og ganging)<br><br>$C_{10} = 300 - 30 + 1$ (ganger ut parentesen)<br><br>$C_{10} = 270 + 1$ (trekker fra)<br><br>$C_{10} = 271$<br><br><strong>Svar:</strong> $C_{10} = 271$"
+                            "<strong>c)</strong><br>Vi skal finne tall nummer 10, altså $C_{10}$. Vi setter inn $n = 10$ i formelen:<br><br>$C_{10} = 3 \\cdot 10^2 - 3 \\cdot 10 + 1$<br><br>$C_{10} = 3 \\cdot 100 - 30 + 1$ (regner ut potens og ganging)<br><br>$C_{10} = 300 - 30 + 1$<br><br>$C_{10} = 270 + 1$ (trekker fra)<br><br>$C_{10} = 271$<br><br><strong>Svar:</strong> $C_{10} = 271$"
                         ],
                         "starter": ""
                     }
@@ -2767,7 +2767,7 @@ export const fagsok = [
                         "fasitSteg": [
                             "<strong>a)</strong><br>$\\dfrac{10x - 15}{5} = \\dfrac{5(2x - 3)}{5} = 2x - 3$<br><br><strong>Svar:</strong> $2x - 3$",
                             "<strong>b)</strong><br>Fellesnevner $3x$:<br>$\\dfrac{1}{x} = \\dfrac{3}{3x}$<br><br>$\\dfrac{3}{3x} + \\dfrac{4}{3x} = \\dfrac{7}{3x}$<br><br><strong>Svar:</strong> $\\dfrac{7}{3x}$",
-                            "<strong>c)</strong><br>Feilen er at eleven deler bare $4$ i telleren på $4$, men lar $x$ stå urørt. Man kan ikke forkorte ett ledd i en sum.<br><br>Riktig:<br>$\\dfrac{x + 4}{4} = \\dfrac{x}{4} + \\dfrac{4}{4} = \\dfrac{x}{4} + 1$<br><br>Moteksempel: Hvis $x = 0$, venstre side $\\dfrac{4}{4} = 1$, høyre side $0 + 1 = 1$ (tilfeldig like). Hvis $x = 4$: venstre $\\dfrac{8}{4} = 2$, elevens svar $4 + 1 = 5$ — ikke like.<br><br><strong>Svar:</strong> Feil fordi man ikke kan forkorte ledd i en sum. Riktig: $\\dfrac{x}{4} + 1$."
+                            "<strong>c)</strong><br>Feilen er at eleven deler bare $4$ i telleren på $4$, men lar $x$ stå urørt. Man kan ikke forkorte ett ledd i en sum.<br><br>Riktig:<br>$\\dfrac{x + 4}{4} = \\dfrac{x}{4} + \\dfrac{4}{4} = \\dfrac{x}{4} + 1$<br><br>Moteksempel: Sett inn $x = 4$. Da er $\\dfrac{4 + 4}{4} = 2$, men elevens svar gir $4 + 1 = 5$. Siden $2 \\neq 5$, er omformingen feil.<br><br><strong>Svar:</strong> Feil fordi man ikke kan forkorte ledd i en sum. Riktig: $\\dfrac{x}{4} + 1$."
                         ],
                         "starter": ""
                     },

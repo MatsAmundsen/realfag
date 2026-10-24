@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { CircleHelp } from "lucide-react";
-import { CHAPTER_META, fagsok, findKap, findSub, videoForSub } from "@/data/content";
+import { CHAPTER_META, fagsok, findKap, findSub, videosForSub } from "@/data/content";
 import type { StudyMode } from "@/data/types";
 import { ChapterSidebar } from "@/components/ChapterSidebar";
 import { TopicVideoInvite } from "@/components/TopicVideoInvite";
@@ -38,7 +38,7 @@ function SubchapterPage() {
   }, [kapId, subId]);
 
   const oving = dk ? isOvingDelkap(dk) : false;
-  const topicVideo = !oving ? videoForSub(subId) : null;
+  const topicVideos = !oving ? videosForSub(subId) : [];
   const sub = kap && dk ? countSubchapter(kap, dk, p) : { done: 0, total: 0, pct: 0 };
 
   const quizKey = `${kapId}/${subId}`;
@@ -127,7 +127,7 @@ function SubchapterPage() {
           </div>
         )}
 
-        {topicVideo ? <TopicVideoInvite video={topicVideo} /> : null}
+        {topicVideos.length ? <TopicVideoInvite videos={topicVideos} /> : null}
 
         {hasPrereq && !oving && (
           <details className="prereq-details">

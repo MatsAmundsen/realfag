@@ -2153,13 +2153,63 @@ a.brok-nav-card {
 
 .topic-video-invite {
     display: flex;
-    align-items: center;
-    gap: 1rem;
+    flex-direction: column;
+    gap: 0.85rem;
     margin: 0 0 1.15rem;
     padding: 0.85rem 1rem;
     background: var(--bg-elevated);
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
+}
+.topic-video-main {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.topic-video-more {
+    list-style: none;
+    margin: 0;
+    padding: 0.75rem 0 0;
+    border-top: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    gap: 0.5rem;
+}
+.topic-video-more-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    width: 100%;
+    min-height: 44px;
+    padding: 0.4rem;
+    text-align: left;
+    font: inherit;
+    font-size: 0.88rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--text-main);
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+}
+.topic-video-more-btn:hover,
+.topic-video-more-btn:focus-visible {
+    border-color: var(--primary-light);
+    background: var(--primary-subtle);
+}
+.topic-video-more-btn img {
+    flex: 0 0 72px;
+    width: 72px;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 4px;
+}
+.topic-video-more-btn small {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--text-muted);
 }
 .topic-video-thumb {
     position: relative;
@@ -2200,7 +2250,7 @@ a.brok-nav-card {
     margin-top: 0.1rem;
 }
 @media (max-width: 640px) {
-    .topic-video-invite {
+    .topic-video-main {
         flex-direction: column;
         align-items: stretch;
     }
@@ -4124,6 +4174,14 @@ a.vid-nav-card {
 }
 .summary-read.is-on { border-color: var(--accent); color: var(--accent); }
 @media (min-width: 900px) { .summary-card { padding: 1.35rem 1.5rem 1.2rem; } }
+
+/* Videolisten: dempet tekst med nok kontrast (≥4,5:1) i begge temaer */
+.topic-video-more-btn small { color: #a5b4c8; }
+[data-theme="light"] .topic-video-more-btn small { color: #475569; }
+.topic-video-more-title { display: block; }
+.topic-video-copy p { color: #a5b4c8; }
+[data-theme="light"] .topic-video-copy p { color: #475569; }
+[data-theme="light"] .topic-video-btn { color: #4338ca; }
 
 /* Tonet rulle-kant: vises når tabellen kan rulles videre, forsvinner ved enden (ren CSS, ingen animasjon) */
 .data-table-wrap {

@@ -2,8 +2,10 @@ import { fagsok as rawFagsok, fagstoff as rawFagstoff, programmeringData as rawP
 import type { Delkapittel, Fagstoff, Kapittel, Oppgave } from "./types";
 import { EXTRA, SUB_TITLES } from "./extra-tasks";
 import { MORE23 } from "./extra-kap23";
+import { KAP2_NYE } from "./extra-kap2-nye";
 import { EXTRA_1D, EXTRA_1D_QUIZ } from "./extra-1d";
 import { TASK_FIGURES, TASK_FASIT_FIGURES, TASK_FIGURE_REQUIRES } from "./task-figures";
+import { FIGURE_REPLACES_IMAGE } from "./kap2-figures";
 import { KAP3_OVEPROVE } from "./kap3-oveprove";
 import { KAP4_QUIZ } from "./kap4-quiz";
 import { KAP5 } from "./kap5";
@@ -36,6 +38,7 @@ function attachFigure(op: Oppgave): Oppgave {
   const req = TASK_FIGURE_REQUIRES[op.id];
   if (fig && (!req || req.test(op.tekst)) && !op.tekst.includes('class="task-figure"')) {
     updated = { ...updated, tekst: fig + updated.tekst };
+    if (FIGURE_REPLACES_IMAGE.has(op.id)) updated = { ...updated, bilde: null };
   }
   const fasitFigs = TASK_FASIT_FIGURES[op.id];
   if (fasitFigs && updated.fasitSteg?.length) {
@@ -59,7 +62,7 @@ function attachFigure(op: Oppgave): Oppgave {
 }
 
 function withExtras(dk: Delkapittel): Delkapittel {
-  const extraList = [...(EXTRA[dk.id] || []), ...(MORE23[dk.id] || []), ...(EXTRA_1D[dk.id] || [])];
+  const extraList = [...(EXTRA[dk.id] || []), ...(MORE23[dk.id] || []), ...(KAP2_NYE[dk.id] || []), ...(EXTRA_1D[dk.id] || [])];
   const baseQuiz = KAP4_QUIZ[dk.id] ?? dk.quiz;
   const extraQuiz = dk.id === "1D" ? EXTRA_1D_QUIZ : undefined;
   return {
@@ -171,11 +174,11 @@ export const VIDEO_BY_SUB: Record<string, TemaVideo[]> = {
   "1E": [{ tittel: "Standardform", url: "https://www.youtube.com/watch?v=SSb_IddmrdE" }],
   "1F": [{ tittel: "Implikasjon og ekvivalens", url: "https://www.youtube.com/watch?v=lnB4y3IyCRQ" }],
   "2A": [{ tittel: "Regning med bokstavuttrykk", url: "https://www.youtube.com/watch?v=PA7Q18hLK0E" }],
-  "2B": [{ tittel: "Første kvadratsetning", url: "https://www.youtube.com/watch?v=LgDQ29AAfEM" }],
+  "2B": [{ tittel: "Første kvadratsetning", url: "https://www.youtube.com/watch?v=LgDQ29AAfEM" }, { tittel: "Andre kvadratsetning", url: "https://www.youtube.com/watch?v=vKmPyzXwm_A" }, { tittel: "Konjugatsetningen", url: "https://www.youtube.com/watch?v=isqqIJYcnB0" }],
   "2C": [{ tittel: "Felles faktor og faktorisering", url: "https://www.youtube.com/watch?v=7L7mYWpMY9U" }],
-  "2D": [{ tittel: "Faktorisering med kvadratsetninger", url: "https://www.youtube.com/watch?v=OmjOo1a4pLA" }],
-  "2E": [{ tittel: "Brudden brøk", url: "https://www.youtube.com/watch?v=Im0BPFxDwp8" }],
-  "2F": [{ tittel: "Formler og logikk for figurtall", url: "https://www.youtube.com/watch?v=f4v7perY_0o" }],
+  "2D": [{ tittel: "Faktorisering med kvadratsetninger", url: "https://www.youtube.com/watch?v=OmjOo1a4pLA" }, { tittel: "Gjenkjenne fullstendige kvadrater", url: "https://www.youtube.com/watch?v=B9vsG1QMy1o" }, { tittel: "Fullstendige kvadraters metode", url: "https://www.youtube.com/watch?v=7nri1E0v_xE" }],
+  "2E": [{ tittel: "Brøkregning med bokstaver", url: "https://www.youtube.com/watch?v=p2SeSghAyEE" }, { tittel: "Brudden brøk", url: "https://www.youtube.com/watch?v=Im0BPFxDwp8" }],
+  "2F": [{ tittel: "Formler for figurtall", url: "https://www.youtube.com/watch?v=f4v7perY_0o" }, { tittel: "Å lage formler og uttrykk", url: "https://www.youtube.com/watch?v=scwkoWmWDBY" }, { tittel: "Omgjøring av formler", url: "https://www.youtube.com/watch?v=bDZ7JL4ZUzY" }],
   "3A": [{ tittel: "3A Lineære likninger", url: "https://www.youtube.com/watch?v=T1a1-mbv4KQ" }],
   "3B": [{ tittel: "Omskriving av formler", url: "https://www.youtube.com/watch?v=n5k-x-05X00" }],
   "3C": [{ tittel: "Andregradslikninger", url: "https://www.youtube.com/watch?v=0eyN7vknTW4" }],
@@ -255,9 +258,15 @@ export const VIDEO_BY_SUB: Record<string, TemaVideo[]> = {
   ],
 };
 
+/** Alle temavideoer for et delkapittel (tom liste hvis ingen). */
+export function videosForSub(subId: string | null | undefined): TemaVideo[] {
+  if (!subId) return [];
+  return VIDEO_BY_SUB[subId] ?? [];
+}
+
+/** Første temavideo — brukes av videoknappen på hvert oppgavekort. */
 export function videoForSub(subId: string | null | undefined): TemaVideo | null {
-  if (!subId) return null;
-  return VIDEO_BY_SUB[subId]?.[0] ?? null;
+  return videosForSub(subId)[0] ?? null;
 }
 
 export function findKap(id: string) {

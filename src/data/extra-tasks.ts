@@ -224,7 +224,7 @@ export const EXTRA: Record<string, Oppgave[]> = {
     o(
       "2.18",
       "Løs opp parentesene og trekk sammen.<br><br><strong>a)</strong> $(x+3)(x-1)$<br><br><strong>b)</strong> $2(x-4)(x+1)$<br><br><strong>c)</strong> $(2a-3)^2 - (a+1)(a-1)$",
-      "FOIL / kvadratsetning. Trekk sammen like ledd til slutt.",
+      "Gang hvert ledd i den første parentesen med hvert ledd i den andre, eller bruk en kvadratsetning. Trekk sammen like ledd til slutt.",
       [
         "<strong>a)</strong> $x^2-x+3x-3=x^2+2x-3$.<br><strong>Svar:</strong> $x^2+2x-3$",
         "<strong>b)</strong> Først $(x-4)(x+1)=x^2-3x-4$, gange med $2$: $2x^2-6x-8$.<br><strong>Svar:</strong> $2x^2-6x-8$",
@@ -322,8 +322,8 @@ export const EXTRA: Record<string, Oppgave[]> = {
       "Faktoriser teller (og nevner) før du stryker felles faktorer.",
       [
         "<strong>a)</strong> $\\dfrac{4(2x-3)}{4}=2x-3$. <strong>Svar:</strong> $2x-3$",
-        "<strong>b)</strong> $\\dfrac{(x-3)(x+3)}{x-3}=x+3$. <strong>Svar:</strong> $x+3$",
-        "<strong>c)</strong> $\\dfrac{2x(x+3)}{2x}=x+3$. <strong>Svar:</strong> $x+3$",
+        "<strong>b)</strong> $\\dfrac{(x-3)(x+3)}{x-3}=x+3$. <strong>Svar:</strong> $x+3$, $x\\neq 3$",
+        "<strong>c)</strong> $\\dfrac{2x(x+3)}{2x}=x+3$. <strong>Svar:</strong> $x+3$, $x\\neq 0$",
       ],
     ),
     o(
@@ -331,8 +331,8 @@ export const EXTRA: Record<string, Oppgave[]> = {
       "Trekk sammen til én brøk.<br><br><strong>a)</strong> $\\dfrac{2}{x}+\\dfrac{3}{2x}$<br><br><strong>b)</strong> $\\dfrac{x}{x+1}-\\dfrac{1}{x+1}$",
       "Fellesnevner. I b) er nevneren allerede lik.",
       [
-        "<strong>a)</strong> Fellesnevner $2x$: $\\dfrac{4}{2x}+\\dfrac{3}{2x}=\\dfrac{7}{2x}$.<br><strong>Svar:</strong> $\\dfrac{7}{2x}$",
-        "<strong>b)</strong> $\\dfrac{x-1}{x+1}$.<br><strong>Svar:</strong> $\\dfrac{x-1}{x+1}$",
+        "<strong>a)</strong> Fellesnevner $2x$: $\\dfrac{4}{2x}+\\dfrac{3}{2x}=\\dfrac{7}{2x}$.<br><strong>Svar:</strong> $\\dfrac{7}{2x}$, $x\\neq 0$",
+        "<strong>b)</strong> $\\dfrac{x-1}{x+1}$.<br><strong>Svar:</strong> $\\dfrac{x-1}{x+1}$, $x\\neq -1$",
       ],
     ),
   ],
@@ -602,10 +602,10 @@ export const SUB_TITLES: Record<string, string> = {
   "1OP": "Øveprøve",
   "2A": "2A Forenkle uttrykk",
   "2B": "2B Kvadratsetninger",
-  "2C": "2C Felles faktor",
+  "2C": "2C Felles faktor og bevis",
   "2D": "2D Faktorisering",
   "2E": "2E Algebraiske brøker",
-  "2F": "2F Figurer og mønstre",
+  "2F": "2F Formler og figurtall",
   "2OP": "Øveprøve",
   "3A": "3A Førstegradslikninger",
   "3B": "3B Formler",

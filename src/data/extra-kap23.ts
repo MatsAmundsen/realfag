@@ -1,5 +1,6 @@
 import type { Oppgave } from "./types";
-import { figRect, figSquareIdentity, figTriangleNumbers } from "./task-figures";
+import { FIG_2_55 } from "./kap2-figures";
+import { figSquareIdentity, figTriangleNumbers } from "./task-figures";
 
 function o(id: string, tekst: string, hint: string, steg: string[]): Oppgave {
   return { id, tittel: `Oppgave ${id}`, tekst, bilde: null, hint, fasit: null, fasitSteg: steg, starter: "" };
@@ -40,7 +41,7 @@ export const MORE23: Record<string, Oppgave[]> = {
         "<strong>a)</strong> $2$ skal også gange $-4$: $2x-8$.<br><strong>Svar:</strong> $2x-8$",
         "<strong>b)</strong> Minus foran skifter fortegn på begge: $-x+3$.<br><strong>Svar:</strong> $-x+3$",
         "<strong>c)</strong> $3x+x=4x$, konstanten $2$ blir med: $4x+2$.<br><strong>Svar:</strong> $4x+2$",
-        "<strong>d)</strong> FOIL: $x^2+3x+2x+6=x^2+5x+6$.<br><strong>Svar:</strong> $x^2+5x+6$",
+        "<strong>d)</strong> Hvert ledd ganges med hvert ledd: $x^2+3x+2x+6=x^2+5x+6$.<br><strong>Svar:</strong> $x^2+5x+6$",
         "<strong>e)</strong> $5x-10-6+3x=8x-16$.<br><strong>Svar:</strong> $8x-16$",
       ],
     ),
@@ -111,14 +112,14 @@ export const MORE23: Record<string, Oppgave[]> = {
     ),
     o(
       "2.46",
-      "Hvor langt kan du faktorisere?<br><br><strong>a)</strong> $18xy+27x$<br><br><strong>b)</strong> $x^2-4x$<br><br><strong>c)</strong> $5(2x-1)^2+10(2x-1)$<br><br><strong>d)</strong> En elev skriver $6x-9=3x(2-3)$. Hva er feil?<br><br><strong>e)</strong> Faktoriser $4x^3-10x^2+6x$.",
+      "Hvor langt kan du faktorisere?<br><br><strong>a)</strong> $18xy+27x$<br><br><strong>b)</strong> $x^2-4x$<br><br><strong>c)</strong> $5(2x-1)^2+10(2x-1)$<br><br><strong>d)</strong> En elev skriver $6x-9=3x(2-3)$. Hva er feil?<br><br><strong>e)</strong> Faktoriser $4x^3-10x^2+6x$ så langt du kan med felles faktor.",
       "Ta ut tall og laveste potens av $x$ først. Sjekk ved å gange tilbake.",
       [
         "<strong>a)</strong> $9x(2y+3)$. <strong>Svar:</strong> $9x(2y+3)$",
         "<strong>b)</strong> $x(x-4)$. <strong>Svar:</strong> $x(x-4)$",
         "<strong>c)</strong> $5(2x-1)\\bigl((2x-1)+2\\bigr)=5(2x-1)(2x+1)$.<br><strong>Svar:</strong> $5(2x-1)(2x+1)$",
         "<strong>d)</strong> $3$ går opp i begge, men ikke $x$ i $-9$. Riktig er $3(2x-3)$.<br><strong>Svar:</strong> $3(2x-3)$",
-        "<strong>e)</strong> $2x(2x^2-5x+3)=2x(2x-3)(x-1)$.<br><strong>Svar:</strong> $2x(2x-3)(x-1)$",
+        "<strong>e)</strong> Felles faktor er $2x$: $4x^3-10x^2+6x=2x(2x^2-5x+3)$.<br>(Senere, i 2D, kan du faktorisere videre: $2x^2-5x+3=(2x-3)(x-1)$.)<br><strong>Svar:</strong> $2x(2x^2-5x+3)$",
       ],
     ),
   ],
@@ -194,7 +195,7 @@ export const MORE23: Record<string, Oppgave[]> = {
         "<strong>b)</strong> $\\dfrac{3}{x-1}$.<br><strong>Svar:</strong> $\\dfrac{3}{x-1}$",
         "<strong>c)</strong> $\\dfrac{x-2}{x+2}$.<br><strong>Svar:</strong> $\\dfrac{x-2}{x+2}$",
         "<strong>d)</strong> $\\dfrac{x+1+x}{x(x+1)}=\\dfrac{2x+1}{x(x+1)}$.<br><strong>Svar:</strong> $\\dfrac{2x+1}{x(x+1)}$",
-        "<strong>e)</strong> $\\dfrac{x(x+3)-(x+6)}{(x-3)(x+3)}=\\dfrac{x^2+3x-x-6}{(x-3)(x+3)}=\\dfrac{x^2+2x-6}{(x-3)(x+3)}$.<br><strong>Svar:</strong> $\\dfrac{x^2+2x-6}{(x-3)(x+3)}$ (kan ikke forkortes mer)",
+        "<strong>e)</strong> $\\dfrac{x(x+3)-(x+6)}{(x-3)(x+3)}=\\dfrac{x^2+3x-x-6}{(x-3)(x+3)}=\\dfrac{x^2+2x-6}{(x-3)(x+3)}$.<br><strong>Svar:</strong> $\\dfrac{x^2+2x-6}{(x-3)(x+3)}$ (kan ikke forkortes mer), $x\\neq \\pm 3$",
       ],
     ),
     o(
@@ -203,8 +204,8 @@ export const MORE23: Record<string, Oppgave[]> = {
       "Å dele på en brøk er å gange med den omvendte. Du kan aldri stryke et ledd som er plusset, bare faktorer.",
       [
         "<strong>a)</strong> $\\dfrac{3x\\cdot 8}{4x}=6$.<br><strong>Svar:</strong> $6$",
-        "<strong>b)</strong> $\\dfrac{(x-3)(x+3)\\cdot 2x}{x(x+3)}=2(x-3)$ for $x\\neq 0,-3$.<br><strong>Svar:</strong> $2(x-3)$",
-        "<strong>c)</strong> $\\dfrac{2}{x}\\cdot\\dfrac{x^2}{4}=\\dfrac{x}{2}$.<br><strong>Svar:</strong> $\\dfrac{x}{2}$",
+        "<strong>b)</strong> $\\dfrac{(x-3)(x+3)\\cdot 2x}{x(x+3)}=2(x-3)$ for $x\\neq 0,-3$.<br><strong>Svar:</strong> $2(x-3)$, $x\\neq 0,\\,-3$",
+        "<strong>c)</strong> $\\dfrac{2}{x}\\cdot\\dfrac{x^2}{4}=\\dfrac{x}{2}$.<br><strong>Svar:</strong> $\\dfrac{x}{2}$, $x\\neq 0$",
         "<strong>d)</strong> Bare $5$ i nevneren, ikke hele telleren. $\\dfrac{x}{5}+1$.<br><strong>Svar:</strong> $\\dfrac{x}{5}+1$",
         "<strong>e)</strong> $\\dfrac{(x-2)(x+2)}{(x+2)(x+3)}\\cdot\\dfrac{x+3}{x-2}=1$ for tillatte $x$.<br><strong>Svar:</strong> $1$ ($x\\neq -2,-3,2$)",
       ],
@@ -215,19 +216,19 @@ export const MORE23: Record<string, Oppgave[]> = {
       "2.54",
       figTriangleNumbers("Trekanttall $T_n$: rad $n$ har $n$ prikker, og $T_n=1+2+\\ldots+n$.") +
         "Figuren viser $T_1$ til $T_4$.<br><br><strong>a)</strong> Tell opp og finn $T_5$ og $T_6$.<br><br><strong>b)</strong> Formelen er $T_n=\\dfrac{n(n+1)}{2}$. Vis at den stemmer for $n=4$.<br><br><strong>c)</strong> Finn $T_{10}$.<br><br><strong>d)</strong> Vis at $T_n+T_{n-1}=n^2$ for $n\\ge 2$ (to trekanter gir et kvadrat).<br><br><strong>e)</strong> Løs $T_n=66$ for $n$.",
-      "Summen $1+2+\\ldots+n$ er $\\dfrac{n(n+1)}{2}$. I e) får du en andregradslikning.",
+      "Summen $1+2+\\ldots+n$ er $\\dfrac{n(n+1)}{2}$. I e): $n(n+1)=132$. Finn to tall som ligger rett etter hverandre og har produkt $132$.",
       [
         "<strong>a)</strong> $T_5=15$, $T_6=21$.<br><strong>Svar:</strong> $15$ og $21$",
         "<strong>b)</strong> $\\dfrac{4\\cdot 5}{2}=10$, og figuren har $10$ prikker.<br><strong>Svar:</strong> vist",
         "<strong>c)</strong> $\\dfrac{10\\cdot 11}{2}=55$.<br><strong>Svar:</strong> $55$",
         "<strong>d)</strong> $\\dfrac{n(n+1)}{2}+\\dfrac{(n-1)n}{2}=\\dfrac{n}{2}\\bigl(n+1+n-1\\bigr)=n^2$.<br><strong>Svar:</strong> vist",
-        "<strong>e)</strong> $n(n+1)=132$, $n^2+n-132=0$, $(n-11)(n+12)=0$, $n=11$.<br><strong>Svar:</strong> $n=11$",
+        "<strong>e)</strong> $\\dfrac{n(n+1)}{2}=66$ gir $n(n+1)=132$. Vi prøver nabotall: $11\\cdot 12=132$, så $n=11$. Kontroll: $T_{11}=\\dfrac{11\\cdot 12}{2}=66$.<br><strong>Svar:</strong> $n=11$",
       ],
     ),
     o(
       "2.55",
-      figRect("s + 3", "s", "Kvadrat med side $s$ og rektangel med sider $s$ og $s+3$.") +
-        "Et kvadrat har side $s$. Ved siden av ligger et rektangel med samme høyde og $3$ lenger bredde.<br><br><strong>a)</strong> Uttrykk for kvadratets areal.<br><br><strong>b)</strong> Uttrykk for rektangelets areal.<br><br><strong>c)</strong> Hvor mye større er rektangelet, forenklet?<br><br><strong>d)</strong> For hvilken $s$ er rektangelets areal dobbelt så stort som kvadratets?<br><br><strong>e)</strong> Finn omkretsen av de to figurene til sammen, forenklet.",
+      FIG_2_55 +
+        "Et kvadrat har side $s$. Ved siden av ligger et rektangel med samme høyde og $3$ lenger bredde.<br><br><strong>a)</strong> Uttrykk for kvadratets areal.<br><br><strong>b)</strong> Uttrykk for rektangelets areal.<br><br><strong>c)</strong> Hvor mye større er rektangelet, forenklet?<br><br><strong>d)</strong> For hvilken $s$ er rektangelets areal dobbelt så stort som kvadratets?<br><br><strong>e)</strong> Finn summen av omkretsen til kvadratet og omkretsen til rektangelet, hver figur for seg. Forenkle.",
       "Dobbel: $(s+3)s=2s^2$. Omkrets kvadrat $4s$, rektangel $2(s+s+3)$.",
       [
         "<strong>a)</strong> $s^2$. <strong>Svar:</strong> $s^2$",
@@ -263,13 +264,13 @@ export const MORE23: Record<string, Oppgave[]> = {
     ),
     o(
       "2.58",
-      "Prikkmønster: figur $n$ har $n$ rader med $n+2$ prikker i hver rad, minus $2$ hjørneprikker som mangler.<br><br><strong>a)</strong> Skriv et uttrykk for antall prikker, og forenkle.<br><br><strong>b)</strong> Finn antall i figur $1$ og $2$ ved både telling og formel.<br><br><strong>c)</strong> For hvilken $n$ er det $62$ prikker?<br><br><strong>d)</strong> Vis at antall prikker alltid er partall.<br><br><strong>e)</strong> En annen elev skriver $n(n+2)$. Hva har eleven glemt?",
-      "Start med rektangelet $n\\cdot(n+2)$, trekk fra $2$. Partall: faktoriser.",
+      "Prikkmønster: figur $n$ har $n$ rader med $n+2$ prikker i hver rad, men de to hjørneprikkene i øverste rad mangler.<br><br><strong>a)</strong> Skriv et uttrykk for antall prikker, og forenkle.<br><br><strong>b)</strong> Finn antall i figur $1$ og $2$ ved både telling og formel.<br><br><strong>c)</strong> For hvilken $n$ er det $61$ prikker?<br><br><strong>d)</strong> Vis at antall prikker er et partall når $n$ er et partall, og et oddetall når $n$ er et oddetall.<br><br><strong>e)</strong> En annen elev skriver $n(n+2)$. Hva har eleven glemt?",
+      "Start med rektangelet $n\\cdot(n+2)$, og trekk fra $2$. I c) gir likningen to tall med produkt $63$ og differanse $2$. I d): $n$ og $n+2$ er enten begge partall eller begge oddetall.",
       [
         "<strong>a)</strong> $n(n+2)-2=n^2+2n-2$.<br><strong>Svar:</strong> $n^2+2n-2$",
         "<strong>b)</strong> $n=1$: $1\\cdot 3-2=1$. $n=2$: $2\\cdot 4-2=6$.<br><strong>Svar:</strong> $1$ og $6$",
-        "<strong>c)</strong> $n^2+2n-2=62$, $n^2+2n-64=0$. $n=\\dfrac{-2\\pm\\sqrt{4+256}}{2}=\\dfrac{-2\\pm 16}{2}$. Positiv: $n=7$.<br><strong>Svar:</strong> $n=7$",
-        "<strong>d)</strong> $n(n+2)$ er produkt av to påfølgende partall eller to oddetall, altså partall; minus $2$ forblir partall.<br><strong>Svar:</strong> vist, alltid partall",
+        "<strong>c)</strong> $n^2+2n-2=61$ gir $n^2+2n-63=0$, altså $(n+9)(n-7)=0$. Siden $n>0$, er $n=7$. Kontroll: $7\\cdot 9-2=61$.<br><strong>Svar:</strong> $n=7$",
+        "<strong>d)</strong> Antall prikker er $n(n+2)-2$. Tallene $n$ og $n+2$ har samme paritet.<br>Er $n=2k$ et partall, blir $n(n+2)-2=2k(2k+2)-2=2\\bigl(2k(k+1)-1\\bigr)$, altså et partall.<br>Er $n=2k+1$ et oddetall, blir $n(n+2)-2=(2k+1)(2k+3)-2=4k^2+8k+1=2(2k^2+4k)+1$, altså et oddetall.<br><strong>Svar:</strong> vist. Moteksempel på «alltid partall»: figur $1$ har $1$ prikk.",
         "<strong>e)</strong> De to manglende hjørnene.<br><strong>Svar:</strong> eleven trakk ikke fra $2$",
       ],
     ),
