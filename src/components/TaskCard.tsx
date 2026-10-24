@@ -50,7 +50,7 @@ export function TaskCard({
       const spec = extractPlots(oppgave.tekst, ov);
       return spec && ov ? applyPlotOverride(spec, ov) : spec;
     },
-    [kapId, oppgave.tekst],
+    [kapId, oppgave.id, oppgave.tekst],
   );
 
   useEffect(() => {
