@@ -3,7 +3,7 @@ import { createPortal } from "react-dom";
 import { Maximize2, X } from "lucide-react";
 import { samplePlot, type PlotSpec } from "@/lib/plot-fn";
 
-const COLORS = ["var(--primary-light)", "var(--accent)", "#38bdf8", "var(--hint-color)"];
+const COLORS = ["var(--primary-light)", "var(--accent)", "var(--plot-c3, #38bdf8)", "var(--hint-color)"];
 
 function niceStep(span: number, target = 7) {
   const raw = Math.abs(span) / Math.max(target, 1);
@@ -332,7 +332,7 @@ export function FunctionPlot({
         <span className="fn-plot-legend">
           {spec.series.map((s, i) => (
             <span key={s.name} style={{ color: "var(--text-main)", display: "inline-flex", alignItems: "center", gap: "0.35em" }}>
-              <span aria-hidden="true" style={{ display: "inline-block", width: "1.1em", height: "3px", borderRadius: "2px", background: COLORS[i % COLORS.length] }} />
+              <span aria-hidden="true" style={{ display: "inline-block", width: "1.1em", height: 0, borderTop: `3px ${s.dashed ? "dashed" : "solid"} ${COLORS[i % COLORS.length]}` }} />
               {spec.legend?.[i] ?? s.name}
             </span>
           ))}
