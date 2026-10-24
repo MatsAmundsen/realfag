@@ -81,12 +81,12 @@ export const KAP2_NYE: Record<string, Oppgave[]> = {
     ),
     o(
       "2.36",
-      "<strong>CAS (GeoGebra).</strong> Bruk kommandoene <code>Utvid</code>, <code>Faktoriser</code> og <code>Forenkle</code>.<br><br><strong>a)</strong> <code>Utvid((2x-3)^2)</code>. Hvilken kvadratsetning bekrefter CAS?<br><br><strong>b)</strong> <code>Faktoriser(x^2-x-12)</code>. Kontroller ved å gange ut for hånd.<br><br><strong>c)</strong> <code>Faktoriser(x^2-6x-12)</code> gir uttrykket uendret tilbake. Forklar hvorfor. Bruk fullstendige kvadraters metode og faktoriser for hånd.<br><br><strong>d)</strong> <code>Forenkle((x^2-9)/(x-3))</code> gir $x+3$. Hvilken opplysning mangler i CAS-svaret?",
-      "<code>Faktoriser</code> faktoriserer med hele tall og brøker. I c) må du bruke kvadratrøtter.",
+      "<strong>CAS (GeoGebra).</strong> Bruk kommandoene <code>RegnUt</code>, <code>Faktoriser</code>, <code>IFaktoriser</code> og <code>Forenkle</code>. (Verktøyknappen «Utvid» kjører kommandoen <code>RegnUt</code>.)<br><br><strong>a)</strong> <code>RegnUt((2x-3)^2)</code>. Hvilken kvadratsetning bekrefter CAS?<br><br><strong>b)</strong> <code>Faktoriser(x^2-x-12)</code>. Kontroller ved å gange ut for hånd.<br><br><strong>c)</strong> <code>Faktoriser(x^2-6x-12)</code> gir uttrykket uendret tilbake. Forklar hvorfor. Bruk fullstendige kvadraters metode og faktoriser for hånd. Kontroller med <code>IFaktoriser(x^2-6x-12)</code>.<br><br><strong>d)</strong> <code>Forenkle((x^2-9)/(x-3))</code> gir $x+3$. Hvilken opplysning mangler i CAS-svaret?",
+      "<code>Faktoriser</code> faktoriserer bare over de rasjonale tallene (hele tall og brøker). <code>IFaktoriser</code> faktoriserer også med irrasjonale tall, som kvadratrøtter.",
       [
         "<strong>a)</strong> $4x^2-12x+9$, andre kvadratsetning.<br><strong>Svar:</strong> $4x^2-12x+9$",
         "<strong>b)</strong> $(x-4)(x+3)=x^2+3x-4x-12=x^2-x-12$.<br><strong>Svar:</strong> $(x-4)(x+3)$",
-        "<strong>c)</strong> Det finnes ingen faktorisering med hele tall. $(x-3)^2-9-12=(x-3)^2-21$.<br><strong>Svar:</strong> $(x-3-\\sqrt{21})(x-3+\\sqrt{21})$",
+        "<strong>c)</strong> Det finnes ingen faktorisering med rasjonale tall, så <code>Faktoriser</code> lar uttrykket stå. $(x-3)^2-9-12=(x-3)^2-21=(x-3)^2-(\\sqrt{21})^2$. <code>IFaktoriser</code> gir det samme svaret, men leddene kan stå i en annen rekkefølge.<br><strong>Svar:</strong> $(x-3-\\sqrt{21})(x-3+\\sqrt{21})$",
         "<strong>d)</strong> Den opprinnelige brøken er ikke definert for $x=3$.<br><strong>Svar:</strong> $x+3$, $x\\neq 3$",
       ],
     ),
