@@ -6,6 +6,8 @@ export type PlotSeries = {
   variable: string;
   evalAt: (x: number) => number | null;
   clip?: { min: number; max: number; closedMin: boolean; closedMax: boolean };
+  /** Tegnes stiplet (f.eks. referansenivå). */
+  dashed?: boolean;
 };
 
 export type PlotFeature = {

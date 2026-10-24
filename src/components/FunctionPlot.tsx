@@ -203,6 +203,7 @@ function GraphSvg({
                 fill="none"
                 stroke={color}
                 strokeWidth={large ? 2.8 : 2.2}
+                strokeDasharray={spec.series[i]?.dashed ? (large ? "9 6" : "7 5") : undefined}
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
