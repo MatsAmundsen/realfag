@@ -115,7 +115,7 @@
       "$9{,}46 \\cdot 10^{13}$",
       "$9{,}46 \\cdot 10^{17}$",
       "$94{,}6 \\cdot 10^{15}$",
-      "$0{,}946 \\cdot 10^{18}$"
+      "$9{,}46 \\cdot 10^{16}$"
     ],
     "riktigSvar": 1,
     "forklaring": "Å gange med 100 er det samme som å gange med $10^2$. Da adderer vi 2 til eksponenten: $15 + 2 = 17$"
