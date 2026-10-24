@@ -2250,6 +2250,90 @@ a.brok-nav-card {
 .topic-video-btn {
     margin-top: 0.1rem;
 }
+/* Flere videoer per delkapittel – mobil først: én kolonne */
+.topic-video-multi {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+}
+.topic-video-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 650;
+    color: var(--text-main);
+}
+.topic-video-multi .topic-video-copy p {
+    color: #a3b1c6;
+}
+[data-theme="light"] .topic-video-multi .topic-video-copy p {
+    color: #475569;
+}
+.topic-video-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+}
+.topic-video-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    min-height: 48px;
+    padding: 0.4rem;
+    text-align: left;
+    font: inherit;
+    color: var(--text-main);
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+}
+.topic-video-item:hover {
+    border-color: var(--accent, #6366f1);
+}
+.topic-video-item:focus-visible {
+    outline: 2px solid var(--accent, #6366f1);
+    outline-offset: 2px;
+}
+.topic-video-item-thumb {
+    position: relative;
+    flex: 0 0 112px;
+    width: 112px;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    background: #0b1220;
+}
+.topic-video-item-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.topic-video-item-thumb .vid-play {
+    width: 1.4rem;
+    height: 1.4rem;
+    inset: auto 0.3rem 0.3rem auto;
+}
+.topic-video-item-text {
+    min-width: 0;
+    font-size: 0.9rem;
+    line-height: 1.35;
+}
+.topic-video-item-num {
+    font-weight: 700;
+}
+@media (min-width: 900px) {
+    .topic-video-list {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    }
+}
 @media (max-width: 640px) {
     .topic-video-main {
         flex-direction: column;

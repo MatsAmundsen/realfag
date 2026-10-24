@@ -1,0 +1,79 @@
+[
+  {
+    "sporsmal": "En modell $f(x)=a\\cdot b^x$ med $b=0{,}95$ beskriver",
+    "alternativer": [
+      "lineær vekst",
+      "en nedgang på $5\\,\\%$ per periode",
+      "en vekst på $95\\,\\%$",
+      "en potensfunksjon"
+    ],
+    "riktigSvar": 1,
+    "forklaring": "Vekstfaktor $0{,}95=1-0{,}05$."
+  },
+  {
+    "sporsmal": "Hva er gyldighetsområdet til en modell?",
+    "alternativer": [
+      "Alle reelle tall",
+      "Toppunktet",
+      "Verdimengden",
+      "De $x$-verdiene der modellen gir mening"
+    ],
+    "riktigSvar": 3,
+    "forklaring": "Modellen bør bare brukes der den beskriver virkeligheten rimelig godt."
+  },
+  {
+    "sporsmal": "Tabellen øker med $15$ hver gang $x$ øker med $1$. Hvilken modell passer?",
+    "alternativer": [
+      "lineær",
+      "eksponentiell",
+      "andregrads",
+      "potens"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Fast differanse betyr lineær vekst."
+  },
+  {
+    "sporsmal": "Å bruke en modell utenfor området der vi har data, kalles",
+    "alternativer": [
+      "interpolering",
+      "regresjon",
+      "ekstrapolering",
+      "avrunding"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Ekstrapolering er mer usikkert enn interpolering."
+  },
+  {
+    "sporsmal": "Modellen $T(l)=2{,}0\\cdot l^{0{,}5}$ er en",
+    "alternativer": [
+      "lineær modell",
+      "eksponentiell modell",
+      "potensmodell",
+      "andregradsmodell"
+    ],
+    "riktigSvar": 2,
+    "forklaring": "Variabelen står i grunntallet: $a\\cdot x^b$."
+  },
+  {
+    "sporsmal": "Hva er vekstfaktoren for en økning på $8\\,\\%$?",
+    "alternativer": [
+      "$0{,}08$",
+      "$1{,}8$",
+      "$0{,}92$",
+      "$1{,}08$"
+    ],
+    "riktigSvar": 3,
+    "forklaring": "$1+0{,}08=1{,}08$."
+  },
+  {
+    "sporsmal": "En taxitur koster $P(x)=18x+60$ kr for $x$ km. Hva betyr tallet $60$?",
+    "alternativer": [
+      "startprisen",
+      "prisen per km",
+      "prisen for $60$ km",
+      "største antall km"
+    ],
+    "riktigSvar": 0,
+    "forklaring": "Konstantleddet er prisen når $x=0$."
+  }
+]

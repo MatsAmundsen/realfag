@@ -980,12 +980,12 @@ export const fagsok = [
                     {
                         "id": "1.74",
                         "tittel": "Oppgave 1.74",
-                        "tekst": "<strong>a)</strong> Skriv tallet $0.00000042$ på standardform.<br><br><strong>b)</strong> Regn ut $\\frac{9 \\cdot 10^8}{3 \\cdot 10^2}$ og oppgi svaret på standardform.",
+                        "tekst": "<strong>a)</strong> Skriv tallet $0{,}00000042$ på standardform.<br><br><strong>b)</strong> Regn ut $\\frac{9 \\cdot 10^8}{3 \\cdot 10^2}$ og oppgi svaret på standardform.",
                         "bilde": null,
                         "hint": "Flytt kommaet slik at det står et tall mellom $1$ og $10$ foran $10$-potensen.",
                         "fasit": null,
                         "fasitSteg": [
-                            "<strong>a)</strong><br>Vi skal skrive $0.00000042$ på standardform.<br><br>Standardform skrives som $a \\cdot 10^n$, der $1 \\le a < 10$.<br><br>Vi flytter kommaet $7$ plasser til høyre for å få tallet $4.2$ (som er mellom $1$ og $10$).<br><br>Siden vi flytter kommaet til høyre for et tall som er mindre enn $1$, blir eksponenten negativ.<br><br>$0.00000042 = 4.2 \\cdot 10^{-7}$<br><br><strong>Svar:</strong> $4.2 \\cdot 10^{-7}$",
+                            "<strong>a)</strong><br>Vi skal skrive $0{,}00000042$ på standardform.<br><br>Standardform skrives som $a \\cdot 10^n$, der $1 \\le a < 10$.<br><br>Vi flytter kommaet $7$ plasser til høyre for å få tallet $4{,}2$ (som er mellom $1$ og $10$).<br><br>Siden vi flytter kommaet til høyre for et tall som er mindre enn $1$, blir eksponenten negativ.<br><br>$0{,}00000042 = 4{,}2 \\cdot 10^{-7}$<br><br><strong>Svar:</strong> $4{,}2 \\cdot 10^{-7}$",
                             "<strong>b)</strong><br>Vi skal regne ut $\\frac{9 \\cdot 10^8}{3 \\cdot 10^2}$<br><br>$$ \\frac{9 \\cdot 10^8}{3 \\cdot 10^2} $$<br><br>$$= \\frac{9}{3} \\cdot \\frac{10^8}{10^2} $$ (skiller tall og potenser)<br><br>$$= 3 \\cdot 10^{8 - 2} $$ (deler tallene og trekker fra eksponentene for potensene med samme grunntall)<br><br>$$= 3 \\cdot 10^6 $$ (forenkler)<br><br><strong>Svar:</strong> $3 \\cdot 10^6$"
                         ],
                         "starter": ""
@@ -993,25 +993,25 @@ export const fagsok = [
                     {
                         "id": "1.75",
                         "tittel": "Oppgave 1.75",
-                        "tekst": "Skriv tallene i synkende rekkefølge (fra størst til minst): $4 \\cdot 10^5$, $0.005$, $350 000$, $6 \\cdot 10^{-4}$",
+                        "tekst": "Skriv tallene i synkende rekkefølge (fra størst til minst): $4 \\cdot 10^5$, $0{,}005$, $350 000$, $6 \\cdot 10^{-4}$",
                         "bilde": null,
                         "hint": "Gjør om alle tallene til vanlige desimaltall før du sammenligner dem.",
                         "fasit": null,
                         "fasitSteg": [
-                            "Vi skal skrive tallene i synkende rekkefølge (fra størst til minst). <br><br>For å gjøre det enklere å sammenligne, gjør vi først om alle tallene til vanlige desimaltall:<br><br>$4 \\cdot 10^5 = 400 000$ (flytter komma $5$ plasser til høyre)<br><br>$0.005 = 0.005$ (allerede et vanlig desimaltall)",
-                            "$350 000 = 350 000$ (allerede et vanlig desimaltall)<br><br>$6 \\cdot 10^{-4} = 0.0006$ (flytter komma $4$ plasser til venstre)<br><br>Nå sammenligner vi de vanlige desimaltallene:<br>$400 000 > 350 000 > 0.005 > 0.0006$<br><br>Til slutt bytter vi tilbake til de opprinnelige formene:<br>$4 \\cdot 10^5 > 350 000 > 0.005 > 6 \\cdot 10^{-4}$<br><br><strong>Svar:</strong> $4 \\cdot 10^5$, $350 000$, $0.005$, $6 \\cdot 10^{-4}$"
+                            "Vi skal skrive tallene i synkende rekkefølge (fra størst til minst). <br><br>For å gjøre det enklere å sammenligne, gjør vi først om alle tallene til vanlige desimaltall:<br><br>$4 \\cdot 10^5 = 400 000$ (flytter komma $5$ plasser til høyre)<br><br>$0{,}005 = 0{,}005$ (allerede et vanlig desimaltall)",
+                            "$350 000 = 350 000$ (allerede et vanlig desimaltall)<br><br>$6 \\cdot 10^{-4} = 0{,}0006$ (flytter komma $4$ plasser til venstre)<br><br>Nå sammenligner vi de vanlige desimaltallene:<br>$400 000 > 350 000 > 0{,}005 > 0{,}0006$<br><br>Til slutt bytter vi tilbake til de opprinnelige formene:<br>$4 \\cdot 10^5 > 350 000 > 0{,}005 > 6 \\cdot 10^{-4}$<br><br><strong>Svar:</strong> $4 \\cdot 10^5$, $350 000$, $0{,}005$, $6 \\cdot 10^{-4}$"
                         ],
                         "starter": ""
                     },
                     {
                         "id": "1.76",
                         "tittel": "Oppgave 1.76",
-                        "tekst": "Gjør om målingen slik at du kan bruke et passende prefiks: $0.000007$ meter.",
+                        "tekst": "Gjør om målingen slik at du kan bruke et passende prefiks: $0{,}000007$ meter.",
                         "bilde": null,
                         "hint": "Prefikset for $10^{-3}$ er milli, og for $10^{-6}$ er det mikro.",
                         "fasit": null,
                         "fasitSteg": [
-                            "Vi skal gjøre om $0.000007$ meter til en enhet med et passende prefiks.<br><br>Først skriver vi tallet på standardform:<br><br>$0.000007 \\text{ m} = 7 \\cdot 10^{-6} \\text{ m}$ (flytter komma $6$ plasser til høyre)",
+                            "Vi skal gjøre om $0{,}000007$ meter til en enhet med et passende prefiks.<br><br>Først skriver vi tallet på standardform:<br><br>$0{,}000007 \\text{ m} = 7 \\cdot 10^{-6} \\text{ m}$ (flytter komma $6$ plasser til høyre)",
                             "Vi vet at prefikset for $10^{-6}$ er mikro ($\\mu$).<br><br>Derfor kan vi erstatte $10^{-6}$ med $\\mu$:<br><br>$7 \\cdot 10^{-6} \\text{ m} = 7 \\text{ } \\mu\\text{m}$<br><br><strong>Svar:</strong> $7 \\text{ } \\mu\\text{m}$ (mikrometer)"
                         ],
                         "starter": ""
@@ -1019,66 +1019,66 @@ export const fagsok = [
                     {
                         "id": "1.77",
                         "tittel": "Oppgave 1.77",
-                        "tekst": "Menneskets hjerte slår omtrent $3.5 \\cdot 10^7$ ganger i året.<br><br><strong>a)</strong> Omtrent hvor mange ganger slår det på en måned?<br><br><strong>b)</strong> Dersom et menneske lever i $80$ år, hvor mange slag blir det totalt på standardform?",
+                        "tekst": "Menneskets hjerte slår omtrent $3{,}5 \\cdot 10^7$ ganger i året.<br><br><strong>a)</strong> Omtrent hvor mange ganger slår det på en måned?<br><br><strong>b)</strong> Dersom et menneske lever i $80$ år, hvor mange slag blir det totalt på standardform?",
                         "bilde": null,
                         "hint": "Husk å justere desimaltallet slik at det er mellom $1$ og $10$ for at det skal være ekte standardform.",
                         "fasit": null,
                         "fasitSteg": [
-                            "<strong>a)</strong><br>Vi skal finne antall hjerteslag på en måned.<br><br>Antall hjerteslag i løpet av et år er $3.5 \\cdot 10^7$. Det er $12$ måneder i et år.<br><br>Vi deler årsforbruket på antall måneder:<br><br>$$ \\frac{3.5 \\cdot 10^7}{12} $$<br><br>$$= \\frac{3.5}{12} \\cdot 10^7 $$ (skiller brøken)<br><br>$\\approx 0.2917 \\cdot 10^7$ (utfører divisjonen)<br><br>Dette er ikke på standardform. For å få standardform må tallet foran $10$-potensen være mellom $1$ og $10$. Vi flytter komma én plass til høyre, som betyr at vi må minske eksponenten med $1$:<br><br>$0.2917 \\cdot 10^7 = 2.917 \\cdot 10^{-1} \\cdot 10^7$<br><br>$= 2.917 \\cdot 10^{7 - 1}$<br><br>$= 2.917 \\cdot 10^6$<br><br>Vi runder av til én desimal for å matche antall gjeldende siffer i oppgaveteksten:<br>$\\approx 2.9 \\cdot 10^6$<br><br><strong>Svar:</strong> Hjertet slår omtrent $2.9 \\cdot 10^6$ ganger på en måned.",
-                            "<strong>b)</strong><br>Vi skal finne totalt antall hjerteslag i løpet av $80$ år.<br><br>Vi multipliserer hjerteslag per år med antall år:<br><br>$3.5 \\cdot 10^7 \\cdot 80$<br><br>$= 3.5 \\cdot 80 \\cdot 10^7$ (endrer rekkefølgen)<br><br>$= 280 \\cdot 10^7$ (utfører multiplikasjonen)<br><br>Dette er ikke på standardform. Tallet foran $10$-potensen må være mellom $1$ og $10$. Vi flytter komma to plasser til venstre, som betyr at vi må øke eksponenten med $2$:<br><br>$280 \\cdot 10^7 = 2.80 \\cdot 10^2 \\cdot 10^7$<br><br>$= 2.8 \\cdot 10^{7 + 2}$<br><br>$= 2.8 \\cdot 10^9$<br><br><strong>Svar:</strong> I løpet av $80$ år slår hjertet omtrent $2.8 \\cdot 10^9$ ganger."
+                            "<strong>a)</strong><br>Vi skal finne antall hjerteslag på en måned.<br><br>Antall hjerteslag i løpet av et år er $3{,}5 \\cdot 10^7$. Det er $12$ måneder i et år.<br><br>Vi deler årsforbruket på antall måneder:<br><br>$$ \\frac{3.5 \\cdot 10^7}{12} $$<br><br>$$= \\frac{3.5}{12} \\cdot 10^7 $$ (skiller brøken)<br><br>$\\approx 0{,}2917 \\cdot 10^7$ (utfører divisjonen)<br><br>Dette er ikke på standardform. For å få standardform må tallet foran $10$-potensen være mellom $1$ og $10$. Vi flytter komma én plass til høyre, som betyr at vi må minske eksponenten med $1$:<br><br>$0{,}2917 \\cdot 10^7 = 2{,}917 \\cdot 10^{-1} \\cdot 10^7$<br><br>$= 2{,}917 \\cdot 10^{7 - 1}$<br><br>$= 2{,}917 \\cdot 10^6$<br><br>Vi runder av til én desimal for å matche antall gjeldende siffer i oppgaveteksten:<br>$\\approx 2{,}9 \\cdot 10^6$<br><br><strong>Svar:</strong> Hjertet slår omtrent $2{,}9 \\cdot 10^6$ ganger på en måned.",
+                            "<strong>b)</strong><br>Vi skal finne totalt antall hjerteslag i løpet av $80$ år.<br><br>Vi multipliserer hjerteslag per år med antall år:<br><br>$3{,}5 \\cdot 10^7 \\cdot 80$<br><br>$= 3{,}5 \\cdot 80 \\cdot 10^7$ (endrer rekkefølgen)<br><br>$= 280 \\cdot 10^7$ (utfører multiplikasjonen)<br><br>Dette er ikke på standardform. Tallet foran $10$-potensen må være mellom $1$ og $10$. Vi flytter komma to plasser til venstre, som betyr at vi må øke eksponenten med $2$:<br><br>$280 \\cdot 10^7 = 2{,}80 \\cdot 10^2 \\cdot 10^7$<br><br>$= 2{,}8 \\cdot 10^{7 + 2}$<br><br>$= 2{,}8 \\cdot 10^9$<br><br><strong>Svar:</strong> I løpet av $80$ år slår hjertet omtrent $2{,}8 \\cdot 10^9$ ganger."
                         ],
                         "starter": ""
                     },
                     {
                         "id": "1.78",
                         "tittel": "Oppgave 1.78",
-                        "tekst": "Massen til et elektron er ca. $9.1 \\cdot 10^{-31}$ kg. Gjør om dette tallet til gram, og oppgi svaret på standardform.",
+                        "tekst": "Massen til et elektron er ca. $9{,}1 \\cdot 10^{-31}$ kg. Gjør om dette tallet til gram, og oppgi svaret på standardform.",
                         "bilde": null,
                         "hint": "$1$ kg er $10^3$ gram.",
                         "fasit": null,
                         "fasitSteg": [
-                            "Vi skal gjøre om fra kilogram (kg) til gram (g).<br><br>Vi vet at $1 \\text{ kg} = 1000 \\text{ g} = 10^3 \\text{ g}$.<br><br>For å gjøre om fra kilogram til gram må vi multiplisere massen med $10^3$:<br><br>$9.1 \\cdot 10^{-31} \\text{ kg} \\cdot 10^3 \\text{ g/kg}$",
-                            "$= 9.1 \\cdot 10^{-31} \\cdot 10^3 \\text{ g}$ (setter sammen uttrykket)<br><br>$= 9.1 \\cdot 10^{-31 + 3} \\text{ g}$ (bruker regneregelen for multiplikasjon av potenser med samme grunntall: vi adderer eksponentene)<br><br>$= 9.1 \\cdot 10^{-28} \\text{ g}$ (forenkler eksponenten)<br><br>Svaret er allerede på standardform fordi $9.1$ er mellom $1$ og $10$.<br><br><strong>Svar:</strong> $9.1 \\cdot 10^{-28} \\text{ g}$"
+                            "Vi skal gjøre om fra kilogram (kg) til gram (g).<br><br>Vi vet at $1 \\text{ kg} = 1000 \\text{ g} = 10^3 \\text{ g}$.<br><br>For å gjøre om fra kilogram til gram må vi multiplisere massen med $10^3$:<br><br>$9{,}1 \\cdot 10^{-31} \\text{ kg} \\cdot 10^3 \\text{ g/kg}$",
+                            "$= 9{,}1 \\cdot 10^{-31} \\cdot 10^3 \\text{ g}$ (setter sammen uttrykket)<br><br>$= 9{,}1 \\cdot 10^{-31 + 3} \\text{ g}$ (bruker regneregelen for multiplikasjon av potenser med samme grunntall: vi adderer eksponentene)<br><br>$= 9{,}1 \\cdot 10^{-28} \\text{ g}$ (forenkler eksponenten)<br><br>Svaret er allerede på standardform fordi $9{,}1$ er mellom $1$ og $10$.<br><br><strong>Svar:</strong> $9{,}1 \\cdot 10^{-28} \\text{ g}$"
                         ],
                         "starter": ""
                     },
                     {
                         "id": "1.79",
                         "tittel": "Oppgave 1.79",
-                        "tekst": "Avstanden fra jorda til sola er omtrent $1.5 \\cdot 10^{11}$ meter. Lysets hastighet er ca. $3.0 \\cdot 10^8$ m/s. Hvor mange sekunder bruker lyset fra sola til jorda?",
+                        "tekst": "Avstanden fra jorda til sola er omtrent $1{,}5 \\cdot 10^{11}$ meter. Lysets hastighet er ca. $3{,}0 \\cdot 10^8$ m/s. Hvor mange sekunder bruker lyset fra sola til jorda?",
                         "bilde": null,
                         "hint": "Bruk formelen for tid: $t = \\frac{s}{v}$ (tid = strekning delt på fart).",
                         "fasit": null,
                         "fasitSteg": [
-                            "Vi skal finne tiden ($t$) lyset bruker, gitt strekningen ($s$) og farten ($v$).<br><br>Formelen for tid er:<br>$$ t = \\frac{s}{v} $$<br><br>Vi setter inn de oppgitte verdiene ($s = 1.5 \\cdot 10^{11}$ m og $v = 3.0 \\cdot 10^8$ m/s):<br><br>$$ t = \\frac{1.5 \\cdot 10^{11}}{3.0 \\cdot 10^8} $$<br><br>$$= \\frac{1.5}{3.0} \\cdot \\frac{10^{11}}{10^8} $$ (skiller tall og potenser for å regne ut hver for seg)",
-                            "$$= 0.5 \\cdot 10^{11 - 8} $$ (utfører divisjonen $1.5 / 3.0 = 0.5$ og bruker potensregelen $\\frac{a^n}{a^m} = a^{n-m}$)<br><br>$$= 0.5 \\cdot 10^3 $$ (forenkler eksponenten)<br><br>Dette gir oss svaret på standardform hvis vi vil:<br>$0.5 \\cdot 10^3 = 5 \\cdot 10^{-1} \\cdot 10^3 = 5 \\cdot 10^2$<br><br>Eller som et vanlig desimaltall:<br>$0.5 \\cdot 10^3 = 0.5 \\cdot 1000 = 500$<br><br><strong>Svar:</strong> Lyset bruker $500$ sekunder."
+                            "Vi skal finne tiden ($t$) lyset bruker, gitt strekningen ($s$) og farten ($v$).<br><br>Formelen for tid er:<br>$$ t = \\frac{s}{v} $$<br><br>Vi setter inn de oppgitte verdiene ($s = 1{,}5 \\cdot 10^{11}$ m og $v = 3{,}0 \\cdot 10^8$ m/s):<br><br>$$ t = \\frac{1.5 \\cdot 10^{11}}{3.0 \\cdot 10^8} $$<br><br>$$= \\frac{1.5}{3.0} \\cdot \\frac{10^{11}}{10^8} $$ (skiller tall og potenser for å regne ut hver for seg)",
+                            "$$= 0{,}5 \\cdot 10^{11 - 8} $$ (utfører divisjonen $1{,}5 / 3{,}0 = 0{,}5$ og bruker potensregelen $\\frac{a^n}{a^m} = a^{n-m}$)<br><br>$$= 0{,}5 \\cdot 10^3 $$ (forenkler eksponenten)<br><br>Dette gir oss svaret på standardform hvis vi vil:<br>$0{,}5 \\cdot 10^3 = 5 \\cdot 10^{-1} \\cdot 10^3 = 5 \\cdot 10^2$<br><br>Eller som et vanlig desimaltall:<br>$0{,}5 \\cdot 10^3 = 0{,}5 \\cdot 1000 = 500$<br><br><strong>Svar:</strong> Lyset bruker $500$ sekunder."
                         ],
                         "starter": ""
                     },
                     {
                         "id": "1.80",
                         "tittel": "Oppgave 1.80",
-                        "tekst": "Hvor mange gjeldende siffer har disse tallene?<br><strong>a)</strong> $4.50$<br><strong>b)</strong> $0.007$<br><strong>c)</strong> $1.002$",
+                        "tekst": "Hvor mange gjeldende siffer har disse tallene?<br><strong>a)</strong> $4{,}50$<br><strong>b)</strong> $0{,}007$<br><strong>c)</strong> $1{,}002$",
                         "bilde": null,
                         "hint": "Nuller på slutten av et desimaltall teller som gjeldende siffer. Nuller foran det første tallet over null teller *ikke*.",
                         "fasit": null,
                         "fasitSteg": [
-                            "<strong>a)</strong><br>$4.50$ har tre siffer, og siden nullen står på slutten av et desimaltall betyr det at tallet er målt med en nøyaktighet på to desimaler. Nullen er derfor gjeldende.<br><strong>Svar:</strong> 3 gjeldende siffer.",
-                            "<strong>b)</strong><br>$0.007$ har bare ett tall som ikke er null. Nullene foran 7-tallet angir bare størrelsesordenen, og teller ikke som gjeldende siffer.<br><strong>Svar:</strong> 1 gjeldende siffer.",
-                            "<strong>c)</strong><br>$1.002$ har tall på begge sider av nullene. Nuller mellom to gjeldende siffer er alltid gjeldende. <br><strong>Svar:</strong> 4 gjeldende siffer."
+                            "<strong>a)</strong><br>$4{,}50$ har tre siffer, og siden nullen står på slutten av et desimaltall betyr det at tallet er målt med en nøyaktighet på to desimaler. Nullen er derfor gjeldende.<br><strong>Svar:</strong> 3 gjeldende siffer.",
+                            "<strong>b)</strong><br>$0{,}007$ har bare ett tall som ikke er null. Nullene foran 7-tallet angir bare størrelsesordenen, og teller ikke som gjeldende siffer.<br><strong>Svar:</strong> 1 gjeldende siffer.",
+                            "<strong>c)</strong><br>$1{,}002$ har tall på begge sider av nullene. Nuller mellom to gjeldende siffer er alltid gjeldende. <br><strong>Svar:</strong> 4 gjeldende siffer."
                         ],
                         "starter": ""
                     },
                     {
                         "id": "1.81",
                         "tittel": "Oppgave 1.81",
-                        "tekst": "Du måler lengden av et rom til $4.3$ meter, og bredden til $3.25$ meter. <br>Regn ut arealet og oppgi svaret med riktig antall gjeldende siffer.",
+                        "tekst": "Du måler lengden av et rom til $4{,}3$ meter, og bredden til $3{,}25$ meter. <br>Regn ut arealet og oppgi svaret med riktig antall gjeldende siffer.",
                         "bilde": null,
                         "hint": "Ved multiplikasjon skal svaret ha like mange gjeldende siffer som det tallet i regnestykket som har *færrest* gjeldende siffer.",
                         "fasit": null,
                         "fasitSteg": [
-                            "Arealet av et rektangel er lengde ganger bredde:<br>$A = 4.3 \\text{ m} \\cdot 3.25 \\text{ m} = 13.975 \\text{ m}^2$<br><br>Nå må vi runde av svaret. Regelen for multiplikasjon sier at svaret ikke kan oppgis med større nøyaktighet (flere gjeldende siffer) enn den mest unøyaktige faktoren.<br>- $4.3$ har <strong>2</strong> gjeldende siffer.<br>- $3.25$ har <strong>3</strong> gjeldende siffer.",
-                            "Dette betyr at svaret vårt kun kan ha <strong>2</strong> gjeldende siffer.<br>Vi runder av $13.975$ til to siffer, noe som gir $14$.<br><br><strong>Svar:</strong> Arealet er $14 \\text{ m}^2$."
+                            "Arealet av et rektangel er lengde ganger bredde:<br>$A = 4{,}3 \\text{ m} \\cdot 3{,}25 \\text{ m} = 13{,}975 \\text{ m}^2$<br><br>Nå må vi runde av svaret. Regelen for multiplikasjon sier at svaret ikke kan oppgis med større nøyaktighet (flere gjeldende siffer) enn den mest unøyaktige faktoren.<br>- $4{,}3$ har <strong>2</strong> gjeldende siffer.<br>- $3{,}25$ har <strong>3</strong> gjeldende siffer.",
+                            "Dette betyr at svaret vårt kun kan ha <strong>2</strong> gjeldende siffer.<br>Vi runder av $13{,}975$ til to siffer, noe som gir $14$.<br><br><strong>Svar:</strong> Arealet er $14 \\text{ m}^2$."
                         ],
                         "starter": ""
                     }
@@ -1099,31 +1099,31 @@ export const fagsok = [
                         "sporsmal": "Hvordan skrives 4500 på standardform?",
                         "alternativer": [
                             "$45 \\cdot 10^2$",
-                            "$4.5 \\cdot 10^3$",
-                            "$0.45 \\cdot 10^4$",
-                            "$4.5 \\cdot 10^{-3}$"
+                            "$4{,}5 \\cdot 10^3$",
+                            "$0{,}45 \\cdot 10^4$",
+                            "$4{,}5 \\cdot 10^{-3}$"
                         ],
                         "riktigSvar": 1,
                         "forklaring": "Vi flytter kommaet tre plasser til venstre, så eksponenten til 10 blir 3."
                     },
                     {
-                        "sporsmal": "Hva representerer $3.2 \\cdot 10^{-4}$?",
+                        "sporsmal": "Hva representerer $3{,}2 \\cdot 10^{-4}$?",
                         "alternativer": [
                             "$32000$",
-                            "$0.00032$",
-                            "$0.000032$",
+                            "$0{,}00032$",
+                            "$0{,}000032$",
                             "$-32000$"
                         ],
                         "riktigSvar": 1,
                         "forklaring": "Eksponenten -4 betyr at kommaet skal flyttes 4 plasser til venstre. Det gir 0.00032."
                     },
                     {
-                        "sporsmal": "Skriv 0.0056 på standardform.",
+                        "sporsmal": "Skriv 0,0056 på standardform.",
                         "alternativer": [
-                            "$5.6 \\cdot 10^{-3}$",
+                            "$5{,}6 \\cdot 10^{-3}$",
                             "$56 \\cdot 10^{-4}$",
-                            "$5.6 \\cdot 10^3$",
-                            "$0.56 \\cdot 10^{-2}$"
+                            "$5{,}6 \\cdot 10^3$",
+                            "$0{,}56 \\cdot 10^{-2}$"
                         ],
                         "riktigSvar": 0,
                         "forklaring": "For å få et tall mellom 1 og 10 må vi flytte kommaet 3 plasser til høyre. Dette gir en negativ eksponent -3."
@@ -1153,21 +1153,21 @@ export const fagsok = [
                     {
                         "sporsmal": "Gjør om $450 \\cdot 10^3$ til riktig standardform.",
                         "alternativer": [
-                            "$4.5 \\cdot 10^3$",
-                            "$4.5 \\cdot 10^5$",
+                            "$4{,}5 \\cdot 10^3$",
+                            "$4{,}5 \\cdot 10^5$",
                             "$45 \\cdot 10^4$",
-                            "$4.5 \\cdot 10^1$"
+                            "$4{,}5 \\cdot 10^1$"
                         ],
                         "riktigSvar": 1,
-                        "forklaring": "Tallet $450$ er ikke mellom 1 og 10. $450 = 4.5 \\cdot 10^2$. Dermed får vi $4.5 \\cdot 10^2 \\cdot 10^3 = 4.5 \\cdot 10^5$."
+                        "forklaring": "Tallet $450$ er ikke mellom 1 og 10. $450 = 4{,}5 \\cdot 10^2$. Dermed får vi $4{,}5 \\cdot 10^2 \\cdot 10^3 = 4{,}5 \\cdot 10^5$."
                     },
                     {
                         "sporsmal": "Hvilket tall er størst?",
                         "alternativer": [
-                            "$9.9 \\cdot 10^4$",
-                            "$1.2 \\cdot 10^5$",
-                            "$5.0 \\cdot 10^4$",
-                            "$8.7 \\cdot 10^3$"
+                            "$9{,}9 \\cdot 10^4$",
+                            "$1{,}2 \\cdot 10^5$",
+                            "$5{,}0 \\cdot 10^4$",
+                            "$8{,}7 \\cdot 10^3$"
                         ],
                         "riktigSvar": 1,
                         "forklaring": "Tallet med den høyeste positive eksponenten er størst, forutsatt at alle er på standardform. $10^5$ representerer hundretusener, mens $10^4$ bare er titusener."
@@ -1187,12 +1187,12 @@ export const fagsok = [
                         "sporsmal": "Regn ut $(5 \\cdot 10^4) + (3 \\cdot 10^3)$.",
                         "alternativer": [
                             "$8 \\cdot 10^7$",
-                            "$5.3 \\cdot 10^4$",
+                            "$5{,}3 \\cdot 10^4$",
                             "$8 \\cdot 10^4$",
-                            "$5.3 \\cdot 10^3$"
+                            "$5{,}3 \\cdot 10^3$"
                         ],
                         "riktigSvar": 1,
-                        "forklaring": "For å legge sammen tall på standardform må de ha samme eksponent. $3 \\cdot 10^3 = 0.3 \\cdot 10^4$. Da får vi $(5 + 0.3) \\cdot 10^4 = 5.3 \\cdot 10^4$."
+                        "forklaring": "For å legge sammen tall på standardform må de ha samme eksponent. $3 \\cdot 10^3 = 0{,}3 \\cdot 10^4$. Da får vi $(5 + 0{,}3) \\cdot 10^4 = 5{,}3 \\cdot 10^4$."
                     },
                     {
                         "sporsmal": "Hvis et lysår er ca $9{,}46 \\cdot 10^{15}$ meter, og en stjerne er 100 lysår unna, hvor mange meter er det?",
@@ -5020,8 +5020,8 @@ export const fagsok = [
                             "<strong>Svar:</strong> En fallende eksponentialkurve som starter i $(0, 400000)$.",
                             "<strong>d)</strong><br>Vi setter $t = 4$ for å finne verdien etter $4$ år.<br><br>$V(4) = 400000 \\cdot 0{,}85^4$ (setter inn $t = 4$)<br><br>$V(4) \\approx 400000 \\cdot 0{,}5220$ (beregner potensen)<br><br>$V(4) \\approx 208802{,}5$ (ganger ut)",
                             "<strong>Svar:</strong> $208803$ kr",
-                            "<strong>e)</strong><br>Vi vil finne tiden $t$ når verdien $V(t)$ er halvparten av startverdien ($200000$).<br><br>$400000 \\cdot 0{,}85^t = 200000$ (setter funksjonen lik den halve verdien)<br><br>$0{,}85^t = \\frac{200000}{400000}$ (deler på $400000$ på begge sider)<br><br>$0{,}85^t = 0{,}5$ (forenkler brøken)<br><br>$\\lg(0{,}85^t) = \\lg(0{,}5)$ (tar logaritmen på begge sider for å hente ned eksponenten)<br><br>$t \\cdot \\lg(0{,}85) = \\lg(0{,}5)$ (bruker logaritmeregelen $\\lg(a^t) = t \\cdot \\lg a$)<br><br>$t = \\frac{\\lg(0{,}5)}{\\lg(0{,}85)}$ (isolerer $t$)<br><br>Alternativt: Løs $400000 \\cdot 0{,}85^t = 200000$ med et digitalt verktøy (f.eks. CAS i GeoGebra), eller tegn grafen og linja $y = 200000$ og finn skjæringspunktet.<br><br>$t \\approx 4{,}26$",
-                            "<strong>Svar:</strong> $4{,}26$ år"
+                            "<strong>e)</strong><br>Vi vil finne tiden $t$ når verdien $V(t)$ er halvparten av startverdien ($200000$), altså løse likningen $400000 \\cdot 0{,}85^t = 200000$.<br><br><strong>Grafisk/digitalt (hovedmetode):</strong><br>Tegn $V(t) = 400000 \\cdot 0{,}85^t$ og linja $y = 200000$ i GeoGebra. Bruk «Skjæring mellom to objekt». Skjæringspunktet er omtrent $(4{,}27;\\ 200000)$. (Du kan også skrive likningen i CAS og bruke «Løs numerisk».)<br><br>$t \\approx 4{,}27$<br><br><strong>Alternativ (med logaritmer):</strong><br>$0{,}85^t = \\frac{200000}{400000} = 0{,}5$ (deler på $400000$)<br>$\\lg(0{,}85^t) = \\lg(0{,}5)$ (tar logaritmen på begge sider)<br>$t \\cdot \\lg(0{,}85) = \\lg(0{,}5)$ (bruker $\\lg(a^t) = t \\cdot \\lg a$)<br>$t = \\frac{\\lg(0{,}5)}{\\lg(0{,}85)} \\approx 4{,}27$",
+                            "<strong>Svar:</strong> ca. $4{,}3$ år"
                         ],
                         "starter": ""
                     },
@@ -5282,6 +5282,76 @@ export const fagsok = [
                         "fasitSteg": [
                             "Vi tolker informasjonen fra oppgaven steg for steg:<br><br>1. Intervallet $x < -1$:<br>Når $f'(x) < 0$, betyr dette at grafen til selve funksjonen, $f(x)$, synker.<br><br>2. I punktet $x = -1$:<br>Her er $f'(x) = 0$. Siden funksjonen synker fram til dette punktet, og deretter (som vi ser i neste punkt) begynner å stige, vil $x = -1$ tilsvare et lokalt bunnpunkt på grafen til $f(x)$.<br><br>3. Intervallet mellom $x = -1$ og $x = 3$:<br>Når $f'(x)$ er positiv ($f'(x) > 0$), betyr dette at grafen til $f(x)$ stiger kontinuerlig over dette intervallet.<br><br>4. I punktet $x = 3$:<br>Her er $f'(x) = 0$ igjen. Fordi funksjonen steg fram til dette punktet og (som vi ser i neste punkt) begynner å synke, vil $x = 3$ tilsvare et lokalt toppunkt.<br><br>5. Intervallet $x > 3$:<br>Når $f'(x)$ igjen er negativ ($f'(x) < 0$), begynner $f(x)$ å synke.<br><br>Skissen din bør derfor vise en graf som synker ned i en \"dal\" (bunnpunkt) ved $x = -1$, stiger derfra opp til en \"bakketopp\" (toppunkt) ved $x = 3$, og synker nedover igjen for resten av verdiene. Det kan se ut som en s-lignende kurve, for eksempel en tredjegradsfunksjon med negativt fortegn på $x^3$-leddet.",
                             "<strong>Svar:</strong> Funksjonen synker fram til $x = -1$ (bunnpunkt), stiger mellom $x = -1$ og $x = 3$ (toppunkt i $x = 3$), og synker deretter for alle $x > 3$."
+                        ],
+                        "starter": ""
+                    },
+                    {
+                        "id": "4H.D1",
+                        "tittel": "Oppgave 4H.D1",
+                        "tekst": "Regelen for å derivere en potens med en konstant foran er $(a\\cdot x^n)' = n\\cdot a\\cdot x^{n-1}$: eksponenten ganges med tallet foran, og eksponenten blir én mindre.<br><br>Deriver funksjonene.<br><br><strong>a)</strong> $f(x) = x^5$<br><br><strong>b)</strong> $g(x) = 4x^3$<br><br><strong>c)</strong> $h(x) = -2x^6$<br><br><strong>d)</strong> $p(x) = 0{,}5x^4$",
+                        "bilde": null,
+                        "hint": "Gang eksponenten med tallet foran $x$, og trekk 1 fra eksponenten.",
+                        "fasit": null,
+                        "fasitSteg": [
+                            "<strong>a)</strong> $f'(x) = 5\\cdot x^{5-1} = 5x^4$<br><strong>Svar:</strong> $f'(x) = 5x^4$",
+                            "<strong>b)</strong> $g'(x) = 3\\cdot 4\\cdot x^{3-1} = 12x^2$<br><strong>Svar:</strong> $g'(x) = 12x^2$",
+                            "<strong>c)</strong> $h'(x) = 6\\cdot(-2)\\cdot x^{6-1} = -12x^5$<br><strong>Svar:</strong> $h'(x) = -12x^5$",
+                            "<strong>d)</strong> $p'(x) = 4\\cdot 0{,}5\\cdot x^{4-1} = 2x^3$<br><strong>Svar:</strong> $p'(x) = 2x^3$"
+                        ],
+                        "starter": ""
+                    },
+                    {
+                        "id": "4H.D2",
+                        "tittel": "Oppgave 4H.D2",
+                        "tekst": "Når en funksjon er en sum av flere ledd, kan vi derivere hvert ledd for seg (ledd for ledd). Husk at $(b\\cdot x)' = b$ og at en konstant har derivert $0$.<br><br>Deriver funksjonene.<br><br><strong>a)</strong> $f(x) = 2x^3 + 5x^2$<br><br><strong>b)</strong> $g(x) = x^4 - 3x^2 + 7x - 11$<br><br><strong>c)</strong> $h(x) = -x^3 + 0{,}5x^2 - 8$",
+                        "bilde": null,
+                        "hint": "Deriver ett ledd om gangen med regelen $(a\\cdot x^n)' = n\\cdot a\\cdot x^{n-1}$. Konstantleddet forsvinner.",
+                        "fasit": null,
+                        "fasitSteg": [
+                            "<strong>a)</strong> $f'(x) = 3\\cdot 2x^2 + 2\\cdot 5x = 6x^2 + 10x$<br><strong>Svar:</strong> $f'(x) = 6x^2 + 10x$",
+                            "<strong>b)</strong> $g'(x) = 4x^3 - 2\\cdot 3x + 7 - 0 = 4x^3 - 6x + 7$<br><strong>Svar:</strong> $g'(x) = 4x^3 - 6x + 7$",
+                            "<strong>c)</strong> $h'(x) = -3x^2 + 2\\cdot 0{,}5x - 0 = -3x^2 + x$<br><strong>Svar:</strong> $h'(x) = -3x^2 + x$"
+                        ],
+                        "starter": ""
+                    },
+                    {
+                        "id": "4H.D3",
+                        "tittel": "Oppgave 4H.D3",
+                        "tekst": "Gitt funksjonen $f(x) = x^3 - 4x$.<br><br><strong>a)</strong> Finn $f'(x)$.<br><br><strong>b)</strong> Regn ut $f'(-1)$, $f'(0)$ og $f'(2)$.<br><br><strong>c)</strong> Stiger eller synker grafen i hvert av disse punktene?",
+                        "bilde": null,
+                        "hint": "Deriver ledd for ledd. Sett deretter inn x-verdiene i $f'(x)$. Positivt stigningstall betyr at grafen stiger.",
+                        "fasit": null,
+                        "fasitSteg": [
+                            "<strong>a)</strong> $f'(x) = 3x^2 - 4$<br><strong>Svar:</strong> $f'(x) = 3x^2 - 4$",
+                            "<strong>b)</strong> $f'(-1) = 3\\cdot(-1)^2 - 4 = -1$<br>$f'(0) = 3\\cdot 0^2 - 4 = -4$<br>$f'(2) = 3\\cdot 2^2 - 4 = 8$<br><strong>Svar:</strong> $f'(-1) = -1$, $f'(0) = -4$ og $f'(2) = 8$",
+                            "<strong>c)</strong> Negativ derivert betyr at grafen synker, positiv betyr at den stiger.<br><strong>Svar:</strong> Grafen synker i $x = -1$ og $x = 0$, og stiger i $x = 2$."
+                        ],
+                        "starter": ""
+                    },
+                    {
+                        "id": "4H.D4",
+                        "tittel": "Oppgave 4H.D4",
+                        "tekst": "En elev skal derivere $f(x) = 3x^4 - 2x + 6$ og skriver<br><br>$f'(x) = 12x^4 - 2 + 6$.<br><br><strong>a)</strong> Forklar hvilke to feil eleven har gjort.<br><br><strong>b)</strong> Finn riktig $f'(x)$, og regn ut $f'(1)$.",
+                        "bilde": null,
+                        "hint": "Sjekk eksponenten i første ledd og hva som skjer med konstantleddet.",
+                        "fasit": null,
+                        "fasitSteg": [
+                            "<strong>a)</strong> I første ledd skal eksponenten bli én mindre: $(3x^4)' = 12x^3$, ikke $12x^4$. Konstantleddet $6$ har derivert $0$ og skal ikke være med.<br><strong>Svar:</strong> Eksponenten er ikke redusert, og konstanten er ikke fjernet.",
+                            "<strong>b)</strong> $f'(x) = 12x^3 - 2$<br>$f'(1) = 12\\cdot 1^3 - 2 = 10$<br><strong>Svar:</strong> $f'(x) = 12x^3 - 2$ og $f'(1) = 10$"
+                        ],
+                        "starter": ""
+                    },
+                    {
+                        "id": "4H.D5",
+                        "tittel": "Oppgave 4H.D5",
+                        "tekst": "Gitt funksjonen $g(x) = 2x^3 - 3x^2 - 12x + 1$.<br><br><strong>a)</strong> Finn $g'(x)$.<br><br><strong>b)</strong> Hva er stigningstallet til grafen der den skjærer y-aksen?<br><br><strong>c)</strong> Finn x-verdiene der grafen har vannrett tangent.",
+                        "bilde": null,
+                        "hint": "Grafen skjærer y-aksen i $x = 0$. Vannrett tangent betyr $g'(x) = 0$.",
+                        "fasit": null,
+                        "fasitSteg": [
+                            "<strong>a)</strong> $g'(x) = 3\\cdot 2x^2 - 2\\cdot 3x - 12 + 0 = 6x^2 - 6x - 12$<br><strong>Svar:</strong> $g'(x) = 6x^2 - 6x - 12$",
+                            "<strong>b)</strong> $g'(0) = -12$<br><strong>Svar:</strong> Stigningstallet er $-12$.",
+                            "<strong>c)</strong> $6x^2 - 6x - 12 = 0$<br>$x^2 - x - 2 = 0$ (del på 6)<br>$(x - 2)(x + 1) = 0$<br>$x = 2$ eller $x = -1$<br><strong>Svar:</strong> Vannrett tangent for $x = -1$ og $x = 2$."
                         ],
                         "starter": ""
                     },
