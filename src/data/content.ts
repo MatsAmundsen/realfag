@@ -16,13 +16,17 @@ import programmeringHtml from "./fagstoff/programmering.html?raw";
 import videoerHtml from "./fagstoff/videoer.html?raw";
 
 /** Datatabeller (kap 6): rullbar ramme på mobil, caption og th scope="row". Endrer ikke tallene. */
+let dataTableSeq = 0;
 function styleDataTables(html: string): string {
   if (!html.includes("<table>")) return html;
   return html.replace(/<table>([\s\S]*?)<\/table>/g, (_m, inner: string) => {
     const heads = [...inner.matchAll(/<th>([\s\S]*?)<\/th>/g)].map((m) => m[1]);
     const caption = heads.length ? `Datatabell: ${heads.join(" og ")}` : "Datatabell";
     const body = inner.replace(/<th>/g, '<th scope="row">');
-    return `<div class="data-table-wrap" role="region" tabindex="0" aria-label="Tabell, kan rulles sidelengs"><table class="data-table"><caption>${caption}</caption>${body}</table></div>`;
+    const n = ++dataTableSeq;
+    const plain = caption.replace(/\$|\\[a-z]+|[{}]/g, "").replace(/\s+/g, " ").trim();
+    // Unikt navn per tabell (axe landmark-unique): flere regioner på samme side får ulike navn.
+    return `<div class="data-table-wrap" role="region" tabindex="0" aria-label="Tabell ${n}: ${plain} (kan rulles sidelengs)"><table class="data-table"><caption>${caption}</caption>${body}</table></div>`;
   });
 }
 
@@ -141,7 +145,7 @@ export const CHAPTER_META: Record<
     image: "/images/kap5.jpg",
     tint: "#22d3ee",
   },
-  // kap6/kap7: abstrakte omslag laget fra SVG (design/covers). Tint-kontrast mot #111827: rosa 6,7:1, oransje 7,8:1.
+  // kap6/kap7: omslag i samme fotostil som kap1–4 (1600×1200 JPEG). Tint-kontrast mot #111827: rosa 6,7:1, rosa-rød #fb7185 6,6:1.
   kap6: {
     short: "Modellering",
     blurb: "Matematiske modeller, regresjon og modellering i praksis",
@@ -152,7 +156,7 @@ export const CHAPTER_META: Record<
     short: "Trigonometri",
     blurb: "Pytagoras, formlikhet, sinus, cosinus, tangens og trekantsetningene",
     image: "/images/kap7.jpg",
-    tint: "#fb923c",
+    tint: "#fb7185",
   },
 };
 
