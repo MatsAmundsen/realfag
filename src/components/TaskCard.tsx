@@ -8,6 +8,7 @@ import { countChapter, countSubchapter, isOvingDelkap, taskKey } from "@/lib/pro
 import { fagsok, videoForSub } from "@/data/content";
 import { fireCelebration } from "@/lib/progress-store";
 import { extractPlots } from "@/lib/plot-fn";
+import { PLOT_OVERRIDES, applyPlotOverride } from "@/lib/plot-overrides";
 import { useVideoPlayer } from "./VideoPlayer";
 
 export function TaskCard({
@@ -43,8 +44,13 @@ export function TaskCard({
   const steps = (oppgave.fasitSteg || []).filter(Boolean);
   const fasitHtml = oppgave.fasit;
   const plot = useMemo(
-    () => (kapId === "kap4" || kapId === "kap5" ? extractPlots(oppgave.tekst) : null),
-    [kapId, oppgave.tekst],
+    () => {
+      if (kapId !== "kap4" && kapId !== "kap5") return null;
+      const ov = kapId === "kap5" ? PLOT_OVERRIDES[oppgave.id] : undefined;
+      const spec = extractPlots(oppgave.tekst, ov);
+      return spec && ov ? applyPlotOverride(spec, ov) : spec;
+    },
+    [kapId, oppgave.id, oppgave.tekst],
   );
 
   useEffect(() => {

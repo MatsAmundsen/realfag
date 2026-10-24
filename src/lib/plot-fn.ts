@@ -33,6 +33,8 @@ export type PlotSpec = {
   yMax: number;
   features: PlotFeature[];
   asymptotes: PlotAsymptote[];
+  /** Valgfri tegnforklaring, én per serie. */
+  legend?: string[];
 };
 
 const MATH_IDS = new Set(["sin", "cos", "tan", "sqrt", "abs", "log", "exp", "min", "max", "pow", "PI", "E"]);
@@ -670,8 +672,11 @@ function extractGivenPoints(html: string): PlotPoint[] {
   return points;
 }
 
-export function extractPlots(html: string): PlotSpec | null {
-  if (!html || !wantsFigure(html)) return null;
+export function extractPlots(
+  html: string,
+  opts?: { force?: boolean; extra?: { name: string; rhs: string }[] },
+): PlotSpec | null {
+  if (!html || (!opts?.force && !wantsFigure(html))) return null;
   const series: PlotSeries[] = [];
   const seen = new Set<string>();
 
@@ -703,7 +708,14 @@ export function extractPlots(html: string): PlotSpec | null {
     series.push({ name: `${name}(${variable})`, latex: rhs, variable, evalAt });
   }
 
-  const points = extractGivenPoints(html);
+  for (const ex of opts?.extra ?? []) {
+    const evalAt = compile(ex.rhs, "x");
+    if (!evalAt || seen.has(ex.name)) continue;
+    seen.add(ex.name);
+    series.push({ name: ex.name, latex: ex.rhs, variable: "x", evalAt });
+  }
+
+  const points = opts?.extra?.length ? [] : extractGivenPoints(html);
 
   if (series.length === 0 && points.length >= 2 && points.length % 2 === 0) {
     for (let i = 0; i < points.length; i += 2) {

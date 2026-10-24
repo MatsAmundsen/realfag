@@ -1,4 +1,5 @@
 import { KAP7_FIGURES } from "./kap7-figures";
+import { KAP5_FIGURES, KAP5_FASIT_FIGURES } from "./kap5-figures";
 import { KAP2_FIGURES, figDiffSquares, figSecondSquare } from "./kap2-figures";
 
 /** Pedagogiske SVG-figurer til oppgaver. Bruker currentColor så de følger tema. */
@@ -1172,6 +1173,7 @@ export function figPythagoras13(caption: string): string {
 
 export const TASK_FIGURES: Record<string, string> = {
   ...KAP7_FIGURES,
+  ...KAP5_FIGURES,
   ...KAP2_FIGURES,
   "1.13": figNumberLine({
     min: -4,
@@ -1267,6 +1269,7 @@ export const TASK_FIGURES: Record<string, string> = {
 
 /** Pedagogiske fasit-figurer knyttet til spesifikke steg i løsningsforslag. */
 export const TASK_FASIT_FIGURES: Record<string, Record<number, string>> = {
+  ...KAP5_FASIT_FIGURES,
   "1.13": {
     1: figNumberLine({
       min: -4,
