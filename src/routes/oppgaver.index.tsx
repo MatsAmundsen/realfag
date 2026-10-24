@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { CHAPTER_META, fagsok, videoForSub } from "@/data/content";
+import { CoverImage } from "../components/CoverImage";
+import { CHAPTER_META, fagsok, videosForSub } from "@/data/content";
 import { countChapter, isOvingDelkap } from "@/lib/progress";
 import { useProgressStore } from "@/lib/progress-store";
 
@@ -20,7 +21,7 @@ function OppgaverIndex() {
           return (
             <div key={kap.id} className="kap-panel">
               <div className="kap-panel-head">
-                <img src={meta?.image} alt="" />
+                <CoverImage src={meta?.image} sizes="(max-width: 600px) 100vw, 180px" />
                 <div>
                   <h2>{kap.tittel}</h2>
                   <p>{meta?.blurb}</p>
@@ -41,7 +42,7 @@ function OppgaverIndex() {
                     <span>
                       {dk.oppgaver.length} oppgaver
                       {dk.quiz?.length ? " · quiz" : ""}
-                      {videoForSub(dk.id) ? " · video" : ""}
+                      {(() => { const n = videosForSub(dk.id).length; return n > 1 ? ` · ${n} videoer` : n ? " · video" : ""; })()}
                     </span>
                   </Link>
                 ))}
