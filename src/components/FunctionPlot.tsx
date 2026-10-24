@@ -24,6 +24,18 @@ function ticks(min: number, max: number, step: number) {
   return out;
 }
 
+const SR_ONLY: React.CSSProperties = {
+  position: "absolute",
+  width: 1,
+  height: 1,
+  padding: 0,
+  margin: -1,
+  overflow: "hidden",
+  clip: "rect(0 0 0 0)",
+  whiteSpace: "nowrap",
+  border: 0,
+};
+
 function fmt(n: number) {
   if (!Number.isFinite(n)) return "—";
   if (Math.abs(n) >= 1000) return n.toExponential(1);
@@ -219,6 +231,9 @@ function GraphSvg({
         if (cx < padL - 4 || cx > W - padR + 4 || cy < padT - 4 || cy > H - padB + 4) return null;
         const label = large || f.kind === "endpoint";
         const flip = cx > W - 90;
+        // Punkt helt oppe ved y-aksen: flytt etiketten forbi aksetittelen «y» og trekk en ledelinje.
+        const nearYTitle = !flip && Math.abs(cx - yAxisX) < 20 && cy - 8 < padT + 18;
+        const lx = cx + (nearYTitle ? 30 : flip ? -8 : 8);
         return (
           <g key={`f${i}`}>
             <circle
@@ -229,9 +244,12 @@ function GraphSvg({
               stroke={f.kind === "vertex" ? "var(--bg-elevated)" : "var(--accent)"}
               strokeWidth="2"
             />
+            {label && nearYTitle && (
+              <line x1={cx + 4} y1={cy - 3} x2={lx - 3} y2={cy - 11} stroke="var(--text-main)" strokeWidth="1" />
+            )}
             {label && (
               <text
-                x={cx + (flip ? -8 : 8)}
+                x={lx}
                 y={cy - 8}
                 fill="var(--text-main)"
                 fontSize={large ? 12 : 10}
@@ -309,7 +327,7 @@ export function FunctionPlot({
   const [open, setOpen] = useState(false);
   return (
     <>
-      <button type="button" className="fn-plot" onClick={() => setOpen(true)} aria-label="Forstørr grafen">
+      <button type="button" className="fn-plot" onClick={() => setOpen(true)}>
         <GraphSvg spec={spec} showKeyPoints={showKeyPoints} />
         <span className="fn-plot-legend">
           {spec.series.map((s, i) => (
@@ -317,8 +335,10 @@ export function FunctionPlot({
               {spec.legend?.[i] ?? s.name}
             </span>
           ))}
-          {spec.series.find((s) => s.clip) && <span className="fn-domain">D = definisjonsmengde</span>}
-          <Maximize2 size={14} />
+          {spec.series.find((s) => s.clip) && <span className="fn-domain" style={{ opacity: 1, color: "color-mix(in srgb, var(--text-main) 72%, var(--text-muted))" }}>D = definisjonsmengde</span>}
+          <Maximize2 size={14} aria-hidden="true" />
+          {/* Navnet bygges av synlig innhold + denne teksten (WCAG 2.5.3, ingen aria-label som overstyrer). */}
+          <span style={SR_ONLY}>Forstørr grafen</span>
         </span>
       </button>
       {open &&
