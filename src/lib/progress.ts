@@ -37,7 +37,7 @@ export const BADGE_META: Record<
   oving_kap2: { title: "Øveprøve kap. 2", desc: "Du har gått gjennom øveprøven i kapittel 2.", kind: "prove" },
   oving_kap3: { title: "Øveprøve kap. 3", desc: "Du har gått gjennom øveprøven i kapittel 3.", kind: "prove" },
   oving_kap5: { title: "Øveprøve kap. 5", desc: "Du har gått gjennom øveprøven i kapittel 5.", kind: "prove" },
-  oving_kap6: { title: "Kapitteltest kap. 6", desc: "Du har gått gjennom kapitteltesten i kapittel 6.", kind: "prove" },
+  oving_kap6: { title: "Øveprøve kap. 6", desc: "Du har gått gjennom øveprøven i kapittel 6.", kind: "prove" },
   oving_kap7: { title: "Kapitteltest kap. 7", desc: "Du har gått gjennom kapitteltesten i kapittel 7.", kind: "prove" },
   quiz_perfect: { title: "Perfekt quiz", desc: "100 % på en quiz. Sterkt!", kind: "quiz" },
   streak_3: { title: "3-dagers rekke", desc: "Tre dager på rad med aktivitet.", kind: "streak" },
