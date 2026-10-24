@@ -97,11 +97,11 @@ export const KAP4_OVEPROVE: Delkapittel = {
       "4.OP8",
       "Oppgave 8 — Eksponentiell nedgang (digitale hjelpemidler)",
       "Mengden virkestoff i blodet $t$ timer etter en dose er $M(t)=250\\cdot 0{,}82^t$ (mg).<br><br><strong>a)</strong> Regn ut $M(3)$.<br><br><strong>b)</strong> Finn halveringstiden.<br><br><strong>c)</strong> Når er det mindre enn $20$ mg igjen?",
-      "Halveringstid: løs $0{,}82^t=0{,}5$, for eksempel med $\\lg$ eller CAS.",
+      "Halveringstid: tegn $M(t)$ og linja $y=125$ i GeoGebra og finn skjæringspunktet.",
       [
         "<strong>a)</strong> $M(3)=250\\cdot 0{,}82^3\\approx 137{,}8$.<br><strong>Svar:</strong> ca. $138$ mg",
-        "<strong>b)</strong> $0{,}82^t=0{,}5$ gir $t=\\dfrac{\\lg 0{,}5}{\\lg 0{,}82}\\approx 3{,}49$.<br><strong>Svar:</strong> ca. $3{,}5$ timer",
-        "<strong>c)</strong> $250\\cdot 0{,}82^t=20$ gir $t=\\dfrac{\\lg 0{,}08}{\\lg 0{,}82}\\approx 12{,}7$.<br><strong>Svar:</strong> etter ca. $12{,}7$ timer",
+        "<strong>b)</strong> Halvparten av $250$ mg er $125$ mg. Tegn $M(t)$ og linja $y=125$ i GeoGebra og bruk «Skjæring mellom to objekt». Skjæringspunktet er omtrent $(3{,}49;\\ 125)$.<br><br><em>Alternativ (med logaritmer):</em> $0{,}82^t=0{,}5$ gir $t=\\dfrac{\\lg 0{,}5}{\\lg 0{,}82}\\approx 3{,}49$.<br><strong>Svar:</strong> ca. $3{,}5$ timer",
+        "<strong>c)</strong> Tegn linja $y=20$ og finn skjæringen med $M(t)$ i GeoGebra. Skjæringspunktet er omtrent $(12{,}7;\\ 20)$. Siden $M$ synker, er det mindre enn $20$ mg igjen etter dette.<br><br><em>Alternativ (med logaritmer):</em> $250\\cdot 0{,}82^t=20$ gir $0{,}82^t=0{,}08$ og $t=\\dfrac{\\lg 0{,}08}{\\lg 0{,}82}\\approx 12{,}7$.<br><strong>Svar:</strong> etter ca. $12{,}7$ timer",
       ],
     ),
     o(
@@ -112,7 +112,7 @@ export const KAP4_OVEPROVE: Delkapittel = {
       [
         "<strong>a)</strong> $b=\\left(\\dfrac{15\\,315}{12\\,000}\\right)^{1/5}\\approx 1{,}05$.<br><strong>Svar:</strong> $b\\approx 1{,}05$, altså $5\\,\\%$ per år",
         "<strong>b)</strong> <strong>Svar:</strong> $N(t)=12\\,000\\cdot 1{,}05^t$",
-        "<strong>c)</strong> $1{,}05^t=\\dfrac{20\\,000}{12\\,000}$ gir $t=\\dfrac{\\lg(5/3)}{\\lg 1{,}05}\\approx 10{,}5$.<br><strong>Svar:</strong> i løpet av 2030 (etter ca. $10{,}5$ år)",
+        "<strong>c)</strong> Tegn $N(t)=12\\,000\\cdot 1{,}05^t$ og linja $y=20\\,000$ i GeoGebra og bruk «Skjæring mellom to objekt». Skjæringspunktet er omtrent $(10{,}5;\\ 20\\,000)$.<br><br><em>Alternativ (med logaritmer):</em> $1{,}05^t=\\dfrac{20\\,000}{12\\,000}$ gir $t=\\dfrac{\\lg(5/3)}{\\lg 1{,}05}\\approx 10{,}5$.<br><strong>Svar:</strong> i løpet av 2030 (etter ca. $10{,}5$ år)",
       ],
     ),
     o(
