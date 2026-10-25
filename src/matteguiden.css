@@ -46,6 +46,17 @@
     --ease-out:       cubic-bezier(0.4, 0, 0.2, 1);
     --ease-spring:    cubic-bezier(0.22, 1, 0.36, 1);
 
+    /* Fag: 1T bruker primærfargen som før, 1P er lime (valgt av Mats) */
+    --fag-1t:         var(--primary-light);
+    --fag-1t-soft:    rgba(129, 140, 248, 0.14);
+    --fag-1p:         #a3e635;
+    --fag-1p-soft:    rgba(163, 230, 53, 0.14);
+
+    /* Nivåmerker (Grunnleggende / Øving / Utfordring) */
+    --lvl-1:          #34d399;
+    --lvl-2:          #f59e0b;
+    --lvl-3:          #f87171;
+
     /* Høyde på sticky navbar — oppdateres fra AppShell */
     --mg-nav-h:       66px;
 }
@@ -53,6 +64,13 @@
 /* ── Light mode ───────────────────────────────────────────── */
 [data-theme="light"] {
     --plot-c3:        #0284c7;
+    --fag-1t:         #4f46e5;
+    --fag-1t-soft:    rgba(79, 70, 229, 0.10);
+    --fag-1p:         #4d7c0f;
+    --fag-1p-soft:    transparent; /* lime #4d7c0f tåler ikke tonet bakgrunn (4,0:1) */
+    --lvl-1:          #065f46;
+    --lvl-2:          #92400e;
+    --lvl-3:          #991b1b;
     --bg-deep:        #f0f4ff;
     --bg-surface:     #ffffff;
     --bg-elevated:    #f8faff;
@@ -174,9 +192,26 @@ code, pre {
 }
 
 .logo-grade {
-    color: var(--primary-light);
+    color: var(--fag-1t);
     font-size: 0.85em;
 }
+[data-fag="1P"] .logo-grade { color: var(--fag-1p); }
+
+/* 1T/1P-bryter: pille i fargen til faget man bytter til */
+.nav-btn.fag-switch {
+    border: 1.5px solid var(--fag-to);
+    color: var(--fag-to);
+    background: var(--fag-to-soft);
+    border-radius: 99px;
+    padding: 0.4rem 0.9rem;
+    min-height: 2.25rem;
+    letter-spacing: 0.02em;
+}
+.nav-btn.fag-switch.to-1p { --fag-to: var(--fag-1p); --fag-to-soft: var(--fag-1p-soft); }
+.nav-btn.fag-switch.to-1t { --fag-to: var(--fag-1t); --fag-to-soft: var(--fag-1t-soft); }
+.nav-btn.fag-switch:hover { color: var(--fag-to); background: color-mix(in srgb, var(--fag-to) 22%, transparent); }
+.nav-btn.fag-switch:focus-visible,
+.nav-btn:focus-visible { outline: 2px solid var(--fag-to, var(--primary-light)); outline-offset: 2px; }
 
 /* Søkefelt */
 .search-bar {
@@ -720,6 +755,26 @@ code, pre {
     color: var(--text-muted);
     font-weight: 600;
     line-height: 1.45;
+}
+
+/* 1P-figurer (src/data/1p/figurer.ts): kurvefarger med minst 4,5:1 mot kortbakgrunnen i begge temaer */
+.task-figure-1p {
+    --fig1p-blue:  #818cf8;
+    --fig1p-green: #34d399;
+    --fig1p-red:   #f87171;
+    --fig1p-amber: #fbbf24;
+    --fig1p-grey:  #94a3b8;
+}
+/* Smale skjermer: SVG-en skaleres ned, så tekst i figurene forstørres til minst 12 px (17,5 brukerenheter ved ~250 px bredde). */
+@media (max-width: 380px) {
+    .task-figure-1p svg text { font-size: 17.5px; }
+}
+[data-theme="light"] .task-figure-1p {
+    --fig1p-blue:  #4338ca;
+    --fig1p-green: #047857;
+    --fig1p-red:   #b91c1c;
+    --fig1p-amber: #b45309;
+    --fig1p-grey:  #475569;
 }
 
 .task-buttons {
@@ -1431,9 +1486,11 @@ pre code { background: none; padding: 0; color: inherit; }
     letter-spacing: 0.05em;
 }
 
-.task-badge.lvl-1 { background: rgba(52, 211, 153, 0.15); color: #34d399; }
-.task-badge.lvl-2 { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
-.task-badge.lvl-3 { background: rgba(248, 113, 113, 0.15); color: #f87171; }
+.task-badge.lvl-1 { background: color-mix(in srgb, var(--lvl-1) 15%, transparent); color: var(--lvl-1); }
+.task-badge.lvl-2 { background: color-mix(in srgb, var(--lvl-2) 15%, transparent); color: var(--lvl-2); }
+.task-badge.lvl-3 { background: color-mix(in srgb, var(--lvl-3) 15%, transparent); color: var(--lvl-3); }
+/* 1P: nivåfargen beholdes, merket får en tynn lime ramme som viser faget */
+[data-fag="1P"] .task-badge[class*="lvl-"] { box-shadow: inset 0 0 0 1.5px var(--fag-1p); }
 
 .task-content {
     font-size: 1.05rem;
@@ -4265,3 +4322,36 @@ a.vid-nav-card {
 [data-theme="light"] .mm-kap4 { --mm: #6d28d9; }
 [data-theme="light"] .mm-kap5 { --mm: #0e7490; }
 [data-theme="light"] .mm-node strong { color: var(--mm, #4338ca); }
+
+/* ── 1P: nedlasting av nivåark (Word) ─── */
+.nivaark-dl {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    min-height: 56px;
+    width: 100%;
+    max-width: 26rem;
+    box-sizing: border-box;
+    margin: 0 0 1.5rem;
+    padding: 0.7rem 1rem;
+    border: 2px solid var(--fag-1p);
+    border-radius: var(--radius-md, 12px);
+    background: var(--fag-1p-soft);
+    --nivaark-fg: var(--fag-1p);
+    color: var(--nivaark-fg);
+    text-decoration: none;
+    transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+.nivaark-dl:hover { background: color-mix(in srgb, var(--fag-1p) 10%, transparent); }
+.nivaark-dl:active { transform: translateY(1px); }
+.nivaark-dl:focus-visible { outline: 3px solid var(--nivaark-fg); outline-offset: 3px; }
+.nivaark-dl-icon { flex: none; }
+.nivaark-dl-text { display: flex; flex-direction: column; min-width: 0; line-height: 1.25; }
+.nivaark-dl-title { font-weight: 700; font-size: 1rem; }
+.nivaark-dl-meta { font-size: 0.85rem; color: var(--text-main); }
+/* Lyst tema: mørkere lokal tekst/ikon-farge (≥4,5:1 mot gradient-bakgrunnen); --fag-1p beholdes globalt.
+   Hover vises med understrek + kraftigere kant i stedet for lysere toning. */
+[data-theme="light"] .nivaark-dl { --nivaark-fg: #3f6212; }
+[data-theme="light"] .nivaark-dl:hover { background: var(--fag-1p-soft); box-shadow: inset 0 0 0 1px var(--nivaark-fg); border-color: var(--nivaark-fg); }
+[data-theme="light"] .nivaark-dl:hover .nivaark-dl-title { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 2px; }
+@media (prefers-reduced-motion: reduce) { .nivaark-dl { transition: none; } }

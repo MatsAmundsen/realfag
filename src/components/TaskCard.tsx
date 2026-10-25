@@ -21,6 +21,7 @@ export function TaskCard({
   mode = "ove",
   locked = false,
   reveal = false,
+  hideTierBadge = false,
 }: {
   oppgave: Oppgave;
   kapId: string | null;
@@ -30,6 +31,8 @@ export function TaskCard({
   mode?: StudyMode;
   locked?: boolean;
   reveal?: boolean;
+  /** Skjuler merkelappen Grunnleggende/Øving/Utfordring (regnet fra index/total). Brukes bare av 1P, der tittelen viser faktisk «Nivå N». */
+  hideTierBadge?: boolean;
 }) {
   const p = useProgressStore((s) => s.p);
   const markTask = useProgressStore((s) => s.markTask);
@@ -102,9 +105,11 @@ export function TaskCard({
         <div className="task-header-right">
           {done && <span className="task-done-pill">Ferdig</span>}
           {oppgave.tittel.startsWith("Ekstraøving") && <span className="task-badge ekstra">Ekstra</span>}
-          <span className={`task-badge lvl-${level}`}>
-            {level === 1 ? "Grunnleggende" : level === 2 ? "Øving" : "Utfordring"}
-          </span>
+          {!hideTierBadge && (
+            <span className={`task-badge lvl-${level}`}>
+              {level === 1 ? "Grunnleggende" : level === 2 ? "Øving" : "Utfordring"}
+            </span>
+          )}
         </div>
       </div>
       <div className={plot ? "task-body has-graph" : "task-body"}>

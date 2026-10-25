@@ -47,3 +47,8 @@ export const VIDEO_BY_SUB_1P: Record<string, TemaVideo[]> = {};
 export function videosForSub1P(subId: string | null | undefined): TemaVideo[] {
   return subId ? (VIDEO_BY_SUB_1P[subId] ?? []) : [];
 }
+
+/** Godkjente nivåark (Word) per 1P-delkapittel. Filene ligger i public/ark/1p/. */
+export const NIVAARK_BY_SUB_1P: Record<string, string> = Object.fromEntries(
+  ["4A", "4B", "4C", "4D", "4E", "5A", "5B", "5C", "5D"].map((s) => [`P${s}`, `/ark/1p/1p-${s}-nivaark.docx`]),
+);

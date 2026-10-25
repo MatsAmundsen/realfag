@@ -135,7 +135,7 @@ export function AppShell() {
 
   return (
     <VideoPlayerProvider>
-      <header className={`navbar${menu ? " menu-open" : ""}`}>
+      <header className={`navbar${menu ? " menu-open" : ""}`} data-fag={is1P ? "1P" : "1T"}>
         <button
           type="button"
           className="hamburger-btn"
@@ -174,7 +174,7 @@ export function AppShell() {
           ))}
           <Link
             to={is1P ? "/" : "/1p"}
-            className="nav-btn"
+            className={`nav-btn fag-switch ${is1P ? "to-1t" : "to-1p"}`}
             aria-label={is1P ? "Bytt til 1T" : "Bytt til 1P"}
             title={is1P ? "Bytt til 1T" : "Bytt til 1P"}
           >
@@ -212,11 +212,11 @@ export function AppShell() {
             {n.label}
           </Link>
         ))}
-        <Link to={is1P ? "/" : "/1p"} className="nav-btn" onClick={() => setMenu(false)}>
+        <Link to={is1P ? "/" : "/1p"} className={`nav-btn fag-switch ${is1P ? "to-1t" : "to-1p"}`} onClick={() => setMenu(false)}>
           {is1P ? "Bytt til 1T" : "Bytt til 1P"}
         </Link>
       </aside>
-      <div id="app-content">
+      <div id="app-content" data-fag={is1P ? "1P" : "1T"}>
         <Outlet />
       </div>
       <CelebrationHost />
