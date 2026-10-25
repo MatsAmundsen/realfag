@@ -1,6 +1,6 @@
 // Etterbehandling av GitHub Pages-bygget (build:pages):
-//  - redirect-sider for /oppgaver/<kap>/ (ruten redirecter i klienten, så den
-//    blir ikke prerendret og ga 404 på GitHub Pages)
+//  - redirect-sider for /oppgaver/<kap>/ og /1p/oppgaver/<kap>/ (rutene
+//    redirecter i klienten, så de blir ikke prerendret og ga 404 på GitHub Pages)
 //  - sitemap.xml over alle prerendrede sider
 import { existsSync, mkdirSync, readdirSync, statSync, writeFileSync } from "node:fs";
 import { join, relative } from "node:path";
@@ -14,10 +14,15 @@ if (!existsSync(join(OUT, "index.html"))) {
   process.exit(1);
 }
 
-// 1) /oppgaver/<kap>/index.html -> første delkapittel
-const oppg = join(OUT, "oppgaver");
+// 1) /oppgaver/<kap>/ og /1p/oppgaver/<kap>/ -> første delkapittel
+const REDIRECT_BASES = [
+  { base: "oppgaver", title: "Matteguiden 1T" },
+  { base: "1p/oppgaver", title: "Matteguiden 1P" },
+];
 let redirects = 0;
-if (existsSync(oppg)) {
+for (const { base, title } of REDIRECT_BASES) {
+  const oppg = join(OUT, ...base.split("/"));
+  if (!existsSync(oppg)) continue;
   for (const kap of readdirSync(oppg)) {
     const dir = join(oppg, kap);
     if (!statSync(dir).isDirectory() || existsSync(join(dir, "index.html"))) continue;
@@ -25,10 +30,10 @@ if (existsSync(oppg)) {
       .filter((s) => existsSync(join(dir, s, "index.html")))
       .sort((a, b) => a.localeCompare(b, "nb", { numeric: true }));
     if (!subs.length) continue;
-    const target = `/oppgaver/${kap}/${subs[0]}`;
+    const target = `/${base}/${kap}/${subs[0]}`;
     writeFileSync(
       join(dir, "index.html"),
-      `<!DOCTYPE html><html lang="nb"><head><meta charset="utf-8"><title>Matteguiden 1T</title>` +
+      `<!DOCTYPE html><html lang="nb"><head><meta charset="utf-8"><title>${title}</title>` +
         `<meta name="robots" content="noindex"><link rel="canonical" href="${SITE}${target}/">` +
         `<meta http-equiv="refresh" content="0;url=${target}/"></head>` +
         `<body><script>location.replace(${JSON.stringify(target + "/")}+location.search+location.hash)</script>` +
@@ -48,7 +53,7 @@ function walk(dir) {
       walk(p);
     } else if (name === "index.html") {
       const rel = relative(OUT, dir).split("\\").join("/");
-      if (/^oppgaver\/[^/]+$/.test(rel)) continue; // redirect-sider
+      if (/^(1p\/)?oppgaver\/[^/]+$/.test(rel)) continue; // redirect-sider
       urls.push(rel ? `/${rel}/` : "/");
     }
   }
