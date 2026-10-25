@@ -262,11 +262,11 @@ const dkP3B: Delkapittel = {
   ],
 };
 
-// ───────────────────────────── 3C Prosentvis vekst over tid ─────────────────────────────
+// ───────────────────────────── 3C Vekst og nedgang år for år ─────────────────────────────
 
 const dkP3C: Delkapittel = {
   id: "P3C",
-  tittel: "3C Prosentvis endring over flere perioder",
+  tittel: "3C Vekst og nedgang år for år",
   quiz: [
     q("Du setter inn 1000 kr til 5 % rente i 2 år. Hvor mye har du da?", ["1100,00 kr", "1102,50 kr", "1105,00 kr", "1010,00 kr"], 1, "$1000 \\cdot 1{,}05^2 = 1102{,}50$", 1),
     q("En verdi på 5000 synker med 8 % per år. Hvilket uttrykk gir verdien etter t år?", [r`$5000 \cdot 0{,}92^t$`, r`$5000 \cdot 1{,}08^t$`, r`$5000 - 0{,}08t$`, r`$5000 \cdot 0{,}08^t$`], 0, "Vekstfaktoren for 8 % nedgang er 0,92.", 1),
@@ -380,7 +380,7 @@ const dkP3SM: Delkapittel = {
     ),
     s(
       "P3.S3",
-      "3C Prosentvis endring over flere perioder",
+      "3C Vekst og nedgang år for år",
       r`Med samme prosentvise endring i hver periode er verdien etter $t$ perioder<br><br>$\text{startverdi} \cdot V^t$<br><br>Bruk regneark eller CAS når du skal finne hvor lang tid det tar.`,
       "Økningen i kroner blir større for hver periode når V > 1.",
       [r`Eksempel: $20\,000 \cdot 1{,}03^2 = 21\,218$`],
