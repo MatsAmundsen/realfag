@@ -44,6 +44,9 @@ function Home() {
             <Link to="/eksamen" className="hint-btn">
               Eksamensarkiv
             </Link>
+            <Link to="/1p" className="hint-btn">
+              Bytt til 1P
+            </Link>
           </div>
         </div>
       </div>
