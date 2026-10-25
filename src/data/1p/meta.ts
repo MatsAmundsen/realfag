@@ -27,6 +27,12 @@ export const CHAPTER_META_1P: Record<string, { short: string; blurb: string; ima
     image: "/images/1p/kap4.jpg",
     tint: "#34d399",
   },
+  p1kap5: {
+    short: "Matematiske modeller",
+    blurb: "Modeller, regresjon, gyldighetsområde og modellering i praksis",
+    image: "/images/1p/kap5.jpg",
+    tint: "#22d3ee",
+  },
 };
 
 /** Temavideoer per 1P-delkapittel (P-prefiks). Mats har ikke valgt videoer ennå. */
