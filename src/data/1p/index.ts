@@ -3,9 +3,10 @@ import { KAP1_1P } from "./kap1";
 import { KAP2_1P } from "./kap2";
 import { KAP3_1P } from "./kap3";
 import { KAP4_1P } from "./kap4";
+import { KAP5_1P } from "./kap5";
 
 /** Alle 1P-kapitler. Id-er: kapittel «p1kapN», delkapittel «PNA», oppgave «PN.n». */
-export const fagsok1P: Kapittel[] = [KAP1_1P, KAP2_1P, KAP3_1P, KAP4_1P];
+export const fagsok1P: Kapittel[] = [KAP1_1P, KAP2_1P, KAP3_1P, KAP4_1P, KAP5_1P];
 
 export function findKap1P(id: string) {
   return fagsok1P.find((k) => k.id === id);
