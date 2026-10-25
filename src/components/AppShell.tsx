@@ -19,6 +19,7 @@ const NAV = [
 const NAV_1P = [
   { to: "/1p", label: "Hjem" },
   { to: "/1p/oppgaver", label: "Oppgaver" },
+  { to: "/1p/eksamen", label: "Eksamen" },
 ] as const;
 
 export function AppShell() {

@@ -51,8 +51,9 @@ export type ExamTask = {
 export type Exam = {
   id: string;
   title: string;
-  season: "vår" | "høst";
-  year: number;
+  /** Bare for offisielle eksamener. Egne øvingssett lar feltene stå tomme. */
+  season?: "vår" | "høst";
+  year?: number;
   date: string;
   del1Minutes: number;
   totalMinutes: number;
