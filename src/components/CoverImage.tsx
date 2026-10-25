@@ -3,7 +3,7 @@
  * med width/height mot layoutskift og lazy-lasting. Faller tilbake til originalbildet.
  */
 export function CoverImage({ src, sizes }: { src?: string; sizes: string }) {
-  const m = src?.match(/\/images\/(kap\d)\.jpg$/);
+  const m = src?.match(/\/images\/((?:1p\/)?kap\d)\.jpg$/);
   if (!m) return src ? <img src={src} alt="" width={480} height={360} loading="lazy" decoding="async" /> : null;
   const b = `/images/omslag/${m[1]}`;
   const set = (ext: string) => `${b}-480.${ext} 480w, ${b}-960.${ext} 960w`;
