@@ -61,7 +61,7 @@ export function ChapterSidebar({ kapId, subId, fag = "1T" }: { kapId?: string; s
                     className={`chapter-btn${kap.id === kapId ? " active" : ""}`}
                   >
                     <span className="chapter-btn-main">
-                      <span className="chapter-btn-title">{CHAPTER_META[kap.id]?.short || kap.tittel}</span>
+                      <span className="chapter-btn-title" title={CHAPTER_META[kap.id]?.short || kap.tittel}>{CHAPTER_META[kap.id]?.short || kap.tittel}</span>
                     </span>
                     <span className={`chapter-btn-pct${ch.pct === 100 ? " is-complete" : ""}`}>{ch.pct}%</span>
                   </Link>
@@ -88,7 +88,7 @@ export function ChapterSidebar({ kapId, subId, fag = "1T" }: { kapId?: string; s
                       params={{ kapId: kap.id, subId: dk.id }}
                       className={`subchapter-btn${dk.id === subId && kap.id === kapId ? " active" : ""}${isOvingDelkap(dk) ? " is-oveprove" : ""}`}
                     >
-                      <span className="subchapter-btn-title">
+                      <span className="subchapter-btn-title" title={isOvingDelkap(dk) ? "Øveprøve" : dk.tittel}>
                         {isOvingDelkap(dk) ? "Øveprøve" : dk.tittel}
                       </span>
                       <span className={`subchapter-btn-meta${sub.pct === 100 ? " is-complete" : ""}`}>

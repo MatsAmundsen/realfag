@@ -18,6 +18,8 @@ function plain(s: string): string {
     .replace(/\\times/g, "×")
     .replace(/\\cdot/g, "·")
     .replace(/\\pi/g, "π")
+    .replace(/\\Rightarrow/g, "medfører")
+    .replace(/\\Leftrightarrow/g, "er ekvivalent med")
     .replace(/\\,/g, " ")
     .replace(/\s+/g, " ")
     .trim();
@@ -326,7 +328,11 @@ export function figProportion(
     <text x="168" y="136" text-anchor="middle" font-size="14" font-weight="700" fill="${ink}">${bLab}</text>
     <rect x="316" y="108" width="64" height="44" rx="8" fill="rgba(52,211,153,0.12)" stroke="${ink}" stroke-dasharray="5 4" stroke-width="1.6"/>
     <text x="348" y="136" text-anchor="middle" font-size="14" font-weight="800" fill="#34d399">${bVal}</text>`;
-  return wrapH(svg, caption, caption, 180);
+  const capA11y = caption.replace(
+    /\$\\Rightarrow\$/g,
+    '<span role="img" aria-label="medfører">$\\Rightarrow$</span>',
+  );
+  return wrapH(svg, capA11y, caption, 180);
 }
 
 /** Trapp av kvadrater (trekantmønster). */
