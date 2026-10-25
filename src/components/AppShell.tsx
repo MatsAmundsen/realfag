@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, Outlet, useRouterState } from "@tanstack/react-router";
 import { Compass, Menu, Moon, Search, Sun, X } from "lucide-react";
 import { fagsok, UKESPLAN } from "@/data/content";
+import { fagsok1P } from "@/data/1p";
 import { useProgressStore } from "@/lib/progress-store";
 import { BadgeToast, CelebrationHost } from "./Celebration";
 import { VideoPlayerProvider } from "./VideoPlayer";
@@ -15,12 +16,22 @@ const NAV = [
   { to: "/kunnskapskart", label: "Kart" },
 ] as const;
 
+const NAV_1P = [
+  { to: "/1p", label: "Hjem" },
+  { to: "/1p/oppgaver", label: "Oppgaver" },
+  { to: "/1p/eksamen", label: "Eksamen" },
+] as const;
+
 export function AppShell() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const hydrate = useProgressStore((s) => s.hydrate);
   const [theme, setTheme] = useState<"dark" | "light">("dark");
   const [q, setQ] = useState("");
   const [menu, setMenu] = useState(false);
+  const is1P = pathname === "/1p" || pathname.startsWith("/1p/");
+  const nav = is1P ? NAV_1P : NAV;
+  const navActive = (to: string) =>
+    pathname === to || pathname === `${to}/` || (to !== "/" && to !== "/1p" && pathname.startsWith(to));
 
   useEffect(() => {
     hydrate();
@@ -105,13 +116,13 @@ export function AppShell() {
     const needle = q.trim().toLowerCase();
     if (needle.length < 2) return [];
     const out: { href: string; title: string; snippet: string }[] = [];
-    fagsok.forEach((kap) => {
+    (is1P ? fagsok1P : fagsok).forEach((kap) => {
       kap.delkapitler.forEach((dk) => {
         dk.oppgaver.forEach((o) => {
           const hay = `${o.tittel} ${o.tekst}`.toLowerCase();
           if (hay.includes(needle)) {
             out.push({
-              href: `/oppgaver/${kap.id}/${dk.id}`,
+              href: `${is1P ? "/1p" : ""}/oppgaver/${kap.id}/${dk.id}`,
               title: o.tittel,
               snippet: kap.tittel + " · " + dk.tittel,
             });
@@ -120,7 +131,7 @@ export function AppShell() {
       });
     });
     return out.slice(0, 12);
-  }, [q]);
+  }, [q, is1P]);
 
   return (
     <VideoPlayerProvider>
@@ -135,11 +146,11 @@ export function AppShell() {
         >
           {menu ? <X size={22} /> : <Menu size={22} />}
         </button>
-        <Link to="/" className="logo">
+        <Link to={is1P ? "/1p" : "/"} className="logo">
           <span className="logo-icon">
             <Compass size={18} />
           </span>
-          Matteguiden <span className="logo-grade">1T</span>
+          Matteguiden <span className="logo-grade">{is1P ? "1P" : "1T"}</span>
         </Link>
         <form
           className="search-bar"
@@ -156,14 +167,19 @@ export function AppShell() {
           />
         </form>
         <nav className="desktop-nav">
-          {NAV.map((n) => {
-            const active = pathname === n.to || (n.to !== "/" && pathname.startsWith(n.to));
-            return (
-              <Link key={n.to} to={n.to} className={`nav-btn${active ? " active" : ""}`}>
-                {n.label}
-              </Link>
-            );
-          })}
+          {nav.map((n) => (
+            <Link key={n.to} to={n.to} className={`nav-btn${navActive(n.to) ? " active" : ""}`}>
+              {n.label}
+            </Link>
+          ))}
+          <Link
+            to={is1P ? "/" : "/1p"}
+            className="nav-btn"
+            aria-label={is1P ? "Bytt til 1T" : "Bytt til 1P"}
+            title={is1P ? "Bytt til 1T" : "Bytt til 1P"}
+          >
+            {is1P ? "1T" : "1P"}
+          </Link>
         </nav>
         <button
           type="button"
@@ -191,14 +207,14 @@ export function AppShell() {
         aria-hidden={!menu}
       >
         <p className="mobile-nav-label">Meny</p>
-        {NAV.map((n) => {
-          const active = pathname === n.to || (n.to !== "/" && pathname.startsWith(n.to));
-          return (
-            <Link key={n.to} to={n.to} className={`nav-btn${active ? " active" : ""}`} onClick={() => setMenu(false)}>
-              {n.label}
-            </Link>
-          );
-        })}
+        {nav.map((n) => (
+          <Link key={n.to} to={n.to} className={`nav-btn${navActive(n.to) ? " active" : ""}`} onClick={() => setMenu(false)}>
+            {n.label}
+          </Link>
+        ))}
+        <Link to={is1P ? "/" : "/1p"} className="nav-btn" onClick={() => setMenu(false)}>
+          {is1P ? "Bytt til 1T" : "Bytt til 1P"}
+        </Link>
       </aside>
       <div id="app-content">
         <Outlet />

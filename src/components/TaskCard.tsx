@@ -6,6 +6,7 @@ import { FunctionPlot } from "./FunctionPlot";
 import { useProgressStore } from "@/lib/progress-store";
 import { countChapter, countSubchapter, isOvingDelkap, taskKey } from "@/lib/progress";
 import { fagsok, videoForSub } from "@/data/content";
+import { fagsok1P } from "@/data/1p";
 import { fireCelebration } from "@/lib/progress-store";
 import { extractPlots } from "@/lib/plot-fn";
 import { PLOT_OVERRIDES, applyPlotOverride } from "@/lib/plot-overrides";
@@ -63,7 +64,7 @@ export function TaskCard({
     const newly = markTask(kapId, subId, oppgave.id, !done);
     if (done) return;
     if (!kapId || !subId) return;
-    const kap = fagsok.find((k) => k.id === kapId);
+    const kap = [...fagsok, ...fagsok1P].find((k) => k.id === kapId);
     const dk = kap?.delkapitler.find((d) => d.id === subId);
     if (!kap || !dk) return;
     const sub = countSubchapter(kap, dk, useProgressStore.getState().p);

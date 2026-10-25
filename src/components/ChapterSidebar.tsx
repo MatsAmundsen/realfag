@@ -1,11 +1,16 @@
 import { Link } from "@tanstack/react-router";
 import { ChevronDown, House } from "lucide-react";
-import { fagsok, CHAPTER_META } from "@/data/content";
+import { fagsok as fagsok1T, CHAPTER_META as CHAPTER_META_1T } from "@/data/content";
+import { fagsok1P, CHAPTER_META_1P } from "@/data/1p";
 import { countChapter, countSubchapter, isOvingDelkap } from "@/lib/progress";
 import { useProgressStore } from "@/lib/progress-store";
 import { useEffect, useState } from "react";
 
-export function ChapterSidebar({ kapId, subId }: { kapId?: string; subId?: string }) {
+export function ChapterSidebar({ kapId, subId, fag = "1T" }: { kapId?: string; subId?: string; fag?: "1T" | "1P" }) {
+  const is1P = fag === "1P";
+  const fagsok = is1P ? fagsok1P : fagsok1T;
+  const CHAPTER_META = is1P ? CHAPTER_META_1P : CHAPTER_META_1T;
+  const subTo = is1P ? "/1p/oppgaver/$kapId/$subId" : "/oppgaver/$kapId/$subId";
   const p = useProgressStore((s) => s.p);
   const [open, setOpen] = useState<Record<string, boolean>>(() =>
     kapId ? { [kapId]: true } : { kap1: true },
@@ -18,10 +23,10 @@ export function ChapterSidebar({ kapId, subId }: { kapId?: string; subId?: strin
   return (
     <aside className="sidebar chapter-sidebar">
       <div className="sidebar-header">
-        <Link to="/" className="sidebar-home-btn">
+        <Link to={is1P ? "/1p" : "/"} className="sidebar-home-btn">
           <House size={16} /> Forside
         </Link>
-        <Link to="/oppgaver" className="sidebar-home-btn">
+        <Link to={is1P ? "/1p/oppgaver" : "/oppgaver"} className="sidebar-home-btn">
           Alle kapitler
         </Link>
       </div>
@@ -32,11 +37,11 @@ export function ChapterSidebar({ kapId, subId }: { kapId?: string; subId?: strin
           return (
             <Link
               key={kap.id}
-              to="/oppgaver/$kapId/$subId"
+              to={subTo}
               params={{ kapId: kap.id, subId: first.id }}
               className={kap.id === kapId ? "is-on" : ""}
             >
-              {i + 1}
+              {is1P ? kap.id.replace(/^p1kap/, "") : i + 1}
             </Link>
           );
         })}
@@ -51,7 +56,7 @@ export function ChapterSidebar({ kapId, subId }: { kapId?: string; subId?: strin
               <div className="chapter-btn-row">
                 {first ? (
                   <Link
-                    to="/oppgaver/$kapId/$subId"
+                    to={subTo}
                     params={{ kapId: kap.id, subId: kap.id === kapId && subId ? subId : first.id }}
                     className={`chapter-btn${kap.id === kapId ? " active" : ""}`}
                   >
@@ -79,7 +84,7 @@ export function ChapterSidebar({ kapId, subId }: { kapId?: string; subId?: strin
                   return (
                     <Link
                       key={dk.id}
-                      to="/oppgaver/$kapId/$subId"
+                      to={subTo}
                       params={{ kapId: kap.id, subId: dk.id }}
                       className={`subchapter-btn${dk.id === subId && kap.id === kapId ? " active" : ""}${isOvingDelkap(dk) ? " is-oveprove" : ""}`}
                     >
