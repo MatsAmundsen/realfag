@@ -87,10 +87,19 @@ const dkP4A: Delkapittel = {
       1,
       "uten",
       "Tegn et koordinatsystem der $x$ og $y$ går fra $-5$ til $5$. Merk av punktene, og skriv navnet ved hvert punkt.<br><br>" +
-        `<strong>a)</strong> $P$ = ${pt(3, 4)}&nbsp;&nbsp;<strong>b)</strong> $R$ = ${pt(-4, 2)}&nbsp;&nbsp;<strong>c)</strong> $S$ = ${pt(1, -3)}&nbsp;&nbsp;<strong>d)</strong> $T$ = ${pt(-2, -1)}`,
+        `<strong>a)</strong> $P$ = ${pt(3, 4)}` +
+        del("b") +
+        `$R$ = ${pt(-4, 2)}` +
+        del("c") +
+        `$S$ = ${pt(1, -3)}` +
+        del("d") +
+        `$T$ = ${pt(-2, -1)}`,
       "Start i origo. Gå først til høyre (positiv) eller venstre (negativ), deretter opp (positiv) eller ned (negativ).",
       [
-        "Kontroll av tegningen:<br>$P$ ligger 3 til høyre og 4 opp.<br>$R$ ligger 4 til venstre og 2 opp.<br>$S$ ligger 1 til høyre og 3 ned.<br>$T$ ligger 2 til venstre og 1 ned.<br><strong>Svar:</strong> Tegning med de fire punktene merket.",
+        "<strong>a)</strong> $P$ ligger 3 til høyre og 4 opp.",
+        "<strong>b)</strong> $R$ ligger 4 til venstre og 2 opp.",
+        "<strong>c)</strong> $S$ ligger 1 til høyre og 3 ned.",
+        "<strong>d)</strong> $T$ ligger 2 til venstre og 1 ned.<br><strong>Svar:</strong> Tegning med de fire punktene merket.",
       ],
     ),
     o(
@@ -129,13 +138,22 @@ const dkP4A: Delkapittel = {
       2,
       "uten",
       "Tegn et koordinatsystem og merk av punktene. Velg en skala som passer på hver akse.<br><br>" +
-        `<strong>a)</strong> ${pt(0, 20)}&nbsp;&nbsp;<strong>b)</strong> ${pt(-150, -5)}&nbsp;&nbsp;<strong>c)</strong> ${pt(50, 15)}&nbsp;&nbsp;<strong>d)</strong> ${pt(200, -10)}` +
+        `<strong>a)</strong> ${pt(0, 20)}` +
+        del("b") +
+        `${pt(-150, -5)}` +
+        del("c") +
+        `${pt(50, 15)}` +
+        del("d") +
+        `${pt(200, -10)}` +
         del("e") +
         r`Hvilken skala valgte du på $x$-aksen og på $y$-aksen?`,
       r`Finn den minste og største $x$-verdien og den minste og største $y$-verdien. Velg en skala slik at alle punktene får plass, og hold inndelingen jevn.`,
       [
-        r`$x$-verdiene går fra $-150$ til $200$, og $y$-verdiene går fra $-10$ til $20$.`,
-        r`For eksempel kan du bruke skala $50$ på $x$-aksen og skala $5$ på $y$-aksen. Andre valg er også riktige hvis alle punktene får plass og inndelingen er jevn.<br><strong>Svar:</strong> Tegning, for eksempel skala $50$ og $5$.`,
+        `<strong>a)</strong> ${pt(0, 20)} ligger på $y$-aksen, 20 opp.`,
+        `<strong>b)</strong> ${pt(-150, -5)} ligger 150 til venstre og 5 ned.`,
+        `<strong>c)</strong> ${pt(50, 15)} ligger 50 til høyre og 15 opp.`,
+        `<strong>d)</strong> ${pt(200, -10)} ligger 200 til høyre og 10 ned.`,
+        r`<strong>e)</strong> $x$-verdiene går fra $-150$ til $200$, og $y$-verdiene går fra $-10$ til $20$. For eksempel kan du bruke skala $50$ på $x$-aksen og skala $5$ på $y$-aksen. Andre valg er også riktige hvis alle punktene får plass og inndelingen er jevn.<br><strong>Svar:</strong> Tegning, for eksempel skala $50$ og $5$.`,
       ],
     ),
     o(
