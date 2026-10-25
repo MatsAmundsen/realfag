@@ -21,6 +21,12 @@ export const CHAPTER_META_1P: Record<string, { short: string; blurb: string; ima
     image: "/images/1p/kap3.jpg",
     tint: "#fbbf24",
   },
+  p1kap4: {
+    short: "Funksjoner og grafer",
+    blurb: "Punkter og akser, hva en funksjon er, egenskaper, vekstfart og modeller",
+    image: "/images/1p/kap4.jpg",
+    tint: "#34d399",
+  },
 };
 
 /** Temavideoer per 1P-delkapittel (P-prefiks). Mats har ikke valgt videoer ennå. */
