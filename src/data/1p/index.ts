@@ -17,4 +17,4 @@ export function findSub1P(kapId: string, subId: string) {
   return findKap1P(kapId)?.delkapitler.find((d) => d.id === subId);
 }
 
-export { CHAPTER_META_1P, VIDEO_BY_SUB_1P, videosForSub1P } from "./meta";
+export { CHAPTER_META_1P, VIDEO_BY_SUB_1P, videosForSub1P, NIVAARK_BY_SUB_1P } from "./meta";

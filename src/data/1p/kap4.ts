@@ -1,3 +1,4 @@
+import { P1P_FIGURES } from "./figurer";
 import type { Delkapittel, Kapittel, Oppgave, QuizQuestion } from "../types";
 
 /*
@@ -45,6 +46,8 @@ function pt(a: string | number, b: string | number): string {
 
 /** Skjult figurbestilling + synlig plassholder til DesignBOT har levert figuren. */
 function fig(id: string, beskrivelse: string): string {
+  const svg = P1P_FIGURES[id];
+  if (svg) return `<!-- figur: ${id} — ${beskrivelse} -->${svg}`;
   return `<!-- figur: ${id} — ${beskrivelse} --><em>Figur til oppgave ${id} (kommer).</em><br><br>`;
 }
 

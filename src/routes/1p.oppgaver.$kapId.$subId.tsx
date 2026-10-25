@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { CircleHelp } from "lucide-react";
-import { CHAPTER_META_1P as CHAPTER_META, fagsok1P as fagsok, findKap1P as findKap, findSub1P as findSub, videosForSub1P as videosForSub } from "@/data/1p";
+import { CircleHelp, FileDown } from "lucide-react";
+import { CHAPTER_META_1P as CHAPTER_META, fagsok1P as fagsok, findKap1P as findKap, findSub1P as findSub, videosForSub1P as videosForSub, NIVAARK_BY_SUB_1P } from "@/data/1p";
 import type { StudyMode } from "@/data/types";
 import { ChapterSidebar } from "@/components/ChapterSidebar";
 import { TopicVideoInvite } from "@/components/TopicVideoInvite";
@@ -139,6 +139,16 @@ function SubchapterPage1P() {
 
         {topicVideos.length > 0 ? <TopicVideoInvite videos={topicVideos} /> : null}
 
+        {NIVAARK_BY_SUB_1P[subId] ? (
+          <a className="nivaark-dl" href={NIVAARK_BY_SUB_1P[subId]} download>
+            <FileDown className="nivaark-dl-icon" size={26} aria-hidden="true" />
+            <span className="nivaark-dl-text">
+              <span className="nivaark-dl-title">Last ned nivåark</span>
+              <span className="nivaark-dl-meta">Word-dokument (.docx)</span>
+            </span>
+          </a>
+        ) : null}
+
         {isSummary ? <SummaryView items={dk.oppgaver} kapId={kapId} subId={subId} /> : dk.oppgaver.map((o, i) => (
           <TaskCard
             key={o.id}
@@ -150,6 +160,7 @@ function SubchapterPage1P() {
             mode={effectiveMode}
             locked={locked}
             reveal={submitted}
+            hideTierBadge
           />
         ))}
 
