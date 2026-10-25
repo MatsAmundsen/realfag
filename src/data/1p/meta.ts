@@ -33,6 +33,12 @@ export const CHAPTER_META_1P: Record<string, { short: string; blurb: string; ima
     image: "/images/1p/kap5.jpg",
     tint: "#22d3ee",
   },
+  p1kap6: {
+    short: "Formler og mønstre",
+    blurb: "Formler, proporsjonalitet, omvendt proporsjonalitet, tallmønstre og figurtall",
+    image: "/images/1p/kap6.jpg",
+    tint: "#f472b6",
+  },
 };
 
 /** Temavideoer per 1P-delkapittel (P-prefiks). Mats har ikke valgt videoer ennå. */
