@@ -462,7 +462,7 @@ const dkP1D: Delkapittel = {
       r`$15 \cdot 60 = 900$ blunk i timen. I b) kan du runde av 365 døgn til 400 eller regne nøyaktig.`,
       [
         r`<strong>a)</strong> $15 \cdot 60 \cdot 16 = 900 \cdot 16 = 14\,400 = 1{,}44 \cdot 10^4$`,
-        r`<strong>b)</strong> Overslag: $1{,}44 \cdot 10^4 \cdot 400 \approx 5{,}8 \cdot 10^6$. Nøyaktig: $14\,400 \cdot 365 = 5\,256\,000 \approx 5{,}3 \cdot 10^6$.<br><strong>Svar:</strong> a) $1{,}44 \cdot 10^4$ b) omtrent $5 \cdot 10^6$ til $6 \cdot 10^6$ ganger (nøyaktig $5{,}3 \cdot 10^6$)`,
+        r`<strong>b)</strong> Overslag: $1{,}44 \cdot 10^4 \cdot 400 \approx 5{,}8 \cdot 10^6$. Nøyaktig: $14\,400 \cdot 365 = 5\,256\,000 \approx 5{,}3 \cdot 10^6$.<br><strong>Svar:</strong> a) $1{,}44 \cdot 10^4$ b) omtrent $5{,}3 \cdot 10^6$ ganger per år (overslaget med 400 døgn gir $5{,}8 \cdot 10^6$)`,
       ],
     ),
     o(
@@ -535,7 +535,7 @@ const dkP1E: Delkapittel = {
       [
         r`<strong>a)</strong> $\sqrt[3]{8 \cdot 3} = \sqrt[3]{8} \cdot \sqrt[3]{3} = 2\sqrt[3]{3}$`,
         r`<strong>b)</strong> $\sqrt[4]{16 \cdot 3} = 2\sqrt[4]{3}$`,
-        r`<strong>c)</strong> $\sqrt[3]{8} \cdot \sqrt[3]{x^6} = 2x^2$<br><strong>Svar:</strong> c) $2x^2$`,
+        r`<strong>c)</strong> $\sqrt[3]{8} \cdot \sqrt[3]{x^6} = 2x^2$<br><strong>Svar:</strong> a) $\sqrt[3]{24} = 2\sqrt[3]{3}$ b) $\sqrt[4]{48} = 2\sqrt[4]{3}$ c) $2x^2$`,
       ],
     ),
     o(
@@ -685,7 +685,7 @@ const dkP1OP: Delkapittel = {
       r`$98 = 49 \cdot 2$ og $18 = 9 \cdot 2$.`,
       [
         r`<strong>a)</strong> $24 \cdot 10^4 = 2{,}4 \cdot 10^5$`,
-        r`<strong>b)</strong> $7\sqrt{2} - 3\sqrt{2} = 4\sqrt{2}$<br><strong>Svar:</strong> a) $2{,}4 \cdot 10^5$`,
+        r`<strong>b)</strong> $7\sqrt{2} - 3\sqrt{2} = 4\sqrt{2}$<br><strong>Svar:</strong> a) $2{,}4 \cdot 10^5$ b) $\sqrt{98} - \sqrt{18} = 7\sqrt{2} - 3\sqrt{2} = 4\sqrt{2}$`,
       ],
     ),
     o(
