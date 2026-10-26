@@ -613,7 +613,7 @@ const dkP4C: Delkapittel = {
       ],
     ),
     o(
-      "P4.33",
+      "P4.30",
       2,
       "med",
       r`Funksjonen $f$ er gitt ved et delt funksjonsuttrykk:<br>$f(x) = 2x + 1$ når $x \le 2$<br>$f(x) = -x^2 + 6x - 3$ når $x > 2$` +
@@ -630,7 +630,7 @@ const dkP4C: Delkapittel = {
       ],
     ),
     o(
-      "P4.30",
+      "P4.31",
       3,
       "med",
       r`Funksjonen $f$ er gitt ved $f(x) = x^3 - 3x^2 + 2$.` +
@@ -645,7 +645,7 @@ const dkP4C: Delkapittel = {
       ],
     ),
     o(
-      "P4.31",
+      "P4.32",
       3,
       "med",
       r`Funksjonene $h$ og $k$ er gitt ved $h(x) = 600 \cdot 0{,}92^x$ og $k(x) = 300 \cdot 1{,}04^x$.` +
@@ -662,7 +662,7 @@ const dkP4C: Delkapittel = {
       ],
     ),
     o(
-      "P4.32",
+      "P4.33",
       3,
       "med",
       r`Funksjonen $f$ er gitt ved $f(x) = \sqrt{x + 4}$.` +
