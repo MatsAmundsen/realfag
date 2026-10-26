@@ -757,6 +757,8 @@ const dk5H: Delkapittel = {
     q("En pol inngår i løsningsmengden", ["alltid", "når ulikheten er $\\ge$", "aldri", "når telleren også er $0$"], 2, "Du kan ikke dele på null, uansett ulikhetstegn."),
     q("For $\\dfrac{x-6}{x-1}\\le 0$ er $x=6$", ["med", "uten", "en pol", "umulig"], 0, "Nullpunktet i telleren er med når tegnet er $\\le$."),
     q("Å flytte $1$ over i $\\dfrac{3}{x-1}\\ge 1$ gir", ["$\\dfrac{3-(x-1)}{x-1}\\ge 0$", "$3\\ge x-1$", "$x\\ge 4$", "ingenting"], 0, "Felles nevner: $\\dfrac{3}{x-1}-1=\\dfrac{4-x}{x-1}$."),
+    q("Du skal løse $\\frac{x-1}{x+3} \\geq 0$. Hvorfor kan du ikke bare gange begge sider med $(x+3)$?", ["Fordi 0 ganger $(x+3)$ ikke er lov", "Fordi vi ikke vet om $(x+3)$ er positivt eller negativt, og derfor vet vi ikke om vi må snu ulikhetstegnet", "Fordi da blir nevneren borte, og det er ikke lov", "Man kan gange med $(x+3)$, det er en helt grei metode"], 1, "I en ulikhet må tegnet snus hvis vi ganger med et negativt tall. Siden vi ikke vet om $x+3$ er positivt eller negativt (det avhenger av $x$), er det tryggest å bruke fortegnsskjema."),
+    q("For å løse $x^2 - 4 > 0$, faktoriserer du til $(x-2)(x+2) > 0$. Hva viser fortegnsskjemaet at løsningen er?", ["$x > 2$", "$-2 < x < 2$", "$x = -2$ og $x = 2$", "$x < -2$ eller $x > 2$"], 3, "Uttrykket har nullpunkter i $x=-2$ og $x=2$. Siden det er en parabel som 'smiler' (positivt $x^2$-ledd), er grafen over x-aksen (positiv) før $-2$ og etter $2$. Løsningen er $x < -2$ eller $x > 2$."),
   ],
   oppgaver: [
     o(
