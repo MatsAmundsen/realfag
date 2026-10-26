@@ -130,7 +130,7 @@ const dkP4A: Delkapittel = {
       "Tell hvor mange streker det er mellom to tall som står skrevet, og del forskjellen på antallet streker.",
       [
         r`<strong>a)</strong> På $x$-aksen er det to streker fra $20$ til $40$, så hver strek er $10$. På $y$-aksen er det to streker fra $4$ til $8$, så hver strek er $2$.`,
-        `<strong>b)</strong> $A$ = ${pt(30, 6)}, $B$ = ${pt(-20, 4)}, $C$ = ${pt(-40, -8)}, $D$ = ${pt(0, -6)}, $E$ = ${pt(50, 0)}.<br><strong>Svar:</strong> a) $10$ og $2$. b) Se over.`,
+        `<strong>b)</strong> $A$ = ${pt(30, 6)}, $B$ = ${pt(-20, 4)}, $C$ = ${pt(-40, -8)}, $D$ = ${pt(0, -6)}, $E$ = ${pt(50, 0)}.<br><strong>Svar:</strong> a) $x$-aksen: $10$, $y$-aksen: $2$. b) $A$ = ${pt(30, 6)}, $B$ = ${pt(-20, 4)}, $C$ = ${pt(-40, -8)}, $D$ = ${pt(0, -6)}, $E$ = ${pt(50, 0)}`,
       ],
     ),
     o(
@@ -186,7 +186,7 @@ const dkP4A: Delkapittel = {
       r`Fra $200$ til $400$ er det fire streker. Fra $5$ til $10$ er det to streker.`,
       [
         r`<strong>a)</strong> $x$-aksen: $\dfrac{400-200}{4} = 50$. $y$-aksen: $\dfrac{10-5}{2} = 2{,}5$.`,
-        `<strong>b)</strong> $A$ = ${pt(250, "7{,}5")}, $B$ = ${pt(-150, 5)}, $C$ = ${pt(0, "-7{,}5")}, $D$ = ${pt(350, "-2{,}5")}, $E$ = ${pt(-300, 0)}.<br><strong>Svar:</strong> a) $50$ og $2{,}5$. b) Se over.`,
+        `<strong>b)</strong> $A$ = ${pt(250, "7{,}5")}, $B$ = ${pt(-150, 5)}, $C$ = ${pt(0, "-7{,}5")}, $D$ = ${pt(350, "-2{,}5")}, $E$ = ${pt(-300, 0)}.<br><strong>Svar:</strong> a) $x$-aksen: $50$, $y$-aksen: $2{,}5$. b) $A$ = ${pt(250, "7{,}5")}, $B$ = ${pt(-150, 5)}, $C$ = ${pt(0, "-7{,}5")}, $D$ = ${pt(350, "-2{,}5")}, $E$ = ${pt(-300, 0)}`,
       ],
     ),
     o(
@@ -207,7 +207,7 @@ const dkP4A: Delkapittel = {
         `<strong>a)</strong> ${pt(0, -7)} og ${pt(0, 0)}, fordi førstekoordinaten er 0.`,
         `<strong>b)</strong> ${pt(4, 0)} og ${pt(0, 0)}, fordi andrekoordinaten er 0.`,
         `<strong>c)</strong> ${pt(-3, 2)} og ${pt(-3, -5)}, fordi begge har førstekoordinat $-3$.`,
-        `<strong>d)</strong> ${pt(-3, 2)} og ${pt(6, 2)}, fordi begge har andrekoordinat $2$.<br><strong>Svar:</strong> Se over.`,
+        `<strong>d)</strong> ${pt(-3, 2)} og ${pt(6, 2)}, fordi begge har andrekoordinat $2$.<br><strong>Svar:</strong> a) ${pt(0, -7)} og ${pt(0, 0)} b) ${pt(4, 0)} og ${pt(0, 0)} c) ${pt(-3, 2)} og ${pt(-3, -5)} d) ${pt(-3, 2)} og ${pt(6, 2)}`,
       ],
     ),
     o(
@@ -340,7 +340,7 @@ const dkP4B: Delkapittel = {
         `<strong>b)</strong> Nullpunktene er $2$ og $6$. Bunnpunktet er ${pt(4, -2)}.`,
         `<strong>c)</strong> ${pt(0, 6)}.`,
         r`<strong>d)</strong> $x = 0$ og $x = 8$.`,
-        `<strong>e)</strong> Nullpunktet er bare tallet ($2$ og $6$). Skjæringspunktet er hele punktet (${pt(2, 0)} og ${pt(6, 0)}).<br><strong>Svar:</strong> Se over.`,
+        `<strong>e)</strong> Nullpunktet er bare tallet ($2$ og $6$). Skjæringspunktet er hele punktet (${pt(2, 0)} og ${pt(6, 0)}).<br><strong>Svar:</strong> a) $D_f = [0\\,,\\,8]$, $V_f = [-2\\,,\\,6]$ b) nullpunkter $2$ og $6$, bunnpunkt ${pt(4, -2)} c) ${pt(0, 6)} d) $x = 0$ og $x = 8$ e) nullpunktet er et tall, skjæringspunktet er et punkt`,
       ],
     ),
     o(
@@ -364,7 +364,7 @@ const dkP4B: Delkapittel = {
         `<strong>b)</strong> ${pt(-2, 1)} og ${pt(1, 4)}.`,
         r`<strong>c)</strong> $f$: $x = -3$. $g$: $x \approx -2{,}24$ og $x \approx 2{,}24$.`,
         r`<strong>d)</strong> $x = -2$ og $x = 2$.`,
-        r`<strong>e)</strong> $x = -4$.<br><strong>Svar:</strong> Se over.`,
+        r`<strong>e)</strong> $x = -4$.<br><strong>Svar:</strong> a) $g$: toppunkt $(0\,,\,5)$, $f$: ingen b) $(-2\,,\,1)$ og $(1\,,\,4)$ c) $f$: $x = -3$, $g$: $x \approx \pm 2{,}24$ d) $x = \pm 2$ e) $x = -4$`,
       ],
     ),
     o(
@@ -499,7 +499,7 @@ const dkP4C: Delkapittel = {
       "Se etter hvor variabelen står: i grunntallet, i eksponenten eller i nevneren? Hva er den høyeste potensen av $x$?",
       [
         "<strong>a)</strong> lineær <strong>b)</strong> andregrad <strong>c)</strong> eksponential",
-        "<strong>d)</strong> potens <strong>e)</strong> tredjegrad <strong>f)</strong> rasjonal<br><strong>Svar:</strong> Se over.",
+        "<strong>d)</strong> potens <strong>e)</strong> tredjegrad <strong>f)</strong> rasjonal<br><strong>Svar:</strong> a) lineær b) andregrad c) eksponential d) potens e) tredjegrad f) rasjonal",
       ],
     ),
     o(
@@ -641,7 +641,7 @@ const dkP4C: Delkapittel = {
       [
         `<strong>a)</strong> Toppunkt ${pt(0, 2)}, bunnpunkt ${pt(2, -2)}.`,
         r`<strong>b)</strong> $x \approx -0{,}73$, $x = 1$ og $x \approx 2{,}73$.`,
-        `<strong>c)</strong> Bunnpunkt ${pt(2, -2)}, men ingen toppunkt. Toppunktet ${pt(0, 2)} ligger utenfor definisjonsmengden. Intervallet er åpent, så $x = 1$ og $x = 3{,}5$ er ikke med, og $g$ har ingen største verdi.<br><strong>Svar:</strong> Se over.`,
+        `<strong>c)</strong> Bunnpunkt ${pt(2, -2)}, men ingen toppunkt. Toppunktet ${pt(0, 2)} ligger utenfor definisjonsmengden. Intervallet er åpent, så $x = 1$ og $x = 3{,}5$ er ikke med, og $g$ har ingen største verdi.<br><strong>Svar:</strong> a) toppunkt ${pt(0, 2)}, bunnpunkt ${pt(2, -2)} b) $x \\approx -0{,}73$, $x = 1$, $x \\approx 2{,}73$ c) bunnpunkt ${pt(2, -2)}, ingen toppunkt`,
       ],
     ),
     o(
@@ -845,7 +845,7 @@ const dkP4D: Delkapittel = {
       "Momentan: Stiger grafen, synker den, eller er den vannrett akkurat i punktet? Gjennomsnittlig: Ligger det siste punktet høyere, lavere eller like høyt som det første?",
       [
         r`<strong>a)</strong> Positiv i $A$ og $E$, negativ i $C$, null i $B$ og $D$.`,
-        r`<strong>b)</strong> 1) Negativ ($C$ ligger lavere enn $A$). 2) Null ($B$ og $E$ ligger like høyt, $y = 4$). 3) Positiv.<br><strong>Svar:</strong> Se over.`,
+        r`<strong>b)</strong> 1) Negativ ($C$ ligger lavere enn $A$). 2) Null ($B$ og $E$ ligger like høyt, $y = 4$). 3) Positiv.<br><strong>Svar:</strong> a) $A$ og $E$ positiv, $C$ negativ, $B$ og $D$ null b) 1) negativ 2) null 3) positiv`,
       ],
     ),
     o(
@@ -883,7 +883,7 @@ const dkP4D: Delkapittel = {
       [
         `Skisse: en parabel som vender nedover med toppunkt ${pt(2, 5)}.`,
         r`Tangenten i toppunktet er vannrett, så den momentane vekstfarten er 0 der. Toppunktet ligger altså der $x = 2$.`,
-        r`Symmetrilinja $x = 2$ ligger midt i $[0\,,\,4]$, så $f(0) = f(4)$, og den gjennomsnittlige vekstfarten blir 0.<br><strong>Svar:</strong> Se over.`,
+        r`Symmetrilinja $x = 2$ ligger midt i $[0\,,\,4]$, så $f(0) = f(4)$, og den gjennomsnittlige vekstfarten blir 0.<br><strong>Svar:</strong> Toppunktet ligger der $x = 2$, altså i $(2\,,\,5)$, midt i $[0\,,\,4]$. Derfor er $f(0) = f(4)$.`,
       ],
     ),
   ],
