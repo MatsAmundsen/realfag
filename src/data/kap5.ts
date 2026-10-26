@@ -639,6 +639,7 @@ const dk5G: Delkapittel = {
     q("Hvis $a<0$ i $a(x+3)(1-x)$, speiles fortegnet til $(x+3)(1-x)$", ["ja", "nei", "bare for $x>0$", "bare i origo"], 0, "Negativ konstant snur alle tegn."),
     q("Nullproduktregelen sier at $x(x-1)=0$ når", ["$x=0$ eller $x=1$", "bare $x=0$", "bare $x=1$", "$x=\\tfrac{1}{2}$"], 0, "Minst én faktor er null."),
     q("Parabel som vender ned er positiv", ["utenfor nullpunktene", "mellom nullpunktene", "overalt", "ingen steder"], 1, "Positiv der grafen ligger over $x$-aksen: mellom røttene."),
+    q("Et uttrykk har faktoren $(x-3)^2$. Hvordan ser fortegnslinja til denne faktoren ut?", ["Stiplet (negativ) før $3$ og hel (positiv) etter $3$", "Hel (positiv) overalt, også i $x=3$", "Hel (positiv) før $3$, null i $3$ og hel (positiv) etter $3$", "Stiplet (negativ) overalt"], 2, "Et kvadrat blir aldri negativt. Faktoren er positiv overalt unntatt i $x=3$, der den er $0$."),
   ],
   oppgaver: [
     o(
