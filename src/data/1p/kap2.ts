@@ -79,7 +79,7 @@ const dkP2A: Delkapittel = {
       "Prefiksene fra kilo og oppover øker med 1000 for hvert trinn. Det samme gjelder fra milli og nedover.",
       [
         r`<strong>a)</strong> $10^3$ <strong>b)</strong> $10^6$ <strong>c)</strong> $10^9$`,
-        r`<strong>d)</strong> $10^{-1}$ og $10^{-2}$ <strong>e)</strong> $10^{-3}$ <strong>f)</strong> $10^{-6}$ og $10^{-9}$<br><strong>Svar:</strong> se over`,
+        r`<strong>d)</strong> $10^{-1}$ og $10^{-2}$ <strong>e)</strong> $10^{-3}$ <strong>f)</strong> $10^{-6}$ og $10^{-9}$<br><strong>Svar:</strong> a) $10^3$ b) $10^6$ c) $10^9$ d) $10^{-1}$ og $10^{-2}$ e) $10^{-3}$ f) $10^{-6}$ og $10^{-9}$`,
       ],
     ),
     o(

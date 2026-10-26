@@ -59,11 +59,11 @@ const dkP4A: Delkapittel = {
   id: "P4A",
   tittel: "4A Punkter og akser",
   quiz: [
-    q("Hva heter punktet der aksene skjærer hverandre?", ["Origo", "Toppunktet", "Nullpunktet", "Skalaen"], 0, r`Origo er punktet $(0\,,\,0)$.`, 1),
-    q(r`Hvilken koordinat skrives først i $(x\,,\,y)$?`, ["Andrekoordinaten", "Førstekoordinaten", "Den største", "Det spiller ingen rolle"], 1, r`Førstekoordinaten hører til $x$-aksen og skrives først.`, 1),
-    q(r`Punktet $(-2\,,\,5)$ ligger`, ["til høyre for andreaksen og over førsteaksen", "til venstre for andreaksen og under førsteaksen", "til venstre for andreaksen og over førsteaksen", "på førsteaksen"], 2, r`Negativ førstekoordinat: til venstre. Positiv andrekoordinat: over.`, 1),
-    q(r`Hvilket punkt ligger på andreaksen ($y$-aksen)?`, [r`$(4\,,\,0)$`, r`$(3\,,\,3)$`, r`$(-1\,,\,2)$`, r`$(0\,,\,-6)$`], 3, "Punkter på andreaksen har førstekoordinat 0.", 2),
-    q("Tallene på en akse er 0, 25, 50, 75 ved hver strek. Hva er skalaen?", ["25", "1", "5", "75"], 0, "Tallene øker med 25 for hver strek.", 2),
+    q("Hva heter punktet der aksene skjærer hverandre?", ["Toppunktet", "Nullpunktet", "Origo", "Skalaen"], 2, r`Origo er punktet $(0\,,\,0)$.`, 1),
+    q(r`Hvilken koordinat skrives først i $(x\,,\,y)$?`, ["Andrekoordinaten", "Den største", "Førstekoordinaten", "Det spiller ingen rolle"], 2, r`Førstekoordinaten hører til $x$-aksen og skrives først.`, 1),
+    q(r`Punktet $(-2\,,\,5)$ ligger`, ["til høyre for andreaksen og over førsteaksen", "til venstre for andreaksen og over førsteaksen", "til venstre for andreaksen og under førsteaksen", "på førsteaksen"], 1, r`Negativ førstekoordinat: til venstre. Positiv andrekoordinat: over.`, 1),
+    q(r`Hvilket punkt ligger på andreaksen ($y$-aksen)?`, [r`$(0\,,\,-6)$`, r`$(4\,,\,0)$`, r`$(3\,,\,3)$`, r`$(-1\,,\,2)$`], 0, "Punkter på andreaksen har førstekoordinat 0.", 2),
+    q("Tallene på en akse er 0, 25, 50, 75 ved hver strek. Hva er skalaen?", ["1", "5", "75", "25"], 3, "Tallene øker med 25 for hver strek.", 2),
     q(r`Alle punkter med andrekoordinat $4$ ligger på`, ["en loddrett linje", "en vannrett linje", "førsteaksen", "en skrå linje gjennom origo"], 1, r`Punktene $(x\,,\,4)$ ligger like høyt, altså på en vannrett linje.`, 3),
   ],
   oppgaver: [
@@ -87,10 +87,19 @@ const dkP4A: Delkapittel = {
       1,
       "uten",
       "Tegn et koordinatsystem der $x$ og $y$ går fra $-5$ til $5$. Merk av punktene, og skriv navnet ved hvert punkt.<br><br>" +
-        `<strong>a)</strong> $P$ = ${pt(3, 4)}&nbsp;&nbsp;<strong>b)</strong> $R$ = ${pt(-4, 2)}&nbsp;&nbsp;<strong>c)</strong> $S$ = ${pt(1, -3)}&nbsp;&nbsp;<strong>d)</strong> $T$ = ${pt(-2, -1)}`,
+        `<strong>a)</strong> $P$ = ${pt(3, 4)}` +
+        del("b") +
+        `$R$ = ${pt(-4, 2)}` +
+        del("c") +
+        `$S$ = ${pt(1, -3)}` +
+        del("d") +
+        `$T$ = ${pt(-2, -1)}`,
       "Start i origo. Gå først til høyre (positiv) eller venstre (negativ), deretter opp (positiv) eller ned (negativ).",
       [
-        "Kontroll av tegningen:<br>$P$ ligger 3 til høyre og 4 opp.<br>$R$ ligger 4 til venstre og 2 opp.<br>$S$ ligger 1 til høyre og 3 ned.<br>$T$ ligger 2 til venstre og 1 ned.<br><strong>Svar:</strong> Tegning med de fire punktene merket.",
+        "<strong>a)</strong> $P$ ligger 3 til høyre og 4 opp.",
+        "<strong>b)</strong> $R$ ligger 4 til venstre og 2 opp.",
+        "<strong>c)</strong> $S$ ligger 1 til høyre og 3 ned.",
+        "<strong>d)</strong> $T$ ligger 2 til venstre og 1 ned.<br><strong>Svar:</strong> Tegning med de fire punktene merket.",
       ],
     ),
     o(
@@ -121,7 +130,7 @@ const dkP4A: Delkapittel = {
       "Tell hvor mange streker det er mellom to tall som står skrevet, og del forskjellen på antallet streker.",
       [
         r`<strong>a)</strong> På $x$-aksen er det to streker fra $20$ til $40$, så hver strek er $10$. På $y$-aksen er det to streker fra $4$ til $8$, så hver strek er $2$.`,
-        `<strong>b)</strong> $A$ = ${pt(30, 6)}, $B$ = ${pt(-20, 4)}, $C$ = ${pt(-40, -8)}, $D$ = ${pt(0, -6)}, $E$ = ${pt(50, 0)}.<br><strong>Svar:</strong> a) $10$ og $2$. b) Se over.`,
+        `<strong>b)</strong> $A$ = ${pt(30, 6)}, $B$ = ${pt(-20, 4)}, $C$ = ${pt(-40, -8)}, $D$ = ${pt(0, -6)}, $E$ = ${pt(50, 0)}.<br><strong>Svar:</strong> a) $x$-aksen: $10$, $y$-aksen: $2$. b) $A$ = ${pt(30, 6)}, $B$ = ${pt(-20, 4)}, $C$ = ${pt(-40, -8)}, $D$ = ${pt(0, -6)}, $E$ = ${pt(50, 0)}`,
       ],
     ),
     o(
@@ -129,13 +138,22 @@ const dkP4A: Delkapittel = {
       2,
       "uten",
       "Tegn et koordinatsystem og merk av punktene. Velg en skala som passer på hver akse.<br><br>" +
-        `<strong>a)</strong> ${pt(0, 20)}&nbsp;&nbsp;<strong>b)</strong> ${pt(-150, -5)}&nbsp;&nbsp;<strong>c)</strong> ${pt(50, 15)}&nbsp;&nbsp;<strong>d)</strong> ${pt(200, -10)}` +
+        `<strong>a)</strong> ${pt(0, 20)}` +
+        del("b") +
+        `${pt(-150, -5)}` +
+        del("c") +
+        `${pt(50, 15)}` +
+        del("d") +
+        `${pt(200, -10)}` +
         del("e") +
         r`Hvilken skala valgte du på $x$-aksen og på $y$-aksen?`,
       r`Finn den minste og største $x$-verdien og den minste og største $y$-verdien. Velg en skala slik at alle punktene får plass, og hold inndelingen jevn.`,
       [
-        r`$x$-verdiene går fra $-150$ til $200$, og $y$-verdiene går fra $-10$ til $20$.`,
-        r`For eksempel kan du bruke skala $50$ på $x$-aksen og skala $5$ på $y$-aksen. Andre valg er også riktige hvis alle punktene får plass og inndelingen er jevn.<br><strong>Svar:</strong> Tegning, for eksempel skala $50$ og $5$.`,
+        `<strong>a)</strong> ${pt(0, 20)} ligger på $y$-aksen, 20 opp.`,
+        `<strong>b)</strong> ${pt(-150, -5)} ligger 150 til venstre og 5 ned.`,
+        `<strong>c)</strong> ${pt(50, 15)} ligger 50 til høyre og 15 opp.`,
+        `<strong>d)</strong> ${pt(200, -10)} ligger 200 til høyre og 10 ned.`,
+        r`<strong>e)</strong> $x$-verdiene går fra $-150$ til $200$, og $y$-verdiene går fra $-10$ til $20$. For eksempel kan du bruke skala $50$ på $x$-aksen og skala $5$ på $y$-aksen. Andre valg er også riktige hvis alle punktene får plass og inndelingen er jevn.<br><strong>Svar:</strong> Tegning, for eksempel skala $50$ og $5$.`,
       ],
     ),
     o(
@@ -168,7 +186,7 @@ const dkP4A: Delkapittel = {
       r`Fra $200$ til $400$ er det fire streker. Fra $5$ til $10$ er det to streker.`,
       [
         r`<strong>a)</strong> $x$-aksen: $\dfrac{400-200}{4} = 50$. $y$-aksen: $\dfrac{10-5}{2} = 2{,}5$.`,
-        `<strong>b)</strong> $A$ = ${pt(250, "7{,}5")}, $B$ = ${pt(-150, 5)}, $C$ = ${pt(0, "-7{,}5")}, $D$ = ${pt(350, "-2{,}5")}, $E$ = ${pt(-300, 0)}.<br><strong>Svar:</strong> a) $50$ og $2{,}5$. b) Se over.`,
+        `<strong>b)</strong> $A$ = ${pt(250, "7{,}5")}, $B$ = ${pt(-150, 5)}, $C$ = ${pt(0, "-7{,}5")}, $D$ = ${pt(350, "-2{,}5")}, $E$ = ${pt(-300, 0)}.<br><strong>Svar:</strong> a) $x$-aksen: $50$, $y$-aksen: $2{,}5$. b) $A$ = ${pt(250, "7{,}5")}, $B$ = ${pt(-150, 5)}, $C$ = ${pt(0, "-7{,}5")}, $D$ = ${pt(350, "-2{,}5")}, $E$ = ${pt(-300, 0)}`,
       ],
     ),
     o(
@@ -189,7 +207,7 @@ const dkP4A: Delkapittel = {
         `<strong>a)</strong> ${pt(0, -7)} og ${pt(0, 0)}, fordi førstekoordinaten er 0.`,
         `<strong>b)</strong> ${pt(4, 0)} og ${pt(0, 0)}, fordi andrekoordinaten er 0.`,
         `<strong>c)</strong> ${pt(-3, 2)} og ${pt(-3, -5)}, fordi begge har førstekoordinat $-3$.`,
-        `<strong>d)</strong> ${pt(-3, 2)} og ${pt(6, 2)}, fordi begge har andrekoordinat $2$.<br><strong>Svar:</strong> Se over.`,
+        `<strong>d)</strong> ${pt(-3, 2)} og ${pt(6, 2)}, fordi begge har andrekoordinat $2$.<br><strong>Svar:</strong> a) ${pt(0, -7)} og ${pt(0, 0)} b) ${pt(4, 0)} og ${pt(0, 0)} c) ${pt(-3, 2)} og ${pt(-3, -5)} d) ${pt(-3, 2)} og ${pt(6, 2)}`,
       ],
     ),
     o(
@@ -219,12 +237,12 @@ const dkP4B: Delkapittel = {
   id: "P4B",
   tittel: "4B Hva er en funksjon?",
   quiz: [
-    q(r`$f(x) = 3x + 1$. Hva er $f(2)$?`, ["$5$", "$6$", "$7$", "$9$"], 2, r`$f(2) = 3 \cdot 2 + 1 = 7$.`, 1),
-    q("Når er $f$ en funksjon av $x$?", [r`Når grafen er en rett linje`, r`Når $f(0) = 0$`, r`Når $x$ kan være negativ`, r`Når hver $x$ gir én bestemt verdi for $f(x)$`], 3, "Hver verdi av $x$ skal gi nøyaktig én funksjonsverdi.", 1),
-    q(r`Hva er definisjonsmengden $D_f$?`, [r`Verdiene $x$ kan ha`, r`Verdiene $f(x)$ kan få`, "Nullpunktene", "Skjæringspunktet med andreaksen"], 0, r`$D_f$ gjelder $x$. Verdimengden $V_f$ gjelder $f(x)$.`, 1),
-    q(r`Grafen skjærer førsteaksen i $(4\,,\,0)$. Hva er nullpunktet?`, ["$0$", "$4$", r`$(4\,,\,0)$`, r`$(0\,,\,4)$`], 1, "Nullpunktet er bare førstekoordinaten, altså tallet 4.", 2),
-    q(r`$g(x) = 10 - 2x$ med $D_g = [0\,,\,5]$. Hva er $V_g$?`, [r`$[0\,,\,5]$`, r`$[5\,,\,10]$`, r`$[0\,,\,10]$`, r`$[-10\,,\,10]$`], 2, r`$g(0) = 10$ og $g(5) = 0$.`, 2),
-    q(r`Hvordan løser du $f(x) = 4$ grafisk?`, [r`Leser av $f(4)$`, "Finner nullpunktene", "Finner toppunktet", r`Tegner linja $y = 4$ og finner skjæringspunktene med grafen`], 3, r`Løsningene er $x$-verdiene der grafen og linja $y = 4$ møtes.`, 3),
+    q(r`$f(x) = 3x + 1$. Hva er $f(2)$?`, ["$5$", "$6$", "$9$", "$7$"], 3, r`$f(2) = 3 \cdot 2 + 1 = 7$.`, 1),
+    q("Når er $f$ en funksjon av $x$?", [r`Når hver $x$ gir én bestemt verdi for $f(x)$`, r`Når grafen er en rett linje`, r`Når $f(0) = 0$`, r`Når $x$ kan være negativ`], 0, "Hver verdi av $x$ skal gi nøyaktig én funksjonsverdi.", 1),
+    q(r`Hva er definisjonsmengden $D_f$?`, [r`Verdiene $f(x)$ kan få`, "Nullpunktene", "Skjæringspunktet med andreaksen", r`Verdiene $x$ kan ha`], 3, r`$D_f$ gjelder $x$. Verdimengden $V_f$ gjelder $f(x)$.`, 1),
+    q(r`Grafen skjærer førsteaksen i $(4\,,\,0)$. Hva er nullpunktet?`, ["$0$", r`$(4\,,\,0)$`, "$4$", r`$(0\,,\,4)$`], 2, "Nullpunktet er bare førstekoordinaten, altså tallet 4.", 2),
+    q(r`$g(x) = 10 - 2x$ med $D_g = [0\,,\,5]$. Hva er $V_g$?`, [r`$[0\,,\,5]$`, r`$[0\,,\,10]$`, r`$[5\,,\,10]$`, r`$[-10\,,\,10]$`], 1, r`$g(0) = 10$ og $g(5) = 0$.`, 2),
+    q(r`Hvordan løser du $f(x) = 4$ grafisk?`, [r`Leser av $f(4)$`, "Finner nullpunktene", r`Tegner linja $y = 4$ og finner skjæringspunktene med grafen`, "Finner toppunktet"], 2, r`Løsningene er $x$-verdiene der grafen og linja $y = 4$ møtes.`, 3),
   ],
   oppgaver: [
     o(
@@ -322,7 +340,7 @@ const dkP4B: Delkapittel = {
         `<strong>b)</strong> Nullpunktene er $2$ og $6$. Bunnpunktet er ${pt(4, -2)}.`,
         `<strong>c)</strong> ${pt(0, 6)}.`,
         r`<strong>d)</strong> $x = 0$ og $x = 8$.`,
-        `<strong>e)</strong> Nullpunktet er bare tallet ($2$ og $6$). Skjæringspunktet er hele punktet (${pt(2, 0)} og ${pt(6, 0)}).<br><strong>Svar:</strong> Se over.`,
+        `<strong>e)</strong> Nullpunktet er bare tallet ($2$ og $6$). Skjæringspunktet er hele punktet (${pt(2, 0)} og ${pt(6, 0)}).<br><strong>Svar:</strong> a) $D_f = [0\\,,\\,8]$, $V_f = [-2\\,,\\,6]$ b) nullpunkter $2$ og $6$, bunnpunkt ${pt(4, -2)} c) ${pt(0, 6)} d) $x = 0$ og $x = 8$ e) nullpunktet er et tall, skjæringspunktet er et punkt`,
       ],
     ),
     o(
@@ -346,7 +364,7 @@ const dkP4B: Delkapittel = {
         `<strong>b)</strong> ${pt(-2, 1)} og ${pt(1, 4)}.`,
         r`<strong>c)</strong> $f$: $x = -3$. $g$: $x \approx -2{,}24$ og $x \approx 2{,}24$.`,
         r`<strong>d)</strong> $x = -2$ og $x = 2$.`,
-        r`<strong>e)</strong> $x = -4$.<br><strong>Svar:</strong> Se over.`,
+        r`<strong>e)</strong> $x = -4$.<br><strong>Svar:</strong> a) $g$: toppunkt $(0\,,\,5)$, $f$: ingen b) $(-2\,,\,1)$ og $(1\,,\,4)$ c) $f$: $x = -3$, $g$: $x \approx \pm 2{,}24$ d) $x = \pm 2$ e) $x = -4$`,
       ],
     ),
     o(
@@ -419,11 +437,11 @@ const dkP4C: Delkapittel = {
   tittel: "4C Funksjonstyper og grafer",
   quiz: [
     q(r`Hva er stigningstallet i $f(x) = -2x + 7$?`, ["$-2$", "$7$", "$2$", "$5$"], 0, r`I $ax + b$ er $a$ stigningstallet.`, 1),
-    q(r`Hvilken type funksjon er $f(x) = 3 \cdot 1{,}4^x$?`, ["Lineær", "Eksponentialfunksjon", "Potensfunksjon", "Andregradsfunksjon"], 1, "Variabelen står i eksponenten.", 1),
-    q(r`$f(x) = 50 \cdot 0{,}9^x$. Hvor mange prosent endrer $f(x)$ seg når $x$ øker med 1?`, ["Øker med 9 %", "Minker med 9 %", "Minker med 10 %", "Øker med 90 %"], 2, r`$0{,}9 = 100\,\% - 10\,\%$.`, 2),
-    q(r`En parabel har nullpunktene $1$ og $7$. Hva er symmetrilinja?`, [r`$x = 3$`, r`$x = 6$`, r`$x = 8$`, r`$x = 4$`], 3, r`Symmetrilinja ligger midt mellom nullpunktene: $\dfrac{1 + 7}{2} = 4$.`, 2),
-    q(r`Har $f(x) = -x^2 + 4x$ et toppunkt eller et bunnpunkt?`, ["Toppunkt", "Bunnpunkt", "Begge", "Ingen av dem"], 0, r`$a = -1 < 0$, så parabelen vender ned.`, 2),
-    q(r`Hvorfor kan vi ikke regne ut $f(2)$ når $f(x) = \dfrac{x + 1}{x - 2}$?`, ["Telleren blir 0", "Nevneren blir 0", "Svaret blir negativt", "2 er ikke et heltall"], 1, "Vi kan ikke dele på 0. Grafen har en loddrett asymptote der.", 3),
+    q(r`Hvilken type funksjon er $f(x) = 3 \cdot 1{,}4^x$?`, ["Lineær", "Potensfunksjon", "Andregradsfunksjon", "Eksponentialfunksjon"], 3, "Variabelen står i eksponenten.", 1),
+    q(r`$f(x) = 50 \cdot 0{,}9^x$. Hvor mange prosent endrer $f(x)$ seg når $x$ øker med 1?`, ["Øker med 9 %", "Minker med 10 %", "Minker med 9 %", "Øker med 90 %"], 1, r`$0{,}9 = 100\,\% - 10\,\%$.`, 2),
+    q(r`En parabel har nullpunktene $1$ og $7$. Hva er symmetrilinja?`, [r`$x = 4$`, r`$x = 3$`, r`$x = 6$`, r`$x = 8$`], 0, r`Symmetrilinja ligger midt mellom nullpunktene: $\dfrac{1 + 7}{2} = 4$.`, 2),
+    q(r`Har $f(x) = -x^2 + 4x$ et toppunkt eller et bunnpunkt?`, ["Bunnpunkt", "Begge", "Ingen av dem", "Toppunkt"], 3, r`$a = -1 < 0$, så parabelen vender ned.`, 2),
+    q(r`Hvorfor kan vi ikke regne ut $f(2)$ når $f(x) = \dfrac{x + 1}{x - 2}$?`, ["Telleren blir 0", "Svaret blir negativt", "Nevneren blir 0", "2 er ikke et heltall"], 2, "Vi kan ikke dele på 0. Grafen har en loddrett asymptote der.", 3),
   ],
   oppgaver: [
     o(
@@ -481,7 +499,7 @@ const dkP4C: Delkapittel = {
       "Se etter hvor variabelen står: i grunntallet, i eksponenten eller i nevneren? Hva er den høyeste potensen av $x$?",
       [
         "<strong>a)</strong> lineær <strong>b)</strong> andregrad <strong>c)</strong> eksponential",
-        "<strong>d)</strong> potens <strong>e)</strong> tredjegrad <strong>f)</strong> rasjonal<br><strong>Svar:</strong> Se over.",
+        "<strong>d)</strong> potens <strong>e)</strong> tredjegrad <strong>f)</strong> rasjonal<br><strong>Svar:</strong> a) lineær b) andregrad c) eksponential d) potens e) tredjegrad f) rasjonal",
       ],
     ),
     o(
@@ -595,7 +613,7 @@ const dkP4C: Delkapittel = {
       ],
     ),
     o(
-      "P4.33",
+      "P4.30",
       2,
       "med",
       r`Funksjonen $f$ er gitt ved et delt funksjonsuttrykk:<br>$f(x) = 2x + 1$ når $x \le 2$<br>$f(x) = -x^2 + 6x - 3$ når $x > 2$` +
@@ -612,7 +630,7 @@ const dkP4C: Delkapittel = {
       ],
     ),
     o(
-      "P4.30",
+      "P4.31",
       3,
       "med",
       r`Funksjonen $f$ er gitt ved $f(x) = x^3 - 3x^2 + 2$.` +
@@ -623,11 +641,11 @@ const dkP4C: Delkapittel = {
       [
         `<strong>a)</strong> Toppunkt ${pt(0, 2)}, bunnpunkt ${pt(2, -2)}.`,
         r`<strong>b)</strong> $x \approx -0{,}73$, $x = 1$ og $x \approx 2{,}73$.`,
-        `<strong>c)</strong> Bunnpunkt ${pt(2, -2)}, men ingen toppunkt. Toppunktet ${pt(0, 2)} ligger utenfor definisjonsmengden. Intervallet er åpent, så $x = 1$ og $x = 3{,}5$ er ikke med, og $g$ har ingen største verdi.<br><strong>Svar:</strong> Se over.`,
+        `<strong>c)</strong> Bunnpunkt ${pt(2, -2)}, men ingen toppunkt. Toppunktet ${pt(0, 2)} ligger utenfor definisjonsmengden. Intervallet er åpent, så $x = 1$ og $x = 3{,}5$ er ikke med, og $g$ har ingen største verdi.<br><strong>Svar:</strong> a) toppunkt ${pt(0, 2)}, bunnpunkt ${pt(2, -2)} b) $x \\approx -0{,}73$, $x = 1$, $x \\approx 2{,}73$ c) bunnpunkt ${pt(2, -2)}, ingen toppunkt`,
       ],
     ),
     o(
-      "P4.31",
+      "P4.32",
       3,
       "med",
       r`Funksjonene $h$ og $k$ er gitt ved $h(x) = 600 \cdot 0{,}92^x$ og $k(x) = 300 \cdot 1{,}04^x$.` +
@@ -644,7 +662,7 @@ const dkP4C: Delkapittel = {
       ],
     ),
     o(
-      "P4.32",
+      "P4.33",
       3,
       "med",
       r`Funksjonen $f$ er gitt ved $f(x) = \sqrt{x + 4}$.` +
@@ -701,10 +719,10 @@ const dkP4D: Delkapittel = {
   id: "P4D",
   tittel: "4D Gjennomsnittlig og momentan vekstfart",
   quiz: [
-    q(r`Hva er vekstfarten til $f(x) = 5x - 1$?`, ["$-1$", "$4$", "$5$", "Den endrer seg"], 2, "For en lineær funksjon er vekstfarten lik stigningstallet, og den er lik overalt.", 1),
+    q(r`Hva er vekstfarten til $f(x) = 5x - 1$?`, ["$5$", "$-1$", "$4$", "Den endrer seg"], 0, "For en lineær funksjon er vekstfarten lik stigningstallet, og den er lik overalt.", 1),
     q(r`$f(1) = 4$ og $f(5) = 12$. Hva er den gjennomsnittlige vekstfarten fra $x = 1$ til $x = 5$?`, ["$3$", "$4$", "$8$", "$2$"], 3, r`$\dfrac{12 - 4}{5 - 1} = \dfrac{8}{4} = 2$.`, 1),
-    q("Den momentane vekstfarten i et punkt er", ["stigningstallet for tangenten i punktet", "funksjonsverdien i punktet", "gjennomsnittet av alle funksjonsverdier", "avstanden til origo"], 0, "Tangenten berører grafen i punktet. Stigningstallet dens er den momentane vekstfarten.", 2),
-    q("Hva er den momentane vekstfarten i et toppunkt?", ["Positiv", "0", "Negativ", "Den finnes ikke"], 1, "Tangenten i et toppunkt er vannrett.", 2),
+    q("Den momentane vekstfarten i et punkt er", ["funksjonsverdien i punktet", "stigningstallet for tangenten i punktet", "gjennomsnittet av alle funksjonsverdier", "avstanden til origo"], 1, "Tangenten berører grafen i punktet. Stigningstallet dens er den momentane vekstfarten.", 2),
+    q("Hva er den momentane vekstfarten i et toppunkt?", ["Positiv", "Negativ", "Den finnes ikke", "0"], 3, "Tangenten i et toppunkt er vannrett.", 2),
     q("Den gjennomsnittlige vekstfarten mellom to punkter er negativ. Hva betyr det?", ["Grafen synker hele veien", "Begge punktene ligger under førsteaksen", "Det siste punktet ligger lavere enn det første", "Grafen har et bunnpunkt"], 2, "Endringen i funksjonsverdi er negativ. Grafen kan likevel stige på deler av intervallet.", 3),
   ],
   oppgaver: [
@@ -827,7 +845,7 @@ const dkP4D: Delkapittel = {
       "Momentan: Stiger grafen, synker den, eller er den vannrett akkurat i punktet? Gjennomsnittlig: Ligger det siste punktet høyere, lavere eller like høyt som det første?",
       [
         r`<strong>a)</strong> Positiv i $A$ og $E$, negativ i $C$, null i $B$ og $D$.`,
-        r`<strong>b)</strong> 1) Negativ ($C$ ligger lavere enn $A$). 2) Null ($B$ og $E$ ligger like høyt, $y = 4$). 3) Positiv.<br><strong>Svar:</strong> Se over.`,
+        r`<strong>b)</strong> 1) Negativ ($C$ ligger lavere enn $A$). 2) Null ($B$ og $E$ ligger like høyt, $y = 4$). 3) Positiv.<br><strong>Svar:</strong> a) $A$ og $E$ positiv, $C$ negativ, $B$ og $D$ null b) 1) negativ 2) null 3) positiv`,
       ],
     ),
     o(
@@ -865,7 +883,7 @@ const dkP4D: Delkapittel = {
       [
         `Skisse: en parabel som vender nedover med toppunkt ${pt(2, 5)}.`,
         r`Tangenten i toppunktet er vannrett, så den momentane vekstfarten er 0 der. Toppunktet ligger altså der $x = 2$.`,
-        r`Symmetrilinja $x = 2$ ligger midt i $[0\,,\,4]$, så $f(0) = f(4)$, og den gjennomsnittlige vekstfarten blir 0.<br><strong>Svar:</strong> Se over.`,
+        r`Symmetrilinja $x = 2$ ligger midt i $[0\,,\,4]$, så $f(0) = f(4)$, og den gjennomsnittlige vekstfarten blir 0.<br><strong>Svar:</strong> Toppunktet ligger der $x = 2$, altså i $(2\,,\,5)$, midt i $[0\,,\,4]$. Derfor er $f(0) = f(4)$.`,
       ],
     ),
   ],
@@ -877,11 +895,11 @@ const dkP4E: Delkapittel = {
   id: "P4E",
   tittel: "4E Funksjoner i hverdagen",
   quiz: [
-    q("En størrelse øker med like mange prosent hvert år. Hvilken modell passer?", ["Lineær", "Andregrad", "Rasjonal", "Eksponentiell"], 3, r`Like mange prosent gir en eksponentiell modell, $N = G \cdot V^t$.`, 1),
+    q("En størrelse øker med like mange prosent hvert år. Hvilken modell passer?", ["Lineær", "Eksponentiell", "Andregrad", "Rasjonal"], 1, r`Like mange prosent gir en eksponentiell modell, $N = G \cdot V^t$.`, 1),
     q(r`Taxiprisen er $P(x) = 15x + 60$ kroner, der $x$ er antall km. Hva betyr $60$?`, ["Fastpris ved start", "Pris per km", "Antall km", "Makspris"], 0, "Konstantleddet er prisen når $x = 0$.", 1),
-    q(r`$V(x)$ er liter bensin og $x$ er antall mil. Hvilken enhet har vekstfarten?`, ["L", "L/mil", "mil", "mil/L"], 1, "Enheten for funksjonsverdien delt på enheten for variabelen.", 2),
+    q(r`$V(x)$ er liter bensin og $x$ er antall mil. Hvilken enhet har vekstfarten?`, ["L/mil", "L", "mil", "mil/L"], 0, "Enheten for funksjonsverdien delt på enheten for variabelen.", 2),
     q(r`$K(x) = 5000 \cdot 1{,}03^x$. Hva er renten?`, ["$0{,}03\\,\\%$", "$1{,}03\\,\\%$", "$3\\,\\%$", "$30\\,\\%$"], 2, r`$1{,}03 = 100\,\% + 3\,\%$.`, 2),
-    q("Hva er gyldighetsområdet til en modell?", ["Alle reelle tall", "De verdiene funksjonen kan få", "Nullpunktene", "De verdiene av variabelen der modellen gjelder"], 3, "Modellen gjelder bare der den gir mening i virkeligheten.", 3),
+    q("Hva er gyldighetsområdet til en modell?", ["Alle reelle tall", "De verdiene av variabelen der modellen gjelder", "De verdiene funksjonen kan få", "Nullpunktene"], 1, "Modellen gjelder bare der den gir mening i virkeligheten.", 3),
   ],
   oppgaver: [
     o(
@@ -1136,9 +1154,10 @@ const dkP4OP: Delkapittel = {
   id: "P4OP",
   tittel: "Øveprøve",
   quiz: [
-    q(r`Hva er nullpunktet til $f(x) = -2x + 8$?`, ["$4$", "$-4$", "$8$", "$-2$"], 0, r`$-2x + 8 = 0$ gir $x = 4$.`, 1),
-    q(r`Verdien til en båt er $420\,000 \cdot 0{,}88^x$. Hvor mange prosent taper den per år?`, ["$8{,}8\\,\\%$", "$12\\,\\%$", "$88\\,\\%$", "$0{,}12\\,\\%$"], 1, r`$0{,}88 = 100\,\% - 12\,\%$.`, 2),
+    q(r`Hva er nullpunktet til $f(x) = -2x + 8$?`, ["$-4$", "$4$", "$8$", "$-2$"], 1, r`$-2x + 8 = 0$ gir $x = 4$.`, 1),
+    q(r`Verdien til en båt er $420\,000 \cdot 0{,}88^x$. Hvor mange prosent taper den per år?`, ["$12\\,\\%$", "$8{,}8\\,\\%$", "$88\\,\\%$", "$0{,}12\\,\\%$"], 0, r`$0{,}88 = 100\,\% - 12\,\%$.`, 2),
     q(r`$f(1) = 2$ og $f(4) = 11$. Gjennomsnittlig vekstfart?`, ["$9$", "$2{,}75$", "$3$", "$4$"], 2, r`$\dfrac{11 - 2}{4 - 1} = 3$.`, 2),
+    q(r`Temperaturen i et kjølerom er $T(t)$ grader celsius etter $t$ timer. $T(0) = 8$ og $T(4) = 2$. Hva er den gjennomsnittlige vekstfarten, og hva betyr den?`, [r`$1{,}5$: temperaturen stiger med $1{,}5$ °C per time`, r`$-6$: temperaturen synker med $6$ °C per time`, r`$-1{,}5$: temperaturen er $-1{,}5$ °C etter 4 timer`, r`$-1{,}5$: temperaturen synker i gjennomsnitt med $1{,}5$ °C per time`], 3, r`$\dfrac{2 - 8}{4 - 0} = -1{,}5$. Vekstfarten er endring i temperatur per time, og negativ betyr at temperaturen synker.`, 2),
   ],
   oppgaver: [
     s(

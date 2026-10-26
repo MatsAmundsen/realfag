@@ -133,7 +133,7 @@ const dkP6A: Delkapittel = {
       "P6.5",
       2,
       "kalk",
-      `Stigningsprosenten $p$ til en bakke eller rampe er $p = \dfrac{h}{L} \cdot 100$, der $h$ er hvor mye den stiger, og $L$ er lengden målt vannrett. Begge måles i samme enhet.${del("a")}En rullestolrampe skal stige 0,45 m og ha stigningsprosent 5. Hvor lang må rampen være?${del("b")}En skitrekk-trase er 1,8 km lang (målt vannrett) og har stigningsprosent 12. Hvor mange meter stiger den?`,
+      `Stigningsprosenten $p$ til en bakke eller rampe er $p = \\dfrac{h}{L} \\cdot 100$, der $h$ er hvor mye den stiger, og $L$ er lengden målt vannrett. Begge måles i samme enhet.${del("a")}En rullestolrampe skal stige 0,45 m og ha stigningsprosent 5. Hvor lang må rampen være?${del("b")}En skitrekk-trase er 1,8 km lang (målt vannrett) og har stigningsprosent 12. Hvor mange meter stiger den?`,
       "Snu formelen: $h = \\dfrac{p \\cdot L}{100}$ og $L = \\dfrac{h \\cdot 100}{p}$. Gjør om km til m.",
       [
         r`<strong>a)</strong> $L = \dfrac{0{,}45 \cdot 100}{5} = 9$`,
@@ -528,8 +528,8 @@ const dkP6E: Delkapittel = {
     q("Hva kalles tallene 1, 4, 9, 16, 25, …?", ["Trekanttall", "Kvadrattall", "Rektangeltall", "Oddetall"], 1, r`De er $1^2, 2^2, 3^2, 4^2, 5^2$.`, 1),
     q("Hva kalles tallene 1, 3, 6, 10, 15, …?", ["Trekanttall", "Kvadrattall", "Partall", "Rektangeltall"], 0, "Brikkene kan legges i trekanter med 1, 2, 3, … brikker i radene.", 1),
     q(r`Hva er trekanttall nummer 10 når $t_n = \dfrac{n(n + 1)}{2}$?`, ["100", "110", "45", "55"], 3, r`$\dfrac{10 \cdot 11}{2} = 55$`, 2),
-    q("Figur 1 har 4 brikker, figur 2 har 7 og figur 3 har 10. Hvor mange brikker har figur $n$?", [r`$4n$`, r`$n + 3$`, r`$3n + 1$`, r`$n^2 + 3$`], 2, "Det kommer 3 nye brikker for hver figur, og figur 1 har 4. Da er formelen $3n + 1$.", 2),
-    q("Hva er summen av de 30 første oddetallene?", ["900", "60", "450", "930"], 0, r`Summen av de $n$ første oddetallene er $n^2$, og $30^2 = 900$.`, 2),
+    q("Figur 1 har 4 brikker, figur 2 har 7 og figur 3 har 10. Hvor mange brikker har figur $n$?", [r`$3n + 1$`, r`$4n$`, r`$n + 3$`, r`$n^2 + 3$`], 0, "Det kommer 3 nye brikker for hver figur, og figur 1 har 4. Da er formelen $3n + 1$.", 2),
+    q("Hva er summen av de 30 første oddetallene?", ["60", "450", "900", "930"], 2, r`Summen av de $n$ første oddetallene er $n^2$, og $30^2 = 900$.`, 2),
     q(r`Er $n^2 + n + 17$ et primtall for alle positive heltall $n$?`, ["Ja, for det stemmer for $n = 1, 2$ og $3$", "Nei, $n = 16$ gir $289 = 17 \\cdot 17$", "Ja, fordi 17 er et primtall", "Nei, $n = 2$ gir et partall"], 1, r`Ett moteksempel er nok til å vise at påstanden er feil: $256 + 16 + 17 = 289 = 17^2$.`, 3),
   ],
   oppgaver: [

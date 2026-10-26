@@ -376,8 +376,8 @@ const dkP1D: Delkapittel = {
   id: "P1D",
   tittel: "1D Standardform og tierpotenser",
   quiz: [
-    q(r`Hvilket tall er skrevet på standardform?`, [r`$12 \cdot 10^3$`, r`$0{,}9 \cdot 10^2$`, r`$10 \cdot 10^4$`, r`$7{,}05 \cdot 10^6$`], 3, r`På standardform står det et tall som er minst 1 og mindre enn 10, foran tierpotensen.`, 1),
-    q(r`Hvordan skriver du $0{,}00052$ på standardform?`, [r`$52 \cdot 10^{-5}$`, r`$5{,}2 \cdot 10^{-4}$`, r`$5{,}2 \cdot 10^{-3}$`, r`$0{,}52 \cdot 10^{-3}$`], 1, r`Kommaet flyttes 4 plasser mot høyre for å få 5,2. Da blir eksponenten $-4$.`, 1),
+    q(r`Hvilket tall er skrevet på standardform?`, [r`$12 \cdot 10^3$`, r`$7{,}05 \cdot 10^6$`, r`$0{,}9 \cdot 10^2$`, r`$10 \cdot 10^4$`], 1, r`På standardform står det et tall som er minst 1 og mindre enn 10, foran tierpotensen.`, 1),
+    q(r`Hvordan skriver du $0{,}00052$ på standardform?`, [r`$52 \cdot 10^{-5}$`, r`$5{,}2 \cdot 10^{-3}$`, r`$0{,}52 \cdot 10^{-3}$`, r`$5{,}2 \cdot 10^{-4}$`], 3, r`Kommaet flyttes 4 plasser mot høyre for å få 5,2. Da blir eksponenten $-4$.`, 1),
     q(r`Hvordan skriver du $6{,}1 \cdot 10^5$ som vanlig tall?`, [r`$6\,100\,000$`, r`$61\,000$`, r`$610\,000$`, r`$0{,}000061$`], 2, "Flytt kommaet 5 plasser mot høyre.", 1),
     q(r`Hva er $(3 \cdot 10^4) \cdot (3 \cdot 10^{-6})$?`, [r`$9 \cdot 10^{-2}$`, r`$9 \cdot 10^{-24}$`, r`$6 \cdot 10^{-2}$`, r`$9 \cdot 10^{10}$`], 0, r`$3 \cdot 3 = 9$ og $10^{4 + (-6)} = 10^{-2}$.`, 2),
     q(r`Hva er $\dfrac{8 \cdot 10^9}{2 \cdot 10^3}$?`, [r`$4 \cdot 10^3$`, r`$4 \cdot 10^6$`, r`$6 \cdot 10^6$`, r`$4 \cdot 10^{12}$`], 1, r`$8 : 2 = 4$ og $10^{9-3} = 10^6$.`, 2),
@@ -462,7 +462,7 @@ const dkP1D: Delkapittel = {
       r`$15 \cdot 60 = 900$ blunk i timen. I b) kan du runde av 365 døgn til 400 eller regne nøyaktig.`,
       [
         r`<strong>a)</strong> $15 \cdot 60 \cdot 16 = 900 \cdot 16 = 14\,400 = 1{,}44 \cdot 10^4$`,
-        r`<strong>b)</strong> Overslag: $1{,}44 \cdot 10^4 \cdot 400 \approx 5{,}8 \cdot 10^6$. Nøyaktig: $14\,400 \cdot 365 = 5\,256\,000 \approx 5{,}3 \cdot 10^6$.<br><strong>Svar:</strong> a) $1{,}44 \cdot 10^4$ b) omtrent $5 \cdot 10^6$ til $6 \cdot 10^6$ ganger (nøyaktig $5{,}3 \cdot 10^6$)`,
+        r`<strong>b)</strong> Overslag: $1{,}44 \cdot 10^4 \cdot 400 \approx 5{,}8 \cdot 10^6$. Nøyaktig: $14\,400 \cdot 365 = 5\,256\,000 \approx 5{,}3 \cdot 10^6$.<br><strong>Svar:</strong> a) $1{,}44 \cdot 10^4$ b) omtrent $5{,}3 \cdot 10^6$ ganger per år (overslaget med 400 døgn gir $5{,}8 \cdot 10^6$)`,
       ],
     ),
     o(
@@ -535,7 +535,7 @@ const dkP1E: Delkapittel = {
       [
         r`<strong>a)</strong> $\sqrt[3]{8 \cdot 3} = \sqrt[3]{8} \cdot \sqrt[3]{3} = 2\sqrt[3]{3}$`,
         r`<strong>b)</strong> $\sqrt[4]{16 \cdot 3} = 2\sqrt[4]{3}$`,
-        r`<strong>c)</strong> $\sqrt[3]{8} \cdot \sqrt[3]{x^6} = 2x^2$<br><strong>Svar:</strong> c) $2x^2$`,
+        r`<strong>c)</strong> $\sqrt[3]{8} \cdot \sqrt[3]{x^6} = 2x^2$<br><strong>Svar:</strong> a) $\sqrt[3]{24} = 2\sqrt[3]{3}$ b) $\sqrt[4]{48} = 2\sqrt[4]{3}$ c) $2x^2$`,
       ],
     ),
     o(
@@ -685,7 +685,7 @@ const dkP1OP: Delkapittel = {
       r`$98 = 49 \cdot 2$ og $18 = 9 \cdot 2$.`,
       [
         r`<strong>a)</strong> $24 \cdot 10^4 = 2{,}4 \cdot 10^5$`,
-        r`<strong>b)</strong> $7\sqrt{2} - 3\sqrt{2} = 4\sqrt{2}$<br><strong>Svar:</strong> a) $2{,}4 \cdot 10^5$`,
+        r`<strong>b)</strong> $7\sqrt{2} - 3\sqrt{2} = 4\sqrt{2}$<br><strong>Svar:</strong> a) $2{,}4 \cdot 10^5$ b) $\sqrt{98} - \sqrt{18} = 7\sqrt{2} - 3\sqrt{2} = 4\sqrt{2}$`,
       ],
     ),
     o(

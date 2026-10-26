@@ -17,7 +17,7 @@ export const CHAPTER_META_1P: Record<string, { short: string; blurb: string; ima
   },
   p1kap3: {
     short: "Prosent og vekst",
-    blurb: "Andeler, prosentpoeng, vekstfaktor og endring over flere perioder",
+    blurb: "Andeler, prosentpoeng, vekstfaktor og vekst og nedgang år for år",
     image: "/images/1p/kap3.jpg",
     tint: "#fbbf24",
   },

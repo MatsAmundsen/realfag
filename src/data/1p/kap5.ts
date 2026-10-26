@@ -443,9 +443,20 @@ const dkP5C: Delkapittel = {
       1,
       "uten",
       "En modell er laget av målinger fra årene 2010 til 2020. Er det interpolasjon eller ekstrapolasjon å bruke modellen for" +
-        "<br><br><strong>a)</strong> 2014&nbsp;&nbsp;<strong>b)</strong> 2030&nbsp;&nbsp;<strong>c)</strong> 2005&nbsp;&nbsp;<strong>d)</strong> midt i 2019",
+        "<br><br><strong>a)</strong> 2014" +
+        del("b") +
+        "2030" +
+        del("c") +
+        "2005" +
+        del("d") +
+        "midt i 2019",
       "Ligger året mellom 2010 og 2020, eller utenfor?",
-      ["<strong>Svar:</strong> a) Interpolasjon. b) Ekstrapolasjon. c) Ekstrapolasjon. d) Interpolasjon."],
+      [
+        "<strong>a)</strong> 2014 ligger mellom 2010 og 2020: interpolasjon.",
+        "<strong>b)</strong> 2030 ligger utenfor: ekstrapolasjon.",
+        "<strong>c)</strong> 2005 ligger utenfor: ekstrapolasjon.",
+        "<strong>d)</strong> Midt i 2019 ligger mellom 2010 og 2020: interpolasjon.<br><strong>Svar:</strong> a) Interpolasjon. b) Ekstrapolasjon. c) Ekstrapolasjon. d) Interpolasjon.",
+      ],
     ),
     o(
       "P5.22",
