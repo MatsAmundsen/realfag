@@ -639,6 +639,7 @@ const dk5G: Delkapittel = {
     q("Hvis $a<0$ i $a(x+3)(1-x)$, speiles fortegnet til $(x+3)(1-x)$", ["ja", "nei", "bare for $x>0$", "bare i origo"], 0, "Negativ konstant snur alle tegn."),
     q("Nullproduktregelen sier at $x(x-1)=0$ når", ["$x=0$ eller $x=1$", "bare $x=0$", "bare $x=1$", "$x=\\tfrac{1}{2}$"], 0, "Minst én faktor er null."),
     q("Parabel som vender ned er positiv", ["utenfor nullpunktene", "mellom nullpunktene", "overalt", "ingen steder"], 1, "Positiv der grafen ligger over $x$-aksen: mellom røttene."),
+    q("Et uttrykk har faktoren $(x-3)^2$. Hvordan ser fortegnslinja til denne faktoren ut?", ["Stiplet (negativ) før $3$ og hel (positiv) etter $3$", "Hel (positiv) overalt, også i $x=3$", "Hel (positiv) før $3$, null i $3$ og hel (positiv) etter $3$", "Stiplet (negativ) overalt"], 2, "Et kvadrat blir aldri negativt. Faktoren er positiv overalt unntatt i $x=3$, der den er $0$."),
   ],
   oppgaver: [
     o(
@@ -756,6 +757,8 @@ const dk5H: Delkapittel = {
     q("En pol inngår i løsningsmengden", ["alltid", "når ulikheten er $\\ge$", "aldri", "når telleren også er $0$"], 2, "Du kan ikke dele på null, uansett ulikhetstegn."),
     q("For $\\dfrac{x-6}{x-1}\\le 0$ er $x=6$", ["med", "uten", "en pol", "umulig"], 0, "Nullpunktet i telleren er med når tegnet er $\\le$."),
     q("Å flytte $1$ over i $\\dfrac{3}{x-1}\\ge 1$ gir", ["$\\dfrac{3-(x-1)}{x-1}\\ge 0$", "$3\\ge x-1$", "$x\\ge 4$", "ingenting"], 0, "Felles nevner: $\\dfrac{3}{x-1}-1=\\dfrac{4-x}{x-1}$."),
+    q("Du skal løse $\\frac{x-1}{x+3} \\geq 0$. Hvorfor kan du ikke bare gange begge sider med $(x+3)$?", ["Fordi 0 ganger $(x+3)$ ikke er lov", "Fordi vi ikke vet om $(x+3)$ er positivt eller negativt, og derfor vet vi ikke om vi må snu ulikhetstegnet", "Fordi da blir nevneren borte, og det er ikke lov", "Man kan gange med $(x+3)$, det er en helt grei metode"], 1, "I en ulikhet må tegnet snus hvis vi ganger med et negativt tall. Siden vi ikke vet om $x+3$ er positivt eller negativt (det avhenger av $x$), er det tryggest å bruke fortegnsskjema."),
+    q("For å løse $x^2 - 4 > 0$, faktoriserer du til $(x-2)(x+2) > 0$. Hva viser fortegnsskjemaet at løsningen er?", ["$x > 2$", "$-2 < x < 2$", "$x = -2$ og $x = 2$", "$x < -2$ eller $x > 2$"], 3, "Uttrykket har nullpunkter i $x=-2$ og $x=2$. Siden det er en parabel som 'smiler' (positivt $x^2$-ledd), er grafen over x-aksen (positiv) før $-2$ og etter $2$. Løsningen er $x < -2$ eller $x > 2$."),
   ],
   oppgaver: [
     o(

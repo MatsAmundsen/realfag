@@ -481,17 +481,6 @@ export const EXTRA: Record<string, Oppgave[]> = {
       ],
     ),
   ],
-  "3H": [
-    o(
-      "3.25",
-      "Løs ulikheten og skriv svaret både med ulikhetstegn og som intervall.<br><br><strong>a)</strong> $2x-5 < 7$<br><br><strong>b)</strong> $4-3x \\geq 10$",
-      "Samme flytteregler som for likninger. Når du ganger/deler med et negativt tall, snur ulikheten.",
-      [
-        "<strong>a)</strong> $2x<12$, $x<6$. Intervall: $\\langle\\leftarrow, 6\\rangle$.<br><strong>Svar:</strong> $x<6$, $x\\in\\langle\\leftarrow,6\\rangle$",
-        "<strong>b)</strong> $-3x\\geq 6$. Del på $-3$ og snu: $x\\leq -2$.<br><strong>Svar:</strong> $x\\leq -2$, $x\\in\\langle\\leftarrow,-2]$",
-      ],
-    ),
-  ],
   "4A": [
     o(
       "4A.9",
@@ -775,7 +764,6 @@ export const SUB_TITLES: Record<string, string> = {
   "3E": "3E Rasjonale likninger, ekvivalens og proporsjoner",
   "3F": "3F Funksjoner og nullpunktfaktorisering",
   "3G": "3G Polynomdivisjon",
-  "3H": "3H Ulikheter",
   "3OP": "Øveprøve",
   "4OP": "Øveprøve",
   "4A": "4A Funksjonsbegrepet",

@@ -503,18 +503,4 @@ export const MORE23: Record<string, Oppgave[]> = {
       ],
     ),
   ],
-  "3H": [
-    o(
-      "3.39",
-      "Løs ulikhetene. Skriv svaret både med ulikhetstegn og som intervall.<br><br><strong>a)</strong> $5x+2\\le 17$<br><br><strong>b)</strong> $1-4x>9$<br><br><strong>c)</strong> $3(x+2)\\ge x-4$<br><br><strong>d)</strong> $-2(x-3)<10$<br><br><strong>e)</strong> $\\dfrac{x}{2}-1\\le \\dfrac{x}{5}$",
-      "Samme flytting som likninger. Deler du på et negativt tall, snur tegnet.",
-      [
-        "<strong>a)</strong> $5x\\le 15$, $x\\le 3$. Intervall $\\langle\\leftarrow,3]$.<br><strong>Svar:</strong> $x\\le 3$, $x\\in\\langle\\leftarrow,3]$",
-        "<strong>b)</strong> $-4x>8$, $x<-2$. Intervall $\\langle\\leftarrow,-2\\rangle$.<br><strong>Svar:</strong> $x<-2$, $x\\in\\langle\\leftarrow,-2\\rangle$",
-        "<strong>c)</strong> $3x+6\\ge x-4$, $2x\\ge -10$, $x\\ge -5$. Intervall $[-5,\\rightarrow\\rangle$.<br><strong>Svar:</strong> $x\\ge -5$, $x\\in[-5,\\rightarrow\\rangle$",
-        "<strong>d)</strong> $-2x+6<10$, $-2x<4$, $x>-2$ (del på $-2$ og snu tegnet). Intervall $\\langle -2,\\rightarrow\\rangle$.<br><strong>Svar:</strong> $x>-2$, $x\\in\\langle -2,\\rightarrow\\rangle$",
-        "<strong>e)</strong> Gang med $10$: $5x-10\\le 2x$, $3x\\le 10$, $x\\le \\dfrac{10}{3}$. Intervall $\\langle\\leftarrow,\\tfrac{10}{3}]$.<br><strong>Svar:</strong> $x\\le \\dfrac{10}{3}$, $x\\in\\langle\\leftarrow,\\tfrac{10}{3}]$",
-      ],
-    ),
-  ],
 };

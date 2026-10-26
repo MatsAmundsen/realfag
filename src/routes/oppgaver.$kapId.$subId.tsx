@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, redirect } from "@tanstack/react-router";
 import { CircleHelp } from "lucide-react";
 import { CHAPTER_META, fagsok, findKap, findSub, videosForSub } from "@/data/content";
 import type { StudyMode } from "@/data/types";
@@ -16,6 +16,12 @@ import { useProgressStore } from "@/lib/progress-store";
 import { seoHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/oppgaver/$kapId/$subId")({
+  // 3H Ulikheter er flyttet til 5F–5H
+  beforeLoad: ({ params }) => {
+    if (params.kapId === "kap3" && params.subId.toUpperCase() === "3H") {
+      throw redirect({ to: "/oppgaver/$kapId/$subId", params: { kapId: "kap5", subId: "5F" }, replace: true });
+    }
+  },
   head: ({ params }) => {
     const kap = findKap(params.kapId);
     const dk = findSub(params.kapId, params.subId);
