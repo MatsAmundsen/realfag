@@ -1157,6 +1157,7 @@ const dkP4OP: Delkapittel = {
     q(r`Hva er nullpunktet til $f(x) = -2x + 8$?`, ["$4$", "$-4$", "$8$", "$-2$"], 0, r`$-2x + 8 = 0$ gir $x = 4$.`, 1),
     q(r`Verdien til en båt er $420\,000 \cdot 0{,}88^x$. Hvor mange prosent taper den per år?`, ["$8{,}8\\,\\%$", "$12\\,\\%$", "$88\\,\\%$", "$0{,}12\\,\\%$"], 1, r`$0{,}88 = 100\,\% - 12\,\%$.`, 2),
     q(r`$f(1) = 2$ og $f(4) = 11$. Gjennomsnittlig vekstfart?`, ["$9$", "$2{,}75$", "$3$", "$4$"], 2, r`$\dfrac{11 - 2}{4 - 1} = 3$.`, 2),
+    q(r`Temperaturen i et kjølerom er $T(t)$ grader celsius etter $t$ timer. $T(0) = 8$ og $T(4) = 2$. Hva er den gjennomsnittlige vekstfarten, og hva betyr den?`, [r`$1{,}5$: temperaturen stiger med $1{,}5$ °C per time`, r`$-6$: temperaturen synker med $6$ °C per time`, r`$-1{,}5$: temperaturen er $-1{,}5$ °C etter 4 timer`, r`$-1{,}5$: temperaturen synker i gjennomsnitt med $1{,}5$ °C per time`], 3, r`$\dfrac{2 - 8}{4 - 0} = -1{,}5$. Vekstfarten er endring i temperatur per time, og negativ betyr at temperaturen synker.`, 2),
   ],
   oppgaver: [
     s(
