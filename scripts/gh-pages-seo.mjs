@@ -43,6 +43,26 @@ for (const { base, title } of REDIRECT_BASES) {
   }
 }
 
+// 1b) flyttede delkapitler (gamle adresser -> ny plassering)
+const MOVED = [
+  { from: "oppgaver/kap3/3H", to: "/oppgaver/kap5/5F" },
+  { from: "oppgaver/kap3/3h", to: "/oppgaver/kap5/5F" },
+];
+for (const { from, to } of MOVED) {
+  const dir = join(OUT, ...from.split("/"));
+  if (existsSync(join(dir, "index.html"))) continue;
+  mkdirSync(dir, { recursive: true });
+  writeFileSync(
+    join(dir, "index.html"),
+    `<!DOCTYPE html><html lang="nb"><head><meta charset="utf-8"><title>Matteguiden 1T</title>` +
+      `<meta name="robots" content="noindex"><link rel="canonical" href="${SITE}${to}/">` +
+      `<meta http-equiv="refresh" content="0;url=${to}/"></head>` +
+      `<body><script>location.replace(${JSON.stringify(to + "/")}+location.search+location.hash)</script>` +
+      `<a href="${to}/">Gå videre</a></body></html>\n`,
+  );
+  redirects++;
+}
+
 // 2) sitemap.xml
 const urls = [];
 function walk(dir) {
@@ -53,7 +73,7 @@ function walk(dir) {
       walk(p);
     } else if (name === "index.html") {
       const rel = relative(OUT, dir).split("\\").join("/");
-      if (/^(1p\/)?oppgaver\/[^/]+$/.test(rel)) continue; // redirect-sider
+      if (/^(1p\/)?oppgaver\/[^/]+$/.test(rel) || /^oppgaver\/kap3\/3[Hh]$/.test(rel)) continue; // redirect-sider
       urls.push(rel ? `/${rel}/` : "/");
     }
   }
