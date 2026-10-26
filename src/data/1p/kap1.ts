@@ -376,8 +376,8 @@ const dkP1D: Delkapittel = {
   id: "P1D",
   tittel: "1D Standardform og tierpotenser",
   quiz: [
-    q(r`Hvilket tall er skrevet på standardform?`, [r`$12 \cdot 10^3$`, r`$0{,}9 \cdot 10^2$`, r`$10 \cdot 10^4$`, r`$7{,}05 \cdot 10^6$`], 3, r`På standardform står det et tall som er minst 1 og mindre enn 10, foran tierpotensen.`, 1),
-    q(r`Hvordan skriver du $0{,}00052$ på standardform?`, [r`$52 \cdot 10^{-5}$`, r`$5{,}2 \cdot 10^{-4}$`, r`$5{,}2 \cdot 10^{-3}$`, r`$0{,}52 \cdot 10^{-3}$`], 1, r`Kommaet flyttes 4 plasser mot høyre for å få 5,2. Da blir eksponenten $-4$.`, 1),
+    q(r`Hvilket tall er skrevet på standardform?`, [r`$12 \cdot 10^3$`, r`$7{,}05 \cdot 10^6$`, r`$0{,}9 \cdot 10^2$`, r`$10 \cdot 10^4$`], 1, r`På standardform står det et tall som er minst 1 og mindre enn 10, foran tierpotensen.`, 1),
+    q(r`Hvordan skriver du $0{,}00052$ på standardform?`, [r`$52 \cdot 10^{-5}$`, r`$5{,}2 \cdot 10^{-3}$`, r`$0{,}52 \cdot 10^{-3}$`, r`$5{,}2 \cdot 10^{-4}$`], 3, r`Kommaet flyttes 4 plasser mot høyre for å få 5,2. Da blir eksponenten $-4$.`, 1),
     q(r`Hvordan skriver du $6{,}1 \cdot 10^5$ som vanlig tall?`, [r`$6\,100\,000$`, r`$61\,000$`, r`$610\,000$`, r`$0{,}000061$`], 2, "Flytt kommaet 5 plasser mot høyre.", 1),
     q(r`Hva er $(3 \cdot 10^4) \cdot (3 \cdot 10^{-6})$?`, [r`$9 \cdot 10^{-2}$`, r`$9 \cdot 10^{-24}$`, r`$6 \cdot 10^{-2}$`, r`$9 \cdot 10^{10}$`], 0, r`$3 \cdot 3 = 9$ og $10^{4 + (-6)} = 10^{-2}$.`, 2),
     q(r`Hva er $\dfrac{8 \cdot 10^9}{2 \cdot 10^3}$?`, [r`$4 \cdot 10^3$`, r`$4 \cdot 10^6$`, r`$6 \cdot 10^6$`, r`$4 \cdot 10^{12}$`], 1, r`$8 : 2 = 4$ og $10^{9-3} = 10^6$.`, 2),
