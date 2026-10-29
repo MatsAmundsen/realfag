@@ -3224,6 +3224,12 @@ a.btn-primary { color: #fff; }
     box-shadow: 0 24px 60px rgba(0,0,0,0.4);
 }
 .cele-close { position: absolute; top: 0.7rem; right: 0.7rem; }
+/* Mål for programmatisk fokus (fokus flyttes dit av koden, ikke med Tab): ingen ramme rundt hele boksen. */
+.cele-card:focus,
+.task-title:focus,
+.exam-summary:focus,
+.solution-content:focus,
+.prove-oppgave:focus { outline: none; }
 .cele-mark {
     width: 56px;
     height: 56px;
@@ -3258,6 +3264,11 @@ a.btn-primary { color: #fff; }
 .cele-badges li { margin: 0.4rem 0; }
 .cele-badges strong { display: block; }
 .cele-badges span { font-size: 0.82rem; color: var(--text-muted); }
+/* Feiring og merketoast ligger utenfor [data-fag]: egne kontrastverdier (≥ 4,5:1 mot kortet). */
+.cele-card p, .cele-badges span, .badge-toast span { color: #a8b5c8; }
+[data-theme="light"] .cele-card p, [data-theme="light"] .cele-badges span, [data-theme="light"] .badge-toast span { color: #475569; }
+.cele-card .btn-primary { background: #4f46e5; }
+.cele-card .btn-primary:hover { background: #4338ca; }
 
 .kart-wrap { max-width: 1200px; margin: 0 auto; padding: 0 2rem 3rem; display: flex; flex-direction: column; gap: 1.4rem; }
 .kart-kap h2 { font-size: 1.05rem; margin-bottom: 0.7rem; }
@@ -4168,6 +4179,9 @@ a.vid-nav-card {
 
 @media (prefers-reduced-motion: reduce) {
     .cele-overlay, .math-float { animation: none; }
+    .cele-canvas { display: none; }
+    .cele-overlay { backdrop-filter: none; }
+    .cele-card, .cele-card * { animation: none !important; transition: none !important; }
     .mm-drawer, .mm-node, .mm-path-card { transition: none; }
 }
 

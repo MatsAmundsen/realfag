@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { CircleHelp, Clock, FileDown, Flag } from "lucide-react";
 import { CHAPTER_META_1P as CHAPTER_META, fagsok1P as fagsok, findKap1P as findKap, findSub1P as findSub, videosForSub1P as videosForSub, NIVAARK_BY_SUB_1P } from "@/data/1p";
@@ -9,7 +9,9 @@ import { TaskCard } from "@/components/TaskCard";
 import { SummaryView } from "@/components/SummaryView";
 import { QuizOverlay } from "@/components/QuizOverlay";
 import { ModeToggle } from "@/components/ModeToggle";
-import { ProveSvar, formatKlokke, useProveUtkast } from "@/components/ProveFelt";
+import { ProveSvar } from "@/components/ProveFelt";
+import { formatKlokke, useProveUtkast } from "@/lib/prove-utkast";
+import { useFokusEtterVisning } from "@/lib/fokus";
 import { countSubchapter, isOvingDelkap } from "@/lib/progress";
 import { useProgressStore } from "@/lib/progress-store";
 import { seoHead } from "@/lib/seo";
@@ -41,6 +43,13 @@ function SubchapterPage1P() {
   const [timerOn, setTimerOn] = useState(false);
   const [elapsed, setElapsed] = useState(0);
   const utkast = useProveUtkast(`ove/${kapId}/${subId}`);
+  const fokus = useFokusEtterVisning();
+  const leverKnapp = useRef<HTMLButtonElement>(null);
+  const leverDialog = useRef<HTMLDivElement>(null);
+  const pånyttKnapp = useRef<HTMLButtonElement>(null);
+  const pånyttDialog = useRef<HTMLDivElement>(null);
+  const sammendrag = useRef<HTMLDivElement>(null);
+  const førsteOppgave = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!timerOn || submitted) return;
@@ -109,6 +118,8 @@ function SubchapterPage1P() {
     setElapsed(0);
     setBekreft(null);
     setSubmitted(false);
+    // Knappen forsvinner: start på nytt øverst, ved første oppgave.
+    fokus(() => førsteOppgave.current?.querySelector<HTMLElement>(".task-title"));
   }
 
   return (
@@ -193,7 +204,7 @@ function SubchapterPage1P() {
         ) : null}
 
         {isSummary ? <SummaryView items={dk.oppgaver} kapId={kapId} subId={subId} /> : dk.oppgaver.map((o, i) => (
-          <div key={o.id} className="prove-oppgave">
+          <div key={o.id} className="prove-oppgave" ref={i === 0 ? førsteOppgave : undefined}>
             <TaskCard
               oppgave={{ ...o, tittel: visTittel(o) }}
               kapId={kapId}
@@ -219,39 +230,73 @@ function SubchapterPage1P() {
         ))}
 
         {oving && !submitted && mode === "prove" && bekreft !== "lever" && (
-          <button type="button" className="btn-primary prove-lever" onClick={() => setBekreft("lever")}>
+          <button
+            type="button"
+            className="btn-primary prove-lever"
+            ref={leverKnapp}
+            onClick={() => {
+              setBekreft("lever");
+              fokus(() => leverDialog.current);
+            }}
+          >
             <Flag size={16} /> Lever / Ferdig
           </button>
         )}
         {oving && !submitted && mode === "prove" && bekreft === "lever" && (
-          <div className="exam-summary" role="alertdialog" aria-labelledby="bekreft-ovep-lever">
+          <div className="exam-summary" role="alertdialog" aria-labelledby="bekreft-ovep-lever" ref={leverDialog} tabIndex={-1}>
             <p id="bekreft-ovep-lever">
               <strong>Er du ferdig med øveprøven?</strong> {proveOppgaver.filter((o) => utkast.ferdig[o.id]).length} av {proveOppgaver.length} oppgaver er krysset av som ferdige. Når du leverer, åpnes hint og løsningsforslag.
             </p>
-            <button type="button" className="btn-primary" onClick={() => { setBekreft(null); setSubmitted(true); }}>
+            <button type="button" className="btn-primary" onClick={() => {
+                setBekreft(null);
+                setSubmitted(true);
+                fokus(() => sammendrag.current);
+              }}>
               <Flag size={16} /> Ja, lever
             </button>{" "}
-            <button type="button" className="hint-btn" onClick={() => setBekreft(null)}>
+            <button
+              type="button"
+              className="hint-btn"
+              onClick={() => {
+                setBekreft(null);
+                fokus(() => leverKnapp.current);
+              }}
+            >
               Fortsett å jobbe
             </button>
           </div>
         )}
         {oving && submitted && (
-          <div className="exam-summary">
+          <div className="exam-summary" ref={sammendrag} tabIndex={-1}>
             <p>Øveprøven er levert. Hint og løsningsforslag er nå åpne. Merk oppgavene du fikk til.</p>
             {bekreft !== "pånytt" ? (
-              <button type="button" className="hint-btn" onClick={() => setBekreft("pånytt")}>
+              <button
+                type="button"
+                className="hint-btn"
+                ref={pånyttKnapp}
+                onClick={() => {
+                  setBekreft("pånytt");
+                  fokus(() => pånyttDialog.current);
+                }}
+              >
                 Ta øveprøven på nytt
               </button>
             ) : (
-              <div role="alertdialog" aria-labelledby="bekreft-ovep-pånytt">
+              <div role="alertdialog" aria-labelledby="bekreft-ovep-pånytt" ref={pånyttDialog} tabIndex={-1}>
                 <p id="bekreft-ovep-pånytt">
                   <strong>Ta øveprøven på nytt?</strong> Svarene og avkrysningene dine i prøven slettes.
                 </p>
                 <button type="button" className="btn-primary" onClick={taPåNytt}>
                   Ja, ta på nytt
                 </button>{" "}
-                <button type="button" className="hint-btn" onClick={() => setBekreft(null)}>
+                <button
+                  type="button"
+                  className="hint-btn"
+                  onClick={() => {
+                    setBekreft(null);
+                    fokus(() => pånyttKnapp.current);
+                  }}
+                >
                   Avbryt
                 </button>
               </div>

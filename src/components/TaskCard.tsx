@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Check, Lightbulb, ListOrdered, Video } from "lucide-react";
 import type { Oppgave, StudyMode } from "@/data/types";
 import { KatexHtml } from "./KatexHtml";
@@ -11,6 +11,7 @@ import { fireCelebration } from "@/lib/progress-store";
 import { extractPlots } from "@/lib/plot-fn";
 import { PLOT_OVERRIDES, applyPlotOverride } from "@/lib/plot-overrides";
 import { useVideoPlayer } from "./VideoPlayer";
+import { useFokusEtterVisning } from "@/lib/fokus";
 
 export function TaskCard({
   oppgave,
@@ -41,6 +42,8 @@ export function TaskCard({
   const [hintOn, setHintOn] = useState(false);
   const [solOn, setSolOn] = useState(false);
   const [step, setStep] = useState(0);
+  const solRef = useRef<HTMLDivElement>(null);
+  const fokus = useFokusEtterVisning();
   const player = useVideoPlayer();
   const video = videoForSub(subId);
 
@@ -101,7 +104,7 @@ export function TaskCard({
   return (
     <article id={`oppgave-${oppgave.id}`} className={`task-card lvl-${level}${done ? " task-done" : ""}`}>
       <div className="task-card-header">
-        <h3 className="task-title">{oppgave.tittel}</h3>
+        <h3 className="task-title" tabIndex={-1}>{oppgave.tittel}</h3>
         <div className="task-header-right">
           {done && <span className="task-done-pill">Ferdig</span>}
           {oppgave.tittel.startsWith("Ekstraøving") && <span className="task-badge ekstra">Ekstra</span>}
@@ -161,7 +164,7 @@ export function TaskCard({
         <KatexHtml html={oppgave.hint} className="hint-content visible" />
       )}
       {solOn && canHelp && (
-        <div className="solution-content visible">
+        <div className="solution-content visible" ref={solRef} tabIndex={-1}>
           {steps.length > 0 ? (
             <>
               <KatexHtml html={steps[Math.min(step, steps.length - 1)] || ""} />
@@ -170,7 +173,15 @@ export function TaskCard({
                   Steg {Math.min(step, steps.length - 1) + 1} av {steps.length}
                 </span>
                 {step < steps.length - 1 && (
-                  <button type="button" className="steg-next-btn" onClick={() => setStep((s) => s + 1)}>
+                  <button
+                    type="button"
+                    className="steg-next-btn"
+                    onClick={() => {
+                      setStep((s) => s + 1);
+                      // Siste steg fjerner knappen: flytt fokus til løsningen i stedet for å miste det til body.
+                      if (step + 1 >= steps.length - 1) fokus(() => solRef.current);
+                    }}
+                  >
                     Neste steg
                   </button>
                 )}
