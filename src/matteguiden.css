@@ -4720,6 +4720,240 @@ header.navbar[data-fag="1P"] .nav-btn.fag-switch,
 }
 :is([data-fag="1P"], [data-fag="1T"]) .prove-svar-levert strong { display: block; margin-bottom: 0.15rem; color: var(--p1-ink); font-size: 0.8rem; letter-spacing: 0.07em; text-transform: uppercase; }
 
+/* ── Sluttsvar, resultat, vurdering og poengsum i prøvemodus (1P og 1T) ───
+   Før levering finnes bare sluttsvarfeltet og en nøytral forhåndsvisning: ingenting her sier
+   riktig eller feil. Etter levering skilles riktig/delvis/feil med tekst (i markupen), ikon og
+   kantstil (hel, stiplet, dobbel), ikke bare farge. Statusfargene under er egne variabler. */
+:is([data-fag="1P"], [data-fag="1T"]) {
+    --prove-ok:    #86efac;
+    --prove-del:   #fcd34d;
+    --prove-feil:  #fca5a5;
+}
+[data-theme="light"] :is([data-fag="1P"], [data-fag="1T"]) {
+    --prove-ok:    #166534;
+    --prove-del:   #92400e;
+    --prove-feil:  #b91c1c;
+}
+
+/* Sluttsvar (inne i .prove-svar) */
+:is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar {
+    display: grid;
+    gap: 0.4rem;
+    min-width: 0;
+}
+:is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-label {
+    color: var(--p1-ink);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+}
+:is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-felt {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    min-height: 44px;
+    padding: 0.5rem 0.85rem;
+    border: 1.5px solid var(--p1-field-line);
+    border-radius: var(--radius-sm);
+    background: var(--p1-field);
+    color: var(--text-main);
+    font: inherit;
+    font-size: 1rem;          /* 16 px hindrer zoom i iOS */
+    line-height: 1.4;
+    transition: border-color 0.15s;
+}
+:is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-felt::placeholder { color: var(--p1-muted); opacity: 1; }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-felt:hover { border-color: var(--p1-line); }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-felt:focus-visible { outline: 3px solid var(--p1-focus); outline-offset: 2px; border-color: var(--p1-line); }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-felt[readonly] { border-style: dashed; background: transparent; }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-hjelp {
+    min-height: 1.6rem;       /* ingen hopp når forhåndsvisningen dukker opp */
+    min-width: 0;
+    color: var(--p1-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+:is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-hjelp:empty { min-height: 0; }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-forhandsvisning {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.15rem 0.5rem;
+    max-width: 100%;
+    padding: 0.2rem 0.65rem;
+    border-left: 3px solid var(--p1-line);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    background: var(--p1-field);
+    color: var(--text-main);
+    overflow-x: auto;
+}
+:is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-tolket { color: var(--p1-muted); font-size: 0.8rem; font-weight: 700; }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-feil {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    color: var(--text-main);
+    font-weight: 600;
+}
+:is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-feil::before {
+    content: "?" / "";        /* nøytralt spørsmålstegn, ikke kryss og ikke rødt */
+    flex: none;
+    display: inline-grid;
+    place-content: center;
+    width: 1.3em;
+    height: 1.3em;
+    border: 1.5px dashed var(--p1-muted);
+    border-radius: 50%;
+    color: var(--p1-muted);
+    font-size: 0.85em;
+    font-weight: 800;
+    line-height: 1;
+}
+:is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-format { font-style: italic; }
+
+/* Etter levering: sluttsvaret eleven ga */
+:is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-levert {
+    margin: 0;
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+:is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-levert strong { color: var(--p1-ink); }
+
+/* Resultat per del */
+:is([data-fag="1P"], [data-fag="1T"]) .prove-resultat {
+    --prove-status: var(--p1-line);
+    display: grid;
+    gap: 0.6rem;
+    min-width: 0;
+    margin: 0.5rem 0 0.9rem;
+    padding: 0.85rem 1rem;
+    border: 1.5px solid var(--p1-line);
+    border-left: 6px solid var(--prove-status);
+    border-radius: var(--radius-md);
+    background: var(--p1-tint);
+    color: var(--text-main);
+}
+:is([data-fag="1P"], [data-fag="1T"]) .prove-resultat[data-status="riktig"] { --prove-status: var(--prove-ok); }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-resultat[data-status="delvis"] { --prove-status: var(--prove-del); border-left-style: dashed; }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-resultat[data-status="feil"] { --prove-status: var(--prove-feil); border-left-style: double; }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-resultat-poeng {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.2rem 0.5rem;
+    margin: 0;
+    font-size: 1.05rem;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.5;
+}
+:is([data-fag="1P"], [data-fag="1T"]) .prove-resultat-poeng strong { color: var(--prove-status); font-weight: 800; }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-resultat-poeng::before {
+    flex: none;
+    display: inline-grid;
+    place-content: center;
+    width: 1.55rem;
+    height: 1.55rem;
+    border: 2px solid var(--prove-status);
+    border-radius: 50%;
+    color: var(--prove-status);
+    font-size: 0.9rem;
+    font-weight: 800;
+    line-height: 1;
+}
+:is([data-fag="1P"], [data-fag="1T"]) .prove-resultat[data-status="riktig"] .prove-resultat-poeng::before { content: "✓" / ""; }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-resultat[data-status="delvis"] .prove-resultat-poeng::before { content: "◐" / ""; border-style: dashed; }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-resultat[data-status="feil"] .prove-resultat-poeng::before { content: "✕" / ""; border-style: double; border-width: 4px; font-size: 0.7rem; }
+
+/* Selvvurdering */
+:is([data-fag="1P"], [data-fag="1T"]) .prove-vurdering {
+    min-width: 0;          /* fieldset krymper ikke av seg selv ved 320 px */
+    margin: 0;
+    padding: 0.5rem 0.85rem 0.75rem;
+    border: 1px dashed var(--p1-line);
+    border-radius: var(--radius-sm);
+    background: var(--p1-field);
+}
+:is([data-fag="1P"], [data-fag="1T"]) .prove-vurdering legend {
+    max-width: 100%;
+    padding: 0 0.4rem;
+    color: var(--p1-ink);
+    font-size: 0.9rem;
+    font-weight: 800;
+    line-height: 1.45;
+}
+:is([data-fag="1P"], [data-fag="1T"]) .prove-vurdering-valg {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    min-height: 44px;
+    padding: 0.2rem 0.4rem;
+    border-radius: var(--radius-sm);
+    color: var(--text-main);
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.4;
+    cursor: pointer;
+}
+:is([data-fag="1P"], [data-fag="1T"]) .prove-vurdering-valg:hover { background: var(--p1-tint-2); }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-vurdering-valg input {
+    appearance: none;
+    -webkit-appearance: none;
+    flex: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: 0;
+    border: 2px solid var(--p1-line);
+    border-radius: 6px;
+    background: var(--p1-field);
+    display: inline-grid;
+    place-content: center;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+}
+:is([data-fag="1P"], [data-fag="1T"]) .prove-vurdering-valg input::after {
+    content: "";
+    width: 0.8rem;
+    height: 0.45rem;
+    border-left: 3px solid var(--p1-btn-ink);
+    border-bottom: 3px solid var(--p1-btn-ink);
+    transform: translateY(-1px) rotate(-45deg) scale(0);
+    transition: transform 0.12s;
+}
+:is([data-fag="1P"], [data-fag="1T"]) .prove-vurdering-valg input:checked { background: var(--p1-btn-bg); border-color: var(--p1-btn-bg); }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-vurdering-valg input:checked::after { transform: translateY(-1px) rotate(-45deg) scale(1); }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-vurdering-valg input:focus-visible { outline: 3px solid var(--p1-focus); outline-offset: 3px; }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-vurdering-auto {
+    margin: 0;
+    padding: 0.5rem 0.75rem;
+    border-left: 3px solid var(--p1-line);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    background: var(--p1-field);
+    color: var(--text-main);
+    line-height: 1.55;
+}
+
+/* Poengsum etter levering (inne i .exam-summary) */
+:is([data-fag="1P"], [data-fag="1T"]) .poeng-oppsummering {
+    display: grid;
+    flex: 1 0 100%;
+    gap: 0.25rem;
+    min-width: 0;
+}
+:is([data-fag="1P"], [data-fag="1T"]) .exam-summary > .poeng-oppsummering p { max-width: none; }
+:is([data-fag="1P"], [data-fag="1T"]) .poeng-sum,
+:is([data-fag="1P"], [data-fag="1T"]) .poeng-liste { margin: 0; min-width: 0; overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
+:is([data-fag="1P"], [data-fag="1T"]) .poeng-sum { color: var(--p1-ink-strong); font-size: 1.3rem; font-weight: 800; line-height: 1.35; }
+:is([data-fag="1P"], [data-fag="1T"]) .poeng-prosent { font-weight: 700; }
+:is([data-fag="1P"], [data-fag="1T"]) .poeng-liste { color: var(--text-main); font-size: 0.95rem; line-height: 1.55; }
+@media (prefers-reduced-motion: reduce) {
+    :is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-felt,
+    :is([data-fag="1P"], [data-fag="1T"]) .prove-vurdering-valg input,
+    :is([data-fag="1P"], [data-fag="1T"]) .prove-vurdering-valg input::after { transition: none; }
+}
+
 /* ── Øveprøve: oppgave + svarfelt henger sammen ─── */
 :is([data-fag="1P"], [data-fag="1T"]) .prove-oppgave { margin-bottom: 1.5rem; }
 :is([data-fag="1P"], [data-fag="1T"]) .prove-oppgave .task-card { margin-bottom: 0.5rem; }
