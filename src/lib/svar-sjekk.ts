@@ -400,30 +400,73 @@ function tallVerdi(s: string): number | null {
 
 const KJENTE_ORD = /^(?:sqrt|pi|sin|cos|tan|ln|log|lg|abs|exp|asin|acos|atan|arcsin|arccos|arctan)$/i;
 
+/** «3 ± √5» gir to uttrykk (3+√5 og 3−√5), «±3» gir +3 og −3. */
+function utvidPm(s: string): string[] {
+  const i = s.indexOf("±");
+  if (i < 0) return [s];
+  return [...utvidPm(s.slice(0, i) + "+" + s.slice(i + 1)), ...utvidPm(s.slice(0, i) + "-" + s.slice(i + 1))];
+}
+
+const MERKE = "\u0001";
+
+function escRegex(s: string): string {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+/** I ord-modus fjernes godkjente enheter som står etter et tall hvor som helst i teksten («21,5 m etter 2 s»). */
+function fjernEnheterOveralt(s: string, enheter?: string[]): string {
+  if (!enheter || enheter.length === 0) return s;
+  const varianter = new Set<string>();
+  for (const e of enheter) {
+    const en = normaliser(e);
+    varianter.add(en);
+    varianter.add(en.replace(/\^/g, ""));
+  }
+  let ut = s;
+  for (const v of [...varianter].filter(Boolean).sort((a, b) => b.length - a.length)) {
+    ut = ut.replace(new RegExp(`(?<=[\\d)])\\s*${escRegex(v)}(?![A-Za-zÆØÅæøå0-9^])`, "gi"), MERKE);
+  }
+  return ut;
+}
+
+type TallBit = { tekst: string; faktor: number };
+
+/** Ett svar-ledd i et tallsvar blir ett eller flere tall-uttrykk (enheter, ord og ± er håndtert). */
+function tallFragmenter(d0: string, enhet?: string[], ord?: boolean): TallBit[] {
+  let d = fjernForsteord(d0.replace(/^\s*[a-zA-Z]\)\s*/, "")).replace(PREFIKS_UTTRYKK, "").trim();
+  d = ord ? fjernEnheterOveralt(d, enhet) : fjernEnhet(d, enhet).rest;
+  // «1,63 millioner» og «9 milliarder» gir tallet ganger 10^6 og 10^9.
+  let faktor = 1;
+  const sk = /^(.*\d)\s*(millioner|million|mill|milliarder|milliard|mrd)\.?\s*$/i.exec(d);
+  if (sk) {
+    d = sk[1];
+    faktor = /^mill(?:ioner|ion)?$/i.test(sk[2]) ? 1e6 : 1e9;
+  }
+  let biter: string[];
+  if (ord) {
+    // «Abid er 21 år»: ord på to bokstaver eller mer fjernes, tallet står igjen. «0,06 m³ = 60 dm³» er to tall.
+    d = d.replace(/[A-Za-zÆØÅæøå]{2,}/g, (w) => (KJENTE_ORD.test(w) ? w : MERKE));
+    d = d.replace(new RegExp(`${MERKE}-+`, "g"), MERKE).replace(new RegExp(`-+${MERKE}`, "g"), MERKE);
+    biter = d
+      .split(new RegExp(`${MERKE}|\\s*[=≈]\\s*`))
+      .map((x) => x.replace(/(^|\s)-(?=\s|$)/g, "$1").trim())
+      .filter(Boolean);
+  } else biter = [d];
+  return biter.flatMap(utvidPm).map((tekst) => ({ tekst, faktor }));
+}
+
 function tolkTall(input: string, enhet?: string[], ord?: boolean): number[] | null {
   const deler = delOpp(normaliser(input));
   if (deler.length === 0) return null;
   const ut: number[] = [];
   for (const d0 of deler) {
-    let d = fjernForsteord(d0);
-    d = d.replace(PREFIKS_UTTRYKK, "");
-    d = fjernEnhet(d.trim(), enhet).rest;
-    // «Abid er 21 år»: ord på to bokstaver eller mer fjernes, tallet står igjen.
-    // «1,63 millioner» og «9 milliarder» gir tallet ganger 10^6 og 10^9.
-    let faktor = 1;
-    const sk = /^(.*\d)\s*(millioner|million|mill|milliarder|milliard|mrd)\.?\s*$/i.exec(d);
-    if (sk) {
-      d = sk[1];
-      faktor = /^mill(?:ioner|ion)?$/i.test(sk[2]) ? 1e6 : 1e9;
+    const bit = tallFragmenter(d0, enhet, ord);
+    if (bit.length === 0) return null;
+    for (const b of bit) {
+      const v = tallVerdi(b.tekst);
+      if (v === null) return null;
+      ut.push(v * b.faktor);
     }
-    if (ord) {
-      d = d.replace(/[A-Za-zÆØÅæøå]{2,}/g, (w) => (KJENTE_ORD.test(w) ? w : " "));
-      // «30 to-roms» blir «30 -» etter at ordene er fjernet: løse bindestreker fjernes.
-      d = d.replace(/(^|\s)-(?=\s|$)/g, "$1").trim();
-    }
-    const v = tallVerdi(d);
-    if (v === null) return null;
-    ut.push(v * faktor);
   }
   return ut;
 }
@@ -452,14 +495,10 @@ function tolkLikning(input: string): { var?: string; v: number }[] | null {
   for (const d0 of deler) {
     const d = fjernForsteord(d0);
     const m = /^\s*([A-Za-zα-ω][A-Za-z0-9_]*)\s*(?:=|≈)\s*(.+)$/.exec(d);
-    if (m) {
-      const v = tallVerdi(m[2]);
+    for (const tekst of utvidPm(m ? m[2] : d)) {
+      const v = tallVerdi(tekst);
       if (v === null) return null;
-      ut.push({ var: m[1], v });
-    } else {
-      const v = tallVerdi(d);
-      if (v === null) return null;
-      ut.push({ v });
+      ut.push(m ? { var: m[1], v } : { v });
     }
   }
   return ut;
@@ -693,6 +732,18 @@ export function forhandsvis(input: string, spec: SvarSpec, enhet?: string[]): Fo
   }
   const deler = spec.type === "uttrykk" ? [s] : delOpp(s);
   if (deler.length === 0) return { ok: false };
+  if (spec.type === "tall" && spec.ord) {
+    // Svar med ord og enheter: vis tallene som ble funnet.
+    const ut: string[] = [];
+    for (const d0 of deler) {
+      for (const b of tallFragmenter(d0, enhet, true)) {
+        const n = parseUttrykk(b.tekst);
+        if (!n || variabler(n).size > 0 || b.faktor !== 1) return { ok: false };
+        ut.push(tilLatex(n));
+      }
+    }
+    return ut.length ? { ok: true, latex: ut.join(",\\quad ") } : { ok: false };
+  }
   const ut: string[] = [];
   for (const d0 of deler) {
     let d = fjernForsteord(d0);
