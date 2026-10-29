@@ -9,7 +9,9 @@ import { TaskCard } from "@/components/TaskCard";
 import { SummaryView } from "@/components/SummaryView";
 import { QuizOverlay } from "@/components/QuizOverlay";
 import { ModeToggle } from "@/components/ModeToggle";
-import { ProveSvar } from "@/components/ProveFelt";
+import { PoengOppsummering, ProveResultat, ProveSvar } from "@/components/ProveFelt";
+import { SLUTTSVAR } from "@/data/eksamen-svar";
+import { beregnPoeng, poengPerEnhet, type Vurdering } from "@/lib/prove-poeng";
 import { PrereqMini } from "@/components/PrereqMini";
 import { PREREQS } from "@/data/mindmap";
 import { formatKlokke, useProveUtkast } from "@/lib/prove-utkast";
@@ -54,6 +56,7 @@ function SubchapterPage() {
   const prev = useProgressStore((s) => s.p.exams[proveKey]);
   const saveExam = useProgressStore((s) => s.saveExam);
   const clearExam = useProgressStore((s) => s.clearExam);
+  const updateExam = useProgressStore((s) => s.updateExam);
   const submitted = Boolean(prev);
   const utkast = useProveUtkast(proveKey);
   const fokus = useFokusEtterVisning();
@@ -126,13 +129,34 @@ function SubchapterPage() {
   const proveOppgaver = dk.oppgaver.filter((o) => !erIntro(o));
   const antallFerdig = proveOppgaver.filter((o) => utkast.ferdig[o.id]).length;
 
+  /** Øveprøver har ikke oppgitte poeng: hver oppgave teller 1 p. */
+  const poengEnheter = proveOppgaver.map((o) => ({ id: o.id, maks: poengPerEnhet(undefined, 1), fasit: SLUTTSVAR[o.id] }));
+  const poengForsok = submitted && prev?.mode === "prove" ? prev.poeng : undefined;
+
+  function vurder(id: string, v: Vurdering) {
+    if (!prev || !poengForsok) return;
+    const vurdering = { ...(prev.vurdering || {}), [id]: v };
+    updateExam(proveKey, { vurdering, poeng: beregnPoeng(poengEnheter, prev.sluttsvar || {}, vurdering) });
+  }
+
   function lever() {
     const notes: Record<string, string> = {};
+    const sluttsvar: Record<string, string> = {};
     proveOppgaver.forEach((o) => {
       const v = (utkast.answers[o.id] || "").trim();
       if (v) notes[o.id] = v;
+      const sv = (utkast.answers[`${o.id}::sluttsvar`] || "").trim();
+      if (sv) sluttsvar[o.id] = sv;
     });
-    const newly = saveExam(proveKey, { submittedAt: Date.now(), selfScore: {}, notes, mode: "prove" });
+    const newly = saveExam(proveKey, {
+      submittedAt: Date.now(),
+      selfScore: {},
+      notes,
+      mode: "prove",
+      sluttsvar,
+      vurdering: {},
+      poeng: beregnPoeng(poengEnheter, sluttsvar, {}),
+    });
     utkast.clear();
     setBekreft(null);
     fireCelebration({
@@ -255,12 +279,31 @@ function SubchapterPage() {
                 locked={false}
                 onChange={(v) => utkast.setAnswer(o.id, v)}
                 onDone={(v) => utkast.setFerdig(o.id, v)}
+                sluttsvar={
+                  SLUTTSVAR[o.id]
+                    ? {
+                        fasit: SLUTTSVAR[o.id],
+                        value: utkast.answers[`${o.id}::sluttsvar`] || "",
+                        onChange: (v) => utkast.setAnswer(`${o.id}::sluttsvar`, v),
+                      }
+                    : undefined
+                }
               />
             )}
             {oving && mode === "prove" && !erIntro(o) && submitted && prev?.notes[o.id] && (
               <p className="prove-svar-levert">
                 <strong>Ditt svar:</strong> {prev.notes[o.id]}
               </p>
+            )}
+            {oving && !erIntro(o) && submitted && poengForsok?.deler[o.id] && (
+              <ProveResultat
+                id={o.id}
+                gitt={prev?.sluttsvar?.[o.id] || ""}
+                fasit={SLUTTSVAR[o.id]}
+                res={poengForsok.deler[o.id]}
+                vurdering={prev?.vurdering?.[o.id]}
+                onVurder={(v) => vurder(o.id, v)}
+              />
             )}
           </div>
         ))}
@@ -300,7 +343,13 @@ function SubchapterPage() {
         )}
         {oving && submitted && (
           <div className="exam-summary" ref={sammendrag} tabIndex={-1} data-fokus-etter-feiring="">
-            <p>Øveprøven er levert. Løsningsforslaget er nå åpent. Merk oppgavene du fikk til.</p>
+            {poengForsok && <PoengOppsummering res={poengForsok} />}
+            <p>
+              Øveprøven er levert. Løsningsforslaget er nå åpent.{" "}
+              {poengForsok
+                ? "Vurder deg selv under hver oppgave, så oppdateres poengene. Merk også oppgavene du fikk til."
+                : "Merk oppgavene du fikk til."}
+            </p>
             {bekreft !== "pånytt" ? (
               <button
                 type="button"
@@ -316,7 +365,7 @@ function SubchapterPage() {
             ) : (
               <div role="alertdialog" aria-labelledby="bekreft-ovep-pånytt" ref={pånyttDialog} tabIndex={-1}>
                 <p id="bekreft-ovep-pånytt">
-                  <strong>Ta øveprøven på nytt?</strong> Det leverte forsøket og svarene dine i prøven slettes.
+                  <strong>Ta øveprøven på nytt?</strong> Det leverte forsøket, svarene dine og poengene i prøven slettes.
                 </p>
                 <button type="button" className="btn-primary" onClick={taPåNytt}>
                   Ja, ta på nytt

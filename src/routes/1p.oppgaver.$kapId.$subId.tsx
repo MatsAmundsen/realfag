@@ -9,11 +9,13 @@ import { TaskCard } from "@/components/TaskCard";
 import { SummaryView } from "@/components/SummaryView";
 import { QuizOverlay } from "@/components/QuizOverlay";
 import { ModeToggle } from "@/components/ModeToggle";
-import { ProveSvar } from "@/components/ProveFelt";
+import { PoengOppsummering, ProveResultat, ProveSvar } from "@/components/ProveFelt";
+import { SLUTTSVAR } from "@/data/eksamen-svar";
+import { beregnPoeng, poengPerEnhet, type Vurdering } from "@/lib/prove-poeng";
 import { formatKlokke, useProveUtkast } from "@/lib/prove-utkast";
 import { useFokusEtterVisning } from "@/lib/fokus";
 import { countSubchapter, isOvingDelkap } from "@/lib/progress";
-import { useProgressStore } from "@/lib/progress-store";
+import { fireCelebration, useProgressStore } from "@/lib/progress-store";
 import { seoHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/1p/oppgaver/$kapId/$subId")({
@@ -38,11 +40,17 @@ function SubchapterPage1P() {
   const p = useProgressStore((s) => s.p);
   const [quizOn, setQuizOn] = useState(false);
   const [mode, setMode] = useState<StudyMode>("prove");
-  const [submitted, setSubmitted] = useState(false);
   const [bekreft, setBekreft] = useState<null | "lever" | "pånytt">(null);
   const [timerOn, setTimerOn] = useState(false);
   const [elapsed, setElapsed] = useState(0);
-  const utkast = useProveUtkast(`ove/${kapId}/${subId}`);
+  /** Levering av en øveprøve lagres som et forsøk under egen nøkkel, slik at den overlever omlasting (som i 1T). */
+  const proveKey = `ove/${kapId}/${subId}`;
+  const prev = useProgressStore((s) => s.p.exams[proveKey]);
+  const saveExam = useProgressStore((s) => s.saveExam);
+  const clearExam = useProgressStore((s) => s.clearExam);
+  const updateExam = useProgressStore((s) => s.updateExam);
+  const submitted = Boolean(prev);
+  const utkast = useProveUtkast(proveKey);
   const fokus = useFokusEtterVisning();
   const leverKnapp = useRef<HTMLButtonElement>(null);
   const leverDialog = useRef<HTMLDivElement>(null);
@@ -113,11 +121,49 @@ function SubchapterPage1P() {
   /** Eleven skal se «Oppgave 1», ikke den interne ID-en «P2.OP1». IDen i dataene er uendret. */
   const visTittel = (o: { id: string; tittel: string }) =>
     oving ? o.tittel.replace(/^Oppgave P\d+\.OP(\d+)/, "Oppgave $1") : o.tittel;
+  /** Øveprøver har ikke oppgitte poeng: hver oppgave teller 1 p. */
+  const poengEnheter = proveOppgaver.map((o) => ({ id: o.id, maks: poengPerEnhet(undefined, 1), fasit: SLUTTSVAR[o.id] }));
+  const poengForsok = submitted && prev?.mode === "prove" ? prev.poeng : undefined;
+
+  function vurder(id: string, v: Vurdering) {
+    if (!prev || !poengForsok) return;
+    const vurdering = { ...(prev.vurdering || {}), [id]: v };
+    updateExam(proveKey, { vurdering, poeng: beregnPoeng(poengEnheter, prev.sluttsvar || {}, vurdering) });
+  }
+
+  function lever() {
+    const notes: Record<string, string> = {};
+    const sluttsvar: Record<string, string> = {};
+    proveOppgaver.forEach((o) => {
+      const v = (utkast.answers[o.id] || "").trim();
+      if (v) notes[o.id] = v;
+      const sv = (utkast.answers[`${o.id}::sluttsvar`] || "").trim();
+      if (sv) sluttsvar[o.id] = sv;
+    });
+    const newly = saveExam(proveKey, {
+      submittedAt: Date.now(),
+      selfScore: {},
+      notes,
+      mode: "prove",
+      sluttsvar,
+      vurdering: {},
+      poeng: beregnPoeng(poengEnheter, sluttsvar, {}),
+    });
+    utkast.clear();
+    setBekreft(null);
+    fireCelebration({
+      kind: "exam",
+      title: `${kap!.tittel} · øveprøven er levert`,
+      body: "Nå kan du åpne løsningsforslaget og merke oppgavene du fikk til.",
+      badges: newly,
+    });
+  }
+
   function taPåNytt() {
+    clearExam(proveKey);
     utkast.clear();
     setElapsed(0);
     setBekreft(null);
-    setSubmitted(false);
     // Knappen forsvinner: start på nytt øverst, ved første oppgave.
     fokus(() => førsteOppgave.current?.querySelector<HTMLElement>(".task-title"));
   }
@@ -166,7 +212,7 @@ function SubchapterPage1P() {
                   : "Øvemodus er på. Du kan åpne hint og steg-løsning underveis."}
               </p>
             </div>
-            <ModeToggle mode={mode} onChange={(m) => { setMode(m); setSubmitted(false); setBekreft(null); }} />
+            <ModeToggle mode={mode} onChange={(m) => { setMode(m); setBekreft(null); }} />
           </div>
         )}
         {oving && mode === "prove" && (
@@ -217,14 +263,38 @@ function SubchapterPage1P() {
               hideHint={effectiveMode === "prove"}
               hideTierBadge
             />
-            {oving && mode === "prove" && !erIntro(o) && (
+            {oving && mode === "prove" && !erIntro(o) && !submitted && (
               <ProveSvar
                 id={o.id}
                 value={utkast.answers[o.id] || ""}
                 done={Boolean(utkast.ferdig[o.id])}
-                locked={submitted}
+                locked={false}
                 onChange={(v) => utkast.setAnswer(o.id, v)}
                 onDone={(v) => utkast.setFerdig(o.id, v)}
+                sluttsvar={
+                  SLUTTSVAR[o.id]
+                    ? {
+                        fasit: SLUTTSVAR[o.id],
+                        value: utkast.answers[`${o.id}::sluttsvar`] || "",
+                        onChange: (v) => utkast.setAnswer(`${o.id}::sluttsvar`, v),
+                      }
+                    : undefined
+                }
+              />
+            )}
+            {oving && mode === "prove" && !erIntro(o) && submitted && prev?.notes[o.id] && (
+              <p className="prove-svar-levert">
+                <strong>Ditt svar:</strong> {prev.notes[o.id]}
+              </p>
+            )}
+            {oving && !erIntro(o) && submitted && poengForsok?.deler[o.id] && (
+              <ProveResultat
+                id={o.id}
+                gitt={prev?.sluttsvar?.[o.id] || ""}
+                fasit={SLUTTSVAR[o.id]}
+                res={poengForsok.deler[o.id]}
+                vurdering={prev?.vurdering?.[o.id]}
+                onVurder={(v) => vurder(o.id, v)}
               />
             )}
           </div>
@@ -248,11 +318,7 @@ function SubchapterPage1P() {
             <p id="bekreft-ovep-lever">
               <strong>Er du ferdig med øveprøven?</strong> {proveOppgaver.filter((o) => utkast.ferdig[o.id]).length} av {proveOppgaver.length} oppgaver er krysset av som ferdige. Når du leverer, åpnes løsningsforslaget.
             </p>
-            <button type="button" className="btn-primary" onClick={() => {
-                setBekreft(null);
-                setSubmitted(true);
-                fokus(() => sammendrag.current);
-              }}>
+            <button type="button" className="btn-primary" onClick={lever}>
               <Flag size={16} /> Ja, lever
             </button>{" "}
             <button
@@ -268,8 +334,14 @@ function SubchapterPage1P() {
           </div>
         )}
         {oving && submitted && (
-          <div className="exam-summary" ref={sammendrag} tabIndex={-1}>
-            <p>Øveprøven er levert. Løsningsforslaget er nå åpent. Merk oppgavene du fikk til.</p>
+          <div className="exam-summary" ref={sammendrag} tabIndex={-1} data-fokus-etter-feiring="">
+            {poengForsok && <PoengOppsummering res={poengForsok} />}
+            <p>
+              Øveprøven er levert. Løsningsforslaget er nå åpent.{" "}
+              {poengForsok
+                ? "Vurder deg selv under hver oppgave, så oppdateres poengene. Merk også oppgavene du fikk til."
+                : "Merk oppgavene du fikk til."}
+            </p>
             {bekreft !== "pånytt" ? (
               <button
                 type="button"
@@ -285,7 +357,7 @@ function SubchapterPage1P() {
             ) : (
               <div role="alertdialog" aria-labelledby="bekreft-ovep-pånytt" ref={pånyttDialog} tabIndex={-1}>
                 <p id="bekreft-ovep-pånytt">
-                  <strong>Ta øveprøven på nytt?</strong> Svarene og avkrysningene dine i prøven slettes.
+                  <strong>Ta øveprøven på nytt?</strong> Det leverte forsøket, svarene dine og poengene i prøven slettes.
                 </p>
                 <button type="button" className="btn-primary" onClick={taPåNytt}>
                   Ja, ta på nytt
