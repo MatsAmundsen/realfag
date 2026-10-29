@@ -147,6 +147,21 @@ function SubchapterPage() {
 
         {topicVideos.length > 0 ? <TopicVideoInvite videos={topicVideos} /> : null}
 
+        {(subId === "2A" || subId === "2B") && (
+          <p className="oppl-actions">
+            <Link to="/ressurser" search={{ t: "opplegg-2a-2b" }} className="hint-btn">
+              Undervisningsopplegg for 2A og 2B
+            </Link>
+            <a
+              className="hint-btn"
+              href="/fagstoff/undervisningsopplegg-2a-2b.docx"
+              download="Undervisningsopplegg-2A-og-2B.docx"
+            >
+              Last ned Word
+            </a>
+          </p>
+        )}
+
         {hasPrereq && !oving && (
           <details className="prereq-details">
             <summary>Hva må jeg kunne?</summary>
