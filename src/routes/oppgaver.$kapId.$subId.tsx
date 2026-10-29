@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { createFileRoute, Link, redirect } from "@tanstack/react-router";
-import { CircleHelp } from "lucide-react";
+import { CircleHelp, Clock, Flag } from "lucide-react";
 import { CHAPTER_META, fagsok, findKap, findSub, videosForSub } from "@/data/content";
 import type { StudyMode } from "@/data/types";
 import { ChapterSidebar } from "@/components/ChapterSidebar";
@@ -9,10 +9,13 @@ import { TaskCard } from "@/components/TaskCard";
 import { SummaryView } from "@/components/SummaryView";
 import { QuizOverlay } from "@/components/QuizOverlay";
 import { ModeToggle } from "@/components/ModeToggle";
+import { ProveSvar } from "@/components/ProveFelt";
 import { PrereqMini } from "@/components/PrereqMini";
 import { PREREQS } from "@/data/mindmap";
+import { formatKlokke, useProveUtkast } from "@/lib/prove-utkast";
+import { useFokusEtterVisning } from "@/lib/fokus";
 import { countSubchapter, isOvingDelkap } from "@/lib/progress";
-import { useProgressStore } from "@/lib/progress-store";
+import { fireCelebration, useProgressStore } from "@/lib/progress-store";
 import { seoHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/oppgaver/$kapId/$subId")({
@@ -43,8 +46,30 @@ function SubchapterPage() {
   const p = useProgressStore((s) => s.p);
   const [quizOn, setQuizOn] = useState(false);
   const [mode, setMode] = useState<StudyMode>("prove");
-  const [submitted, setSubmitted] = useState(false);
+  const [bekreft, setBekreft] = useState<null | "lever" | "pånytt">(null);
+  const [timerOn, setTimerOn] = useState(false);
+  const [elapsed, setElapsed] = useState(0);
+  /** Levering av en øveprøve lagres som et forsøk under egen nøkkel (ove/3OP), slik at den overlever omlasting. */
+  const proveKey = `ove/${subId}`;
+  const prev = useProgressStore((s) => s.p.exams[proveKey]);
+  const saveExam = useProgressStore((s) => s.saveExam);
+  const clearExam = useProgressStore((s) => s.clearExam);
+  const submitted = Boolean(prev);
+  const utkast = useProveUtkast(proveKey);
+  const fokus = useFokusEtterVisning();
+  const leverKnapp = useRef<HTMLButtonElement>(null);
+  const leverDialog = useRef<HTMLDivElement>(null);
+  const pånyttKnapp = useRef<HTMLButtonElement>(null);
+  const pånyttDialog = useRef<HTMLDivElement>(null);
+  const sammendrag = useRef<HTMLDivElement>(null);
+  const førsteOppgave = useRef<HTMLDivElement>(null);
   const hasPrereq = Boolean(PREREQS[subId]);
+
+  useEffect(() => {
+    if (!timerOn || submitted) return;
+    const id = window.setInterval(() => setElapsed((e) => e + 1), 1000);
+    return () => window.clearInterval(id);
+  }, [timerOn, submitted]);
 
   useEffect(() => {
     const hash = typeof window !== "undefined" ? window.location.hash.replace(/^#/, "") : "";
@@ -96,6 +121,38 @@ function SubchapterPage() {
   const isSummary = dk.id.endsWith("SM") && dk.oppgaver.every((o) => /\.S\d+$/.test(o.id));
   const effectiveMode: StudyMode = oving ? mode : "ove";
   const locked = oving && mode === "prove" && !submitted;
+  /** Introduksjonskortet (3.OP0 osv.) er ikke en oppgave: ingen svarfelt, ingen «Ferdig» og ikke med i tellingen. */
+  const erIntro = (o: { id: string }) => /\.OP0$/.test(o.id);
+  const proveOppgaver = dk.oppgaver.filter((o) => !erIntro(o));
+  const antallFerdig = proveOppgaver.filter((o) => utkast.ferdig[o.id]).length;
+
+  function lever() {
+    const notes: Record<string, string> = {};
+    proveOppgaver.forEach((o) => {
+      const v = (utkast.answers[o.id] || "").trim();
+      if (v) notes[o.id] = v;
+    });
+    const newly = saveExam(proveKey, { submittedAt: Date.now(), selfScore: {}, notes, mode: "prove" });
+    utkast.clear();
+    setBekreft(null);
+    fireCelebration({
+      kind: "exam",
+      title: `${kap!.tittel} · øveprøven er levert`,
+      body: "Nå kan du åpne hint og løsningsforslag og merke oppgavene du fikk til.",
+      badges: newly,
+    });
+  }
+
+  /** Nullstiller levering, svar og avkrysninger slik at øveprøven kan tas på nytt. */
+  function taPåNytt() {
+    clearExam(proveKey);
+    utkast.clear();
+    setElapsed(0);
+    setTimerOn(false);
+    setBekreft(null);
+    // Knappen forsvinner: start på nytt øverst, ved første oppgave.
+    fokus(() => førsteOppgave.current?.querySelector<HTMLElement>(".task-title"));
+  }
 
   return (
     <section className="view-section">
@@ -141,7 +198,29 @@ function SubchapterPage() {
                   : "Øvemodus er på. Du kan åpne hint og steg-løsning underveis."}
               </p>
             </div>
-            <ModeToggle mode={mode} onChange={(m) => { setMode(m); setSubmitted(false); }} />
+            <ModeToggle mode={mode} onChange={(m) => { setMode(m); setBekreft(null); }} />
+          </div>
+        )}
+
+        {oving && mode === "prove" && (
+          <div className="exam-toolbar prove-verktoy">
+            <label className="timer-toggle">
+              <input
+                type="checkbox"
+                checked={timerOn}
+                onChange={(e) => {
+                  setTimerOn(e.target.checked);
+                  setElapsed(0);
+                }}
+              />
+              <Clock size={14} /> Tidtaking
+            </label>
+            {timerOn && <span role="timer" className="timer-readout">Brukt tid: {formatKlokke(elapsed)}</span>}
+            {!submitted && (
+              <span className="prove-teller" role="status">
+                {antallFerdig} av {proveOppgaver.length} krysset av som ferdige.
+              </span>
+            )}
           </div>
         )}
 
@@ -155,26 +234,105 @@ function SubchapterPage() {
         )}
 
         {isSummary ? <SummaryView items={dk.oppgaver} kapId={kapId} subId={subId} /> : dk.oppgaver.map((o, i) => (
-          <TaskCard
-            key={o.id}
-            oppgave={o}
-            kapId={kapId}
-            subId={subId}
-            index={i}
-            total={dk.oppgaver.length}
-            mode={effectiveMode}
-            locked={locked}
-            reveal={submitted}
-          />
+          <div key={o.id} className="prove-oppgave" ref={i === 0 ? førsteOppgave : undefined}>
+            <TaskCard
+              oppgave={o}
+              kapId={kapId}
+              subId={subId}
+              index={i}
+              total={dk.oppgaver.length}
+              mode={effectiveMode}
+              locked={locked}
+              reveal={submitted}
+              hideTierBadge={oving}
+            />
+            {oving && mode === "prove" && !erIntro(o) && !submitted && (
+              <ProveSvar
+                id={o.id}
+                value={utkast.answers[o.id] || ""}
+                done={Boolean(utkast.ferdig[o.id])}
+                locked={false}
+                onChange={(v) => utkast.setAnswer(o.id, v)}
+                onDone={(v) => utkast.setFerdig(o.id, v)}
+              />
+            )}
+            {oving && mode === "prove" && !erIntro(o) && submitted && prev?.notes[o.id] && (
+              <p className="prove-svar-levert">
+                <strong>Ditt svar:</strong> {prev.notes[o.id]}
+              </p>
+            )}
+          </div>
         ))}
 
-        {oving && !submitted && mode === "prove" && (
-          <button type="button" className="btn-primary" onClick={() => setSubmitted(true)}>
-            Lever øveprøven
+        {oving && !submitted && mode === "prove" && bekreft !== "lever" && (
+          <button
+            type="button"
+            className="btn-primary prove-lever"
+            ref={leverKnapp}
+            onClick={() => {
+              setBekreft("lever");
+              fokus(() => leverDialog.current);
+            }}
+          >
+            <Flag size={16} /> Lever / Ferdig
           </button>
         )}
+        {oving && !submitted && mode === "prove" && bekreft === "lever" && (
+          <div className="exam-summary" role="alertdialog" aria-labelledby="bekreft-ovep-lever" ref={leverDialog} tabIndex={-1}>
+            <p id="bekreft-ovep-lever">
+              <strong>Er du ferdig med øveprøven?</strong> {antallFerdig} av {proveOppgaver.length} oppgaver er krysset av som ferdige. Når du leverer, åpnes hint og løsningsforslag.
+            </p>
+            <button type="button" className="btn-primary" onClick={lever}>
+              <Flag size={16} /> Ja, lever
+            </button>{" "}
+            <button
+              type="button"
+              className="hint-btn"
+              onClick={() => {
+                setBekreft(null);
+                fokus(() => leverKnapp.current);
+              }}
+            >
+              Fortsett å jobbe
+            </button>
+          </div>
+        )}
         {oving && submitted && (
-          <p className="exam-summary">Øveprøven er levert. Hint og løsningsforslag er nå åpne. Merk oppgavene du fikk til.</p>
+          <div className="exam-summary" ref={sammendrag} tabIndex={-1} data-fokus-etter-feiring="">
+            <p>Øveprøven er levert. Hint og løsningsforslag er nå åpne. Merk oppgavene du fikk til.</p>
+            {bekreft !== "pånytt" ? (
+              <button
+                type="button"
+                className="hint-btn"
+                ref={pånyttKnapp}
+                onClick={() => {
+                  setBekreft("pånytt");
+                  fokus(() => pånyttDialog.current);
+                }}
+              >
+                Ta øveprøven på nytt
+              </button>
+            ) : (
+              <div role="alertdialog" aria-labelledby="bekreft-ovep-pånytt" ref={pånyttDialog} tabIndex={-1}>
+                <p id="bekreft-ovep-pånytt">
+                  <strong>Ta øveprøven på nytt?</strong> Det leverte forsøket og svarene dine i prøven slettes.
+                </p>
+                <button type="button" className="btn-primary" onClick={taPåNytt}>
+                  Ja, ta på nytt
+                </button>{" "}
+                <button
+                  type="button"
+                  className="hint-btn"
+                  onClick={() => {
+                    setBekreft(null);
+                    fokus(() => pånyttKnapp.current);
+                  }}
+                >
+                  Avbryt
+                </button>
+              </div>
+            )}
+          </div>
         )}
 
         <div className="sub-nav">
