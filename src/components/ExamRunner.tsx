@@ -141,7 +141,7 @@ function TaskBlock({
     <article className="task-card exam-task" id={`oppgave-${task.id}`}>
       <div className="task-card-header">
         <h3 className="task-title">
-          Oppgave {task.nr} <span className="pts">{task.points} p</span>
+          Oppgave {task.nr}{task.points > 0 && <span className="pts"> {task.points} p</span>}
         </h3>
         <div className="topic-chips">
           {task.topics.map((tp) => (
