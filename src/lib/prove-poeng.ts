@@ -75,7 +75,8 @@ export function enhetsPoeng(
   let overstyrt: boolean | undefined;
   if (e.fasit && !e.fasit.selvvurder) {
     auto = sjekkSluttsvar(sluttsvar || "", e.fasit);
-    overstyrt = !auto && Boolean(v?.overstyrt);
+    // Et tomt svar (tomt, bare mellomrom/linjeskift) kan aldri overstyres, selv om det ligger en lagret overstyrt-verdi
+    overstyrt = !auto && Boolean(v?.overstyrt) && (sluttsvar || "").trim() !== "";
     andel = auto ? 1 : metodeUtregning + (overstyrt ? POENGANDEL.svar : 0);
   } else {
     andel = metodeUtregning + (v?.svar ? POENGANDEL.svar : 0);

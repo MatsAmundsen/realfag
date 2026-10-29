@@ -185,7 +185,7 @@ export function ProveResultat({
               {v.tekst}
             </label>
           ))}
-          {fasit && !formkrav && (
+          {fasit && !formkrav && gitt.trim() !== "" && (
             <label className="prove-vurdering-valg">
               <input
                 type="checkbox"
