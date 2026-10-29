@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { CircleHelp, FileDown } from "lucide-react";
+import { CircleHelp, Clock, FileDown, Flag } from "lucide-react";
 import { CHAPTER_META_1P as CHAPTER_META, fagsok1P as fagsok, findKap1P as findKap, findSub1P as findSub, videosForSub1P as videosForSub, NIVAARK_BY_SUB_1P } from "@/data/1p";
 import type { StudyMode } from "@/data/types";
 import { ChapterSidebar } from "@/components/ChapterSidebar";
@@ -9,6 +9,9 @@ import { TaskCard } from "@/components/TaskCard";
 import { SummaryView } from "@/components/SummaryView";
 import { QuizOverlay } from "@/components/QuizOverlay";
 import { ModeToggle } from "@/components/ModeToggle";
+import { ProveSvar } from "@/components/ProveFelt";
+import { formatKlokke, useProveUtkast } from "@/lib/prove-utkast";
+import { useFokusEtterVisning } from "@/lib/fokus";
 import { countSubchapter, isOvingDelkap } from "@/lib/progress";
 import { useProgressStore } from "@/lib/progress-store";
 import { seoHead } from "@/lib/seo";
@@ -36,7 +39,23 @@ function SubchapterPage1P() {
   const [quizOn, setQuizOn] = useState(false);
   const [mode, setMode] = useState<StudyMode>("prove");
   const [submitted, setSubmitted] = useState(false);
-  
+  const [bekreft, setBekreft] = useState<null | "lever" | "pånytt">(null);
+  const [timerOn, setTimerOn] = useState(false);
+  const [elapsed, setElapsed] = useState(0);
+  const utkast = useProveUtkast(`ove/${kapId}/${subId}`);
+  const fokus = useFokusEtterVisning();
+  const leverKnapp = useRef<HTMLButtonElement>(null);
+  const leverDialog = useRef<HTMLDivElement>(null);
+  const pånyttKnapp = useRef<HTMLButtonElement>(null);
+  const pånyttDialog = useRef<HTMLDivElement>(null);
+  const sammendrag = useRef<HTMLDivElement>(null);
+  const førsteOppgave = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!timerOn || submitted) return;
+    const id = window.setInterval(() => setElapsed((e) => e + 1), 1000);
+    return () => window.clearInterval(id);
+  }, [timerOn, submitted]);
 
   useEffect(() => {
     const hash = typeof window !== "undefined" ? window.location.hash.replace(/^#/, "") : "";
@@ -88,6 +107,20 @@ function SubchapterPage1P() {
   const isSummary = dk.id.endsWith("SM") && dk.oppgaver.every((o) => /\.S\d+$/.test(o.id));
   const effectiveMode: StudyMode = oving ? mode : "ove";
   const locked = oving && mode === "prove" && !submitted;
+  /** Introduksjonskortet «Om øveprøven» er ikke en oppgave: ingen svarfelt, ingen «Ferdig» og ikke med i tellingen. */
+  const erIntro = (o: { id: string }) => /\.OP0$/.test(o.id);
+  const proveOppgaver = dk.oppgaver.filter((o) => !erIntro(o));
+  /** Eleven skal se «Oppgave 1», ikke den interne ID-en «P2.OP1». IDen i dataene er uendret. */
+  const visTittel = (o: { id: string; tittel: string }) =>
+    oving ? o.tittel.replace(/^Oppgave P\d+\.OP(\d+)/, "Oppgave $1") : o.tittel;
+  function taPåNytt() {
+    utkast.clear();
+    setElapsed(0);
+    setBekreft(null);
+    setSubmitted(false);
+    // Knappen forsvinner: start på nytt øverst, ved første oppgave.
+    fokus(() => førsteOppgave.current?.querySelector<HTMLElement>(".task-title"));
+  }
 
   return (
     <section className="view-section">
@@ -133,7 +166,28 @@ function SubchapterPage1P() {
                   : "Øvemodus er på. Du kan åpne hint og steg-løsning underveis."}
               </p>
             </div>
-            <ModeToggle mode={mode} onChange={(m) => { setMode(m); setSubmitted(false); }} />
+            <ModeToggle mode={mode} onChange={(m) => { setMode(m); setSubmitted(false); setBekreft(null); }} />
+          </div>
+        )}
+        {oving && mode === "prove" && (
+          <div className="exam-toolbar prove-verktoy">
+            <label className="timer-toggle">
+              <input
+                type="checkbox"
+                checked={timerOn}
+                onChange={(e) => {
+                  setTimerOn(e.target.checked);
+                  setElapsed(0);
+                }}
+              />
+              <Clock size={14} /> Tidtaking
+            </label>
+            {timerOn && <span role="timer" className="timer-readout">Brukt tid: {formatKlokke(elapsed)}</span>}
+            {!submitted && (
+              <span className="prove-teller" role="status">
+                {proveOppgaver.filter((o) => utkast.ferdig[o.id]).length} av {proveOppgaver.length} krysset av som ferdige.
+              </span>
+            )}
           </div>
         )}
 
@@ -150,27 +204,104 @@ function SubchapterPage1P() {
         ) : null}
 
         {isSummary ? <SummaryView items={dk.oppgaver} kapId={kapId} subId={subId} /> : dk.oppgaver.map((o, i) => (
-          <TaskCard
-            key={o.id}
-            oppgave={o}
-            kapId={kapId}
-            subId={subId}
-            index={i}
-            total={dk.oppgaver.length}
-            mode={effectiveMode}
-            locked={locked}
-            reveal={submitted}
-            hideTierBadge
-          />
+          <div key={o.id} className="prove-oppgave" ref={i === 0 ? førsteOppgave : undefined}>
+            <TaskCard
+              oppgave={{ ...o, tittel: visTittel(o) }}
+              kapId={kapId}
+              subId={subId}
+              index={i}
+              total={dk.oppgaver.length}
+              mode={effectiveMode}
+              locked={locked}
+              reveal={submitted}
+              hideTierBadge
+            />
+            {oving && mode === "prove" && !erIntro(o) && (
+              <ProveSvar
+                id={o.id}
+                value={utkast.answers[o.id] || ""}
+                done={Boolean(utkast.ferdig[o.id])}
+                locked={submitted}
+                onChange={(v) => utkast.setAnswer(o.id, v)}
+                onDone={(v) => utkast.setFerdig(o.id, v)}
+              />
+            )}
+          </div>
         ))}
 
-        {oving && !submitted && mode === "prove" && (
-          <button type="button" className="btn-primary" onClick={() => setSubmitted(true)}>
-            Lever øveprøven
+        {oving && !submitted && mode === "prove" && bekreft !== "lever" && (
+          <button
+            type="button"
+            className="btn-primary prove-lever"
+            ref={leverKnapp}
+            onClick={() => {
+              setBekreft("lever");
+              fokus(() => leverDialog.current);
+            }}
+          >
+            <Flag size={16} /> Lever / Ferdig
           </button>
         )}
+        {oving && !submitted && mode === "prove" && bekreft === "lever" && (
+          <div className="exam-summary" role="alertdialog" aria-labelledby="bekreft-ovep-lever" ref={leverDialog} tabIndex={-1}>
+            <p id="bekreft-ovep-lever">
+              <strong>Er du ferdig med øveprøven?</strong> {proveOppgaver.filter((o) => utkast.ferdig[o.id]).length} av {proveOppgaver.length} oppgaver er krysset av som ferdige. Når du leverer, åpnes hint og løsningsforslag.
+            </p>
+            <button type="button" className="btn-primary" onClick={() => {
+                setBekreft(null);
+                setSubmitted(true);
+                fokus(() => sammendrag.current);
+              }}>
+              <Flag size={16} /> Ja, lever
+            </button>{" "}
+            <button
+              type="button"
+              className="hint-btn"
+              onClick={() => {
+                setBekreft(null);
+                fokus(() => leverKnapp.current);
+              }}
+            >
+              Fortsett å jobbe
+            </button>
+          </div>
+        )}
         {oving && submitted && (
-          <p className="exam-summary">Øveprøven er levert. Hint og løsningsforslag er nå åpne. Merk oppgavene du fikk til.</p>
+          <div className="exam-summary" ref={sammendrag} tabIndex={-1}>
+            <p>Øveprøven er levert. Hint og løsningsforslag er nå åpne. Merk oppgavene du fikk til.</p>
+            {bekreft !== "pånytt" ? (
+              <button
+                type="button"
+                className="hint-btn"
+                ref={pånyttKnapp}
+                onClick={() => {
+                  setBekreft("pånytt");
+                  fokus(() => pånyttDialog.current);
+                }}
+              >
+                Ta øveprøven på nytt
+              </button>
+            ) : (
+              <div role="alertdialog" aria-labelledby="bekreft-ovep-pånytt" ref={pånyttDialog} tabIndex={-1}>
+                <p id="bekreft-ovep-pånytt">
+                  <strong>Ta øveprøven på nytt?</strong> Svarene og avkrysningene dine i prøven slettes.
+                </p>
+                <button type="button" className="btn-primary" onClick={taPåNytt}>
+                  Ja, ta på nytt
+                </button>{" "}
+                <button
+                  type="button"
+                  className="hint-btn"
+                  onClick={() => {
+                    setBekreft(null);
+                    fokus(() => pånyttKnapp.current);
+                  }}
+                >
+                  Avbryt
+                </button>
+              </div>
+            )}
+          </div>
         )}
 
         <div className="sub-nav">

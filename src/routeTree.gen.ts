@@ -17,6 +17,7 @@ import { Route as ProgrammeringRouteImport } from './routes/programmering'
 import { Route as RessurserRouteImport } from './routes/ressurser'
 import { Route as R1pIndexRouteImport } from './routes/1p.index'
 import { Route as R1pEksamenRouteImport } from './routes/1p.eksamen'
+import { Route as R1pEksamenerRouteImport } from './routes/1p.eksamener'
 import { Route as R1pOppgaverRouteImport } from './routes/1p.oppgaver'
 import { Route as EksamenIndexRouteImport } from './routes/eksamen.index'
 import { Route as EksamenExamIdRouteImport } from './routes/eksamen.$examId'
@@ -24,6 +25,8 @@ import { Route as OppgaverIndexRouteImport } from './routes/oppgaver.index'
 import { Route as OppgaverKapIdRouteImport } from './routes/oppgaver.$kapId'
 import { Route as R1pEksamenIndexRouteImport } from './routes/1p.eksamen.index'
 import { Route as R1pEksamenExamIdRouteImport } from './routes/1p.eksamen.$examId'
+import { Route as R1pEksamenerIndexRouteImport } from './routes/1p.eksamener.index'
+import { Route as R1pEksamenerExamIdRouteImport } from './routes/1p.eksamener.$examId'
 import { Route as R1pOppgaverIndexRouteImport } from './routes/1p.oppgaver.index'
 import { Route as R1pOppgaverKapIdRouteImport } from './routes/1p.oppgaver.$kapId'
 import { Route as OppgaverKapIdIndexRouteImport } from './routes/oppgaver.$kapId.index'
@@ -71,6 +74,11 @@ const R1pEksamenRoute = R1pEksamenRouteImport.update({
   path: '/1p/eksamen',
   getParentRoute: () => rootRouteImport,
 } as any)
+const R1pEksamenerRoute = R1pEksamenerRouteImport.update({
+  id: '/1p/eksamener',
+  path: '/1p/eksamener',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const R1pOppgaverRoute = R1pOppgaverRouteImport.update({
   id: '/1p/oppgaver',
   path: '/1p/oppgaver',
@@ -105,6 +113,16 @@ const R1pEksamenExamIdRoute = R1pEksamenExamIdRouteImport.update({
   id: '/$examId',
   path: '/$examId',
   getParentRoute: () => R1pEksamenRoute,
+} as any)
+const R1pEksamenerIndexRoute = R1pEksamenerIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => R1pEksamenerRoute,
+} as any)
+const R1pEksamenerExamIdRoute = R1pEksamenerExamIdRouteImport.update({
+  id: '/$examId',
+  path: '/$examId',
+  getParentRoute: () => R1pEksamenerRoute,
 } as any)
 const R1pOppgaverIndexRoute = R1pOppgaverIndexRouteImport.update({
   id: '/',
@@ -145,6 +163,7 @@ export interface FileRoutesByFullPath {
   '/programmering': typeof ProgrammeringRoute
   '/ressurser': typeof RessurserRoute
   '/1p/eksamen': typeof R1pEksamenRouteWithChildren
+  '/1p/eksamener': typeof R1pEksamenerRouteWithChildren
   '/1p/oppgaver': typeof R1pOppgaverRouteWithChildren
   '/eksamen/$examId': typeof EksamenExamIdRoute
   '/oppgaver/$kapId': typeof OppgaverKapIdRouteWithChildren
@@ -152,9 +171,11 @@ export interface FileRoutesByFullPath {
   '/eksamen/': typeof EksamenIndexRoute
   '/oppgaver/': typeof OppgaverIndexRoute
   '/1p/eksamen/$examId': typeof R1pEksamenExamIdRoute
+  '/1p/eksamener/$examId': typeof R1pEksamenerExamIdRoute
   '/1p/oppgaver/$kapId': typeof R1pOppgaverKapIdRouteWithChildren
   '/oppgaver/$kapId/$subId': typeof OppgaverKapIdSubIdRoute
   '/1p/eksamen/': typeof R1pEksamenIndexRoute
+  '/1p/eksamener/': typeof R1pEksamenerIndexRoute
   '/1p/oppgaver/': typeof R1pOppgaverIndexRoute
   '/oppgaver/$kapId/': typeof OppgaverKapIdIndexRoute
   '/1p/oppgaver/$kapId/$subId': typeof R1pOppgaverKapIdSubIdRoute
@@ -170,8 +191,10 @@ export interface FileRoutesByTo {
   '/eksamen': typeof EksamenIndexRoute
   '/oppgaver': typeof OppgaverIndexRoute
   '/1p/eksamen/$examId': typeof R1pEksamenExamIdRoute
+  '/1p/eksamener/$examId': typeof R1pEksamenerExamIdRoute
   '/oppgaver/$kapId/$subId': typeof OppgaverKapIdSubIdRoute
   '/1p/eksamen': typeof R1pEksamenIndexRoute
+  '/1p/eksamener': typeof R1pEksamenerIndexRoute
   '/1p/oppgaver': typeof R1pOppgaverIndexRoute
   '/oppgaver/$kapId': typeof OppgaverKapIdIndexRoute
   '/1p/oppgaver/$kapId/$subId': typeof R1pOppgaverKapIdSubIdRoute
@@ -186,6 +209,7 @@ export interface FileRoutesById {
   '/programmering': typeof ProgrammeringRoute
   '/ressurser': typeof RessurserRoute
   '/1p/eksamen': typeof R1pEksamenRouteWithChildren
+  '/1p/eksamener': typeof R1pEksamenerRouteWithChildren
   '/1p/oppgaver': typeof R1pOppgaverRouteWithChildren
   '/eksamen/$examId': typeof EksamenExamIdRoute
   '/oppgaver/$kapId': typeof OppgaverKapIdRouteWithChildren
@@ -193,9 +217,11 @@ export interface FileRoutesById {
   '/eksamen/': typeof EksamenIndexRoute
   '/oppgaver/': typeof OppgaverIndexRoute
   '/1p/eksamen/$examId': typeof R1pEksamenExamIdRoute
+  '/1p/eksamener/$examId': typeof R1pEksamenerExamIdRoute
   '/1p/oppgaver/$kapId': typeof R1pOppgaverKapIdRouteWithChildren
   '/oppgaver/$kapId/$subId': typeof OppgaverKapIdSubIdRoute
   '/1p/eksamen/': typeof R1pEksamenIndexRoute
+  '/1p/eksamener/': typeof R1pEksamenerIndexRoute
   '/1p/oppgaver/': typeof R1pOppgaverIndexRoute
   '/oppgaver/$kapId/': typeof OppgaverKapIdIndexRoute
   '/1p/oppgaver/$kapId/$subId': typeof R1pOppgaverKapIdSubIdRoute
@@ -211,6 +237,7 @@ export interface FileRouteTypes {
     | '/programmering'
     | '/ressurser'
     | '/1p/eksamen'
+    | '/1p/eksamener'
     | '/1p/oppgaver'
     | '/eksamen/$examId'
     | '/oppgaver/$kapId'
@@ -218,9 +245,11 @@ export interface FileRouteTypes {
     | '/eksamen/'
     | '/oppgaver/'
     | '/1p/eksamen/$examId'
+    | '/1p/eksamener/$examId'
     | '/1p/oppgaver/$kapId'
     | '/oppgaver/$kapId/$subId'
     | '/1p/eksamen/'
+    | '/1p/eksamener/'
     | '/1p/oppgaver/'
     | '/oppgaver/$kapId/'
     | '/1p/oppgaver/$kapId/$subId'
@@ -236,8 +265,10 @@ export interface FileRouteTypes {
     | '/eksamen'
     | '/oppgaver'
     | '/1p/eksamen/$examId'
+    | '/1p/eksamener/$examId'
     | '/oppgaver/$kapId/$subId'
     | '/1p/eksamen'
+    | '/1p/eksamener'
     | '/1p/oppgaver'
     | '/oppgaver/$kapId'
     | '/1p/oppgaver/$kapId/$subId'
@@ -251,6 +282,7 @@ export interface FileRouteTypes {
     | '/programmering'
     | '/ressurser'
     | '/1p/eksamen'
+    | '/1p/eksamener'
     | '/1p/oppgaver'
     | '/eksamen/$examId'
     | '/oppgaver/$kapId'
@@ -258,9 +290,11 @@ export interface FileRouteTypes {
     | '/eksamen/'
     | '/oppgaver/'
     | '/1p/eksamen/$examId'
+    | '/1p/eksamener/$examId'
     | '/1p/oppgaver/$kapId'
     | '/oppgaver/$kapId/$subId'
     | '/1p/eksamen/'
+    | '/1p/eksamener/'
     | '/1p/oppgaver/'
     | '/oppgaver/$kapId/'
     | '/1p/oppgaver/$kapId/$subId'
@@ -275,6 +309,7 @@ export interface RootRouteChildren {
   ProgrammeringRoute: typeof ProgrammeringRoute
   RessurserRoute: typeof RessurserRoute
   R1pEksamenRoute: typeof R1pEksamenRouteWithChildren
+  R1pEksamenerRoute: typeof R1pEksamenerRouteWithChildren
   R1pOppgaverRoute: typeof R1pOppgaverRouteWithChildren
   R1pIndexRoute: typeof R1pIndexRoute
 }
@@ -337,6 +372,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof R1pEksamenRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/1p/eksamener': {
+      id: '/1p/eksamener'
+      path: '/1p/eksamener'
+      fullPath: '/1p/eksamener'
+      preLoaderRoute: typeof R1pEksamenerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/1p/oppgaver': {
       id: '/1p/oppgaver'
       path: '/1p/oppgaver'
@@ -385,6 +427,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/1p/eksamen/$examId'
       preLoaderRoute: typeof R1pEksamenExamIdRouteImport
       parentRoute: typeof R1pEksamenRoute
+    }
+    '/1p/eksamener/': {
+      id: '/1p/eksamener/'
+      path: '/'
+      fullPath: '/1p/eksamener/'
+      preLoaderRoute: typeof R1pEksamenerIndexRouteImport
+      parentRoute: typeof R1pEksamenerRoute
+    }
+    '/1p/eksamener/$examId': {
+      id: '/1p/eksamener/$examId'
+      path: '/$examId'
+      fullPath: '/1p/eksamener/$examId'
+      preLoaderRoute: typeof R1pEksamenerExamIdRouteImport
+      parentRoute: typeof R1pEksamenerRoute
     }
     '/1p/oppgaver/': {
       id: '/1p/oppgaver/'
@@ -486,6 +542,20 @@ const R1pEksamenRouteWithChildren = R1pEksamenRoute._addFileChildren(
   R1pEksamenRouteChildren,
 )
 
+interface R1pEksamenerRouteChildren {
+  R1pEksamenerExamIdRoute: typeof R1pEksamenerExamIdRoute
+  R1pEksamenerIndexRoute: typeof R1pEksamenerIndexRoute
+}
+
+const R1pEksamenerRouteChildren: R1pEksamenerRouteChildren = {
+  R1pEksamenerExamIdRoute: R1pEksamenerExamIdRoute,
+  R1pEksamenerIndexRoute: R1pEksamenerIndexRoute,
+}
+
+const R1pEksamenerRouteWithChildren = R1pEksamenerRoute._addFileChildren(
+  R1pEksamenerRouteChildren,
+)
+
 interface R1pOppgaverKapIdRouteChildren {
   R1pOppgaverKapIdSubIdRoute: typeof R1pOppgaverKapIdSubIdRoute
   R1pOppgaverKapIdIndexRoute: typeof R1pOppgaverKapIdIndexRoute
@@ -521,6 +591,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProgrammeringRoute: ProgrammeringRoute,
   RessurserRoute: RessurserRoute,
   R1pEksamenRoute: R1pEksamenRouteWithChildren,
+  R1pEksamenerRoute: R1pEksamenerRouteWithChildren,
   R1pOppgaverRoute: R1pOppgaverRouteWithChildren,
   R1pIndexRoute: R1pIndexRoute,
 }

@@ -37,15 +37,37 @@ export type Fagstoff = {
   html?: string;
 };
 
+/** Deloppgave a), b), … til en eksamensoppgave. Har egen tekst, eget hint og eget løsningsforslag. */
+export type ExamPart = {
+  id: string;
+  label: string;
+  text: string;
+  hint: string;
+  fasitSteg: string[];
+};
+
 export type ExamTask = {
   id: string;
   nr: string;
   points: number;
+  /** Innledning til oppgaven. Når «parts» finnes, står selve spørsmålene i hver deloppgave. */
   text: string;
   figure?: string;
   hint: string;
   fasitSteg: string[];
   topics: string[];
+  /** Deloppgaver a), b) … Hvis tom eller utelatt, brukes «hint» og «fasitSteg» på oppgaven. */
+  parts?: ExamPart[];
+  /** Satt når noe i oppgaven eller løsningen ikke er sikkert (f.eks. uleselig data). Vises ikke for elever. */
+  usikker?: string;
+};
+
+/** Kilde for en offisiell eksamen. Oppgavene er Udirs; løsningsforslagene er Matteguidens egne. */
+export type ExamSource = {
+  utgiver: string;
+  kode: string;
+  eksamensdato: string;
+  oppgaveUrl: string;
 };
 
 export type Exam = {
@@ -61,6 +83,8 @@ export type Exam = {
   del2Count: number;
   hasOfficialSolutions: boolean;
   officialNote?: string;
+  /** Satt for offisielle Udir-eksamener. */
+  source?: ExamSource;
   del1: ExamTask[];
   del2: ExamTask[];
 };
