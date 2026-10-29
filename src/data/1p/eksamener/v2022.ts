@@ -85,7 +85,7 @@ export const EKSAMEN_1P_V2022: Exam = officialExam({
           [
             r`$V(x)$ er volumet i $\text{cm}^{3}$ når esken er $x$ cm høy. Likningen $V(x) = 500$ spør etter hvilke høyder $x$ som gir volumet $500\ \text{cm}^{3}$.`,
             r`Løsningene må ligge mellom $0$ og $10$, siden modellen bare gjelder for $0 < x < 10$.`,
-            r`Til info (med hjelpemidler): Likningen har to løsninger i dette området, $x \approx 0{,}99$ og $x \approx 7{,}77$. Det stemmer med at $V(1) = 4 - 100 + 600 = 504$, som er litt over $500$.`,
+            r`Vi kan se hvor løsningene ligger ved å regne ut noen verdier: $V(0) = 0$, $V(1) = 4 - 100 + 600 = 504$, $V(7) = 672$ og $V(8) = 448$. Volumet er $500\ \text{cm}^{3}$ en gang mellom $x = 0$ og $x = 1$, og en gang mellom $x = 7$ og $x = 8$. Siden modellen gjelder for $0 < x < 10$, er det to løsninger i dette området.`,
             r`<strong>Svar:</strong> Siri finner ut hvilke høyder esken kan ha for at volumet skal bli $500\ \text{cm}^{3}$.`,
           ]),
       ],

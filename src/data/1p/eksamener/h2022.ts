@@ -155,7 +155,7 @@ export const EKSAMEN_1P_H2022: Exam = officialExam({
       r`I denne oppgaven skal du se på sammenhenger mellom ulike størrelser og avgjøre om størrelsene er proporsjonale, omvendt proporsjonale eller ingen av delene.`,
       [
         part("1p-h22-d2-3", "a", r`Er fart og tid proporsjonale størrelser, omvendt proporsjonale størrelser eller ingen av delene i den grafiske framstillingen nedenfor?` +
-          figur("p1-h22-d2-3", "3a", "Koordinatsystem med «Fart (km/h)» på andreaksen (0 til 130) og «Tid (minutter)» på førsteaksen (0 til ca. 105). En fallende kurve fra øverst til venstre (ved ca. tid 26 og fart 130) som flater ut mot høyre (ved ca. tid 100 og fart ca. 35). Kurven passerer omtrent (30, 120), (40, 90), (60, 60) og (90, 40). Ingen punkter er markert."),
+          figur("p1-h22-d2-3", "3a", "Koordinatsystem med «Fart (km/h)» på andreaksen (0 til 130) og «Tid (minutter)» på førsteaksen (0 til ca. 105). En fallende kurve fra øverst til venstre (ved ca. tid 28 og fart 130) som flater ut mot høyre (ved ca. tid 100 og fart ca. 35). Kurven passerer omtrent (30, 120), (40, 90), (60, 60) og (90, 40). Ingen punkter er markert."),
           r`Sjekk om produktet fart · tid er det samme for flere punkter på kurven.`,
           [
             r`Fra grafen leser vi omtrent punktene $(30,\ 120)$, $(40,\ 90)$, $(60,\ 60)$ og $(90,\ 40)$.`,
@@ -189,12 +189,12 @@ export const EKSAMEN_1P_H2022: Exam = officialExam({
         part("1p-h22-d2-4", "a", r`Vis at Per sin påstand kan være riktig, ved å lage en oversikt som viser arealet av ulike rektangler med omkrets $64$ m.`,
           r`Omkretsen er $2l + 2b = 64$, så $l + b = 32$. Lag en tabell med ulike $b$ og regn ut arealet.`,
           [
-            r`Omkretsen er $2l + 2b = 64$, så $l + b = 32$ og $l = 32 - b$.<table><tr><th>Bredde $b$ (m)</th><th>Lengde $l$ (m)</th><th>Areal (m$^2$)</th></tr><tr><td>$4$</td><td>$28$</td><td>$112$</td></tr><tr><td>$8$</td><td>$24$</td><td>$192$</td></tr><tr><td>$12$</td><td>$20$</td><td>$240$</td></tr><tr><td>$14$</td><td>$18$</td><td>$252$</td></tr><tr><td>$15$</td><td>$17$</td><td>$255$</td></tr><tr><td>$16$</td><td>$16$</td><td>$256$</td></tr><tr><td>$17$</td><td>$15$</td><td>$255$</td></tr><tr><td>$20$</td><td>$12$</td><td>$240$</td></tr></table>`,
-            r`Arealet øker mot $b = 16$ og avtar deretter. Tabellen er symmetrisk rundt $b = 16$, og det største arealet er $256$ m$^2$.`,
+            r`Omkretsen er $2l + 2b = 64$, så $l + b = 32$ og $l = 32 - b$.<table><tr><th>Bredde $b$ (m)</th><th>Lengde $l$ (m)</th><th>Areal ($\text{m}^{2}$)</th></tr><tr><td>$4$</td><td>$28$</td><td>$112$</td></tr><tr><td>$8$</td><td>$24$</td><td>$192$</td></tr><tr><td>$12$</td><td>$20$</td><td>$240$</td></tr><tr><td>$14$</td><td>$18$</td><td>$252$</td></tr><tr><td>$15$</td><td>$17$</td><td>$255$</td></tr><tr><td>$16$</td><td>$16$</td><td>$256$</td></tr><tr><td>$17$</td><td>$15$</td><td>$255$</td></tr><tr><td>$20$</td><td>$12$</td><td>$240$</td></tr></table>`,
+            r`Arealet øker mot $b = 16$ og avtar deretter. Tabellen er symmetrisk rundt $b = 16$, og det største arealet er $256\ \text{m}^{2}$.`,
             r`Når $b = 16$, er også $l = 16$, så rektangelet er et kvadrat med alle sidekanter like lange.`,
-            r`<strong>Svar:</strong> Oversikten viser størst areal ($256$ m$^2$) for et kvadrat med side $16$ m. Pers påstand kan derfor være riktig. (Tabellen viser bare utvalgte verdier, så den beviser ikke påstanden.)`,
+            r`<strong>Svar:</strong> Oversikten viser størst areal ($256\ \text{m}^{2}$) for et kvadrat med side $16$ m. Pers påstand kan derfor være riktig. (Tabellen viser bare utvalgte verdier, så den beviser ikke påstanden.)`,
           ]),
-        part("1p-h22-d2-4", "b", r`Solveig lurer på om de kan tegne en graf som viser at Per har rett. Sett opp funksjonsuttrykket for Solveig. Tegn grafen, og vis at Per sin påstand er riktig.`,
+        part("1p-h22-d2-4", "b", r`Solveig lurer på om de kan tegne en graf som viser at Per har rett. Hun prøver å sette opp et funksjonsuttrykk som hun kan bruke. Sett opp funksjonsuttrykket for Solveig. Tegn grafen, og vis at Per sin påstand er riktig.`,
           r`La bredden være $x$. Uttrykk lengden ved $x$ og sett opp arealet som funksjon av $x$. Finn toppunktet.`,
           [
             r`La bredden være $x$ meter. Fra $l + x = 32$ er lengden $l = 32 - x$.`,
@@ -202,7 +202,7 @@ export const EKSAMEN_1P_H2022: Exam = officialExam({
             r`Vi tegner grafen i GeoGebra. Den er en parabel som vender ned, og toppunktet er $(16,\ 256)$.`,
             r`Kontroll uten verktøy: Nullpunktene er $x = 0$ og $x = 32$, og toppunktet ligger midt mellom: $x = \dfrac{0 + 32}{2} = 16$. Da er $A(16) = 16\cdot 16 = 256$.`,
             r`Ved toppunktet er bredden $16$ m og lengden $32 - 16 = 16$ m, så alle sidene er like lange.`,
-            r`<strong>Svar:</strong> $A(x) = x(32 - x)$. Grafen har toppunkt i $(16,\ 256)$, så arealet er størst, $256$ m$^2$, når bredden er $16$ m og lengden er $16$ m. Alle sidekantene er like lange, og Pers påstand er riktig.`,
+            r`<strong>Svar:</strong> $A(x) = x(32 - x)$. Grafen har toppunkt i $(16,\ 256)$, så arealet er størst, $256\ \text{m}^{2}$, når bredden er $16$ m og lengden er $16$ m. Alle sidekantene er like lange, og Pers påstand er riktig.`,
           ]),
       ],
       ["areal", "andregradsfunksjoner", "optimering", "GeoGebra"]),
@@ -302,7 +302,7 @@ while x &lt;= 20:
         r`For å bruke $330$ kcal må hun løpe $\dfrac{330}{32/3} \approx 30{,}9$ minutter, eller $\dfrac{330}{84{,}2} \approx 3{,}9$ km, med dagens fart og energiforbruk.`,
         r`Oversikt: <table><tr><th>Tid (min)</th><th>Strekning (km)</th><th>Energi (kcal)</th></tr><tr><td>$3$</td><td>$0{,}38$</td><td>$32$</td></tr><tr><td>$12$</td><td>$1{,}52$</td><td>$128$</td></tr><tr><td>$31$</td><td>$3{,}9$</td><td>$330$</td></tr><tr><td>$60$</td><td>$7{,}6$</td><td>$640$</td></tr></table>`,
         r`Ved fart $11$ km/t (Cooper-målet) er $2{,}2$ km i $12$ min. Hvis energien per kilometer er den samme, brukes $2{,}2\cdot 84{,}2 \approx 185$ kcal. Det er en forenkling, siden energiforbruket per km kan endre seg med farten.`,
-        r`<strong>Svar:</strong> Sofie løper $1{,}52$ km på $12$ min og bruker $640$ kcal på en time (ca. $84$ kcal per km). For $2200$ m på $12$ min må hun holde minst $11$ km/t. Sjokoladen har $330$ kcal, og det er mer enn $32$ kcal. For å forbrenne den må hun løpe i omtrent $31$ minutter.`,
+        r`<strong>Svar:</strong> Sofie løper $1{,}52$ km på $12$ min og bruker $640$ kcal på en time (ca. $84$ kcal per km). For $2200$ m på $12$ min må hun holde minst $11$ km/t. Sjokoladen har $330$ kcal, mange flere enn de $32$ kcal hun brukte på tredemøllen. For å forbrenne den må hun løpe i omtrent $31$ minutter.`,
       ],
       ["proporsjonalitet", "enheter", "vurdering", "oversikt"],
       "Åpen oppgave («lag en oversikt …»); løsningen er et eksempel på en oversikt under forutsetning av jevn fart og konstant energiforbruk per kilometer. Ikke kontrollert mot Udirs eget løsningsforslag."),
