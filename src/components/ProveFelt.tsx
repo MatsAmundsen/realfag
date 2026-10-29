@@ -46,7 +46,7 @@ function SluttsvarFelt({
         aria-describedby={hjelpId}
         onChange={(e) => onChange(e.target.value)}
       />
-      <div id={hjelpId} className="prove-sluttsvar-hjelp" aria-live="polite">
+      <div id={hjelpId} className="prove-sluttsvar-hjelp">
         {"ok" in fv && fv.ok && (
           <span className="prove-sluttsvar-forhandsvisning">
             <span className="prove-sluttsvar-tolket">Slik leser vi det: </span>
@@ -71,8 +71,11 @@ export function ProveSvar({
   onChange,
   onDone,
   sluttsvar,
+  skjult = false,
 }: {
   id: string;
+  /** Skjules (med plassen beholdt) til lagret fremgang er lest. Teksten rundt står fra første tegning. */
+  skjult?: boolean;
   value: string;
   done: boolean;
   /** Sluttsvarfelt ved siden av svarboksen, når enheten har fasit for autosjekk. */
@@ -83,7 +86,7 @@ export function ProveSvar({
   onDone: (v: boolean) => void;
 }) {
   return (
-    <div className="prove-svar" data-done={done ? "true" : "false"}>
+    <div className="prove-svar" data-done={done ? "true" : "false"} style={skjult ? { visibility: "hidden" } : undefined}>
       <label className="prove-svar-label" htmlFor={`svar-${id}`}>
         Svaret ditt
       </label>
@@ -137,7 +140,12 @@ export function ProveResultat({
   return (
     <div className="prove-resultat" data-status={res.status}>
       <p className="prove-resultat-poeng">
-        <strong>{STATUSTEKST[res.status]}</strong>&nbsp;· {formaterPoeng(res.poeng)}&nbsp;av&nbsp;{formaterPoeng(res.maks)}&nbsp;p
+        <span style={{ whiteSpace: "nowrap" }}>
+          <strong>{STATUSTEKST[res.status]}</strong>&nbsp;·
+        </span>
+        <span style={{ whiteSpace: "nowrap" }}>
+          {formaterPoeng(res.poeng)}&nbsp;av&nbsp;{formaterPoeng(res.maks)}&nbsp;p
+        </span>
       </p>
       {fasit && (
         <p className="prove-sluttsvar-levert">

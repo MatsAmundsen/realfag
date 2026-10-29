@@ -16,6 +16,7 @@ import { PrereqMini } from "@/components/PrereqMini";
 import { PREREQS } from "@/data/mindmap";
 import { formatKlokke, useProveUtkast } from "@/lib/prove-utkast";
 import { useDialogFelle, useFokusEtterVisning } from "@/lib/fokus";
+import { SkjulTilHydrert, useAvslor } from "@/components/SkjulTilHydrert";
 import { countSubchapter, isOvingDelkap } from "@/lib/progress";
 import { fireCelebration, useProgressStore } from "@/lib/progress-store";
 import { seoHead } from "@/lib/seo";
@@ -65,6 +66,8 @@ function SubchapterPage() {
   const pånyttKnapp = useRef<HTMLButtonElement>(null);
   const pånyttDialog = useRef<HTMLDivElement>(null);
   const hydrated = useProgressStore((s) => s.hydrated);
+  const omslag = useRef<HTMLDivElement>(null);
+  useAvslor(omslag, hydrated && utkast.ready);
 
   function avbrytLever() {
     setBekreft(null);
@@ -271,7 +274,8 @@ function SubchapterPage() {
           </details>
         )}
 
-        <div aria-busy={venter || undefined} style={venter ? { display: "contents", visibility: "hidden" } : { display: "contents" }}>
+        <div ref={omslag} style={{ display: "contents" }}>
+          {oving && <SkjulTilHydrert forsokNokkel={proveKey} utkastNokkel={`mg-prove-utkast:${proveKey}`} />}
           {isSummary ? <SummaryView items={dk.oppgaver} kapId={kapId} subId={subId} /> : dk.oppgaver.map((o, i) => (
             <div key={o.id} className="prove-oppgave" ref={i === 0 ? førsteOppgave : undefined}>
               <TaskCard
@@ -289,6 +293,7 @@ function SubchapterPage() {
               {oving && mode === "prove" && !erIntro(o) && !submitted && (
                 <ProveSvar
                   id={o.id}
+                  skjult={venter}
                   value={utkast.answers[o.id] || ""}
                   done={Boolean(utkast.ferdig[o.id])}
                   locked={false}
@@ -328,6 +333,7 @@ function SubchapterPage() {
               type="button"
               className="btn-primary prove-lever"
               ref={leverKnapp}
+              style={venter ? { visibility: "hidden" } : undefined}
               onClick={() => {
                 setBekreft("lever");
                 fokus(() => leverDialog.current);
@@ -393,21 +399,21 @@ function SubchapterPage() {
               )}
             </div>
           )}
-        </div>
 
-        <div className="sub-nav" style={venter ? { visibility: "hidden" } : undefined}>
-          {nav.prev ? (
-            <Link to="/oppgaver/$kapId/$subId" params={{ kapId: nav.prev.kapId, subId: nav.prev.subId }} className="hint-btn">
-              {nav.prev.label}
-            </Link>
-          ) : (
-            <span />
-          )}
-          {nav.next && (
-            <Link to="/oppgaver/$kapId/$subId" params={{ kapId: nav.next.kapId, subId: nav.next.subId }} className="btn-primary">
-              {nav.next.label}
-            </Link>
-          )}
+          <div className="sub-nav">
+            {nav.prev ? (
+              <Link to="/oppgaver/$kapId/$subId" params={{ kapId: nav.prev.kapId, subId: nav.prev.subId }} className="hint-btn">
+                {nav.prev.label}
+              </Link>
+            ) : (
+              <span />
+            )}
+            {nav.next && (
+              <Link to="/oppgaver/$kapId/$subId" params={{ kapId: nav.next.kapId, subId: nav.next.subId }} className="btn-primary">
+                {nav.next.label}
+              </Link>
+            )}
+          </div>
         </div>
       </div>
 

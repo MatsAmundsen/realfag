@@ -9,6 +9,7 @@ import { SLUTTSVAR } from "@/data/eksamen-svar";
 import { beregnPoeng, poengPerEnhet, type PoengEnhet, type Resultat, type Vurdering } from "@/lib/prove-poeng";
 import { formatKlokke, useProveUtkast } from "@/lib/prove-utkast";
 import { useDialogFelle, useFokusEtterVisning } from "@/lib/fokus";
+import { SkjulTilHydrert, useAvslor } from "./SkjulTilHydrert";
 import { fireCelebration, useProgressStore } from "@/lib/progress-store";
 
 /** Alle enhetene eleven krysser av som ferdige: oppgaven selv, eller hver deloppgave når den har deloppgaver. */
@@ -24,6 +25,8 @@ type Svar = {
   ferdig: Record<string, boolean>;
   setAnswer: (id: string, v: string) => void;
   setFerdig: (id: string, v: boolean) => void;
+  /** Svarflaten skjules (plassen beholdt) til lagret fremgang er lest. */
+  skjult?: boolean;
   /** Poeng og vurdering etter levering i prøvemodus. Mangler for øvemodus og for eldre forsøk. */
   poeng?: {
     res: Resultat;
@@ -164,6 +167,7 @@ function DelOppgave({
           onChange={(v) => svar.setAnswer(part.id, v)}
           onDone={(v) => svar.setFerdig(part.id, v)}
           sluttsvar={sluttsvarFor(svar, part.id)}
+          skjult={svar.skjult}
         />
       )}
       {visSvar && submitted && gitt && (
@@ -226,6 +230,7 @@ function TaskBlock({
               onChange={(v) => svar.setAnswer(task.id, v)}
               onDone={(v) => svar.setFerdig(task.id, v)}
               sluttsvar={sluttsvarFor(svar, task.id)}
+              skjult={svar.skjult}
             />
           )}
           {visSvar && submitted && gitt && (
@@ -268,9 +273,11 @@ export function ExamRunner({ exam }: { exam: Exam }) {
   const [scores, setScores] = useState<Record<string, "riktig" | "delvis" | "feil">>(prev?.selfScore || {});
   const [bekreft, setBekreft] = useState<null | "lever" | "pånytt">(null);
   const hydrated = useProgressStore((s) => s.hydrated);
-  /** Lagret fremgang lastes først etter første visning. Før det vises svarflaten skjult, så siden ikke hopper fra «ikke levert» til «levert». */
+  /** Lagret fremgang lastes først etter første visning. Før det er svarflaten, Lever-knappen og telleren skjult (plassen beholdt); har eleven lagret fremgang, skjules hele omslaget til da (se SkjulTilHydrert). */
   const submitted = hydrated && Boolean(prev);
   const utkast = useProveUtkast(`eksamen/${exam.id}`);
+  const omslag = useRef<HTMLDivElement>(null);
+  useAvslor(omslag, hydrated && utkast.ready);
   const fokus = useFokusEtterVisning();
   const leverKnapp = useRef<HTMLButtonElement>(null);
   const leverDialog = useRef<HTMLDivElement>(null);
@@ -343,9 +350,9 @@ export function ExamRunner({ exam }: { exam: Exam }) {
           : undefined,
       };
     }
-    return { answers: utkast.answers, ferdig: utkast.ferdig, setAnswer: utkast.setAnswer, setFerdig: utkast.setFerdig };
+    return { answers: utkast.answers, ferdig: utkast.ferdig, setAnswer: utkast.setAnswer, setFerdig: utkast.setFerdig, skjult: !hydrated };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [submitted, prev, poengForsok, utkast.answers, utkast.ferdig, utkast.setAnswer, utkast.setFerdig]);
+  }, [submitted, prev, poengForsok, hydrated, utkast.answers, utkast.ferdig, utkast.setAnswer, utkast.setFerdig]);
 
   useEffect(() => {
     if (!timerOn || submitted) return;
@@ -465,9 +472,10 @@ export function ExamRunner({ exam }: { exam: Exam }) {
           ? "Prøvemodus: skriv svaret ditt her eller på papir, og kryss av «Ferdig» for hver oppgave. Løsningen er låst til du leverer."
           : "Øvemodus: hint og steg-løsning er tilgjengelig med en gang. Bruk denne når du øver tema for tema."}
       </p>
-      <div aria-busy={!hydrated || undefined} style={hydrated ? { display: "contents" } : { display: "contents", visibility: "hidden" }}>
+      <div ref={omslag} style={{ display: "contents" }}>
+        <SkjulTilHydrert forsokNokkel={exam.id} utkastNokkel={`mg-prove-utkast:eksamen/${exam.id}`} />
         {mode === "prove" && !submitted && (
-          <p className="prove-teller" role="status">
+          <p className="prove-teller" role="status" style={hydrated ? undefined : { visibility: "hidden" }}>
             {antallFerdig} av {enhetsId.length} oppgaver og deloppgaver krysset av som ferdige.
           </p>
         )}
@@ -488,6 +496,7 @@ export function ExamRunner({ exam }: { exam: Exam }) {
               type="button"
               className="btn-primary"
               ref={leverKnapp}
+              style={hydrated ? undefined : { visibility: "hidden" }}
               onClick={() => {
                 setBekreft("lever");
                 fokus(() => leverDialog.current);

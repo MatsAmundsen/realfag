@@ -20,9 +20,30 @@ export function useFokusEtterVisning() {
 const FOKUSERBARE = "button:not([disabled]), a[href], input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex='-1'])";
 
 /**
- * Modal dialog (samme mønster som feiringen i Celebration.tsx): Tab holdes inni dialogen og Escape kaller `lukk`.
+ * Modal dialog (samme mønster som feiringen i Celebration.tsx): Tab holdes inni dialogen, Escape kaller `lukk`,
+ * og resten av siden er inert så lenge dialogen er åpen (opphevet ved lukking og avmontering).
  * Fokus inn og tilbake til knappen flyttes av kallestedet med `useFokusEtterVisning`, siden dialogen og knappen bytter plass i DOM.
  */
+/**
+ * Gjør resten av siden inert mens dialogen er åpen: alt som ikke er dialogen eller en av dens forfedre.
+ * Tastatur, skjermleser og peker når da bare dialogen. Returnerer funksjonen som opphever det.
+ */
+function gjørRestenInert(dialog: HTMLElement): () => void {
+  const satt: HTMLElement[] = [];
+  let node: HTMLElement = dialog;
+  while (node.parentElement && node !== document.body) {
+    const forelder: HTMLElement = node.parentElement;
+    for (const søsken of Array.from(forelder.children)) {
+      if (søsken === node || !(søsken instanceof HTMLElement) || søsken.inert) continue;
+      if (["SCRIPT", "STYLE", "LINK", "TEMPLATE"].includes(søsken.tagName)) continue;
+      søsken.inert = true;
+      satt.push(søsken);
+    }
+    node = forelder;
+  }
+  return () => satt.forEach((e) => (e.inert = false));
+}
+
 export function useDialogFelle(ref: RefObject<HTMLElement | null>, åpen: boolean, lukk: () => void) {
   const lukkRef = useRef(lukk);
   useEffect(() => {
@@ -30,6 +51,7 @@ export function useDialogFelle(ref: RefObject<HTMLElement | null>, åpen: boolea
   });
   useEffect(() => {
     if (!åpen) return;
+    const opphev = ref.current ? gjørRestenInert(ref.current) : undefined;
     const onKey = (e: KeyboardEvent) => {
       const dialog = ref.current;
       if (!dialog) return;
@@ -61,6 +83,9 @@ export function useDialogFelle(ref: RefObject<HTMLElement | null>, åpen: boolea
       }
     };
     window.addEventListener("keydown", onKey, true);
-    return () => window.removeEventListener("keydown", onKey, true);
+    return () => {
+      window.removeEventListener("keydown", onKey, true);
+      opphev?.();
+    };
   }, [åpen, ref]);
 }
