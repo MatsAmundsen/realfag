@@ -44,7 +44,7 @@ export function useProveUtkast(storageKey: string) {
     }
   }, [full]);
 
-  return { answers: draft.answers, ferdig: draft.ferdig, setAnswer, setFerdig, clear };
+  return { answers: draft.answers, ferdig: draft.ferdig, setAnswer, setFerdig, clear, ready };
 }
 
 export function formatKlokke(sec: number) {

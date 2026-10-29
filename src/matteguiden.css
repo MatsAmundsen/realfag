@@ -4375,8 +4375,10 @@ a.vid-nav-card {
 /* ============================================================
    1P · PRØVEMODUS OG EKSAMENER
    Design for svarfelt, «Ferdig», tidtaking, deloppgaver, eksamenskort,
-   menylenke og bekreftelsesblokker. Alt er scopet til [data-fag="1P"]
-   slik at 1T (som deler ExamRunner) ser ut som før.
+   menylenke og bekreftelsesblokker. Eksamenskort, menylenke og kilde er
+   scopet til [data-fag="1P"]. Prøvemodus og eksamen (toolbar, tidtaker,
+   svarfelt, deloppgaver, bekreftelser, selvvurdering) gjelder også
+   [data-fag="1T"], med indigo i stedet for lime (variablene under).
    Lime som tekst: #a3e635 mørkt, #3f6212 lyst (≥ 4,5:1 mot kortbakgrunn).
    ============================================================ */
 [data-fag="1P"] {
@@ -4408,6 +4410,39 @@ a.vid-nav-card {
     --p1-btn-ink:    #ffffff;
     --p1-danger:     #b91c1c;
     --p1-focus:      #3f6212;
+}
+
+/* 1T bruker de samme variabelnavnene (--p1-*, navnet er historisk) for prøvemodus og eksamen,
+   men med indigo i stedet for lime. Alle tekstpar ≥ 4,5:1, kanter og fokusring ≥ 3:1. */
+[data-fag="1T"] {
+    --p1-ink:        #a5b4fc;                    /* indigo-300 */
+    --p1-ink-strong: #c7d2fe;
+    --p1-muted:      #a8b5c8;
+    --p1-line:       rgba(165, 180, 252, 0.6);
+    --p1-tint:       rgba(129, 140, 248, 0.10);
+    --p1-tint-2:     rgba(129, 140, 248, 0.20);
+    --p1-field:      rgba(2, 6, 23, 0.45);
+    --p1-field-line: #64748b;
+    --p1-btn-bg:     #818cf8;
+    --p1-btn-bg-h:   #a5b4fc;
+    --p1-btn-ink:    #0b1030;
+    --p1-danger:     #fca5a5;
+    --p1-focus:      #a5b4fc;
+}
+[data-theme="light"] [data-fag="1T"] {
+    --p1-ink:        #4338ca;                    /* indigo-700 */
+    --p1-ink-strong: #3730a3;
+    --p1-muted:      #475569;
+    --p1-line:       #4f46e5;
+    --p1-tint:       rgba(79, 70, 229, 0.06);
+    --p1-tint-2:     rgba(79, 70, 229, 0.12);
+    --p1-field:      #ffffff;
+    --p1-field-line: #64748b;
+    --p1-btn-bg:     #4338ca;
+    --p1-btn-bg-h:   #3730a3;
+    --p1-btn-ink:    #ffffff;
+    --p1-danger:     #b91c1c;
+    --p1-focus:      #4338ca;
 }
 
 /* ── Menylenke «Tidligere eksamener» og de andre 1P-lenkene ─── */
@@ -4487,24 +4522,24 @@ header.navbar[data-fag="1P"] .nav-btn.fag-switch,
 [data-fag="1P"] .exam-source a:focus-visible { outline: 3px solid var(--p1-focus); outline-offset: 2px; border-radius: 3px; }
 
 /* ── Verktøylinje: modus, del 1/2, tidtaking ─── */
-[data-fag="1P"] .exam-toolbar { gap: 0.6rem 0.9rem; margin-bottom: 1rem; }
-[data-fag="1P"] .part-tabs button,
-[data-fag="1P"] .mode-toggle button { min-height: 44px; padding: 0.45rem 1rem; color: var(--p1-muted); font-size: 0.875rem; }
-[data-fag="1P"] .part-tabs button.is-on,
-[data-fag="1P"] .mode-toggle button.is-on { background: var(--p1-tint-2); color: var(--p1-ink); box-shadow: inset 0 0 0 1.5px var(--p1-line); }
-[data-fag="1P"] .part-tabs button:focus-visible,
-[data-fag="1P"] .mode-toggle button:focus-visible { outline: 3px solid var(--p1-focus); outline-offset: 2px; }
+:is([data-fag="1P"], [data-fag="1T"]) .exam-toolbar { gap: 0.6rem 0.9rem; margin-bottom: 1rem; }
+:is([data-fag="1P"], [data-fag="1T"]) .part-tabs button,
+:is([data-fag="1P"], [data-fag="1T"]) .mode-toggle button { min-height: 44px; padding: 0.45rem 1rem; color: var(--p1-muted); font-size: 0.875rem; }
+:is([data-fag="1P"], [data-fag="1T"]) .part-tabs button.is-on,
+:is([data-fag="1P"], [data-fag="1T"]) .mode-toggle button.is-on { background: var(--p1-tint-2); color: var(--p1-ink); box-shadow: inset 0 0 0 1.5px var(--p1-line); }
+:is([data-fag="1P"], [data-fag="1T"]) .part-tabs button:focus-visible,
+:is([data-fag="1P"], [data-fag="1T"]) .mode-toggle button:focus-visible { outline: 3px solid var(--p1-focus); outline-offset: 2px; }
 
-[data-fag="1P"] .timer-toggle {
+:is([data-fag="1P"], [data-fag="1T"]) .timer-toggle {
     min-height: 44px;
     gap: 0.55rem;
     padding: 0 0.25rem;
     color: var(--p1-muted);
     cursor: pointer;
 }
-[data-fag="1P"] .timer-toggle svg { flex: none; }
-[data-fag="1P"] .timer-toggle input,
-[data-fag="1P"] .prove-ferdig input {
+:is([data-fag="1P"], [data-fag="1T"]) .timer-toggle svg { flex: none; }
+:is([data-fag="1P"], [data-fag="1T"]) .timer-toggle input,
+:is([data-fag="1P"], [data-fag="1T"]) .prove-ferdig input {
     appearance: none;
     -webkit-appearance: none;
     flex: none;
@@ -4519,8 +4554,8 @@ header.navbar[data-fag="1P"] .nav-btn.fag-switch,
     cursor: pointer;
     transition: background 0.15s, border-color 0.15s;
 }
-[data-fag="1P"] .timer-toggle input::after,
-[data-fag="1P"] .prove-ferdig input::after {
+:is([data-fag="1P"], [data-fag="1T"]) .timer-toggle input::after,
+:is([data-fag="1P"], [data-fag="1T"]) .prove-ferdig input::after {
     content: "";
     width: 0.8rem;
     height: 0.45rem;
@@ -4529,18 +4564,18 @@ header.navbar[data-fag="1P"] .nav-btn.fag-switch,
     transform: translateY(-1px) rotate(-45deg) scale(0);
     transition: transform 0.12s;
 }
-[data-fag="1P"] .timer-toggle input:checked,
-[data-fag="1P"] .prove-ferdig input:checked { background: var(--p1-btn-bg); border-color: var(--p1-btn-bg); }
-[data-fag="1P"] .timer-toggle input:checked::after,
-[data-fag="1P"] .prove-ferdig input:checked::after { transform: translateY(-1px) rotate(-45deg) scale(1); }
-[data-fag="1P"] .timer-toggle input:focus-visible,
-[data-fag="1P"] .prove-ferdig input:focus-visible { outline: 3px solid var(--p1-focus); outline-offset: 3px; }
-[data-fag="1P"] .timer-toggle input:disabled,
-[data-fag="1P"] .prove-ferdig input:disabled { cursor: default; }
+:is([data-fag="1P"], [data-fag="1T"]) .timer-toggle input:checked,
+:is([data-fag="1P"], [data-fag="1T"]) .prove-ferdig input:checked { background: var(--p1-btn-bg); border-color: var(--p1-btn-bg); }
+:is([data-fag="1P"], [data-fag="1T"]) .timer-toggle input:checked::after,
+:is([data-fag="1P"], [data-fag="1T"]) .prove-ferdig input:checked::after { transform: translateY(-1px) rotate(-45deg) scale(1); }
+:is([data-fag="1P"], [data-fag="1T"]) .timer-toggle input:focus-visible,
+:is([data-fag="1P"], [data-fag="1T"]) .prove-ferdig input:focus-visible { outline: 3px solid var(--p1-focus); outline-offset: 3px; }
+:is([data-fag="1P"], [data-fag="1T"]) .timer-toggle input:disabled,
+:is([data-fag="1P"], [data-fag="1T"]) .prove-ferdig input:disabled { cursor: default; }
 
 /* Tidtakerne: to adskilte brikker, aldri skjøtt sammen */
-[data-fag="1P"] .timer-group { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
-[data-fag="1P"] .timer-readout {
+:is([data-fag="1P"], [data-fag="1T"]) .timer-group { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+:is([data-fag="1P"], [data-fag="1T"]) .timer-readout {
     display: inline-flex;
     align-items: center;
     min-height: 2.25rem;
@@ -4554,12 +4589,12 @@ header.navbar[data-fag="1P"] .nav-btn.fag-switch,
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
 }
-[data-fag="1P"] .timer-readout.is-low { color: var(--p1-danger); border-color: var(--p1-danger); background: transparent; }
-[data-fag="1P"] .timer-readout.is-low::before { content: "⚠" / ""; margin-right: 0.4rem; }
+:is([data-fag="1P"], [data-fag="1T"]) .timer-readout.is-low { color: var(--p1-danger); border-color: var(--p1-danger); background: transparent; }
+:is([data-fag="1P"], [data-fag="1T"]) .timer-readout.is-low::before { content: "⚠" / ""; margin-right: 0.4rem; }
 .timer-sr { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
 /* Teller: «x av y krysset av» */
-[data-fag="1P"] .prove-teller {
+:is([data-fag="1P"], [data-fag="1T"]) .prove-teller {
     display: inline-flex;
     align-items: center;
     width: fit-content;
@@ -4575,40 +4610,40 @@ header.navbar[data-fag="1P"] .nav-btn.fag-switch,
     font-weight: 600;
     line-height: 1.4;
 }
-[data-fag="1P"] .exam-toolbar .prove-teller { margin: 0; }
-[data-fag="1P"] .exam-mode-copy { color: var(--p1-muted); max-width: 68ch; line-height: 1.6; }
+:is([data-fag="1P"], [data-fag="1T"]) .exam-toolbar .prove-teller { margin: 0; }
+:is([data-fag="1P"], [data-fag="1T"]) .exam-mode-copy { color: var(--p1-muted); max-width: 68ch; line-height: 1.6; }
 
 /* ── Oppgavekort i prøve ─── */
-[data-fag="1P"] .exam-task,
-[data-fag="1P"] .prove-oppgave .task-card { padding: 1.35rem 1.1rem 1.25rem; }
-[data-fag="1P"] .exam-task:hover,
-[data-fag="1P"] .prove-oppgave .task-card:hover { transform: none; box-shadow: none; }
-[data-fag="1P"] .exam-task { border-left: 4px solid var(--p1-line); margin-bottom: 1.5rem; }
-[data-fag="1P"] .exam-task .task-title { color: var(--p1-ink); }
-[data-fag="1P"] .exam-task .pts { color: var(--p1-muted); }
-[data-fag="1P"] .exam-task .chip { color: var(--p1-ink); background: var(--p1-tint); border-color: var(--p1-line); }
-[data-fag="1P"] .exam-task .task-content { margin-bottom: 1rem; overflow-wrap: anywhere; }
-[data-fag="1P"] .exam-task .locked-note { color: var(--p1-muted); }
+:is([data-fag="1P"], [data-fag="1T"]) .exam-task,
+:is([data-fag="1P"], [data-fag="1T"]) .prove-oppgave .task-card { padding: 1.35rem 1.1rem 1.25rem; }
+:is([data-fag="1P"], [data-fag="1T"]) .exam-task:hover,
+:is([data-fag="1P"], [data-fag="1T"]) .prove-oppgave .task-card:hover { transform: none; box-shadow: none; }
+:is([data-fag="1P"], [data-fag="1T"]) .exam-task { border-left: 4px solid var(--p1-line); margin-bottom: 1.5rem; }
+:is([data-fag="1P"], [data-fag="1T"]) .exam-task .task-title { color: var(--p1-ink); }
+:is([data-fag="1P"], [data-fag="1T"]) .exam-task .pts { color: var(--p1-muted); }
+:is([data-fag="1P"], [data-fag="1T"]) .exam-task .chip { color: var(--p1-ink); background: var(--p1-tint); border-color: var(--p1-line); }
+:is([data-fag="1P"], [data-fag="1T"]) .exam-task .task-content { margin-bottom: 1rem; overflow-wrap: anywhere; }
+:is([data-fag="1P"], [data-fag="1T"]) .exam-task .locked-note { color: var(--p1-muted); }
 
 /* Deloppgaver a), b), c) */
-[data-fag="1P"] .exam-part { margin-top: 1.1rem; padding-top: 1.1rem; border-top: 1px solid var(--border); }
-[data-fag="1P"] .exam-part-head {
+:is([data-fag="1P"], [data-fag="1T"]) .exam-part { margin-top: 1.1rem; padding-top: 1.1rem; border-top: 1px solid var(--border); }
+:is([data-fag="1P"], [data-fag="1T"]) .exam-part-head {
     display: grid;
     grid-template-columns: minmax(1.9rem, auto) minmax(0, 1fr);
     column-gap: 0.7rem;
     align-items: baseline;
 }
-[data-fag="1P"] .exam-part-label {
+:is([data-fag="1P"], [data-fag="1T"]) .exam-part-label {
     color: var(--p1-ink);
     font-size: 1.05rem;
     font-weight: 800;
     font-variant-numeric: tabular-nums;
 }
-[data-fag="1P"] .exam-part-text.task-content { margin-bottom: 0.4rem; min-width: 0; }
-[data-fag="1P"] .exam-part-text > :last-child { margin-bottom: 0; }
+:is([data-fag="1P"], [data-fag="1T"]) .exam-part-text.task-content { margin-bottom: 0.4rem; min-width: 0; }
+:is([data-fag="1P"], [data-fag="1T"]) .exam-part-text > :last-child { margin-bottom: 0; }
 
 /* ── Svarfelt og «Ferdig» ─── */
-[data-fag="1P"] .prove-svar {
+:is([data-fag="1P"], [data-fag="1T"]) .prove-svar {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     gap: 0.5rem;
@@ -4619,15 +4654,15 @@ header.navbar[data-fag="1P"] .nav-btn.fag-switch,
     background: var(--p1-tint);
     transition: border-color 0.15s, background 0.15s;
 }
-[data-fag="1P"] .prove-svar[data-done="true"] { border-color: var(--p1-line); background: var(--p1-tint-2); }
-[data-fag="1P"] .prove-svar-label {
+:is([data-fag="1P"], [data-fag="1T"]) .prove-svar[data-done="true"] { border-color: var(--p1-line); background: var(--p1-tint-2); }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-svar-label {
     color: var(--p1-ink);
     font-size: 0.8rem;
     font-weight: 800;
     letter-spacing: 0.07em;
     text-transform: uppercase;
 }
-[data-fag="1P"] .prove-svar-felt {
+:is([data-fag="1P"], [data-fag="1T"]) .prove-svar-felt {
     display: block;
     width: 100%;
     min-height: 6.5rem;
@@ -4641,11 +4676,11 @@ header.navbar[data-fag="1P"] .nav-btn.fag-switch,
     line-height: 1.55;
     resize: vertical;
 }
-[data-fag="1P"] .prove-svar-felt::placeholder { color: var(--p1-muted); opacity: 1; }
-[data-fag="1P"] .prove-svar-felt:hover { border-color: var(--p1-line); }
-[data-fag="1P"] .prove-svar-felt:focus-visible { outline: 3px solid var(--p1-focus); outline-offset: 2px; border-color: var(--p1-line); }
-[data-fag="1P"] .prove-svar-felt[readonly] { resize: none; border-style: dashed; background: transparent; }
-[data-fag="1P"] .prove-ferdig {
+:is([data-fag="1P"], [data-fag="1T"]) .prove-svar-felt::placeholder { color: var(--p1-muted); opacity: 1; }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-svar-felt:hover { border-color: var(--p1-line); }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-svar-felt:focus-visible { outline: 3px solid var(--p1-focus); outline-offset: 2px; border-color: var(--p1-line); }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-svar-felt[readonly] { resize: none; border-style: dashed; background: transparent; }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-ferdig {
     display: inline-flex;
     align-items: center;
     gap: 0.65rem;
@@ -4661,18 +4696,18 @@ header.navbar[data-fag="1P"] .nav-btn.fag-switch,
     cursor: pointer;
     user-select: none;
 }
-[data-fag="1P"] .prove-ferdig:hover { background: var(--p1-tint-2); }
-[data-fag="1P"] .prove-svar[data-done="true"] .prove-ferdig { background: var(--p1-tint-2); color: var(--p1-ink); }
-[data-fag="1P"] .prove-ferdig:has(input:disabled) { border-style: dashed; cursor: default; background: transparent; }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-ferdig:hover { background: var(--p1-tint-2); }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-svar[data-done="true"] .prove-ferdig { background: var(--p1-tint-2); color: var(--p1-ink); }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-ferdig:has(input:disabled) { border-style: dashed; cursor: default; background: transparent; }
 @media (min-width: 640px) {
-    [data-fag="1P"] .prove-svar { grid-template-columns: minmax(0, 1fr) auto; align-items: end; column-gap: 0.9rem; padding: 1rem; }
-    [data-fag="1P"] .prove-svar-label,
-    [data-fag="1P"] .prove-svar-felt { grid-column: 1 / -1; }
-    [data-fag="1P"] .prove-ferdig { grid-column: 2; justify-self: end; }
+    :is([data-fag="1P"], [data-fag="1T"]) .prove-svar { grid-template-columns: minmax(0, 1fr) auto; align-items: end; column-gap: 0.9rem; padding: 1rem; }
+    :is([data-fag="1P"], [data-fag="1T"]) .prove-svar-label,
+    :is([data-fag="1P"], [data-fag="1T"]) .prove-svar-felt { grid-column: 1 / -1; }
+    :is([data-fag="1P"], [data-fag="1T"]) .prove-ferdig { grid-column: 2; justify-self: end; }
 }
 
 /* Etter levering: svaret eleven ga */
-[data-fag="1P"] .prove-svar-levert {
+:is([data-fag="1P"], [data-fag="1T"]) .prove-svar-levert {
     margin: 0.9rem 0 0.4rem;
     padding: 0.75rem 1rem;
     border-left: 4px solid var(--p1-line);
@@ -4683,13 +4718,253 @@ header.navbar[data-fag="1P"] .nav-btn.fag-switch,
     white-space: pre-wrap;
     overflow-wrap: anywhere;
 }
-[data-fag="1P"] .prove-svar-levert strong { display: block; margin-bottom: 0.15rem; color: var(--p1-ink); font-size: 0.8rem; letter-spacing: 0.07em; text-transform: uppercase; }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-svar-levert strong { display: block; margin-bottom: 0.15rem; color: var(--p1-ink); font-size: 0.8rem; letter-spacing: 0.07em; text-transform: uppercase; }
+
+/* ── Sluttsvar, resultat, vurdering og poengsum i prøvemodus (1P og 1T) ───
+   Før levering finnes bare sluttsvarfeltet og en nøytral forhåndsvisning: ingenting her sier
+   riktig eller feil. Etter levering skilles riktig/delvis/feil med tekst (i markupen), ikon og
+   kantstil (hel, stiplet, dobbel), ikke bare farge. Statusfargene under er egne variabler. */
+:is([data-fag="1P"], [data-fag="1T"]) {
+    --prove-ok:    #86efac;
+    --prove-del:   #fcd34d;
+    --prove-feil:  #fca5a5;
+}
+[data-theme="light"] :is([data-fag="1P"], [data-fag="1T"]) {
+    --prove-ok:    #166534;
+    --prove-del:   #92400e;
+    --prove-feil:  #b91c1c;
+}
+
+/* Sluttsvar (inne i .prove-svar) */
+:is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar {
+    display: grid;
+    gap: 0.4rem;
+    min-width: 0;
+}
+:is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-label {
+    color: var(--p1-ink);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+}
+:is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-felt {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    min-height: 44px;
+    padding: 0.5rem 0.85rem;
+    border: 1.5px solid var(--p1-field-line);
+    border-radius: var(--radius-sm);
+    background: var(--p1-field);
+    color: var(--text-main);
+    font: inherit;
+    font-size: 1rem;          /* 16 px hindrer zoom i iOS */
+    line-height: 1.4;
+    transition: border-color 0.15s;
+}
+:is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-felt::placeholder { color: var(--p1-muted); opacity: 1; }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-felt:hover { border-color: var(--p1-line); }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-felt:focus-visible { outline: 3px solid var(--p1-focus); outline-offset: 2px; border-color: var(--p1-line); }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-felt[readonly] { border-style: dashed; background: transparent; }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-hjelp {
+    min-height: 2.4rem;       /* forhåndsvisning på én linje (≈30 px, høy brøk ≈38 px): reservert også når feltet er tomt */
+    min-width: 0;
+    color: var(--p1-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+/* Formatteksten bryter på 2–3 linjer på smale kort. Reserverer høyden for den lengste varianten (målt etter
+   kortets bredde, ikke skjermbredden), så det ikke hopper når forhåndsvisningen (én linje) erstatter den.
+   1 linje = 1,44 rem. */
+:is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar { container: sluttsvar / inline-size; }
+@container sluttsvar (max-width: 519px) { :is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-hjelp { min-height: 2.9rem; } }
+@container sluttsvar (max-width: 289px) { :is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-hjelp { min-height: 4.4rem; } }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-forhandsvisning {
+    display: inline-flex;
+    flex-wrap: nowrap;        /* alltid én linje: veldig lange formler scroller sideveis i stedet for å vokse i høyden */
+    align-items: baseline;
+    gap: 0.15rem 0.5rem;
+    max-width: 100%;
+    padding: 0.2rem 0.65rem;
+    border-left: 3px solid var(--p1-line);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    background: var(--p1-field);
+    color: var(--text-main);
+    overflow-x: auto;
+}
+:is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-tolket { color: var(--p1-muted); font-size: 0.8rem; font-weight: 700; flex: none; white-space: nowrap; }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-forhandsvisning > :not(.prove-sluttsvar-tolket) { flex: none; white-space: nowrap; }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-feil {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    color: var(--text-main);
+    font-weight: 600;
+}
+:is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-feil::before {
+    content: "?" / "";        /* nøytralt spørsmålstegn, ikke kryss og ikke rødt */
+    flex: none;
+    display: inline-grid;
+    place-content: center;
+    width: 1.3em;
+    height: 1.3em;
+    border: 1.5px dashed var(--p1-muted);
+    border-radius: 50%;
+    color: var(--p1-muted);
+    font-size: 0.85em;
+    font-weight: 800;
+    line-height: 1;
+}
+:is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-format { font-style: italic; }
+
+/* Etter levering: sluttsvaret eleven ga */
+:is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-levert {
+    margin: 0;
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+:is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-levert strong { color: var(--p1-ink); }
+
+/* Resultat per del */
+:is([data-fag="1P"], [data-fag="1T"]) .prove-resultat {
+    --prove-status: var(--p1-line);
+    display: grid;
+    gap: 0.6rem;
+    min-width: 0;
+    margin: 0.5rem 0 0.9rem;
+    padding: 0.85rem 1rem;
+    border: 1.5px solid var(--p1-line);
+    border-left: 6px solid var(--prove-status);
+    border-radius: var(--radius-md);
+    background: var(--p1-tint);
+    color: var(--text-main);
+}
+:is([data-fag="1P"], [data-fag="1T"]) .prove-resultat[data-status="riktig"] { --prove-status: var(--prove-ok); }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-resultat[data-status="delvis"] { --prove-status: var(--prove-del); border-left-style: dashed; }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-resultat[data-status="feil"] { --prove-status: var(--prove-feil); border-left-style: double; }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-resultat-poeng {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.2rem 0.5rem;
+    margin: 0;
+    font-size: 1.05rem;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.5;
+}
+:is([data-fag="1P"], [data-fag="1T"]) .prove-resultat-poeng strong { color: var(--prove-status); font-weight: 800; }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-resultat-poeng::before {
+    flex: none;
+    display: inline-grid;
+    place-content: center;
+    width: 1.55rem;
+    height: 1.55rem;
+    border: 2px solid var(--prove-status);
+    border-radius: 50%;
+    color: var(--prove-status);
+    font-size: 0.9rem;
+    font-weight: 800;
+    line-height: 1;
+}
+:is([data-fag="1P"], [data-fag="1T"]) .prove-resultat[data-status="riktig"] .prove-resultat-poeng::before { content: "✓" / ""; }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-resultat[data-status="delvis"] .prove-resultat-poeng::before { content: "◐" / ""; border-style: dashed; }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-resultat[data-status="feil"] .prove-resultat-poeng::before { content: "✕" / ""; border-style: double; border-width: 4px; font-size: 0.7rem; }
+
+/* Selvvurdering */
+:is([data-fag="1P"], [data-fag="1T"]) .prove-vurdering {
+    min-width: 0;          /* fieldset krymper ikke av seg selv ved 320 px */
+    margin: 0;
+    padding: 0.5rem 0.85rem 0.75rem;
+    border: 1px dashed var(--p1-line);
+    border-radius: var(--radius-sm);
+    background: var(--p1-field);
+}
+:is([data-fag="1P"], [data-fag="1T"]) .prove-vurdering legend {
+    max-width: 100%;
+    padding: 0 0.4rem;
+    color: var(--p1-ink);
+    font-size: 0.9rem;
+    font-weight: 800;
+    line-height: 1.45;
+}
+:is([data-fag="1P"], [data-fag="1T"]) .prove-vurdering-valg {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    min-height: 44px;
+    padding: 0.2rem 0.4rem;
+    border-radius: var(--radius-sm);
+    color: var(--text-main);
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.4;
+    cursor: pointer;
+}
+:is([data-fag="1P"], [data-fag="1T"]) .prove-vurdering-valg:hover { background: var(--p1-tint-2); }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-vurdering-valg input {
+    appearance: none;
+    -webkit-appearance: none;
+    flex: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: 0;
+    border: 2px solid var(--p1-line);
+    border-radius: 6px;
+    background: var(--p1-field);
+    display: inline-grid;
+    place-content: center;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+}
+:is([data-fag="1P"], [data-fag="1T"]) .prove-vurdering-valg input::after {
+    content: "";
+    width: 0.8rem;
+    height: 0.45rem;
+    border-left: 3px solid var(--p1-btn-ink);
+    border-bottom: 3px solid var(--p1-btn-ink);
+    transform: translateY(-1px) rotate(-45deg) scale(0);
+    transition: transform 0.12s;
+}
+:is([data-fag="1P"], [data-fag="1T"]) .prove-vurdering-valg input:checked { background: var(--p1-btn-bg); border-color: var(--p1-btn-bg); }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-vurdering-valg input:checked::after { transform: translateY(-1px) rotate(-45deg) scale(1); }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-vurdering-valg input:focus-visible { outline: 3px solid var(--p1-focus); outline-offset: 3px; }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-vurdering-auto {
+    margin: 0;
+    padding: 0.5rem 0.75rem;
+    border-left: 3px solid var(--p1-line);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    background: var(--p1-field);
+    color: var(--text-main);
+    line-height: 1.55;
+}
+
+/* Poengsum etter levering (inne i .exam-summary) */
+:is([data-fag="1P"], [data-fag="1T"]) .poeng-oppsummering {
+    display: grid;
+    flex: 1 0 100%;
+    gap: 0.25rem;
+    min-width: 0;
+}
+:is([data-fag="1P"], [data-fag="1T"]) .exam-summary > .poeng-oppsummering p { max-width: none; }
+:is([data-fag="1P"], [data-fag="1T"]) .poeng-sum,
+:is([data-fag="1P"], [data-fag="1T"]) .poeng-liste { margin: 0; min-width: 0; overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
+:is([data-fag="1P"], [data-fag="1T"]) .poeng-sum { color: var(--p1-ink-strong); font-size: 1.3rem; font-weight: 800; line-height: 1.35; }
+:is([data-fag="1P"], [data-fag="1T"]) .poeng-prosent { font-weight: 700; }
+:is([data-fag="1P"], [data-fag="1T"]) .poeng-liste { color: var(--text-main); font-size: 0.95rem; line-height: 1.55; }
+@media (prefers-reduced-motion: reduce) {
+    :is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-felt,
+    :is([data-fag="1P"], [data-fag="1T"]) .prove-vurdering-valg input,
+    :is([data-fag="1P"], [data-fag="1T"]) .prove-vurdering-valg input::after { transition: none; }
+}
 
 /* ── Øveprøve: oppgave + svarfelt henger sammen ─── */
-[data-fag="1P"] .prove-oppgave { margin-bottom: 1.5rem; }
-[data-fag="1P"] .prove-oppgave .task-card { margin-bottom: 0.5rem; }
-[data-fag="1P"] .prove-oppgave .prove-svar { margin-top: 0; }
-[data-fag="1P"] .prove-verktoy { padding: 0.4rem 0; }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-oppgave { margin-bottom: 1.5rem; }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-oppgave .task-card { margin-bottom: 0.5rem; }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-oppgave .prove-svar { margin-top: 0; }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-verktoy { padding: 0.4rem 0; }
 
 /* ── Innhold i oppgavetekst: pre/kode, tabeller, lister, sitat ─── */
 [data-fag="1P"] .task-content ul,
@@ -4771,12 +5046,12 @@ header.navbar[data-fag="1P"] .nav-btn.fag-switch,
 }
 
 /* ── Lever / Ferdig, bekreftelser, «Ta på nytt» ─── */
-[data-fag="1P"] .exam-submit-row { margin: 1.5rem 0 2.5rem; }
-[data-fag="1P"] .exam-submit-row > .btn-primary,
-[data-fag="1P"] .prove-lever { margin-top: 0.5rem; }
-[data-fag="1P"] .exam-submit-row .btn-primary,
-[data-fag="1P"] .exam-summary .btn-primary,
-[data-fag="1P"] .prove-lever {
+:is([data-fag="1P"], [data-fag="1T"]) .exam-submit-row { margin: 1.5rem 0 2.5rem; }
+:is([data-fag="1P"], [data-fag="1T"]) .exam-submit-row > .btn-primary,
+:is([data-fag="1P"], [data-fag="1T"]) .prove-lever { margin-top: 0.5rem; }
+:is([data-fag="1P"], [data-fag="1T"]) .exam-submit-row .btn-primary,
+:is([data-fag="1P"], [data-fag="1T"]) .exam-summary .btn-primary,
+:is([data-fag="1P"], [data-fag="1T"]) .prove-lever {
     justify-content: center;
     min-height: 48px;
     padding: 0.7rem 1.5rem;
@@ -4788,17 +5063,17 @@ header.navbar[data-fag="1P"] .nav-btn.fag-switch,
     font-weight: 800;
     text-decoration: none;
 }
-[data-fag="1P"] .exam-submit-row .btn-primary:hover,
-[data-fag="1P"] .exam-summary .btn-primary:hover,
-[data-fag="1P"] .prove-lever:hover { background: var(--p1-btn-bg-h); border-color: var(--p1-btn-bg-h); color: var(--p1-btn-ink); transform: translateY(-1px); box-shadow: 0 6px 18px var(--p1-tint-2); }
-[data-fag="1P"] .exam-submit-row .btn-primary:active,
-[data-fag="1P"] .exam-summary .btn-primary:active,
-[data-fag="1P"] .prove-lever:active { transform: none; }
-[data-fag="1P"] .exam-submit-row .btn-primary:focus-visible,
-[data-fag="1P"] .exam-summary .btn-primary:focus-visible,
-[data-fag="1P"] .prove-lever:focus-visible,
-[data-fag="1P"] .exam-summary .hint-btn:focus-visible { outline: 3px solid var(--p1-focus); outline-offset: 3px; }
-[data-fag="1P"] .exam-summary .hint-btn {
+:is([data-fag="1P"], [data-fag="1T"]) .exam-submit-row .btn-primary:hover,
+:is([data-fag="1P"], [data-fag="1T"]) .exam-summary .btn-primary:hover,
+:is([data-fag="1P"], [data-fag="1T"]) .prove-lever:hover { background: var(--p1-btn-bg-h); border-color: var(--p1-btn-bg-h); color: var(--p1-btn-ink); transform: translateY(-1px); box-shadow: 0 6px 18px var(--p1-tint-2); }
+:is([data-fag="1P"], [data-fag="1T"]) .exam-submit-row .btn-primary:active,
+:is([data-fag="1P"], [data-fag="1T"]) .exam-summary .btn-primary:active,
+:is([data-fag="1P"], [data-fag="1T"]) .prove-lever:active { transform: none; }
+:is([data-fag="1P"], [data-fag="1T"]) .exam-submit-row .btn-primary:focus-visible,
+:is([data-fag="1P"], [data-fag="1T"]) .exam-summary .btn-primary:focus-visible,
+:is([data-fag="1P"], [data-fag="1T"]) .prove-lever:focus-visible,
+:is([data-fag="1P"], [data-fag="1T"]) .exam-summary .hint-btn:focus-visible { outline: 3px solid var(--p1-focus); outline-offset: 3px; }
+:is([data-fag="1P"], [data-fag="1T"]) .exam-summary .hint-btn {
     justify-content: center;
     min-height: 48px;
     padding: 0.7rem 1.4rem;
@@ -4809,9 +5084,9 @@ header.navbar[data-fag="1P"] .nav-btn.fag-switch,
     font-size: 1rem;
     font-weight: 700;
 }
-[data-fag="1P"] .exam-summary .hint-btn:hover { background: var(--p1-tint-2); transform: none; box-shadow: none; }
+:is([data-fag="1P"], [data-fag="1T"]) .exam-summary .hint-btn:hover { background: var(--p1-tint-2); transform: none; box-shadow: none; }
 
-[data-fag="1P"] .exam-summary {
+:is([data-fag="1P"], [data-fag="1T"]) .exam-summary {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -4825,32 +5100,39 @@ header.navbar[data-fag="1P"] .nav-btn.fag-switch,
     font-weight: 500;
     line-height: 1.6;
 }
-[data-fag="1P"] .exam-summary > p,
-[data-fag="1P"] .exam-summary [role="alertdialog"] > p { flex: 1 0 100%; margin: 0; max-width: 62ch; color: var(--text-main); }
-[data-fag="1P"] .exam-summary > p strong,
-[data-fag="1P"] .exam-summary [role="alertdialog"] > p strong { font-weight: 800; }
-[data-fag="1P"] .exam-summary [role="alertdialog"] { display: flex; flex-wrap: wrap; gap: 0.75rem; flex: 1 0 100%; padding-top: 0.75rem; border-top: 1px solid var(--border); }
+:is([data-fag="1P"], [data-fag="1T"]) .exam-summary > p,
+:is([data-fag="1P"], [data-fag="1T"]) .exam-summary [role="alertdialog"] > p { flex: 1 0 100%; margin: 0; max-width: 62ch; color: var(--text-main); }
+:is([data-fag="1P"], [data-fag="1T"]) .exam-summary > p strong,
+:is([data-fag="1P"], [data-fag="1T"]) .exam-summary [role="alertdialog"] > p strong { font-weight: 800; }
+:is([data-fag="1P"], [data-fag="1T"]) .exam-summary [role="alertdialog"] { display: flex; flex-wrap: wrap; gap: 0.75rem; flex: 1 0 100%; padding-top: 0.75rem; border-top: 1px solid var(--border); }
 @media (max-width: 480px) {
-    [data-fag="1P"] .exam-summary .btn-primary,
-    [data-fag="1P"] .exam-summary .hint-btn { flex: 1 1 100%; }
-    [data-fag="1P"] .exam-submit-row > .btn-primary,
-    [data-fag="1P"] .prove-lever { width: 100%; }
+    :is([data-fag="1P"], [data-fag="1T"]) .exam-summary .btn-primary,
+    :is([data-fag="1P"], [data-fag="1T"]) .exam-summary .hint-btn { flex: 1 1 100%; }
+    :is([data-fag="1P"], [data-fag="1T"]) .exam-submit-row > .btn-primary,
+    :is([data-fag="1P"], [data-fag="1T"]) .prove-lever { width: 100%; }
 }
 
 /* Selvvurdering etter levering */
-[data-fag="1P"] .self-score { gap: 0.5rem; }
-[data-fag="1P"] .self-score .score-btn { min-height: 44px; padding: 0.4rem 1rem; color: var(--p1-muted); }
-[data-fag="1P"] .self-score .score-btn:focus-visible { outline: 3px solid var(--p1-focus); outline-offset: 2px; }
-[data-fag="1P"] .score-btn.is-on.riktig { background: var(--p1-tint-2); color: var(--p1-ink); box-shadow: inset 0 0 0 1.5px var(--p1-line); }
+:is([data-fag="1P"], [data-fag="1T"]) .self-score { gap: 0.5rem; }
+:is([data-fag="1P"], [data-fag="1T"]) .self-score .score-btn { min-height: 44px; padding: 0.4rem 1rem; color: var(--p1-muted); }
+:is([data-fag="1P"], [data-fag="1T"]) .self-score .score-btn:focus-visible { outline: 3px solid var(--p1-focus); outline-offset: 2px; }
+:is([data-fag="1P"], [data-fag="1T"]) .score-btn.is-on.riktig { background: var(--p1-tint-2); color: var(--p1-ink); box-shadow: inset 0 0 0 1.5px var(--p1-line); }
 
 @media (min-width: 640px) {
-    [data-fag="1P"] .exam-task,
-    [data-fag="1P"] .prove-oppgave .task-card { padding: 1.75rem 1.9rem 1.6rem; }
+    :is([data-fag="1P"], [data-fag="1T"]) .exam-task,
+    :is([data-fag="1P"], [data-fag="1T"]) .prove-oppgave .task-card { padding: 1.75rem 1.9rem 1.6rem; }
 }
 @media (prefers-reduced-motion: reduce) {
-    [data-fag="1P"] .exam-card, [data-fag="1P"] .prove-svar, [data-fag="1P"] .timer-toggle input,
-    [data-fag="1P"] .prove-ferdig input, [data-fag="1P"] .exam-submit-row .btn-primary, [data-fag="1P"] .exam-summary .btn-primary { transition: none; }
-    [data-fag="1P"] .exam-card:hover, [data-fag="1P"] .exam-submit-row .btn-primary:hover, [data-fag="1P"] .exam-summary .btn-primary:hover, [data-fag="1P"] .prove-lever:hover { transform: none; }
+    [data-fag="1P"] .exam-card,
+    :is([data-fag="1P"], [data-fag="1T"]) .prove-svar,
+    :is([data-fag="1P"], [data-fag="1T"]) .timer-toggle input,
+    :is([data-fag="1P"], [data-fag="1T"]) .prove-ferdig input,
+    :is([data-fag="1P"], [data-fag="1T"]) .exam-submit-row .btn-primary,
+    :is([data-fag="1P"], [data-fag="1T"]) .exam-summary .btn-primary { transition: none; }
+    [data-fag="1P"] .exam-card:hover,
+    :is([data-fag="1P"], [data-fag="1T"]) .exam-submit-row .btn-primary:hover,
+    :is([data-fag="1P"], [data-fag="1T"]) .exam-summary .btn-primary:hover,
+    :is([data-fag="1P"], [data-fag="1T"]) .prove-lever:hover { transform: none; }
 }
 
 /* ---- 1P · kontrastretting for felles tekstelementer (axe) ---- */
@@ -4878,8 +5160,8 @@ header.navbar[data-fag="1P"] .nav-btn.fag-switch,
   text-decoration: underline;
   text-underline-offset: 0.18em;
 }
-[data-fag="1P"] .ove-banner p,
-[data-fag="1P"] .locked-note { color: var(--p1-muted); }
+:is([data-fag="1P"], [data-fag="1T"]) .ove-banner p,
+:is([data-fag="1P"], [data-fag="1T"]) .locked-note { color: var(--p1-muted); }
 [data-fag="1P"] .sub-nav .btn-primary {
   background: var(--p1-btn-bg); color: var(--p1-btn-ink); border: 2px solid var(--p1-btn-bg);
   box-shadow: none; font-weight: 800; min-height: 44px;

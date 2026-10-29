@@ -7,6 +7,17 @@ export type ExamAttempt = {
   selfScore: Record<string, "riktig" | "delvis" | "feil">;
   notes: Record<string, string>;
   mode: "prove" | "ove";
+  /** Prøvemodus: elevens sluttsvar per enhet (del eller oppgave). Valgfritt, eldre forsøk mangler det. */
+  sluttsvar?: Record<string, string>;
+  /** Prøvemodus: elevens vurdering etter levering, per enhet. */
+  vurdering?: Record<string, { metode?: boolean; utregning?: boolean; svar?: boolean; overstyrt?: boolean }>;
+  /** Prøvemodus: poeng etter levering. `deler` har ett innslag per enhet. */
+  poeng?: {
+    sum: number;
+    maks: number;
+    prosent: number;
+    deler: Record<string, { poeng: number; maks: number; status: "riktig" | "delvis" | "feil"; auto?: boolean }>;
+  };
 };
 
 export type Progress = {

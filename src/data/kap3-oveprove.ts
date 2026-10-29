@@ -19,7 +19,7 @@ export const KAP3_OVEPROVE: Delkapittel = {
       "3.OP1",
       "Oppgave 1 — Førstegradslikninger",
       "Løs likningene og sett prøve.<br><br><strong>a)</strong> $4x-7=2x+9$<br><br><strong>b)</strong> $3(x-4)=2(x+1)-5$<br><br><strong>c)</strong> $\\dfrac{x}{3}-\\dfrac{x}{5}=2$",
-      "Samle $x$ på én side. I c) gang med fellesnevner $15$.",
+      "Samle $x$ på én side.",
       [
         "<strong>a)</strong> $4x-2x=9+7$, $2x=16$, $x=8$. Prøve: $32-7=16+9=25$.<br><strong>Svar:</strong> $x=8$",
         "<strong>b)</strong> $3x-12=2x+2-5$, $3x-12=2x-3$, $x=9$.<br><strong>Svar:</strong> $x=9$",
@@ -91,7 +91,7 @@ export const KAP3_OVEPROVE: Delkapittel = {
       "3.OP8",
       "Oppgave 8 — Ulikheter",
       "Løs og skriv svaret både med ulikhetstegn og som intervall.<br><br><strong>a)</strong> $3x-4 < 8$<br><br><strong>b)</strong> $5-2x \\geq 11$",
-      "Når du deler på et negativt tall, snur ulikheten.",
+      "Løs ulikheten på samme måte som en likning. Skriv svaret både med ulikhetstegn og som intervall.",
       [
         "<strong>a)</strong> $3x<12$, $x<4$. Intervall $\\langle\\leftarrow,4\\rangle$.<br><strong>Svar:</strong> $x<4$, $x\\in\\langle\\leftarrow,4\\rangle$",
         "<strong>b)</strong> $-2x\\geq 6$. Del på $-2$ og snu: $x\\leq -3$.<br><strong>Svar:</strong> $x\\leq -3$, $x\\in\\langle\\leftarrow,-3]$",
@@ -111,7 +111,7 @@ export const KAP3_OVEPROVE: Delkapittel = {
       "3.OP10",
       "Oppgave 10 — Polynomdivisjon",
       "Polynomet $P(x)=x^3-3x^2-6x+8$ har et nullpunkt $x=1$.<br><br><strong>a)</strong> Vis at $P(1)=0$.<br><br><strong>b)</strong> Del $P(x)$ på $(x-1)$.<br><br><strong>c)</strong> Faktoriser $P(x)$ fullstendig.",
-      "Restteoremet: $P(1)=0$ betyr at $(x-1)$ går opp. Faktoriser andregraden etterpå.",
+      "Sett $x=1$ inn i $P(x)$ og regn ut.",
       [
         "<strong>a)</strong> $P(1)=1-3-6+8=0$.<br><strong>Svar:</strong> vist, $P(1)=0$.",
         "<strong>b)</strong> $x^3:x=x^2$, $x^2(x-1)=x^3-x^2$, rest $-2x^2-6x$. $-2x^2:x=-2x$, $-2x(x-1)=-2x^2+2x$, rest $-8x+8$. $-8x:x=-8$, $-8(x-1)=-8x+8$, rest $0$.<br>$(x^3-3x^2-6x+8):(x-1)=x^2-2x-8$.<br><strong>Svar:</strong> $x^2-2x-8$",
