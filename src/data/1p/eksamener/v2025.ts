@@ -257,10 +257,10 @@ export const EKSAMEN_1P_V2025: Exam = officialExam({
             r`<strong>Svar:</strong> $O(r) = \pi\cdot r^{2} + \dfrac{900}{r}$. Grafen er en kurve med et bunnpunkt (se c).`,
           ]),
         part("1p-v25-d2-6", "c", r`Hvor stor må radius i boksene være for at overflaten skal bli minst mulig? Hvor stor blir overflaten da?`,
-          r`Finn bunnpunktet på grafen til $O$ med GeoGebra («Ekstremalpunkt»), eller løs $O'(r) = 0$.`,
+          r`Finn bunnpunktet på grafen til $O$ med GeoGebra («Ekstremalpunkt»), eller lag en tabell med verdier av $O(r)$ rundt $r = 5$.`,
           [
             r`Finn bunnpunktet på grafen: $r \approx 5{,}23$ og $O \approx 258{,}0$.`,
-            r`Kontroll med derivasjon: $O'(r) = 2\pi r - \dfrac{900}{r^{2}} = 0$ gir $r^{3} = \dfrac{450}{\pi}$, altså $r = \sqrt[3]{\dfrac{450}{\pi}} \approx 5{,}23$.`,
+            r`Kontroll med tabell: $O(5) \approx 258{,}54$, $O(5{,}2) \approx 258{,}03$, $O(5{,}23) \approx 258{,}02$, $O(5{,}3) \approx 258{,}06$ og $O(5{,}5) \approx 258{,}67$ cm$^2$. Overflaten er minst rundt $r = 5{,}2$.`,
             r`Da er $h = \dfrac{450}{\pi\cdot 5{,}23^{2}} \approx 5{,}23$, så høyden er like stor som radius.`,
             r`<strong>Svar:</strong> Overflaten blir minst når radius er omtrent $5{,}2$ cm. Overflaten er da omtrent $258\ \text{cm}^2$.`,
           ]),

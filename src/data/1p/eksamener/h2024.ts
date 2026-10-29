@@ -269,8 +269,8 @@ export const EKSAMEN_1P_H2024: Exam = officialExam({
           [
             r`Med sidelengde $x$ mm blir lengden $1200 - 2x$, bredden $800 - 2x$ og høyden $x$. Volumet i liter er $V = \dfrac{(1200 - 2x)(800 - 2x)\cdot x}{1\,000\,000}$.`,
             r`<table><tr><th>$x$ (mm)</th><td>$50$</td><td>$100$</td><td>$125$</td><td>$150$</td><td>$175$</td><td>$200$</td><td>$250$</td><td>$300$</td></tr><tr><th>Volum (L)</th><td>$38{,}5$</td><td>$60{,}0$</td><td>$65{,}3$</td><td>$67{,}5$</td><td>$66{,}9$</td><td>$64{,}0$</td><td>$52{,}5$</td><td>$36{,}0$</td></tr></table>`,
-            r`Volumet vokser til omtrent $x = 150$ og avtar deretter. Forfiner vi tabellen rundt $150$, ser vi at toppen ligger rundt $x = 157$.`,
-            r`<strong>Svar:</strong> Oversikten viser at volumet blir størst når sidene i kvadratene er omtrent $150$ mm, med et volum på omtrent $67{,}5$ L.`,
+            r`Volumet vokser til omtrent $x = 150$ og avtar deretter. Forfiner vi tabellen rundt $150$, får vi $V(150) = 67{,}50$, $V(155) \approx 67{,}60$, $V(157) \approx 67{,}60$, $V(160) \approx 67{,}58$ og $V(170) \approx 67{,}25$ L. Toppen ligger altså rundt $x = 157$.`,
+            r`<strong>Svar:</strong> Oversikten viser at volumet blir størst når sidene i kvadratene er omtrent $150$ mm, med et volum på omtrent $67{,}5$ L. Med en finere tabell ser vi at toppen ligger rundt $157$ mm, med omtrent $67{,}6$ L.`,
           ]),
         part("1p-h24-d2-8", "c", r`Sofie ønsker å lage en modell som viser volumet av de ulike kassene hun kan lage av metallplatene.<br>Sett opp et funksjonsuttrykk Sofie kan bruke, og lag en grafisk framstilling som viser sammenhengen mellom lengden av sidene i kvadratene hun skjærer bort, og volumet av kassene.`,
           r`Bruk volumet fra b) som funksjon av $x$. Tegn grafen i GeoGebra med passende vindu.`,
@@ -284,7 +284,7 @@ export const EKSAMEN_1P_H2024: Exam = officialExam({
           r`Finn toppunktet på grafen med «Ekstremalpunkt» i GeoGebra.`,
           [
             r`Toppunktet på grafen fra c) er $x \approx 156{,}9$ mm og $V \approx 67{,}6$ L.`,
-            r`Kontroll med derivasjon: $V'(x) = 0$ gir $12x^{2} - 8000x + 960\,000 = 0$, med løsningene $x \approx 157$ og $x \approx 510$. Bare $x \approx 157$ ligger mellom $0$ og $400$.`,
+            r`Kontroll med tabell: $V(150) = 67{,}50$, $V(155) \approx 67{,}60$, $V(157) \approx 67{,}60$, $V(160) \approx 67{,}58$ og $V(170) \approx 67{,}25$ L. Volumet er størst rundt $x = 157$ mm.`,
             r`<strong>Svar:</strong> Sofie må skjære bort kvadrater med sidelengde omtrent $157$ mm i hvert hjørne. Volumet blir da omtrent $67{,}6$ L.`,
           ]),
         part("1p-h24-d2-8", "e", r`Hva vil du si er modellens gyldighetsområde?<br>Argumenter for svaret ditt.`,

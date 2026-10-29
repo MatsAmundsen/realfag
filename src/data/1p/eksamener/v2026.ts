@@ -226,10 +226,10 @@ print(g(x))</code></pre>Når programmet kjøres, skrives dette ut:<pre><code>Res
             r`<strong>Svar:</strong> Bilen slipper ut $176{,}5$ gram CO<sub>2</sub> per kilometer.`,
           ]),
         part("1p-v26-d2-1", "b", r`Hvilken fart gir minst utslipp av CO<sub>2</sub> per kilometer?<br>Hvor mange gram CO<sub>2</sub> slipper bilen ut per kilometer ved denne farten?`,
-          r`Tegn grafen til $U$ i GeoGebra for $30 < x < 110$ og finn bunnpunktet (minimumspunktet). Du kan også derivere og løse $U'(x) = 0$.`,
+          r`Tegn grafen til $U$ i GeoGebra for $30 < x < 110$ og finn bunnpunktet (minimumspunktet). Du kan også lage en tabell med verdier av $U(x)$ og se hvor utslippet er minst.`,
           [
-            r`Grafen til $U$ har et bunnpunkt mellom $30$ og $110$. Finn det med «Ekstremalpunkt» i GeoGebra.`,
-            r`Kontroll ved derivasjon: $U'(x) = -\dfrac{5400}{x^{2}} + 0{,}0148x = 0$ gir $x^{3} = \dfrac{5400}{0{,}0148}$, altså $x \approx 71{,}46$.`,
+            r`Grafen til $U$ har et bunnpunkt mellom $30$ og $110$. Finn det med «Ekstremalpunkt» i GeoGebra: $x \approx 71{,}46$.`,
+            r`Kontroll med tabell: $U(60) = 166{,}64$, $U(70) \approx 163{,}40$, $U(71{,}46) \approx 163{,}36$ og $U(80) = 164{,}86$ gram per kilometer. Utslippet er minst rundt $x = 71$.`,
             r`$U(71{,}46) \approx 163{,}36$.`,
             r`<strong>Svar:</strong> Utslippet er minst ved en fart på omtrent $71{,}5$ km/h. Da slipper bilen ut omtrent $163{,}4$ gram CO<sub>2</sub> per kilometer.`,
           ]),

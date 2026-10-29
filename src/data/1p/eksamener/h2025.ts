@@ -295,7 +295,7 @@ export const EKSAMEN_1P_H2025: Exam = officialExam({
             r`Areal: $A(x) = x\cdot y + \dfrac{\pi x^{2}}{8} = 6x - \dfrac{x^{2}}{2} - \dfrac{\pi x^{2}}{4} + \dfrac{\pi x^{2}}{8} = 6x - \left(\dfrac{1}{2} + \dfrac{\pi}{8}\right)x^{2}$.`,
             r`Altså $A(x) \approx 6x - 0{,}8927x^{2}$ for $0 < x < 4{,}67$.`,
             r`Tegn grafen til $A$ i GeoGebra. Den er en parabel som åpner nedover. Finn toppunktet med «Ekstremalpunkt»: $x \approx 3{,}36$ og $A \approx 10{,}08$.`,
-            r`Kontroll med derivasjon: $A'(x) = 6 - \left(1 + \dfrac{\pi}{4}\right)x = 0$ gir $x = \dfrac{24}{\pi + 4} \approx 3{,}36$. Da er $y \approx 1{,}68$.`,
+            r`Kontroll uten derivasjon: $A(x) = x\cdot(6 - 0{,}8927x)$ er $0$ for $x = 0$ og for $x = \dfrac{6}{0{,}8927} \approx 6{,}72$. Parablen er symmetrisk, så toppunktet ligger midt mellom disse: $x \approx \dfrac{6{,}72}{2} = 3{,}36$. Da er $y \approx 1{,}68$ og $A(3{,}36) \approx 10{,}08$.`,
             r`<strong>Svar:</strong> $A(x) = 6x - \left(\dfrac{1}{2} + \dfrac{\pi}{8}\right)x^{2}$. Størst mulig areal er omtrent $10{,}1\ \text{m}^2$, og det får de når $x \approx 3{,}4$ meter.`,
           ]),
       ],
