@@ -289,7 +289,7 @@ export function ExamRunner({ exam }: { exam: Exam }) {
           <span className="timer-group" aria-live="off">
             <span className={`timer-readout${del1Left < 60 ? " is-low" : ""}`} title={`Del 1 skal leveres etter ${exam.del1Minutes} minutter`}>
               Del 1: {del1Left > 0 ? formatKlokke(del1Left) : "tiden er ute"}
-            </span>
+            </span>{" "}
             <span className={`timer-readout${totalLeft < 60 ? " is-low" : ""}`} title={`Hele eksamen varer ${exam.totalMinutes} minutter`}>
               Totalt: {totalLeft > 0 ? formatKlokke(totalLeft) : "tiden er ute"}
             </span>
