@@ -109,7 +109,7 @@ export const EKSAMEN_1P_H2023: Exam = officialExam({
             r`Med $x$ som antall år etter $1950$ blir punktene $(2,\ 65\,956)$, $(32,\ 25\,289)$, $(42,\ 19\,780)$, $(52,\ 13\,841)$, $(62,\ 9\,825)$ og $(72,\ 9\,591)$.`,
             r`Antallet synker, og nedgangen blir mindre i absolutte tall. Det passer med en eksponentiell modell $F(x) = a\cdot b^{x}$ med $b < 1$. Vi legger punktene inn i regnearket i GeoGebra og velger regresjon med eksponentialfunksjon.`,
             r`Resultat: $a \approx 66\,360$ og $b \approx 0{,}9714$. Modellen er $F(x) = 66\,360\cdot 0{,}9714^{x}$. Den gir f.eks. $F(2) \approx 62\,600$, $F(32) \approx 26\,300$ og $F(72) \approx 8\,200$. Det er et tydelig avvik for $2022$ (modell $8\,200$ mot virkelig $9\,591$), men kurven følger hovedtrenden.`,
-            r`Kommentar: Et andregradspolynom passer enda bedre i punktene, men grafen snur nedover til oppover omkring $x \approx 69$ (år $2019$). Det er urealistisk, så vi velger den eksponentielle modellen.`,
+            r`Kommentar: Et andregradspolynom passer enda bedre i punktene, men grafen snur fra synkende til stigende omkring $x \approx 69$ (år $2019$). Det er urealistisk, så vi velger den eksponentielle modellen.`,
             r`<strong>Svar:</strong> $F(x) = 66\,360\cdot 0{,}9714^{x}$, der $x$ er antall år etter $1950$ ($2 \le x \le 72$). (Oppgaven er åpen. Andre modeller kan gi full uttelling hvis de er godt begrunnet.)`,
           ]),
         part("1p-h23-d2-1", "b", r`Hvor mange personer i Norge vil ha fiske som hovedyrke i $2050$ ifølge modellen fra oppgave a)? Vurder modellens gyldighetsområde.`,
@@ -183,7 +183,7 @@ export const EKSAMEN_1P_H2023: Exam = officialExam({
     single("1p-h23-d2-5", "5", 0,
       r`<em>Denne oppgaven vektes tre ganger så mye som en vanlig deloppgave.</em><br>Klassen til Maria og Marta arbeider med oppgaven nedenfor.<br><strong>Et rektangel er innskrevet i en likebeint, rettvinklet trekant. Trekanten har hjørner i punktene $A(-6,\ 0)$, $B(6,\ 0)$ og $C(0,\ 6)$. Punktet $P$ er et hjørne i rektangelet og ligger på linjestykket $BC$. Bestem koordinatene til punktet $P$ slik at arealet av rektangelet blir størst mulig.</strong>` +
         figur("p1-h23-d2-5", "5", "Koordinatsystem (GeoGebra-stil) med trekant ABC: A(−6, 0), B(6, 0), C(0, 6). Et rektangel er innskrevet slik at det ene sidene ligger på AB og de to øvre hjørnene ligger på AC og BC. Punktet P(x, y) er øvre høyre hjørne på linjestykket BC. Rektangelet er symmetrisk om y-aksen. A, B, C og P er merket.") +
-        r`Martin og Maria diskuterer hvordan de skal komme i gang, og vurderer ulike strategier. Martin vil prøve seg fram og lage en oversikt som viser arealet av ulike rektangler, og starter med $x = 1$. Da blir $y = 5$ fordi $y = 6 - x$. Maria foreslår også å sette opp et funksjonsuttrykk for arealet, tegne en graf og bruke funksjonen til å vise at det de kommer fram til ved å prøve seg fram, er riktig.<br>Ta utgangspunkt i samtalen mellom Martin og Maria, og løs oppgaven klassen har fått.`,
+        r`Martin og Maria diskuterer hvordan de skal komme i gang, og vurderer ulike strategier. Martin vil prøve seg fram og lage en oversikt som viser arealet av ulike rektangler, og starter med $x = 1$. Da blir $y = 5$ fordi $y = 6 - x$. Maria foreslår også å sette opp et funksjonsuttrykk for arealet, tegne en graf og bruke funksjonen til å vise at det de kommer fram til ved å prøve seg fram, er riktig.<br>Hvordan kan du se at $y = 5$ når $x = 1$? Og hvordan kan vi finne arealet når vi vet at $x = 1$ og $y = 5$?<br>Ta utgangspunkt i samtalen mellom Martin og Maria, og løs oppgaven klassen har fått.`,
       r`Linjen gjennom $B$ og $C$ er $y = 6 - x$. Rektangelet er symmetrisk om $y$-aksen, så bredden er $2x$ og høyden er $y$. Lag en tabell og et funksjonsuttrykk for arealet.`,
       [
         r`<strong>Hvorfor $y = 6 - x$:</strong> Linjen gjennom $B(6,\ 0)$ og $C(0,\ 6)$ har stigningstall $\dfrac{6 - 0}{0 - 6} = -1$ og skjærer $y$-aksen i $6$. Altså $y = -x + 6 = 6 - x$.`,
@@ -197,7 +197,7 @@ export const EKSAMEN_1P_H2023: Exam = officialExam({
       ["optimering", "andregradsfunksjoner", "lineære funksjoner", "GeoGebra"]),
     multi("1p-h23-d2-6", "6", 0,
       r`I denne oppgaven skal du arbeide med linjestykker som settes sammen til en figur. Lengden av et linjestykke er alltid $90\ \%$ av lengden av det forrige linjestykket. Det første linjestykket er $100$ cm langt.` +
-        figur("p1-h23-d2-6", "6", "Skisse av de 16 første linjestykkene som en trappefigur som blir mindre mot høyre. Linjestykkene ligger vekselvis loddrett (lysegrønne) og vannrett (mørkegrå). Første linjestykke er loddrett og 100 cm (merket «100 cm»), det neste er vannrett og 90 cm (merket «90 cm»), deretter loddrett 81 cm ned, vannrett opp mot høyre osv. Hvert linjestykke er 90 % av det forrige, så trappetrinnene blir stadig kortere og figuren zigzagger seg mot høyre og krymper."),
+        figur("p1-h23-d2-6", "6", "Sikksakkmønster (firkantbølge) av 16 linjestykker som blir stadig kortere mot høyre. Linjestykkene ligger vekselvis loddrett (lysegrønne) og vannrett (mørkegrå). Første linjestykke er loddrett, $100$ cm (merket «100 cm»), og går oppover til øverste venstre hjørne. Så følger et vannrett stykke på $90$ cm mot høyre (merket «90 cm»), et loddrett stykke på $81$ cm nedover, et vannrett på $72{,}9$ cm mot høyre, et loddrett oppover på ca. $65{,}6$ cm, og så videre. Mønsteret går vekselvis ned og opp mens hvert stykke er 90 % av det forrige."),
       [
         part("1p-h23-d2-6", "a", r`Bestem summen av lengdene av de $8$ første linjestykkene i figuren.`,
           r`Lengdene er $100,\ 90,\ 81,\ \ldots$ Det er en geometrisk rekke med første ledd $100$ og vekstfaktor $0{,}9$. Bruk summeformelen.`,
@@ -274,7 +274,6 @@ print(n, s)</code></pre>`,
         r`<strong>B:</strong> Starten ligger like ved det avrundede hjørnet øverst til venstre (kort strekning, middels dyp dump), så følger lang topplinje til det spisse hjørnet (dypeste dump), deretter lang bunnlinje til det avrundede hjørnet nede til venstre (grunneste dump), og så et kort stykke opp til start. Det passer med alle tre dumpene og avstandene.`,
         r`<strong>Svar:</strong> Bilen har kjørt på bane B.`,
       ],
-      ["funksjoner", "tolkning av grafer", "argumentasjon"],
-      "Svaret bygger på avlesning av fartsgrafen og banene i figuren (dybde og innbyrdes avstand mellom dumpene). Bane B passer best, men vi har ikke kontrollert mot Udirs offisielle fasit. Kontroller når figuren er tegnet opp."),
+      ["funksjoner", "tolkning av grafer", "argumentasjon"]),
   ],
 });
