@@ -137,7 +137,7 @@ export function ProveResultat({
   return (
     <div className="prove-resultat" data-status={res.status}>
       <p className="prove-resultat-poeng">
-        <strong>{STATUSTEKST[res.status]}</strong> · {formaterPoeng(res.poeng)} av {formaterPoeng(res.maks)} p
+        <strong>{STATUSTEKST[res.status]}</strong>&nbsp;· {formaterPoeng(res.poeng)}&nbsp;av&nbsp;{formaterPoeng(res.maks)}&nbsp;p
       </p>
       {fasit && (
         <p className="prove-sluttsvar-levert">
@@ -177,7 +177,7 @@ export function PoengOppsummering({ res }: { res: Resultat }) {
     <div className="poeng-oppsummering" role="status">
       <p className="poeng-sum">
         <strong>
-          {formaterPoeng(res.sum)} av {formaterPoeng(res.maks)} poeng
+          {formaterPoeng(res.sum)}&nbsp;av&nbsp;{formaterPoeng(res.maks)}&nbsp;poeng
         </strong>{" "}
         · <span className="poeng-prosent">{res.prosent} % riktig</span>
       </p>
