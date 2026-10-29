@@ -172,10 +172,9 @@ export const EKSAMEN_1P_V2026: Exam = officialExam({
         r`<strong>Påstand 1.</strong> Når $T$ er konstant, er $\dfrac{1}{287\cdot T}$ et fast tall $k$. Da er $L = k\cdot p$, så $L$ er proporsjonal med $p$. Påstanden er sann.`,
         r`<strong>Påstand 2.</strong> Vi kan skrive $L = \dfrac{p}{287}\cdot\dfrac{1}{T}$. Da er $L$ omvendt proporsjonal med $T$ bare hvis $\dfrac{p}{287}$ er konstant, altså hvis trykket ikke endrer seg. Det står ikke i oppgaven, og $L$ avhenger også av $p$.`,
         r`Eksempel: Med $p$ fast er $L\cdot T = \dfrac{p}{287}$ konstant. Hvis $p$ dobles samtidig som $T$ dobles, forblir $L$ uendret, og da er $L$ ikke omvendt proporsjonal med $T$.`,
-        r`<strong>Svar:</strong> Påstand 1 er sann. Påstand 2 er usann uten at trykket er konstant. Den er bare sann når trykket $p$ holdes konstant.`,
+        r`<strong>Svar:</strong> Påstand 1 er sann. Påstand 2 er usann slik den står: $L\cdot T = \dfrac{p}{287}$ er bare konstant når trykket $p$ er konstant, og dobler vi både $p$ og $T$, er $L$ uendret.`,
       ],
-      ["proporsjonalitet", "omvendt proporsjonalitet"],
-      "Tolkning av påstand 2: sensorveiledningen fra Udir er ikke lest. Vi svarer «usann uten konstant trykk» og viser når den er sann."),
+      ["proporsjonalitet", "omvendt proporsjonalitet"]),
     multi("1p-v26-d1-13", "13", 4,
       U + r`I 2026 består et fuglebestand av 20 000 individer. Sofie er forsker. Hun antar at bestanden vil minke de kommende årene. Hun har laget to modeller og skrevet programkoden nedenfor.<pre><code>x = 0       # x er antall år etter 2026
 
@@ -209,7 +208,7 @@ print(g(x))</code></pre>Når programmet kjøres, skrives dette ut:<pre><code>Res
             r`Starten er $x = 0$, der $f(0) = g(0) = 20\,000$. Løkka øker $x$ med $1$ så lenge $f(x) \ge g(x)$.`,
             r`Den stopper første gang $f(x) < g(x)$. Sofie vil altså finne ut når modellen med lineær nedgang første gang gir en mindre bestand enn modellen med eksponentiell nedgang.`,
             r`Utskriften: $x = 10$ er antall år etter 2026, altså 2036. Da er $f(10) = 17\,000$ og $g(10) \approx 17\,021$ individer.`,
-            r`Kontroll: $f(10) = 20\,000 - 3000 = 17\,000$. For $x = 9$ er $f(9) = 17\,300 \ge g(9) \approx 17\,298$, så løkka kjørte videre til $x = 10$.`,
+            r`Kontroll: $f(10) = 20\,000 - 3000 = 17\,000$. For $x = 9$ er $f(9) = 17\,300 \ge g(9) \approx 17\,298$, så løkka kjørte videre til $x = 10$. Modellene er like i starten ($f(0) = g(0) = 20\,000$), og $f$ er litt større enn $g$ for $x = 1,\ 2,\ \ldots,\ 9$.`,
             r`<strong>Svar:</strong> Sofie vil finne ut hvor mange år det går før den lineære modellen gir lavere bestand enn den eksponentielle. Det skjer $10$ år etter 2026, i 2036. Da gir $f$ $17\,000$ individer og $g$ omtrent $17\,021$.`,
           ]),
       ],
