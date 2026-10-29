@@ -4768,17 +4768,22 @@ header.navbar[data-fag="1P"] .nav-btn.fag-switch,
 :is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-felt:focus-visible { outline: 3px solid var(--p1-focus); outline-offset: 2px; border-color: var(--p1-line); }
 :is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-felt[readonly] { border-style: dashed; background: transparent; }
 :is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-hjelp {
-    min-height: 1.6rem;       /* ingen hopp når forhåndsvisningen dukker opp */
+    min-height: 2.4rem;       /* forhåndsvisning på én linje (≈30 px, høy brøk ≈38 px): reservert også når feltet er tomt */
     min-width: 0;
     color: var(--p1-muted);
     font-size: 0.9rem;
     line-height: 1.6;
     overflow-wrap: anywhere;
 }
-:is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-hjelp:empty { min-height: 0; }
+/* Formatteksten bryter på 2–3 linjer på smale kort. Reserverer høyden for den lengste varianten (målt etter
+   kortets bredde, ikke skjermbredden), så det ikke hopper når forhåndsvisningen (én linje) erstatter den.
+   1 linje = 1,44 rem. */
+:is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar { container: sluttsvar / inline-size; }
+@container sluttsvar (max-width: 519px) { :is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-hjelp { min-height: 2.9rem; } }
+@container sluttsvar (max-width: 289px) { :is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-hjelp { min-height: 4.4rem; } }
 :is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-forhandsvisning {
     display: inline-flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;        /* alltid én linje: veldig lange formler scroller sideveis i stedet for å vokse i høyden */
     align-items: baseline;
     gap: 0.15rem 0.5rem;
     max-width: 100%;
@@ -4789,7 +4794,8 @@ header.navbar[data-fag="1P"] .nav-btn.fag-switch,
     color: var(--text-main);
     overflow-x: auto;
 }
-:is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-tolket { color: var(--p1-muted); font-size: 0.8rem; font-weight: 700; }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-tolket { color: var(--p1-muted); font-size: 0.8rem; font-weight: 700; flex: none; white-space: nowrap; }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-forhandsvisning > :not(.prove-sluttsvar-tolket) { flex: none; white-space: nowrap; }
 :is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-feil {
     display: inline-flex;
     align-items: baseline;

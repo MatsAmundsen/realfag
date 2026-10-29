@@ -67,14 +67,15 @@ function H25Firkant() {
   });
   const mDC = mid(D, C);
   const mBC = mid(B, C);
-  const lenDC = { x: r2(mDC.x + 17 * 0.5), y: r2(mDC.y - 17 * 0.866) };
-  const lenBC = { x: r2(mBC.x + 18 * 0.966), y: r2(mBC.y - 18 * 0.259) };
+  const lenDC = { x: r2(mDC.x + 21 * 0.5), y: r2(mDC.y - 21 * 0.866) };
+  const lenBC = { x: r2(mBC.x + 21 * 0.966), y: r2(mBC.y - 21 * 0.259) };
   const a120 = at(D, 270, 44);
-  const a30 = at(C, 165, 52);
-  const a45 = at(A, -22.5, 60);
-  const common = { fontSize: 14, textAnchor: "middle" as const, dy: "0.35em" };
+  const a30 = at(C, 169, 60);
+  const a45 = at(A, -22.5, 64);
+  /* 16 enheter gir ≈ 12,4 px når figuren er 232 px bred (320 px skjerm). */
+  const common = { fontSize: 16, textAnchor: "middle" as const, dy: "0.35em" };
   return (
-    <Svg label="Firkant ABCD der diagonalen AC er vannrett. Vinkel ADC er 120 grader, vinkel ACD er 30 grader og vinkel BAC er 45 grader. DC er kvadratroten av 3 og BC er kvadratroten av 6." w={300} h={312}>
+    <Svg label="Firkant ABCD der diagonalen AC er vannrett. Vinkel ADC er 120 grader, vinkel ACD er 30 grader og vinkel BAC er 45 grader. DC er kvadratroten av 3 og BC er kvadratroten av 6." w={300} h={318}>
       <polygon points={`${P(A)} ${P(B)} ${P(C)} ${P(D)}`} fill={tint} stroke={line} strokeWidth="1.6" strokeLinejoin="round" />
       <line x1={px(A.x)} y1={py(A.y)} x2={px(C.x)} y2={py(C.y)} stroke={diag} strokeWidth="2" />
       <path d={arc(D, 210, 330, 22)} fill="none" stroke={mark} strokeWidth="1.6" />
@@ -85,10 +86,10 @@ function H25Firkant() {
       <text x={a45.x} y={a45.y} fill={mark} {...common}>45°</text>
       <text x={lenDC.x} y={lenDC.y} fill={note} {...common}>√3</text>
       <text x={lenBC.x} y={lenBC.y} fill={note} {...common}>√6</text>
-      <text x={px(A.x) - 13} y={py(A.y)} fill={line} fontStyle="italic" {...common}>A</text>
-      <text x={px(B.x)} y={py(B.y) + 16} fill={line} fontStyle="italic" {...common}>B</text>
+      <text x={px(A.x) - 14} y={py(A.y)} fill={line} fontStyle="italic" {...common}>A</text>
+      <text x={px(B.x)} y={py(B.y) + 18} fill={line} fontStyle="italic" {...common}>B</text>
       <text x={px(C.x) + 13} y={py(C.y)} fill={line} fontStyle="italic" {...common}>C</text>
-      <text x={px(D.x)} y={py(D.y) - 13} fill={line} fontStyle="italic" {...common}>D</text>
+      <text x={px(D.x)} y={py(D.y) - 14} fill={line} fontStyle="italic" {...common}>D</text>
     </Svg>
   );
 }
