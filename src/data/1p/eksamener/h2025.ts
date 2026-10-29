@@ -68,7 +68,7 @@ export const EKSAMEN_1P_H2025: Exam = officialExam({
       ],
       ["geometri", "volum", "proporsjonalitet"]),
     multi("1p-h25-d1-5", "5", 2,
-      U + r`Grafene i koordinatsystemet viser sammenhengen mellom antall timer og lønn. Den grønne grafen viser lønnen til Nora, og den blå grafen viser lønnen til Nils.<br><em>Fra figuren i oppgaveheftet: begge grafene er rette linjer fra origo. Den grønne går gjennom $(10,\ 2000)$, og den blå går gjennom $(10,\ 1800)$. Aksene: antall timer $x$ fra $0$ til $12$, lønn $y$ i kroner.</em>` +
+      U + r`Grafene i koordinatsystemet viser sammenhengen mellom antall timer og lønn. Den grønne grafen viser lønnen til Nora, og den blå grafen viser lønnen til Nils.<br><em>Figuren viser: begge grafene er rette linjer fra origo. Den grønne går gjennom $(10,\ 2000)$, og den blå går gjennom $(10,\ 1800)$. Aksene: antall timer $x$ fra $0$ til $12$, lønn $y$ i kroner.</em>` +
         figur("p1-h25-d1-5", "5", "Koordinatsystem med to rette linjer fra origo. x = antall timer, 0 til 12 med hjelpelinjer for hver time. y = lønn i kroner, merket 400, 800, 1200, 1600, 2000 med stiplede hjelpelinjer for hver 200. Grønn linje: gjennom (10, 2000). Blå linje: gjennom (10, 1800). Aksetekster «Antall timer» og «Lønn»."),
       [
         part("1p-h25-d1-5", "a", r`Bestem timelønnen til Nora og timelønnen til Nils.`,
@@ -117,7 +117,7 @@ export const EKSAMEN_1P_H2025: Exam = officialExam({
       ],
       ["funksjoner", "omvendt proporsjonalitet", "graf"]),
     single("1p-h25-d1-7", "7", 3,
-      U + r`Siri arbeider med femkanttall. Hun har oppdaget en sammenheng og laget programmet nedenfor.<br><em>Fra figuren i oppgaveheftet: fire femkantfigurer med $1$, $5$, $12$ og $22$ prikker.</em><pre><code>1  tall = 1
+      U + r`Siri arbeider med femkanttall. Hun har oppdaget en sammenheng og laget programmet nedenfor.<br><em>Figuren viser: fire femkantfigurer med $1$, $5$, $12$ og $22$ prikker.</em><pre><code>1  tall = 1
 2  differanse = 4
 3
 4  while tall &lt;= 60:
@@ -173,7 +173,7 @@ export const EKSAMEN_1P_H2025: Exam = officialExam({
       ],
       ["modeller", "potensfunksjoner", "regresjon", "GeoGebra"]),
     single("1p-h25-d2-2", "2", 4,
-      r`En elev har beskrevet fire situasjoner og tegnet ni grafer.<br><strong>Situasjon A:</strong> En dyrebestand avtar med en fast prosent hvert år.<br><strong>Situasjon B:</strong> Noen personer vil leie en badstue til en fast pris og fordele kostnadene likt. Jo flere som blir med, jo lavere blir prisen per person.<br><strong>Situasjon C:</strong> En fuglebestand økte tilnærmet eksponentielt i en periode. Deretter økte bestanden lineært, før den stabiliserte seg på et nivå.<br><strong>Situasjon D:</strong> Tabellen viser priser for å sende pakker i Norge.<table><tr><th>Vekt</th><th>Pris</th></tr><tr><td>0−5 kg</td><td>73 kroner</td></tr><tr><td>5−10 kg</td><td>135 kroner</td></tr><tr><td>10−25 kg</td><td>240 kroner</td></tr></table>Hvilken graf beskriver situasjon A? B? C? D? Husk å begrunne svarene dine.<br><em>Fra figuren i oppgaveheftet: ni grafer, nummerert 1 til 9. Graf 1: rett, fallende linje. Graf 2: S-formet kurve som starter flatt, blir bratt og flater ut. Graf 3: tre vannrette trinn som stiger. Graf 4: fallende kurve som flater ut mot $x$-aksen, med endelig startverdi. Graf 5: rett, stigende linje. Graf 6: raskt stigende kurve som flater ut gradvis. Graf 7: to rette stykker, først brattere, så slakere. Graf 8: sterkt fallende kurve som starter svært høyt og flater ut mot $x$-aksen. Graf 9: tre rette, stigende stykker med ulik helning.</em>` +
+      r`En elev har beskrevet fire situasjoner og tegnet ni grafer.<br><strong>Situasjon A:</strong> En dyrebestand avtar med en fast prosent hvert år.<br><strong>Situasjon B:</strong> Noen personer vil leie en badstue til en fast pris og fordele kostnadene likt. Jo flere som blir med, jo lavere blir prisen per person.<br><strong>Situasjon C:</strong> En fuglebestand økte tilnærmet eksponentielt i en periode. Deretter økte bestanden lineært, før den stabiliserte seg på et nivå.<br><strong>Situasjon D:</strong> Tabellen viser priser for å sende pakker i Norge.<table><tr><th>Vekt</th><th>Pris</th></tr><tr><td>0−5 kg</td><td>73 kroner</td></tr><tr><td>5−10 kg</td><td>135 kroner</td></tr><tr><td>10−25 kg</td><td>240 kroner</td></tr></table>Hvilken graf beskriver situasjon A? B? C? D? Husk å begrunne svarene dine.<br><em>Figuren viser: ni grafer, nummerert 1 til 9. Graf 1: rett, fallende linje. Graf 2: S-formet kurve som starter flatt, blir bratt og flater ut. Graf 3: tre vannrette trinn som stiger. Graf 4: fallende kurve som flater ut mot $x$-aksen, med endelig startverdi. Graf 5: rett, stigende linje. Graf 6: raskt stigende kurve som flater ut gradvis. Graf 7: to rette stykker, først brattere, så slakere. Graf 8: sterkt fallende kurve som starter svært høyt og flater ut mot $x$-aksen. Graf 9: tre rette, stigende stykker med ulik helning.</em>` +
         figur("p1-h25-d2-2", "2", "Ni små diagrammer (3 × 3) med nummer 1 til 9 og aksene x og y, kun kurver uten tall på aksene. 1: rett fallende linje. 2: S-kurve (flat, bratt, flat). 3: trappetrinn med tre vannrette stykker, hvert høyere enn det forrige. 4: eksponentielt avtakende kurve fra endelig startverdi mot x-aksen. 5: rett stigende linje. 6: raskt stigende kurve som flater gradvis ut (kvadratrot-lignende). 7: to rette stykker som stiger, først bratt, så slakere. 8: sterkt avtakende kurve fra svært høy verdi nær y-aksen mot x-aksen (hyperbel). 9: stigende kurve med tre rette stykker, slakt, bratt, slakt."),
       r`A: avtar med en fast prosent betyr eksponentiell nedgang. B: fast sum delt på antall personer er en omvendt proporsjonal sammenheng. C: følg bestanden gjennom de tre periodene. D: prisen er den samme innenfor hver vektgruppe.`,
       [
@@ -252,7 +252,7 @@ export const EKSAMEN_1P_H2025: Exam = officialExam({
       ],
       ["måleenheter", "omkrets", "prosent"]),
     multi("1p-h25-d2-7", "7", 6,
-      r`Selma og Sofie vil lage et blomsterbed med gjerde rundt. Blomsterbedet skal ha form som et rektangel med en halvsirkel i enden.<br><em>Fra skissen i oppgaveheftet: rektangelet har sidene $x$ (kort side) og $y$ (lang side). Halvsirkelen sitter på den ene korte siden og har diameter $x$.</em><br>Formler for omkrets og areal av en sirkel: $O = 2\cdot\pi\cdot r$ og $A = \pi\cdot r^{2}$.` +
+      r`Selma og Sofie vil lage et blomsterbed med gjerde rundt. Blomsterbedet skal ha form som et rektangel med en halvsirkel i enden.<br><em>Skissen viser: rektangelet har sidene $x$ (kort side) og $y$ (lang side). Halvsirkelen sitter på den ene korte siden og har diameter $x$.</em><br>Formler for omkrets og areal av en sirkel: $O = 2\cdot\pi\cdot r$ og $A = \pi\cdot r^{2}$.` +
         figur("p1-h25-d2-7", "7", "Skisse av blomsterbedet: et rektangel liggende, venstre kant rett, øvre og nedre kant like lange, og en halvsirkel i høyre ende. Mål: x på den korte siden (lik halvsirkelens diameter), y på den lange siden. Merk x og y."),
       [
         part("1p-h25-d2-7", "a", r`Forklar at omkretsen $O$ av blomsterbedet kan skrives som $O = 2\cdot y + x + \dfrac{\pi\cdot x}{2}$.`,

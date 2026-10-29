@@ -71,7 +71,7 @@ export const EKSAMEN_1P_V2025: Exam = officialExam({
       ],
       ["standardform", "potenser"]),
     multi("1p-v25-d1-6", "6", 2,
-      U + r`Ovenfor ser du tre figurer. Figurene er satt sammen av små grønne kvadrater. Tenk deg at du skal fortsette å lage figurer etter samme mønster.<br><em>Fra figurene i oppgaveheftet: Figur 1 har $4$ kvadrater, figur 2 har $9$ og figur 3 har $16$. Hver figur har en kvadratisk blokk øverst ($1\times 1$, $2\times 2$ og $3\times 3$) og en rad med ett kvadrat til venstre, en søyle med like mange kvadrater som blokkens side til høyre, og en skrå rad med like mange kvadrater under blokken.</em>` +
+      U + r`Ovenfor ser du tre figurer. Figurene er satt sammen av små grønne kvadrater. Tenk deg at du skal fortsette å lage figurer etter samme mønster.<br><em>Figurene viser: Figur 1 har $4$ kvadrater, figur 2 har $9$ og figur 3 har $16$. Hver figur har en kvadratisk blokk øverst ($1\times 1$, $2\times 2$ og $3\times 3$) og en rad med ett kvadrat til venstre, en søyle med like mange kvadrater som blokkens side til høyre, og en skrå rad med like mange kvadrater under blokken.</em>` +
         figur("p1-v25-d1-6", "6", "Tre figurer av små grønne kvadrater med lysegrønn kant, merket Figur 1, Figur 2, Figur 3. Figur 1: fire kvadrater i en ring rundt et tomt felt (over, til venstre, til høyre, under). Figur 2: en 2×2-blokk øverst, ett kvadrat til venstre, to på høyre side nedover, og to skrått nedover mot venstre (under blokken). Figur 3: en 3×3-blokk øverst, ett kvadrat til venstre, tre på høyre side nedover og tre skrått nedover under blokken."),
       [
         part("1p-v25-d1-6", "a", r`Hvor mange små grønne kvadrater vil det være i figur 5?`,
@@ -117,7 +117,7 @@ export const EKSAMEN_1P_V2025: Exam = officialExam({
       ],
       ["programmering", "vekstfaktor", "sparing"]),
     multi("1p-v25-d1-8", "8", 4,
-      U + r`Nora bestemmer seg for å kjøpe en bøtte og fylle den med godteri. Hun ser at det er en lineær sammenheng mellom antall hektogram godteri hun fyller i bøtta, og prisen hun må betale for bøtta med godteriet.<br>Nedenfor ser du en modell som illustrerer dette.<br><em>Fra figuren i oppgaveheftet: en rett, stigende linje. Førsteaksen $x$ er antall hektogram godteri. Andreaksen er pris for bøtta med godteri (kroner). Linjen går gjennom punktene $(5,\ 90)$ og $(20,\ 270)$ og skjærer andreaksen over origo.</em><br>Modellen kan uttrykkes på formen $G(x) = ax + b$.` +
+      U + r`Nora bestemmer seg for å kjøpe en bøtte og fylle den med godteri. Hun ser at det er en lineær sammenheng mellom antall hektogram godteri hun fyller i bøtta, og prisen hun må betale for bøtta med godteriet.<br>Nedenfor ser du en modell som illustrerer dette.<br><em>Figuren viser: en rett, stigende linje. Førsteaksen $x$ er antall hektogram godteri. Andreaksen er pris for bøtta med godteri (kroner). Linjen går gjennom punktene $(5,\ 90)$ og $(20,\ 270)$ og skjærer andreaksen over origo.</em><br>Modellen kan uttrykkes på formen $G(x) = ax + b$.` +
         figur("p1-v25-d1-8", "8", "Koordinatsystem uten tall på aksene. x-aksen: «Antall hektogram godteri». y-aksen: «Pris for bøtta med godteri (kroner)». En rett, stigende linje som starter over origo på y-aksen. To markerte punkter: (5, 90) og (20, 270) med koordinatene skrevet ved siden av. Ingen gridlinjer."),
       [
         part("1p-v25-d1-8", "a", r`Bestem $a$ og $b$.`,

@@ -46,7 +46,7 @@ export function multi(
 
 /** Skjult figurbestilling + synlig plassholder til DesignBOT/DesignBOT2 har levert figuren. */
 export function figur(id: string, nr: string, beskrivelse: string): string {
-  return `<!-- figur: ${id} — ${beskrivelse} --><em>Figur til oppgave ${nr} kommer.</em><br><br>`;
+  return `<!-- figur: ${id} — ${beskrivelse} --><br><em>Figur til oppgave ${nr} kommer.</em><br><br>`;
 }
 
 export function udirSource(kode: string, eksamensdato: string, filnavn: string): ExamSource {

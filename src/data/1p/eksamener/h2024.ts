@@ -96,7 +96,7 @@ export const EKSAMEN_1P_H2024: Exam = officialExam({
       ],
       ["programmering", "vekstfaktor", "lineær vekst"]),
     multi("1p-h24-d1-5", "5", 3,
-      U + r`Grader celsius (°C) og grader fahrenheit (°F) er to ulike måleenheter for temperatur. Det er en lineær sammenheng mellom de to måleenhetene. Punktene i koordinatsystemet ovenfor viser temperaturer målt i grader celsius og i grader fahrenheit.<br><em>Fra figuren i oppgaveheftet: tre punkter. Førsteaksen $x$ er grader celsius, andreaksen $y$ er grader fahrenheit. Punktene er $(−40,\ −40)$, $(0,\ 32)$ og $(100,\ 212)$.</em>` +
+      U + r`Grader celsius (°C) og grader fahrenheit (°F) er to ulike måleenheter for temperatur. Det er en lineær sammenheng mellom de to måleenhetene. Punktene i koordinatsystemet ovenfor viser temperaturer målt i grader celsius og i grader fahrenheit.<br><em>Figuren viser: tre punkter. Førsteaksen $x$ er grader celsius, andreaksen $y$ er grader fahrenheit. Punktene er $(−40,\ −40)$, $(0,\ 32)$ og $(100,\ 212)$.</em>` +
         figur("p1-h24-d1-5", "5", "Koordinatsystem med x-akse «Grader celsius (°C)» fra −80 til ca. 170 (merker for hver 20) og y-akse «Grader fahrenheit (°F)» fra ca. −130 til 260 (merker for hver 50). Stiplede hjelpelinjer. Tre markerte punkter med koordinater: (−40, −40), (0, 32), (100, 212). Ingen linje tegnet gjennom punktene."),
       [
         part("1p-h24-d1-5", "a", r`Bestem en formel som kan brukes til å regne om temperaturer fra grader celsius til grader fahrenheit.`,
@@ -254,7 +254,7 @@ export const EKSAMEN_1P_H2024: Exam = officialExam({
       ],
       ["prosent", "prosentpoeng", "tabeller"]),
     multi("1p-h24-d2-8", "8", 7,
-      r`Sofie arbeider ved en bedrift og skal lage kasser av metallplater. Metallplatene har form som rektangler og er $1200$ mm lange og $800$ mm brede.<br>For å lage kassene skal hun skjære bort et kvadrat i hvert av hjørnene og brette opp sidekantene.<br><em>Fra figuren i oppgaveheftet: tre skisser fra venstre mot høyre. Metallplate med form som et rektangel. Skjær bort et kvadrat i hvert hjørne. Brett langs de stiplede linjene for å lage en kasse.</em><br>Kassene skal fylles med sand.` +
+      r`Sofie arbeider ved en bedrift og skal lage kasser av metallplater. Metallplatene har form som rektangler og er $1200$ mm lange og $800$ mm brede.<br>For å lage kassene skal hun skjære bort et kvadrat i hvert av hjørnene og brette opp sidekantene.<br><em>Figuren viser: tre skisser fra venstre mot høyre. Metallplate med form som et rektangel. Skjær bort et kvadrat i hvert hjørne. Brett langs de stiplede linjene for å lage en kasse.</em><br>Kassene skal fylles med sand.` +
         figur("p1-h24-d2-8", "8", "Tre skisser ved siden av hverandre, grå fyll og tynn svart kant. 1: et liggende rektangel, bildetekst «Metallplate med form som et rektangel». 2: samme rektangel med et lite kvadrat klippet bort i hvert hjørne (kvadratene vist med stiplet kant), bildetekst «Skjær bort et kvadrat i hvert hjørne». 3: det kryssformede stykket med stiplede brettelinjer langs kvadratenes sider inne i figuren, bildetekst «Brett langs de stiplede linjene for å lage en kasse». Gjerne med sidelengden x merket på ett kvadrat."),
       [
         part("1p-h24-d2-8", "a", r`Vis at det vil være plass til $60$ L sand i en kasse dersom Sofie skjærer bort kvadrater med sidelengde $100$ mm i hvert hjørne.`,
