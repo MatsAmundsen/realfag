@@ -253,7 +253,7 @@ function h21_d1_5(): ExamFigure {
 
 function h21_d2_3c(): ExamFigure {
   const F = (x: number) => 50 * x + 500 - 500 * Math.pow(2, x / 10);
-  const P = axes({ box: [60, 26, 270, 270], xmin: 0, xmax: 13.8, ymin: -92, ymax: 52, xticks: range(0, 13, 1), xlabels: range(0, 13, 1).filter((v) => v !== 10), yticks: range(-90, 50, 10), ylabels: range(-80, 40, 20), xName: "x (år)", yName: "F(x)", xNameDy: -10, fs: 13 });
+  const P = axes({ box: [60, 26, 270, 270], xmin: 0, xmax: 13.8, ymin: -92, ymax: 52, xticks: range(0, 13, 1), xlabels: range(0, 13, 1).filter((v) => v !== 10 && v !== 12), yticks: range(-90, 50, 10), ylabels: range(-80, 40, 20), xName: "x (år)", yName: "F(x)", xNameDy: -10, fs: 13 });
   let s = P.svg + curve(P, F, 0, 13, C.green);
   s += dot(P, 0, 0, "(0, 0)", -8, -8, "end") + dot(P, 5.29, 43.04, "(5,29; 43,04)", 10, -6) + dot(P, 10, 0, "(10, 0)", 0, -10, "middle");
   s += dot(P, 13, F(13), "", 0, 0);
