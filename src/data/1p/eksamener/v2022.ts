@@ -60,12 +60,11 @@ export const EKSAMEN_1P_V2022: Exam = officialExam({
             r`Pris og vekt for epler som koster $20$ kr per kilo er proporsjonale: Dobler vi vekten, dobles prisen. Forholdet pris $\div$ vekt er alltid $20$ kr/kg.`,
             r`<strong>Svar:</strong> Eksempel: Prisen $y$ kroner for $x$ kilo epler til $20$ kr per kilo, $y = 20x$. (Andre gode eksempler er vei og tid ved konstant fart, eller omkrets og side i et kvadrat.)`,
           ]),
-        part("1p-v22-d1-3", "b", r`Lag en grafisk framstilling som viser sammenhengen mellom de to størrelsene.` +
-          figur("p1-v22-d1-3b", "3b", "Eksempelsvar: Koordinatsystem med «Vekt (kg)» på førsteaksen (0 til 5) og «Pris (kr)» på andreaksen (0 til 100). Rett linje fra origo gjennom punktene (1, 20), (2, 40), (3, 60), (4, 80) og (5, 100)."),
+        part("1p-v22-d1-3", "b", r`Lag en grafisk framstilling som viser sammenhengen mellom de to størrelsene.`,
           r`Lag en verditabell, tegn punktene i et koordinatsystem og trekk en rett linje. Hvor må linjen starte?`,
           [
             r`Verditabell: <table><tr><th>Vekt (kg)</th><td>$0$</td><td>$1$</td><td>$2$</td><td>$3$</td><td>$4$</td><td>$5$</td></tr><tr><th>Pris (kr)</th><td>$0$</td><td>$20$</td><td>$40$</td><td>$60$</td><td>$80$</td><td>$100$</td></tr></table>`,
-            r`Vi setter vekt på førsteaksen og pris på andreaksen, merker av punktene og trekker en rett linje gjennom dem. Linjen går gjennom origo, fordi $0$ kg koster $0$ kr, og det er kjennetegnet på proporsjonale størrelser.`,
+            r`Vi setter vekt på førsteaksen og pris på andreaksen, merker av punktene og trekker en rett linje gjennom dem. Linjen går gjennom origo, fordi $0$ kg koster $0$ kr, og det er kjennetegnet på proporsjonale størrelser.` + figur("p1-v22-d1-3b", "3b", "Eksempelsvar: Koordinatsystem med «Vekt (kg)» på førsteaksen (0 til 5) og «Pris (kr)» på andreaksen (0 til 100). Rett linje fra origo gjennom punktene (1, 20), (2, 40), (3, 60), (4, 80) og (5, 100)."),
             r`<strong>Svar:</strong> Grafen er en rett linje gjennom origo med stigningstall $20$ (kroner per kilo).`,
           ]),
       ],

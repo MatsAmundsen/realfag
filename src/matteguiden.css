@@ -759,6 +759,7 @@ code, pre {
 
 /* 1P-figurer (src/data/1p/figurer.ts): kurvefarger med minst 4,5:1 mot kortbakgrunnen i begge temaer */
 .task-figure-1p {
+    --fig1p-purple: #c084fc;
     --fig1p-blue:  #818cf8;
     --fig1p-green: #34d399;
     --fig1p-red:   #f87171;
@@ -770,6 +771,7 @@ code, pre {
     .task-figure-1p svg text { font-size: 17.5px; }
 }
 [data-theme="light"] .task-figure-1p {
+    --fig1p-purple: #7e22ce;
     --fig1p-blue:  #4338ca;
     --fig1p-green: #047857;
     --fig1p-red:   #b91c1c;
