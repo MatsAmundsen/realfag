@@ -15,7 +15,7 @@ import { beregnPoeng, poengPerEnhet, type Vurdering } from "@/lib/prove-poeng";
 import { PrereqMini } from "@/components/PrereqMini";
 import { PREREQS } from "@/data/mindmap";
 import { formatKlokke, useProveUtkast } from "@/lib/prove-utkast";
-import { useFokusEtterVisning } from "@/lib/fokus";
+import { useDialogFelle, useFokusEtterVisning } from "@/lib/fokus";
 import { countSubchapter, isOvingDelkap } from "@/lib/progress";
 import { fireCelebration, useProgressStore } from "@/lib/progress-store";
 import { seoHead } from "@/lib/seo";
@@ -64,6 +64,18 @@ function SubchapterPage() {
   const leverDialog = useRef<HTMLDivElement>(null);
   const pånyttKnapp = useRef<HTMLButtonElement>(null);
   const pånyttDialog = useRef<HTMLDivElement>(null);
+  const hydrated = useProgressStore((s) => s.hydrated);
+
+  function avbrytLever() {
+    setBekreft(null);
+    fokus(() => leverKnapp.current);
+  }
+  function avbrytPånytt() {
+    setBekreft(null);
+    fokus(() => pånyttKnapp.current);
+  }
+  useDialogFelle(leverDialog, bekreft === "lever", avbrytLever);
+  useDialogFelle(pånyttDialog, bekreft === "pånytt", avbrytPånytt);
   const sammendrag = useRef<HTMLDivElement>(null);
   const førsteOppgave = useRef<HTMLDivElement>(null);
   const hasPrereq = Boolean(PREREQS[subId]);
@@ -84,6 +96,8 @@ function SubchapterPage() {
   }, [kapId, subId]);
 
   const oving = dk ? isOvingDelkap(dk) : false;
+  /** Lagret innlevering leses først etter hydrering: skjul svarflaten til da, så siden ikke hopper fra «ikke levert» til «levert». */
+  const venter = oving && !hydrated;
   const topicVideos = !oving ? videosForSub(subId) : [];
   const sub = kap && dk ? countSubchapter(kap, dk, p) : { done: 0, total: 0, pct: 0 };
 
@@ -241,7 +255,7 @@ function SubchapterPage() {
             </label>
             {timerOn && <span role="timer" className="timer-readout">Brukt tid: {formatKlokke(elapsed)}</span>}
             {!submitted && (
-              <span className="prove-teller" role="status">
+              <span className="prove-teller" role="status" style={venter ? { visibility: "hidden" } : undefined}>
                 {antallFerdig} av {proveOppgaver.length} krysset av som ferdige.
               </span>
             )}
@@ -257,135 +271,131 @@ function SubchapterPage() {
           </details>
         )}
 
-        {isSummary ? <SummaryView items={dk.oppgaver} kapId={kapId} subId={subId} /> : dk.oppgaver.map((o, i) => (
-          <div key={o.id} className="prove-oppgave" ref={i === 0 ? førsteOppgave : undefined}>
-            <TaskCard
-              oppgave={o}
-              kapId={kapId}
-              subId={subId}
-              index={i}
-              total={dk.oppgaver.length}
-              mode={effectiveMode}
-              locked={locked}
-              reveal={submitted}
-              hideHint={effectiveMode === "prove"}
-              hideTierBadge={oving}
-            />
-            {oving && mode === "prove" && !erIntro(o) && !submitted && (
-              <ProveSvar
-                id={o.id}
-                value={utkast.answers[o.id] || ""}
-                done={Boolean(utkast.ferdig[o.id])}
-                locked={false}
-                onChange={(v) => utkast.setAnswer(o.id, v)}
-                onDone={(v) => utkast.setFerdig(o.id, v)}
-                sluttsvar={
-                  SLUTTSVAR[o.id]
-                    ? {
-                        fasit: SLUTTSVAR[o.id],
-                        value: utkast.answers[`${o.id}::sluttsvar`] || "",
-                        onChange: (v) => utkast.setAnswer(`${o.id}::sluttsvar`, v),
-                      }
-                    : undefined
-                }
+        <div aria-busy={venter || undefined} style={venter ? { display: "contents", visibility: "hidden" } : { display: "contents" }}>
+          {isSummary ? <SummaryView items={dk.oppgaver} kapId={kapId} subId={subId} /> : dk.oppgaver.map((o, i) => (
+            <div key={o.id} className="prove-oppgave" ref={i === 0 ? førsteOppgave : undefined}>
+              <TaskCard
+                oppgave={o}
+                kapId={kapId}
+                subId={subId}
+                index={i}
+                total={dk.oppgaver.length}
+                mode={effectiveMode}
+                locked={locked}
+                reveal={submitted}
+                hideHint={effectiveMode === "prove"}
+                hideTierBadge={oving}
               />
-            )}
-            {oving && mode === "prove" && !erIntro(o) && submitted && prev?.notes[o.id] && (
-              <p className="prove-svar-levert">
-                <strong>Ditt svar:</strong> {prev.notes[o.id]}
-              </p>
-            )}
-            {oving && !erIntro(o) && submitted && poengForsok?.deler[o.id] && (
-              <ProveResultat
-                id={o.id}
-                gitt={prev?.sluttsvar?.[o.id] || ""}
-                fasit={SLUTTSVAR[o.id]}
-                res={poengForsok.deler[o.id]}
-                vurdering={prev?.vurdering?.[o.id]}
-                onVurder={(v) => vurder(o.id, v)}
-              />
-            )}
-          </div>
-        ))}
+              {oving && mode === "prove" && !erIntro(o) && !submitted && (
+                <ProveSvar
+                  id={o.id}
+                  value={utkast.answers[o.id] || ""}
+                  done={Boolean(utkast.ferdig[o.id])}
+                  locked={false}
+                  onChange={(v) => utkast.setAnswer(o.id, v)}
+                  onDone={(v) => utkast.setFerdig(o.id, v)}
+                  sluttsvar={
+                    SLUTTSVAR[o.id]
+                      ? {
+                          fasit: SLUTTSVAR[o.id],
+                          value: utkast.answers[`${o.id}::sluttsvar`] || "",
+                          onChange: (v) => utkast.setAnswer(`${o.id}::sluttsvar`, v),
+                        }
+                      : undefined
+                  }
+                />
+              )}
+              {oving && mode === "prove" && !erIntro(o) && submitted && prev?.notes[o.id] && (
+                <p className="prove-svar-levert">
+                  <strong>Ditt svar:</strong> {prev.notes[o.id]}
+                </p>
+              )}
+              {oving && !erIntro(o) && submitted && poengForsok?.deler[o.id] && (
+                <ProveResultat
+                  id={o.id}
+                  gitt={prev?.sluttsvar?.[o.id] || ""}
+                  fasit={SLUTTSVAR[o.id]}
+                  res={poengForsok.deler[o.id]}
+                  vurdering={prev?.vurdering?.[o.id]}
+                  onVurder={(v) => vurder(o.id, v)}
+                />
+              )}
+            </div>
+          ))}
 
-        {oving && !submitted && mode === "prove" && bekreft !== "lever" && (
-          <button
-            type="button"
-            className="btn-primary prove-lever"
-            ref={leverKnapp}
-            onClick={() => {
-              setBekreft("lever");
-              fokus(() => leverDialog.current);
-            }}
-          >
-            <Flag size={16} /> Lever / Ferdig
-          </button>
-        )}
-        {oving && !submitted && mode === "prove" && bekreft === "lever" && (
-          <div className="exam-summary" role="alertdialog" aria-labelledby="bekreft-ovep-lever" ref={leverDialog} tabIndex={-1}>
-            <p id="bekreft-ovep-lever">
-              <strong>Er du ferdig med øveprøven?</strong> {antallFerdig} av {proveOppgaver.length} oppgaver er krysset av som ferdige. Når du leverer, åpnes løsningsforslaget.
-            </p>
-            <button type="button" className="btn-primary" onClick={lever}>
-              <Flag size={16} /> Ja, lever
-            </button>{" "}
+          {oving && !submitted && mode === "prove" && bekreft !== "lever" && (
             <button
               type="button"
-              className="hint-btn"
+              className="btn-primary prove-lever"
+              ref={leverKnapp}
               onClick={() => {
-                setBekreft(null);
-                fokus(() => leverKnapp.current);
+                setBekreft("lever");
+                fokus(() => leverDialog.current);
               }}
             >
-              Fortsett å jobbe
+              <Flag size={16} /> Lever / Ferdig
             </button>
-          </div>
-        )}
-        {oving && submitted && (
-          <div className="exam-summary" ref={sammendrag} tabIndex={-1} data-fokus-etter-feiring="">
-            {poengForsok && <PoengOppsummering res={poengForsok} />}
-            <p>
-              Øveprøven er levert. Løsningsforslaget er nå åpent.{" "}
-              {poengForsok
-                ? "Vurder deg selv under hver oppgave, så oppdateres poengene. Merk også oppgavene du fikk til."
-                : "Merk oppgavene du fikk til."}
-            </p>
-            {bekreft !== "pånytt" ? (
+          )}
+          {oving && !submitted && mode === "prove" && bekreft === "lever" && (
+            <div className="exam-summary" role="alertdialog" aria-modal="true" aria-labelledby="bekreft-ovep-lever" ref={leverDialog} tabIndex={-1}>
+              <p id="bekreft-ovep-lever">
+                <strong>Er du ferdig med øveprøven?</strong> {antallFerdig} av {proveOppgaver.length} oppgaver er krysset av som ferdige. Når du leverer, åpnes løsningsforslaget.
+              </p>
+              <button type="button" className="btn-primary" onClick={lever}>
+                <Flag size={16} /> Ja, lever
+              </button>{" "}
               <button
                 type="button"
                 className="hint-btn"
-                ref={pånyttKnapp}
-                onClick={() => {
-                  setBekreft("pånytt");
-                  fokus(() => pånyttDialog.current);
-                }}
+                onClick={avbrytLever}
               >
-                Ta øveprøven på nytt
+                Fortsett å jobbe
               </button>
-            ) : (
-              <div role="alertdialog" aria-labelledby="bekreft-ovep-pånytt" ref={pånyttDialog} tabIndex={-1}>
-                <p id="bekreft-ovep-pånytt">
-                  <strong>Ta øveprøven på nytt?</strong> Det leverte forsøket, svarene dine og poengene i prøven slettes.
-                </p>
-                <button type="button" className="btn-primary" onClick={taPåNytt}>
-                  Ja, ta på nytt
-                </button>{" "}
+            </div>
+          )}
+          {oving && submitted && (
+            <div className="exam-summary" ref={sammendrag} tabIndex={-1} data-fokus-etter-feiring="">
+              {poengForsok && <PoengOppsummering res={poengForsok} />}
+              <p>
+                Øveprøven er levert. Løsningsforslaget er nå åpent.{" "}
+                {poengForsok
+                  ? "Vurder deg selv under hver oppgave, så oppdateres poengene. Merk også oppgavene du fikk til."
+                  : "Merk oppgavene du fikk til."}
+              </p>
+              {bekreft !== "pånytt" ? (
                 <button
                   type="button"
                   className="hint-btn"
+                  ref={pånyttKnapp}
                   onClick={() => {
-                    setBekreft(null);
-                    fokus(() => pånyttKnapp.current);
+                    setBekreft("pånytt");
+                    fokus(() => pånyttDialog.current);
                   }}
                 >
-                  Avbryt
+                  Ta øveprøven på nytt
                 </button>
-              </div>
-            )}
-          </div>
-        )}
+              ) : (
+                <div role="alertdialog" aria-modal="true" aria-labelledby="bekreft-ovep-pånytt" ref={pånyttDialog} tabIndex={-1}>
+                  <p id="bekreft-ovep-pånytt">
+                    <strong>Ta øveprøven på nytt?</strong> Det leverte forsøket, svarene dine og poengene i prøven slettes.
+                  </p>
+                  <button type="button" className="btn-primary" onClick={taPåNytt}>
+                    Ja, ta på nytt
+                  </button>{" "}
+                  <button
+                    type="button"
+                    className="hint-btn"
+                    onClick={avbrytPånytt}
+                  >
+                    Avbryt
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
 
-        <div className="sub-nav">
+        <div className="sub-nav" style={venter ? { visibility: "hidden" } : undefined}>
           {nav.prev ? (
             <Link to="/oppgaver/$kapId/$subId" params={{ kapId: nav.prev.kapId, subId: nav.prev.subId }} className="hint-btn">
               {nav.prev.label}
@@ -402,7 +412,7 @@ function SubchapterPage() {
       </div>
 
       {dk.quiz && dk.quiz.length > 0 && (
-        <button type="button" className="quiz-fab" onClick={() => setQuizOn(true)}>
+        <button type="button" className="quiz-fab" style={venter ? { visibility: "hidden" } : undefined} onClick={() => setQuizOn(true)}>
           <CircleHelp size={18} /> Start quiz
           {quizBest && <span className="quiz-fab-badge">{quizBest.best}/{quizBest.total}</span>}
         </button>

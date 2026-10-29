@@ -8,7 +8,7 @@ import { PoengOppsummering, ProveResultat, ProveSvar } from "./ProveFelt";
 import { SLUTTSVAR } from "@/data/eksamen-svar";
 import { beregnPoeng, poengPerEnhet, type PoengEnhet, type Resultat, type Vurdering } from "@/lib/prove-poeng";
 import { formatKlokke, useProveUtkast } from "@/lib/prove-utkast";
-import { useFokusEtterVisning } from "@/lib/fokus";
+import { useDialogFelle, useFokusEtterVisning } from "@/lib/fokus";
 import { fireCelebration, useProgressStore } from "@/lib/progress-store";
 
 /** Alle enhetene eleven krysser av som ferdige: oppgaven selv, eller hver deloppgave når den har deloppgaver. */
@@ -265,10 +265,11 @@ export function ExamRunner({ exam }: { exam: Exam }) {
   const [part, setPart] = useState<"1" | "2">("1");
   const [timerOn, setTimerOn] = useState(false);
   const [elapsed, setElapsed] = useState(0);
-  const [submitted, setSubmitted] = useState(Boolean(prev));
   const [scores, setScores] = useState<Record<string, "riktig" | "delvis" | "feil">>(prev?.selfScore || {});
   const [bekreft, setBekreft] = useState<null | "lever" | "pånytt">(null);
   const hydrated = useProgressStore((s) => s.hydrated);
+  /** Lagret fremgang lastes først etter første visning. Før det vises svarflaten skjult, så siden ikke hopper fra «ikke levert» til «levert». */
+  const submitted = hydrated && Boolean(prev);
   const utkast = useProveUtkast(`eksamen/${exam.id}`);
   const fokus = useFokusEtterVisning();
   const leverKnapp = useRef<HTMLButtonElement>(null);
@@ -276,13 +277,23 @@ export function ExamRunner({ exam }: { exam: Exam }) {
   const pånyttKnapp = useRef<HTMLButtonElement>(null);
   const pånyttDialog = useRef<HTMLDivElement>(null);
 
-  // Lagret fremgang lastes først etter første visning: hent inn et levert forsøk når den er klar.
-  useEffect(() => {
-    if (!hydrated || !prev) return;
-    setSubmitted(true);
-    setScores(prev.selfScore || {});
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hydrated]);
+  function avbrytLever() {
+    setBekreft(null);
+    fokus(() => leverKnapp.current);
+  }
+  function avbrytPånytt() {
+    setBekreft(null);
+    fokus(() => pånyttKnapp.current);
+  }
+  useDialogFelle(leverDialog, bekreft === "lever", avbrytLever);
+  useDialogFelle(pånyttDialog, bekreft === "pånytt", avbrytPånytt);
+
+  // Når lagret fremgang er lest, hent inn selvvurderingen fra et levert forsøk (justeres under rendring, før første maling).
+  const [synket, setSynket] = useState(hydrated);
+  if (hydrated && !synket) {
+    setSynket(true);
+    if (prev) setScores(prev.selfScore || {});
+  }
 
   const tasks = part === "1" ? exam.del1 : exam.del2;
 
@@ -385,7 +396,6 @@ export function ExamRunner({ exam }: { exam: Exam }) {
     });
     utkast.clear();
     setBekreft(null);
-    setSubmitted(true);
     // Fokus flyttes av feiringen (CelebrationHost). Når den lukkes, går fokus til oppsummeringen under.
     fireCelebration({
       kind: "exam",
@@ -407,7 +417,6 @@ export function ExamRunner({ exam }: { exam: Exam }) {
     setTimerOn(false);
     setPart("1");
     setBekreft(null);
-    setSubmitted(false);
     // Knappen forsvinner: start på nytt øverst, ved første oppgave.
     fokus(() => runnerRef.current?.querySelector<HTMLElement>(".task-title"));
   }
@@ -456,103 +465,99 @@ export function ExamRunner({ exam }: { exam: Exam }) {
           ? "Prøvemodus: skriv svaret ditt her eller på papir, og kryss av «Ferdig» for hver oppgave. Løsningen er låst til du leverer."
           : "Øvemodus: hint og steg-løsning er tilgjengelig med en gang. Bruk denne når du øver tema for tema."}
       </p>
-      {mode === "prove" && !submitted && (
-        <p className="prove-teller" role="status">
-          {antallFerdig} av {enhetsId.length} oppgaver og deloppgaver krysset av som ferdige.
-        </p>
-      )}
-      {tasks.map((task) => (
-        <TaskBlock
-          key={task.id}
-          task={task}
-          mode={mode}
-          submitted={submitted}
-          score={scores[task.id]}
-          onScore={(v) => setScores((s) => ({ ...s, [task.id]: v }))}
-          svar={svar}
-        />
-      ))}
-      <div className="exam-submit-row">
-        {!submitted && bekreft !== "lever" && (
-          <button
-            type="button"
-            className="btn-primary"
-            ref={leverKnapp}
-            onClick={() => {
-              setBekreft("lever");
-              fokus(() => leverDialog.current);
-            }}
-          >
-            <Flag size={16} /> {mode === "prove" ? "Lever / Ferdig" : "Lever settet"}
-          </button>
+      <div aria-busy={!hydrated || undefined} style={hydrated ? { display: "contents" } : { display: "contents", visibility: "hidden" }}>
+        {mode === "prove" && !submitted && (
+          <p className="prove-teller" role="status">
+            {antallFerdig} av {enhetsId.length} oppgaver og deloppgaver krysset av som ferdige.
+          </p>
         )}
-        {!submitted && bekreft === "lever" && (
-          <div className="exam-summary" role="alertdialog" aria-labelledby="bekreft-lever-tittel" ref={leverDialog} tabIndex={-1}>
-            <p id="bekreft-lever-tittel">
-              <strong>Har du gjort ferdig begge delene?</strong> {antallFerdig} av {enhetsId.length} oppgaver og deloppgaver er krysset av som ferdige.
-              {mode === "prove" ? " Når du leverer, åpnes løsningsforslaget." : ""}
-            </p>
-            <button type="button" className="btn-primary" onClick={submit}>
-              <Flag size={16} /> Ja, lever
-            </button>{" "}
+        {tasks.map((task) => (
+          <TaskBlock
+            key={task.id}
+            task={task}
+            mode={mode}
+            submitted={submitted}
+            score={scores[task.id]}
+            onScore={(v) => setScores((s) => ({ ...s, [task.id]: v }))}
+            svar={svar}
+          />
+        ))}
+        <div className="exam-submit-row">
+          {!submitted && bekreft !== "lever" && (
             <button
               type="button"
-              className="hint-btn"
+              className="btn-primary"
+              ref={leverKnapp}
               onClick={() => {
-                setBekreft(null);
-                fokus(() => leverKnapp.current);
+                setBekreft("lever");
+                fokus(() => leverDialog.current);
               }}
             >
-              Fortsett å jobbe
+              <Flag size={16} /> {mode === "prove" ? "Lever / Ferdig" : "Lever settet"}
             </button>
-          </div>
-        )}
-        {submitted && (
-          <div className="exam-summary" tabIndex={-1} data-fokus-etter-feiring="">
-            {poengForsok ? (
-              <>
-                <PoengOppsummering res={poengForsok} />
-                <p>Vurder deg selv under hver oppgave. Poengene og prosenten oppdateres underveis.</p>
-              </>
-            ) : (
-              <p>
-                Selvvurdering: {summary.riktig} riktige · {summary.delvis} delvis · {summary.feil} feil av {summary.total} oppgaver.
+          )}
+          {!submitted && bekreft === "lever" && (
+            <div className="exam-summary" role="alertdialog" aria-modal="true" aria-labelledby="bekreft-lever-tittel" ref={leverDialog} tabIndex={-1}>
+              <p id="bekreft-lever-tittel">
+                <strong>Har du gjort ferdig begge delene?</strong> {antallFerdig} av {enhetsId.length} oppgaver og deloppgaver er krysset av som ferdige.
+                {mode === "prove" ? " Når du leverer, åpnes løsningsforslaget." : ""}
               </p>
-            )}
-            {bekreft !== "pånytt" ? (
+              <button type="button" className="btn-primary" onClick={submit}>
+                <Flag size={16} /> Ja, lever
+              </button>{" "}
               <button
                 type="button"
                 className="hint-btn"
-                ref={pånyttKnapp}
-                onClick={() => {
-                  setBekreft("pånytt");
-                  fokus(() => pånyttDialog.current);
-                }}
+                onClick={avbrytLever}
               >
-                Ta settet på nytt
+                Fortsett å jobbe
               </button>
-            ) : (
-              <div role="alertdialog" aria-labelledby="bekreft-pånytt-tittel" ref={pånyttDialog} tabIndex={-1}>
-                <p id="bekreft-pånytt-tittel">
-                  <strong>Ta settet på nytt?</strong> Det leverte forsøket, svarene dine, poengene og selvvurderingen slettes.
+            </div>
+          )}
+          {submitted && (
+            <div className="exam-summary" tabIndex={-1} data-fokus-etter-feiring="">
+              {poengForsok ? (
+                <>
+                  <PoengOppsummering res={poengForsok} />
+                  <p>Vurder deg selv under hver oppgave. Poengene og prosenten oppdateres underveis.</p>
+                </>
+              ) : (
+                <p>
+                  Selvvurdering: {summary.riktig} riktige · {summary.delvis} delvis · {summary.feil} feil av {summary.total} oppgaver.
                 </p>
-                <button type="button" className="btn-primary" onClick={taPåNytt}>
-                  Ja, ta på nytt
-                </button>{" "}
+              )}
+              {bekreft !== "pånytt" ? (
                 <button
                   type="button"
                   className="hint-btn"
+                  ref={pånyttKnapp}
                   onClick={() => {
-                    setBekreft(null);
-                    fokus(() => pånyttKnapp.current);
+                    setBekreft("pånytt");
+                    fokus(() => pånyttDialog.current);
                   }}
                 >
-                  Avbryt
+                  Ta settet på nytt
                 </button>
-              </div>
-            )}
-          </div>
-        )}
+              ) : (
+                <div role="alertdialog" aria-modal="true" aria-labelledby="bekreft-pånytt-tittel" ref={pånyttDialog} tabIndex={-1}>
+                  <p id="bekreft-pånytt-tittel">
+                    <strong>Ta settet på nytt?</strong> Det leverte forsøket, svarene dine, poengene og selvvurderingen slettes.
+                  </p>
+                  <button type="button" className="btn-primary" onClick={taPåNytt}>
+                    Ja, ta på nytt
+                  </button>{" "}
+                  <button
+                    type="button"
+                    className="hint-btn"
+                    onClick={avbrytPånytt}
+                  >
+                    Avbryt
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
