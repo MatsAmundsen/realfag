@@ -873,7 +873,7 @@ const dk5OP: Delkapittel = {
     o(
       "5.OP2",
       "<em>Del 1 · uten hjelpemidler</em><br><br>Løs likningssettene.<br><br><strong>a)</strong> $$\\begin{cases}2p+q=11\\\\ p-q=1\\end{cases}$$<br><br><strong>b)</strong> $$\\begin{cases}x^2+y=10\\\\ x+y=4\\end{cases}$$",
-      "I a) kan du legge sammen slik at $q$ faller bort. I b) isoler $y$ og sett inn — du får en andregradslikning.",
+      "I a) kan du legge sammen slik at $q$ faller bort.",
       [
         "<strong>a)</strong> Sum: $3p=12$, $p=4$, $q=3$. $(p,q)=(4,3)$.",
         "<strong>b)</strong> $y=4-x$. $x^2+(4-x)=10$, $x^2-x-6=0$, $(x-3)(x+2)=0$. $(3,1)$ og $(-2,6)$.<br><strong>Svar:</strong> a) $(4,3)$ b) $(3,1)$ og $(-2,6)$",
@@ -882,7 +882,7 @@ const dk5OP: Delkapittel = {
     o(
       "5.OP3",
       "<em>Del 1 · uten hjelpemidler</em><br><br>Løs ulikhetene.<br><br><strong>a)</strong> $x^2-6x<-8$<br><br><strong>b)</strong> $3(x-1)(x+5)>0$<br><br><strong>c)</strong> $\\dfrac{x-3}{x+1}\\le 0$",
-      "Flytt alt til venstre og faktoriser. I c) er $x=-1$ en pol og kan ikke være med.",
+      "Flytt alt til venstre og faktoriser.",
       [
         "<strong>a)</strong> $x^2-6x+8<0$, $(x-2)(x-4)<0$, $x\\in\\langle 2,4\\rangle$.",
         "<strong>b)</strong> $3>0$, så $(x-1)(x+5)>0$ utenfor nullpunktene: $x\\in\\langle-\\infty,-5\\rangle\\cup\\langle 1,\\infty\\rangle$.",
@@ -892,7 +892,7 @@ const dk5OP: Delkapittel = {
     o(
       "5.OP4",
       "<em>Del 1 · uten hjelpemidler</em><br><br>Figuren viser $f(x)=x^2-6x+8$ (parabel) og $g(x)=x-2$ (linje). De skjærer i $(2,0)$ og $(5,3)$.<br><strong>Oppgaven skal løses grafisk.</strong><br><br><strong>a)</strong> Løs $f(x)=g(x)$.<br><br><strong>b)</strong> Løs $g(x)>1$.<br><br><strong>c)</strong> Løs $f(x)\\le g(x)$.",
-      "Les av skjæringspunktene. I c) er det der parabelen ligger på eller under linjen.",
+      "Les av skjæringspunktene.",
       [
         "<strong>a)</strong> $x=2$ eller $x=5$.",
         "<strong>b)</strong> $x-2>1$ $\\Rightarrow$ $x>3$, altså $\\langle 3,\\infty\\rangle$.",
@@ -929,7 +929,7 @@ const dk5OP: Delkapittel = {
     o(
       "5.OP7",
       "<em>Del 2 · med hjelpemidler</em><br><br>Figuren viser $f(x)=x^3-9x+4$ og $g(x)=4$. Bruk figuren og CAS/graftegner.<br><br><strong>a)</strong> Finn alle $x$ slik at $f(x)=g(x)$.<br><br><strong>b)</strong> Løs $f(x)\\ge g(x)$ grafisk.<br><br><strong>c)</strong> Bekreft b) ved å faktorisere $f(x)-g(x)$.",
-      "$f-g=x^3-9x=x(x^2-9)$. Nullpunktene ser du også merket på figuren.",
+      "$f(x)=g(x)$ gir $x^3-9x=0$. Nullpunktene ser du også merket på figuren.",
       [
         "<strong>a)</strong> $x^3-9x+4=4$ $\\Rightarrow$ $x(x-3)(x+3)=0$. $x=-3$, $0$ og $3$.",
         "<strong>b)</strong> Over $y=4$ på $[-3,0]$ og fra $3$ og ut: $[-3,0]\\cup[3,\\infty\\rangle$.",

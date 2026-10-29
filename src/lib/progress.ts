@@ -10,7 +10,7 @@ export type ExamAttempt = {
   /** Prøvemodus: elevens sluttsvar per enhet (del eller oppgave). Valgfritt, eldre forsøk mangler det. */
   sluttsvar?: Record<string, string>;
   /** Prøvemodus: elevens vurdering etter levering, per enhet. */
-  vurdering?: Record<string, { metode?: boolean; utregning?: boolean; svar?: boolean }>;
+  vurdering?: Record<string, { metode?: boolean; utregning?: boolean; svar?: boolean; overstyrt?: boolean }>;
   /** Prøvemodus: poeng etter levering. `deler` har ett innslag per enhet. */
   poeng?: {
     sum: number;

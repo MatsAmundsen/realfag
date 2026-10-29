@@ -9,6 +9,8 @@ const PLASSHOLDER: Record<string, string> = {
   likning: "Skriv for eksempel x = 2",
   punkt: "Skriv for eksempel (2, 3)",
   valg: "Skriv bokstaven",
+  omrade: "Skriv for eksempel 1,4 til 2,7",
+  ulikhet: "Skriv for eksempel -1 < x < 4",
 };
 
 /**
@@ -113,7 +115,8 @@ const STATUSTEKST = { riktig: "Riktig", delvis: "Delvis riktig", feil: "Feil" } 
 
 /**
  * Etter levering, per del: elevens sluttsvar, om det var riktig, poengene, og vurderingslisten.
- * Med autosjekk og riktig sluttsvar gis alle poengene og listen skjules.
+ * Med autosjekk og riktig sluttsvar gis alle poengene og listen skjules. Avviser autosjekken svaret, kan eleven
+ * krysse av «Mitt svar er riktig». Oppgaver med formkrav har ingen autosjekk av svarpoengene: eleven vurderer selv.
  */
 export function ProveResultat({
   id,
@@ -131,12 +134,13 @@ export function ProveResultat({
   vurdering?: Vurdering;
   onVurder: (v: Vurdering) => void;
 }) {
-  const autoRiktig = Boolean(fasit && res.auto);
+  const formkrav = Boolean(fasit?.selvvurder);
+  const autoRiktig = Boolean(fasit && !formkrav && res.auto);
   const valg: { key: keyof Vurdering; tekst: string; andel: number }[] = [
     { key: "metode", tekst: "Riktig metode", andel: POENGANDEL.metode },
     { key: "utregning", tekst: "Riktige utregninger", andel: POENGANDEL.utregning },
   ];
-  if (!fasit) valg.push({ key: "svar", tekst: "Riktig svar", andel: POENGANDEL.svar });
+  if (!fasit || formkrav) valg.push({ key: "svar", tekst: "Riktig svar", andel: POENGANDEL.svar });
   return (
     <div className="prove-resultat" data-status={res.status}>
       <p className="prove-resultat-poeng">
@@ -149,8 +153,14 @@ export function ProveResultat({
       </p>
       {fasit && (
         <p className="prove-sluttsvar-levert">
-          <strong>Ditt sluttsvar:</strong> {gitt.trim() ? gitt : "ikke besvart"} –{" "}
-          {autoRiktig ? "riktig" : "ikke riktig"}
+          <strong>Ditt sluttsvar:</strong> {gitt.trim() ? gitt : "ikke besvart"}
+          {formkrav
+            ? " – sammenlign med løsningsforslaget"
+            : autoRiktig
+              ? " – riktig"
+              : res.overstyrt
+                ? " – ikke godkjent av sjekken, men markert som riktig av deg"
+                : " – ikke godkjent av sjekken"}
         </p>
       )}
       {autoRiktig ? (
@@ -158,7 +168,11 @@ export function ProveResultat({
       ) : (
         <fieldset className="prove-vurdering">
           <legend>
-            {fasit ? "Sluttsvaret stemmer ikke. Vurder resten selv:" : "Vurder deg selv:"}
+            {fasit && !formkrav
+              ? "Sjekken godtok ikke sluttsvaret. Sammenlign med løsningsforslaget og vurder selv:"
+              : formkrav
+                ? "Oppgaven har formkrav, så du vurderer svaret selv mot løsningsforslaget:"
+                : "Vurder deg selv:"}
           </legend>
           {valg.map((v) => (
             <label key={v.key} className="prove-vurdering-valg">
@@ -171,6 +185,20 @@ export function ProveResultat({
               {v.tekst}
             </label>
           ))}
+          {fasit && !formkrav && (
+            <label className="prove-vurdering-valg">
+              <input
+                type="checkbox"
+                checked={Boolean(vurdering?.overstyrt)}
+                onChange={(e) => onVurder({ ...vurdering, overstyrt: e.target.checked })}
+                data-enhet={id}
+              />{" "}
+              Mitt svar er riktig
+            </label>
+          )}
+          {res.overstyrt && (
+            <p className="prove-vurdering-auto">Du har markert sluttsvaret som riktig, så svarpoengene er regnet med.</p>
+          )}
         </fieldset>
       )}
     </div>

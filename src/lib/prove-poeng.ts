@@ -6,8 +6,10 @@
  *   Riktige utregninger  25 %
  *   Riktig svar          25 %
  * Har enheten autosjekk og sluttsvaret er riktig, gis alle poengene. Er sluttsvaret feil eller tomt,
- * gir riktig metode og riktige utregninger delpoeng (75 % til sammen). Uten autosjekk vurderer eleven
- * alle tre selv i vurderingslisten etter levering.
+ * gir riktig metode og riktige utregninger delpoeng (75 % til sammen). Er autosjekken uenig, kan eleven
+ * overstyre med «Mitt svar er riktig» (etter levering): da teller svarpoengene (25 %) i tillegg, som i
+ * selvvurderingen. Uten autosjekk, og i oppgaver med formkrav (`selvvurder`), vurderer eleven alle tre
+ * selv i vurderingslisten etter levering.
  */
 import type { Sluttsvar } from "./svar-sjekk";
 import { sjekkSluttsvar } from "./svar-sjekk";
@@ -18,7 +20,13 @@ export const POENGANDEL = { metode: 0.5, utregning: 0.25, svar: 0.25 } as const;
 /** Oppgaver uten oppgitte poeng teller like mye hver. Delene deler på dette. */
 export const POENG_UTEN_OPPGITT = 1;
 
-export type Vurdering = { metode?: boolean; utregning?: boolean; svar?: boolean };
+export type Vurdering = {
+  metode?: boolean;
+  utregning?: boolean;
+  svar?: boolean;
+  /** «Mitt svar er riktig»: eleven overstyrer en autosjekk som avviste sluttsvaret. */
+  overstyrt?: boolean;
+};
 export type Status = "riktig" | "delvis" | "feil";
 
 export type PoengEnhet = {
@@ -30,7 +38,15 @@ export type PoengEnhet = {
   fasit?: Sluttsvar;
 };
 
-export type EnhetsResultat = { poeng: number; maks: number; status: Status; auto?: boolean };
+export type EnhetsResultat = {
+  poeng: number;
+  maks: number;
+  status: Status;
+  /** Resultatet av autosjekken. Mangler uten autosjekk og ved formkrav (selvvurdering). */
+  auto?: boolean;
+  /** Eleven har overstyrt en avvist autosjekk. */
+  overstyrt?: boolean;
+};
 export type Resultat = {
   sum: number;
   maks: number;
@@ -56,15 +72,23 @@ export function enhetsPoeng(
   const metodeUtregning = (v?.metode ? POENGANDEL.metode : 0) + (v?.utregning ? POENGANDEL.utregning : 0);
   let andel: number;
   let auto: boolean | undefined;
-  if (e.fasit) {
+  let overstyrt: boolean | undefined;
+  if (e.fasit && !e.fasit.selvvurder) {
     auto = sjekkSluttsvar(sluttsvar || "", e.fasit);
-    andel = auto ? 1 : metodeUtregning;
+    overstyrt = !auto && Boolean(v?.overstyrt);
+    andel = auto ? 1 : metodeUtregning + (overstyrt ? POENGANDEL.svar : 0);
   } else {
     andel = metodeUtregning + (v?.svar ? POENGANDEL.svar : 0);
   }
   const poeng = rund(e.maks * andel);
   const status: Status = poeng >= rund(e.maks) ? "riktig" : poeng <= 0 ? "feil" : "delvis";
-  return { poeng, maks: rund(e.maks), status, ...(auto === undefined ? {} : { auto }) };
+  return {
+    poeng,
+    maks: rund(e.maks),
+    status,
+    ...(auto === undefined ? {} : { auto }),
+    ...(overstyrt ? { overstyrt } : {}),
+  };
 }
 
 export function beregnPoeng(

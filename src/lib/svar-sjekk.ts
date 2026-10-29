@@ -11,26 +11,47 @@ export type Toleranse = { abs?: number; rel?: number };
 
 export type SvarSpec =
   /** Ett eller flere tall (verdier kan også skrives som 2√21 eller 3/4). */
-  | { type: "tall"; verdier: number[]; rekkefolge?: "fri" | "fast"; tol?: Toleranse; ord?: boolean }
+  | {
+      type: "tall";
+      verdier: number[];
+      rekkefolge?: "fri" | "fast";
+      tol?: Toleranse;
+      ord?: boolean;
+      /** «15 % nedgang» og «nedgang på 15 %» leses som −15 (bare i ord-modus). */
+      nedgang?: boolean;
+    }
   /** Uttrykk i én eller flere variabler. Ekvivalente former godtas. «y=» og «f(x)=» foran er valgfritt. */
   | { type: "uttrykk"; uttrykk: string; tol?: Toleranse }
   /** Likning x = a (flere løsninger i vilkårlig rekkefølge), eller flere variabler: a = 2 og b = 6. */
   | { type: "likning"; losninger: Record<string, number[]>; tol?: Toleranse }
   /** Ett eller flere punkt (a, b), i vilkårlig rekkefølge. */
   | { type: "punkt"; punkter: [number, number][]; tol?: Toleranse }
+  /** Svar som er oppgitt som område: ett tall inni [fra, til], eller begge grensene («1,4–2,7», «mellom 1,4 og 2,7»). */
+  | { type: "omrade"; fra: number; til: number; tol?: Toleranse }
+  /** Løsning av en ulikhet: «−2 < x < 3», «x > −2 og x < 3», «(−2, 3)» eller «<−2, 3>». Ikke-lukket intervall som standard. */
+  | { type: "ulikhet"; fra: number; til: number; lukket?: boolean }
   /** Et valg, for eksempel en bokstav. Store og små bokstaver er like. */
   | { type: "valg"; valg: string }
   /** Flere delsvar i rekkefølge (a, b, c), skilt med semikolon eller linjeskift. Hvert delsvar sjekkes for seg. */
   | { type: "serie"; deler: SvarSpec[] };
 
+/** Et alternativt fullstendig svar. Kan ha sin egen enhetsliste, slik at «24000 g» og «24 kg» godtas, men ikke «24000 kg». */
+export type Alternativ = SvarSpec & { enhet?: string[] };
+
 export type Sluttsvar = {
   svar: SvarSpec;
   /** Andre fullstendige svar som også er riktige. */
-  alternativer?: SvarSpec[];
+  alternativer?: Alternativ[];
   /** Godkjente enheter (valgfri for eleven å skrive). Vises ved feltet. */
   enhet?: string[];
   /** Kort hjelpetekst om formatet, f.eks. «Skriv begge verdiene, adskilt med «og»». */
   format?: string;
+  /**
+   * Oppgaven har formkrav (forenkle, faktoriser, eksakt, standardform, regn ut/utvid uttrykk). Sluttsvaret får ingen
+   * automatisk poengsjekk: eleven sammenligner med løsningsforslaget og krysser selv av for «Riktig svar».
+   * `svar` brukes bare til forhåndsvisningen av det eleven skrev.
+   */
+  selvvurder?: boolean;
 };
 
 const STANDARD_TOL: Required<Toleranse> = { abs: 1e-9, rel: 1e-9 };
@@ -51,9 +72,10 @@ export function normaliser(input: string): string {
     .replace(/[\u2212\u2013\u2014\u2012\u2010\u2011]/g, "-")
     .replace(/[×·⋅∙✕]/g, "*")
     .replace(/÷/g, "/")
-    .replace(/²/g, "^2")
-    .replace(/³/g, "^3")
-    .replace(/⁴/g, "^4")
+    .replace(/([⁻⁺]?)([⁰¹²³⁴⁵⁶⁷⁸⁹]+)/g, (_m, fortegn: string, sifre: string) =>
+      `^${fortegn === "⁻" ? "-" : ""}${[...sifre].map((c) => "⁰¹²³⁴⁵⁶⁷⁸⁹".indexOf(c)).join("")}`,
+    )
+    .replace(/[′´’ʹ‘`]/g, "'")
     .replace(/π/g, "pi")
     .replace(/\s+/g, " ")
     .trim();
@@ -77,15 +99,48 @@ export function delOpp(s: string): string[] {
     .filter(Boolean);
 }
 
-const PREFIKS_UTTRYKK = /^\s*[A-Za-zα-ω][A-Za-z0-9_]*(?:\s*\([^()]*\))?\s*(?:=|≈)\s*/;
+/** «y=», «f(x)=», «f'(x)=» (også ′ og ´), «y'=», «B_n=», «B(n)=» foran et uttrykk. */
+const PREFIKS_UTTRYKK = /^\s*[A-Za-zα-ω][A-Za-z0-9_]*'*(?:\s*\([^()]*\))?\s*(?:=|≈)\s*/;
 
 function fjernForsteord(s: string): string {
   return s.replace(/^\s*(?:ca\.?|omtrent|ca)\s+/i, "").replace(/^\s*[≈~]\s*/, "");
 }
 
+/**
+ * Enheter og ord som står etter et tall og aldri er en del av svaret. Gjelder når oppgaven ikke har sin egen enhetsliste
+ * (da er listen presis: «24000 kg» skal ikke godtas for 24 kg). I ord-modus gjelder de alltid.
+ */
+const GENERISKE_ENHETER = [
+  "%",
+  "°",
+  "prosentpoeng",
+  "prosent",
+  "pp",
+  "kroner",
+  "kr",
+  "gram",
+  "måneder",
+  "måned",
+  "mnd",
+  "år",
+  "døgn",
+  "dager",
+  "timer",
+  "minutter",
+  "sekunder",
+  "liter",
+  "glass",
+  "personer",
+  "enheter",
+  "stk",
+];
+
+/** Enkeltbokstavsenheter (m, g, L, s …). Bare i ord-modus, der svaret er en setning, og aldri x, y, e eller π. */
+const ENKELTBOKSTAV_ENHETER = "mglLsthJWNCK";
+
 /** Fjerner en godkjent enhet bakerst (etter tall eller parentes). */
 function fjernEnhet(s: string, enheter?: string[]): { rest: string; enhet?: string } {
-  if (!enheter || enheter.length === 0) return { rest: s };
+  if (!enheter || enheter.length === 0) enheter = GENERISKE_ENHETER;
   const sorted = [...enheter].sort((a, b) => b.length - a.length);
   const lav = s.toLowerCase();
   for (const e of sorted) {
@@ -415,9 +470,8 @@ function escRegex(s: string): string {
 
 /** I ord-modus fjernes godkjente enheter som står etter et tall hvor som helst i teksten («21,5 m etter 2 s»). */
 function fjernEnheterOveralt(s: string, enheter?: string[]): string {
-  if (!enheter || enheter.length === 0) return s;
   const varianter = new Set<string>();
-  for (const e of enheter) {
+  for (const e of [...(enheter || []), ...GENERISKE_ENHETER]) {
     const en = normaliser(e);
     varianter.add(en);
     varianter.add(en.replace(/\^/g, ""));
@@ -426,14 +480,24 @@ function fjernEnheterOveralt(s: string, enheter?: string[]): string {
   for (const v of [...varianter].filter(Boolean).sort((a, b) => b.length - a.length)) {
     ut = ut.replace(new RegExp(`(?<=[\\d)])\\s*${escRegex(v)}(?![A-Za-zÆØÅæøå0-9^])`, "gi"), MERKE);
   }
+  // m, g, L, s … rett etter tallet (også m^2, m^3): «21,5 m etter 2 s».
+  ut = ut.replace(new RegExp(`(?<=[\\d)])\\s*[${ENKELTBOKSTAV_ENHETER}](?:\\^\\d)?(?![A-Za-zÆØÅæøå0-9^(])`, "g"), MERKE);
   return ut;
 }
 
 type TallBit = { tekst: string; faktor: number };
 
 /** Ett svar-ledd i et tallsvar blir ett eller flere tall-uttrykk (enheter, ord og ± er håndtert). */
-function tallFragmenter(d0: string, enhet?: string[], ord?: boolean): TallBit[] {
+function tallFragmenter(d0: string, enhet?: string[], ord?: boolean, nedgang?: boolean): TallBit[] {
   let d = fjernForsteord(d0.replace(/^\s*[a-zA-Z]\)\s*/, "")).replace(PREFIKS_UTTRYKK, "").trim();
+  if (ord && nedgang) {
+    // «15 % nedgang» og «nedgang på 15 %» betyr −15 %.
+    const tall = "(\\d+(?:[.,]\\d+)?)";
+    d = d
+      .replace(new RegExp(`(?<![-\\d.,])${tall}\\s*(?:%|prosent)?\\s*(?:nedgang|reduksjon|minking|nedsettelse)`, "gi"), "-$1")
+      .replace(new RegExp(`(?:nedgang|reduksjon|minking|nedsettelse)\\s*(?:på|med|er|:)?\\s*${tall}(?:\\s*(?:%|prosent))?`, "gi"), "-$1");
+  }
+  if (ord) d = d.replace(/(^|\s)[a-hA-H]\)\s*/g, `$1 ${MERKE} `); // «a) 0,2 L b) 3,5 glass»: delbokstavene midt i svaret
   d = ord ? fjernEnheterOveralt(d, enhet) : fjernEnhet(d, enhet).rest;
   // «1,63 millioner» og «9 milliarder» gir tallet ganger 10^6 og 10^9.
   let faktor = 1;
@@ -455,12 +519,12 @@ function tallFragmenter(d0: string, enhet?: string[], ord?: boolean): TallBit[] 
   return biter.flatMap(utvidPm).map((tekst) => ({ tekst, faktor }));
 }
 
-function tolkTall(input: string, enhet?: string[], ord?: boolean): number[] | null {
+function tolkTall(input: string, enhet?: string[], ord?: boolean, nedgang?: boolean): number[] | null {
   const deler = delOpp(normaliser(input));
   if (deler.length === 0) return null;
   const ut: number[] = [];
   for (const d0 of deler) {
-    const bit = tallFragmenter(d0, enhet, ord);
+    const bit = tallFragmenter(d0, enhet, ord, nedgang);
     if (bit.length === 0) return null;
     for (const b of bit) {
       const v = tallVerdi(b.tekst);
@@ -513,10 +577,26 @@ function punktFraLikninger(input: string): [number, number][] | null {
     const par = [items[i], items[i + 1]];
     const x = par.find((q) => q.var === "x");
     const y = par.find((q) => q.var === "y");
-    if (!x || !y) return null;
-    ut.push([x.v, y.v]);
+    if (x && y) ut.push([x.v, y.v]);
+    // «p=4 og q=3»: to ulike navn som ikke er x og y, første navn er første koordinat.
+    else if (!x && !y && par[0].var && par[1].var && par[0].var !== par[1].var) ut.push([par[0].v, par[1].v]);
+    else return null;
   }
   return ut;
+}
+
+/** Koordinatene inni en parentes: «2; 3», «2, 3», «1,5; 2,5», «2, 21,5», «1,5, 2,5» og «2 3». */
+function delPunktInnhold(inn: string): string[] | null {
+  if (inn.includes(";")) return inn.split(";").length === 2 ? inn.split(";") : null;
+  const komma = inn.split(",");
+  const medMellomrom = inn.trim().split(/\s*,\s+/);
+  const ordnet = inn.trim().split(/\s+/);
+  // «(2 21,5)»: bare mellomrom mellom koordinatene.
+  if (ordnet.length === 2 && ordnet.every((x) => !x.startsWith(",") && !x.endsWith(","))) return ordnet;
+  if (komma.length === 2) return komma;
+  if (medMellomrom.length === 2) return medMellomrom; // «(2, 21,5)»: mellomrom etter skille-kommaet
+  if (komma.length === 4) return [`${komma[0]}.${komma[1]}`, `${komma[2]}.${komma[3]}`];
+  return null;
 }
 
 /** Punktene i et svar: «(−2, 0) og (4, 0)». Desimalkomma: bruk «;» inni parentesen eller «(1,5; 2,5)». */
@@ -527,22 +607,136 @@ function tolkPunkter(input: string): [number, number][] | null {
   if (grupper.length === 0) return punktFraLikninger(input);
   const ut: [number, number][] = [];
   for (const g of grupper) {
-    const inn = g[1];
-    let biter: string[];
-    if (inn.includes(";")) biter = inn.split(";");
-    else {
-      const komma = inn.split(",");
-      if (komma.length === 2) biter = komma;
-      else if (komma.length === 4) biter = [`${komma[0]}.${komma[1]}`, `${komma[2]}.${komma[3]}`];
-      else return null;
-    }
-    if (biter.length !== 2) return null;
+    const biter = delPunktInnhold(g[1]);
+    if (!biter) return null;
     const a = tallVerdi(biter[0]);
     const b = tallVerdi(biter[1]);
     if (a === null || b === null) return null;
     ut.push([a, b]);
   }
   return ut;
+}
+
+/**
+ * Lister uten mellomrom etter kommaet eller bare med mellomrom: «1,2», «-2,1,8» og «-2 1 8» blir «1; 2», «-2; 1; 8».
+ * Brukes bare når den vanlige tolkingen (der komma er desimalkomma) ikke ga riktig svar.
+ */
+function heltallsListe(input: string): string | null {
+  const s = normaliser(input);
+  const m = /^(?:([A-Za-zα-ω][A-Za-z0-9_]*)\s*=\s*)?(-?\d+(?:\s*,\s*-?\d+|\s+-?\d+)+)$/.exec(s);
+  if (!m) return null;
+  const deler = m[2].split(/\s*,\s*|\s+/);
+  return deler.map((d) => (m[1] ? `${m[1]}=${d}` : d)).join("; ");
+}
+
+/** Linje på formen «y−1=−4(x−1)» eller «2x+y=3»: er det samme linje som y = uttrykket? */
+function likningsform(input: string, uttrykk: string): boolean {
+  const deler = fjernForsteord(normaliser(input)).split("=");
+  if (deler.length !== 2) return false;
+  const l = parseUttrykk(deler[0]);
+  const r = parseUttrykk(deler[1]);
+  const f = parseUttrykk(uttrykk);
+  if (!l || !r || !f) return false;
+  const bare = (n: Node, tillatt: string[]) => [...variabler(n)].every((v) => tillatt.includes(v));
+  if (!bare(f, ["x"]) || !bare(l, ["x", "y"]) || !bare(r, ["x", "y"])) return false;
+  let avhengerAvY = false;
+  for (const x of TESTPUNKTER) {
+    const y = evaluer(f, { x });
+    const g = (yy: number) => evaluer(l, { x, y: yy }) - evaluer(r, { x, y: yy });
+    const skala = 1 + Math.abs(evaluer(l, { x, y })) + Math.abs(evaluer(r, { x, y }));
+    if (!Number.isFinite(g(y)) || Math.abs(g(y)) > 1e-7 * skala) return false;
+    if (Math.abs(g(y + 1)) > 1e-7 * skala) avhengerAvY = true;
+  }
+  return avhengerAvY;
+}
+
+/** Område: «1,4–2,7», «1,4 til 2,7», «mellom 1,4 og 2,7 kg» eller ett tall. Gir ett eller to tall. */
+function tolkOmrade(input: string, enhet?: string[]): number[] | null {
+  let s = fjernForsteord(normaliser(input)).replace(/^\s*(?:mellom|fra)\s+/i, "");
+  s = fjernEnheterOveralt(s, enhet).split(MERKE).join(" ");
+  const biter = s
+    .split(/\s*(?:\bog\b|\btil\b|;|,\s+)\s*|\s*(?<=[\d)])\s*-\s*(?=[\d(√.])/i)
+    .map((x) => x.trim())
+    .filter(Boolean);
+  if (biter.length < 1 || biter.length > 2) return null;
+  const ut: number[] = [];
+  for (const b of biter) {
+    const v = tallVerdi(b);
+    if (v === null) return null;
+    ut.push(v);
+  }
+  return ut;
+}
+
+type Ulikhet = { lo: number; hi: number; loLukket: boolean; hiLukket: boolean };
+
+/** Løsningsmengde: «-2 < x < 3», «x>-2 og x<3», «(-2, 3)», «<-2, 3>» eller «x ∈ ⟨-2, 3⟩». */
+function tolkUlikhet(input: string): Ulikhet | null {
+  let s = normaliser(input).replace(/≤|⩽/g, "<=").replace(/≥|⩾/g, ">=").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+  s = s.replace(/^\s*x\s*(?:∈|\bi\b|\bin\b)\s*/i, "").replace(/\s+/g, " ").trim();
+  const op = "(<=|>=|<|>)";
+  const num = (t: string) => tallVerdi(t.trim());
+  // Kjede: a < x < b
+  const k = new RegExp(`^(.+?)\\s*${op}\\s*x\\s*${op}\\s*(.+)$`, "i").exec(s);
+  if (k) {
+    const a = num(k[1]);
+    const b = num(k[4]);
+    if (a === null || b === null || k[2][0] !== k[3][0]) return null;
+    const sterkt = (o: string) => o.length === 1;
+    if (k[2][0] === "<") return { lo: a, hi: b, loLukket: !sterkt(k[2]), hiLukket: !sterkt(k[3]) };
+    return { lo: b, hi: a, loLukket: !sterkt(k[3]), hiLukket: !sterkt(k[2]) };
+  }
+  // Intervall: (a, b), ⟨a; b⟩, <a, b>, ]a, b[, [a, b]
+  const m = /^([(\[\]<⟨])\s*(.+?)\s*([)\[\]>⟩])$/.exec(s);
+  if (m) {
+    const inn = m[2];
+    let biter: string[];
+    if (inn.includes(";")) biter = inn.split(";");
+    else if (/,\s+/.test(inn)) biter = inn.split(/,\s+/);
+    else {
+      const komma = inn.split(",");
+      biter = komma.length === 2 ? komma : komma.length === 4 ? [`${komma[0]}.${komma[1]}`, `${komma[2]}.${komma[3]}`] : [];
+    }
+    if (biter.length !== 2) return null;
+    const a = num(biter[0]);
+    const b = num(biter[1]);
+    if (a === null || b === null) return null;
+    return { lo: a, hi: b, loLukket: m[1] === "[", hiLukket: m[3] === "]" };
+  }
+  // To enkeltbetingelser: x > a og x < b
+  const deler = s.split(/\s*(?:\bog\b|&|;|,\s+)\s*/i).filter(Boolean);
+  if (deler.length === 2) {
+    let lo: number | null = null;
+    let hi: number | null = null;
+    let loL = false;
+    let hiL = false;
+    for (const d of deler) {
+      const hoyre = new RegExp(`^x\\s*${op}\\s*(.+)$`, "i").exec(d);
+      const venstre = new RegExp(`^(.+?)\\s*${op}\\s*x$`, "i").exec(d);
+      let o: string;
+      let v: number | null;
+      if (hoyre) {
+        o = hoyre[1];
+        v = num(hoyre[2]);
+      } else if (venstre) {
+        // «-2 < x» betyr x > -2
+        o = venstre[2].startsWith("<") ? ">" + venstre[2].slice(1) : "<" + venstre[2].slice(1);
+        v = num(venstre[1]);
+      } else return null;
+      if (v === null) return null;
+      if (o.startsWith(">")) {
+        if (lo !== null) return null;
+        lo = v;
+        loL = o.length === 2;
+      } else {
+        if (hi !== null) return null;
+        hi = v;
+        hiL = o.length === 2;
+      }
+    }
+    return lo === null || hi === null ? null : { lo, hi, loLukket: loL, hiLukket: hiL };
+  }
+  return null;
 }
 
 /** Deler et serie-svar i delsvar (semikolon eller linjeskift) og fjerner «a)», «b.» og «c:» foran hvert. */
@@ -572,41 +766,46 @@ function sjekkSpec(input: string, spec: SvarSpec, enhet?: string[]): boolean {
       return spec.deler.every((d, i) => sjekkSpec(biter[i], d, enhet));
     }
     case "tall": {
-      const gitt = tolkTall(input, enhet, spec.ord);
+      const sammenlign = (gitt: number[]) => {
+        if (spec.rekkefolge === "fast") {
+          return gitt.length === spec.verdier.length && gitt.every((v, i) => erNær(v, spec.verdier[i], spec.tol));
+        }
+        return sammeMengde(dedup(gitt, spec.tol), dedup(spec.verdier, spec.tol), spec.tol);
+      };
+      const gitt = tolkTall(input, enhet, spec.ord, spec.nedgang);
+      if (gitt && sammenlign(gitt)) return true;
+      if (spec.verdier.length < 2) return false;
+      const liste = heltallsListe(input);
+      const gitt2 = liste ? tolkTall(liste, enhet, spec.ord, spec.nedgang) : null;
+      return Boolean(gitt2 && sammenlign(gitt2));
+    }
+    case "omrade": {
+      const gitt = tolkOmrade(input, enhet);
       if (!gitt) return false;
-      if (spec.rekkefolge === "fast") {
-        return gitt.length === spec.verdier.length && gitt.every((v, i) => erNær(v, spec.verdier[i], spec.tol));
-      }
-      return sammeMengde(dedup(gitt, spec.tol), dedup(spec.verdier, spec.tol), spec.tol);
+      const lo = Math.min(spec.fra, spec.til) - (spec.tol?.abs ?? 0);
+      const hi = Math.max(spec.fra, spec.til) + (spec.tol?.abs ?? 0);
+      if (gitt.length === 1) return gitt[0] >= lo - 1e-12 && gitt[0] <= hi + 1e-12;
+      return erNær(gitt[0], spec.fra, spec.tol) && erNær(gitt[1], spec.til, spec.tol);
+    }
+    case "ulikhet": {
+      const u = tolkUlikhet(input);
+      if (!u) return false;
+      const lukket = Boolean(spec.lukket);
+      return erNær(u.lo, spec.fra) && erNær(u.hi, spec.til) && u.loLukket === lukket && u.hiLukket === lukket;
     }
     case "uttrykk": {
       const rens = fjernEnhet(fjernForsteord(normaliser(input)).replace(PREFIKS_UTTRYKK, ""), enhet).rest;
       const gitt = parseUttrykk(rens);
       const fasit = parseUttrykk(spec.uttrykk);
-      if (!gitt || !fasit) return false;
+      if (!fasit) return false;
+      // Linje på likningsform («2x+y=3», «y−1=−4(x−1)») er samme linje som y = uttrykket.
+      if (!gitt) return likningsform(input, spec.uttrykk);
       return likeUttrykk(gitt, fasit, spec.tol);
     }
     case "likning": {
-      const gitt = tolkLikning(input);
-      if (!gitt) return false;
-      const navn = Object.keys(spec.losninger);
-      const per: Record<string, number[]> = Object.fromEntries(navn.map((n) => [n, []]));
-      const uten: number[] = [];
-      for (const g of gitt) {
-        if (g.var === undefined) uten.push(g.v);
-        else if (g.var in per) per[g.var].push(g.v);
-        else return false;
-      }
-      if (uten.length > 0) {
-        if (navn.length === 1) per[navn[0]].push(...uten);
-        else {
-          // Uten variabelnavn: i rekkefølgen variablene er oppgitt i fasiten (a, så b).
-          const ledige = navn.filter((n) => per[n].length === 0);
-          if (ledige.length !== uten.length) return false;
-          ledige.forEach((n, i) => per[n].push(uten[i]));
-        }
-      }
-      return navn.every((n) => sammeMengde(dedup(per[n], spec.tol), dedup(spec.losninger[n], spec.tol), spec.tol));
+      if (likningSjekk(input, spec)) return true;
+      const liste = heltallsListe(input);
+      return Object.keys(spec.losninger).length === 1 && liste !== null && likningSjekk(liste, spec);
     }
     case "punkt": {
       const gitt = tolkPunkter(input);
@@ -624,11 +823,34 @@ function sjekkSpec(input: string, spec: SvarSpec, enhet?: string[]): boolean {
   }
 }
 
+function likningSjekk(input: string, spec: Extract<SvarSpec, { type: "likning" }>): boolean {
+  const gitt = tolkLikning(input);
+  if (!gitt) return false;
+  const navn = Object.keys(spec.losninger);
+  const per: Record<string, number[]> = Object.fromEntries(navn.map((n) => [n, []]));
+  const uten: number[] = [];
+  for (const g of gitt) {
+    if (g.var === undefined) uten.push(g.v);
+    else if (g.var in per) per[g.var].push(g.v);
+    else return false;
+  }
+  if (uten.length > 0) {
+    if (navn.length === 1) per[navn[0]].push(...uten);
+    else {
+      // Uten variabelnavn: i rekkefølgen variablene er oppgitt i fasiten (a, så b).
+      const ledige = navn.filter((n) => per[n].length === 0);
+      if (ledige.length !== uten.length) return false;
+      ledige.forEach((n, i) => per[n].push(uten[i]));
+    }
+  }
+  return navn.every((n) => sammeMengde(dedup(per[n], spec.tol), dedup(spec.losninger[n], spec.tol), spec.tol));
+}
+
 /** Er sluttsvaret riktig? Tomt svar er feil. */
 export function sjekkSluttsvar(input: string, fasit: Sluttsvar): boolean {
   if (!input || !input.trim()) return false;
   const alle = [fasit.svar, ...(fasit.alternativer || [])];
-  return alle.some((s) => sjekkSpec(input, s, fasit.enhet));
+  return alle.some((s) => sjekkSpec(input, s, (s as Alternativ).enhet ?? fasit.enhet));
 }
 
 /* ---------------------------------------------------------------- forhåndsvisning (KaTeX) */
@@ -715,14 +937,23 @@ export function forhandsvis(input: string, spec: SvarSpec, enhet?: string[]): Fo
     return { ok: true, latex: ut.join(";\\quad ") };
   }
   if (spec.type === "valg") return { ok: true, latex: `\\text{${s.replace(/[^A-Za-z0-9æøåÆØÅ]/g, "")}}` };
+  if (spec.type === "omrade") {
+    const tall = tolkOmrade(input, enhet);
+    return tall ? { ok: true, latex: tall.map((v) => tallLatex(String(v))).join("\\text{ til }") } : { ok: false };
+  }
+  if (spec.type === "ulikhet") {
+    const u = tolkUlikhet(input);
+    if (!u) return { ok: false };
+    const lt = (v: number) => tallLatex(String(Math.round(v * 1e9) / 1e9));
+    return { ok: true, latex: `${lt(u.lo)}${u.loLukket ? "\\le" : "<"}x${u.hiLukket ? "\\le" : "<"}${lt(u.hi)}` };
+  }
   if (spec.type === "punkt") {
     const grupper = [...s.matchAll(/\(([^()]*)\)/g)];
     if (grupper.length === 0) return { ok: false };
     const biter: string[] = [];
     for (const g of grupper) {
-      const inn = g[1];
-      const deler = inn.includes(";") ? inn.split(";") : inn.split(",").length === 4 ? [inn.split(",").slice(0, 2).join("."), inn.split(",").slice(2).join(".")] : inn.split(",");
-      if (deler.length !== 2) return { ok: false };
+      const deler = delPunktInnhold(g[1]);
+      if (!deler) return { ok: false };
       const a = parseUttrykk(deler[0]);
       const b = parseUttrykk(deler[1]);
       if (!a || !b) return { ok: false };
@@ -736,7 +967,7 @@ export function forhandsvis(input: string, spec: SvarSpec, enhet?: string[]): Fo
     // Svar med ord og enheter: vis tallene som ble funnet.
     const ut: string[] = [];
     for (const d0 of deler) {
-      for (const b of tallFragmenter(d0, enhet, true)) {
+      for (const b of tallFragmenter(d0, enhet, true, spec.nedgang)) {
         const n = parseUttrykk(b.tekst);
         if (!n || variabler(n).size > 0 || b.faktor !== 1) return { ok: false };
         ut.push(tilLatex(n));
@@ -756,6 +987,13 @@ export function forhandsvis(input: string, spec: SvarSpec, enhet?: string[]): Fo
     }
     const { rest, enhet: e } = fjernEnhet(d.trim(), enhet);
     const n = parseUttrykk(rest);
+    if (!n && spec.type === "uttrykk") {
+      // Linje på likningsform, «2x+y=3»: vis venstre og høyre side.
+      const sider = rest.split("=");
+      const l = sider.length === 2 ? parseUttrykk(sider[0]) : null;
+      const r = sider.length === 2 ? parseUttrykk(sider[1]) : null;
+      if (l && r) return { ok: true, latex: `${prefiks}${tilLatex(l)}=${tilLatex(r)}` };
+    }
     if (!n) return { ok: false };
     if (spec.type !== "uttrykk" && variabler(n).size > 0 && spec.type === "tall") return { ok: false };
     ut.push(`${prefiks}${tilLatex(n)}${e ? `\\;\\mathrm{${enhetLatex(e)}}` : ""}`);

@@ -335,7 +335,7 @@ const dk7OP: Delkapittel = {
       "<strong>a)</strong> $14\\sin32^\\circ\\approx 7{,}42<9<14$",
       "<strong>b)</strong> $B_1\\approx 55{,}5^\\circ$, $c_1\\approx 17{,}0$. $B_2\\approx 124{,}5^\\circ$, $c_2\\approx 6{,}78$",
     ]),
-    o("7.OP8", "<em>Del 2 · med hjelpemidler</em><br><br>En trekantet tomt har to sider på $80$ m og $60$ m, og vinkelen mellom dem er $110^\\circ$.<br><br><strong>a)</strong> Finn lengden av den tredje siden.<br><br><strong>b)</strong> Finn arealet av tomten.<br><br><strong>c)</strong> Finn den minste vinkelen i tomten.", "a) Cosinussetningen. b) Arealsetningen. c) Den minste vinkelen ligger motsatt den korteste siden.", [
+    o("7.OP8", "<em>Del 2 · med hjelpemidler</em><br><br>En trekantet tomt har to sider på $80$ m og $60$ m, og vinkelen mellom dem er $110^\\circ$.<br><br><strong>a)</strong> Finn lengden av den tredje siden.<br><br><strong>b)</strong> Finn arealet av tomten.<br><br><strong>c)</strong> Finn den minste vinkelen i tomten.", "Cosinussetningen.", [
       "<strong>a)</strong> $d^2=80^2+60^2-2\\cdot80\\cdot60\\cos110^\\circ$, så $d\\approx 115{,}3$ m",
       "<strong>b)</strong> $T=\\dfrac12\\cdot80\\cdot60\\sin110^\\circ\\approx 2255$ m²",
       "<strong>c)</strong> $\\sin v=\\dfrac{60\\sin110^\\circ}{115{,}3}$ gir $v\\approx 29{,}3^\\circ$",
