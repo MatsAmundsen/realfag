@@ -508,8 +508,19 @@ function tolkPunkter(input: string): [number, number][] | null {
 
 /** Deler et serie-svar i delsvar (semikolon eller linjeskift) og fjerner «a)», «b.» og «c:» foran hvert. */
 export function delSerie(input: string): string[] {
-  return normaliser(input.replace(/\n/g, ";"))
-    .split(/\s*;\s*/)
+  const biter: string[] = [];
+  let dyp = 0;
+  let nå = "";
+  for (const ch of normaliser(input.replace(/\r?\n/g, ";"))) {
+    if (ch === "(" || ch === "[") dyp++;
+    if (ch === ")" || ch === "]") dyp = Math.max(0, dyp - 1);
+    if (ch === ";" && dyp === 0) {
+      biter.push(nå);
+      nå = "";
+    } else nå += ch;
+  }
+  biter.push(nå);
+  return biter
     .map((x) => x.replace(/^\s*[a-fA-F]\s*(?:\)|:|\.(?=\s))\s*/, "").trim())
     .filter(Boolean);
 }
