@@ -196,6 +196,7 @@ function TaskBlock({
 
 export function ExamRunner({ exam }: { exam: Exam }) {
   const saveExam = useProgressStore((s) => s.saveExam);
+  const clearExam = useProgressStore((s) => s.clearExam);
   const prev = useProgressStore((s) => s.p.exams[exam.id]);
   const [mode, setMode] = useState<StudyMode>("prove");
   const [part, setPart] = useState<"1" | "2">("1");
@@ -203,7 +204,17 @@ export function ExamRunner({ exam }: { exam: Exam }) {
   const [elapsed, setElapsed] = useState(0);
   const [submitted, setSubmitted] = useState(Boolean(prev));
   const [scores, setScores] = useState<Record<string, "riktig" | "delvis" | "feil">>(prev?.selfScore || {});
+  const [bekreft, setBekreft] = useState<null | "lever" | "pånytt">(null);
+  const hydrated = useProgressStore((s) => s.hydrated);
   const utkast = useProveUtkast(`eksamen/${exam.id}`);
+
+  // Lagret fremgang lastes først etter første visning: hent inn et levert forsøk når den er klar.
+  useEffect(() => {
+    if (!hydrated || !prev) return;
+    setSubmitted(true);
+    setScores(prev.selfScore || {});
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hydrated]);
 
   const tasks = part === "1" ? exam.del1 : exam.del2;
 
@@ -253,13 +264,30 @@ export function ExamRunner({ exam }: { exam: Exam }) {
       notes,
       mode,
     });
+    utkast.clear();
+    setBekreft(null);
     setSubmitted(true);
     fireCelebration({
       kind: "exam",
       title: `${exam.title} levert`,
-      body: "Nå kan du åpne løsningsforslagene og vurdere deg selv oppgave for oppgave.",
+      body:
+        mode === "prove"
+          ? "Nå kan du åpne løsningsforslagene og vurdere deg selv oppgave for oppgave."
+          : "Vurder deg selv oppgave for oppgave. Du kan ta settet på nytt når du vil.",
       badges: newly,
     });
+  }
+
+  /** Nullstiller forsøket (levering, selvvurdering og utkast) slik at settet kan tas på nytt. */
+  function taPåNytt() {
+    clearExam(exam.id);
+    utkast.clear();
+    setScores({});
+    setElapsed(0);
+    setTimerOn(false);
+    setPart("1");
+    setBekreft(null);
+    setSubmitted(false);
   }
 
   return (
@@ -298,7 +326,7 @@ export function ExamRunner({ exam }: { exam: Exam }) {
       </div>
       <p className="exam-mode-copy">
         {mode === "prove"
-          ? "Prøvemodus: skriv svaret ditt her eller på papir, og kryss av «Ferdig» for hver oppgave. Hint og løsning er låst til du leverer, slik det er på ekte eksamen."
+          ? "Prøvemodus: skriv svaret ditt her eller på papir, og kryss av «Ferdig» for hver oppgave. Hint og løsning er låst til du leverer."
           : "Øvemodus: hint og steg-løsning er tilgjengelig med en gang. Bruk denne når du øver tema for tema."}
       </p>
       {mode === "prove" && !submitted && (
@@ -318,13 +346,47 @@ export function ExamRunner({ exam }: { exam: Exam }) {
         />
       ))}
       <div className="exam-submit-row">
-        {!submitted ? (
-          <button type="button" className="btn-primary" onClick={submit}>
+        {!submitted && bekreft !== "lever" && (
+          <button type="button" className="btn-primary" onClick={() => setBekreft("lever")}>
             <Flag size={16} /> {mode === "prove" ? "Lever / Ferdig" : "Lever settet"}
           </button>
-        ) : (
+        )}
+        {!submitted && bekreft === "lever" && (
+          <div className="exam-summary" role="alertdialog" aria-labelledby="bekreft-lever-tittel">
+            <p id="bekreft-lever-tittel">
+              <strong>Har du gjort ferdig begge delene?</strong> {antallFerdig} av {enhetsId.length} oppgaver og deloppgaver er krysset av som ferdige.
+              {mode === "prove" ? " Når du leverer, åpnes hint og løsningsforslag." : ""}
+            </p>
+            <button type="button" className="btn-primary" onClick={submit}>
+              <Flag size={16} /> Ja, lever
+            </button>{" "}
+            <button type="button" className="hint-btn" onClick={() => setBekreft(null)}>
+              Fortsett å jobbe
+            </button>
+          </div>
+        )}
+        {submitted && (
           <div className="exam-summary">
-            Selvskåre: {summary.riktig} riktige · {summary.delvis} delvis · {summary.feil} feil av {summary.total} oppgaver i arkivet.
+            <p>
+              Selvvurdering: {summary.riktig} riktige · {summary.delvis} delvis · {summary.feil} feil av {summary.total} oppgaver.
+            </p>
+            {bekreft !== "pånytt" ? (
+              <button type="button" className="hint-btn" onClick={() => setBekreft("pånytt")}>
+                Ta settet på nytt
+              </button>
+            ) : (
+              <div role="alertdialog" aria-labelledby="bekreft-pånytt-tittel">
+                <p id="bekreft-pånytt-tittel">
+                  <strong>Ta settet på nytt?</strong> Det leverte forsøket, svarene dine og selvvurderingen slettes.
+                </p>
+                <button type="button" className="btn-primary" onClick={taPåNytt}>
+                  Ja, ta på nytt
+                </button>{" "}
+                <button type="button" className="hint-btn" onClick={() => setBekreft(null)}>
+                  Avbryt
+                </button>
+              </div>
+            )}
           </div>
         )}
       </div>
