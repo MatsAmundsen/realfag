@@ -33,6 +33,8 @@ type Store = {
     examId: string,
     attempt: Progress["exams"][string],
   ) => string[];
+  /** Oppdaterer et levert forsøk (vurdering og poeng). Rører ikke serie eller merker. */
+  updateExam: (examId: string, patch: Partial<Progress["exams"][string]>) => void;
   /** Fjerner et levert eksamensforsøk, slik at settet kan tas på nytt. Merker eleven allerede har fått beholdes. */
   clearExam: (examId: string) => void;
   resetAll: () => void;
@@ -87,6 +89,14 @@ export const useProgressStore = create<Store>((set, get) => ({
     persist(p);
     set({ p, badgeQueue: newly });
     return newly;
+  },
+  updateExam: (examId, patch) => {
+    const eksisterende = get().p.exams[examId];
+    if (!eksisterende) return;
+    const p = cloneProgress(get().p);
+    p.exams[examId] = { ...eksisterende, ...patch };
+    persist(p);
+    set({ p });
   },
   clearExam: (examId) => {
     const p = cloneProgress(get().p);

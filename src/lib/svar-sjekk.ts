@@ -603,7 +603,7 @@ export type Forhandsvisning = { tom: true } | { ok: true; latex: string } | { ok
 export function forhandsvis(input: string, spec: SvarSpec, enhet?: string[]): Forhandsvisning {
   if (!input || !input.trim()) return { tom: true };
   const s = normaliser(input);
-  if (spec.type === "valg") return { ok: true, latex: `\\text{${s.replace(/[\\{}$%&#_^~]/g, "")}}` };
+  if (spec.type === "valg") return { ok: true, latex: `\\text{${s.replace(/[^A-Za-z0-9æøåÆØÅ]/g, "")}}` };
   if (spec.type === "punkt") {
     const grupper = [...s.matchAll(/\(([^()]*)\)/g)];
     if (grupper.length === 0) return { ok: false };

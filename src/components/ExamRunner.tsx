@@ -4,7 +4,9 @@ import type { Exam, ExamPart, ExamTask, StudyMode } from "@/data/types";
 import { KatexHtml } from "./KatexHtml";
 import { ExamFigure } from "./figures";
 import { ModeToggle } from "./ModeToggle";
-import { ProveSvar } from "./ProveFelt";
+import { PoengOppsummering, ProveResultat, ProveSvar } from "./ProveFelt";
+import { SLUTTSVAR } from "@/data/eksamen-svar";
+import { beregnPoeng, poengPerEnhet, type PoengEnhet, type Resultat, type Vurdering } from "@/lib/prove-poeng";
 import { formatKlokke, useProveUtkast } from "@/lib/prove-utkast";
 import { useFokusEtterVisning } from "@/lib/fokus";
 import { fireCelebration, useProgressStore } from "@/lib/progress-store";
@@ -14,12 +16,55 @@ function enheter(task: ExamTask): string[] {
   return task.parts && task.parts.length ? task.parts.map((p) => p.id) : [task.id];
 }
 
+/** Sluttsvaret ligger i utkastet under egen nøkkel, ved siden av svarboksen. */
+const SLUTTSVAR_NOKKEL = (id: string) => `${id}::sluttsvar`;
+
 type Svar = {
   answers: Record<string, string>;
   ferdig: Record<string, boolean>;
   setAnswer: (id: string, v: string) => void;
   setFerdig: (id: string, v: boolean) => void;
+  /** Poeng og vurdering etter levering i prøvemodus. Mangler for øvemodus og for eldre forsøk. */
+  poeng?: {
+    res: Resultat;
+    vurdering: Record<string, Vurdering>;
+    onVurder: (id: string, v: Vurdering) => void;
+  };
 };
+
+/** Enhetene som gir poeng: hver del, eller oppgaven når den ikke har deler. Mangler poeng, teller hver oppgave 1 p. */
+function poengEnheter(exam: Exam): PoengEnhet[] {
+  return [...exam.del1, ...exam.del2].flatMap((t) => {
+    const ider = enheter(t);
+    return ider.map((id) => ({ id, maks: poengPerEnhet(t.points, ider.length), fasit: SLUTTSVAR[id] }));
+  });
+}
+
+/** Sluttsvarfelt (prøvemodus, før levering) og resultat (etter levering) for én enhet. */
+function sluttsvarFor(svar: Svar, id: string) {
+  const fasit = SLUTTSVAR[id];
+  if (!fasit) return undefined;
+  return {
+    fasit,
+    value: svar.answers[SLUTTSVAR_NOKKEL(id)] || "",
+    onChange: (v: string) => svar.setAnswer(SLUTTSVAR_NOKKEL(id), v),
+  };
+}
+
+function ResultatFor({ svar, id }: { svar: Svar; id: string }) {
+  const res = svar.poeng?.res.deler[id];
+  if (!svar.poeng || !res) return null;
+  return (
+    <ProveResultat
+      id={id}
+      gitt={svar.answers[SLUTTSVAR_NOKKEL(id)] || ""}
+      fasit={SLUTTSVAR[id]}
+      res={res}
+      vurdering={svar.poeng.vurdering[id]}
+      onVurder={(v) => svar.poeng!.onVurder(id, v)}
+    />
+  );
+}
 
 /** Hint og trinnvis løsning. Samme markup for hel oppgave og for deloppgave. */
 function HjelpBlokk({
@@ -118,6 +163,7 @@ function DelOppgave({
           locked={false}
           onChange={(v) => svar.setAnswer(part.id, v)}
           onDone={(v) => svar.setFerdig(part.id, v)}
+          sluttsvar={sluttsvarFor(svar, part.id)}
         />
       )}
       {visSvar && submitted && gitt && (
@@ -125,6 +171,7 @@ function DelOppgave({
           <strong>Ditt svar:</strong> {gitt}
         </p>
       )}
+      {submitted && <ResultatFor svar={svar} id={part.id} />}
       <HjelpBlokk hint={part.hint} steg={part.fasitSteg} open={open} resetKey={`${part.id}|${mode}|${submitted}`} lockedNote visHint={mode !== "prove"} />
     </div>
   );
@@ -178,6 +225,7 @@ function TaskBlock({
               locked={false}
               onChange={(v) => svar.setAnswer(task.id, v)}
               onDone={(v) => svar.setFerdig(task.id, v)}
+              sluttsvar={sluttsvarFor(svar, task.id)}
             />
           )}
           {visSvar && submitted && gitt && (
@@ -185,10 +233,11 @@ function TaskBlock({
               <strong>Ditt svar:</strong> {gitt}
             </p>
           )}
+          {submitted && <ResultatFor svar={svar} id={task.id} />}
           <HjelpBlokk hint={task.hint} steg={task.fasitSteg} open={open} resetKey={`${task.id}|${mode}|${submitted}`} lockedNote visHint={mode !== "prove"} />
         </>
       )}
-      {submitted && (
+      {submitted && !svar.poeng && (
         <div className="self-score">
           <span>Hvordan gikk det?</span>
           {(["riktig", "delvis", "feil"] as const).map((v) => (
@@ -210,6 +259,7 @@ function TaskBlock({
 export function ExamRunner({ exam }: { exam: Exam }) {
   const saveExam = useProgressStore((s) => s.saveExam);
   const clearExam = useProgressStore((s) => s.clearExam);
+  const updateExam = useProgressStore((s) => s.updateExam);
   const prev = useProgressStore((s) => s.p.exams[exam.id]);
   const [mode, setMode] = useState<StudyMode>("prove");
   const [part, setPart] = useState<"1" | "2">("1");
@@ -253,14 +303,38 @@ export function ExamRunner({ exam }: { exam: Exam }) {
     };
   });
 
+  const enheterMedPoeng = useMemo(() => poengEnheter(exam), [exam]);
+  const poengForsok = submitted && prev && prev.mode === "prove" ? prev.poeng : undefined;
+
+  function vurder(id: string, v: Vurdering) {
+    if (!prev || !poengForsok) return;
+    const vurdering = { ...(prev.vurdering || {}), [id]: v };
+    updateExam(exam.id, {
+      vurdering,
+      poeng: beregnPoeng(enheterMedPoeng, prev.sluttsvar || {}, vurdering),
+    });
+  }
+
   // Etter levering vises de lagrede svarene, ikke utkastet.
-  const svar: Svar = useMemo(
-    () =>
-      submitted && prev
-        ? { answers: prev.notes || {}, ferdig: {}, setAnswer: () => {}, setFerdig: () => {} }
-        : { answers: utkast.answers, ferdig: utkast.ferdig, setAnswer: utkast.setAnswer, setFerdig: utkast.setFerdig },
-    [submitted, prev, utkast.answers, utkast.ferdig, utkast.setAnswer, utkast.setFerdig],
-  );
+  const svar: Svar = useMemo(() => {
+    if (submitted && prev) {
+      const answers: Record<string, string> = { ...(prev.notes || {}) };
+      Object.entries(prev.sluttsvar || {}).forEach(([id, v]) => {
+        answers[SLUTTSVAR_NOKKEL(id)] = v;
+      });
+      return {
+        answers,
+        ferdig: {},
+        setAnswer: () => {},
+        setFerdig: () => {},
+        poeng: poengForsok
+          ? { res: poengForsok, vurdering: prev.vurdering || {}, onVurder: vurder }
+          : undefined,
+      };
+    }
+    return { answers: utkast.answers, ferdig: utkast.ferdig, setAnswer: utkast.setAnswer, setFerdig: utkast.setFerdig };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [submitted, prev, poengForsok, utkast.answers, utkast.ferdig, utkast.setAnswer, utkast.setFerdig]);
 
   useEffect(() => {
     if (!timerOn || submitted) return;
@@ -293,11 +367,21 @@ export function ExamRunner({ exam }: { exam: Exam }) {
       const v = (utkast.answers[id] || "").trim();
       if (v) notes[id] = v;
     });
+    const sluttsvar: Record<string, string> = {};
+    if (mode === "prove") {
+      enhetsId.forEach((id) => {
+        const v = (utkast.answers[SLUTTSVAR_NOKKEL(id)] || "").trim();
+        if (v) sluttsvar[id] = v;
+      });
+    }
     const newly = saveExam(exam.id, {
       submittedAt: Date.now(),
       selfScore: scores,
       notes,
       mode,
+      ...(mode === "prove"
+        ? { sluttsvar, vurdering: {}, poeng: beregnPoeng(enheterMedPoeng, sluttsvar, {}) }
+        : {}),
     });
     utkast.clear();
     setBekreft(null);
@@ -425,9 +509,16 @@ export function ExamRunner({ exam }: { exam: Exam }) {
         )}
         {submitted && (
           <div className="exam-summary" tabIndex={-1} data-fokus-etter-feiring="">
-            <p>
-              Selvvurdering: {summary.riktig} riktige · {summary.delvis} delvis · {summary.feil} feil av {summary.total} oppgaver.
-            </p>
+            {poengForsok ? (
+              <>
+                <PoengOppsummering res={poengForsok} />
+                <p>Vurder deg selv under hver oppgave. Poengene og prosenten oppdateres underveis.</p>
+              </>
+            ) : (
+              <p>
+                Selvvurdering: {summary.riktig} riktige · {summary.delvis} delvis · {summary.feil} feil av {summary.total} oppgaver.
+              </p>
+            )}
             {bekreft !== "pånytt" ? (
               <button
                 type="button"
@@ -443,7 +534,7 @@ export function ExamRunner({ exam }: { exam: Exam }) {
             ) : (
               <div role="alertdialog" aria-labelledby="bekreft-pånytt-tittel" ref={pånyttDialog} tabIndex={-1}>
                 <p id="bekreft-pånytt-tittel">
-                  <strong>Ta settet på nytt?</strong> Det leverte forsøket, svarene dine og selvvurderingen slettes.
+                  <strong>Ta settet på nytt?</strong> Det leverte forsøket, svarene dine, poengene og selvvurderingen slettes.
                 </p>
                 <button type="button" className="btn-primary" onClick={taPåNytt}>
                   Ja, ta på nytt
