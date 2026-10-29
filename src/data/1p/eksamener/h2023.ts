@@ -183,7 +183,7 @@ export const EKSAMEN_1P_H2023: Exam = officialExam({
     single("1p-h23-d2-5", "5", 0,
       r`<em>Denne oppgaven vektes tre ganger så mye som en vanlig deloppgave.</em><br>Klassen til Maria og Marta arbeider med oppgaven nedenfor.<br><strong>Et rektangel er innskrevet i en likebeint, rettvinklet trekant. Trekanten har hjørner i punktene $A(-6,\ 0)$, $B(6,\ 0)$ og $C(0,\ 6)$. Punktet $P$ er et hjørne i rektangelet og ligger på linjestykket $BC$. Bestem koordinatene til punktet $P$ slik at arealet av rektangelet blir størst mulig.</strong>` +
         figur("p1-h23-d2-5", "5", "Koordinatsystem (GeoGebra-stil) med trekant ABC: A(−6, 0), B(6, 0), C(0, 6). Et rektangel er innskrevet slik at det ene sidene ligger på AB og de to øvre hjørnene ligger på AC og BC. Punktet P(x, y) er øvre høyre hjørne på linjestykket BC. Rektangelet er symmetrisk om y-aksen. A, B, C og P er merket.") +
-        r`Martin og Maria diskuterer hvordan de skal komme i gang, og vurderer ulike strategier. Martin vil prøve seg fram og lage en oversikt som viser arealet av ulike rektangler, og starter med $x = 1$. Da blir $y = 5$ fordi $y = 6 - x$. Maria foreslår også å sette opp et funksjonsuttrykk for arealet, tegne en graf og bruke funksjonen til å vise at det de kommer fram til ved å prøve seg fram, er riktig.<br>Hvordan kan du se at $y = 5$ når $x = 1$? Og hvordan kan vi finne arealet når vi vet at $x = 1$ og $y = 5$?<br>Ta utgangspunkt i samtalen mellom Martin og Maria, og løs oppgaven klassen har fått.`,
+        r`Martin og Maria diskuterer hvordan de skal komme i gang, og vurderer ulike strategier.<br><strong>Martin:</strong> «Skal vi begynne med å prøve oss litt fram? Vi lager en oversikt som viser arealet av ulike rektangler.»<br><strong>Maria:</strong> «Ja, det kan vi gjøre. Vi kan starte med å velge $x = 1$. Da blir $y = 5$ fordi $y = 6 - x$.»<br><strong>Martin:</strong> «Hvordan kan du se det? Og hvordan kan vi finne arealet dersom vi vet at $x = 1$ og $y = 5$?»<br><strong>Maria:</strong> «Jeg kan vise deg det! Husk hva vi har lært om rette linjer.»<br><strong>Martin:</strong> «Jeg tror også vi bør sette opp et funksjonsuttrykk som viser arealet, og tegne en graf. Da kan vi bruke funksjonen til å vise at det vi kommer fram til når vi prøver oss fram, er riktig.»<br>Ta utgangspunkt i samtalen mellom Martin og Maria, og løs oppgaven klassen har fått.`,
       r`Linjen gjennom $B$ og $C$ er $y = 6 - x$. Rektangelet er symmetrisk om $y$-aksen, så bredden er $2x$ og høyden er $y$. Lag en tabell og et funksjonsuttrykk for arealet.`,
       [
         r`<strong>Hvorfor $y = 6 - x$:</strong> Linjen gjennom $B(6,\ 0)$ og $C(0,\ 6)$ har stigningstall $\dfrac{6 - 0}{0 - 6} = -1$ og skjærer $y$-aksen i $6$. Altså $y = -x + 6 = 6 - x$.`,
@@ -196,7 +196,7 @@ export const EKSAMEN_1P_H2023: Exam = officialExam({
       ],
       ["optimering", "andregradsfunksjoner", "lineære funksjoner", "GeoGebra"]),
     multi("1p-h23-d2-6", "6", 0,
-      r`I denne oppgaven skal du arbeide med linjestykker som settes sammen til en figur. Lengden av et linjestykke er alltid $90\ \%$ av lengden av det forrige linjestykket. Det første linjestykket er $100$ cm langt.` +
+      r`I denne oppgaven skal du arbeide med linjestykker som settes sammen til en figur.<br>Skissen nedenfor viser de $16$ første linjestykkene i figuren. Lengden av et linjestykke er alltid $90\ \%$ av lengden av det forrige linjestykket. Det første linjestykket er $100$ cm langt.` +
         figur("p1-h23-d2-6", "6", "Sikksakkmønster (firkantbølge) av 16 linjestykker som blir stadig kortere mot høyre. Linjestykkene ligger vekselvis loddrett (lysegrønne) og vannrett (mørkegrå). Første linjestykke er loddrett, $100$ cm (merket «100 cm»), og går oppover til øverste venstre hjørne. Så følger et vannrett stykke på $90$ cm mot høyre (merket «90 cm»), et loddrett stykke på $81$ cm nedover, et vannrett på $72{,}9$ cm mot høyre, et loddrett oppover på ca. $65{,}6$ cm, og så videre. Mønsteret går vekselvis ned og opp mens hvert stykke er 90 % av det forrige."),
       [
         part("1p-h23-d2-6", "a", r`Bestem summen av lengdene av de $8$ første linjestykkene i figuren.`,
@@ -208,7 +208,7 @@ export const EKSAMEN_1P_H2023: Exam = officialExam({
             r`Kontroll ved å legge sammen leddene: $100 + 90 + 81 + 72{,}9 + 65{,}61 + 59{,}05 + 53{,}14 + 47{,}83 \approx 569{,}5$. ✓`,
             r`<strong>Svar:</strong> Summen av de $8$ første linjestykkene er omtrent $570$ cm (altså $5{,}7$ m).`,
           ]),
-        part("1p-h23-d2-6", "b", r`Lag et program som du kan bruke til å bestemme summen av lengdene av linjestykkene dersom det er mange linjestykker i figuren. Hvor mange linjestykker må vi ha med i figuren dersom summen av lengdene skal bli minst $9$ meter?`,
+        part("1p-h23-d2-6", "b", r`<em>Denne deloppgaven vektes $1{,}5$ ganger så mye som en vanlig deloppgave.</em><br>Lag et program som du kan bruke til å bestemme summen av lengdene av linjestykkene dersom det er mange linjestykker i figuren. Hvor mange linjestykker må vi ha med i figuren dersom summen av lengdene skal bli minst $9$ meter?`,
           r`$9$ m $= 900$ cm. La programmet legge til ett og ett linjestykke i en løkke og telle til summen er minst $900$.`,
           [
             r`Programmet legger til lengden av neste linjestykke og ganger lengden med $0{,}9$ for hvert trinn, helt til summen er minst $900$ cm:<pre><code>lengde = 100
@@ -269,7 +269,7 @@ print(n, s)</code></pre>`,
         r`<strong>A:</strong> Banen har mange svinger, men grafen har bare tre. Nei.`,
         r`<strong>C:</strong> Banen har fire hjørner (fire sving), men grafen har tre dumper. Nei.`,
         r`<strong>E:</strong> Likesidet trekant: tre like hjørner gir tre like dype dumper med lik avstand. Grafen har ulike dumper. Nei.`,
-        r`<strong>D:</strong> Tre hakk, men alle på samme side, tett på hverandre. Etter siste hakk skulle det vært en veldig lang rett strekning (resten av runden). På grafen er det bare et kort flatt stykke etter tredje dump. Nei.`,
+        r`<strong>D:</strong> Tre hakk, men alle på samme side, tett på hverandre. I tillegg ville endene av den avlange formen gitt flere sving, slik at grafen måtte hatt minst fem dumper, ikke tre. Etter siste hakk skulle det vært en veldig lang rett strekning (resten av runden). På grafen er det bare et kort flatt stykke etter tredje dump. Nei.`,
         r`<strong>F:</strong> Starten ligger midt på venstre side, og første hjørne er det spisse hjørnet øverst. Det ville gitt en dyp første dump, men grafen har første dump middels dyp og dypeste i midten. Nei.`,
         r`<strong>B:</strong> Starten ligger like ved det avrundede hjørnet øverst til venstre (kort strekning, middels dyp dump), så følger lang topplinje til det spisse hjørnet (dypeste dump), deretter lang bunnlinje til det avrundede hjørnet nede til venstre (grunneste dump), og så et kort stykke opp til start. Det passer med alle tre dumpene og avstandene.`,
         r`<strong>Svar:</strong> Bilen har kjørt på bane B.`,
