@@ -4838,3 +4838,29 @@ header.navbar[data-fag="1P"] .nav-btn.fag-switch,
     [data-fag="1P"] .prove-ferdig input, [data-fag="1P"] .exam-submit-row .btn-primary, [data-fag="1P"] .exam-summary .btn-primary { transition: none; }
     [data-fag="1P"] .exam-card:hover, [data-fag="1P"] .exam-submit-row .btn-primary:hover, [data-fag="1P"] .exam-summary .btn-primary:hover, [data-fag="1P"] .prove-lever:hover { transform: none; }
 }
+
+/* ---- 1P · kontrastretting for felles tekstelementer (axe) ---- */
+[data-fag="1P"] .crumb,
+[data-fag="1P"] .page-intro p,
+[data-fag="1P"] .kap-switch a,
+[data-fag="1P"] .chapter-btn-pct,
+[data-fag="1P"] .subchapter-btn-meta,
+[data-fag="1P"] .sub-progress-copy { color: var(--p1-muted); }
+[data-fag="1P"] .crumb a,
+[data-fag="1P"] .kap-switch a.is-on,
+[data-fag="1P"] .chapter-btn-pct.is-complete,
+[data-fag="1P"] .subchapter-btn-meta.is-complete,
+[data-fag="1P"] .subchapter-btn.is-oveprove,
+[data-fag="1P"] .subchapter-btn.is-oveprove .subchapter-btn-title,
+[data-fag="1P"] .subchapter-btn.is-oveprove .subchapter-btn-meta { color: var(--p1-ink); }
+[data-fag="1P"] .kap-switch a:hover { color: var(--text-main); }
+[data-fag="1P"] .logo-grade { color: var(--p1-ink); }
+/* lenker i løpende tekst må skilles fra teksten rundt uten å stole på farge alene */
+[data-fag="1P"] .exam-legal a,
+[data-fag="1P"] .exam-source a,
+[data-fag="1P"] .page-intro p a,
+[data-fag="1P"] .exam-how a {
+  color: var(--p1-ink);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
