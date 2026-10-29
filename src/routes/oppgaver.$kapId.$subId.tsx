@@ -244,6 +244,7 @@ function SubchapterPage() {
               mode={effectiveMode}
               locked={locked}
               reveal={submitted}
+              hideHint={effectiveMode === "prove"}
               hideTierBadge={oving}
             />
             {oving && mode === "prove" && !erIntro(o) && !submitted && (

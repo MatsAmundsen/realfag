@@ -28,12 +28,15 @@ function HjelpBlokk({
   open,
   resetKey,
   lockedNote,
+  visHint = true,
 }: {
   hint: string;
   steg: string[];
   open: boolean;
   resetKey: string;
   lockedNote: boolean;
+  /** Skjules helt i prøvemodus: ingen hint verken før eller etter levering. Løsning/fasit styres av `open`. */
+  visHint?: boolean;
 }) {
   const [hintOn, setHint] = useState(false);
   const [sol, setSol] = useState(false);
@@ -49,7 +52,7 @@ function HjelpBlokk({
   return (
     <>
       <div className="task-action-bar">
-        {open && (
+        {open && visHint && (
           <button type="button" className="hint-btn" onClick={() => setHint((v) => !v)}>
             <Lightbulb size={16} /> Hint
           </button>
@@ -61,7 +64,7 @@ function HjelpBlokk({
         )}
       </div>
       {!open && lockedNote && <p className="locked-note">Løsningen vises etter innlevering i prøvemodus.</p>}
-      {hintOn && open && <KatexHtml html={hint} className="hint-content visible" />}
+      {hintOn && open && visHint && <KatexHtml html={hint} className="hint-content visible" />}
       {sol && open && (
         <div className="solution-content visible" ref={solRef} tabIndex={-1}>
           <KatexHtml html={steg[Math.min(step, last)] || ""} />
@@ -122,7 +125,7 @@ function DelOppgave({
           <strong>Ditt svar:</strong> {gitt}
         </p>
       )}
-      <HjelpBlokk hint={part.hint} steg={part.fasitSteg} open={open} resetKey={`${part.id}|${mode}|${submitted}`} lockedNote />
+      <HjelpBlokk hint={part.hint} steg={part.fasitSteg} open={open} resetKey={`${part.id}|${mode}|${submitted}`} lockedNote visHint={mode !== "prove"} />
     </div>
   );
 }
@@ -182,7 +185,7 @@ function TaskBlock({
               <strong>Ditt svar:</strong> {gitt}
             </p>
           )}
-          <HjelpBlokk hint={task.hint} steg={task.fasitSteg} open={open} resetKey={`${task.id}|${mode}|${submitted}`} lockedNote />
+          <HjelpBlokk hint={task.hint} steg={task.fasitSteg} open={open} resetKey={`${task.id}|${mode}|${submitted}`} lockedNote visHint={mode !== "prove"} />
         </>
       )}
       {submitted && (

@@ -23,6 +23,7 @@ export function TaskCard({
   locked = false,
   reveal = false,
   hideTierBadge = false,
+  hideHint = false,
 }: {
   oppgave: Oppgave;
   kapId: string | null;
@@ -34,6 +35,8 @@ export function TaskCard({
   reveal?: boolean;
   /** Skjuler merkelappen Grunnleggende/Øving/Utfordring (regnet fra index/total). Brukes bare av 1P, der tittelen viser faktisk «Nivå N». */
   hideTierBadge?: boolean;
+  /** Skjuler hint helt (knapp og innhold), også etter levering. Brukes i prøvemodus. Løsning og video styres av mode/reveal som før. */
+  hideHint?: boolean;
 }) {
   const p = useProgressStore((s) => s.p);
   const markTask = useProgressStore((s) => s.markTask);
@@ -123,7 +126,7 @@ export function TaskCard({
         {plot && <FunctionPlot spec={plot} />}
       </div>
       <div className="task-action-bar">
-        {canHelp && oppgave.hint && (
+        {canHelp && !hideHint && oppgave.hint && (
           <button type="button" className="hint-btn" onClick={() => setHintOn((v) => !v)}>
             <Lightbulb size={16} /> {hintOn ? "Skjul hint" : "Hint"}
           </button>
@@ -160,7 +163,7 @@ export function TaskCard({
             : "Hint og løsning vises når du leverer i prøvemodus."}
         </p>
       )}
-      {hintOn && canHelp && (
+      {hintOn && canHelp && !hideHint && (
         <KatexHtml html={oppgave.hint} className="hint-content visible" />
       )}
       {solOn && canHelp && (
