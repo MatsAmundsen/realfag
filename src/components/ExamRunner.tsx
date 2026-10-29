@@ -161,7 +161,7 @@ function TaskBlock({
           ))}
         </div>
       </div>
-      <KatexHtml html={task.text} className="task-content" />
+      {task.text ? <KatexHtml html={task.text} className="task-content" /> : null}
       <ExamFigure id={task.figure} />
       {harDeler ? (
         task.parts!.map((pt) => <DelOppgave key={pt.id} part={pt} mode={mode} submitted={submitted} svar={svar} />)
