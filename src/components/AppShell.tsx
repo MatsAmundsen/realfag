@@ -20,6 +20,7 @@ const NAV_1P = [
   { to: "/1p", label: "Hjem" },
   { to: "/1p/oppgaver", label: "Oppgaver" },
   { to: "/1p/eksamen", label: "Eksamen" },
+  { to: "/1p/eksamener", label: "Tidligere eksamener" },
 ] as const;
 
 export function AppShell() {
@@ -31,7 +32,7 @@ export function AppShell() {
   const is1P = pathname === "/1p" || pathname.startsWith("/1p/");
   const nav = is1P ? NAV_1P : NAV;
   const navActive = (to: string) =>
-    pathname === to || pathname === `${to}/` || (to !== "/" && to !== "/1p" && pathname.startsWith(to));
+    pathname === to || pathname === `${to}/` || (to !== "/" && to !== "/1p" && pathname.startsWith(`${to}/`));
 
   useEffect(() => {
     hydrate();

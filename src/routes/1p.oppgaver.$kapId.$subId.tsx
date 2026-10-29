@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { CircleHelp, FileDown } from "lucide-react";
+import { CircleHelp, Clock, FileDown, Flag } from "lucide-react";
 import { CHAPTER_META_1P as CHAPTER_META, fagsok1P as fagsok, findKap1P as findKap, findSub1P as findSub, videosForSub1P as videosForSub, NIVAARK_BY_SUB_1P } from "@/data/1p";
 import type { StudyMode } from "@/data/types";
 import { ChapterSidebar } from "@/components/ChapterSidebar";
@@ -9,6 +9,7 @@ import { TaskCard } from "@/components/TaskCard";
 import { SummaryView } from "@/components/SummaryView";
 import { QuizOverlay } from "@/components/QuizOverlay";
 import { ModeToggle } from "@/components/ModeToggle";
+import { ProveSvar, formatKlokke, useProveUtkast } from "@/components/ProveFelt";
 import { countSubchapter, isOvingDelkap } from "@/lib/progress";
 import { useProgressStore } from "@/lib/progress-store";
 import { seoHead } from "@/lib/seo";
@@ -36,7 +37,15 @@ function SubchapterPage1P() {
   const [quizOn, setQuizOn] = useState(false);
   const [mode, setMode] = useState<StudyMode>("prove");
   const [submitted, setSubmitted] = useState(false);
-  
+  const [timerOn, setTimerOn] = useState(false);
+  const [elapsed, setElapsed] = useState(0);
+  const utkast = useProveUtkast(`ove/${kapId}/${subId}`);
+
+  useEffect(() => {
+    if (!timerOn || submitted) return;
+    const id = window.setInterval(() => setElapsed((e) => e + 1), 1000);
+    return () => window.clearInterval(id);
+  }, [timerOn, submitted]);
 
   useEffect(() => {
     const hash = typeof window !== "undefined" ? window.location.hash.replace(/^#/, "") : "";
@@ -136,6 +145,27 @@ function SubchapterPage1P() {
             <ModeToggle mode={mode} onChange={(m) => { setMode(m); setSubmitted(false); }} />
           </div>
         )}
+        {oving && mode === "prove" && (
+          <div className="exam-toolbar prove-verktoy">
+            <label className="timer-toggle">
+              <input
+                type="checkbox"
+                checked={timerOn}
+                onChange={(e) => {
+                  setTimerOn(e.target.checked);
+                  setElapsed(0);
+                }}
+              />
+              <Clock size={14} /> Tidtaking
+            </label>
+            {timerOn && <span className="timer-readout">Brukt tid: {formatKlokke(elapsed)}</span>}
+            {!submitted && (
+              <span className="prove-teller" role="status">
+                {dk.oppgaver.filter((o) => utkast.ferdig[o.id]).length} av {dk.oppgaver.length} krysset av som ferdige.
+              </span>
+            )}
+          </div>
+        )}
 
         {topicVideos.length > 0 ? <TopicVideoInvite videos={topicVideos} /> : null}
 
@@ -150,23 +180,34 @@ function SubchapterPage1P() {
         ) : null}
 
         {isSummary ? <SummaryView items={dk.oppgaver} kapId={kapId} subId={subId} /> : dk.oppgaver.map((o, i) => (
-          <TaskCard
-            key={o.id}
-            oppgave={o}
-            kapId={kapId}
-            subId={subId}
-            index={i}
-            total={dk.oppgaver.length}
-            mode={effectiveMode}
-            locked={locked}
-            reveal={submitted}
-            hideTierBadge
-          />
+          <div key={o.id} className="prove-oppgave">
+            <TaskCard
+              oppgave={o}
+              kapId={kapId}
+              subId={subId}
+              index={i}
+              total={dk.oppgaver.length}
+              mode={effectiveMode}
+              locked={locked}
+              reveal={submitted}
+              hideTierBadge
+            />
+            {oving && mode === "prove" && (
+              <ProveSvar
+                id={o.id}
+                value={utkast.answers[o.id] || ""}
+                done={Boolean(utkast.ferdig[o.id])}
+                locked={submitted}
+                onChange={(v) => utkast.setAnswer(o.id, v)}
+                onDone={(v) => utkast.setFerdig(o.id, v)}
+              />
+            )}
+          </div>
         ))}
 
         {oving && !submitted && mode === "prove" && (
           <button type="button" className="btn-primary" onClick={() => setSubmitted(true)}>
-            Lever øveprøven
+            <Flag size={16} /> Lever / Ferdig
           </button>
         )}
         {oving && submitted && (
