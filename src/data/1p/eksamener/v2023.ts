@@ -20,7 +20,7 @@ export const EKSAMEN_1P_V2023: Exam = officialExam({
   source: udirSource("MAT1019 Matematikk 1P", "26.05.2023", "1P_V23_LK20.pdf"),
   del1: [
     single("1p-v23-d1-1", "1", 0,
-      U + r`Marko har kjøpt en sjokoladeplate i en butikk. Den kostet $20$ kroner. Mari har kjøpt en sjokoladeplate på en bensinstasjon. Den kostet $50$ kroner.<br>Den ene av dem har regnet og funnet ut at sjokoladeplaten er $150\ \%$ dyrere på bensinstasjonen enn i butikken. Den andre har regnet og funnet ut at sjokoladeplaten er $60\ \%$ billigere i butikken enn på bensinstasjonen.<br>Kan de ha regnet riktig? Hvorfor får de ulike prosenter?<br>Gjør beregninger og svar på spørsmålene.`,
+      U + r`Marko har kjøpt en sjokoladeplate i en butikk. Den kostet $20$ kroner. Mari har kjøpt en sjokoladeplate på en bensinstasjon. Den kostet $50$ kroner.<br><strong>Marko:</strong> «Jeg har regnet og funnet ut at sjokoladeplaten er $150\ \%$ dyrere på bensinstasjonen enn i butikken.»<br><strong>Mari:</strong> «Jeg har regnet og funnet ut at sjokoladeplaten er $60\ \%$ billigere i butikken enn på bensinstasjonen.»<br><strong>Marko:</strong> «Kan vi ha regnet riktig? Hvorfor får vi ulike prosenter? Det var rart.»<br>Gjør beregninger og svar på Marko sine spørsmål.`,
       r`Prosentvis endring er endringen delt på det du sammenligner med. Hva er «det du sammenligner med» i hvert av de to tilfellene?`,
       [
         r`Prisforskjellen er $50 - 20 = 30$ kroner.`,
@@ -260,7 +260,7 @@ for figurnummer in range(1, 21):
           r`Summen av de $N$ første K-ene er $\dfrac{N(10 + (4N + 6))}{2}$. Finn største $N$ med sum høyst $2000$, eller utvid løkka i programmet.`,
           [
             r`Summen av de $N$ første K-ene er $S_N = \dfrac{N\,(10 + 4N + 6)}{2} = 2N^{2} + 8N$.`,
-            r`Vi løser $2N^{2} + 8N \le 2000$, det vil si $N^{2} + 4N - 1000 \le 0$. Positiv løsning av likningen er $N = -2 + \sqrt{1004} \approx 29{,}7$.`,
+            r`Vi må finne største hele $N$ med $2N^{2} + 8N \le 2000$. Tegn grafen til $S(x) = 2x^{2} + 8x$ og linjen $y = 2000$ i GeoGebra og finn skjæringspunktet med «Skjæring mellom to objekt». Eller løs likningen $2x^{2} + 8x = 2000$ med CAS (Løs). Begge gir $x \approx 29{,}7$ (den andre løsningen, $x \approx -33{,}7$, passer ikke).`,
             r`Så $N \le 29$. Kontroll: $S_{29} = 2\cdot 29^{2} + 8\cdot 29 = 1682 + 232 = 1914 \le 2000$, mens $S_{30} = 2\cdot 30^{2} + 8\cdot 30 = 2040 > 2000$.`,
             r`Det betyr at $K_{30}$ ikke kan lages, og at det er $2000 - 1914 = 86$ Non Stop til overs.`,
             r`<strong>Svar:</strong> Kari kan lage $29$ K-er ($K_1$ til $K_{29}$).`,
@@ -275,7 +275,7 @@ for figurnummer in range(1, 21):
           [
             r`Vi setter $x = 0$ for $2015$, $x = 1$ for $2016$ og så videre til $x = 6$ for $2021$. Punktene $(0,\ 18\,899)$, $(1,\ 21\,664)$, $\ldots$, $(6,\ 67\,997)$ legges inn i GeoGebra.`,
             r`Eksponentiell regresjon gir $a \approx 17\,396$ og $b \approx 1{,}248$.`,
-            r`Kontroll: $E(0) \approx 17\,400$ (mot $18\,899$) og $E(6) = 17\,396\cdot 1{,}248^{6} \approx 65\,800$ (mot $67\,997$). Modellen passer rimelig godt gjennom hele perioden.`,
+            r`Kontroll (bruk de uavrundede verdiene av $a$ og $b$ fra regresjonen, for eksempel ved å skrive $E(6)$ i GeoGebra): $E(0) \approx 17\,400$ (mot $18\,899$) og $E(6) \approx 65\,800$ (mot $67\,997$). Modellen passer rimelig godt gjennom hele perioden.`,
             r`<strong>Svar:</strong> $E(x) = 17\,396\cdot 1{,}248^{x}$, der $x$ er antall år etter $2015$ og $E(x)$ er salget i tusen liter.`,
           ]),
         part("1p-v23-d2-6", "b", r`Hva forteller tallene $a$ og $b$ i modellen du fant i oppgave a)?`,
@@ -290,7 +290,7 @@ for figurnummer in range(1, 21):
           [
             r`Økningen er $73\,109 - 67\,997 = 5112$ tusen liter.`,
             r`Prosentvis økning: $\dfrac{5112}{67\,997} \approx 0{,}0752 = 7{,}5\ \%$.`,
-            r`Modellen gir for $2022$ ($x = 7$): $E(7) = 17\,396\cdot 1{,}248^{7} \approx 82\,100$ tusen liter. Det er omtrent $9\,000$ tusen liter mer enn det som faktisk ble solgt.`,
+            r`Modellen gir for $2022$ ($x = 7$), regnet med de uavrundede verdiene av $a$ og $b$ fra regresjonen: $E(7) \approx 82\,100$ tusen liter. Det er omtrent $9\,000$ tusen liter mer enn det som faktisk ble solgt.`,
             r`Modellen forutsetter en vekst på omtrent $25\ \%$ per år, men den virkelige veksten fra $2021$ til $2022$ var bare omtrent $7{,}5\ \%$. Veksten har altså avtatt kraftig.`,
             r`<strong>Svar:</strong> Salget økte med omtrent $7{,}5\ \%$. Det passer dårlig med modellen, som gir omtrent $25\ \%$ vekst per år og overestimerer salget i $2022$. Modellen er dermed ikke egnet til å forutsi salget etter $2021$.`,
           ]),
