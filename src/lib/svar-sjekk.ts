@@ -11,7 +11,7 @@ export type Toleranse = { abs?: number; rel?: number };
 
 export type SvarSpec =
   /** Ett eller flere tall (verdier kan også skrives som 2√21 eller 3/4). */
-  | { type: "tall"; verdier: number[]; rekkefolge?: "fri" | "fast"; tol?: Toleranse }
+  | { type: "tall"; verdier: number[]; rekkefolge?: "fri" | "fast"; tol?: Toleranse; ord?: boolean }
   /** Uttrykk i én eller flere variabler. Ekvivalente former godtas. «y=» og «f(x)=» foran er valgfritt. */
   | { type: "uttrykk"; uttrykk: string; tol?: Toleranse }
   /** Likning x = a (flere løsninger i vilkårlig rekkefølge), eller flere variabler: a = 2 og b = 6. */
@@ -55,6 +55,11 @@ export function normaliser(input: string): string {
     .replace(/π/g, "pi")
     .replace(/\s+/g, " ")
     .trim();
+}
+
+/** «3 628 800» (mellomrom som tusenskille) blir ett tall. */
+function tusenskille(s: string): string {
+  return s.replace(/(?<![\d.,])\d{1,3}(?: \d{3})+(?!\d)/g, (m) => m.replace(/ /g, ""));
 }
 
 /** Desimalkomma mellom sifre blir punktum. «2, 3» (komma og mellomrom) er listeskille og røres ikke. */
@@ -267,7 +272,7 @@ class Parser {
 
 export function parseUttrykk(input: string): Node | null {
   try {
-    const toks = tokeniser(desimalkomma(normaliser(input)));
+    const toks = tokeniser(tusenskille(desimalkomma(normaliser(input))));
     if (!toks || toks.length === 0) return null;
     return new Parser(toks).parse();
   } catch {
@@ -391,7 +396,9 @@ function tallVerdi(s: string): number | null {
   return Number.isFinite(v) ? v : null;
 }
 
-function tolkTall(input: string, enhet?: string[]): number[] | null {
+const KJENTE_ORD = /^(?:sqrt|pi|sin|cos|tan|ln|log|lg|abs|exp|asin|acos|atan|arcsin|arccos|arctan)$/i;
+
+function tolkTall(input: string, enhet?: string[], ord?: boolean): number[] | null {
   const deler = delOpp(normaliser(input));
   if (deler.length === 0) return null;
   const ut: number[] = [];
@@ -399,6 +406,8 @@ function tolkTall(input: string, enhet?: string[]): number[] | null {
     let d = fjernForsteord(d0);
     d = d.replace(PREFIKS_UTTRYKK, "");
     d = fjernEnhet(d.trim(), enhet).rest;
+    // «Abid er 21 år»: ord på to bokstaver eller mer fjernes, tallet står igjen.
+    if (ord) d = d.replace(/[A-Za-zÆØÅæøå]{2,}/g, (w) => (KJENTE_ORD.test(w) ? w : " ")).trim();
     const v = tallVerdi(d);
     if (v === null) return null;
     ut.push(v);
@@ -443,12 +452,27 @@ function tolkLikning(input: string): { var?: string; v: number }[] | null {
   return ut;
 }
 
+/** «x=-3, y=-5 og x=2, y=0» tolkes som punktene (-3, -5) og (2, 0). */
+function punktFraLikninger(input: string): [number, number][] | null {
+  const items = tolkLikning(input);
+  if (!items || items.length === 0 || items.length % 2 !== 0) return null;
+  const ut: [number, number][] = [];
+  for (let i = 0; i < items.length; i += 2) {
+    const par = [items[i], items[i + 1]];
+    const x = par.find((q) => q.var === "x");
+    const y = par.find((q) => q.var === "y");
+    if (!x || !y) return null;
+    ut.push([x.v, y.v]);
+  }
+  return ut;
+}
+
 /** Punktene i et svar: «(−2, 0) og (4, 0)». Desimalkomma: bruk «;» inni parentesen eller «(1,5; 2,5)». */
 function tolkPunkter(input: string): [number, number][] | null {
   const s = normaliser(input);
   const grupper = [...s.matchAll(/\(([^()]*)\)/g)];
   // Parenteser som er del av uttrykk (f.eks. «(1+1, 2)») er ikke støttet; punkt skrives rett fram.
-  if (grupper.length === 0) return null;
+  if (grupper.length === 0) return punktFraLikninger(input);
   const ut: [number, number][] = [];
   for (const g of grupper) {
     const inn = g[1];
@@ -472,7 +496,7 @@ function tolkPunkter(input: string): [number, number][] | null {
 function sjekkSpec(input: string, spec: SvarSpec, enhet?: string[]): boolean {
   switch (spec.type) {
     case "tall": {
-      const gitt = tolkTall(input, enhet);
+      const gitt = tolkTall(input, enhet, spec.ord);
       if (!gitt) return false;
       if (spec.rekkefolge === "fast") {
         return gitt.length === spec.verdier.length && gitt.every((v, i) => erNær(v, spec.verdier[i], spec.tol));
