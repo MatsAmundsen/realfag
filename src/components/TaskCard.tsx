@@ -159,8 +159,8 @@ export function TaskCard({
       {!canHelp && (
         <p className="locked-note">
           {video
-            ? "Hint, video og løsning vises når du leverer i prøvemodus."
-            : "Hint og løsning vises når du leverer i prøvemodus."}
+            ? "Video og løsning vises når du leverer i prøvemodus."
+            : "Løsningen vises når du leverer i prøvemodus."}
         </p>
       )}
       {hintOn && canHelp && !hideHint && (

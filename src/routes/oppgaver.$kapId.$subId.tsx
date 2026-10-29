@@ -138,7 +138,7 @@ function SubchapterPage() {
     fireCelebration({
       kind: "exam",
       title: `${kap!.tittel} · øveprøven er levert`,
-      body: "Nå kan du åpne hint og løsningsforslag og merke oppgavene du fikk til.",
+      body: "Nå kan du åpne løsningsforslaget og merke oppgavene du fikk til.",
       badges: newly,
     });
   }
@@ -194,7 +194,7 @@ function SubchapterPage() {
               <h2>Øveprøve</h2>
               <p>
                 {mode === "prove"
-                  ? "Prøvemodus er på. Ingen hint eller løsning før du leverer — slik det er på en kapittelprøve."
+                  ? "Prøvemodus er på. Ingen hint, og løsningen vises først når du leverer — slik det er på en kapittelprøve."
                   : "Øvemodus er på. Du kan åpne hint og steg-løsning underveis."}
               </p>
             </div>
@@ -281,7 +281,7 @@ function SubchapterPage() {
         {oving && !submitted && mode === "prove" && bekreft === "lever" && (
           <div className="exam-summary" role="alertdialog" aria-labelledby="bekreft-ovep-lever" ref={leverDialog} tabIndex={-1}>
             <p id="bekreft-ovep-lever">
-              <strong>Er du ferdig med øveprøven?</strong> {antallFerdig} av {proveOppgaver.length} oppgaver er krysset av som ferdige. Når du leverer, åpnes hint og løsningsforslag.
+              <strong>Er du ferdig med øveprøven?</strong> {antallFerdig} av {proveOppgaver.length} oppgaver er krysset av som ferdige. Når du leverer, åpnes løsningsforslaget.
             </p>
             <button type="button" className="btn-primary" onClick={lever}>
               <Flag size={16} /> Ja, lever
@@ -300,7 +300,7 @@ function SubchapterPage() {
         )}
         {oving && submitted && (
           <div className="exam-summary" ref={sammendrag} tabIndex={-1} data-fokus-etter-feiring="">
-            <p>Øveprøven er levert. Hint og løsningsforslag er nå åpne. Merk oppgavene du fikk til.</p>
+            <p>Øveprøven er levert. Løsningsforslaget er nå åpent. Merk oppgavene du fikk til.</p>
             {bekreft !== "pånytt" ? (
               <button
                 type="button"

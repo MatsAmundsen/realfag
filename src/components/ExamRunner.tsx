@@ -369,7 +369,7 @@ export function ExamRunner({ exam }: { exam: Exam }) {
       </div>
       <p className="exam-mode-copy">
         {mode === "prove"
-          ? "Prøvemodus: skriv svaret ditt her eller på papir, og kryss av «Ferdig» for hver oppgave. Hint og løsning er låst til du leverer."
+          ? "Prøvemodus: skriv svaret ditt her eller på papir, og kryss av «Ferdig» for hver oppgave. Løsningen er låst til du leverer."
           : "Øvemodus: hint og steg-løsning er tilgjengelig med en gang. Bruk denne når du øver tema for tema."}
       </p>
       {mode === "prove" && !submitted && (
@@ -406,7 +406,7 @@ export function ExamRunner({ exam }: { exam: Exam }) {
           <div className="exam-summary" role="alertdialog" aria-labelledby="bekreft-lever-tittel" ref={leverDialog} tabIndex={-1}>
             <p id="bekreft-lever-tittel">
               <strong>Har du gjort ferdig begge delene?</strong> {antallFerdig} av {enhetsId.length} oppgaver og deloppgaver er krysset av som ferdige.
-              {mode === "prove" ? " Når du leverer, åpnes hint og løsningsforslag." : ""}
+              {mode === "prove" ? " Når du leverer, åpnes løsningsforslaget." : ""}
             </p>
             <button type="button" className="btn-primary" onClick={submit}>
               <Flag size={16} /> Ja, lever

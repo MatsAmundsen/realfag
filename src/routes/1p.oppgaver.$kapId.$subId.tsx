@@ -162,7 +162,7 @@ function SubchapterPage1P() {
               <h2>Øveprøve</h2>
               <p>
                 {mode === "prove"
-                  ? "Prøvemodus er på. Ingen hint eller løsning før du leverer — slik det er på en kapittelprøve."
+                  ? "Prøvemodus er på. Ingen hint, og løsningen vises først når du leverer — slik det er på en kapittelprøve."
                   : "Øvemodus er på. Du kan åpne hint og steg-løsning underveis."}
               </p>
             </div>
@@ -246,7 +246,7 @@ function SubchapterPage1P() {
         {oving && !submitted && mode === "prove" && bekreft === "lever" && (
           <div className="exam-summary" role="alertdialog" aria-labelledby="bekreft-ovep-lever" ref={leverDialog} tabIndex={-1}>
             <p id="bekreft-ovep-lever">
-              <strong>Er du ferdig med øveprøven?</strong> {proveOppgaver.filter((o) => utkast.ferdig[o.id]).length} av {proveOppgaver.length} oppgaver er krysset av som ferdige. Når du leverer, åpnes hint og løsningsforslag.
+              <strong>Er du ferdig med øveprøven?</strong> {proveOppgaver.filter((o) => utkast.ferdig[o.id]).length} av {proveOppgaver.length} oppgaver er krysset av som ferdige. Når du leverer, åpnes løsningsforslaget.
             </p>
             <button type="button" className="btn-primary" onClick={() => {
                 setBekreft(null);
@@ -269,7 +269,7 @@ function SubchapterPage1P() {
         )}
         {oving && submitted && (
           <div className="exam-summary" ref={sammendrag} tabIndex={-1}>
-            <p>Øveprøven er levert. Hint og løsningsforslag er nå åpne. Merk oppgavene du fikk til.</p>
+            <p>Øveprøven er levert. Løsningsforslaget er nå åpent. Merk oppgavene du fikk til.</p>
             {bekreft !== "pånytt" ? (
               <button
                 type="button"
