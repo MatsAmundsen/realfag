@@ -19,7 +19,9 @@ export type SvarSpec =
   /** Ett eller flere punkt (a, b), i vilkårlig rekkefølge. */
   | { type: "punkt"; punkter: [number, number][]; tol?: Toleranse }
   /** Et valg, for eksempel en bokstav. Store og små bokstaver er like. */
-  | { type: "valg"; valg: string };
+  | { type: "valg"; valg: string }
+  /** Flere delsvar i rekkefølge (a, b, c), skilt med semikolon eller linjeskift. Hvert delsvar sjekkes for seg. */
+  | { type: "serie"; deler: SvarSpec[] };
 
 export type Sluttsvar = {
   svar: SvarSpec;
@@ -407,10 +409,21 @@ function tolkTall(input: string, enhet?: string[], ord?: boolean): number[] | nu
     d = d.replace(PREFIKS_UTTRYKK, "");
     d = fjernEnhet(d.trim(), enhet).rest;
     // «Abid er 21 år»: ord på to bokstaver eller mer fjernes, tallet står igjen.
-    if (ord) d = d.replace(/[A-Za-zÆØÅæøå]{2,}/g, (w) => (KJENTE_ORD.test(w) ? w : " ")).trim();
+    // «1,63 millioner» og «9 milliarder» gir tallet ganger 10^6 og 10^9.
+    let faktor = 1;
+    const sk = /^(.*\d)\s*(millioner|million|mill|milliarder|milliard|mrd)\.?\s*$/i.exec(d);
+    if (sk) {
+      d = sk[1];
+      faktor = /^mill(?:ioner|ion)?$/i.test(sk[2]) ? 1e6 : 1e9;
+    }
+    if (ord) {
+      d = d.replace(/[A-Za-zÆØÅæøå]{2,}/g, (w) => (KJENTE_ORD.test(w) ? w : " "));
+      // «30 to-roms» blir «30 -» etter at ordene er fjernet: løse bindestreker fjernes.
+      d = d.replace(/(^|\s)-(?=\s|$)/g, "$1").trim();
+    }
     const v = tallVerdi(d);
     if (v === null) return null;
-    ut.push(v);
+    ut.push(v * faktor);
   }
   return ut;
 }
@@ -493,8 +506,21 @@ function tolkPunkter(input: string): [number, number][] | null {
   return ut;
 }
 
+/** Deler et serie-svar i delsvar (semikolon eller linjeskift) og fjerner «a)», «b.» og «c:» foran hvert. */
+export function delSerie(input: string): string[] {
+  return normaliser(input.replace(/\n/g, ";"))
+    .split(/\s*;\s*/)
+    .map((x) => x.replace(/^\s*[a-fA-F]\s*(?:\)|:|\.(?=\s))\s*/, "").trim())
+    .filter(Boolean);
+}
+
 function sjekkSpec(input: string, spec: SvarSpec, enhet?: string[]): boolean {
   switch (spec.type) {
+    case "serie": {
+      const biter = delSerie(input);
+      if (biter.length !== spec.deler.length) return false;
+      return spec.deler.every((d, i) => sjekkSpec(biter[i], d, enhet));
+    }
     case "tall": {
       const gitt = tolkTall(input, enhet, spec.ord);
       if (!gitt) return false;
@@ -627,6 +653,17 @@ export type Forhandsvisning = { tom: true } | { ok: true; latex: string } | { ok
 export function forhandsvis(input: string, spec: SvarSpec, enhet?: string[]): Forhandsvisning {
   if (!input || !input.trim()) return { tom: true };
   const s = normaliser(input);
+  if (spec.type === "serie") {
+    const biter = delSerie(input);
+    if (biter.length === 0 || spec.deler.length === 0) return { ok: false };
+    const ut: string[] = [];
+    for (let i = 0; i < biter.length; i++) {
+      const f = forhandsvis(biter[i], spec.deler[Math.min(i, spec.deler.length - 1)], enhet);
+      if (!("ok" in f) || !f.ok) return { ok: false };
+      ut.push(f.latex);
+    }
+    return { ok: true, latex: ut.join(";\\quad ") };
+  }
   if (spec.type === "valg") return { ok: true, latex: `\\text{${s.replace(/[^A-Za-z0-9æøåÆØÅ]/g, "")}}` };
   if (spec.type === "punkt") {
     const grupper = [...s.matchAll(/\(([^()]*)\)/g)];
