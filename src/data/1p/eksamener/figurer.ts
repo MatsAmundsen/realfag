@@ -20,7 +20,6 @@ const FL = 15;
 const BG = "var(--bg-surface, #111827)";
 const HALO = ` stroke="${BG}" stroke-width="4" stroke-linejoin="round" paint-order="stroke"`;
 const CAP = "color:color-mix(in srgb, var(--text-main, currentColor) 72%, var(--text-muted, #94a3b8))";
-const SOFT = `color-mix(in srgb, ${ink} 40%, transparent)`;
 let clipSeq = 0;
 
 export type ExamFigure = { h: number; svg: string; aria: string; fasit?: boolean };
@@ -133,10 +132,6 @@ function dot(P: Plot, x: number, y: number, label: string, dx: number, dy: numbe
     (label ? `<text x="${f1(P.sx(x) + dx)}" y="${f1(P.sy(y) + dy)}" text-anchor="${anchor}" font-size="${size}" font-weight="700" fill="${ink}"${HALO}>${label}</text>` : "");
 }
 
-function dropLines(P: Plot, x: number, y: number): string {
-  return line(P.sx(x), P.sy(y), P.sx(x), P.sy(0), { w: 1, dash: "4 3", op: 0.55 }) + line(P.sx(x), P.sy(y), P.sx(0), P.sy(y), { w: 1, dash: "4 3", op: 0.55 });
-}
-
 const pt = (x: number, y: number) => `(${num(x)}, ${num(y)})`;
 
 /* ═════════════════════════════ V22 ═════════════════════════════ */
@@ -165,7 +160,7 @@ function v22_d1_2(): ExamFigure {
 function v22_d1_3b(): ExamFigure {
   const P = axes({ box: [56, 34, 270, 230], xmin: 0, xmax: 5.3, ymin: 0, ymax: 110, xticks: range(0, 5, 1), xlabels: range(0, 5, 1), yticks: range(0, 100, 20), ylabels: range(0, 100, 20), xName: "Vekt (kg)", yName: "Pris (kr)" });
   let s = P.svg + seg(P, 0, 0, 5, 100, C.green);
-  for (let k = 1; k <= 5; k++) s += dot(P, k, 20 * k, pt(k, 20 * k), 8, 20, "start");
+  for (let k = 1; k <= 5; k++) s += k === 5 ? dot(P, k, 100, pt(5, 100), -9, -11, "end") : dot(P, k, 20 * k, pt(k, 20 * k), 8, 20, "start");
   return { h: 300, fasit: true, svg: s, aria: "Koordinatsystem med Vekt (kg) fra 0 til 5 og Pris (kr) fra 0 til 100. Rett linje fra origo gjennom punktene (1, 20), (2, 40), (3, 60), (4, 80) og (5, 100)." };
 }
 
@@ -262,7 +257,6 @@ function h21_d2_3c(): ExamFigure {
   let s = P.svg + curve(P, F, 0, 13, C.green);
   s += dot(P, 0, 0, "(0, 0)", -8, -8, "end") + dot(P, 5.29, 43.04, "(5,29; 43,04)", 10, -6) + dot(P, 10, 0, "(10, 0)", 0, -10, "middle");
   s += dot(P, 13, F(13), "", 0, 0);
-  s += txt(P.sx(10), P.sy(0) + 16, "10", { size: 13, halo: true });
   return { h: 330, fasit: true, svg: s, aria: "Graf til F(x) = 50x + 500 − 500·2^(x/10) for x fra 0 til 13. Kurven starter i (0, 0), stiger til toppunktet (5,29; 43,04), krysser førsteaksen i (10, 0) og synker videre til omtrent (13, −81,1). Førsteakse x (år) fra 0 til 13, andreakse F(x) fra −90 til 50." };
 }
 
@@ -302,7 +296,7 @@ function h21_d2_8(): ExamFigure {
   for (let r = 0; r < 10; r++)
     for (let c = 0; c < 10; c++) {
       const n = r * 10 + c + 1;
-      const fill = blue.has(n) ? `color-mix(in srgb, ${C.blue} 45%, transparent)` : green.has(n) ? `color-mix(in srgb, ${C.green} 70%, transparent)` : "none";
+      const fill = blue.has(n) ? `color-mix(in srgb, ${C.blue} 45%, transparent)` : green.has(n) ? `color-mix(in srgb, ${C.green} 35%, transparent)` : "none";
       s += `<rect x="${x0 + c * cs}" y="${y0 + r * cs}" width="${cs}" height="${cs}" fill="${fill}" stroke="${ink}" stroke-width="0.9"/>`;
       s += txt(x0 + c * cs + cs / 2, y0 + r * cs + cs / 2 + 4.5, String(n), { size: 13 });
     }
@@ -340,7 +334,7 @@ function h22_d2_6(): ExamFigure {
   let s = line(px - 110, py, px + 110, py, { w: 2.4 });
   for (let x = px - 108; x <= px + 100; x += 14) s += line(x + 10, py - 9, x, py, { w: 1, op: 0.55 });
   s += `<path d="M${f1(A[0])},${f1(A[1])} A${len},${len} 0 0 0 ${f1(B[0])},${f1(B[1])}" fill="none" stroke="${ink}" stroke-width="1" stroke-dasharray="4 4" opacity="0.5"/>`;
-  s += line(px, py, A[0], A[1], { w: 1.8 }) + line(px, py, B[0], B[1], { w: 1.8 });
+  s += line(px, py, A[0], A[1], { w: 1.8 }) + line(px, py, B[0], B[1], { w: 1, dash: "4 4", op: 0.5 });
   s += circ(px, py, 3.5, ink);
   s += circ(A[0], A[1], 14, C.amber, ink, 1.6) + circ(B[0], B[1], 14, C.amber, ink, 1.6);
   s += txt(A[0] - 22, A[1] - 8, "A", { anchor: "end", weight: 700 }) + txt(B[0] + 22, B[1] - 8, "B", { anchor: "start", weight: 700 });
@@ -364,7 +358,7 @@ function h23_d2_5(): ExamFigure {
 }
 
 function h23_d2_6(): ExamFigure {
-  const k = 0.74, x0 = 62, top = 52;
+  const k = 0.66, x0 = 90, top = 52;
   const pts2: [number, number][] = [[0, 100]];
   let x = 0, y = 100;
   const lens: number[] = [];
@@ -408,7 +402,7 @@ function h23_d2_8(): ExamFigure {
       /* uregelmessig, takket bane tegnet etter originalen (skalert); start rød, piler mot klokka-retning som i originalen */
       const raw: [number, number][] = [[270, 275], [300, 245], [325, 232], [335, 252], [332, 300], [340, 322], [352, 326], [372, 296], [382, 280], [402, 298], [415, 330], [418, 355], [400, 392], [388, 424], [340, 415], [290, 402], [263, 380], [265, 358], [296, 342], [300, 340], [228, 335], [242, 320], [270, 298]];
       const Q = raw.map(([x, y]): [number, number] => [ox + 8 + (x - 225) * 0.42, oy - 4 + (y - 228) * 0.42]);
-      let o = stroke(`M${Q.map(([x, y]) => `${f1(x)},${f1(y)}`).join(" L")} Z`);
+      const o = stroke(`M${Q.map(([x, y]) => `${f1(x)},${f1(y)}`).join(" L")} Z`);
       const arrowOn = (i: number, t: number) => {
         const [x1, y1] = Q[i], [x2, y2] = Q[(i + 1) % Q.length];
         return arrowHead(x1 + (x2 - x1) * t, y1 + (y2 - y1) * t, (Math.atan2(y2 - y1, x2 - x1) * 180) / Math.PI, 7, C.blue);
