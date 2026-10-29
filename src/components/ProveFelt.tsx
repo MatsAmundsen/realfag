@@ -48,7 +48,7 @@ function SluttsvarFelt({
       />
       <div id={hjelpId} className="prove-sluttsvar-hjelp">
         {"ok" in fv && fv.ok && (
-          <span className="prove-sluttsvar-forhandsvisning">
+          <span className="prove-sluttsvar-forhandsvisning" tabIndex={0} aria-label="Forhåndsvisning av sluttsvaret">
             <span className="prove-sluttsvar-tolket">Slik leser vi det: </span>
             <KatexHtml as="span" html={`$${fv.latex}$`} />
           </span>
