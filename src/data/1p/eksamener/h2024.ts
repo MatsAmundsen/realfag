@@ -96,7 +96,7 @@ export const EKSAMEN_1P_H2024: Exam = officialExam({
       ],
       ["programmering", "vekstfaktor", "lineær vekst"]),
     multi("1p-h24-d1-5", "5", 3,
-      U + r`Grader celsius (°C) og grader fahrenheit (°F) er to ulike måleenheter for temperatur. Det er en lineær sammenheng mellom de to måleenhetene. Punktene i koordinatsystemet ovenfor viser temperaturer målt i grader celsius og i grader fahrenheit.<br><em>Figuren viser: tre punkter. Førsteaksen $x$ er grader celsius, andreaksen $y$ er grader fahrenheit. Punktene er $(−40,\ −40)$, $(0,\ 32)$ og $(100,\ 212)$.</em>` +
+      U + r`Grader celsius (°C) og grader fahrenheit (°F) er to ulike måleenheter for temperatur. Det er en lineær sammenheng mellom de to måleenhetene. Punktene i koordinatsystemet ovenfor viser temperaturer målt i grader celsius og i grader fahrenheit.` +
         figur("p1-h24-d1-5", "5", "Koordinatsystem med x-akse «Grader celsius (°C)» fra −80 til ca. 170 (merker for hver 20) og y-akse «Grader fahrenheit (°F)» fra ca. −130 til 260 (merker for hver 50). Stiplede hjelpelinjer. Tre markerte punkter med koordinater: (−40, −40), (0, 32), (100, 212). Ingen linje tegnet gjennom punktene."),
       [
         part("1p-h24-d1-5", "a", r`Bestem en formel som kan brukes til å regne om temperaturer fra grader celsius til grader fahrenheit.`,

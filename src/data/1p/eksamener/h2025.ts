@@ -68,7 +68,7 @@ export const EKSAMEN_1P_H2025: Exam = officialExam({
       ],
       ["geometri", "volum", "proporsjonalitet"]),
     multi("1p-h25-d1-5", "5", 2,
-      U + r`Grafene i koordinatsystemet viser sammenhengen mellom antall timer og lønn. Den grønne grafen viser lønnen til Nora, og den blå grafen viser lønnen til Nils.<br><em>Figuren viser: begge grafene er rette linjer fra origo. Den grønne går gjennom $(10,\ 2000)$, og den blå går gjennom $(10,\ 1800)$. Aksene: antall timer $x$ fra $0$ til $12$, lønn $y$ i kroner.</em>` +
+      U + r`Grafene i koordinatsystemet viser sammenhengen mellom antall timer og lønn. Den grønne grafen viser lønnen til Nora, og den blå grafen viser lønnen til Nils.` +
         figur("p1-h25-d1-5", "5", "Koordinatsystem med to rette linjer fra origo. x = antall timer, 0 til 12 med hjelpelinjer for hver time. y = lønn i kroner, merket 400, 800, 1200, 1600, 2000 med stiplede hjelpelinjer for hver 200. Grønn linje: gjennom (10, 2000). Blå linje: gjennom (10, 1800). Aksetekster «Antall timer» og «Lønn»."),
       [
         part("1p-h25-d1-5", "a", r`Bestem timelønnen til Nora og timelønnen til Nils.`,
