@@ -51,13 +51,13 @@ export const EKSAMEN_1P_H2022: Exam = officialExam({
       ],
       ["areal", "prosent", "vurdering"]),
     multi("1p-h22-d1-3", "3", 0,
-      U + r`Grafen til en funksjon $f$ er vist i figuren. Grafen går gjennom punktene $(4,\ 2)$, $(25,\ 5)$, $(49,\ 7)$, $(81,\ 9)$ og $(100,\ 10)$.` +
+      U + r`Grafen til en funksjon $f$ er vist i figuren.` +
         figur("p1-h22-d1-3", "3", "Koordinatsystem (GeoGebra-stil) med x-akse fra −10 til ca. 110 og y-akse fra −2 til ca. 11. Grafen er en grønn kurve som starter i origo, stiger bratt først og flater gradvis ut (kvadratrotkurve). Fem markerte punkter med koordinater: (4, 2), (25, 5), (49, 7), (81, 9) og (100, 10)."),
       [
         part("1p-h22-d1-3", "a", r`Sett opp et mulig uttrykk for $f(x)$. Husk å forklare hvordan du tenker.`,
           r`Se på koordinatene. Hva er sammenhengen mellom $x$ og $y$ i punktene? Tenk på kvadrattall.`,
           [
-            r`Punktene er $(4,\ 2)$, $(25,\ 5)$, $(49,\ 7)$, $(81,\ 9)$ og $(100,\ 10)$. Alle $x$-verdiene er kvadrattall: $4 = 2^{2}$, $25 = 5^{2}$, $49 = 7^{2}$, $81 = 9^{2}$, $100 = 10^{2}$.`,
+            r`Fra figuren leser vi av punktene $(4,\ 2)$, $(25,\ 5)$, $(49,\ 7)$, $(81,\ 9)$ og $(100,\ 10)$. Alle $x$-verdiene er kvadrattall: $4 = 2^{2}$, $25 = 5^{2}$, $49 = 7^{2}$, $81 = 9^{2}$, $100 = 10^{2}$.`,
             r`$y$-verdien er hver gang kvadratroten av $x$: $\sqrt{4} = 2$, $\sqrt{25} = 5$, $\sqrt{49} = 7$, $\sqrt{81} = 9$, $\sqrt{100} = 10$.`,
             r`Grafen starter i origo og flater gradvis ut, slik som en kvadratrotfunksjon.`,
             r`<strong>Svar:</strong> Et mulig uttrykk er $f(x) = \sqrt{x}$.`,
@@ -258,7 +258,7 @@ while x &lt;= 20:
       ["programmering", "nullpunkter", "andregradslikninger"]),
     multi("1p-h22-d2-6", "6", 0,
       r`Figuren viser en pendel. Tiden pendelen bruker på å svinge fra posisjon A til posisjon B og tilbake til posisjon A igjen, kalles svingetiden.` +
-        figur("p1-h22-d2-6", "6", "Skisse av en pendel: en snor (merket «Snor») festet i taket, med en pendelkule (merket «Pendelkule») nederst. Pendelen er tegnet i tre posisjoner: A (til venstre, sving ut), midten (hengende rett ned) og B (til høyre, sving ut). Pil som viser svingebevegelsen mellom A og B.") +
+        figur("p1-h22-d2-6", "6", "Skisse av en pendel: en snor (merket «Snor») festet i et tak, med en pendelkule (merket «Pendelkule»). Pendelen er tegnet i to posisjoner: A (til venstre, med snoren tegnet) og B (til høyre, bare kula). En stiplet bue går mellom A og B.") +
         r`Klasse 1STA har utført et forsøk i naturfag. De har målt svingetiden til pendler med ulike snorlengder.<br>Tabellen nedenfor viser svingetiden til pendler med åtte ulike snorlengder.<table><tr><th>Snorlengde (meter)</th><td>$0{,}1$</td><td>$0{,}3$</td><td>$0{,}5$</td><td>$0{,}8$</td><td>$1{,}0$</td><td>$1{,}3$</td><td>$1{,}6$</td><td>$2{,}0$</td></tr><tr><th>Svingetid (sekund)</th><td>$0{,}69$</td><td>$1{,}17$</td><td>$1{,}44$</td><td>$1{,}82$</td><td>$2{,}08$</td><td>$2{,}27$</td><td>$2{,}53$</td><td>$2{,}80$</td></tr></table>`,
       [
         part("1p-h22-d2-6", "a", r`Bruk tallene i tabellen, og lag en modell på formen $S(x) = a\cdot x^{b}$ som viser svingetiden $S(x)$ sekunder til en pendel med snorlengde $x$ meter.`,
