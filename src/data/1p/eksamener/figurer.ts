@@ -23,11 +23,11 @@ const CAP = "color:color-mix(in srgb, var(--text-main, currentColor) 72%, var(--
 const SOFT = `color-mix(in srgb, ${ink} 40%, transparent)`;
 let clipSeq = 0;
 
-export type ExamFigure = { h: number; svg: string; aria: string };
+export type ExamFigure = { h: number; svg: string; aria: string; fasit?: boolean };
 
-/** Pakker figuren inn med bildetekst «Figur til oppgave <nr>». */
+/** Pakker figuren inn med bildetekst «Figur til oppgave <nr>» (fasitfigurer: «Eksempelsvar til oppgave <nr>»). */
 export function renderExamFigure(f: ExamFigure, nr: string): string {
-  return `<figure class="task-figure task-figure-1p"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${f.h}" width="100%" role="img" aria-label="${f.aria}" font-family="inherit">${f.svg}</svg><figcaption style="${CAP}">Figur til oppgave ${nr}</figcaption></figure>`;
+  return `<figure class="task-figure task-figure-1p"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${f.h}" width="100%" role="img" aria-label="${f.aria}" font-family="inherit">${f.svg}</svg><figcaption style="${CAP}">${f.fasit ? "Eksempelsvar til" : "Figur til"} oppgave ${nr}</figcaption></figure>`;
 }
 
 function num(v: number): string {
@@ -74,6 +74,7 @@ function axes(o: {
   xNameDy?: number;
   yNameAnchor?: string;
   yNameDx?: number;
+  zeroRight?: boolean;
 }): Plot {
   const [L, T, w, hh] = o.box;
   const R = L + w, B = T + hh;
@@ -92,8 +93,8 @@ function axes(o: {
   for (const y of yt) p.push(`<line x1="${f1(ay - 3)}" y1="${f1(sy(y))}" x2="${f1(ay + 3)}" y2="${f1(sy(y))}" stroke="${ink}" stroke-width="1.2"/>`);
   const labelBelow = ax >= B - 1; // x-aksen nederst: tall under; ellers også under aksen
   for (const x of xl) {
-    if (x === 0 && yl.includes(0)) {
-      p.push(`<text x="${f1(ay - 6)}" y="${f1(ax + fs + 2)}" text-anchor="end" font-size="${fs}" fill="${ink}"${HALO}>0</text>`);
+    if (x === 0 && (yl.includes(0) || B - ax > 4)) {
+      p.push(o.zeroRight ? `<text x="${f1(ay + 5)}" y="${f1(ax + fs + 2)}" text-anchor="start" font-size="${fs}" fill="${ink}"${HALO}>0</text>` : `<text x="${f1(ay - 6)}" y="${f1(ax + fs + 2)}" text-anchor="end" font-size="${fs}" fill="${ink}"${HALO}>0</text>`);
     } else {
       p.push(`<text x="${f1(sx(x))}" y="${f1(ax + fs + 3)}" text-anchor="middle" font-size="${fs}" fill="${ink}"${HALO}>${num(x)}</text>`);
     }
@@ -165,7 +166,7 @@ function v22_d1_3b(): ExamFigure {
   const P = axes({ box: [56, 34, 270, 230], xmin: 0, xmax: 5.3, ymin: 0, ymax: 110, xticks: range(0, 5, 1), xlabels: range(0, 5, 1), yticks: range(0, 100, 20), ylabels: range(0, 100, 20), xName: "Vekt (kg)", yName: "Pris (kr)" });
   let s = P.svg + seg(P, 0, 0, 5, 100, C.green);
   for (let k = 1; k <= 5; k++) s += dot(P, k, 20 * k, pt(k, 20 * k), 8, 20, "start");
-  return { h: 300, svg: s, aria: "Koordinatsystem med Vekt (kg) fra 0 til 5 og Pris (kr) fra 0 til 100. Rett linje fra origo gjennom punktene (1, 20), (2, 40), (3, 60), (4, 80) og (5, 100)." };
+  return { h: 300, fasit: true, svg: s, aria: "Koordinatsystem med Vekt (kg) fra 0 til 5 og Pris (kr) fra 0 til 100. Rett linje fra origo gjennom punktene (1, 20), (2, 40), (3, 60), (4, 80) og (5, 100)." };
 }
 
 function v22_d1_6(): ExamFigure {
@@ -178,9 +179,13 @@ function v22_d2_2(): ExamFigure {
   let s = P.svg;
   const lines: [string, string, number, number][] = [["A", C.purple, 600, 4], ["B", C.blue, 900, 2], ["C", C.green, 700, 3]];
   for (const [, col, a, b] of lines) s += seg(P, 0, a, 305, a + b * 305, col);
-  s += txt(P.sx(0) + 8, P.sy(600) + 18, "Firma A", { anchor: "start", fill: C.purple, weight: 700, halo: true });
-  s += txt(P.sx(0) + 8, P.sy(900) - 8, "Firma B", { anchor: "start", fill: C.blue, weight: 700, halo: true });
-  s += txt(P.sx(0) + 8, P.sy(700) + 18, "Firma C", { anchor: "start", fill: C.green, weight: 700, halo: true });
+  /* etikettene følger linjene (rotert), over B og C og under A, så ingen linje krysser teksten */
+  const lineLabel = (a: number, b: number, km: number, t: string, col: string, off: number) => {
+    const m = (b * (P.sy(0) - P.sy(1))) / (P.sx(1) - P.sx(0)), th = Math.atan(m), x = P.sx(km), y = P.sy(a + b * km);
+    const nx = -Math.sin(th) * off, ny = -Math.cos(th) * off;
+    return txt(x + nx, y + ny, t, { anchor: "start", fill: col, weight: 700, rot: -(th * 180) / Math.PI });
+  };
+  s += lineLabel(600, 4, 10, "Firma A", C.purple, -15) + lineLabel(900, 2, 8, "Firma B", C.blue, 5) + lineLabel(700, 3, 8, "Firma C", C.green, 5);
   return { h: 392, svg: s, aria: "Koordinatsystem med Kroner fra 100 til 1500 og Antall kilometer fra 0 til 300. Tre rette linjer: Firma A (lilla) starter i (0, 600) og er brattest, Firma B (blå) starter i (0, 900) og er slakest, Firma C (grønn) starter i (0, 700). A og C krysser i (100, 1000), A og B i (150, 1200) og B og C i (200, 1300)." };
 }
 
@@ -253,11 +258,12 @@ function h21_d1_5(): ExamFigure {
 
 function h21_d2_3c(): ExamFigure {
   const F = (x: number) => 50 * x + 500 - 500 * Math.pow(2, x / 10);
-  const P = axes({ box: [60, 26, 270, 270], xmin: 0, xmax: 13.8, ymin: -92, ymax: 52, xticks: range(0, 13, 1), xlabels: range(0, 13, 1), yticks: range(-90, 50, 10), ylabels: range(-80, 40, 20), xName: "x (år)", yName: "F(x)", xNameDy: -10, fs: 13 });
+  const P = axes({ box: [60, 26, 270, 270], xmin: 0, xmax: 13.8, ymin: -92, ymax: 52, xticks: range(0, 13, 1), xlabels: range(0, 13, 1).filter((v) => v !== 10), yticks: range(-90, 50, 10), ylabels: range(-80, 40, 20), xName: "x (år)", yName: "F(x)", xNameDy: -10, fs: 13 });
   let s = P.svg + curve(P, F, 0, 13, C.green);
   s += dot(P, 0, 0, "(0, 0)", -8, -8, "end") + dot(P, 5.29, 43.04, "(5,29; 43,04)", 10, -6) + dot(P, 10, 0, "(10, 0)", 0, -10, "middle");
   s += dot(P, 13, F(13), "", 0, 0);
-  return { h: 330, svg: s, aria: "Graf til F(x) = 50x + 500 − 500·2^(x/10) for x fra 0 til 13. Kurven starter i (0, 0), stiger til toppunktet (5,29; 43,04), krysser førsteaksen i (10, 0) og synker videre til omtrent (13, −81,1). Førsteakse x (år) fra 0 til 13, andreakse F(x) fra −90 til 50." };
+  s += txt(P.sx(10), P.sy(0) + 16, "10", { size: 13, halo: true });
+  return { h: 330, fasit: true, svg: s, aria: "Graf til F(x) = 50x + 500 − 500·2^(x/10) for x fra 0 til 13. Kurven starter i (0, 0), stiger til toppunktet (5,29; 43,04), krysser førsteaksen i (10, 0) og synker videre til omtrent (13, −81,1). Førsteakse x (år) fra 0 til 13, andreakse F(x) fra −90 til 50." };
 }
 
 function can(x: number, yb: number, d: number, h: number, ry: number): string {
@@ -308,9 +314,9 @@ function h21_d2_8(): ExamFigure {
 /* ═════════════════════════════ H22 ═════════════════════════════ */
 
 function h22_d1_3(): ExamFigure {
-  const P = axes({ box: [36, 26, 312, 270], xmin: -13, xmax: 112, ymin: -2, ymax: 11.5, xticks: range(-10, 110, 10), xlabels: range(-10, 100, 10).filter((v) => v <= 60 || v % 20 === 0), yticks: range(-2, 11, 1), ylabels: range(-2, 10, 2), xName: "x", yName: "y", fs: 11.5, xNameDy: -10 });
+  const P = axes({ box: [36, 26, 312, 270], xmin: -17, xmax: 112, ymin: -2, ymax: 11.5, xticks: range(-10, 110, 10), xlabels: range(-10, 100, 10).filter((v) => v === -10 || v % 20 === 0), yticks: range(-2, 11, 1), ylabels: range(-2, 10, 2), xName: "x", yName: "y", fs: 11.5, xNameDy: -10, zeroRight: true });
   let s = P.svg + curve(P, Math.sqrt, 0, 110, C.green);
-  s += dot(P, 4, 2, "(4, 2)", 9, 17) + dot(P, 25, 5, "(25, 5)", -7, -9, "end") + dot(P, 49, 7, "(49, 7)", -7, -9, "end") + dot(P, 81, 9, "(81, 9)", -7, -9, "end") + dot(P, 100, 10, "(100, 10)", -7, -9, "end");
+  s += dot(P, 4, 2, "(4, 2)", 9, 17) + dot(P, 25, 5, "(25, 5)", 9, 19) + dot(P, 49, 7, "(49, 7)", -7, -9, "end") + dot(P, 81, 9, "(81, 9)", -7, -9, "end") + dot(P, 100, 10, "(100, 10)", -7, -9, "end");
   return { h: 330, svg: s, aria: "Koordinatsystem med x-akse fra −10 til ca. 110 og y-akse fra −2 til ca. 11. Grafen er en grønn kurve som starter i origo, stiger bratt først og flater gradvis ut. Fem markerte punkter: (4, 2), (25, 5), (49, 7), (81, 9) og (100, 10)." };
 }
 
@@ -399,17 +405,15 @@ function h23_d2_8(): ExamFigure {
   const arr = (ox: number, oy: number, x: number, y: number, ang: number) => arrowHead(ox + x, oy + y, ang, 7, C.blue);
   const shapes: { name: string; draw: (ox: number, oy: number) => string }[] = [
     { name: "A", draw: (ox, oy) => {
-      const r = (t: number) => 25 + 17 * Math.cos(3 * t - 0.4) + 6 * Math.cos(6 * t + 1.1);
-      const P2 = (t: number): [number, number] => [ox + 50 + r(t) * Math.cos(t) * 1.08, oy + 36 + r(t) * Math.sin(t) * 0.95];
-      let d = "";
-      for (let i = 0; i <= 180; i++) { const [x, y] = P2((i / 180) * Math.PI * 2); d += `${i ? "L" : "M"}${f1(x)},${f1(y)}`; }
-      let o = stroke(d + "Z");
-      for (const t of [-0.9, 1.45, 3.45]) {
-        const [x, y] = P2(t), [x2, y2] = P2(t + 0.02);
-        o += arrowHead(x, y, (Math.atan2(y2 - y, x2 - x) * 180) / Math.PI, 7, C.blue);
-      }
-      const [mx, my] = P2(3.95);
-      return o + mark(mx, my);
+      /* uregelmessig, takket bane tegnet etter originalen (skalert); start rød, piler mot klokka-retning som i originalen */
+      const raw: [number, number][] = [[270, 275], [300, 245], [325, 232], [335, 252], [332, 300], [340, 322], [352, 326], [372, 296], [382, 280], [402, 298], [415, 330], [418, 355], [400, 392], [388, 424], [340, 415], [290, 402], [263, 380], [265, 358], [296, 342], [300, 340], [228, 335], [242, 320], [270, 298]];
+      const Q = raw.map(([x, y]): [number, number] => [ox + 8 + (x - 225) * 0.42, oy - 4 + (y - 228) * 0.42]);
+      let o = stroke(`M${Q.map(([x, y]) => `${f1(x)},${f1(y)}`).join(" L")} Z`);
+      const arrowOn = (i: number, t: number) => {
+        const [x1, y1] = Q[i], [x2, y2] = Q[(i + 1) % Q.length];
+        return arrowHead(x1 + (x2 - x1) * t, y1 + (y2 - y1) * t, (Math.atan2(y2 - y1, x2 - x1) * 180) / Math.PI, 7, C.blue);
+      };
+      return o + arrowOn(8, 0.85) + arrowOn(19, 0.55) + mark(Q[0][0], Q[0][1]);
     } },
     { name: "B", draw: (ox, oy) => stroke(`M${ox + 8},${oy + 40} L${ox + 8},${oy + 20} Q${ox + 8},${oy + 12} ${ox + 16},${oy + 15} L${ox + 94},${oy + 48} Q${ox + 98},${oy + 52} ${ox + 92},${oy + 52} L${ox + 18},${oy + 52} Q${ox + 8},${oy + 52} ${ox + 8},${oy + 44} Z`) + arr(ox, oy, 56, 32, 23) + arr(ox, oy, 50, 52, 180) + mark(ox + 8, oy + 30) },
     { name: "C", draw: (ox, oy) => stroke(`M${ox + 10},${oy + 62} L${ox + 10},${oy + 14} L${ox + 68},${oy + 14} L${ox + 50},${oy + 62} Z`) + arr(ox, oy, 10, 36, -90) + arr(ox, oy, 42, 14, 0) + arr(ox, oy, 60, 38, 111) + arr(ox, oy, 30, 62, 180) + mark(ox + 10, oy + 62) },
@@ -422,14 +426,14 @@ function h23_d2_8(): ExamFigure {
     s += sh.draw(ox, oy);
     s += txt(ox + (i % 3 === 0 ? 0 : 0), oy + 78, sh.name, { anchor: "start", weight: 700, size: 16 });
   });
-  return { h: 176 + 92 + 90, svg: s, aria: "Del 1: graf med Tilbakelagt strekning på førsteaksen og Fart på andreaksen. Farten er konstant høy, men har tre nedsenkninger: den første er middels dyp og smal, den andre er dypest og smalest, den tredje er grunnest og bredest. Del 2: seks baner A til F med rød start og piler som viser kjøreretning. A er en propellformet bane med flere svinger, B en langstrakt trekant, C en firkant med to rette vinkler, D et avlangt avrundet rektangel med tre hakk på toppen, E en likesidet trekant og F en skjev spiss trekant." };
+  return { h: 176 + 92 + 90, svg: s, aria: "Del 1: graf med Tilbakelagt strekning på førsteaksen og Fart på andreaksen. Farten er konstant høy, men har tre nedsenkninger: den første er middels dyp og smal, den andre er dypest og smalest, den tredje er grunnest og bredest. Del 2: seks baner A til F med rød start og piler som viser kjøreretning. A er en uregelmessig, takket bane med mange svinger og spisser, B en langstrakt trekant, C en firkant med to rette vinkler, D et avlangt avrundet rektangel med tre hakk på toppen, E en likesidet trekant og F en skjev spiss trekant." };
 }
 
 /* ═════════════════════════════ H24 ═════════════════════════════ */
 
 function h24_d1_5(): ExamFigure {
   const P = axes({ box: [56, 28, 276, 300], xmin: -90, xmax: 172, ymin: -140, ymax: 270, xticks: range(-80, 160, 20), xlabels: range(-80, 160, 40), yticks: range(-100, 250, 50), ylabels: range(-100, 250, 50), xName: "Grader celsius (°C)", yName: "Grader fahrenheit (°F)", grid: "dash", fs: 13, xNameDy: -10 });
-  const s = P.svg + dot(P, -40, -40, pt(-40, -40), 8, 20) + dot(P, 0, 32, pt(0, 32), 9, -9) + dot(P, 100, 212, pt(100, 212), -8, -10, "end");
+  const s = P.svg + dot(P, -40, -40, pt(-40, -40), -9, 19, "end") + dot(P, 0, 32, pt(0, 32), 9, -9) + dot(P, 100, 212, pt(100, 212), -8, -10, "end");
   return { h: 372, svg: s, aria: "Koordinatsystem med x-akse Grader celsius (°C) fra −80 til ca. 170 og y-akse Grader fahrenheit (°F) fra ca. −130 til 260, med stiplede hjelpelinjer. Tre markerte punkter: (−40, −40), (0, 32) og (100, 212). Ingen linje er tegnet gjennom punktene." };
 }
 
@@ -440,7 +444,7 @@ function h24_d2_8(): ExamFigure {
   const xs = [8, 130, 252];
   let s = `<rect x="${xs[0]}" y="${y0}" width="${w}" height="${hh}" fill="${fill}" stroke="${ink}" stroke-width="1.2"/>`;
   s += cap(xs[0], ["Metallplate", "med form som", "et rektangel"]);
-  s += `<rect x="${xs[1]}" y="${y0}" width="${w}" height="${hh}" fill="${fill}" stroke="${ink}" stroke-width="1.2"/>`;
+  s += poly([[xs[1] + q, y0], [xs[1] + w - q, y0], [xs[1] + w - q, y0 + q], [xs[1] + w, y0 + q], [xs[1] + w, y0 + hh - q], [xs[1] + w - q, y0 + hh - q], [xs[1] + w - q, y0 + hh], [xs[1] + q, y0 + hh], [xs[1] + q, y0 + hh - q], [xs[1], y0 + hh - q], [xs[1], y0 + q], [xs[1] + q, y0 + q]], fill, ink, 1.2);
   for (const [cx, cy] of [[0, 0], [w - q, 0], [0, hh - q], [w - q, hh - q]]) s += `<rect x="${xs[1] + cx}" y="${y0 + cy}" width="${q}" height="${q}" fill="none" stroke="${ink}" stroke-width="1.2" stroke-dasharray="3 3"/>`;
   s += cap(xs[1], ["Skjær bort et", "kvadrat i", "hvert hjørne"]);
   const x3 = xs[2];
@@ -458,7 +462,7 @@ function v24_d1_3(): ExamFigure {
   s += curve(P, (x) => 125 * x, 0, 15.6, C.green) + curve(P, (x) => 300 + 50 * x, 0, 15.6, C.purple);
   s += curve(P, (x) => 1000 / x, 0.85, 15.6, C.blue) + curve(P, (x) => 1000 * Math.pow(0.68, x), 0, 15.6, C.red);
   const lab = (x: number, y: number, t: string, col: string) => txt(P.sx(x), P.sy(y), t, { fill: col, weight: 700, size: 17, halo: true });
-  s += lab(8.9, 1090, "f", C.green) + lab(14.6, 1090, "g", C.purple) + lab(1.55, 720, "p", C.blue) + lab(0.35, 560, "q", C.red);
+  s += lab(9.5, 1075, "f", C.green) + lab(14.6, 1090, "g", C.purple) + lab(2.0, 715, "p", C.blue) + lab(0.35, 560, "q", C.red);
   return { h: 372, svg: s, aria: "Koordinatsystem med x fra 0 til 15 og y fra 0 til 1100, med stiplede hjelpelinjer. Fire grafer: f er en rett linje fra origo gjennom (4, 500) og (8, 1000). g er en rett linje fra (0, 300) gjennom (4, 500) og (12, 900). p er en avtakende kurve gjennom (2, 500), (5, 200) og (10, 100). q er en avtakende kurve fra (0, 1000) som flater raskt ut mot x-aksen." };
 }
 
@@ -515,7 +519,7 @@ function v23_d2_4(): ExamFigure {
   const sx = (x: number) => L + x * k, sy = (y: number) => B - y * k;
   let s = line(L - 6, B, sx(560), B, { w: 1.6 }) + arrowHead(sx(560) + 6, B, 0, 9) + line(L, B + 6, L, sy(545), { w: 1.6 }) + arrowHead(L, sy(545) - 6, -90, 9);
   s += txt(sx(560) + 8, B + 22, "Vekt (kg)", { anchor: "end", weight: 700 }) + txt(L + 10, T - 2, "Pris (kroner)", { anchor: "start", weight: 700 });
-  const P: [string, number, number, number, number][] = [["A", 71, 176, -4, -12], ["B", 196, 128, 12, -8], ["C", 448, 176, 12, 18], ["D", 514, 279, 4, -14], ["E", 402, 445, 12, -8], ["F", 196, 499, 12, -4]];
+  const P: [string, number, number, number, number][] = [["A", 71, 181, -4, -12], ["B", 196, 128, 12, -8], ["C", 448, 176, 12, 18], ["D", 514, 279, 4, -14], ["E", 402, 445, 12, -8], ["F", 196, 499, 12, -4]];
   for (const [n, x, y, dx, dy] of P) s += circ(sx(x), sy(y), 4.6, ink, BG, 1.2) + txt(sx(x) + dx, sy(y) + dy, n, { anchor: dx < 0 ? "end" : "start", weight: 700, size: 16, halo: true });
   return { h: B + 36, svg: s, aria: "Koordinatsystem med Vekt (kg) på førsteaksen og Pris (kroner) på andreaksen, uten tall på aksene. Seks punkter A, B, C, D, E og F. A og C ligger på samme høyde, B og F ligger rett over hverandre, og A og F ligger på en rett linje gjennom origo." };
 }
@@ -661,7 +665,7 @@ function h25_d2_2(): ExamFigure {
       path += `${pen ? "L" : "M"}${f1(L + t * w)},${f1(B - v * hh)}`; pen = true;
     }
     s += `<path d="${path}" fill="none" stroke="${C.green}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>`;
-    s += txt(L + w - 6, T + 8, String(i + 1), { weight: 800, size: 16 });
+    s += txt(ox + 1, oy + 15, String(i + 1), { weight: 800, size: 16, anchor: "start" });
   });
   return { h: 3 * ph + 6, svg: s, aria: "Ni små diagrammer med nummer 1 til 9 og aksene x og y, kun kurver uten tall på aksene. 1: rett fallende linje. 2: S-kurve. 3: trappetrinn med tre vannrette stykker, hvert høyere enn det forrige. 4: eksponentielt avtakende kurve. 5: rett stigende linje. 6: raskt stigende kurve som flater ut. 7: starter over null, stiger først langsomt langs en kurve og så som et rett stykke. 8: sterkt avtakende kurve fra svært høy verdi mot x-aksen. 9: stigende kurve med tre rette stykker: først bratt, så slakt, så middels bratt." };
 }
