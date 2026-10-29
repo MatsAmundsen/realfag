@@ -231,8 +231,8 @@ while x &lt;= 10:
           r`Finn nullpunktene til $x^{2} - 6x + 8$ og sjekk hvilke som ligger blant heltallene fra $0$ til $10$.`,
           [
             r`Programmet skriver ut alle heltall $x$ fra $0$ til $10$ som oppfyller $x^{2} - 6x + 8 = 0$.`,
-            r`Med abc-formelen: $x = \dfrac{6 \pm \sqrt{36 - 32}}{2} = \dfrac{6 \pm 2}{2}$, så $x = 4$ eller $x = 2$.`,
-            r`Begge ligger mellom $0$ og $10$ og er heltall. Faktorisert: $x^{2} - 6x + 8 = (x - 2)(x - 4)$.`,
+            r`Tegn grafen til $f(x) = x^{2} - 6x + 8$ i GeoGebra og finn nullpunktene med «Nullpunkt» (eller løs likningen med CAS). Grafen skjærer $x$-aksen i $x = 2$ og $x = 4$.`,
+            r`Begge ligger mellom $0$ og $10$ og er heltall. Kontroll ved innsetting: $2^{2} - 6\cdot 2 + 8 = 0$ og $4^{2} - 6\cdot 4 + 8 = 0$. Uttrykket kan også faktoriseres: $x^{2} - 6x + 8 = (x - 2)(x - 4)$.`,
             r`<strong>Svar:</strong> Programmet skriver ut $2$ og deretter $4$ (på hver sin linje).`,
           ]),
         part("1p-h22-d2-5", "c", r`Lars endrer funksjonsuttrykket til $x^{2} - 144$ og ser at han må gjøre noe med programmet. Foreslå endringer Lars kan gjøre.`,
