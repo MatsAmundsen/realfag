@@ -32,6 +32,7 @@ export const SLUTTSVAR: Record<string, Sluttsvar> = {
   "h25-d1-3": {"svar": {"type": "tall", "verdier": [1, 2], "ord": true}, "format": "Skriv nummeret på de rette påstandene, for eksempel «1 og 3»."},
   "h25-d1-4": {"svar": {"type": "tall", "verdier": [2, 6], "ord": true}, "format": "Skriv nummeret på de riktige uttrykkene, for eksempel «1 og 3»."},
   "h25-d1-5b": {"svar": {"type": "tall", "verdier": [12]}},
+  "h25-d2-3b": {"svar": {"type": "tall", "verdier": [4.84807621135], "tol": {"rel": 0.002}}},
   "h25-d2-1d": {"svar": {"type": "tall", "verdier": [73.2282078108], "tol": {"abs": 1}}, "enhet": ["%"]},
   "h25-d2-2": {"svar": {"type": "tall", "verdier": [21, 38, 9], "rekkefolge": "fast", "ord": true}, "format": "Skriv svarene i den rekkefølgen oppgaven spør, skilt med komma eller «og»."},
   "v26-d1-2a": {"svar": {"type": "punkt", "punkter": [[-3, -5], [2, 0]]}},
