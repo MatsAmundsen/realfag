@@ -29,6 +29,70 @@ function Svg({
   );
 }
 
+/* 1T H25 del 2, oppgave 3: firkant ABCD med vannrett diagonal AC.
+   Eksakt geometri (A = (0, 0), C = (3, 0), enhet 80 px):
+   D = (3/2, √3/2) over AC, B = AB·(cos 45°, −sin 45°) under AC der AB = 3·sin 75°/sin 60°,
+   som gir B = ((3 + √3)/2, −(3 + √3)/2) og BC = √6. */
+function H25Firkant() {
+  const S = 80;
+  const OX = 34;
+  const OY = 96;
+  const r2 = (n: number) => Math.round(n * 100) / 100;
+  const px = (x: number) => r2(OX + x * S);
+  const py = (y: number) => r2(OY - y * S);
+  const AB = (3 * Math.sin((75 * Math.PI) / 180)) / Math.sin((60 * Math.PI) / 180);
+  const A = { x: 0, y: 0 };
+  const C = { x: 3, y: 0 };
+  const D = { x: 1.5, y: Math.sqrt(3) / 2 };
+  const B = { x: AB * Math.cos(Math.PI / 4), y: -AB * Math.sin(Math.PI / 4) };
+  const P = (q: { x: number; y: number }) => `${px(q.x)},${py(q.y)}`;
+  // punkt i skjermkoordinater fra et toppunkt, gitt mattevinkel (grader) og avstand i px
+  const at = (q: { x: number; y: number }, deg: number, d: number) => ({
+    x: r2(px(q.x) + d * Math.cos((deg * Math.PI) / 180)),
+    y: r2(py(q.y) - d * Math.sin((deg * Math.PI) / 180)),
+  });
+  const arc = (q: { x: number; y: number }, from: number, to: number, d: number) => {
+    const a = at(q, from, d);
+    const b = at(q, to, d);
+    return `M${a.x} ${a.y} A${d} ${d} 0 0 0 ${b.x} ${b.y}`;
+  };
+  const line = "var(--text-main, currentColor)";
+  const tint = "var(--p1-tint, var(--primary-subtle, rgba(99, 102, 241, 0.1)))";
+  const mark = "var(--p1-ink, var(--primary-light, #818cf8))";
+  const note = "var(--p1-muted, var(--text-muted, #64748b))";
+  const diag = "var(--accent, #34d399)";
+  const mid = (u: { x: number; y: number }, v: { x: number; y: number }) => ({
+    x: (px(u.x) + px(v.x)) / 2,
+    y: (py(u.y) + py(v.y)) / 2,
+  });
+  const mDC = mid(D, C);
+  const mBC = mid(B, C);
+  const lenDC = { x: r2(mDC.x + 17 * 0.5), y: r2(mDC.y - 17 * 0.866) };
+  const lenBC = { x: r2(mBC.x + 18 * 0.966), y: r2(mBC.y - 18 * 0.259) };
+  const a120 = at(D, 270, 44);
+  const a30 = at(C, 165, 52);
+  const a45 = at(A, -22.5, 60);
+  const common = { fontSize: 14, textAnchor: "middle" as const, dy: "0.35em" };
+  return (
+    <Svg label="Firkant ABCD der diagonalen AC er vannrett. Vinkel ADC er 120 grader, vinkel ACD er 30 grader og vinkel BAC er 45 grader. DC er kvadratroten av 3 og BC er kvadratroten av 6." w={300} h={312}>
+      <polygon points={`${P(A)} ${P(B)} ${P(C)} ${P(D)}`} fill={tint} stroke={line} strokeWidth="1.6" strokeLinejoin="round" />
+      <line x1={px(A.x)} y1={py(A.y)} x2={px(C.x)} y2={py(C.y)} stroke={diag} strokeWidth="2" />
+      <path d={arc(D, 210, 330, 22)} fill="none" stroke={mark} strokeWidth="1.6" />
+      <path d={arc(C, 150, 180, 34)} fill="none" stroke={mark} strokeWidth="1.6" />
+      <path d={arc(A, -45, 0, 34)} fill="none" stroke={mark} strokeWidth="1.6" />
+      <text x={a120.x} y={a120.y} fill={mark} {...common}>120°</text>
+      <text x={a30.x} y={a30.y} fill={mark} {...common}>30°</text>
+      <text x={a45.x} y={a45.y} fill={mark} {...common}>45°</text>
+      <text x={lenDC.x} y={lenDC.y} fill={note} {...common}>√3</text>
+      <text x={lenBC.x} y={lenBC.y} fill={note} {...common}>√6</text>
+      <text x={px(A.x) - 13} y={py(A.y)} fill={line} fontStyle="italic" {...common}>A</text>
+      <text x={px(B.x)} y={py(B.y) + 16} fill={line} fontStyle="italic" {...common}>B</text>
+      <text x={px(C.x) + 13} y={py(C.y)} fill={line} fontStyle="italic" {...common}>C</text>
+      <text x={px(D.x)} y={py(D.y) - 13} fill={line} fontStyle="italic" {...common}>D</text>
+    </Svg>
+  );
+}
+
 export function ExamFigure({ id }: { id?: string }) {
   if (!id) return null;
   switch (id) {
@@ -274,16 +338,7 @@ export function ExamFigure({ id }: { id?: string }) {
         </Svg>
       );
     case "h25-firkant":
-      return (
-        <Svg label="Firkant ABCD med diagonal AC" w={280} h={200}>
-          <polygon points="50,160 210,160 240,50 80,40" fill="var(--primary-subtle)" stroke={ink} />
-          <line x1="50" y1="160" x2="240" y2="50" stroke={accent} />
-          <text x="48" y="178" fill={muted} fontSize="12">A</text>
-          <text x="214" y="178" fill={muted} fontSize="12">B</text>
-          <text x="246" y="46" fill={muted} fontSize="12">C</text>
-          <text x="62" y="36" fill={muted} fontSize="12">D</text>
-        </Svg>
-      );
+      return <H25Firkant />;
     case "v26-abd":
       return (
         <Svg label="Trekanter ADC og ACB som deler side AC" w={300} h={200}>
