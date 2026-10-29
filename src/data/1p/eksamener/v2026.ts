@@ -285,7 +285,7 @@ print(g(x))</code></pre>Når programmet kjøres, skrives dette ut:<pre><code>Res
           [
             r`<strong>Antakelser.</strong> Bestanden synker fortsatt eksponentielt, men den stabiliserer seg på $2000$ par, siden vernetiltakene bidrar til å stoppe nedgangen. Bestanden går altså mot $2000$, ikke mot $0$. Det er bare avstanden opp til $2000$ som minker eksponentielt.`,
             r`<strong>Finn $p(x)$.</strong> Startverdien er $7000$, så $p(x) = 7000\cdot b^{x}$. Fra $p(9) = 500$ får vi $b^{9} = \dfrac{500}{7000} = \dfrac{1}{14}$.`,
-            r`$b = \left(\dfrac{1}{14}\right)^{1/9} \approx 0{,}7459$. Altså $p(x) = 7000\cdot 0{,}746^{x}$.`,
+            r`$b = \left(\dfrac{1}{14}\right)^{1/9} \approx 0{,}7459$. Altså $p(x) = 7000\cdot 0{,}746^{x}$. Vekstfaktoren $0{,}746$ betyr at $p$ avtar med omtrent $25{,}4\ \%$ per år ($1 - 0{,}746 = 0{,}254$).`,
             r`<strong>Finn $q(x)$.</strong> Grafen til $q$ er grafen til $p$ flyttet $2000$ enheter opp: $q(x) = p(x) + 2000$. Kontroll: $q(0) = 7000 + 2000 = 9000$ og $q(9) = 500 + 2000 = 2500$. Begge stemmer med grafen.`,
             r`<strong>Svar:</strong> $p(x) = 7000\cdot 0{,}746^{x}$ og $q(x) = 7000\cdot 0{,}746^{x} + 2000$. Egil antar at bestanden synker eksponentielt mot en nedre grense på $2000$ par og stabiliserer seg der.`,
           ]),
