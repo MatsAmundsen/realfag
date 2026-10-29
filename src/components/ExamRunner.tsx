@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Clock, Flag, Lightbulb, ListOrdered } from "lucide-react";
 import type { Exam, ExamPart, ExamTask, StudyMode } from "@/data/types";
 import { KatexHtml } from "./KatexHtml";
@@ -218,6 +218,23 @@ export function ExamRunner({ exam }: { exam: Exam }) {
 
   const tasks = part === "1" ? exam.del1 : exam.del2;
 
+  // Rullbare formler/tabeller må kunne nås med tastatur (WCAG 2.1.1).
+  const runnerRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const merk = () => {
+      runnerRef.current?.querySelectorAll<HTMLElement>(".katex-display, .task-content").forEach((el) => {
+        if (el.scrollWidth > el.clientWidth + 1) el.tabIndex = 0;
+        else el.removeAttribute("tabindex");
+      });
+    };
+    const id = window.requestAnimationFrame(merk);
+    window.addEventListener("resize", merk);
+    return () => {
+      window.cancelAnimationFrame(id);
+      window.removeEventListener("resize", merk);
+    };
+  });
+
   // Etter levering vises de lagrede svarene, ikke utkastet.
   const svar: Svar = useMemo(
     () =>
@@ -291,7 +308,7 @@ export function ExamRunner({ exam }: { exam: Exam }) {
   }
 
   return (
-    <div className="exam-runner">
+    <div className="exam-runner" ref={runnerRef}>
       <div className="exam-toolbar">
         <ModeToggle mode={mode} onChange={setMode} />
         <div className="part-tabs">

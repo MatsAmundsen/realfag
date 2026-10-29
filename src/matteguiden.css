@@ -4864,3 +4864,16 @@ header.navbar[data-fag="1P"] .nav-btn.fag-switch,
   text-decoration: underline;
   text-underline-offset: 0.18em;
 }
+[data-fag="1P"] .ove-banner p,
+[data-fag="1P"] .locked-note { color: var(--p1-muted); }
+[data-fag="1P"] .sub-nav .btn-primary {
+  background: var(--p1-btn-bg); color: var(--p1-btn-ink); border: 2px solid var(--p1-btn-bg);
+  box-shadow: none; font-weight: 800; min-height: 44px;
+}
+[data-fag="1P"] .sub-nav .btn-primary:hover { background: var(--p1-btn-bg-h); border-color: var(--p1-btn-bg-h); }
+[data-fag="1P"] .sub-nav .btn-primary:focus-visible { outline: 3px solid var(--p1-focus); outline-offset: 3px; }
+/* ferdig-pille: mørkere tekst på tint i lyst tema */
+[data-theme="light"] [data-fag="1P"] .prove-svar[data-done="true"] .prove-ferdig { color: #2d4a0e; }
+[data-theme="light"] [data-fag="1P"] .prove-ferdig { color: #1e293b; }
+[data-fag="1P"] .katex-display:focus-visible,
+[data-fag="1P"] .task-content:focus-visible { outline: 3px solid var(--p1-focus); outline-offset: 2px; }
