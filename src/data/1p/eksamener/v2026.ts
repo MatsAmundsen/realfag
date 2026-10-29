@@ -167,14 +167,16 @@ export const EKSAMEN_1P_V2026: Exam = officialExam({
       ["funksjoner", "likninger"]),
     single("1p-v26-d1-12", "12", 2,
       U + r`Lufttetthet er et mål på hvor mye luftmasse det er i et bestemt volum, altså hvor tettpakket luften er.<br>I tørr luft er sammenhengen mellom lufttettheten $L$, trykket $p$ og temperaturen $T$ gitt ved<br>$L = \dfrac{p}{287\cdot T}$<br>Argumenter for om hver påstand nedenfor er sann eller usann.<br><strong>Påstand 1:</strong> Når temperaturen er konstant, er trykk og lufttetthet proporsjonale størrelser.<br><strong>Påstand 2:</strong> Lufttetthet og temperatur er omvendt proporsjonale størrelser.`,
-      r`Proporsjonale størrelser har formen $y = k\cdot x$. Omvendt proporsjonale har formen $y = \dfrac{k}{x}$, med en konstant $k$. Spør deg hva som må være konstant.`,
+      r`Proporsjonale størrelser har konstant forhold $\dfrac{y}{x}$. Omvendt proporsjonale størrelser har konstant produkt $x\cdot y$. Spør deg hvilke størrelser som må holdes fast i hver påstand.`,
       [
-        r`<strong>Påstand 1.</strong> Når $T$ er konstant, er $\dfrac{1}{287\cdot T}$ et fast tall $k$. Da er $L = k\cdot p$, så $L$ er proporsjonal med $p$. Påstanden er sann.`,
-        r`<strong>Påstand 2.</strong> Vi kan skrive $L = \dfrac{p}{287}\cdot\dfrac{1}{T}$. Da er $L$ omvendt proporsjonal med $T$ bare hvis $\dfrac{p}{287}$ er konstant, altså hvis trykket ikke endrer seg. Det står ikke i oppgaven, og $L$ avhenger også av $p$.`,
-        r`Eksempel: Med $p$ fast er $L\cdot T = \dfrac{p}{287}$ konstant. Hvis $p$ dobles samtidig som $T$ dobles, forblir $L$ uendret, og da er $L$ ikke omvendt proporsjonal med $T$.`,
-        r`<strong>Svar:</strong> Påstand 1 er sann. Påstand 2 er usann slik den står: $L\cdot T = \dfrac{p}{287}$ er bare konstant når trykket $p$ er konstant, og dobler vi både $p$ og $T$, er $L$ uendret.`,
+        r`<strong>Påstand 1.</strong> Vi holder $T$ fast. Da står det bare $p$ som variabel i formelen: $L = \dfrac{1}{287\cdot T}\cdot p$, og faktoren foran $p$ er et fast tall. Forholdet $\dfrac{L}{p} = \dfrac{1}{287\cdot T}$ er altså konstant, så dobles trykket, dobles lufttettheten. Påstanden er sann.`,
+        r`<strong>Påstand 2.</strong> Omvendt proporsjonalitet mellom $L$ og $T$ betyr at produktet $L\cdot T$ er konstant. Fra formelen får vi $L\cdot T = \dfrac{p}{287}$. Produktet er bare fast dersom $p$ er fast. Oppgaven sier ikke at trykket er konstant, så $L\cdot T$ kan endre seg.`,
+        r`Et eksempel som viser det: Ved $p = 100\,000$ er $L \approx 1{,}16$ når $T = 300$ og $L \approx 0{,}58$ når $T = 600$, så her halveres $L$ når $T$ dobles. Men dersom trykket også dobles til $p = 200\,000$ samtidig som $T = 600$, får vi igjen $L \approx 1{,}16$, og da er $L$ uendret selv om $T$ er doblet.`,
+        r`<strong>Annen tolkning:</strong> Hvis oppgaven er ment slik at trykket skal holdes konstant, på samme måte som temperaturen i påstand 1, er $L\cdot T = \dfrac{p}{287}$ et fast tall, og da er påstand 2 riktig.`,
+        r`<strong>Svar:</strong> Påstand 1 er sann. Påstand 2 er usann slik den står, fordi den bare stemmer når trykket $p$ er konstant. Med konstant trykk er den riktig.`,
       ],
-      ["proporsjonalitet", "omvendt proporsjonalitet"]),
+      ["proporsjonalitet", "omvendt proporsjonalitet"],
+      "Påstand 2 kan leses på to måter. Slik den står, uten at trykket er oppgitt som konstant, er den usann (hovedsvaret). Hvis trykket regnes som konstant, er den riktig (matematikk.net leser den slik). Begge tolkningene er vist i løsningen."),
     multi("1p-v26-d1-13", "13", 4,
       U + r`I 2026 består et fuglebestand av 20 000 individer. Sofie er forsker. Hun antar at bestanden vil minke de kommende årene. Hun har laget to modeller og skrevet programkoden nedenfor.<pre><code>x = 0       # x er antall år etter 2026
 
