@@ -27,7 +27,8 @@ function EksamenerIndex() {
         <p>
           Eksamensoppgavene fra Utdanningsdirektoratet (MAT1019 Matematikk 1P, LK20), med våre egne trinnvise
           løsningsforslag. Del 1 er <strong>Uten hjelpemidler</strong>, Del 2 er med hjelpemidler. Velg prøvemodus for å
-          øve som på eksamen, eller øvemodus for å lese løsning underveis.
+          øve som på eksamen, eller øvemodus for å lese løsning underveis. På noen eksamener (H22, V22, H23 og V23) oppgir
+          ikke eksamenen poeng per oppgave, og da viser vi ingen poengtall.
         </p>
       </div>
       <div className="exam-how">
