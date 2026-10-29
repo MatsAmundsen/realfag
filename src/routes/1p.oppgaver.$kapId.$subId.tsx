@@ -171,7 +171,7 @@ function SubchapterPage1P() {
               />
               <Clock size={14} /> Tidtaking
             </label>
-            {timerOn && <span className="timer-readout">Brukt tid: {formatKlokke(elapsed)}</span>}
+            {timerOn && <span role="timer" className="timer-readout">Brukt tid: {formatKlokke(elapsed)}</span>}
             {!submitted && (
               <span className="prove-teller" role="status">
                 {proveOppgaver.filter((o) => utkast.ferdig[o.id]).length} av {proveOppgaver.length} krysset av som ferdige.
@@ -219,7 +219,7 @@ function SubchapterPage1P() {
         ))}
 
         {oving && !submitted && mode === "prove" && bekreft !== "lever" && (
-          <button type="button" className="btn-primary" onClick={() => setBekreft("lever")}>
+          <button type="button" className="btn-primary prove-lever" onClick={() => setBekreft("lever")}>
             <Flag size={16} /> Lever / Ferdig
           </button>
         )}

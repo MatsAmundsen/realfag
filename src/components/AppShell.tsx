@@ -205,6 +205,7 @@ export function AppShell() {
       <aside
         id="mobile-nav-drawer"
         className={`mobile-nav-drawer${menu ? " is-open" : ""}`}
+        data-fag={is1P ? "1P" : "1T"}
         aria-hidden={!menu}
       >
         <p className="mobile-nav-label">Meny</p>

@@ -4357,3 +4357,484 @@ a.vid-nav-card {
 [data-theme="light"] .nivaark-dl:hover { background: var(--fag-1p-soft); box-shadow: inset 0 0 0 1px var(--nivaark-fg); border-color: var(--nivaark-fg); }
 [data-theme="light"] .nivaark-dl:hover .nivaark-dl-title { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 2px; }
 @media (prefers-reduced-motion: reduce) { .nivaark-dl { transition: none; } }
+
+/* ============================================================
+   1P · PRØVEMODUS OG EKSAMENER
+   Design for svarfelt, «Ferdig», tidtaking, deloppgaver, eksamenskort,
+   menylenke og bekreftelsesblokker. Alt er scopet til [data-fag="1P"]
+   slik at 1T (som deler ExamRunner) ser ut som før.
+   Lime som tekst: #a3e635 mørkt, #3f6212 lyst (≥ 4,5:1 mot kortbakgrunn).
+   ============================================================ */
+[data-fag="1P"] {
+    --p1-ink:        #a3e635;                    /* lime tekst/ikoner */
+    --p1-ink-strong: #bef264;
+    --p1-muted:      #a8b5c8;                    /* dempet tekst, ≥ 4,5:1 */
+    --p1-line:       rgba(163, 230, 53, 0.55);   /* kontroll-kant */
+    --p1-tint:       rgba(163, 230, 53, 0.10);
+    --p1-tint-2:     rgba(163, 230, 53, 0.18);
+    --p1-field:      rgba(2, 6, 23, 0.45);
+    --p1-field-line: #64748b;
+    --p1-btn-bg:     #a3e635;
+    --p1-btn-bg-h:   #bef264;
+    --p1-btn-ink:    #14230a;
+    --p1-danger:     #fca5a5;
+    --p1-focus:      #a3e635;
+}
+[data-theme="light"] [data-fag="1P"] {
+    --p1-ink:        #3f6212;
+    --p1-ink-strong: #365314;
+    --p1-muted:      #475569;
+    --p1-line:       #4d7c0f;
+    --p1-tint:       rgba(77, 124, 15, 0.08);
+    --p1-tint-2:     rgba(77, 124, 15, 0.16);
+    --p1-field:      #ffffff;
+    --p1-field-line: #64748b;
+    --p1-btn-bg:     #3f6212;
+    --p1-btn-bg-h:   #365314;
+    --p1-btn-ink:    #ffffff;
+    --p1-danger:     #b91c1c;
+    --p1-focus:      #3f6212;
+}
+
+/* ── Menylenke «Tidligere eksamener» og de andre 1P-lenkene ─── */
+header.navbar[data-fag="1P"] .nav-btn,
+.mobile-nav-drawer[data-fag="1P"] .nav-btn {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--p1-muted);
+    text-decoration: none;
+    position: relative;
+}
+header.navbar[data-fag="1P"] .nav-btn:not(.fag-switch):hover,
+.mobile-nav-drawer[data-fag="1P"] .nav-btn:not(.fag-switch):hover { color: var(--text-main); background: var(--p1-tint); }
+header.navbar[data-fag="1P"] .nav-btn.active,
+.mobile-nav-drawer[data-fag="1P"] .nav-btn.active { color: var(--p1-ink); background: var(--p1-tint); }
+/* aktiv side vises også uten farge: strek under (desktop) / strek til venstre (meny) */
+header.navbar[data-fag="1P"] .nav-btn.active::after {
+    content: "";
+    position: absolute;
+    left: 0.9rem; right: 0.9rem; bottom: 4px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--p1-ink);
+}
+.mobile-nav-drawer[data-fag="1P"] .nav-btn.active { box-shadow: inset 3px 0 0 var(--p1-ink); }
+header.navbar[data-fag="1P"] .nav-btn:focus-visible,
+.mobile-nav-drawer[data-fag="1P"] .nav-btn:focus-visible { outline: 3px solid var(--p1-focus); outline-offset: 2px; }
+header.navbar[data-fag="1P"] .nav-btn.fag-switch,
+.mobile-nav-drawer[data-fag="1P"] .nav-btn.fag-switch { color: var(--fag-to); }
+.mobile-nav-drawer[data-fag="1P"] .nav-btn.fag-switch { justify-content: center; }
+
+/* ── Eksamenskort på /1p/eksamener ─── */
+[data-fag="1P"] .exam-card {
+    gap: 0.4rem;
+    padding: 1.2rem 1.25rem 1.1rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--p1-line);
+    min-height: 44px;
+    text-decoration: none;
+    color: var(--text-main);
+}
+[data-fag="1P"] .exam-card:hover { border-color: var(--p1-line); background: var(--card-bg-hover); }
+[data-fag="1P"] .exam-card:focus-visible { outline: 3px solid var(--p1-focus); outline-offset: 3px; }
+[data-fag="1P"] .exam-card strong { font-size: 1.1rem; line-height: 1.3; padding-right: 4.5rem; }
+[data-fag="1P"] .exam-season { color: var(--p1-ink); letter-spacing: 0.08em; }
+[data-fag="1P"] .exam-meta { color: var(--p1-muted); font-size: 0.875rem; }
+[data-fag="1P"] .exam-note { color: var(--p1-muted); font-size: 0.85rem; line-height: 1.45; }
+[data-fag="1P"] .exam-card.done { box-shadow: none; border-top-color: var(--p1-ink); background: linear-gradient(180deg, var(--p1-tint), transparent 60%), var(--card-bg); }
+[data-fag="1P"] .exam-pill {
+    top: 1.05rem;
+    right: 1rem;
+    background: var(--p1-tint-2);
+    color: var(--p1-ink);
+    border: 1px solid var(--p1-line);
+    font-size: 0.78rem;
+    padding: 0.22rem 0.65rem;
+}
+[data-fag="1P"] .exam-pill::before { content: "✓ " / ""; }
+[data-fag="1P"] .exam-how a, [data-fag="1P"] .exam-legal a { color: var(--p1-ink); }
+[data-fag="1P"] .exam-legal { color: var(--p1-muted); }
+
+/* ── Kilde-linjen under tittelen ─── */
+[data-fag="1P"] .exam-source {
+    max-width: 68ch;
+    margin: 0.4rem 0 1.1rem;
+    padding: 0.55rem 0.85rem;
+    border-left: 3px solid var(--p1-line);
+    background: var(--p1-tint);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    color: var(--p1-muted);
+    font-size: 0.875rem;
+    line-height: 1.55;
+}
+[data-fag="1P"] .exam-source a { color: var(--p1-ink); text-underline-offset: 3px; }
+[data-fag="1P"] .exam-source a:focus-visible { outline: 3px solid var(--p1-focus); outline-offset: 2px; border-radius: 3px; }
+
+/* ── Verktøylinje: modus, del 1/2, tidtaking ─── */
+[data-fag="1P"] .exam-toolbar { gap: 0.6rem 0.9rem; margin-bottom: 1rem; }
+[data-fag="1P"] .part-tabs button,
+[data-fag="1P"] .mode-toggle button { min-height: 44px; padding: 0.45rem 1rem; color: var(--p1-muted); font-size: 0.875rem; }
+[data-fag="1P"] .part-tabs button.is-on,
+[data-fag="1P"] .mode-toggle button.is-on { background: var(--p1-tint-2); color: var(--p1-ink); box-shadow: inset 0 0 0 1.5px var(--p1-line); }
+[data-fag="1P"] .part-tabs button:focus-visible,
+[data-fag="1P"] .mode-toggle button:focus-visible { outline: 3px solid var(--p1-focus); outline-offset: 2px; }
+
+[data-fag="1P"] .timer-toggle {
+    min-height: 44px;
+    gap: 0.55rem;
+    padding: 0 0.25rem;
+    color: var(--p1-muted);
+    cursor: pointer;
+}
+[data-fag="1P"] .timer-toggle svg { flex: none; }
+[data-fag="1P"] .timer-toggle input,
+[data-fag="1P"] .prove-ferdig input {
+    appearance: none;
+    -webkit-appearance: none;
+    flex: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: 0;
+    border: 2px solid var(--p1-line);
+    border-radius: 6px;
+    background: var(--p1-field);
+    display: inline-grid;
+    place-content: center;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+}
+[data-fag="1P"] .timer-toggle input::after,
+[data-fag="1P"] .prove-ferdig input::after {
+    content: "";
+    width: 0.8rem;
+    height: 0.45rem;
+    border-left: 3px solid var(--p1-btn-ink);
+    border-bottom: 3px solid var(--p1-btn-ink);
+    transform: translateY(-1px) rotate(-45deg) scale(0);
+    transition: transform 0.12s;
+}
+[data-fag="1P"] .timer-toggle input:checked,
+[data-fag="1P"] .prove-ferdig input:checked { background: var(--p1-btn-bg); border-color: var(--p1-btn-bg); }
+[data-fag="1P"] .timer-toggle input:checked::after,
+[data-fag="1P"] .prove-ferdig input:checked::after { transform: translateY(-1px) rotate(-45deg) scale(1); }
+[data-fag="1P"] .timer-toggle input:focus-visible,
+[data-fag="1P"] .prove-ferdig input:focus-visible { outline: 3px solid var(--p1-focus); outline-offset: 3px; }
+[data-fag="1P"] .timer-toggle input:disabled,
+[data-fag="1P"] .prove-ferdig input:disabled { cursor: default; }
+
+/* Tidtakerne: to adskilte brikker, aldri skjøtt sammen */
+[data-fag="1P"] .timer-group { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+[data-fag="1P"] .timer-readout {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.25rem;
+    padding: 0.3rem 0.8rem;
+    border: 1px solid var(--p1-line);
+    border-radius: 99px;
+    background: var(--p1-tint);
+    color: var(--p1-ink);
+    font-size: 0.9rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+[data-fag="1P"] .timer-readout.is-low { color: var(--p1-danger); border-color: var(--p1-danger); background: transparent; }
+[data-fag="1P"] .timer-readout.is-low::before { content: "⚠" / ""; margin-right: 0.4rem; }
+.timer-sr { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* Teller: «x av y krysset av» */
+[data-fag="1P"] .prove-teller {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 0 1.1rem;
+    padding: 0.4rem 0.85rem;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--p1-line);
+    border-radius: var(--radius-sm);
+    background: var(--p1-tint);
+    color: var(--text-main);
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+[data-fag="1P"] .exam-toolbar .prove-teller { margin: 0; }
+[data-fag="1P"] .exam-mode-copy { color: var(--p1-muted); max-width: 68ch; line-height: 1.6; }
+
+/* ── Oppgavekort i prøve ─── */
+[data-fag="1P"] .exam-task,
+[data-fag="1P"] .prove-oppgave .task-card { padding: 1.35rem 1.1rem 1.25rem; }
+[data-fag="1P"] .exam-task:hover,
+[data-fag="1P"] .prove-oppgave .task-card:hover { transform: none; box-shadow: none; }
+[data-fag="1P"] .exam-task { border-left: 4px solid var(--p1-line); margin-bottom: 1.5rem; }
+[data-fag="1P"] .exam-task .task-title { color: var(--p1-ink); }
+[data-fag="1P"] .exam-task .pts { color: var(--p1-muted); }
+[data-fag="1P"] .exam-task .chip { color: var(--p1-ink); background: var(--p1-tint); border-color: var(--p1-line); }
+[data-fag="1P"] .exam-task .task-content { margin-bottom: 1rem; overflow-wrap: anywhere; }
+[data-fag="1P"] .exam-task .locked-note { color: var(--p1-muted); }
+
+/* Deloppgaver a), b), c) */
+[data-fag="1P"] .exam-part { margin-top: 1.1rem; padding-top: 1.1rem; border-top: 1px solid var(--border); }
+[data-fag="1P"] .exam-part-head {
+    display: grid;
+    grid-template-columns: minmax(1.9rem, auto) minmax(0, 1fr);
+    column-gap: 0.7rem;
+    align-items: baseline;
+}
+[data-fag="1P"] .exam-part-label {
+    color: var(--p1-ink);
+    font-size: 1.05rem;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+}
+[data-fag="1P"] .exam-part-text.task-content { margin-bottom: 0.4rem; min-width: 0; }
+[data-fag="1P"] .exam-part-text > :last-child { margin-bottom: 0; }
+
+/* ── Svarfelt og «Ferdig» ─── */
+[data-fag="1P"] .prove-svar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.5rem;
+    margin: 0.9rem 0 0.4rem;
+    padding: 0.85rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--p1-tint);
+    transition: border-color 0.15s, background 0.15s;
+}
+[data-fag="1P"] .prove-svar[data-done="true"] { border-color: var(--p1-line); background: var(--p1-tint-2); }
+[data-fag="1P"] .prove-svar-label {
+    color: var(--p1-ink);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+}
+[data-fag="1P"] .prove-svar-felt {
+    display: block;
+    width: 100%;
+    min-height: 6.5rem;
+    padding: 0.7rem 0.85rem;
+    border: 1.5px solid var(--p1-field-line);
+    border-radius: var(--radius-sm);
+    background: var(--p1-field);
+    color: var(--text-main);
+    font: inherit;
+    font-size: 1rem;          /* 16 px hindrer zoom i iOS */
+    line-height: 1.55;
+    resize: vertical;
+}
+[data-fag="1P"] .prove-svar-felt::placeholder { color: var(--p1-muted); opacity: 1; }
+[data-fag="1P"] .prove-svar-felt:hover { border-color: var(--p1-line); }
+[data-fag="1P"] .prove-svar-felt:focus-visible { outline: 3px solid var(--p1-focus); outline-offset: 2px; border-color: var(--p1-line); }
+[data-fag="1P"] .prove-svar-felt[readonly] { resize: none; border-style: dashed; background: transparent; }
+[data-fag="1P"] .prove-ferdig {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    justify-self: start;
+    min-height: 44px;
+    padding: 0.35rem 1rem 0.35rem 0.75rem;
+    border: 1.5px solid var(--p1-line);
+    border-radius: 99px;
+    background: var(--p1-field);
+    color: var(--text-main);
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    user-select: none;
+}
+[data-fag="1P"] .prove-ferdig:hover { background: var(--p1-tint-2); }
+[data-fag="1P"] .prove-svar[data-done="true"] .prove-ferdig { background: var(--p1-tint-2); color: var(--p1-ink); }
+[data-fag="1P"] .prove-ferdig:has(input:disabled) { border-style: dashed; cursor: default; background: transparent; }
+@media (min-width: 640px) {
+    [data-fag="1P"] .prove-svar { grid-template-columns: minmax(0, 1fr) auto; align-items: end; column-gap: 0.9rem; padding: 1rem; }
+    [data-fag="1P"] .prove-svar-label,
+    [data-fag="1P"] .prove-svar-felt { grid-column: 1 / -1; }
+    [data-fag="1P"] .prove-ferdig { grid-column: 2; justify-self: end; }
+}
+
+/* Etter levering: svaret eleven ga */
+[data-fag="1P"] .prove-svar-levert {
+    margin: 0.9rem 0 0.4rem;
+    padding: 0.75rem 1rem;
+    border-left: 4px solid var(--p1-line);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    background: var(--p1-tint);
+    color: var(--text-main);
+    line-height: 1.6;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+[data-fag="1P"] .prove-svar-levert strong { display: block; margin-bottom: 0.15rem; color: var(--p1-ink); font-size: 0.8rem; letter-spacing: 0.07em; text-transform: uppercase; }
+
+/* ── Øveprøve: oppgave + svarfelt henger sammen ─── */
+[data-fag="1P"] .prove-oppgave { margin-bottom: 1.5rem; }
+[data-fag="1P"] .prove-oppgave .task-card { margin-bottom: 0.5rem; }
+[data-fag="1P"] .prove-oppgave .prove-svar { margin-top: 0; }
+[data-fag="1P"] .prove-verktoy { padding: 0.4rem 0; }
+
+/* ── Innhold i oppgavetekst: pre/kode, tabeller, lister, sitat ─── */
+[data-fag="1P"] .task-content ul,
+[data-fag="1P"] .task-content ol { margin: 0.5rem 0 0.9rem; padding-left: 1.5rem; }
+[data-fag="1P"] .task-content ul { list-style: disc; }
+[data-fag="1P"] .task-content ol { list-style: decimal; }
+[data-fag="1P"] .task-content li { margin: 0.3rem 0; padding-left: 0.25rem; line-height: 1.6; }
+[data-fag="1P"] .task-content li::marker { color: var(--p1-ink); font-weight: 700; }
+[data-fag="1P"] .task-content li > ul,
+[data-fag="1P"] .task-content li > ol { margin: 0.3rem 0 0.3rem; }
+
+[data-fag="1P"] .task-content blockquote {
+    margin: 0.9rem 0;
+    padding: 0.8rem 1rem;
+    border-left: 4px solid var(--p1-line);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    background: var(--p1-tint);
+    color: var(--text-main);
+    font-style: italic;
+    line-height: 1.65;
+}
+[data-fag="1P"] .task-content blockquote > :last-child { margin-bottom: 0; }
+
+[data-fag="1P"] .task-content pre {
+    margin: 0.9rem 0;
+    padding: 0.85rem 1rem;
+    max-width: 100%;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--p1-line);
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    white-space: pre-wrap;           /* bryt lange linjer i stedet for å skjule dem */
+    overflow-wrap: anywhere;
+    tab-size: 4;
+}
+[data-fag="1P"] .task-content pre code { font-family: inherit; font-size: inherit; white-space: inherit; }
+[data-fag="1P"] .task-content code:not(pre code) {
+    padding: 0.1rem 0.4rem;
+    border-radius: 5px;
+    background: var(--p1-tint-2);
+    color: var(--p1-ink-strong);
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.88em;
+}
+[data-fag="1P"] .task-content table {
+    display: table;
+    width: auto;
+    max-width: 100%;
+    margin: 0.8rem 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid var(--p1-field-line);
+    border-radius: var(--radius-sm);
+    font-size: 0.92rem;
+    font-variant-numeric: tabular-nums;
+    overflow: hidden;
+}
+[data-fag="1P"] .task-content th,
+[data-fag="1P"] .task-content td {
+    padding: 0.45rem 0.65rem;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 1.4;
+    border-top: 1px solid var(--border);
+}
+[data-fag="1P"] .task-content tr:first-child > th,
+[data-fag="1P"] .task-content tr:first-child > td { border-top: 0; }
+[data-fag="1P"] .task-content td + td,
+[data-fag="1P"] .task-content th + td,
+[data-fag="1P"] .task-content td + th,
+[data-fag="1P"] .task-content th + th { border-left: 1px solid var(--border); }
+[data-fag="1P"] .task-content th { background: var(--p1-tint-2); color: var(--text-main); font-weight: 700; }
+[data-fag="1P"] .task-content tr:nth-child(even) > td { background: var(--p1-tint); }
+@media (max-width: 480px) {
+    [data-fag="1P"] .task-content th,
+    [data-fag="1P"] .task-content td { padding: 0.4rem 0.45rem; font-size: 0.88rem; }
+}
+
+/* ── Lever / Ferdig, bekreftelser, «Ta på nytt» ─── */
+[data-fag="1P"] .exam-submit-row { margin: 1.5rem 0 2.5rem; }
+[data-fag="1P"] .exam-submit-row > .btn-primary,
+[data-fag="1P"] .prove-lever { margin-top: 0.5rem; }
+[data-fag="1P"] .exam-submit-row .btn-primary,
+[data-fag="1P"] .exam-summary .btn-primary,
+[data-fag="1P"] .prove-lever {
+    justify-content: center;
+    min-height: 48px;
+    padding: 0.7rem 1.5rem;
+    background: var(--p1-btn-bg);
+    color: var(--p1-btn-ink);
+    border: 2px solid var(--p1-btn-bg);
+    box-shadow: none;
+    font-size: 1rem;
+    font-weight: 800;
+    text-decoration: none;
+}
+[data-fag="1P"] .exam-submit-row .btn-primary:hover,
+[data-fag="1P"] .exam-summary .btn-primary:hover,
+[data-fag="1P"] .prove-lever:hover { background: var(--p1-btn-bg-h); border-color: var(--p1-btn-bg-h); color: var(--p1-btn-ink); transform: translateY(-1px); box-shadow: 0 6px 18px var(--p1-tint-2); }
+[data-fag="1P"] .exam-submit-row .btn-primary:active,
+[data-fag="1P"] .exam-summary .btn-primary:active,
+[data-fag="1P"] .prove-lever:active { transform: none; }
+[data-fag="1P"] .exam-submit-row .btn-primary:focus-visible,
+[data-fag="1P"] .exam-summary .btn-primary:focus-visible,
+[data-fag="1P"] .prove-lever:focus-visible,
+[data-fag="1P"] .exam-summary .hint-btn:focus-visible { outline: 3px solid var(--p1-focus); outline-offset: 3px; }
+[data-fag="1P"] .exam-summary .hint-btn {
+    justify-content: center;
+    min-height: 48px;
+    padding: 0.7rem 1.4rem;
+    background: transparent;
+    color: var(--p1-ink);
+    border: 2px solid var(--p1-line);
+    box-shadow: none;
+    font-size: 1rem;
+    font-weight: 700;
+}
+[data-fag="1P"] .exam-summary .hint-btn:hover { background: var(--p1-tint-2); transform: none; box-shadow: none; }
+
+[data-fag="1P"] .exam-summary {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+    padding: 1.1rem 1.15rem 1.15rem;
+    background: var(--p1-tint);
+    border: 1.5px solid var(--p1-line);
+    border-left-width: 5px;
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    line-height: 1.6;
+}
+[data-fag="1P"] .exam-summary > p,
+[data-fag="1P"] .exam-summary [role="alertdialog"] > p { flex: 1 0 100%; margin: 0; max-width: 62ch; color: var(--text-main); }
+[data-fag="1P"] .exam-summary > p strong,
+[data-fag="1P"] .exam-summary [role="alertdialog"] > p strong { font-weight: 800; }
+[data-fag="1P"] .exam-summary [role="alertdialog"] { display: flex; flex-wrap: wrap; gap: 0.75rem; flex: 1 0 100%; padding-top: 0.75rem; border-top: 1px solid var(--border); }
+@media (max-width: 480px) {
+    [data-fag="1P"] .exam-summary .btn-primary,
+    [data-fag="1P"] .exam-summary .hint-btn { flex: 1 1 100%; }
+    [data-fag="1P"] .exam-submit-row > .btn-primary,
+    [data-fag="1P"] .prove-lever { width: 100%; }
+}
+
+/* Selvvurdering etter levering */
+[data-fag="1P"] .self-score { gap: 0.5rem; }
+[data-fag="1P"] .self-score .score-btn { min-height: 44px; padding: 0.4rem 1rem; color: var(--p1-muted); }
+[data-fag="1P"] .self-score .score-btn:focus-visible { outline: 3px solid var(--p1-focus); outline-offset: 2px; }
+[data-fag="1P"] .score-btn.is-on.riktig { background: var(--p1-tint-2); color: var(--p1-ink); box-shadow: inset 0 0 0 1.5px var(--p1-line); }
+
+@media (min-width: 640px) {
+    [data-fag="1P"] .exam-task,
+    [data-fag="1P"] .prove-oppgave .task-card { padding: 1.75rem 1.9rem 1.6rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+    [data-fag="1P"] .exam-card, [data-fag="1P"] .prove-svar, [data-fag="1P"] .timer-toggle input,
+    [data-fag="1P"] .prove-ferdig input, [data-fag="1P"] .exam-submit-row .btn-primary, [data-fag="1P"] .exam-summary .btn-primary { transition: none; }
+    [data-fag="1P"] .exam-card:hover, [data-fag="1P"] .exam-submit-row .btn-primary:hover, [data-fag="1P"] .exam-summary .btn-primary:hover, [data-fag="1P"] .prove-lever:hover { transform: none; }
+}

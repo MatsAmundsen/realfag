@@ -315,12 +315,17 @@ export function ExamRunner({ exam }: { exam: Exam }) {
         </label>
         {timerOn && (
           <span className="timer-group" aria-live="off">
-            <span className={`timer-readout${del1Left < 60 ? " is-low" : ""}`} title={`Del 1 skal leveres etter ${exam.del1Minutes} minutter`}>
+            <span role="timer" className={`timer-readout${del1Left < 60 ? " is-low" : ""}`} title={`Del 1 skal leveres etter ${exam.del1Minutes} minutter`}>
               Del 1: {del1Left > 0 ? formatKlokke(del1Left) : "tiden er ute"}
             </span>{" "}
-            <span className={`timer-readout${totalLeft < 60 ? " is-low" : ""}`} title={`Hele eksamen varer ${exam.totalMinutes} minutter`}>
+            <span role="timer" className={`timer-readout${totalLeft < 60 ? " is-low" : ""}`} title={`Hele eksamen varer ${exam.totalMinutes} minutter`}>
               Totalt: {totalLeft > 0 ? formatKlokke(totalLeft) : "tiden er ute"}
             </span>
+          </span>
+        )}
+        {timerOn && (
+          <span className="timer-sr" role="status">
+            {submitted ? "" : totalLeft <= 0 ? "Tiden er ute." : totalLeft < 60 ? "Under ett minutt igjen totalt." : del1Left <= 0 ? "Tiden for del 1 er ute." : del1Left < 60 ? "Under ett minutt igjen av del 1." : ""}
           </span>
         )}
       </div>
