@@ -33,6 +33,8 @@ type Store = {
     examId: string,
     attempt: Progress["exams"][string],
   ) => string[];
+  /** Fjerner et levert eksamensforsøk, slik at settet kan tas på nytt. Merker eleven allerede har fått beholdes. */
+  clearExam: (examId: string) => void;
   resetAll: () => void;
 };
 
@@ -85,6 +87,12 @@ export const useProgressStore = create<Store>((set, get) => ({
     persist(p);
     set({ p, badgeQueue: newly });
     return newly;
+  },
+  clearExam: (examId) => {
+    const p = cloneProgress(get().p);
+    delete p.exams[examId];
+    persist(p);
+    set({ p });
   },
   resetAll: () => {
     const p = emptyProgress();
