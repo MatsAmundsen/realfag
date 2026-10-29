@@ -4877,3 +4877,7 @@ header.navbar[data-fag="1P"] .nav-btn.fag-switch,
 [data-theme="light"] [data-fag="1P"] .prove-ferdig { color: #1e293b; }
 [data-fag="1P"] .katex-display:focus-visible,
 [data-fag="1P"] .task-content:focus-visible { outline: 3px solid var(--p1-focus); outline-offset: 2px; }
+/* lyst tema: indigo/grønn hint- og fasitknapper og delbokstaver ≥ 4,5:1 */
+[data-theme="light"] [data-fag="1P"] .task-action-bar .hint-btn { color: #3730a3; }
+[data-theme="light"] [data-fag="1P"] .task-action-bar .fasit-btn { color: #065f46; }
+[data-theme="light"] [data-fag="1P"] .part-letter { color: #3730a3; }
