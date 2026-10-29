@@ -47,7 +47,7 @@ export const EKSAMEN_1P_V2023: Exam = officialExam({
           r`Velg en situasjon med fast pris per enhet. Proporsjonale størrelser har et konstant forhold $y/x$, og grafen er en rett linje gjennom origo.`,
           [
             r`Eksempel: Bensin koster $20$ kr per liter. Prisen $y$ (kr) for $x$ liter er $y = 20x$.`,
-            r`<table><tr><th>Liter $x$</th><th>0</th><th>10</th><th>20</th><th>30</th></tr><tr><th>Pris $y$ (kr)</th><td>$0$</td><td>$200$</td><td>$400$</td><td>$600$</td></tr></table>`,
+            r`<table><tr><th>Liter $x$</th><td>0</td><td>10</td><td>20</td><td>30</td></tr><tr><th>Pris $y$ (kr)</th><td>$0$</td><td>$200$</td><td>$400$</td><td>$600$</td></tr></table>`,
             r`Begrunnelse: Forholdet $\dfrac{y}{x}$ er hele tiden $\dfrac{200}{10} = \dfrac{400}{20} = \dfrac{600}{30} = 20$. Dobler vi antall liter, dobles prisen. Størrelsene er derfor proporsjonale.`,
             r`Graf: Sett liter langs førsteaksen og pris langs andreaksen. Punktene $(0,\ 0)$, $(10,\ 200)$, $(20,\ 400)$ og $(30,\ 600)$ ligger på en rett linje som går gjennom origo og stiger med stigningstall $20$.`,
             r`<strong>Svar:</strong> Bensinprisen ($y = 20x$) er proporsjonal med antall liter. Grafen er en rett linje gjennom origo.`,
@@ -104,8 +104,9 @@ export const EKSAMEN_1P_V2023: Exam = officialExam({
             r`Vi løser $T(x) = 0$ med CAS/skjæring i GeoGebra for $2 \le x \le 10$: $x \approx 5{,}77$ og $x \approx 8{,}91$.`,
             r`$T(2) \approx -13{,}4$ og $T(10) = -6{,}8$, så temperaturen er under $0$ i begynnelsen og slutten. Grafen ligger over førsteaksen mellom de to nullpunktene.`,
             r`Lengden på intervallet er $8{,}91 - 5{,}77 \approx 3{,}13$ måneder.`,
-            r`Gjør om til døgn: Perioden fra 1. februar til 1. oktober er $242$ døgn fordelt på $8$ enheter i $x$, altså omtrent $30$ døgn per enhet. Da blir $3{,}13\cdot 30 \approx 94$ døgn. Regner vi med de faktiske månedslengdene (mai til august), blir det omtrent $96$ døgn.`,
-            r`<strong>Svar:</strong> Gjennomsnittstemperaturen er over $0\ ^{\circ}$C i omtrent $95$ døgn, fra slutten av mai til slutten av august.`,
+            r`Gjør om til døgn: Én enhet i $x$ er én måned, og vi bruker de faktiske månedslengdene. $x \approx 5{,}77$ er om lag $0{,}77$ av mai ($31$ døgn), altså omtrent 24. mai. $x \approx 8{,}91$ er om lag $0{,}91$ av august ($31$ døgn), altså omtrent 29. august.`,
+            r`Fra omtrent 24. mai til omtrent 29. august er det $(31 - 23{,}9) + 30 + 31 + 28{,}1 \approx 96$ døgn.`,
+            r`<strong>Svar:</strong> Gjennomsnittstemperaturen er over $0\ ^{\circ}$C i omtrent $96$ døgn, fra slutten av mai til slutten av august.`,
           ]),
         part("1p-v23-d2-1", "b", r`Bestem stigningstallet til den rette linjen som går gjennom punktene $(3,\ T(3))$ og $(7,\ T(7))$. Gi en praktisk tolkning av dette stigningstallet.`,
           r`Regn ut $T(3)$ og $T(7)$ og bruk $a = \dfrac{\Delta y}{\Delta x}$. Husk hva $x$ og $T$ betyr.`,
@@ -131,8 +132,7 @@ export const EKSAMEN_1P_V2023: Exam = officialExam({
         r`C har først en stigende rett linje, deretter et vannrett stykke, og så en stigende rett linje.`,
         r`<strong>Svar:</strong> Graf C beskriver best lengden av turen som funksjon av tiden.`,
       ],
-      ["funksjonsforståelse", "grafer", "argumentasjon"],
-      "Svaret C forutsetter at «lengden av turen» betyr total tilbakelagt strekning. Grafene A til D er lest fra figuren (se figurbestilling p1-v23-d2-2). Ikke kontrollert mot Udirs eget løsningsforslag."),
+      ["funksjonsforståelse", "grafer", "argumentasjon"]),
     multi("1p-v23-d2-3", "3", 0,
       r`En gruppe speidere har slått opp telt ved en elv. De har et tau som er $80$ m langt, og fire pinner. Tauet og pinnene skal de bruke til å sette opp et gjerde rundt teltet. Området de gjerder inn, skal ha form som et rektangel, og de vil ikke sette opp gjerde langs elven. Se skissen nedenfor.` +
         figur("p1-v23-d2-3", "3", "Perspektivskisse (eller ovenfra) av et gresseng ved en elv. Elven ligger langs venstre side av et rektangulært område med et rødt telt. Gjerdet står på de tre andre sidene og ikke langs elven. Den siden som går parallelt med elven er merket «Lengde» (pil på høyre side), og siden som går vinkelrett på elven er merket «Bredde» (pil nederst)."),
@@ -199,8 +199,7 @@ export const EKSAMEN_1P_V2023: Exam = officialExam({
             r`<strong>Svar:</strong> Sekkene A og F koster like mye per kilogram.`,
           ]),
       ],
-      ["koordinatsystem", "proporsjonalitet", "tolkning av grafer"],
-      "Punktene A til F er avlest fra figuren uten tall på aksene. Svarene bygger på relative posisjoner (A og C på samme høyde, A og F på samme linje gjennom origo). Se figurbestilling p1-v23-d2-4. Ikke kontrollert mot Udirs eget løsningsforslag."),
+      ["koordinatsystem", "proporsjonalitet", "tolkning av grafer"]),
     multi("1p-v23-d2-5", "5", 0,
       r`<em>Vekting: deloppgave b teller dobbelt så mye som de andre deloppgavene.</em><br>Kari har brukt Non Stop og laget tre K-er. Se nedenfor. Tenk deg at hun skal fortsette å lage K-er etter samme mønster.` +
         figur("p1-v23-d2-5", "5", "Tre K-er laget av Non Stop-drops i ulike farger: K1, K2, K3 (merket under hver). K1: loddrett stamme av $5$ drops, to skråstriper med $2$ drops hver og $1$ drops i midten (til sammen $10$). K2: stamme av $7$ drops, to skråstriper med $3$ drops hver og $1$ i midten (til sammen $14$). K3: stamme av $9$ drops, to skråstriper med $4$ drops hver og $1$ i midten (til sammen $18$). Stammen er vertikal og de to skråstripene går fra midten av stammen opp til høyre og ned til høyre."),
@@ -214,7 +213,21 @@ export const EKSAMEN_1P_V2023: Exam = officialExam({
             r`$K_4$: $18 + 4 = 22$. $K_5$: $22 + 4 = 26$. Kontroll med formelen: $4\cdot 4 + 6 = 22$ og $4\cdot 5 + 6 = 26$.`,
             r`<strong>Svar:</strong> Mønsteret er at hver ny K har $4$ flere Non Stop enn den forrige (antall i $K_n$ er $4n + 6$). $K_4$ har $22$ og $K_5$ har $26$ Non Stop.`,
           ]),
-        part("1p-v23-d2-5", "b", r`Kari ønsker å lage et program som finner antall Non Stop hun trenger for å lage hver av de $20$ første K-ene. Hun ønsker også å vite hvor mange Non Stop hun trenger til sammen for å lage alle disse $20$ K-ene. Lag et program som Kari kan bruke. Du kan for eksempel begynne som vist i oppgaveteksten (startverdier og løkke), men legge inn formler i stedet for tallet én i linje $14$ og $15$ slik at den riktige oversikten skrives ut.`,
+        part("1p-v23-d2-5", "b", r`Kari ønsker å lage et program som finner antall Non Stop hun trenger for å lage hver av de $20$ første K-ene. Hun ønsker også å vite hvor mange Non Stop hun trenger til sammen for å lage alle disse $20$ K-ene. Lag et program som Kari kan bruke. Du kan for eksempel begynne som vist nedenfor, men legge inn formler i stedet for tallet én i linje $14$ og $15$ slik at den riktige oversikten skrives ut.<pre><code># Startverdier
+nonstop_figur = 10
+nonstop_totalt = 10
+
+# Overskrifter
+print("Figurnummer      Non Stop i figur      Non Stop totalt")
+
+
+for figurnummer in range(1, 21):
+
+    # Skriver ut i tre kolonner ved å bruke tabulatorer sep = "\t\t\t"
+    print(figurnummer, nonstop_figur, nonstop_totalt, sep="\t\t\t")
+
+    nonstop_figur = 1
+    nonstop_totalt = 1</code></pre>`,
           r`I løkka skal «Non Stop i figur» øke med $4$ for hver K, og «totalt» skal øke med antallet i den nye figuren. Rekkefølgen på de to linjene har betydning.`,
           [
             r`Startverdiene er $K_1$: $10$ i figuren og $10$ totalt. Linje $14$ og $15$ skal gjøre klar neste rad:<pre><code># Startverdier
@@ -222,7 +235,8 @@ nonstop_figur = 10
 nonstop_totalt = 10
 
 # Overskrifter
-print("Figurnummer", "Non Stop i figur", "Non Stop totalt", sep="\t\t\t")
+print("Figurnummer      Non Stop i figur      Non Stop totalt")
+
 
 for figurnummer in range(1, 21):
 
