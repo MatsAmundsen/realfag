@@ -146,9 +146,9 @@ export const EKSAMEN_1P_V2025: Exam = officialExam({
   ],
   del2: [
     multi("1p-v25-d2-1", "1", 6,
-      r`Tabellen nedenfor viser antall registrerte tilfeller av kikhoste i Norge noen måneder i perioden januar 2023−oktober 2024.<table><tr><th>Måned</th><td>Januar 2023</td><td>Mai 2023</td><td>Oktober 2023</td><td>Februar 2024</td><td>August 2024</td><td>Oktober 2024</td></tr><tr><th>Antall registrerte tilfeller</th><td>$29$</td><td>$93$</td><td>$164$</td><td>$284$</td><td>$1035$</td><td>$1657$</td></tr></table>La $x$ være antall måneder etter desember 2022. Det vil si at $x = 1$ tilsvarer januar 2023, $x = 3$ tilsvarer mars 2023, og så videre.`,
+      r`Tabellen nedenfor viser antall registrerte tilfeller av kikhoste i Norge noen måneder i perioden januar 2023 – oktober 2024.<table><tr><th>Måned</th><td>Januar 2023</td><td>Mai 2023</td><td>Oktober 2023</td><td>Februar 2024</td><td>August 2024</td><td>Oktober 2024</td></tr><tr><th>Antall registrerte tilfeller</th><td>$29$</td><td>$93$</td><td>$164$</td><td>$284$</td><td>$1035$</td><td>$1657$</td></tr></table>La $x$ være antall måneder etter desember 2022. Det vil si at $x = 1$ tilsvarer januar 2023, $x = 3$ tilsvarer mars 2023, og så videre.`,
       [
-        part("1p-v25-d2-1", "a", r`Bruk opplysningene ovenfor til å vise at funksjonen $K$ gitt ved $K(x) = 27{,}8\cdot 1{,}2^{x}$ er en god modell for antall registrerte tilfeller av kikhoste i Norge i perioden januar 2023−oktober 2024.`,
+        part("1p-v25-d2-1", "a", r`Bruk opplysningene ovenfor til å vise at funksjonen $K$ gitt ved $K(x) = 27{,}8\cdot 1{,}2^{x}$ er en god modell for antall registrerte tilfeller av kikhoste i Norge i perioden januar 2023 – oktober 2024.`,
           r`Finn $x$ for hver måned, regn ut $K(x)$ og sammenlign med tabellen. Du kan også legge punktene inn i GeoGebra og gjøre en eksponentiell regresjon.`,
           [
             r`Månedene svarer til $x = 1$ (januar 2023), $x = 5$ (mai 2023), $x = 10$ (oktober 2023), $x = 14$ (februar 2024), $x = 20$ (august 2024) og $x = 22$ (oktober 2024).`,
