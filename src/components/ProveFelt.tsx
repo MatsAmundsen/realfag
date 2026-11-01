@@ -1,8 +1,9 @@
-import { useId, useMemo, useState } from "react";
+import { useId, useMemo, useRef, useState } from "react";
 import { MatteFelt } from "./MatteFelt";
+import { Symbolrad } from "./Symbolrad";
 import { KatexHtml } from "./KatexHtml";
 import { forhandsvis, type Sluttsvar } from "@/lib/svar-sjekk";
-import { symbolerFor } from "@/lib/symbolrad";
+import { symbolerFor, type Spesialtegn } from "@/lib/symbolrad";
 import { formaterPoeng, POENGANDEL, type EnhetsResultat, type Resultat, type Vurdering } from "@/lib/prove-poeng";
 
 const PLASSHOLDER: Record<string, string> = {
@@ -13,6 +14,7 @@ const PLASSHOLDER: Record<string, string> = {
   valg: "Skriv bokstaven",
   omrade: "Skriv for eksempel 1,4 til 2,7",
   ulikhet: "Skriv for eksempel -1 < x < 4",
+  fri: "Skriv sluttsvaret ditt her. Du vurderer det selv etter levering.",
 };
 
 /**
@@ -26,8 +28,11 @@ function SluttsvarFelt({
   onChange,
   locked = false,
   oppgavetekst,
+  delnavn,
 }: {
   id: string;
+  /** Delens navn («a)»), leses opp sammen med feltnavnet. */
+  delnavn?: string;
   /** Oppgaveteksten (HTML/LaTeX), brukt til å velge hvilke spesialtegn som vises. */
   oppgavetekst?: string;
   fasit: Sluttsvar;
@@ -45,6 +50,7 @@ function SluttsvarFelt({
     <div className="prove-sluttsvar">
       <label className="prove-sluttsvar-label" id={`sluttsvar-label-${id}`} htmlFor={`sluttsvar-${id}`}>
         Sluttsvar
+        {delnavn && <span className="prove-skjult"> {delnavn}</span>}
       </label>
       <MatteFelt
         id={`sluttsvar-${id}`}
@@ -87,10 +93,13 @@ export function ProveSvar({
   onDone,
   sluttsvar,
   oppgavetekst,
+  delnavn,
   skjult = false,
 }: {
-  /** Oppgaveteksten, til å velge spesialtegn under sluttsvarfeltet. */
+  /** Oppgaveteksten, til å velge spesialtegn under sluttsvarfeltet og utregningen. */
   oppgavetekst?: string;
+  /** Delens navn («a)»), leses opp sammen med feltnavnene. */
+  delnavn?: string;
   id: string;
   /** Skjules (med plassen beholdt) til lagret fremgang er lest. Teksten rundt står fra første tegning. */
   skjult?: boolean;
@@ -103,13 +112,30 @@ export function ProveSvar({
   onChange: (v: string) => void;
   onDone: (v: boolean) => void;
 }) {
+  const tekstfelt = useRef<HTMLTextAreaElement>(null);
+  const symboler = useMemo(() => symbolerFor(sluttsvar?.fasit, oppgavetekst), [sluttsvar?.fasit, oppgavetekst]);
+  /** Setter tegnet inn der markøren står i utregningen (eller erstatter det markerte). */
+  const settInn = (s: Spesialtegn) => {
+    const el = tekstfelt.current;
+    const fra = el ? el.selectionStart : value.length;
+    const til = el ? el.selectionEnd : value.length;
+    const ny = value.slice(0, fra) + s.tekst + value.slice(til);
+    onChange(ny);
+    const pos = fra + s.tekst.length;
+    requestAnimationFrame(() => {
+      el?.focus();
+      el?.setSelectionRange(pos, pos);
+    });
+  };
   return (
     <div className="prove-svar" data-done={done ? "true" : "false"} style={skjult ? { visibility: "hidden" } : undefined}>
       <label className="prove-svar-label" htmlFor={`svar-${id}`}>
         Utregning
+        {delnavn && <span className="prove-skjult"> {delnavn}</span>}
       </label>
       <textarea
         id={`svar-${id}`}
+        ref={tekstfelt}
         className="prove-svar-felt"
         rows={3}
         value={value}
@@ -117,6 +143,11 @@ export function ProveSvar({
         placeholder="Skriv utregningen din her, eller bare på papir."
         onChange={(e) => onChange(e.target.value)}
       />
+      {!locked && (
+        <div className="prove-svar-symboler">
+          <Symbolrad symboler={symboler} onVelg={settInn} ariaLabel="Spesialtegn i utregningen" />
+        </div>
+      )}
       {sluttsvar && (
         <SluttsvarFelt
           id={id}
@@ -125,6 +156,7 @@ export function ProveSvar({
           onChange={sluttsvar.onChange}
           locked={locked}
           oppgavetekst={oppgavetekst}
+          delnavn={delnavn}
         />
       )}
       <label className="prove-ferdig">
@@ -158,6 +190,7 @@ export function ProveResultat({
   onVurder: (v: Vurdering) => void;
 }) {
   const formkrav = Boolean(fasit?.selvvurder);
+  const fri = fasit?.svar.type === "fri";
   const autoRiktig = Boolean(fasit && !formkrav && res.auto);
   const valg: { key: keyof Vurdering; tekst: string; andel: number }[] = [
     { key: "metode", tekst: "Riktig metode", andel: POENGANDEL.metode },
@@ -174,10 +207,12 @@ export function ProveResultat({
           {formaterPoeng(res.poeng)}&nbsp;av&nbsp;{formaterPoeng(res.maks)}&nbsp;p
         </span>
       </p>
-      {fasit && (
+      {fasit && (!fri || gitt.trim() !== "") && (
         <p className="prove-sluttsvar-levert">
           <strong>Ditt sluttsvar:</strong> {gitt.trim() ? gitt : "ikke besvart"}
-          {formkrav
+          {fri
+            ? " – sammenlign med løsningsforslaget"
+            : formkrav
             ? " – sammenlign med løsningsforslaget"
             : autoRiktig
               ? " – riktig"
@@ -191,7 +226,9 @@ export function ProveResultat({
       ) : (
         <fieldset className="prove-vurdering">
           <legend>
-            {fasit && !formkrav
+            {fri
+              ? "Sammenlign med løsningsforslaget og vurder deg selv:"
+              : fasit && !formkrav
               ? "Sjekken godtok ikke sluttsvaret. Sammenlign med løsningsforslaget og vurder selv:"
               : formkrav
                 ? "Oppgaven har formkrav, så du vurderer svaret selv mot løsningsforslaget:"

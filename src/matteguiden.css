@@ -5233,3 +5233,31 @@ header.navbar[data-fag="1P"] .nav-btn.fag-switch,
 @media (prefers-reduced-motion: reduce) {
     :is([data-fag="1P"], [data-fag="1T"]) .prove-symbol { transition: none; transform: none !important; }
 }
+
+/* Symbolrad under utregningen, og deloppgaver i øveprøver */
+:is([data-fag="1P"], [data-fag="1T"]) .prove-svar-symboler { min-width: 0; }
+@media (min-width: 640px) {
+    :is([data-fag="1P"], [data-fag="1T"]) .prove-svar-symboler { grid-column: 1 / -1; }
+}
+:is([data-fag="1P"], [data-fag="1T"]) .prove-skjult {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+:is([data-fag="1P"], [data-fag="1T"]) .prove-del { margin-top: 1.1rem; }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-del:first-of-type { margin-top: 0.4rem; }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-del-head {
+    margin: 0 0 0.4rem;
+    color: var(--p1-ink);
+    font-size: 0.95rem;
+    font-weight: 800;
+}
+:is([data-fag="1P"], [data-fag="1T"]) .prove-del-head .part-letter { margin-right: 0.35rem; }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-del .prove-svar { margin-top: 0; }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-del .prove-resultat { margin-top: 0.5rem; }

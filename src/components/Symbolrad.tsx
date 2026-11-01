@@ -9,13 +9,15 @@ export function Symbolrad({
   symboler,
   onVelg,
   deaktivert = false,
+  ariaLabel = "Spesialtegn",
 }: {
   symboler: Spesialtegn[];
   onVelg: (s: Spesialtegn) => void;
   deaktivert?: boolean;
+  ariaLabel?: string;
 }) {
   return (
-    <div className="prove-symbolrad" role="group" aria-label="Spesialtegn">
+    <div className="prove-symbolrad" role="group" aria-label={ariaLabel}>
       {symboler.map((s) => (
         <button
           key={s.tegn}
