@@ -388,3 +388,17 @@ E("P2.OP4c", T(3, 20, fast=True, ord=True, enhet=["min", "minutter", "s", "sekun
 E("P2.OP5a", T(0.06, 60, fast=True, ord=True, enhet=["m³", "m^3", "dm³", "dm^3"]), ["0,06", "60"], format="Skriv volumet i m³ og i dm³, i den rekkefølgen, skilt med komma eller «og».")
 E("P2.OP5b", T(55.2, enhet=["kg"]), ["55,2"])
 E("P2.OP5c", T(55.2, enhet=["L", "liter"]), ["55,2"])
+
+# =========================================================================== øveprøve P3
+E("P3.OP1a", T(27), ["27"])
+E("P3.OP1b", T(25, enhet=PROS), ["25"])
+E("P3.OP1c", T(0.65), ["0,65"])
+E("P3.OP2a", T(360, enhet=KR), ["360"])
+E("P3.OP2b", T(400, enhet=KR), ["400"])
+E("P3.OP3a", T(3, 20, fast=True, ord=True), ["3", "20"], enhet=["prosentpoeng", "%", "prosent"], format="Skriv antall prosentpoeng og så prosentvis økning, skilt med komma eller «og».")
+ES("P3.OP3b", V("nei"), ["Nei", "69"], "ja/nei med begrunnelse (1,3² = 1,69, altså 69 %); valg-sjekken godtar bare ordet «nei»")
+E("P3.OP4a", S(T(0.85), T(15, nedgang=True, enhet=PROS)), ["0,85", "15"], format="Skriv vekstfaktoren og så den prosentvise endringen, skilt med «;».")
+E("P3.OP4b", T(11560, enhet=["kWh"]), ["11\\,560"])
+E("P3.OP5a", U("1800000*1.045^t"), ["1\\,800\\,000", "1{,}045"])
+E("P3.OP5b", T(2559800, enhet=KR), ["2\\,560\\,000"])
+ES("P3.OP5c", T(11.6, enhet=["år"]), ["11,6", "år 12"], "tolkning: «i løpet av år 12» (11,6 år)")
