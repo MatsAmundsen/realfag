@@ -43,6 +43,11 @@ export type SvarSpec =
   | { type: "ulikhet"; fra: number; til: number; lukket?: boolean }
   /** Et valg, for eksempel en bokstav. Store og små bokstaver er like. */
   | { type: "valg"; valg: string }
+  /**
+   * Tilhører / tilhører ikke, i rekkefølge: «∉, ∈, ∈». Godtar ∈ ∉, \in \notin, «er element i», «element i», «ikke element i», «ikke i»
+   * og «i». Tallmengdene (ℕ ℤ ℚ ℝ, N Z Q R, \mathbb{Z}) i svaret ignoreres: bare rekkefølgen av relasjonene teller.
+   */
+  | { type: "relasjon"; tegn: ("∈" | "∉")[] }
   /** Flere delsvar i rekkefølge (a, b, c), skilt med semikolon eller linjeskift. Hvert delsvar sjekkes for seg. */
   | { type: "serie"; deler: SvarSpec[] };
 
@@ -63,6 +68,10 @@ export type Sluttsvar = {
    * `svar` brukes bare til forhåndsvisningen av det eleven skrev.
    */
   selvvurder?: boolean;
+  /**
+   * Hvilke grupper med spesialtegn som vises under sluttsvarfeltet. Utelatt: utledes fra fasit og oppgavetekst (se symbolrad.ts).
+   */
+  symboler?: ("mengde" | "rot" | "ulikhet" | "pi" | "pm" | "grader")[];
 };
 
 const STANDARD_TOL: Required<Toleranse> = { abs: 1e-9, rel: 1e-9 };
@@ -88,7 +97,7 @@ export function fjernLatex(input: string): string {
     const n = t
       .replace(/\\sqrt\s*\{([^{}]*)\}/g, "sqrt($1)")
       .replace(/\\[dt]?frac\s*\{([^{}]*)\}\s*\{([^{}]*)\}/g, "(($1)/($2))")
-      .replace(/\\(?:text|mathrm|mathit|textrm|operatorname)\s*\{([^{}]*)\}/g, "$1");
+      .replace(/\\(?:text|mathrm|mathit|textrm|operatorname|mathbb)\s*\{([^{}]*)\}/g, "$1");
     if (n === t) break;
     t = n;
   }
@@ -105,6 +114,7 @@ export function fjernLatex(input: string): string {
     .replace(/\\(?:ne|neq)(?![A-Za-z])/g, "≠")
     .replace(/\\pm(?![A-Za-z])/g, "±")
     .replace(/\\(?:lor|vee)(?![A-Za-z])/g, "∨")
+    .replace(/\\notin(?![A-Za-z])/g, "∉")
     .replace(/\\in(?![A-Za-z])/g, "∈")
     .replace(/\\infty(?![A-Za-z])/g, "∞")
     .replace(/\\[{}]/g, (m) => m[1])
@@ -126,6 +136,7 @@ export function normaliser(input: string): string {
     )
     .replace(/\s*[′´’ʹ‘`']/g, "'") // «f '(x)» er f'(x)
     .replace(/π/g, "pi")
+    .replace(/[ℕℤℚℝ]/g, (c) => "NZQR"["ℕℤℚℝ".indexOf(c)]) // ℤ er Z
     .replace(/(\d)\s*(?:ganger|gange)\s*(?=10\s*\^)/gi, "$1*") // «4 ganger 10^9» er 4·10^9
     .replace(/(^|[\s(;,=])minus\s+(?=[\d(])/gi, "$1-") // «minus 15 %» er −15 %
     .trim()
@@ -1432,7 +1443,23 @@ function sjekkSpec(input: string, spec: SvarSpec, enhet?: string[]): boolean {
     }
     case "valg":
       return normaliser(input).replace(/[.)\s]/g, "").toLowerCase() === spec.valg.toLowerCase();
+    case "relasjon": {
+      const gitt = lesRelasjoner(input);
+      return gitt.length === spec.tegn.length && gitt.every((t, i) => t === spec.tegn[i]);
+    }
   }
+}
+
+/**
+ * Relasjonene i et svar, i rekkefølge, som «∈» eller «∉»: «∉ ℤ, ∈ ℕ», «x \notin Z», «ikke element i», «er element i», «ikke i», «i».
+ * «i» alene leses som «element i», og bare der det står som eget ord.
+ */
+const RELASJON_ORD =
+  /ikke\s*∈|∉|\b(?:er\s+)?ikke\s+(?:et\s+)?(?:element\s+)?i\b|\b(?:tilhører|hører\s+til)\s+ikke\b|∈|\b(?:er\s+)?(?:et\s+)?element\s+i\b|\b(?:tilhører|hører\s+til)\b|\bi\b/gi;
+
+export function lesRelasjoner(input: string): ("∈" | "∉")[] {
+  const s = normaliser(input);
+  return [...s.matchAll(RELASJON_ORD)].map((m) => (/ikke|∉/i.test(m[0]) ? "∉" : "∈"));
 }
 
 /**
@@ -1514,6 +1541,7 @@ export type Svartype =
   | "intervall"
   | "valg"
   | "serie"
+  | "tilhører"
   | "selvvurdering";
 
 export function svartype(fasit: Sluttsvar | undefined): Svartype {
@@ -1535,6 +1563,8 @@ export function svartype(fasit: Sluttsvar | undefined): Svartype {
       return "valg";
     case "serie":
       return "serie";
+    case "relasjon":
+      return "tilhører";
   }
 }
 
@@ -1542,8 +1572,9 @@ export function svartype(fasit: Sluttsvar | undefined): Svartype {
 export function sjekkSluttsvar(input: string, fasit: Sluttsvar): boolean {
   if (!input || !input.trim()) return false;
   // «k≠4» og «k er ikke 4» er det motsatte av «k=4».
-  if (/≠|!=|<>|\b(?:ikke|aldri|forskjellig|ulik)\b/i.test(normaliser(input).replace(IKKE_OKNING, " "))) return false;
+  // Unntak: «ikke i ℤ» og «∉» er selve svaret når fasiten er tilhører/tilhører ikke.
   const alle = [fasit.svar, ...(fasit.alternativer || [])];
+  if (!alle.some((s) => s.type === "relasjon") && /≠|!=|<>|\b(?:ikke|aldri|forskjellig|ulik)\b/i.test(normaliser(input).replace(IKKE_OKNING, " "))) return false;
   return alle.some((s) => sjekkSpec(input, s, (s as Alternativ).enhet ?? fasit.enhet));
 }
 
@@ -1631,6 +1662,10 @@ export function forhandsvis(input: string, spec: SvarSpec, enhet?: string[]): Fo
       ut.push(f.latex);
     }
     return { ok: true, latex: ut.join(";\\quad ") };
+  }
+  if (spec.type === "relasjon") {
+    const r = lesRelasjoner(input);
+    return r.length ? { ok: true, latex: r.map((t) => (t === "∈" ? "\\in" : "\\notin")).join(",\\quad ") } : { ok: false };
   }
   if (spec.type === "valg") return { ok: true, latex: `\\text{${s.replace(/[^A-Za-z0-9æøåÆØÅ]/g, "")}}` };
   if (spec.type === "omrade") {

@@ -161,6 +161,11 @@ class LatexParser {
     if (TEKST_KOMMANDOER.has(navn)) {
       return { t: "text", s: tilTekstUtenStruktur(this.arg()) };
     }
+    if (navn === "mathbb") {
+      // \mathbb{Z} → ℤ: tallmengdene lagres som ett tegn (svar-sjekk.ts leser dem som N, Z, Q, R).
+      const bokstav = tilTekstUtenStruktur(this.arg()).trim();
+      return { t: "text", s: TALLMENGDE[bokstav] ?? bokstav };
+    }
     if (navn === "placeholder") {
       this.arg();
       return null;
@@ -193,6 +198,9 @@ function tilTekstUtenStruktur(ch: N[]): string {
     })
     .join("");
 }
+
+/** \mathbb{N} osv. ↔ tegnene som lagres i svarteksten. */
+const TALLMENGDE: Record<string, string> = { N: "ℕ", Z: "ℤ", Q: "ℚ", R: "ℝ" };
 
 const GRESK: Record<string, string> = {
   alpha: "α",
@@ -250,6 +258,9 @@ const KOMMANDO_TEGN: Record<string, string> = {
   geqslant: ">=",
   ne: "!=",
   neq: "!=",
+  // Mellomrom rundt: «x∈ℤ» lagres som «x ∈ ℤ» (rydding slår sammen doble mellomrom).
+  in: " ∈ ",
+  notin: " ∉ ",
   approx: "≈",
   pm: "±",
   mp: "∓",
@@ -783,6 +794,15 @@ function tegnTilLatex(c: string): string {
       return "^{\\prime}";
     case "∞":
       return "\\infty";
+    case "∈":
+      return "\\in";
+    case "∉":
+      return "\\notin";
+    case "ℕ":
+    case "ℤ":
+    case "ℚ":
+    case "ℝ":
+      return `\\mathbb{${"NZQR"["ℕℤℚℝ".indexOf(c)]}}`;
     case ")":
       return ")";
     default:
