@@ -1,4 +1,5 @@
-import { useId } from "react";
+import { useId, useState } from "react";
+import { MatteFelt } from "./MatteFelt";
 import { KatexHtml } from "./KatexHtml";
 import { forhandsvis, type Sluttsvar } from "@/lib/svar-sjekk";
 import { formaterPoeng, POENGANDEL, type EnhetsResultat, type Resultat, type Vurdering } from "@/lib/prove-poeng";
@@ -22,42 +23,48 @@ function SluttsvarFelt({
   fasit,
   value,
   onChange,
+  locked = false,
 }: {
   id: string;
   fasit: Sluttsvar;
   value: string;
   onChange: (v: string) => void;
+  locked?: boolean;
 }) {
   const hjelpId = useId();
+  /** true når <math-field> (MathLive) har tatt over: feltet viser da selv formelen. */
+  const [formelfelt, setFormelfelt] = useState(false);
   const fv = forhandsvis(value, fasit.svar, fasit.enhet);
+  const visTips = formelfelt && /[/^]|sqrt/.test(value) && !("ok" in fv && !fv.ok);
   return (
     <div className="prove-sluttsvar">
-      <label className="prove-sluttsvar-label" htmlFor={`sluttsvar-${id}`}>
+      <label className="prove-sluttsvar-label" id={`sluttsvar-label-${id}`} htmlFor={`sluttsvar-${id}`}>
         Sluttsvar
       </label>
-      <input
+      <MatteFelt
         id={`sluttsvar-${id}`}
-        className="prove-sluttsvar-felt"
-        type="text"
-        inputMode="text"
-        autoComplete="off"
-        autoCapitalize="off"
-        spellCheck={false}
         value={value}
+        onChange={onChange}
         placeholder={PLASSHOLDER[fasit.svar.type] || PLASSHOLDER.tall}
-        aria-describedby={hjelpId}
-        onChange={(e) => onChange(e.target.value)}
+        describedBy={hjelpId}
+        labelledBy={`sluttsvar-label-${id}`}
+        readOnly={locked}
+        onKlar={setFormelfelt}
       />
       <div id={hjelpId} className="prove-sluttsvar-hjelp">
-        {"ok" in fv && fv.ok && (
+        {/* Med formelfelt vises formelen i selve feltet. Forhåndsvisningen under er bare for det vanlige tekstfeltet. */}
+        {!formelfelt && "ok" in fv && fv.ok && (
           <span className="prove-sluttsvar-forhandsvisning" tabIndex={0} aria-label="Forhåndsvisning av sluttsvaret">
             <span className="prove-sluttsvar-tolket">Slik leser vi det: </span>
             <KatexHtml as="span" html={`$${fv.latex}$`} />
           </span>
         )}
         {"ok" in fv && !fv.ok && <span className="prove-sluttsvar-feil">Kan ikke tolke uttrykket</span>}
-        {fasit.format && !("ok" in fv && !fv.ok) && !("ok" in fv && fv.ok) && (
+        {fasit.format && !("ok" in fv && !fv.ok) && (formelfelt || !("ok" in fv && fv.ok)) && (
           <span className="prove-sluttsvar-format">{fasit.format}</span>
+        )}
+        {visTips && !fasit.format && (
+          <span className="prove-sluttsvar-format">Trykk → for å gå ut av brøk eller potens.</span>
         )}
       </div>
     </div>
@@ -102,7 +109,13 @@ export function ProveSvar({
         onChange={(e) => onChange(e.target.value)}
       />
       {sluttsvar && (
-        <SluttsvarFelt id={id} fasit={sluttsvar.fasit} value={sluttsvar.value} onChange={sluttsvar.onChange} />
+        <SluttsvarFelt
+          id={id}
+          fasit={sluttsvar.fasit}
+          value={sluttsvar.value}
+          onChange={sluttsvar.onChange}
+          locked={locked}
+        />
       )}
       <label className="prove-ferdig">
         <input type="checkbox" checked={done} disabled={locked} onChange={(e) => onDone(e.target.checked)} /> Ferdig
