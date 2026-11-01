@@ -149,3 +149,25 @@ TX("1p-h24-d2-7b", ["37,8", "28,9"], "forklaring og beregninger (hvilket parti)"
 TX("1p-h24-d2-8a", ["60"], "«vis at»: utregningen er svaret")
 TX("1p-h24-d2-8b", ["150", "67,5"], "systematisk oversikt (regneark)")
 ES("1p-h24-d2-8c", U("(1200-2x)(800-2x)x/1000000"), ["(1200-2x)(800-2x)*x"], "funksjonsuttrykk og graf skal tegnes", enhet=["liter", "L"], sym=["ulikhet"])
+E("1p-h24-d2-8d", S(T(157, abs=5), T(67.6, abs=0.15)), ["157", "67,6"], enhet=["mm", "L"],
+  format="Skriv sidelengden i mm og volumet i L, skilt med «;» eller «og».")
+TX("1p-h24-d2-8e", ["0<x<400"], "gyldighetsområde med argumentasjon", sym=["ulikhet"])
+
+# =========================================================================== eksamen v2024 (1P)
+TX("1p-v24-d1-2a", ["20000", "1,0485"], "praktisk tolkning (forklaring)")
+TX("1p-v24-d1-2b", ["1212"], "tolkning av utskrift (forklaring)")
+TX("1p-v24-d1-3", ["f", "p"], "valg av grafer (proporsjonal / omvendt proporsjonal) fra en figur")
+TX("1p-v24-d1-4a", ["24,5"], "«vis hvordan»: utregningen er svaret")
+TX("1p-v24-d2-1a", ["2"], "«vis at»: sammenlikning av modellverdier og data")
+ES("1p-v24-d2-1c", T(24.04, abs=0.5), ["24"], "praktisk tolkning av stigningstallet er med i poenget", enhet=["kroner per bagett", "kr/bagett", "kr per bagett"])
+E("1p-v24-d2-2a", T(123920, rel=0.002), ["123920"], enhet=KR)
+E("1p-v24-d2-2b", T(90000, rel=0.002), ["90000"], enhet=KR)
+TX("1p-v24-d2-4b", ["1609"], "«vis hvordan»: omregning av rekordfarten til meter")
+TX("1p-v24-d2-5", ["partall", "oddetall"], "forklaring/argumentasjon om tallfølge")
+ES("1p-v24-d2-6a", U("7.56*x^0.38"), ["7,56*x^{0,38}"], "regresjonskoeffisientene avhenger av avrunding (a ≈ 7,56 og b ≈ 0,38); graf/regresjon i GeoGebra")
+ES("1p-v24-d2-6b", S(U("1000*0.88^x"), U("1000*0.5^(x/5.5)")), ["1000*0,88^{x}", "0,8816"],
+   "to modeller (Ari og Lisa); Lisas kan skrives 1000·0,8816^x. Skilt de to svarene med «;»",
+   alt=[S(U("1000*0.88^x"), U("1000*0.8816^x"))], format="Skriv Aris modell, så «;», så Lisas modell.")
+E("1p-v24-d2-6c", T(4.25, abs=0.4), ["4,2"], enhet=["km"],
+  usikker="Fasiten oppgir 4,2–4,3 km (avrundede koeffisienter) og 4,3–4,4 km (uten avrunding); 'rundt 4 km' godtas.")
+TX("1p-v24-d2-7", ["1842", "1058"], "åpen oppgave: eget løsningsforslag med begrunnelse")
