@@ -241,7 +241,7 @@ TX("1p-v22-d1-4b", ["0,99", "7,8"], "tolkning av likningen (forklaring)")
 TX("1p-v22-d1-5", ["4158", "15"], "forklaring av programmet og utskriften")
 E("1p-v22-d1-6", T(12), ["12"], enhet=["cm"])
 ES("1p-v22-d2-1a", T(0, enhet=["liter", "L"]), ["0"], "praktisk tolkning av V(0) er med i poenget")
-ES("1p-v22-d2-1b", O(0, 2000), ["[0, 2000]"], "verdimengden skrives som område (grensene 0 og 2000)", enhet=["liter", "L"], sym=["ulikhet"])
+ES("1p-v22-d2-1b", O(0, 2000), ["[0, 2000]"], "verdimengden skrives som område (grensene 0 og 2000)", enhet=["liter", "L"])
 ES("1p-v22-d2-1d", T(62.5), ["62,5"], "praktisk tolkning av stigningstallet er med i poenget", enhet=["liter per minutt", "liter/minutt", "L/min"])
 ES("1p-v22-d2-1e", T(98.75), ["98,75"], "undersøkelse: «nei» med begrunnelse; tallet 98,75 er med i begrunnelsen", enhet=["liter", "L"])
 TX("1p-v22-d2-2a", ["4x+600"], "«forklar at»: forklaringen er svaret")
@@ -460,3 +460,15 @@ E("P6.OP4c", T(56, ulikhet="≥", enhet=["elever"]), ["56"], sym=["ulikhet"])
 E("P6.OP5a", U("n^2+n+2"), ["n^2 + n + 2"])
 E("P6.OP5b", T(20), ["20"])
 E("P6.OP5c", T(26), ["26"])
+
+
+# --------------------------------------------------------------------------- oppgaver som IKKE deles i appen (a0e68e8)
+# splittDeler() gir null når antall fasitSteg ≠ antall deler. For disse fem øveprøveoppgavene er derfor oppgaven fortsatt
+# én enhet med oppgave-id som nøkkel, og de eksisterende oppgavenøklene (serie/tall i SLUTTSVAR) gjelder. Delnøklene under
+# slår først inn når fasitSteg i dataene gjøres 1:1 med delene (eller en fast sjekk i appen får en delmerking).
+IKKE_DELT_I_APP = {
+    "P1.OP1": "abcd", "P2.OP1": "abcde", "P3.OP1": "abc", "P3.OP4": "ab", "P6.OP2": "ab",
+}
+for _o, _b in IKKE_DELT_I_APP.items():
+    for _c in _b:
+        FORSLAG[_o + _c]["ikke_delt_i_app"] = True
