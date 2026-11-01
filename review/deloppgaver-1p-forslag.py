@@ -82,3 +82,28 @@ ES("1p-v26-d2-3b", U("9000*0.867^x"), ["9000*0,867^{x}"], "modell og forklaring 
 ES("1p-v26-d2-3c", S(U("7000*0.746^x"), U("7000*0.746^x+2000")), ["0,746^{x}"], "modeller og begrunnelse av antakelse (avlest fra figur)",
    usikker="Som 3a: avlest fra figur.")
 TX("1p-v26-d2-4a", ["2,51*10^{7}"], "«vis at»: utregningen er svaret", sym=["grader"])
+
+# =========================================================================== eksamen h2025 (1P)
+TX("1p-h25-d1-4b", ["ikkeriktig"], "ja/nei-påstand med begrunnelse")
+E("1p-h25-d1-5a", T(200, 180, fast=True, ord=True), ["200", "180"], enhet=KR + ["kr/t", "kroner per time"],
+  format="Skriv først timelønnen til Nora, så timelønnen til Nils, skilt med komma eller «og».")
+E("1p-h25-d1-5b", T(36), ["36"], enhet=["timer", "t"])
+E("1p-h25-d1-6a", T(300, 150, 60, 40, fast=True, ord=True), ["300", "150", "60", "40"], enhet=KR,
+  format="Skriv prisene per busstur i tabellens rekkefølge (4, 8, 20 og 30 bussturer), skilt med komma eller «og».")
+TX("1p-h25-d1-6b", ["1200"], "graf skal tegnes")
+ES("1p-h25-d1-6c", T(16, ulikhet="≥"), ["15", "16"], "graf skal brukes (grafisk løsning); fasiten gir både «mer enn 15» og «minst 16»",
+   enhet=["ganger", "turer"], sym=["ulikhet"], usikker="Fasiten oppgir både 15 (like dyrt) og minst 16 (lønner seg); begge må godtas ved selvvurdering.")
+TX("1p-h25-d1-7", ["1,5,12,22,35,51"], "oversikt og forklaring av program (utskrift er med i fasiten)")
+ES("1p-h25-d2-1a", T(0.009657, 3.0, fast=True, ord=True), ["0,00966", "3,00"], "regresjon i GeoGebra og graf skal tegnes (avrundede koeffisienter)",
+   format="Skriv a og b i den rekkefølgen oppgaven spør, skilt med komma eller «og».")
+E("1p-h25-d2-1b", T(106, abs=1), ["106"], enhet=["cm"])
+ES("1p-h25-d2-1c", T(210.3, abs=3), ["210"], "praktisk tolkning av stigningstallet er med i poenget", enhet=["g/cm", "gram per cm"])
+ES("1p-h25-d2-2", T(4, 8, 2, 3, fast=True, ord=True), ["A:graf4", "B:graf8", "C:graf2", "D:graf3"], "valg av graf med begrunnelse",
+   format="Skriv grafnummer for A, B, C og D i den rekkefølgen, skilt med komma eller «og».")
+TX("1p-h25-d2-6a", ["111,12"], "«vis at»: utregningen er svaret")
+TX("1p-h25-d2-7a", ["O=2*y+x"], "«forklar at»: formelen skal begrunnes", sym=["pi"])
+TX("1p-h25-d2-7b", ["4,7"], "«vis at»: utregningen er svaret")
+TX("1p-h25-d2-7d", ["3,5", "10,06"], "systematisk oversikt (regneark)")
+ES("1p-h25-d2-7e", S(U("6x-(1/2+pi/8)x^2"), T(10.08, 3.36, fast=True, ord=True, abs=0.05)), ["6x-(\\frac{1}{2}+\\frac{\\pi}{8})x^{2}", "10,1", "3,4"],
+   "funksjonsuttrykk og graf skal tegnes", enhet=["m²", "m"], sym=["pi"],
+   format="Skriv funksjonsuttrykket, så semikolon, så størst mulig areal og x-verdien skilt med «og».")
