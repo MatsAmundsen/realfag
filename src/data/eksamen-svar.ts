@@ -337,4 +337,6 @@ export const SLUTTSVAR: Record<string, Sluttsvar> = {
   "h24-d1-4b": {"svar": {"type": "valg", "valg": "Nei"}, "selvvurder": true},
   "h24-d2-1a": {"svar": {"type": "tall", "verdier": [4200]}, "selvvurder": true},
   "h24-d2-4a": {"svar": {"type": "tall", "verdier": [120, 3628800, 1307674368000], "rekkefolge": "fast"}, "format": "Skriv svarene i den rekkefølgen oppgaven spør, skilt med komma eller «og».", "selvvurder": true},
+  "h25-d1-5c": {"svar": {"type": "valg", "valg": "ABC"}, "selvvurder": true},
+  "h25-d1-6": {"svar": {"type": "tall", "verdier": [1, 5, 12, 22, 35, 51], "rekkefolge": "fast"}, "format": "Skriv svarene i den rekkefølgen oppgaven spør, skilt med komma eller «og».", "selvvurder": true},
 };
