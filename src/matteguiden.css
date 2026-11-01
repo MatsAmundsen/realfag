@@ -4767,6 +4767,30 @@ header.navbar[data-fag="1P"] .nav-btn.fag-switch,
 :is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-felt:hover { border-color: var(--p1-line); }
 :is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-felt:focus-visible { outline: 3px solid var(--p1-focus); outline-offset: 2px; border-color: var(--p1-line); }
 :is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-felt[readonly] { border-style: dashed; background: transparent; }
+
+/* Formelfelt (MathLive <math-field>) i stedet for tekstfeltet: samme ramme, farger og fokusring som tekstfeltet. */
+:is([data-fag="1P"], [data-fag="1T"]) .prove-matte-vert { min-width: 0; }
+:is([data-fag="1P"], [data-fag="1T"]) math-field.prove-matte-felt {
+    font-size: 1.2rem;
+    line-height: 1.3;
+    padding: 0.35rem 0.85rem;
+    cursor: text;
+    --text-font-family: "KaTeX_Main", "Times New Roman", serif;
+    --caret-color: var(--p1-ink);
+    --selection-background-color: var(--p1-focus);
+    --selection-color: #0b1220;
+    --placeholder-color: var(--p1-muted);
+    --placeholder-opacity: 1;
+    --smart-fence-color: var(--text-main);
+    --contains-highlight-background-color: transparent;
+}
+:is([data-fag="1P"], [data-fag="1T"]) math-field.prove-matte-felt::part(content) { padding: 0; }
+/* Ingen virtuelt tastatur eller meny: eleven bruker tastaturet sitt (også på mobil). */
+:is([data-fag="1P"], [data-fag="1T"]) math-field.prove-matte-felt::part(virtual-keyboard-toggle),
+:is([data-fag="1P"], [data-fag="1T"]) math-field.prove-matte-felt::part(menu-toggle) { display: none; }
+:is([data-fag="1P"], [data-fag="1T"]) math-field.prove-matte-felt:hover { border-color: var(--p1-line); }
+:is([data-fag="1P"], [data-fag="1T"]) math-field.prove-matte-felt:focus-within { outline: 3px solid var(--p1-focus); outline-offset: 2px; border-color: var(--p1-line); }
+:is([data-fag="1P"], [data-fag="1T"]) math-field.prove-matte-felt[read-only] { border-style: dashed; background: transparent; }
 :is([data-fag="1P"], [data-fag="1T"]) .prove-sluttsvar-hjelp {
     min-height: 2.4rem;       /* forhåndsvisning på én linje (≈30 px, høy brøk ≈38 px): reservert også når feltet er tomt */
     min-width: 0;
