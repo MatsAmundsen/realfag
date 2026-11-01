@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import type { MathfieldElement } from "mathlive";
 import { latexTilSvartekst, svartekstTilLatex } from "@/lib/matte-felt";
 import { lastMathLive } from "@/lib/mathlive-last";
+import type { Spesialtegn } from "@/lib/symbolrad";
+import { Symbolrad } from "./Symbolrad";
 
 /**
  * Sluttsvarfeltet: eleven skriver matematikk, og den blir formatert på stedet
@@ -101,6 +103,7 @@ export function MatteFelt({
   labelledBy,
   readOnly = false,
   onKlar,
+  symboler,
 }: {
   id: string;
   value: string;
@@ -111,10 +114,13 @@ export function MatteFelt({
   readOnly?: boolean;
   /** Meldes når <math-field> har tatt over fra det vanlige tekstfeltet. */
   onKlar?: (klar: boolean) => void;
+  /** Spesialtegn som vises som knapper under feltet (∈ ℤ √ …). Utelatt eller tom: ingen rad. */
+  symboler?: Spesialtegn[];
 }) {
   const [klar, setKlar] = useState(false);
   const verter = useRef<HTMLDivElement>(null);
   const felt = useRef<Mathfelt | null>(null);
+  const tekstfelt = useRef<HTMLInputElement | null>(null);
   /** Siste tekst vi vet at feltet og forelderen er enige om (hindrer at vi skriver over det eleven skriver). */
   const sisteTekst = useRef(value);
   const onChangeRef = useRef(onChange);
@@ -243,29 +249,59 @@ export function MatteFelt({
     else mf.removeAttribute("aria-labelledby");
   }, [describedBy, labelledBy, klar]);
 
+  /** Setter inn et spesialtegn der markøren står, og beholder fokus i feltet. */
+  const settInn = (s: Spesialtegn) => {
+    const mf = felt.current;
+    if (mf) {
+      mf.focus();
+      mf.insert(s.latex, { format: "latex", mode: "math", focus: true, feedback: false, selectionMode: "placeholder" });
+      return;
+    }
+    const inn = tekstfelt.current;
+    if (!inn) return;
+    const fra = inn.selectionStart ?? inn.value.length;
+    const til = inn.selectionEnd ?? fra;
+    const ny = inn.value.slice(0, fra) + s.tekst + inn.value.slice(til);
+    onChangeRef.current(ny);
+    requestAnimationFrame(() => {
+      inn.focus();
+      inn.setSelectionRange(fra + s.tekst.length, fra + s.tekst.length);
+    });
+  };
+  const rad = symboler && symboler.length > 0 ? <Symbolrad symboler={symboler} onVelg={settInn} deaktivert={readOnly} /> : null;
+
   if (klar) {
-    return <div ref={verter} className="prove-matte-vert" data-matte="mathlive" />;
+    return (
+      <>
+        <div ref={verter} className="prove-matte-vert" data-matte="mathlive" />
+        {rad}
+      </>
+    );
   }
   return (
-    <input
-      id={id}
-      className="prove-sluttsvar-felt"
-      type="text"
-      inputMode="text"
-      autoComplete="off"
-      autoCapitalize="off"
-      spellCheck={false}
-      value={value}
-      readOnly={readOnly}
-      placeholder={placeholder}
-      aria-describedby={describedBy}
-      onFocus={() => {
-        harFokus.current = true;
-      }}
-      onBlur={() => {
-        harFokus.current = false;
-      }}
-      onChange={(e) => onChange(e.target.value)}
-    />
+    <>
+      <input
+        ref={tekstfelt}
+        id={id}
+        className="prove-sluttsvar-felt"
+        type="text"
+        inputMode="text"
+        autoComplete="off"
+        autoCapitalize="off"
+        spellCheck={false}
+        value={value}
+        readOnly={readOnly}
+        placeholder={placeholder}
+        aria-describedby={describedBy}
+        onFocus={() => {
+          harFokus.current = true;
+        }}
+        onBlur={() => {
+          harFokus.current = false;
+        }}
+        onChange={(e) => onChange(e.target.value)}
+      />
+      {rad}
+    </>
   );
 }

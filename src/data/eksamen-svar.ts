@@ -195,3 +195,14 @@ export const SLUTTSVAR: Record<string, Sluttsvar> = {
   "v26-d1-2b": {"svar": {"type": "punkt", "punkter": [[-3, -5], [2, 0]]}},
   "v24-d1-4": {"svar": {"type": "tall", "verdier": [2]}},
 };
+
+/**
+ * Lagt til for hånd (ikke fra spec_svar.py): oppføringer for oppgaver der sluttsvaret er tilhører / tilhører ikke.
+ * 1.OP1 a) har tre relasjoner. b) og c) er forklaringer, så oppgaven er selvvurdering og sluttsvarfeltet viser bare spesialtegnene.
+ */
+SLUTTSVAR["1.OP1"] = {
+  svar: { type: "relasjon", tegn: ["∉", "∈", "∈"] },
+  format: "Skriv ∈ eller ∉ for hvert av de tre tallene i a), i rekkefølge.",
+  selvvurder: true,
+  symboler: ["mengde", "rot"],
+};

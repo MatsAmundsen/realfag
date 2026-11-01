@@ -5201,3 +5201,35 @@ header.navbar[data-fag="1P"] .nav-btn.fag-switch,
 [data-theme="light"] [data-fag="1P"] .task-action-bar .hint-btn { color: #3730a3; }
 [data-theme="light"] [data-fag="1P"] .task-action-bar .fasit-btn { color: #065f46; }
 [data-theme="light"] [data-fag="1P"] .part-letter { color: #3730a3; }
+
+/* Spesialtegn under sluttsvarfeltet (∈ ∉ ℕ ℤ ℚ ℝ √ π ≤ ≥ ≠ ± °) */
+:is([data-fag="1P"], [data-fag="1T"]) .prove-symbolrad {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    min-width: 0;
+}
+:is([data-fag="1P"], [data-fag="1T"]) .prove-symbol {
+    flex: none;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0.25rem 0.6rem;
+    border: 1.5px solid var(--p1-field-line);
+    border-radius: var(--radius-sm);
+    background: var(--p1-field);
+    color: var(--text-main);
+    font-family: "KaTeX_Main", "Times New Roman", serif;
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    transition: border-color 0.15s, background-color 0.15s;
+}
+:is([data-fag="1P"], [data-fag="1T"]) .prove-symbol:hover:not(:disabled) { border-color: var(--p1-line); }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-symbol:active:not(:disabled) { border-color: var(--p1-focus); transform: scale(0.96); }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-symbol:focus-visible { outline: 3px solid var(--p1-focus); outline-offset: 2px; border-color: var(--p1-line); }
+:is([data-fag="1P"], [data-fag="1T"]) .prove-symbol:disabled { border-style: dashed; background: transparent; cursor: default; opacity: 0.6; }
+@media (prefers-reduced-motion: reduce) {
+    :is([data-fag="1P"], [data-fag="1T"]) .prove-symbol { transition: none; transform: none !important; }
+}

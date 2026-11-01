@@ -299,6 +299,7 @@ function SubchapterPage() {
                   locked={false}
                   onChange={(v) => utkast.setAnswer(o.id, v)}
                   onDone={(v) => utkast.setFerdig(o.id, v)}
+                  oppgavetekst={o.tekst}
                   sluttsvar={
                     SLUTTSVAR[o.id]
                       ? {

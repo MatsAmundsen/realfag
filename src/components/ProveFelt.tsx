@@ -1,7 +1,8 @@
-import { useId, useState } from "react";
+import { useId, useMemo, useState } from "react";
 import { MatteFelt } from "./MatteFelt";
 import { KatexHtml } from "./KatexHtml";
 import { forhandsvis, type Sluttsvar } from "@/lib/svar-sjekk";
+import { symbolerFor } from "@/lib/symbolrad";
 import { formaterPoeng, POENGANDEL, type EnhetsResultat, type Resultat, type Vurdering } from "@/lib/prove-poeng";
 
 const PLASSHOLDER: Record<string, string> = {
@@ -24,8 +25,11 @@ function SluttsvarFelt({
   value,
   onChange,
   locked = false,
+  oppgavetekst,
 }: {
   id: string;
+  /** Oppgaveteksten (HTML/LaTeX), brukt til å velge hvilke spesialtegn som vises. */
+  oppgavetekst?: string;
   fasit: Sluttsvar;
   value: string;
   onChange: (v: string) => void;
@@ -34,6 +38,7 @@ function SluttsvarFelt({
   const hjelpId = useId();
   /** true når <math-field> (MathLive) har tatt over: feltet viser da selv formelen. */
   const [formelfelt, setFormelfelt] = useState(false);
+  const symboler = useMemo(() => symbolerFor(fasit, oppgavetekst), [fasit, oppgavetekst]);
   const fv = forhandsvis(value, fasit.svar, fasit.enhet);
   const visTips = formelfelt && /[/^]|sqrt/.test(value) && !("ok" in fv && !fv.ok);
   return (
@@ -50,6 +55,7 @@ function SluttsvarFelt({
         labelledBy={`sluttsvar-label-${id}`}
         readOnly={locked}
         onKlar={setFormelfelt}
+        symboler={symboler}
       />
       <div id={hjelpId} className="prove-sluttsvar-hjelp">
         {/* Med formelfelt vises formelen i selve feltet. Forhåndsvisningen under er bare for det vanlige tekstfeltet. */}
@@ -80,8 +86,11 @@ export function ProveSvar({
   onChange,
   onDone,
   sluttsvar,
+  oppgavetekst,
   skjult = false,
 }: {
+  /** Oppgaveteksten, til å velge spesialtegn under sluttsvarfeltet. */
+  oppgavetekst?: string;
   id: string;
   /** Skjules (med plassen beholdt) til lagret fremgang er lest. Teksten rundt står fra første tegning. */
   skjult?: boolean;
@@ -97,7 +106,7 @@ export function ProveSvar({
   return (
     <div className="prove-svar" data-done={done ? "true" : "false"} style={skjult ? { visibility: "hidden" } : undefined}>
       <label className="prove-svar-label" htmlFor={`svar-${id}`}>
-        Svaret ditt
+        Utregning
       </label>
       <textarea
         id={`svar-${id}`}
@@ -105,7 +114,7 @@ export function ProveSvar({
         rows={3}
         value={value}
         readOnly={locked}
-        placeholder="Skriv svaret ditt her, eller bare på papir."
+        placeholder="Skriv utregningen din her, eller bare på papir."
         onChange={(e) => onChange(e.target.value)}
       />
       {sluttsvar && (
@@ -115,6 +124,7 @@ export function ProveSvar({
           value={sluttsvar.value}
           onChange={sluttsvar.onChange}
           locked={locked}
+          oppgavetekst={oppgavetekst}
         />
       )}
       <label className="prove-ferdig">

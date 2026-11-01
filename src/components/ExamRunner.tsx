@@ -167,6 +167,7 @@ function DelOppgave({
           onChange={(v) => svar.setAnswer(part.id, v)}
           onDone={(v) => svar.setFerdig(part.id, v)}
           sluttsvar={sluttsvarFor(svar, part.id)}
+          oppgavetekst={part.text}
           skjult={svar.skjult}
         />
       )}
@@ -230,6 +231,7 @@ function TaskBlock({
               onChange={(v) => svar.setAnswer(task.id, v)}
               onDone={(v) => svar.setFerdig(task.id, v)}
               sluttsvar={sluttsvarFor(svar, task.id)}
+              oppgavetekst={task.text}
               skjult={svar.skjult}
             />
           )}
