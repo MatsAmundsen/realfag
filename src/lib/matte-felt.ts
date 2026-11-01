@@ -492,10 +492,32 @@ function ryddSvartekst(s: string): string {
   );
 }
 
+/* Tomme plassholdere («\sqrt{#?}», tom brøk, tom potens, tomme ⟨ ⟩ og { }) er ikke et svar. */
+const TOM = String.raw`(?:\s|\\placeholder(?:\[[^\]]*\])?\{\s*\})*`;
+const TOMME_STRUKTURER: RegExp[] = [
+  new RegExp(String.raw`\\sqrt(?:\[[^\]]*\])?\{${TOM}\}`, "g"),
+  new RegExp(String.raw`\\[dt]?frac\{${TOM}\}\{${TOM}\}`, "g"),
+  new RegExp(String.raw`[\^_]\{${TOM}\}`, "g"),
+  new RegExp(String.raw`[\^_]\\placeholder(?:\[[^\]]*\])?\{\s*\}`, "g"),
+  new RegExp(String.raw`(?:\\left)?\\langle${TOM}(?:\\right)?\\rangle`, "g"),
+  new RegExp(String.raw`(?:\\left)?\\(?:lbrace|\{)${TOM}(?:\\right)?\\(?:rbrace|\})`, "g"),
+];
+
+/** Fjerner tomme strukturer (også de som blir tomme når innerste fjernes). */
+function fjernTommePlassholdere(latex: string): string {
+  let t = latex.replace(/#\?/g, String.raw`\placeholder{}`);
+  for (let n = 0; n < 20; n++) {
+    const for_ = t;
+    for (const re of TOMME_STRUKTURER) t = t.replace(re, "");
+    if (t === for_) break;
+  }
+  return t;
+}
+
 /** MathLive-LaTeX → vanlig svartekst som lagres og sjekkes. */
 export function latexTilSvartekst(latex: string): string {
   if (!latex) return "";
-  return ryddSvartekst(ser(new LatexParser(latex).parse()));
+  return ryddSvartekst(ser(new LatexParser(fjernTommePlassholdere(latex)).parse()));
 }
 
 /* ───────────────────────── tekst → LaTeX ───────────────────────── */
