@@ -141,3 +141,58 @@ test("fase 2: likninger med prosa, mellomrom og polynomkoeffisienter", () => {
   assert.equal(ok("f(x)=0,15x^3+0,175x^2-1,1x+6,3", abcd), true);
   assert.equal(ok("f(x)=0,15x^3+0,175x^2-1,1x+6,4", abcd), false);
 });
+
+test("fase 3: avrundingsregelen (≥ 2 gjeldende siffer, riktig avrundet i elevens siste siffer)", () => {
+  const t = (verdi, ekstra = {}) => ({ svar: { type: "tall", verdier: [verdi], ...ekstra } });
+  // Ingen eksplisitt toleranse
+  const a = t(176.5);
+  for (const s of ["177", "176,5", "176.5", "180"]) assert.equal(ok(s, a), true, s);
+  for (const s of ["176", "178", "200", "170", "2·10^2"]) assert.equal(ok(s, a), false, s); // 176 avrundes feil (176,5 runder opp); 200 har ett siffer
+  const k = t(142.6, {}), kcal = { svar: { type: "tall", verdier: [142.6] }, enhet: ["kcal"] };
+  assert.equal(ok("143", k), true);
+  assert.equal(ok("143 kcal", kcal), true);
+  assert.equal(ok("142", k), false);
+  // Smal toleranse
+  const b = t(15.8654395893, { tol: { abs: 0.002 } });
+  for (const s of ["15,87", "15,9", "16", "15,865", "15,8654"]) assert.equal(ok(s, b), true, s);
+  for (const s of ["15,8", "15,86", "17", "15,88"]) assert.equal(ok(s, b), false, s);
+  const c = t(1.93185165258, { tol: { abs: 0.02 } });
+  for (const s of ["1,9", "1,93", "1,932", "1,94"]) assert.equal(ok(s, c), true, s); // 1,94 og 1,932: ligger i toleransen (bredere beholdes)
+  for (const s of ["2", "1,8", "1,96"]) assert.equal(ok(s, c), false, s);
+  // Negative tall, store heltall og standardform
+  assert.equal(ok("-177", t(-176.5)), true);
+  assert.equal(ok("177", t(-176.5)), false);
+  const stor = t(104106277470);
+  for (const s of ["104 106 277 470", "104 000 000 000", "1,04·10^11", "1,0\\cdot10^{11}", "1,04 * 10^11"]) assert.equal(ok(s, stor), true, s);
+  for (const s of ["105 000 000 000", "1·10^11", "1,05·10^11"]) assert.equal(ok(s, stor), false, s);
+  assert.equal(ok("104 milliarder", stor), true); // 3 siffer, riktig avrundet
+  assert.equal(ok("105 milliarder", stor), false);
+});
+
+test("fase 3: små heltall er eksakte, og ingenAvrunding slår regelen av", () => {
+  const h = { svar: { type: "tall", verdier: [48] } };
+  assert.equal(ok("50", h), false);
+  assert.equal(ok("48", h), true);
+  assert.equal(ok("125", { svar: { type: "tall", verdier: [125] } }), true);
+  assert.equal(ok("130", { svar: { type: "tall", verdier: [125] } }), false);
+  const eks = { svar: { type: "tall", verdier: [176.5], ingenAvrunding: true } };
+  assert.equal(ok("177", eks), false);
+  assert.equal(ok("176,5", eks), true);
+  const bredt = { svar: { type: "tall", verdier: [176.5], tol: { abs: 2 }, ingenAvrunding: true } };
+  assert.equal(ok("178", bredt), true); // eksplisitt toleranse gjelder uansett
+});
+
+test("fase 3: avrunding i lister, fast og fri rekkefølge, og med enhet", () => {
+  const fri = { svar: { type: "tall", verdier: [176.5, 15.8654395893], tol: { abs: 0.002 } } };
+  assert.equal(ok("15,9 og 177", fri), true);
+  assert.equal(ok("177; 15,87", fri), true);
+  assert.equal(ok("176 og 15,9", fri), false);
+  const fast = { svar: { type: "tall", verdier: [176.5, 15.8654395893], rekkefolge: "fast" } };
+  assert.equal(ok("177; 15,9", fast), true);
+  assert.equal(ok("15,9; 177", fast), false);
+  const e = { svar: { type: "tall", verdier: [5123.4] }, enhet: ["g"] };
+  assert.equal(ok("5,1 kg", e), true);
+  assert.equal(ok("5,2 kg", e), false);
+  assert.equal(ok("5123 g", e), true);
+  assert.equal(ok("5 kg", e), false);
+});

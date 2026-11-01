@@ -25,6 +25,11 @@ export type SvarSpec =
       ikkeOkning?: boolean;
       /** Plasseringene (0, 1 …) i `verdier` som må være oppgitt som heltall, for eksempel et antall (bare med rekkefolge «fast»): «283,56 bagetter» er ikke et antall. */
       heltall?: number[];
+      /**
+       * Slår av avrundingsregelen (se `riktigAvrundet`). Brukes når oppgaven krever et bestemt antall desimaler, gjeldende siffer
+       * eller eksakt svar, slik at bare verdien i nøkkelen (med toleransen) gjelder.
+       */
+      ingenAvrunding?: boolean;
     }
   /** Uttrykk i én eller flere variabler. Ekvivalente former godtas. «y=» og «f(x)=» foran er valgfritt. */
   | { type: "uttrykk"; uttrykk: string; tol?: Toleranse }
@@ -840,11 +845,58 @@ function fjernIntervallforklaring(s: string): string {
   return /\d/.test(ut) ? ut : s;
 }
 
-function tolkTall(input0: string, enhet?: string[], ord?: boolean, nedgang?: boolean): number[] | null {
+/** Hvor nøyaktig eleven skrev tallet: posisjoner (antall desimaler, negativt for tiere/hundrer …) som gir minst 2 gjeldende siffer, og enhetsfaktoren. */
+type Presisjon = { pos: number[]; faktor: number };
+
+/**
+ * Leser presisjonen fra et tall slik eleven skrev det: «15,87» → 2 desimaler (4 siffer), «177» → hele tall, «180» → tiere (2 siffer)
+ * eller hele tall, «1,04·10^11» → hundre millioner … Gjelder bare rene tall og tall på standardform; uttrykk som 2√3 gir null.
+ * Færre enn 2 gjeldende siffer (som «200») gir null: for grovt til å regnes som et svar.
+ */
+function presisjonFra(tekst: string, faktor: number): Presisjon | null {
+  const t = tekst.trim().replace(/(?<=\d)\s+(?=\d{3}(?!\d))/g, "");
+  const m = /^[-+]?(\d+)(?:[.,](\d+))?(?:\s*[*×·x]\s*10\^\(?([-+]?\d+)\)?)?$/.exec(t);
+  if (!m) return null;
+  const heltallsdel = m[1];
+  const des = m[2] ?? "";
+  const eksp = m[3] ? Number(m[3]) : 0;
+  const sifre = (heltallsdel + des).replace(/^0+/, "");
+  if (sifre === "") return null;
+  const pos: number[] = [];
+  if (des.length > 0) {
+    if (sifre.length >= 2) pos.push(des.length - eksp);
+  } else {
+    const nuller = (sifre.match(/0*$/) ?? [""])[0].length;
+    for (let p = 0; p <= nuller; p++) if (sifre.length - p >= 2) pos.push(-p - eksp);
+  }
+  return pos.length > 0 ? { pos, faktor } : null;
+}
+
+/**
+ * Avrundingsregelen: elevens tall er en korrekt avrunding (rund av, halve opp) av nøkkelverdien til minst 2 gjeldende siffer,
+ * i elevens egen siste desimal. 177 og 176,5 for 176,5; 15,87 og 15,9 for 15,865; 143 for 142,6. Ikke 176 (176,5 runder opp)
+ * og ikke 15,8. Hele tall under 10 000 i nøkkelen er eksakte (et antall, en alder) og avrundes ikke.
+ */
+export function riktigAvrundet(gitt: number, nokkel: number, pres: Presisjon | null | undefined): boolean {
+  if (!pres || !Number.isFinite(gitt) || !Number.isFinite(nokkel) || gitt === 0 || nokkel === 0) return false;
+  if (Number.isInteger(nokkel) && Math.abs(nokkel) < 10000) return false;
+  if (Math.sign(gitt) !== Math.sign(nokkel)) return false;
+  for (const p of pres.pos) {
+    const steg = Math.pow(10, -p) * pres.faktor;
+    const r = Math.floor(Math.abs(nokkel) / steg + 0.5 + 1e-9) * steg;
+    if (Math.abs(r - Math.abs(gitt)) <= 1e-9 * steg) return true;
+  }
+  return false;
+}
+
+function tolkTall(input0: string, enhet?: string[], ord?: boolean, nedgang?: boolean, pres?: (Presisjon | null)[]): number[] | null {
   const input = ord ? input0 : fjernIntervallforklaring(input0);
   if (!ord) {
     const sam = sammensattEnhet(input, enhet);
-    if (sam !== null) return [sam];
+    if (sam !== null) {
+      pres?.push(null);
+      return [sam];
+    }
   }
   const alle = delOpp(ord ? normaliser(input) : fjernMengdeklammer(fjernLedendeOrd(nedgang ? nedgangTilMinus(normaliser(input)) : normaliser(input))));
   const deler = ord ? alle : alle.filter((d) => !erBareProsa(d)); // «2, som er gjennomsnittlig vekstfart»
@@ -857,6 +909,7 @@ function tolkTall(input0: string, enhet?: string[], ord?: boolean, nedgang?: boo
       const v = tallVerdi(b.tekst);
       if (v === null) return null;
       ut.push(v * b.faktor);
+      pres?.push(presisjonFra(b.tekst, b.faktor));
     }
   }
   return ut;
@@ -1211,15 +1264,29 @@ function sjekkSpec(input: string, spec: SvarSpec, enhet?: string[]): boolean {
       return serieKandidater(input, spec.deler.length).some((biter) => spec.deler.every((d, i) => sjekkSpec(biter[i], d, enhet)));
     }
     case "tall": {
-      const sammenlign = (gitt: number[]) => {
+      const sammenlign = (gitt: number[], pres: (Presisjon | null)[] = []) => {
+        // Likt: innenfor toleransen, eller en korrekt avrunding av nøkkelen (se riktigAvrundet).
+        const lik = (i: number, y: number) => erNær(gitt[i], y, spec.tol) || (!spec.ingenAvrunding && riktigAvrundet(gitt[i], y, pres[i]));
         if (spec.rekkefolge === "fast") {
           return (
             gitt.length === spec.verdier.length &&
-            gitt.every((v, i) => erNær(v, spec.verdier[i], spec.tol)) &&
+            gitt.every((_, i) => lik(i, spec.verdier[i])) &&
             (spec.heltall ?? []).every((i) => Math.abs(gitt[i] - Math.round(gitt[i])) < 1e-9)
           );
         }
-        return sammeMengde(dedup(gitt, spec.tol), dedup(spec.verdier, spec.tol), spec.tol);
+        const idx: number[] = [];
+        gitt.forEach((v, i) => {
+          if (!idx.some((j) => erNær(gitt[j], v, spec.tol))) idx.push(i);
+        });
+        const nokler = dedup(spec.verdier, spec.tol);
+        if (idx.length !== nokler.length) return false;
+        const rest = [...nokler];
+        for (const i of idx) {
+          const k = rest.findIndex((y) => lik(i, y));
+          if (k < 0) return false;
+          rest.splice(k, 1);
+        }
+        return true;
       };
       if (spec.ikkeOkning && /(?:^|[^A-Za-zÆØÅæøå])(?:økning|økningen|økte|øker|økt|stigning|stiger|steg|oppgang|vekst)(?![A-Za-zÆØÅæøå])/i.test(normaliser(input))) return false;
       if (spec.ulikhet) {
@@ -1230,17 +1297,20 @@ function sjekkSpec(input: string, spec: SvarSpec, enhet?: string[]): boolean {
           return tegn === spec.ulikhet && sjekkSpec(u[2], { ...spec, ulikhet: undefined }, enhet);
         }
       }
-      const gitt = tolkTall(input, enhet, spec.ord, spec.nedgang);
-      if (gitt && sammenlign(gitt)) return true;
+      const pres0: (Presisjon | null)[] = [];
+      const gitt = tolkTall(input, enhet, spec.ord, spec.nedgang, pres0);
+      if (gitt && sammenlign(gitt, pres0)) return true;
       if (spec.verdier.length < 2) {
         // «0,8·60 = 48»: utregning og svar i samme felt. Svaret er siste ledd når alle ledd er like store.
         const siste = likhetskjede(input);
-        return siste !== null && sammenlign(tolkTall(siste, enhet, spec.ord, spec.nedgang) ?? []);
+        const pres1: (Presisjon | null)[] = [];
+        return siste !== null && sammenlign(tolkTall(siste, enhet, spec.ord, spec.nedgang, pres1) ?? [], pres1);
       }
       // Flere tall i fasit: prøv også «1,6,-2» og «1 6 -2» som lister (kommaregelen, se LISTESKILLE).
       return [listeLesning(input), heltallsListe(input)].some((liste) => {
-        const g2 = liste ? tolkTall(liste, enhet, spec.ord, spec.nedgang) : null;
-        return Boolean(g2 && sammenlign(g2));
+        const pres2: (Presisjon | null)[] = [];
+        const g2 = liste ? tolkTall(liste, enhet, spec.ord, spec.nedgang, pres2) : null;
+        return Boolean(g2 && sammenlign(g2, pres2));
       });
     }
     case "omrade": {
