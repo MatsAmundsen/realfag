@@ -17,7 +17,7 @@
     "preview:stop": "node scripts/preview.mjs stop",
     "typecheck": "tsc --noEmit",
     "check:auth": "node scripts/check-auth-invariant.mjs",
-    "test": "node --test 'scripts/**/*.test.mjs' && node --experimental-strip-types --test src/lib/app-data/app-data.test.ts src/lib/auth/gate-identity.test.ts",
+    "test": "node --test 'scripts/**/*.test.mjs' && node --experimental-strip-types --test src/lib/app-data/app-data.test.ts src/lib/auth/gate-identity.test.ts && node --experimental-transform-types --test src/lib/matte-felt.test.ts",
     "lint": "eslint .",
     "format": "prettier --write ."
   },
@@ -60,6 +60,7 @@
     "katex": "^0.18.4",
     "kysely": "^0.28.5",
     "lucide-react": "^0.510.0",
+    "mathlive": "^0.111.4",
     "pg": "^8.16.3",
     "react": "^19.2.0",
     "react-day-picker": "^9.14.0",
