@@ -228,8 +228,8 @@ export const EXAMS: Exam[] = [
         "Areal $=\\tfrac12 ab\\sin C$.",
         [
           "Venstre: $\\tfrac12\\cdot 6\\cdot 6\\cdot \\sin 150^\\circ = 18\\cdot \\tfrac12 = 9$ (siden $\\sin 150^\\circ=\\sin 30^\\circ=\\tfrac12$).",
-          "Høyre: $\\tfrac12\\cdot 6\\cdot 6\\cdot \\sin 32^\\circ = 18\\sin 32^\\circ$. $\\sin 32^\\circ < \\sin 30^\\circ=0{,}5$, så arealet er mindre enn $9$.",
-          "<strong>Svar:</strong> Trekanten til venstre har størst areal.",
+          "Høyre: $\\tfrac12\\cdot 6\\cdot 6\\cdot \\sin 32^\\circ = 18\\sin 32^\\circ$. $\\sin 32^\\circ > \\sin 30^\\circ=0{,}5$, så arealet er større enn $9$ ($18\\sin 32^\\circ \\approx 9{,}54$).",
+          "<strong>Svar:</strong> Trekanten til høyre har størst areal.",
         ],
         ["trigonometri"],
         "h23-to-trekanter",

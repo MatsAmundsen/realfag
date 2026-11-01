@@ -882,7 +882,7 @@ const dkP5OP: Delkapittel = {
         del("d") + "Hvilket av svarene i b) og c) stoler du mest på? Begrunn svaret.",
       r`Velg «Polynom» med grad 2. Regn ut $K(70)$ og $K(200)$.`,
       [
-        r`<strong>a)</strong> GeoGebra: $K(x) = 2{,}12x^2 + 92{,}00x + 6347{,}73$`,
+        r`<strong>a)</strong> GeoGebra: $K(x) = 2{,}1246x^2 + 91{,}997x + 6347{,}73$`,
         r`<strong>b)</strong> $K(70) \approx 23\,200$`,
         r`<strong>c)</strong> $K(200) \approx 109\,700$`,
         "<strong>d)</strong> Svaret i b), fordi 70 ligger mellom de målte verdiene (interpolasjon). 200 ligger langt utenfor (ekstrapolasjon).<br><strong>Svar:</strong> b) Omtrent 23 200 kr. c) Omtrent 109 700 kr. d) b).",

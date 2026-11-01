@@ -249,3 +249,38 @@ describe("sjekkSluttsvar er upåvirket av adapteren", () => {
     }
   });
 });
+
+describe("tomme plassholdere er ikke et svar", () => {
+  const tomme = [
+    "\\sqrt{\\placeholder{}}",
+    "\\sqrt{#?}",
+    "\\sqrt{}",
+    "\\sqrt[3]{\\placeholder{}}",
+    "\\frac{\\placeholder{}}{\\placeholder{}}",
+    "\\frac{#?}{#?}",
+    "\\frac{}{}",
+    "\\placeholder{}^{\\placeholder{}}",
+    "\\left\\langle\\placeholder{}\\right\\rangle",
+    "\\langle\\rangle",
+    "\\left\\{\\placeholder{}\\right\\}",
+    "\\lbrace\\placeholder{}\\rbrace",
+    "\\{\\}",
+    "\\sqrt{\\frac{\\placeholder{}}{\\placeholder{}}}",
+    "\\placeholder{}",
+    "#?",
+  ];
+  for (const l of tomme) {
+    it(`${l} → tomt svar`, () => assert.equal(latexTilSvartekst(l), ""));
+  }
+  it("tom potens fjernes, resten blir stående", () => {
+    assert.equal(latexTilSvartekst("x^{\\placeholder{}}"), "x");
+    assert.equal(latexTilSvartekst("2+\\sqrt{\\placeholder{}}"), "2+");
+  });
+  it("utfylte strukturer røres ikke", () => {
+    assert.equal(latexTilSvartekst("\\sqrt{x}"), "sqrt(x)");
+    assert.notEqual(latexTilSvartekst("\\frac{1}{2}"), "");
+    assert.equal(latexTilSvartekst("x^{2}"), "x^2");
+    assert.equal(latexTilSvartekst("\\{1,2\\}"), "{1,2}");
+    assert.equal(latexTilSvartekst("\\langle 1,2\\rangle"), "⟨1,2⟩");
+  });
+});

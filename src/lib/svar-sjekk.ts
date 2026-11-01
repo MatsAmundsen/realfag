@@ -35,13 +35,29 @@ export type SvarSpec =
   | { type: "uttrykk"; uttrykk: string; tol?: Toleranse }
   /** Likning x = a (flere løsninger i vilkårlig rekkefølge), eller flere variabler: a = 2 og b = 6. */
   | { type: "likning"; losninger: Record<string, number[]>; tol?: Toleranse }
-  /** Ett eller flere punkt (a, b), i vilkårlig rekkefølge. */
+  /** Ett eller flere punkt eller vektorer (a, b), i vilkårlig rekkefølge. Skrives (a, b), [a, b] eller ⟨a, b⟩. */
   | { type: "punkt"; punkter: [number, number][]; tol?: Toleranse }
   /** Svar som er oppgitt som område: ett tall inni [fra, til], eller begge grensene («1,4–2,7», «mellom 1,4 og 2,7»). */
   | { type: "omrade"; fra: number; til: number; tol?: Toleranse }
   /** Løsning av en ulikhet: «−2 < x < 3», «x > −2 og x < 3», «(−2, 3)» eller «<−2, 3>». Ikke-lukket intervall som standard. */
   | { type: "ulikhet"; fra: number; til: number; lukket?: boolean }
-  /** Et valg, for eksempel en bokstav. Store og små bokstaver er like. */
+  /**
+   * Løsningsmengde som ett eller flere intervaller (forening), også med uendelig: «⟨3, ∞⟩», «⟨−∞, −5⟩ ∪ ⟨1, ∞⟩», «[−3, 0] ∪ [3, ∞⟩»,
+   * «x > 3», «x < −5 eller x > 1». `null` i `fra` betyr −∞ og `null` i `til` betyr ∞ (alltid åpen ende). Rekkefølgen på `deler` er fri.
+   * Godtar ⟨a,b⟩, (a,b), <a,b>, ]a,b[ og [a,b] som skrevemåte, «x ∈» foran, ←/→/∞/«uendelig», {x | …}, ∪, «eller» og ∨.
+   * `begge`: oppgaven ber om svaret både med ulikhetstegn og som intervall («x < 4, x ∈ ⟨←, 4⟩»); begge formene kreves, og begge må stemme.
+   */
+  | { type: "intervall"; deler: { fra: number | null; til: number | null; fraLukket?: boolean; tilLukket?: boolean }[]; begge?: boolean }
+  /**
+   * Mengde av tall: enten en liste i vilkårlig rekkefølge (`elementer`: «{1, 2, 3}», «1, 2, 3»), eller en tallmengde uten noen verdier
+   * (`grunn` og `utenom`: «ℝ∖{3}», «ℝ \ {3}», «ℝ uten 3», «ℝ minus {3}», «x ∈ ℝ, x ≠ 3», «{x ∈ ℝ | x ≠ 3}»). «D_f =» foran er valgfritt.
+   * Uten `grunn` i svaret leses mengden som ℝ.
+   */
+  | { type: "mengde"; elementer?: number[]; grunn?: "N" | "Z" | "Q" | "R"; utenom?: number[]; tol?: Toleranse }
+  /**
+   * Et valg, for eksempel en bokstav. Store og små bokstaver er like. «⇒» og «⇔» er også valg: da godtas ⇒, =>, \Rightarrow, «impliserer»
+   * og ⇔, <=>, <->, \Leftrightarrow, «ekvivalent», også inni et fullt utsagn («x = 2 ⇒ x² = 4»). Minst én pil må stå i svaret, og alle pilene må være den riktige.
+   */
   | { type: "valg"; valg: string }
   /**
    * Tilhører / tilhører ikke, i rekkefølge: «∉, ∈, ∈». Godtar ∈ ∉, \in \notin, «er element i», «element i», «ikke element i», «ikke i»
@@ -76,7 +92,7 @@ export type Sluttsvar = {
   /**
    * Hvilke grupper med spesialtegn som vises under sluttsvarfeltet. Utelatt: utledes fra fasit og oppgavetekst (se symbolrad.ts).
    */
-  symboler?: ("mengde" | "rot" | "ulikhet" | "pi" | "pm" | "grader")[];
+  symboler?: ("mengde" | "rot" | "ulikhet" | "pi" | "pm" | "grader" | "intervall" | "vektor" | "logikk")[];
 };
 
 const STANDARD_TOL: Required<Toleranse> = { abs: 1e-9, rel: 1e-9 };
@@ -98,6 +114,8 @@ export function fjernLatex(input: string): string {
   if (!/[\\$]/.test(input)) return input;
   // $…$ rundt formler fjernes; en enslig $ midt i svaret er ikke LaTeX og skal ikke bli til gange.
   let t = input.replace(/\$\$?([^$]*)\$\$?/g, "$1").replace(/^\s*\$|\$\s*$/g, "");
+  // «ℝ \ {3}» og «R\{3}» uten LaTeX-klammer til slutt: skråstreken er mengdedifferansen, ikke en LaTeX-klamme.
+  if (!/\\\}|\\rbrace/.test(t)) t = t.replace(/\s*\\\s*(?=\{)/g, "∖");
   for (let i = 0; i < 12; i++) {
     const n = t
       .replace(/\\sqrt\s*\{([^{}]*)\}/g, "sqrt($1)")
@@ -122,6 +140,19 @@ export function fjernLatex(input: string): string {
     .replace(/\\notin(?![A-Za-z])/g, "∉")
     .replace(/\\in(?![A-Za-z])/g, "∈")
     .replace(/\\infty(?![A-Za-z])/g, "∞")
+    .replace(/\\langle(?![A-Za-z])/g, "⟨")
+    .replace(/\\rangle(?![A-Za-z])/g, "⟩")
+    .replace(/\\cup(?![A-Za-z])/g, "∪")
+    .replace(/\\cap(?![A-Za-z])/g, "∩")
+    .replace(/\\(?:setminus|smallsetminus)(?![A-Za-z])/g, "∖")
+    .replace(/\\(?:Leftrightarrow|Longleftrightarrow|iff)(?![A-Za-z])/g, " ⇔ ")
+    .replace(/\\(?:Rightarrow|Longrightarrow|implies)(?![A-Za-z])/g, " ⇒ ")
+    .replace(/\\(?:rightarrow|longrightarrow|to)(?![A-Za-z])/g, "→")
+    .replace(/\\(?:leftarrow|longleftarrow|gets)(?![A-Za-z])/g, "←")
+    .replace(/\\lbrace(?![A-Za-z])/g, "{")
+    .replace(/\\rbrace(?![A-Za-z])/g, "}")
+    .replace(/\\(?:vert|mid)(?![A-Za-z])/g, "|")
+    .replace(/(?<!\\)\{,\}/g, ",") // desimal-/listekomma i MathLive: 3{,}5
     .replace(/\\[{}]/g, (m) => m[1])
     .replace(/_\s*\{([^{}]*)\}/g, "_$1")
     .replace(/\\(?=[A-Za-z])/g, ""); // \pi, \sin, \ln, \cos … blir pi, sin, ln, cos
@@ -252,6 +283,9 @@ const GENERISKE_ENHETER = [
 
 /** Enkeltbokstavsenheter (m, g, L, s …). Bare i ord-modus, der svaret er en setning, og aldri x, y, e eller π. */
 const ENKELTBOKSTAV_ENHETER = "mglLsthJWNCK";
+
+/** Innledning foran et valg: «Svar: B», «Svaret er B», «Alternativ B». */
+const VALG_PREFIKS = /^(?:svaret\s+er|svar|alternativ)(?:\s*:\s*|\s+)/i;
 
 /** Fjerner en godkjent enhet bakerst (etter tall eller parentes). */
 function fjernEnhet(s: string, enheter?: string[]): { rest: string; enhet?: string } {
@@ -1011,11 +1045,14 @@ function delPunktInnhold(inn: string): string[] | null {
   return null;
 }
 
+/** Koordinatene står i (a, b), [a, b] eller ⟨a, b⟩: vektorer skrives på alle tre måter. */
+const PUNKT_GRUPPE = /[([⟨]([^()[\]⟨⟩]*)[)\]⟩]/g;
+
 /** Punktene i et svar: «(−2, 0) og (4, 0)». Desimalkomma: bruk «;» inni parentesen eller «(1,5; 2,5)». */
 function tolkPunkter(input: string): [number, number][] | null {
   // «(p,q)=(4,3)» og «P=(4,3)»: merkelappen foran punktet er ikke et punkt.
   const s = normaliser(input).replace(/(^|[;,\s])\(\s*[A-Za-z]\s*[,;]\s*[A-Za-z]\s*\)\s*=\s*(?=\()/g, "$1");
-  const grupper = [...s.matchAll(/\(([^()]*)\)/g)];
+  const grupper = [...s.matchAll(PUNKT_GRUPPE)];
   // Parenteser som er del av uttrykk (f.eks. «(1+1, 2)») er ikke støttet; punkt skrives rett fram.
   if (grupper.length === 0) {
     const fraLikninger = punktFraLikninger(input);
@@ -1124,7 +1161,7 @@ function tolkUlikhet(input: string): Ulikhet | null {
     return { lo: b, hi: a, loLukket: !sterkt(k[3]), hiLukket: !sterkt(k[2]) };
   }
   // Intervall: (a, b), ⟨a; b⟩, <a, b>, ]a, b[, [a, b]
-  const m = /^([(\[\]<⟨])\s*(.+?)\s*([)\[\]>⟩])$/.exec(s);
+  const m = /^([([\]<⟨])\s*(.+?)\s*([)[\]>⟩])$/.exec(s);
   if (m) {
     const inn = m[2];
     let biter: string[];
@@ -1176,6 +1213,260 @@ function tolkUlikhet(input: string): Ulikhet | null {
   return null;
 }
 
+/* ---------------------------------------------------------------- intervall, mengde og logikk (⇒ ⇔) */
+
+/** Intervall på tallinja. ±Infinity er uendelig (alltid åpen ende). */
+type Iv = { lo: number; hi: number; loL: boolean; hiL: boolean };
+
+const UENDELIG = "(?:∞|oo|inf|infinity|uendelig|uendeligheten)";
+
+/** En intervallgrense: tall, ∞, −∞, «uendelig», → (opp) og ← (ned). */
+function grense(t0: string): number | null {
+  const t = t0.trim().replace(/\s+/g, "").toLowerCase();
+  if (t === "→" || new RegExp(`^\\+?${UENDELIG}$`).test(t)) return Infinity;
+  if (t === "←" || new RegExp(`^-${UENDELIG}$`).test(t)) return -Infinity;
+  return tallVerdi(t0.trim());
+}
+
+/** Grensene inni intervallparentesen: «1; 5», «1, 5», «1,5» (to tall, komma etter siffer og siffer er listeskille bare med «1,5» to ledd). */
+function delGrenser(inn: string): string[] | null {
+  if (inn.includes(";")) return inn.split(";").length === 2 ? inn.split(";") : null;
+  if (/,\s+/.test(inn)) {
+    const b = inn.split(/,\s+/);
+    return b.length === 2 ? b : null;
+  }
+  const k = inn.split(",");
+  return k.length === 2 ? k : k.length === 4 ? [`${k[0]}.${k[1]}`, `${k[2]}.${k[3]}`] : null;
+}
+
+function lagIv(lo: number, hi: number, loL: boolean, hiL: boolean): Iv | null {
+  if (lo > hi || (lo === hi && !(loL && hiL))) return null;
+  return { lo, hi, loL: loL && Number.isFinite(lo), hiL: hiL && Number.isFinite(hi) };
+}
+
+function snittIv(a: Iv, b: Iv): Iv | null {
+  const lo = Math.max(a.lo, b.lo);
+  const hi = Math.min(a.hi, b.hi);
+  const loL = a.lo > b.lo ? a.loL : b.lo > a.lo ? b.loL : a.loL && b.loL;
+  const hiL = a.hi < b.hi ? a.hiL : b.hi < a.hi ? b.hiL : a.hiL && b.hiL;
+  return lagIv(lo, hi, loL, hiL);
+}
+
+const IV_PARENTES = /^([([\]<⟨])\s*(.+?)\s*([)[\]>⟩])$/;
+const IV_OP = "(<=|>=|<|>)";
+
+/** «x < 4», «3 ≤ x», «−2 < x ≤ 3», «x > 1 og x < 4». */
+function tolkBetingelse(d: string): Iv | null {
+  const k = new RegExp(`^(.+?)\\s*${IV_OP}\\s*x\\s*${IV_OP}\\s*(.+)$`, "i").exec(d);
+  if (k) {
+    const a = grense(k[1]);
+    const b = grense(k[4]);
+    if (a === null || b === null || k[2][0] !== k[3][0]) return null;
+    const lukket = (o: string) => o.length === 2;
+    return k[2][0] === "<" ? lagIv(a, b, lukket(k[2]), lukket(k[3])) : lagIv(b, a, lukket(k[3]), lukket(k[2]));
+  }
+  const h = new RegExp(`^x\\s*${IV_OP}\\s*(.+)$`, "i").exec(d);
+  const v = new RegExp(`^(.+?)\\s*${IV_OP}\\s*x$`, "i").exec(d);
+  let o: string;
+  let g: number | null;
+  if (h) {
+    o = h[1];
+    g = grense(h[2]);
+  } else if (v) {
+    // «3 < x» betyr x > 3
+    o = v[2].startsWith("<") ? ">" + v[2].slice(1) : "<" + v[2].slice(1);
+    g = grense(v[1]);
+  } else return null;
+  if (g === null) return null;
+  return o.startsWith(">") ? lagIv(g, Infinity, o.length === 2, false) : lagIv(-Infinity, g, false, o.length === 2);
+}
+
+/** Ett intervall: «⟨3, ∞⟩», «]−2, 5]», «(1, 4)», «<−2; 3>» eller en eller flere ulikheter («x > 1 og x < 4»). */
+function tolkIvBit(s: string): Iv | null {
+  const m = IV_PARENTES.exec(s);
+  if (m) {
+    const biter = delGrenser(m[2]);
+    if (!biter) return null;
+    const a = grense(biter[0]);
+    const b = grense(biter[1]);
+    return a === null || b === null ? null : lagIv(a, b, m[1] === "[", m[3] === "]");
+  }
+  let ut: Iv | null = { lo: -Infinity, hi: Infinity, loL: false, hiL: false };
+  const deler = s.split(/\s*(?:\bog\b|&|∧|;|,\s+)\s*/i).filter(Boolean);
+  if (deler.length === 0) return null;
+  for (const d of deler) {
+    const c = tolkBetingelse(d);
+    ut = c && ut ? snittIv(ut, c) : null;
+    if (!ut) return null;
+  }
+  return ut;
+}
+
+/** Foreningstegn mellom intervaller: ∪, ∨, «eller» og et «U» mellom to parenteser. */
+const FORENING = /\s*(?:∪|∨|\beller\b|(?<=[)\]⟩>])\s*U\s*(?=[([\]⟨<]))\s*/;
+
+/** Teksten klar for intervalltolking: «Svar:», «L =», «x ∈», «{x | …}» og ≤ ≥ som <= >= er ryddet bort. */
+function intervallTekst(input: string): string {
+  let s = normaliser(input).replace(/≤|⩽/g, "<=").replace(/≥|⩾/g, ">=").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+  s = fjernLedendeOrd(s);
+  s = s.replace(/^\s*[A-Za-zÆØÅα-ω][A-Za-z0-9_]*(?:\s*\([^()]*\))?\s*[=:]\s*(?![<>=])/, "");
+  s = s.replace(/^\{\s*x\s*(?:∈\s*R\s*)?(?:\||:)\s*(.+?)\s*\}$/, "$1");
+  s = s.replace(/^\s*x\s*(?:∈|\bi\b|\bin\b)\s*/i, "");
+  return s.replace(/\s+/g, " ").trim();
+}
+
+function slaaSammenIv(iv: Iv[]): Iv[] {
+  const sortert = [...iv].sort((a, b) => a.lo - b.lo || Number(b.loL) - Number(a.loL));
+  const ut: Iv[] = [];
+  for (const x of sortert) {
+    const sist = ut[ut.length - 1];
+    if (sist && (x.lo < sist.hi || (x.lo === sist.hi && (sist.hiL || x.loL)))) {
+      if (x.hi > sist.hi) {
+        sist.hi = x.hi;
+        sist.hiL = x.hiL;
+      } else if (x.hi === sist.hi) sist.hiL = sist.hiL || x.hiL;
+    } else ut.push({ ...x });
+  }
+  return ut;
+}
+
+type IvForm = "ulikhet" | "intervall";
+
+/** Er alle ledd skrevet som ulikheter, eller alle med intervallparenteser? Blandet gir null. */
+function ivForm(s: string): IvForm | null {
+  const former = new Set(s.split(FORENING).map((p) => (IV_PARENTES.test(p.trim()) ? "intervall" : "ulikhet")));
+  return former.size === 1 ? ([...former][0] as IvForm) : null;
+}
+
+function tolkIntervallTekst(s: string): Iv[] | null {
+  if (!s) return null;
+  const ut: Iv[] = [];
+  for (const p of s.split(FORENING)) {
+    const iv = p.trim() ? tolkIvBit(p.trim()) : null;
+    if (!iv) return null;
+    ut.push(iv);
+  }
+  return slaaSammenIv(ut);
+}
+
+function tolkIntervaller(input: string): Iv[] | null {
+  return tolkIntervallTekst(intervallTekst(input));
+}
+
+type IvSide = { iv: Iv[]; form: IvForm };
+
+/** «x < 4, x ∈ ⟨←, 4⟩»: to deler (komma, semikolon, «og»), den ene med ulikhetstegn og den andre som intervall. */
+function tolkBegge(input: string): [IvSide, IvSide] | null {
+  const s = normaliser(input);
+  for (const m of s.matchAll(/\s*(?:;|,|\bog\b|&)\s*/gi)) {
+    const a = intervallTekst(s.slice(0, m.index));
+    const b = intervallTekst(s.slice((m.index ?? 0) + m[0].length));
+    const fa = ivForm(a);
+    const fb = ivForm(b);
+    if (!fa || !fb || fa === fb) continue;
+    const ia = tolkIntervallTekst(a);
+    const ib = tolkIntervallTekst(b);
+    if (ia && ib) return [{ iv: ia, form: fa }, { iv: ib, form: fb }];
+  }
+  return null;
+}
+
+function sammeIv(a: Iv[], b: Iv[]): boolean {
+  const g = (x: number, y: number) => x === y || erNær(x, y);
+  return a.length === b.length && a.every((x, i) => g(x.lo, b[i].lo) && g(x.hi, b[i].hi) && x.loL === b[i].loL && x.hiL === b[i].hiL);
+}
+
+function ivFraSpec(spec: Extract<SvarSpec, { type: "intervall" }>): Iv[] {
+  return slaaSammenIv(
+    spec.deler.map((d) => {
+      const fra = d.fra ?? -Infinity;
+      const til = d.til ?? Infinity;
+      return { lo: fra, hi: til, loL: Boolean(d.fraLukket) && Number.isFinite(fra), hiL: Boolean(d.tilLukket) && Number.isFinite(til) };
+    }),
+  );
+}
+
+function sjekkIntervall(input: string, spec: Extract<SvarSpec, { type: "intervall" }>): boolean {
+  const fasit = ivFraSpec(spec);
+  const begge = tolkBegge(input);
+  if (spec.begge) return begge !== null && begge.every((x) => sammeIv(x.iv, fasit));
+  const gitt = tolkIntervaller(input);
+  if (gitt) return sammeIv(gitt, fasit);
+  // Godtar også begge formene sammen når bare én er etterspurt.
+  return begge !== null && begge.every((x) => sammeIv(x.iv, fasit));
+}
+
+type MengdeSvar = { elementer?: number[]; grunn?: string; utenom?: number[] };
+
+/** Tolker «ℝ∖{3}», «R uten 3», «x ∈ ℝ, x ≠ 3», «{x ∈ ℝ | x ≠ 3}», «x ≠ 3», «{1, 2, 3}» og «1, 2, 3». */
+function tolkMengde(input: string): MengdeSvar | null {
+  let s = normaliser(input)
+    .replace(/\balle\s+reelle\s+tall\b|\breelle\s+tall\b|\balle\s+tall\b/gi, "R")
+    .replace(/\bhele\s+tall\b/gi, "Z")
+    .replace(/\bnaturlige\s+tall\b/gi, "N")
+    .replace(/\brasjonale\s+tall\b/gi, "Q")
+    .replace(/\b(?:unntatt|utenom|uten|minus)\b/gi, "∖");
+  s = fjernLedendeOrd(s);
+  s = s.replace(/^\s*[A-Za-zÆØÅα-ω][A-Za-z0-9_]*(?:\s*\([^()]*\))?\s*[=:]\s*(?![<>=])/, "").trim();
+  const tallListe = (t: string): number[] | null => {
+    const biter = delOpp(fjernMengdeklammer(t));
+    const v = biter.map(tallVerdi);
+    return biter.length > 0 && v.every((x) => x !== null) ? (v as number[]) : null;
+  };
+  const utenomFra = (cond: string): number[] | null => {
+    const v: number[] = [];
+    for (const d of delOpp(cond)) {
+      const m = /^x\s*(?:≠|!=)\s*(.+)$/i.exec(d);
+      const t = m ? tallVerdi(m[1]) : null;
+      if (t === null) return null;
+      v.push(t);
+    }
+    return v.length ? v : null;
+  };
+  // {x ∈ ℝ | x ≠ 3}, {x | x ≠ 3}
+  const sb = /^\{\s*x\s*(?:∈\s*([NZQR])\s*)?(?:\||:)\s*(.+?)\s*\}$/.exec(s);
+  if (sb) {
+    const u = utenomFra(sb[2]);
+    return u ? { grunn: sb[1] ?? "R", utenom: u } : null;
+  }
+  const g = /^(?:x\s*∈\s*)?([NZQR])$/.exec(s);
+  if (g) return { grunn: g[1], utenom: [] };
+  // ℝ∖{3}, ℝ - {3}, x ∈ ℝ∖{3}
+  const d = /^(?:x\s*∈\s*)?([NZQR])\s*[∖-]\s*(.+)$/.exec(s);
+  if (d) {
+    const u = tallListe(d[2]);
+    return u ? { grunn: d[1], utenom: u } : null;
+  }
+  // x ∈ ℝ, x ≠ 3 / x ∈ ℝ og x ≠ 3
+  const k = /^(?:x\s*∈\s*)?([NZQR])\s*(?:,|;|&|\bog\b|\bmed\b)\s*(.+)$/i.exec(s);
+  if (k) {
+    const u = utenomFra(k[2]);
+    return u ? { grunn: k[1], utenom: u } : null;
+  }
+  const bare = utenomFra(s);
+  if (bare) return { grunn: "R", utenom: bare };
+  const liste = tallListe(s);
+  return liste ? { elementer: liste } : null;
+}
+
+function sjekkMengde(input: string, spec: Extract<SvarSpec, { type: "mengde" }>): boolean {
+  const g = tolkMengde(input);
+  if (!g) return false;
+  if (spec.elementer) {
+    return g.elementer !== undefined && sammeMengde(dedup(g.elementer, spec.tol), dedup(spec.elementer, spec.tol), spec.tol);
+  }
+  return g.grunn === (spec.grunn ?? "R") && sammeMengde(dedup(g.utenom ?? [], spec.tol), dedup(spec.utenom ?? [], spec.tol), spec.tol);
+}
+
+/** Piler i et svar: ⇒, =>, ->, «impliserer» og ⇔, <=>, <->, «ekvivalent». */
+const PIL = /⇔|<=>|<->|↔|\biff\b|\bekvivalen\w*|\bhvis og bare hvis\b|⇒|=>|->|→|\bimplis\w*|\bimpliserer\b|\bmedfører\b/gi;
+
+export function lesPiler(input: string): ("⇒" | "⇔")[] {
+  return [...normaliser(input).matchAll(PIL)].map((m) => (/⇔|<=>|<->|↔|iff|ekvival|hvis og/i.test(m[0]) ? "⇔" : "⇒"));
+}
+
+const erPilvalg = (v: string): v is "⇒" | "⇔" => v === "⇒" || v === "⇔";
+
 /** Rydder ett delsvar: «a)», «b.» og «c:» foran, og skilletegn («;», «,», «og») bakerst. */
 function renDelsvar(x: string): string {
   return x
@@ -1211,8 +1502,8 @@ export function delSerie(input: string): string[] {
   let nå = "";
   const norm = normaliser(input.replace(/\r?\n/g, ";"));
   for (const ch of norm) {
-    if (ch === "(" || ch === "[") dyp++;
-    if (ch === ")" || ch === "]") dyp = Math.max(0, dyp - 1);
+    if (ch === "(" || ch === "[" || ch === "{") dyp++;
+    if (ch === ")" || ch === "]" || ch === "}") dyp = Math.max(0, dyp - 1);
     if (ch === ";" && dyp === 0) {
       biter.push(nå);
       nå = "";
@@ -1446,8 +1737,18 @@ function sjekkSpec(input: string, spec: SvarSpec, enhet?: string[]): boolean {
       }
       return true;
     }
-    case "valg":
-      return normaliser(input).replace(/[.)\s]/g, "").toLowerCase() === spec.valg.toLowerCase();
+    case "intervall":
+      return sjekkIntervall(input, spec);
+    case "mengde":
+      return sjekkMengde(input, spec);
+    case "valg": {
+      if (erPilvalg(spec.valg)) {
+        const piler = lesPiler(input);
+        return piler.length > 0 && piler.every((p) => p === spec.valg);
+      }
+      // «Svar: B», «Svaret er ja» og «Alternativ C» er samme valg som «B», «ja» og «C».
+      return normaliser(input).replace(VALG_PREFIKS, "").replace(/[.)\s]/g, "").toLowerCase() === spec.valg.toLowerCase();
+    }
     case "relasjon": {
       const gitt = lesRelasjoner(input);
       return gitt.length === spec.tegn.length && gitt.every((t, i) => t === spec.tegn[i]);
@@ -1546,6 +1847,7 @@ export type Svartype =
   | "løsningsmengde"
   | "punkt"
   | "intervall"
+  | "mengde"
   | "valg"
   | "serie"
   | "tilhører"
@@ -1565,7 +1867,10 @@ export function svartype(fasit: Sluttsvar | undefined): Svartype {
       return "punkt";
     case "omrade":
     case "ulikhet":
+    case "intervall":
       return "intervall";
+    case "mengde":
+      return "mengde";
     case "valg":
       return "valg";
     case "serie":
@@ -1577,13 +1882,18 @@ export function svartype(fasit: Sluttsvar | undefined): Svartype {
   }
 }
 
+/** Spesifikasjonen, eller en del av en serie, er av en av typene. */
+function harType(s: SvarSpec, typer: SvarSpec["type"][]): boolean {
+  return typer.includes(s.type) || (s.type === "serie" && s.deler.some((d) => harType(d, typer)));
+}
+
 /** Er sluttsvaret riktig? Tomt svar er feil. */
 export function sjekkSluttsvar(input: string, fasit: Sluttsvar): boolean {
   if (!input || !input.trim()) return false;
   // «k≠4» og «k er ikke 4» er det motsatte av «k=4».
   // Unntak: «ikke i ℤ» og «∉» er selve svaret når fasiten er tilhører/tilhører ikke.
   const alle = [fasit.svar, ...(fasit.alternativer || [])];
-  if (!alle.some((s) => s.type === "relasjon") && /≠|!=|<>|\b(?:ikke|aldri|forskjellig|ulik)\b/i.test(normaliser(input).replace(IKKE_OKNING, " "))) return false;
+  if (!alle.some((s) => s.type === "relasjon" || harType(s, ["mengde"])) && /≠|!=|<>|\b(?:ikke|aldri|forskjellig|ulik)\b/i.test(normaliser(input).replace(IKKE_OKNING, " "))) return false;
   return alle.some((s) => sjekkSpec(input, s, (s as Alternativ).enhet ?? fasit.enhet));
 }
 
@@ -1652,6 +1962,20 @@ function enhetLatex(e: string): string {
     .replace(/°/g, "^{\\circ}");
 }
 
+/** Intervallene tolket, satt som formel: ⟨3, ∞⟩ eller x > 3, skrevet slik eleven skrev dem (ulikhet eller intervall). */
+function ivSideLatex(iv: Iv[], form: IvForm): string {
+  const t = (v: number) => (v === Infinity ? "\\infty" : v === -Infinity ? "-\\infty" : tallLatex(String(Math.round(v * 1e9) / 1e9)));
+  if (form === "intervall") {
+    return iv.map((x) => `${x.loL ? "[" : "\\langle "}${t(x.lo)},\\,${t(x.hi)}${x.hiL ? "]" : "\\rangle "}`).join("\\cup ");
+  }
+  const ulikhet = (x: Iv) => {
+    if (!Number.isFinite(x.lo)) return `x${x.hiL ? "\\le " : "<"}${t(x.hi)}`;
+    if (!Number.isFinite(x.hi)) return `x${x.loL ? "\\ge " : ">"}${t(x.lo)}`;
+    return `${t(x.lo)}${x.loL ? "\\le " : "<"}x${x.hiL ? "\\le " : "<"}${t(x.hi)}`;
+  };
+  return iv.map(ulikhet).join("\\quad\\text{eller}\\quad ");
+}
+
 export type Forhandsvisning = { tom: true } | { ok: true; latex: string } | { ok: false };
 
 /**
@@ -1677,7 +2001,29 @@ export function forhandsvis(input: string, spec: SvarSpec, enhet?: string[]): Fo
     const r = lesRelasjoner(input);
     return r.length ? { ok: true, latex: r.map((t) => (t === "∈" ? "\\in" : "\\notin")).join(",\\quad ") } : { ok: false };
   }
-  if (spec.type === "valg") return { ok: true, latex: `\\text{${s.replace(/[^A-Za-z0-9æøåÆØÅ]/g, "")}}` };
+  if (spec.type === "valg" && erPilvalg(spec.valg)) {
+    const piler = lesPiler(input);
+    return piler.length ? { ok: true, latex: piler.map((p) => (p === "⇒" ? "\\Rightarrow" : "\\Leftrightarrow")).join(",\\quad ") } : { ok: false };
+  }
+  if (spec.type === "valg") return { ok: true, latex: `\\text{${s.replace(VALG_PREFIKS, "").replace(/[^A-Za-z0-9æøåÆØÅ]/g, "")}}` };
+  if (spec.type === "intervall") {
+    const begge = tolkBegge(input);
+    if (spec.begge || (begge && !tolkIntervaller(input))) {
+      return begge ? { ok: true, latex: begge.map((x) => ivSideLatex(x.iv, x.form)).join(",\\quad ") } : { ok: false };
+    }
+    const iv = tolkIntervaller(input);
+    const form = ivForm(intervallTekst(input));
+    return iv && form ? { ok: true, latex: ivSideLatex(iv, form) } : { ok: false };
+  }
+  if (spec.type === "mengde") {
+    const g = tolkMengde(input);
+    if (!g) return { ok: false };
+    const tl = (v: number) => tallLatex(String(Math.round(v * 1e9) / 1e9));
+    const mengde = (v: number[]) => `\\{${v.map(tl).join(",\\,")}\\}`;
+    if (g.elementer) return { ok: true, latex: mengde(g.elementer) };
+    const grunn = `\\mathbb{${g.grunn}}`;
+    return { ok: true, latex: g.utenom?.length ? `${grunn}\\setminus ${mengde(g.utenom)}` : grunn };
+  }
   if (spec.type === "omrade") {
     const tall = tolkOmrade(input, enhet);
     return tall ? { ok: true, latex: tall.map((v) => tallLatex(String(v))).join("\\text{ til }") } : { ok: false };
@@ -1689,7 +2035,7 @@ export function forhandsvis(input: string, spec: SvarSpec, enhet?: string[]): Fo
     return { ok: true, latex: `${lt(u.lo)}${u.loLukket ? "\\le" : "<"}x${u.hiLukket ? "\\le" : "<"}${lt(u.hi)}` };
   }
   if (spec.type === "punkt") {
-    const grupper = [...s.matchAll(/\(([^()]*)\)/g)];
+    const grupper = [...s.matchAll(PUNKT_GRUPPE)];
     if (grupper.length === 0) return { ok: false };
     const biter: string[] = [];
     for (const g of grupper) {
@@ -1698,7 +2044,8 @@ export function forhandsvis(input: string, spec: SvarSpec, enhet?: string[]): Fo
       const a = parseUttrykk(deler[0]);
       const b = parseUttrykk(deler[1]);
       if (!a || !b) return { ok: false };
-      biter.push(`\\left(${tilLatex(a)},\\,${tilLatex(b)}\\right)`);
+      const [o, c] = g[0][0] === "⟨" ? ["\\langle", "\\rangle"] : g[0][0] === "[" ? ["[", "]"] : ["(", ")"];
+      biter.push(`\\left${o}${tilLatex(a)},\\,${tilLatex(b)}\\right${c}`);
     }
     return { ok: true, latex: biter.join("\\quad\\text{og}\\quad ") };
   }
