@@ -264,3 +264,15 @@ test("fase 3b: kJ/MJ, \\lor, «ganger 10^», liste i parentes og «a til b» (B-
   for (const s of ["-2 til 5", "-3 til 6", "2 til 6"]) assert.equal(ok(s, u), false, s);
   assert.equal(ok("-6 til -1", { svar: { type: "ulikhet", fra: -6, til: -1, lukket: true } }), true);
 });
+
+test("fase 4b: svake økningsord teller bare rett ved prosenttallet (B-7)", () => {
+  const n = { svar: { type: "tall", verdier: [-12] }, alternativer: [{ type: "tall", verdier: [12], ikkeOkning: true }], enhet: ["%", "% mindre", "prosent"] };
+  for (const s of [
+    "12 % nedgang over tid", "12 % reduksjon over perioden", "12 % nedgang, mer enn jeg trodde", "12 % nedgang, flere elever enn før",
+    "ingen økning, men 12 % nedgang", "12 % reduksjon (ikke økning)", "ikke en økning, 12 % reduksjon", "12 % mindre, høyere pris", "12 % nedgang", "-12 %",
+  ]) assert.equal(ok(s, n), true, s);
+  for (const s of [
+    "12 % mer", "mer enn 12 %", "12 % høyere", "høyere enn 12 %", "12 % større", "over 12 %", "12 prosent mer", "12 % mer enn før", "pluss 12 %",
+    "flere enn 12 %", "12 % flere", "12 % økning", "økning på 12 %", "+12 %", "12 % nedgang over tid, men økning etterpå",
+  ]) assert.equal(ok(s, n), false, s);
+});

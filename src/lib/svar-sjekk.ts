@@ -1277,10 +1277,23 @@ function likhetskjede(input: string): string | null {
   return v.every((x) => Math.abs(x - sist) <= 0.02 * Math.max(1, Math.abs(sist))) ? sider[sider.length - 1] : null;
 }
 
-/** Ord som sier at tallet er en økning («12 % økning», «12 % større», «+12 %»). Brukes av `ikkeOkning`. */
-const OKNINGSORD = "økning|økningen|økte|øker|økt|stigning|stiger|steg|oppgang|vekst|større|mer|høyere|over|flere|pluss";
+/** Ord som sier at tallet er en økning («12 % økning», «12 % større», «+12 %»). Brukes av `ikkeOkning`.
+ *  Svake økningsord som også er vanlige småord («nedgang over tid», «mer enn jeg trodde»): de teller bare rett ved tallet (B-7). */
+const SVAKE_OKNINGSORD = "større|mer|høyere|over|flere|pluss";
+const STERKE_OKNINGSORD = "økning|økningen|økte|øker|økt|stigning|stiger|steg|oppgang|vekst";
+const ORDSLUTT = "(?![A-Za-zÆØÅæøå])";
+/** Teksten uttrykker en økning: et sterkt økningsord et sted i svaret, «+12», eller et svakt ord rett foran («mer enn 12 %») eller rett etter («12 % mer») tallet. */
+function sierOkning(tekst: string): boolean {
+  const tall = "-?\\d[\\d.,]*";
+  const enhet = "(?:\\s*(?:%|prosentpoeng|prosent))?";
+  return (
+    new RegExp(`(?:^|[^A-Za-zÆØÅæøå])(?:${STERKE_OKNINGSORD})${ORDSLUTT}|(?<![\\w)])\\+\\s*[\\d.,]`, "i").test(tekst) ||
+    new RegExp(`(?:^|[^A-Za-zÆØÅæøå])(?:${SVAKE_OKNINGSORD})${ORDSLUTT}(?:\\s+enn)?\\s*(?:på\\s+)?${tall}`, "i").test(tekst) ||
+    new RegExp(`${tall}${enhet}\\s*(?:${SVAKE_OKNINGSORD})${ORDSLUTT}`, "i").test(tekst)
+  );
+}
 /** Selve økningssubstantivene: «ikke en økning» (nektelse av økningen, ikke av tallet) fjernes før nektelsestesten og før ikkeOkning. */
-const IKKE_OKNING = new RegExp("\\bikke\\s+(?:en\\s+|noen\\s+)?(?:økning|økningen|økt|stigning|oppgang|vekst)(?![A-Za-zÆØÅæøå])\\s*,?", "gi");
+const IKKE_OKNING = new RegExp("\\b(?:ikke|ingen)\\s+(?:en\\s+|noen\\s+)?(?:økning|økningen|økt|stigning|oppgang|vekst)(?![A-Za-zÆØÅæøå])\\s*,?", "gi");
 
 /** Ulikhetsord foran et tall («høyst 56», «mer enn 55») og tegnet de betyr. Lengste uttrykk først. */
 const ULIKHETSORD: [RegExp, "≤" | "≥" | "<" | ">"][] = [
@@ -1322,8 +1335,8 @@ function sjekkSpec(input: string, spec: SvarSpec, enhet?: string[]): boolean {
       };
       if (spec.ikkeOkning) {
         // «ikke en økning, 12 % reduksjon» er en nedgang: nektelsen foran økningsordet fjernes først (også for selve tolkningen).
-        const uten = normaliser(input).replace(IKKE_OKNING, " ").trim();
-        if (new RegExp(`(?:^|[^A-Za-zÆØÅæøå])(?:${OKNINGSORD})(?![A-Za-zÆØÅæøå])|(?<![\\w)])\\+\\s*[\\d.,]`, "i").test(uten)) return false;
+        const uten = normaliser(input).replace(IKKE_OKNING, " ").replace(/\(\s*\)/g, " ").trim();
+        if (sierOkning(uten)) return false;
         if (uten) input = uten;
       }
       if (spec.ulikhet) {
