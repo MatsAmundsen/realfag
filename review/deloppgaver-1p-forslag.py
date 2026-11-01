@@ -107,3 +107,26 @@ TX("1p-h25-d2-7d", ["3,5", "10,06"], "systematisk oversikt (regneark)")
 ES("1p-h25-d2-7e", S(U("6x-(1/2+pi/8)x^2"), T(10.08, 3.36, fast=True, ord=True, abs=0.05)), ["6x-(\\frac{1}{2}+\\frac{\\pi}{8})x^{2}", "10,1", "3,4"],
    "funksjonsuttrykk og graf skal tegnes", enhet=["m²", "m"], sym=["pi"],
    format="Skriv funksjonsuttrykket, så semikolon, så størst mulig areal og x-verdien skilt med «og».")
+
+# =========================================================================== eksamen v2025 (1P)
+_h = lambda r: R(450) / (pi * r**2)
+_O = lambda r: pi * r**2 + R(900) / r
+TX("1p-v25-d1-2", ["25", "12,5"], "valg (hvilket parti) med begrunnelse")
+TX("1p-v25-d1-3", ["omvendtproporsjonale"], "åpen oppgave: egen situasjon, forklaring og graf")
+TX("1p-v25-d1-4", ["10^{3}"], "åpen oppgave: eleven finner egne tall; fasiten viser to løsninger")
+E("1p-v25-d1-6a", T(36), ["36"])
+E("1p-v25-d1-6b", U("n^2+2n+1"), ["(n+1)^{2}"])
+TX("1p-v25-d1-7", ["17", "1016760"], "tolkning av program og utskrift (forklaring)")
+E("1p-v25-d1-8a", T(12, 30, fast=True, ord=True), ["12", "30"],
+  format="Skriv a og b i den rekkefølgen oppgaven spør, skilt med komma eller «og».")
+TX("1p-v25-d1-8b", ["12", "30"], "praktisk tolkning (forklaring)")
+E("1p-v25-d1-8c", T(126), ["126"], enhet=KR)
+TX("1p-v25-d2-1a", ["27,8"], "«vis at»: sammenlikning av modell og data")
+TX("1p-v25-d2-1b", ["20"], "praktisk tolkning (forklaring)")
+ES("1p-v25-d2-1c", T(71.84, abs=1), ["72"], "praktisk tolkning av stigningstallet er med i poenget", enhet=["tilfeller per måned", "tilfeller/måned"])
+ES("1p-v25-d2-3", T(21, ulikhet="≥"), ["20", "21"], "valg av tilbud med beregninger og råd; fasiten oppgir grensen 20/21 aviser",
+   enhet=["aviser"], sym=["ulikhet"])
+E("1p-v25-d2-6a", T(_h(4), _O(4), _h(6), _O(6), _h(8), _O(8), fast=True, ord=True, abs=0.1), ["8,95", "275,3", "3,98", "263,1", "2,24", "313,6"],
+  format="Skriv h og O for r = 4, så for r = 6, så for r = 8, skilt med komma eller «og».")
+ES("1p-v25-d2-6b", U("pi*r^2+900/r"), ["\\pi*r^{2}+\\frac{900}{r}"], "funksjonsuttrykk og graf skal tegnes", sym=["pi"])
+TX("1p-v25-d2-7", ["600"], "åpen oppgave: egne antakelser og vurdering", usikker="Ingrediensprisene er egne anslag; svaret (ca. 600 kr i måneden) er et eksempel.")
