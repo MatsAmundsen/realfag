@@ -189,4 +189,9 @@ export const SLUTTSVAR: Record<string, Sluttsvar> = {
   "P6.OP2": {"svar": {"type": "serie", "deler": [{"type": "uttrykk", "uttrykk": "4x/3"}, {"type": "uttrykk", "uttrykk": "18/x"}]}, "format": "Skriv svarene på delspørsmålene etter hverandre, skilt med semikolon."},
   "P6.OP4": {"svar": {"type": "serie", "deler": [{"type": "uttrykk", "uttrykk": "8400/x"}, {"type": "tall", "verdier": [70]}, {"type": "tall", "verdier": [56]}]}, "enhet": ["kr", "kroner", "elever"], "format": "Skriv svarene på delspørsmålene etter hverandre, skilt med semikolon."},
   "P6.OP5": {"svar": {"type": "serie", "deler": [{"type": "uttrykk", "uttrykk": "n^2+n+2"}, {"type": "tall", "verdier": [20], "ord": true}, {"type": "tall", "verdier": [26], "ord": true}]}, "format": "Skriv svarene på delspørsmålene etter hverandre, skilt med semikolon."},
+  "v25-d1-2": {"svar": {"type": "ulikhet", "fra": -2, "til": 6}},
+  "h25-d1-1": {"svar": {"type": "ulikhet", "fra": -5, "til": 1}},
+  "v26-d1-1": {"svar": {"type": "ulikhet", "fra": -6, "til": -1, "lukket": true}},
+  "v26-d1-2b": {"svar": {"type": "punkt", "punkter": [[-3, -5], [2, 0]]}},
+  "v24-d1-4": {"svar": {"type": "tall", "verdier": [2]}},
 };
