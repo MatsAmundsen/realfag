@@ -268,6 +268,25 @@ const KOMMANDO_TEGN: Record<string, string> = {
   degree: "°",
   prime: "'",
   infty: "∞",
+  // Mengdelære og logikk: ingen mellomrom rundt mengdeoperatorene («ℝ∖{3}», «⟨−∞,−5⟩∪⟨1,∞⟩»), mellomrom rundt piler.
+  langle: "⟨",
+  rangle: "⟩",
+  cup: "∪",
+  cap: "∩",
+  setminus: "∖",
+  smallsetminus: "∖",
+  Rightarrow: " ⇒ ",
+  Longrightarrow: " ⇒ ",
+  implies: " ⇒ ",
+  Leftrightarrow: " ⇔ ",
+  Longleftrightarrow: " ⇔ ",
+  iff: " ⇔ ",
+  rightarrow: "→",
+  longrightarrow: "→",
+  to: "→",
+  leftarrow: "←",
+  longleftarrow: "←",
+  gets: "←",
   surd: "√",
   minus: "-",
   vert: "|",
@@ -794,6 +813,24 @@ function tegnTilLatex(c: string): string {
       return "^{\\prime}";
     case "∞":
       return "\\infty";
+    case "⟨":
+      return "\\langle";
+    case "⟩":
+      return "\\rangle";
+    case "∪":
+      return "\\cup";
+    case "∩":
+      return "\\cap";
+    case "∖":
+      return "\\setminus";
+    case "⇒":
+      return "\\Rightarrow";
+    case "⇔":
+      return "\\Leftrightarrow";
+    case "→":
+      return "\\to";
+    case "←":
+      return "\\leftarrow";
     case "∈":
       return "\\in";
     case "∉":
