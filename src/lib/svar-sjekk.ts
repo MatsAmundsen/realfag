@@ -49,7 +49,12 @@ export type SvarSpec =
    */
   | { type: "relasjon"; tegn: ("∈" | "∉")[] }
   /** Flere delsvar i rekkefølge (a, b, c), skilt med semikolon eller linjeskift. Hvert delsvar sjekkes for seg. */
-  | { type: "serie"; deler: SvarSpec[] };
+  | { type: "serie"; deler: SvarSpec[] }
+  /**
+   * Fritt sluttsvar uten fasit: eleven skriver svaret i formelfeltet og vurderer det selv etter levering. Aldri autosjekk
+   * (`sjekkSluttsvar` gir alltid false), og ingen forhåndsvisning. Brukes for deler som ikke har oppføring i SLUTTSVAR.
+   */
+  | { type: "fri" };
 
 /** Et alternativt fullstendig svar. Kan ha sin egen enhetsliste, slik at «24000 g» og «24 kg» godtas, men ikke «24000 kg». */
 export type Alternativ = SvarSpec & { enhet?: string[] };
@@ -1447,6 +1452,8 @@ function sjekkSpec(input: string, spec: SvarSpec, enhet?: string[]): boolean {
       const gitt = lesRelasjoner(input);
       return gitt.length === spec.tegn.length && gitt.every((t, i) => t === spec.tegn[i]);
     }
+    case "fri":
+      return false;
   }
 }
 
@@ -1565,6 +1572,8 @@ export function svartype(fasit: Sluttsvar | undefined): Svartype {
       return "serie";
     case "relasjon":
       return "tilhører";
+    case "fri":
+      return "selvvurdering";
   }
 }
 
@@ -1651,6 +1660,7 @@ export type Forhandsvisning = { tom: true } | { ok: true; latex: string } | { ok
  */
 export function forhandsvis(input: string, spec: SvarSpec, enhet?: string[]): Forhandsvisning {
   if (!input || !input.trim()) return { tom: true };
+  if (spec.type === "fri") return { tom: true };
   const s = normaliser(input);
   if (spec.type === "serie") {
     const biter = delSerie(input);

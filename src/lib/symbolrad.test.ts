@@ -59,8 +59,8 @@ describe("symbolerFor", () => {
     assert.equal(tegn(symbolerFor({ symboler: ["pi"] }, "tallmengder ℕ")), "π");
     assert.equal(tegn(symbolerFor({ symboler: [] }, "tallmengder ℕ")), "");
   });
-  it("1.OP1 har mengdetegn og kvadratrot", () => {
-    assert.equal(tegn(symbolerFor(SLUTTSVAR["1.OP1"])), "∈∉ℕℤℚℝ√");
+  it("1.OP1a har mengdetegn og kvadratrot", () => {
+    assert.equal(tegn(symbolerFor(SLUTTSVAR["1.OP1a"])), "∈∉ℕℤℚℝ√");
   });
 });
 

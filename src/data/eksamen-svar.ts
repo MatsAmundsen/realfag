@@ -198,9 +198,10 @@ export const SLUTTSVAR: Record<string, Sluttsvar> = {
 
 /**
  * Lagt til for hånd (ikke fra spec_svar.py): oppføringer for oppgaver der sluttsvaret er tilhører / tilhører ikke.
- * 1.OP1 a) har tre relasjoner. b) og c) er forklaringer, så oppgaven er selvvurdering og sluttsvarfeltet viser bare spesialtegnene.
+ * 1.OP1 a) har tre relasjoner. b) og c) er forklaringer og får fritt felt, så a) er selvvurdering og sluttsvarfeltet viser bare spesialtegnene.
+ * Nøkkelen er delens id (`<oppgave-id><bokstav>`): øveprøvene har svarfelt per deloppgave (se src/lib/deloppgaver.ts).
  */
-SLUTTSVAR["1.OP1"] = {
+SLUTTSVAR["1.OP1a"] = {
   svar: { type: "relasjon", tegn: ["∉", "∈", "∈"] },
   format: "Skriv ∈ eller ∉ for hvert av de tre tallene i a), i rekkefølge.",
   selvvurder: true,
