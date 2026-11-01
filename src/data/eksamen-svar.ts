@@ -330,4 +330,11 @@ export const SLUTTSVAR: Record<string, Sluttsvar> = {
   "7.OP8c": {"svar": {"type": "tall", "verdier": [29.2877249631], "tol": {"abs": 0.2}}, "enhet": ["°", "grader"], "symboler": ["grader"]},
   // ---- 1T-eksamener: manglende deler (FORSLAG)
   "h23-d2-1a": {"svar": {"type": "tall", "verdier": [23], "tol": {"abs": 0.6}}, "alternativer": [{"type": "tall", "verdier": [1983], "tol": {"abs": 0.6}}], "selvvurder": true},
+  "v24-d2-1d": {"svar": {"type": "tall", "verdier": [8.74], "tol": {"abs": 0.3}}, "selvvurder": true},
+  "v24-d2-2b": {"svar": {"type": "tall", "verdier": [48.7534666313], "tol": {"abs": 0.06}}, "selvvurder": true, "symboler": ["grader"]},
+  "h24-d1-1": {"svar": {"type": "fri"}, "selvvurder": true, "symboler": ["rot", "grader"]},
+  "h24-d1-4a": {"svar": {"type": "valg", "valg": "Ja"}, "selvvurder": true},
+  "h24-d1-4b": {"svar": {"type": "valg", "valg": "Nei"}, "selvvurder": true},
+  "h24-d2-1a": {"svar": {"type": "tall", "verdier": [4200]}, "selvvurder": true},
+  "h24-d2-4a": {"svar": {"type": "tall", "verdier": [120, 3628800, 1307674368000], "rekkefolge": "fast"}, "format": "Skriv svarene i den rekkefølgen oppgaven spør, skilt med komma eller «og».", "selvvurder": true},
 };
