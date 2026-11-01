@@ -2,14 +2,14 @@ import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 import { latexTilSvartekst, svartekstTilLatex } from "./matte-felt.ts";
 import { forhandsvis, lesRelasjoner, sjekkSluttsvar, svartype, type Sluttsvar } from "./svar-sjekk.ts";
-import { SPESIALTEGN, STANDARD_GRUPPER, symbolerFor } from "./symbolrad.ts";
+import { SPESIALTEGN, STANDARD_GRUPPER, kursorEtter, symbolerFor } from "./symbolrad.ts";
 import { SLUTTSVAR } from "../data/eksamen-svar.ts";
 
 const tegn = (l: ReturnType<typeof symbolerFor>) => l.map((s) => s.tegn).join("");
 
 describe("SPESIALTEGN", () => {
-  it("har alle tretten tegnene med norsk navn og riktig LaTeX", () => {
-    assert.equal(tegn(SPESIALTEGN), "∈∉ℕℤℚℝ√π≤≥≠±°");
+  it("har alle enogtjue tegnene med norsk navn og riktig LaTeX", () => {
+    assert.equal(tegn(SPESIALTEGN), "∈∉ℕℤℚℝ√π≤≥≠±°∞∪∩∖⟨⟩{ }⇒⇔");
     const fasit: Record<string, [string, string]> = {
       "∈": ["\\in", "er element i"],
       "∉": ["\\notin", "ikke element i"],
@@ -24,6 +24,14 @@ describe("SPESIALTEGN", () => {
       "≠": ["\\ne", "ikke lik"],
       "±": ["\\pm", "pluss eller minus"],
       "°": ["^\\circ", "grader"],
+      "∞": ["\\infty", "uendelig"],
+      "∪": ["\\cup", "union, forening av mengder"],
+      "∩": ["\\cap", "snitt av mengder"],
+      "∖": ["\\setminus", "mengdedifferanse, uten"],
+      "⟨⟩": ["\\langle#?\\rangle", "vinkelparentes, åpent intervall eller vektor"],
+      "{ }": ["\\{#?\\}", "mengdeklammer"],
+      "⇒": ["\\Rightarrow", "medfører, implikasjon"],
+      "⇔": ["\\Leftrightarrow", "er ekvivalent med"],
     };
     for (const s of SPESIALTEGN) assert.deepEqual([s.latex, s.navn], fasit[s.tegn], s.tegn);
   });
@@ -61,6 +69,45 @@ describe("symbolerFor", () => {
   });
   it("1.OP1a har mengdetegn og kvadratrot", () => {
     assert.equal(tegn(symbolerFor(SLUTTSVAR["1.OP1a"])), "∈∉ℕℤℚℝ√");
+  });
+});
+
+describe("symboler for 1T: intervall, mengde, vektor, logikk", () => {
+  const par = (tegn: string) => SPESIALTEGN.find((s) => s.tegn === tegn)!;
+  it("⟨⟩ og { } settes inn som par med markøren inni", () => {
+    assert.equal(par("⟨⟩").latex, "\\langle#?\\rangle");
+    assert.equal(par("{ }").latex, "\\{#?\\}");
+    assert.equal(kursorEtter(par("⟨⟩"), 5), 6);
+    assert.equal(kursorEtter(par("{ }"), 0), 1);
+    assert.equal(kursorEtter(par("∞"), 2), 3);
+    assert.equal(kursorEtter(par("√"), 2), 3);
+  });
+  it("oppgavetekst om intervall eller mengder gir ∞ ∪ ∩ ∖ ⟨⟩ { }", () => {
+    assert.equal(tegn(symbolerFor(undefined, "Skriv løsningen som et intervall.")), "∞∪∩∖⟨⟩{ }");
+    assert.equal(tegn(symbolerFor(undefined, "Finn definisjonsmengden til $f$.")), "∞∪∩∖⟨⟩{ }");
+    assert.equal(tegn(symbolerFor(undefined, "Er $x \\in \\langle 1, \\infty \\rangle$?")), "∈∉ℕℤℚℝ∞∪∩∖⟨⟩{ }");
+  });
+  it("vektor gir bare ⟨⟩, logikk gir ⇒ ⇔", () => {
+    assert.equal(tegn(symbolerFor(undefined, "Finn lengden til vektoren $\\vec{a}$.")), "⟨⟩");
+    assert.equal(tegn(symbolerFor(undefined, "Er det en implikasjon eller en ekvivalens?")), "⇒⇔");
+    assert.equal(tegn(symbolerFor(undefined, "Sett inn $\\Rightarrow$ eller $\\Leftrightarrow$.")), "⇒⇔");
+  });
+  it("fasit med intervall-, mengde- og valg-spesifikasjon utleder tegnene", () => {
+    assert.equal(tegn(symbolerFor({ svar: { type: "intervall", deler: [{ fra: 3, til: null }] } })), "≤≥≠∞∪∩∖⟨⟩{ }");
+    assert.equal(tegn(symbolerFor({ svar: { type: "mengde", grunn: "R", utenom: [3] } })), "∈∉ℕℤℚℝ∞∪∩∖⟨⟩{ }");
+    assert.equal(tegn(symbolerFor({ svar: { type: "serie", deler: [{ type: "mengde", grunn: "R", utenom: [3] }] } })), "∈∉ℕℤℚℝ∞∪∩∖⟨⟩{ }");
+    assert.equal(tegn(symbolerFor({ svar: { type: "valg", valg: "⇒" } })), "⇒⇔");
+    assert.equal(tegn(symbolerFor({ svar: { type: "valg", valg: "B" } }, "Regn ut 3 + 4.")), "√π±°");
+  });
+  it("eksplisitt liste med de nye gruppene", () => {
+    assert.equal(tegn(symbolerFor({ symboler: ["ulikhet", "intervall"] })), "≤≥≠∞∪∩∖⟨⟩{ }");
+    assert.equal(tegn(symbolerFor({ symboler: ["vektor"] })), "⟨⟩");
+    assert.equal(tegn(symbolerFor({ symboler: ["logikk"] })), "⇒⇔");
+  });
+  it("aria-label (navn) er norsk og unik for hvert tegn", () => {
+    const navn = SPESIALTEGN.map((s) => s.navn);
+    assert.equal(new Set(navn).size, navn.length);
+    assert.equal(new Set(SPESIALTEGN.map((s) => s.tegn)).size, SPESIALTEGN.length);
   });
 });
 

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import type { MathfieldElement } from "mathlive";
 import { latexTilSvartekst, svartekstTilLatex } from "@/lib/matte-felt";
 import { lastMathLive } from "@/lib/mathlive-last";
-import type { Spesialtegn } from "@/lib/symbolrad";
+import { kursorEtter, type Spesialtegn } from "@/lib/symbolrad";
 import { Symbolrad } from "./Symbolrad";
 
 /**
@@ -278,7 +278,7 @@ export function MatteFelt({
     onChangeRef.current(ny);
     requestAnimationFrame(() => {
       inn.focus();
-      inn.setSelectionRange(fra + s.tekst.length, fra + s.tekst.length);
+      inn.setSelectionRange(kursorEtter(s, fra), kursorEtter(s, fra));
     });
   };
   const rad = symboler && symboler.length > 0 ? <Symbolrad symboler={symboler} onVelg={settInn} deaktivert={readOnly} /> : null;
