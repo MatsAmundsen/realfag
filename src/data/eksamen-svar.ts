@@ -328,4 +328,6 @@ export const SLUTTSVAR: Record<string, Sluttsvar> = {
   "7.OP8a": {"svar": {"type": "tall", "verdier": [115.253604611], "tol": {"abs": 0.2}}, "enhet": ["m"], "symboler": []},
   "7.OP8b": {"svar": {"type": "tall", "verdier": [2255.26228989], "tol": {"abs": 1}}, "enhet": ["m²", "m^2", "m2"], "symboler": []},
   "7.OP8c": {"svar": {"type": "tall", "verdier": [29.2877249631], "tol": {"abs": 0.2}}, "enhet": ["°", "grader"], "symboler": ["grader"]},
+  // ---- 1T-eksamener: manglende deler (FORSLAG)
+  "h23-d2-1a": {"svar": {"type": "tall", "verdier": [23], "tol": {"abs": 0.6}}, "alternativer": [{"type": "tall", "verdier": [1983], "tol": {"abs": 0.6}}], "selvvurder": true},
 };
