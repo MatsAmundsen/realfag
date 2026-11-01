@@ -267,6 +267,8 @@ const KOMMANDO_TEGN: Record<string, string> = {
   rbrack: "]",
   lparen: "(",
   rparen: ")",
+  backslash: "\\",
+  wedge: "^",
   "%": "%",
   $: "$",
   "&": "&",
@@ -515,6 +517,19 @@ class TekstParser {
     return -1;
   }
 
+  /** Match for «{» på posisjon fra: indeks til tilhørende «}», ellers -1. */
+  private matchGruppe(fra: number, slutt: number): number {
+    let d = 0;
+    for (let k = fra; k < slutt; k++) {
+      if (this.s[k] === "{") d++;
+      else if (this.s[k] === "}") {
+        d--;
+        if (d === 0) return k;
+      }
+    }
+    return -1;
+  }
+
   private rekke(slutt: number): Ledd[] {
     const ledd: Ledd[] = [];
     while (this.i < slutt) {
@@ -639,6 +654,20 @@ class TekstParser {
       if (this.i >= slutt && ledd.length === 0) return null;
       return { tex: nl ? ";\\;" : "\\;", operand: false };
     }
+    // LaTeX-kommando skrevet som tekst («\\frac{1}{2}», «\\cdot», «\\sqrt{3}»): backslash og kommandonavn
+    // beholdes bokstavelig gjennom feltet, ellers ville «\\frac» blitt til «frac» etter rundturen.
+    if (c === "\\") {
+      this.i++;
+      const navn = /^[A-Za-z]+/.exec(this.s.slice(this.i, slutt));
+      if (navn) {
+        this.i += navn[0].length;
+        return { tex: "\\backslash " + navn[0], operand: false };
+      }
+      const tegn = this.s[this.i];
+      if (tegn === undefined || this.ignorerer(tegn)) return { tex: "\\backslash", operand: false };
+      this.i++;
+      return { tex: "\\backslash" + (tegn === "," ? "{,}" : tegnTilLatex(tegn)), operand: false };
+    }
     // Hevet skrift
     if (c in SUPER) {
       let e = "";
@@ -649,6 +678,16 @@ class TekstParser {
       const opp = c === "^";
       const forrige = this.sist(ledd);
       this.i++;
+      // «10^{12}» (LaTeX-stil i lagret tekst): innholdet i {…} er eksponenten.
+      if (forrige?.operand && this.s[this.i] === "{") {
+        const k = this.matchGruppe(this.i, slutt);
+        if (k > 0) {
+          this.i++;
+          const inn = this.rekke(k);
+          this.i = k + 1;
+          return this.potens(ledd, inn.map((l) => l.tex).join(""), opp);
+        }
+      }
       if (!forrige?.operand || !this.begynnerOperand(this.i)) {
         return { tex: opp ? "\\wedge" : "\\_", operand: false };
       }

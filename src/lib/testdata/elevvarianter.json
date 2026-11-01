@@ -1,0 +1,4590 @@
+{
+ "v23-d1-2": {
+  "riktige": [
+   "(-2,0) og (4,0)",
+   "(4,0), (-2,0)",
+   "(-2, 0), (4, 0)",
+   "(−2,0) og (4,0)",
+   "(-2;0) og (4;0)"
+  ],
+  "feil": [
+   "(-2,0)",
+   "(2,0) og (-4,0)",
+   "(-2,0), (4,0) og (0,-8)"
+  ],
+  "formkrav": false,
+  "merknad": "",
+  "grense": [
+   {
+    "svar": "x = -2 og x = 4",
+    "forventet": "uavklart",
+    "grunn": "Nullpunktene som x-verdier – riktige tall, men oppgaven ber om punkter (koordinatpar).",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "v23-d1-3": {
+  "riktige": [
+   "a=2, b=6",
+   "a = 2 og b = 6",
+   "b=6, a=2",
+   "a=2; b=6",
+   "a = 2\nb = 6"
+  ],
+  "feil": [
+   "a=-2, b=6",
+   "a=2, b=-6",
+   "a=6, b=2"
+  ],
+  "formkrav": false,
+  "merknad": "Rekkefølgen a/b er bundet av etikettene; a=6, b=2 er byttet og skal være feil."
+ },
+ "v23-d2-2a": {
+  "riktige": [
+   "600",
+   "600 m²",
+   "600 m^2",
+   "A = 600 m2",
+   "Arealet er 600 m²"
+  ],
+  "feil": [
+   "1200",
+   "60",
+   "800"
+  ],
+  "formkrav": false,
+  "merknad": ""
+ },
+ "v23-d2-1a": {
+  "riktige": [
+   "96",
+   "96 døgn",
+   "ca. 96 døgn",
+   "94 dager",
+   "98 dager",
+   "omtrent 96,2 døgn"
+  ],
+  "feil": [
+   "3,13",
+   "5,77 og 8,91",
+   "150"
+  ],
+  "formkrav": false,
+  "merknad": "Fasiten (SPEC) godtar bare ett tall 96,16 ± 3. fh-listen har tre linjer (5,77; 8,91; 96) – en elev som skriver mellomresultatene «5,77 og 8,91» får 0. Godtatt intervall 93,2–99,2.",
+  "grense": [
+   {
+    "svar": "3,1 måneder",
+    "forventet": "uavklart",
+    "grunn": "Samme størrelse i en annen enhet (måneder); SPEC kjenner bare døgn/dager.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "v23-d2-1b": {
+  "riktige": [
+   "5,04",
+   "5.04",
+   "a = 5,04",
+   "5,04 °C",
+   "5,0",
+   "5,04 grader per måned"
+  ],
+  "feil": [
+   "20,16",
+   "-5,04"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranse ±0,05, så «5,0» og «5» godtas; «5,1» ville ikke gjort det.",
+  "grense": [
+   {
+    "svar": "5,04 (temperaturen øker ca. 5 grader per måned)",
+    "forventet": "riktig",
+    "grunn": "Svar + tolkning i parentes; inneholder to tall (5,04 og 5) som begge er innen toleransen.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "h23-d1-2": {
+  "riktige": [
+   "(-3,0), (-1,0) og (2,0)",
+   "(2,0), (-1,0), (-3,0)",
+   "(−3, 0), (−1, 0), (2, 0)",
+   "(-3,0) (-1,0) (2,0)",
+   "(-3;0), (-1;0), (2;0)"
+  ],
+  "feil": [
+   "(-3,0), (-1,0)",
+   "(3,0), (1,0), (-2,0)",
+   "(-3,0), (-1,0), (2,0), (0,-6)"
+  ],
+  "formkrav": false,
+  "merknad": "Bare nullpunktene (tre punkter); et ekstra punkt (skjæring med y-aksen) gjør svaret feil."
+ },
+ "h23-d1-3": {
+  "riktige": [
+   "y=-4x+5",
+   "y = −4x + 5",
+   "y=5-4x",
+   "-4x+5",
+   "f(x) = -4x+5",
+   "y=-4*x+5",
+   "y = -4,0x + 5"
+  ],
+  "feil": [
+   "y=-4x+1",
+   "y=4x+5",
+   "y=-4x"
+  ],
+  "formkrav": false,
+  "merknad": "",
+  "grense": [
+   {
+    "svar": "y-1=-4(x-1)",
+    "forventet": "riktig",
+    "grunn": "Ekvivalent ettpunktsformel; riktig likning, men ikke løst for y.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "v24-d1-5b": {
+  "riktige": [
+   "-2<x<3",
+   "−2 < x < 3",
+   "x>-2 og x<3",
+   "x er mellom -2 og 3",
+   "x ∈ ⟨−2, 3⟩",
+   "x ∈ (-2, 3)"
+  ],
+  "feil": [
+   "x<-2 eller x>3",
+   "-3<x<4"
+  ],
+  "formkrav": false,
+  "merknad": "Strengt intervall (ulikheten er >).",
+  "grense": [
+   {
+    "svar": "-2≤x≤3",
+    "forventet": "uavklart",
+    "grunn": "Lukket intervall; endepunktene gir likhet, ikke streng ulikhet.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "x∈(-2,3)",
+    "forventet": "riktig",
+    "grunn": "Intervallnotasjon uten mellomrom: «-2,3» kan tolkes som desimaltallet −2,3.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "x∈⟨-2,3⟩",
+    "forventet": "riktig",
+    "grunn": "Samme problem: komma uten mellomrom i intervall.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "v24-d1-5a": {
+  "riktige": [
+   "f(x)=-2x^2+2x+24",
+   "f(x) = −2x² + 2x + 24",
+   "-2x^2+2x+24",
+   "y=-2x^2+2x+24",
+   "24+2x-2x^2",
+   "f(x)=-2(x+3)(x-4)"
+  ],
+  "feil": [
+   "f(x)=2x^2-2x-24",
+   "f(x)=-2x^2+2x+12",
+   "f(x)=-2(x-3)(x+4)"
+  ],
+  "formkrav": false,
+  "merknad": "Faktorisert form -2(x+3)(x-4) er matematisk lik og godtas som funksjonsuttrykk (ingen formkrav)."
+ },
+ "v24-d2-2a": {
+  "riktige": [
+   "56,8",
+   "56.8",
+   "56,8°",
+   "u = 56,8°",
+   "56,82 grader",
+   "56,8 °"
+  ],
+  "feil": [
+   "0,99",
+   "29,3"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranse ±0,1. «0,99» er resultatet av kalkulator i radianer (typisk feil)."
+ },
+ "v24-d2-3": {
+  "riktige": [
+   "AC=2, BC=2√21",
+   "AC = 2 og BC = 2√21",
+   "2 og 2√21",
+   "AC=2; BC=2\\sqrt{21}",
+   "AC=2, BC=√84",
+   "AC = 2 cm, BC = 2*sqrt(21) cm"
+  ],
+  "feil": [
+   "AC=2, BC=2√13",
+   "BC=2√21",
+   "AC=4, BC=2√21"
+  ],
+  "formkrav": true,
+  "merknad": "Eksakt verdi kreves (selvvurder). √84 er eksakt og lik 2√21 men ikke forenklet – vurder om det skal godtas. Desimal (9,17) er numerisk lik innenfor toleranse men bryter formkravet. Rekkefølge AC så BC.",
+  "formfeil": [
+   "AC=2, BC=9,17",
+   "AC=2 og BC=9.165"
+  ]
+ },
+ "h24-d1-2": {
+  "riktige": [
+   "(-1,-4)",
+   "(−1, −4)",
+   "(-1;-4)",
+   "x=-1, y=-4",
+   "Bunnpunktet er (-1,-4)",
+   "(-1 , -4)"
+  ],
+  "feil": [
+   "(1,-4)",
+   "(-1,4)",
+   "(-3,0)"
+  ],
+  "formkrav": false,
+  "merknad": ""
+ },
+ "h24-d2-5": {
+  "riktige": [
+   "a=0,15, b=0,175, c=-1,1, d=6,3",
+   "a=3/20, b=7/40, c=-11/10, d=63/10",
+   "a = 0.15; b = 0.175; c = −1.1; d = 6.3",
+   "a=3/20 og b=7/40 og c=-11/10 og d=63/10",
+   "d=6,3, c=-1,1, b=0,175, a=0,15"
+  ],
+  "feil": [
+   "a=0,15, b=0,175, c=1,1, d=6,3",
+   "a=3/20, b=7/20, c=-11/10, d=63/10",
+   "a=0,15, b=0,18, c=-1,1, d=6,3"
+  ],
+  "formkrav": false,
+  "merknad": "Eksakte verdier (ingen toleranse): «b=0,18» (avrundet fra 0,175) skal være feil.",
+  "grense": [
+   {
+    "svar": "f(x)=0,15x^3+0,175x^2-1,1x+6,3",
+    "forventet": "riktig",
+    "grunn": "Hele funksjonsuttrykket i stedet for a, b, c, d – riktig, men annet format.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "v25-d1-1": {
+  "riktige": [
+   "x=-1/2 og y=6",
+   "x=-0,5, y=6",
+   "y=6 og x=-1/2",
+   "x = −0.5; y = 6",
+   "x=-0,5 og y=6"
+  ],
+  "feil": [
+   "x=0,5, y=6",
+   "x=-1/2",
+   "x=-1/2, y=12"
+  ],
+  "formkrav": false,
+  "merknad": "",
+  "grense": [
+   {
+    "svar": "Vertikal asymptote: x = -1/2. Horisontal asymptote: y = 6.",
+    "forventet": "riktig",
+    "grunn": "Svar med ord og etiketter.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "v25-d1-4a": {
+  "riktige": [
+   "x=1, x=8, x=-2",
+   "x=-2, x=1, x=8",
+   "x=-2 eller x=1 eller x=8",
+   "-2, 1 og 8",
+   "x ∈ {-2, 1, 8}",
+   "x = -2 ∨ x = 1 ∨ x = 8"
+  ],
+  "feil": [
+   "x=1, x=8",
+   "x=-1, x=2, x=-8"
+  ],
+  "formkrav": false,
+  "merknad": "",
+  "grense": [
+   {
+    "svar": "x=-2 x=1 x=8",
+    "forventet": "riktig",
+    "grunn": "Bare mellomrom som skille.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "L={-2,1,8}",
+    "forventet": "riktig",
+    "grunn": "Mengdeskrivemåte uten mellomrom – «-2,1» kan leses som desimaltall.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "v25-d1-5c": {
+  "riktige": [
+   "7",
+   "QR=7",
+   "QR = 7",
+   "7,0",
+   "QR er 7",
+   "Lengden QR er 7"
+  ],
+  "feil": [
+   "9,85",
+   "49"
+  ],
+  "formkrav": false,
+  "merknad": "",
+  "grense": [
+   {
+    "svar": "7 cm",
+    "forventet": "riktig",
+    "grunn": "Oppgaven oppgir ingen enhet, men eleven kan skrive cm.",
+    "parser_godtar": true
+   }
+  ]
+ },
+ "v25-d1-5b": {
+  "riktige": [
+   "15",
+   "15,0",
+   "A = 15",
+   "Arealet er 15",
+   "Areal = 15"
+  ],
+  "feil": [
+   "30",
+   "25,98"
+  ],
+  "formkrav": false,
+  "merknad": ""
+ },
+ "v25-d1-7": {
+  "riktige": [
+   "-16",
+   "−16",
+   "-16,0",
+   "Det skrives ut -16",
+   "-1 og -16"
+  ],
+  "feil": [
+   "-15",
+   "16",
+   "-1"
+  ],
+  "formkrav": false,
+  "merknad": "Alternativ i SPEC godtar «-1 og -16» (to tall, fast rekkefølge)."
+ },
+ "v25-d2-2": {
+  "riktige": [
+   "32 og 48",
+   "32 små og 48 store",
+   "32, 48",
+   "32; 48",
+   "små: 32, store: 48",
+   "32 små sekker og 48 store sekker"
+  ],
+  "feil": [
+   "30 og 50",
+   "40 og 40"
+  ],
+  "formkrav": false,
+  "merknad": "SPEC har ikke rekkefolge=fast, men oppgaven spør om (små, store) i den rekkefølgen.",
+  "grense": [
+   {
+    "svar": "48 og 32",
+    "forventet": "feil",
+    "grunn": "Byttet rekkefølge – semantisk feil (48 små, 32 store), men samme tall.",
+    "parser_godtar": true
+   }
+  ]
+ },
+ "v25-d2-3a": {
+  "riktige": [
+   "4√10",
+   "4*sqrt(10)",
+   "4\\sqrt{10}",
+   "d = 4√10",
+   "√160"
+  ],
+  "feil": [
+   "2√10",
+   "4√20"
+  ],
+  "formkrav": true,
+  "merknad": "Selvvurder: eksakt verdi kreves. √160 er eksakt, lik 4√10, men ikke forenklet. Desimaltall (12,65) bryter formkrav.",
+  "formfeil": [
+   "12,65",
+   "12.649"
+  ]
+ },
+ "v25-d2-3b": {
+  "riktige": [
+   "24√10√(2−√3)",
+   "24*sqrt(10)*sqrt(2-sqrt(3))",
+   "24\\sqrt{10}\\sqrt{2-\\sqrt{3}}",
+   "24√(10(2−√3))",
+   "24√(20−10√3)"
+  ],
+  "feil": [
+   "24√10",
+   "12√(2−√3)"
+  ],
+  "formkrav": true,
+  "merknad": "Selvvurder, eksakt verdi. Omkrets ≈ 39,286. Desimaltall bryter formkravet.",
+  "formfeil": [
+   "39,29",
+   "39,3"
+  ],
+  "grense": [
+   {
+    "svar": "48√10·sin(15°)",
+    "forventet": "riktig",
+    "grunn": "Eksakt men trig-uttrykk (sin 15° = (√6−√2)/4); lik 24√10√(2−√3).",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "v25-d2-1c": {
+  "riktige": [
+   "5500",
+   "5 500",
+   "5499",
+   "ca. 5500 tilfeller",
+   "5499,2",
+   "5,5·10^3"
+  ],
+  "feil": [
+   "4583",
+   "6599"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranse ±0,5 % (5472–5527). 4583 og 6599 er x=28 og x=30 (off-by-one på måned)."
+ },
+ "h25-d1-2": {
+  "riktige": [
+   "x=1, x=6, x=-2",
+   "x=1,x=6,x=-2",
+   "x=-2, x=1, x=6",
+   "x = -2 eller x = 1 eller x = 6",
+   "-2, 1 og 6",
+   "(-2,0), (1,0) og (6,0)"
+  ],
+  "feil": [
+   "x=1, x=6",
+   "x=2, x=-1, x=-6",
+   "x=1, x=6, x=12"
+  ],
+  "formkrav": false,
+  "merknad": "Eksempelet fra oppdraget: «x=1, x=6, x=-2» mot fasit «Nullpunkter x = 1, x = 6, x = −2.». Punktform godtas som alternativ."
+ },
+ "h25-d1-3": {
+  "riktige": [
+   "1 og 2",
+   "1, 2",
+   "påstand 1 og 2",
+   "2 og 1",
+   "påstandene 1 og 2",
+   "påstand 1 og påstand 2"
+  ],
+  "feil": [
+   "1 og 4",
+   "1, 2 og 3",
+   "2"
+  ],
+  "formkrav": false,
+  "merknad": "",
+  "grense": [
+   {
+    "svar": "1,2",
+    "forventet": "riktig",
+    "grunn": "Komma uten mellomrom – kan tolkes som desimaltallet 1,2.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "1og2",
+    "forventet": "riktig",
+    "grunn": "Uten mellomrom rundt «og» (slik fh er skrevet).",
+    "parser_godtar": false
+   },
+   {
+    "svar": "1 og 2 er riktige",
+    "forventet": "riktig",
+    "grunn": "Setning rundt svaret.",
+    "parser_godtar": true
+   }
+  ]
+ },
+ "h25-d1-4": {
+  "riktige": [
+   "2 og 6",
+   "2, 6",
+   "uttrykk 2 og 6",
+   "alternativ 2 og 6",
+   "6 og 2",
+   "2 og 6 er riktige"
+  ],
+  "feil": [
+   "2 og 3",
+   "1, 4 og 5",
+   "2"
+  ],
+  "formkrav": false,
+  "merknad": "",
+  "grense": [
+   {
+    "svar": "2,6",
+    "forventet": "riktig",
+    "grunn": "Komma uten mellomrom – kan tolkes som desimaltallet 2,6.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "h25-d1-5b": {
+  "riktige": [
+   "12",
+   "12,0",
+   "A=12",
+   "Arealet er 12",
+   "Areal = 12"
+  ],
+  "feil": [
+   "24",
+   "16,97",
+   "6"
+  ],
+  "formkrav": false,
+  "merknad": "16,97 = 12√2 (glemt sin 45°)."
+ },
+ "h25-d2-3b": {
+  "riktige": [
+   "(9+6√3)/4",
+   "(9+6*sqrt(3))/4",
+   "9/4+3√3/2",
+   "\\frac{9+6\\sqrt{3}}{4}",
+   "9/4 + (3/2)√3"
+  ],
+  "feil": [
+   "9+6√3",
+   "(9+3√3)/4"
+  ],
+  "formkrav": true,
+  "merknad": "FEIL I fh: eksamen-svar.ts viser fh «9+6\\sqrt{3}» (≈19,39), men fasiten (SPEC) er 4,848 = (9+6√3)/4. Svaret «9+6√3» er derfor FEIL mot SPEC. Fh bør rettes til (9+6\\sqrt{3})/4. Selvvurder/eksakt.",
+  "formfeil": [
+   "4,85",
+   "4.848"
+  ]
+ },
+ "h25-d2-1d": {
+  "riktige": [
+   "73",
+   "73 %",
+   "73 prosent",
+   "ca. 73 %",
+   "73,2 %",
+   "73,23 %"
+  ],
+  "feil": [
+   "173 %",
+   "20 %",
+   "1,73"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranse ±1 prosentpoeng (72,2–74,2). 173 % er vekstfaktor-som-prosent."
+ },
+ "h25-d2-2": {
+  "riktige": [
+   "Abid 21, Therese 38 og Harald 9",
+   "21, 38 og 9",
+   "Abid er 21 år, Therese er 38 år og Harald er 9 år",
+   "21 år, 38 år og 9 år",
+   "a=21, t=38, h=9",
+   "Abid: 21; Therese: 38; Harald: 9"
+  ],
+  "feil": [
+   "22, 39 og 7",
+   "Abid 9, Therese 21 og Harald 38"
+  ],
+  "formkrav": false,
+  "merknad": "Fasit-rekkefølge (21, 38, 9) = Abid, Therese, Harald. fh-listen i SPEC står i rekkefølgen h=9, a=21, 38 – en elev som følger fh-rekkefølgen («9, 21 og 38») får feil pga. rekkefolge=fast.",
+  "grense": [
+   {
+    "svar": "9, 21 og 38",
+    "forventet": "uavklart",
+    "grunn": "Ordnet etter fh (h, a, t) uten etiketter – tallene stemmer men rekkefølgen er en annen.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "v26-d1-2a": {
+  "riktige": [
+   "(-3,-5) og (2,0)",
+   "(2,0), (-3,-5)",
+   "x=-3, y=-5 og x=2, y=0",
+   "(−3, −5) og (2, 0)",
+   "(-3;-5) og (2;0)",
+   "(-3, -5)\n(2, 0)"
+  ],
+  "feil": [
+   "(-3,-5)",
+   "(3,5) og (-2,0)",
+   "(-3,5) og (2,0)",
+   "x=-3 og x=2"
+  ],
+  "formkrav": false,
+  "merknad": ""
+ },
+ "v26-d1-3": {
+  "riktige": [
+   "x=2, x=1/2, x=-4",
+   "x=-4, x=0,5, x=2",
+   "x=-4 eller x=1/2 eller x=2",
+   "x = −4 ∨ x = 0.5 ∨ x = 2",
+   "-4, 1/2, 2",
+   "x ∈ {−4, 1/2, 2}"
+  ],
+  "feil": [
+   "x=2, x=-4",
+   "x=2, x=-1/2, x=4",
+   "x=2, x=1, x=-4"
+  ],
+  "formkrav": false,
+  "merknad": ""
+ },
+ "v26-d1-4": {
+  "riktige": [
+   "a=1, b=4, c=16",
+   "a=1 og b=4 og c=16",
+   "a = 1; b = 4; c = 16",
+   "c=16, b=4, a=1",
+   "a=1\nb=4\nc=16"
+  ],
+  "feil": [
+   "a=1, b=8, c=16",
+   "a=1, b=4, c=8"
+  ],
+  "formkrav": false,
+  "merknad": ""
+ },
+ "v26-d1-5a": {
+  "riktige": [
+   "57",
+   "a8 = 57",
+   "a_8=57",
+   "57 ",
+   "Svar: 57"
+  ],
+  "feil": [
+   "65",
+   "73"
+  ],
+  "formkrav": false,
+  "merknad": "65 = 8·8+1 (feil formel), 73 = a_9 (off-by-one)."
+ },
+ "v26-d1-5b": {
+  "riktige": [
+   "n^2-n+1",
+   "a_n = n^2 - n + 1",
+   "n² − n + 1",
+   "n(n-1)+1",
+   "a(n)=n^2-n+1",
+   "1+n^2-n",
+   "n*(n-1)+1"
+  ],
+  "feil": [
+   "n^2+1",
+   "n^2-n",
+   "2n-1"
+  ],
+  "formkrav": false,
+  "merknad": ""
+ },
+ "v26-d1-7b": {
+  "riktige": [
+   "10√3",
+   "10*sqrt(3)",
+   "17,32",
+   "17,3",
+   "10\\sqrt{3}",
+   "√300",
+   "17.32"
+  ],
+  "feil": [
+   "20√3",
+   "8,66"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranse 0,2 % relativt: 17,3 godtas, 17 gjør ikke (17,32 → 0,2 % = ±0,035)."
+ },
+ "v26-d1-7c": {
+  "riktige": [
+   "18+10√3",
+   "10√3+18",
+   "18 + 10*sqrt(3)",
+   "35,32",
+   "35.3",
+   "10√3+4+14"
+  ],
+  "feil": [
+   "10√3+4",
+   "34"
+  ],
+  "formkrav": false,
+  "merknad": ""
+ },
+ "v26-d1-9b": {
+  "riktige": [
+   "f'(x)=x+1",
+   "x+1",
+   "f '(x) = x + 1",
+   "y=x+1",
+   "1+x",
+   "f′(x)=x+1"
+  ],
+  "feil": [
+   "f'(x)=x-1",
+   "f'(x)=2x+1",
+   "f'(x)=x^2+x"
+  ],
+  "formkrav": false,
+  "merknad": ""
+ },
+ "v26-d2-1a": {
+  "riktige": [
+   "176,5",
+   "176.5",
+   "176,5 g/km",
+   "176,5 gram per km",
+   "176,50"
+  ],
+  "feil": [
+   "108",
+   "177"
+  ],
+  "formkrav": false,
+  "merknad": "Eksakt (ingen toleranse): «177» (avrunding av 176,5) godtas ikke.",
+  "grense": [
+   {
+    "svar": "176,5 gram CO₂ per km",
+    "forventet": "riktig",
+    "grunn": "Med CO₂ i teksten (subscript-2 er ikke et siffer, men CO2 med vanlig 2 ville vært et ekstra tall).",
+    "parser_godtar": true
+   }
+  ]
+ },
+ "v26-d2-1c": {
+  "riktige": [
+   "5100",
+   "5098",
+   "5098,2",
+   "5 098 g",
+   "ca. 5100 gram",
+   "5,1*10^3 g",
+   "5 100 g"
+  ],
+  "feil": [
+   "3400",
+   "170"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranse ±60.",
+  "grense": [
+   {
+    "svar": "5,1 kg",
+    "forventet": "riktig",
+    "grunn": "Samme masse i kg; SPEC godtar bare g/gram.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "v26-d2-2a": {
+  "riktige": [
+   "1,93",
+   "1,932",
+   "1.93",
+   "AB=1,93",
+   "AB ≈ 1,93",
+   "1,94"
+  ],
+  "feil": [
+   "1,41",
+   "2,07"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranse ±0,02: «1,9» (rimelig avrunding til én desimal) ligger utenfor og avvises.",
+  "grense": [
+   {
+    "svar": "1,9",
+    "forventet": "uavklart",
+    "grunn": "Avrundet til én desimal; 0,032 fra fasit, utenfor toleransen 0,02.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "v26-d2-1b": {
+  "riktige": [
+   "71,5 km/h og 163,4 g/km",
+   "71,5 og 163,4",
+   "71,5; 163,4",
+   "x=71,5 og U=163,4",
+   "71,46 km/h, 163,36 g/km",
+   "72 km/h og 163 g/km",
+   "Farten er 71,5 km/h og utslippet er 163,4 g/km"
+  ],
+  "feil": [
+   "163,4 og 71,5",
+   "71,5",
+   "70 km/h og 163 g/km"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranse ±0,6 per tall; hele tall (72 og 163) godtas."
+ },
+ "1p-v26-d1-1": {
+  "riktige": [
+   "48",
+   "48 sauer",
+   "48 stk",
+   "Det skal slaktes 48 sauer",
+   "48,0"
+  ],
+  "feil": [
+   "12",
+   "480"
+  ],
+  "formkrav": false,
+  "merknad": "",
+  "grense": [
+   {
+    "svar": "0,8·60 = 48",
+    "forventet": "riktig",
+    "grunn": "Utregning + svar i samme felt (flere tall).",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "1p-v26-d1-2": {
+  "riktige": [
+   "10000",
+   "10 000 liter",
+   "10 000 L",
+   "10000 l",
+   "ca. 10 000 liter",
+   "1·10^4 L",
+   "10 000 liter hver måned"
+  ],
+  "feil": [
+   "120000",
+   "1000",
+   "10"
+  ],
+  "formkrav": false,
+  "merknad": "",
+  "grense": [
+   {
+    "svar": "10 m³",
+    "forventet": "uavklart",
+    "grunn": "Samme volum i m³; SPEC har liter som enhet.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "10 000 m³",
+    "forventet": "feil",
+    "grunn": "Feil enhet (tall riktig, enhet gir 1000 ganger for stort volum).",
+    "parser_godtar": true
+   }
+  ]
+ },
+ "1p-v26-d1-3": {
+  "riktige": [
+   "2000",
+   "2 000",
+   "2·10^3",
+   "2*10^3",
+   "2000,0",
+   "2×10³",
+   "20·10^2"
+  ],
+  "feil": [
+   "200",
+   "20000",
+   "2·10^4"
+  ],
+  "formkrav": true,
+  "merknad": "SPEC har selvvurder (ingen autosjekk); formkrav satt true. Tallverdi-ekvivalente skrivemåter er listet som riktige – oppgaven ber ikke eksplisitt om standardform."
+ },
+ "1p-v26-d1-8": {
+  "riktige": [
+   "24",
+   "24 kg",
+   "24 000 g",
+   "24000 gram",
+   "Stålplaten veier 24 kg",
+   "24,0 kg"
+  ],
+  "feil": [
+   "2,4 kg",
+   "240",
+   "3000"
+  ],
+  "formkrav": false,
+  "merknad": "SPEC godtar 24 (kg) og alternativt 24000 (g).",
+  "grense": [
+   {
+    "svar": "24 g",
+    "forventet": "feil",
+    "grunn": "Riktig tall, feil enhet (24 g ≠ 24 kg).",
+    "parser_godtar": true
+   },
+   {
+    "svar": "24000 kg",
+    "forventet": "feil",
+    "grunn": "Riktig tall, feil enhet.",
+    "parser_godtar": true
+   }
+  ]
+ },
+ "1p-v26-d1-9a": {
+  "riktige": [
+   "1200 kr og 50 kr",
+   "1200 og 50",
+   "1 200 kroner og 50 kroner",
+   "1200; 50",
+   "1200, 50",
+   "1200 kr, 50 kr"
+  ],
+  "feil": [
+   "50 og 1200",
+   "2000 og 50",
+   "1200"
+  ],
+  "formkrav": false,
+  "merknad": "Fast rekkefølge: årsavgift først, deretter pris per passering."
+ },
+ "1p-v26-d1-9c": {
+  "riktige": [
+   "80",
+   "80 ganger",
+   "Ine passerte bommen 80 ganger",
+   "80 passeringer",
+   "x = 80"
+  ],
+  "feil": [
+   "104",
+   "8",
+   "40"
+  ],
+  "formkrav": false,
+  "merknad": ""
+ },
+ "1p-v26-d1-10a": {
+  "riktige": [
+   "57",
+   "a8 = 57",
+   "a_8=57",
+   "a8=57",
+   "57,0"
+  ],
+  "feil": [
+   "56",
+   "65",
+   "73"
+  ],
+  "formkrav": false,
+  "merknad": "",
+  "grense": [
+   {
+    "svar": "7·8+1 = 57",
+    "forventet": "riktig",
+    "grunn": "Utregning + svar i samme felt.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "Ledd nummer 8 er 57",
+    "forventet": "riktig",
+    "grunn": "Setning med to tall (8 og 57).",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "1p-v26-d1-11b": {
+  "riktige": [
+   "150",
+   "b=150",
+   "b = 150",
+   "b er 150",
+   "150,0"
+  ],
+  "feil": [
+   "15",
+   "7500",
+   "300"
+  ],
+  "formkrav": false,
+  "merknad": ""
+ },
+ "1p-v26-d2-1a": {
+  "riktige": [
+   "176,5",
+   "176,5 gram",
+   "176.5 g/km",
+   "176,5 gram per kilometer",
+   "Bilen slipper ut 176,5 g/km"
+  ],
+  "feil": [
+   "108",
+   "177"
+  ],
+  "formkrav": false,
+  "merknad": "Fasit 176,5 uten toleranse, så avrundet «177» får 0 selv om det er en rimelig avrunding (oppgaven ber ikke om avrunding). «177» er derfor listet som feil."
+ },
+ "1p-v26-d2-1b": {
+  "riktige": [
+   "71,46 km/h og 163,36 g/km",
+   "71,46; 163,36",
+   "71,5 og 163,4",
+   "71,46 og 163,36",
+   "71,5 km/h, 163,4 g/km"
+  ],
+  "feil": [
+   "163,36 og 71,46",
+   "71,46 og 100",
+   "70 og 163"
+  ],
+  "formkrav": false,
+  "merknad": "Rekkefølge fast (fart, så utslipp). Toleranse ±0,6."
+ },
+ "1p-v26-d2-1c": {
+  "riktige": [
+   "5098,2",
+   "5098,2 g",
+   "5 098,2 gram",
+   "5100",
+   "5100 g"
+  ],
+  "feil": [
+   "5,0982",
+   "509,82",
+   "163,36"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranse ±60. «5,1 kg» er samme verdi i kg og godtas av tolkningen av tallet i SPEC bare om parseren ser 5,1 · 1000; sjekkeren min aksepterer kun 5100 g – se grense.",
+  "grense": [
+   {
+    "svar": "5,1 kg",
+    "forventet": "riktig",
+    "grunn": "Samme masse oppgitt i kg.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "1p-v26-d2-2a": {
+  "riktige": [
+   "0,25",
+   "0.25",
+   "0,25 prosentpoeng",
+   "0,25 pp",
+   "Renten ble satt ned med 0,25 prosentpoeng",
+   "0,250"
+  ],
+  "feil": [
+   "25",
+   "5,9",
+   "4,25"
+  ],
+  "formkrav": false,
+  "merknad": "",
+  "grense": [
+   {
+    "svar": "0,25 %",
+    "forventet": "uavklart",
+    "grunn": "Elever skriver ofte % for prosentpoeng; numerisk lik.",
+    "parser_godtar": true
+   },
+   {
+    "svar": "0,25 prosent",
+    "forventet": "uavklart",
+    "grunn": "Som over.",
+    "parser_godtar": true
+   }
+  ]
+ },
+ "1p-v26-d2-2b": {
+  "riktige": [
+   "5,9",
+   "5,9 %",
+   "5,88 %",
+   "5,88",
+   "ca. 5,9 prosent",
+   "5,882 %",
+   "6 %"
+  ],
+  "feil": [
+   "0,25",
+   "6,25 %",
+   "25"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranse ±0,15, så «6 %» (heltallsavrunding) godtas."
+ },
+ "1p-v26-d2-4b": {
+  "riktige": [
+   "75",
+   "75 liter",
+   "75 L",
+   "75 l",
+   "Martin bruker 75 liter"
+  ],
+  "feil": [
+   "7,5",
+   "750",
+   "30"
+  ],
+  "formkrav": false,
+  "merknad": ""
+ },
+ "1p-v26-d2-4c": {
+  "riktige": [
+   "18828000",
+   "18 828 000 J",
+   "18 828 000",
+   "1,88·10^7 J",
+   "18,83·10^6 J",
+   "1,8828*10^7"
+  ],
+  "feil": [
+   "313800",
+   "1882800"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranse 0,5 %.",
+  "grense": [
+   {
+    "svar": "18 828 kJ",
+    "forventet": "uavklart",
+    "grunn": "Samme energi i kJ.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "18,8 MJ",
+    "forventet": "uavklart",
+    "grunn": "Samme energi i MJ.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "1p-v26-d2-4d": {
+  "riktige": [
+   "7,01",
+   "7,0",
+   "7,01 kr",
+   "7,01 kroner",
+   "ca. 7 kroner",
+   "7.01"
+  ],
+  "feil": [
+   "701",
+   "5,23",
+   "0,70"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranse ±0,02.",
+  "grense": [
+   {
+    "svar": "701 øre",
+    "forventet": "uavklart",
+    "grunn": "Samme beløp i øre.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "1p-h25-d1-1": {
+  "riktige": [
+   "360",
+   "360 km",
+   "360 kilometer",
+   "Strekningen er 360 km",
+   "360,0 km"
+  ],
+  "feil": [
+   "320",
+   "344",
+   "18"
+  ],
+  "formkrav": false,
+  "merknad": ""
+ },
+ "1p-h25-d1-2": {
+  "riktige": [
+   "40",
+   "40 kr",
+   "40 kroner",
+   "Lukas betalte 40 kroner i mva",
+   "kr 40"
+  ],
+  "feil": [
+   "50",
+   "160"
+  ],
+  "formkrav": false,
+  "merknad": ""
+ },
+ "1p-h25-d1-3": {
+  "riktige": [
+   "4·10^9",
+   "4*10^9",
+   "4 000 000 000",
+   "4000000000",
+   "4×10^9",
+   "4E9",
+   "4·10⁹"
+  ],
+  "feil": [
+   "4·10^8",
+   "4·10^10",
+   "4·10^-9"
+  ],
+  "formkrav": false,
+  "merknad": "",
+  "grense": [
+   {
+    "svar": "4 milliarder",
+    "forventet": "riktig",
+    "grunn": "Ordform; SPEC har ikke ord=true, så den avvises hvis parseren ikke kjenner «milliarder».",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "1p-h25-d1-4a": {
+  "riktige": [
+   "3",
+   "3 dm",
+   "h = 3",
+   "3 dm høy",
+   "Pyramiden er 3 dm høy",
+   "3,0 dm"
+  ],
+  "feil": [
+   "27",
+   "9",
+   "1"
+  ],
+  "formkrav": false,
+  "merknad": "",
+  "grense": [
+   {
+    "svar": "3 dm³",
+    "forventet": "feil",
+    "grunn": "Riktig tall, volumenhet i stedet for lengde.",
+    "parser_godtar": true
+   },
+   {
+    "svar": "0,3 m",
+    "forventet": "riktig",
+    "grunn": "Samme lengde i m.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "1p-h25-d2-1d": {
+  "riktige": [
+   "73",
+   "73 %",
+   "73 prosent",
+   "73,2 %",
+   "73,23",
+   "Vekten øker med 73 %"
+  ],
+  "feil": [
+   "173 %",
+   "1,73",
+   "20"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranse ±1: «72 %» og «74 %» godtas, «75 %» ikke.",
+  "grense": [
+   {
+    "svar": "1,73",
+    "forventet": "uavklart",
+    "grunn": "Vekstfaktor i stedet for prosent.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "1p-h25-d2-3a": {
+  "riktige": [
+   "247866",
+   "247 866 kr",
+   "248 000",
+   "248000 kroner",
+   "ca. 248 000 kroner",
+   "2,48·10^5 kr",
+   "247 000"
+  ],
+  "feil": [
+   "2478,66",
+   "229963",
+   "2 478 660"
+  ],
+  "formkrav": false,
+  "merknad": "Nøkkel 247865,96 (rel. toleranse 0,5 % = ±1239). Løsningsteksten sier «omtrent 248 000»; både 247 866 og 248 000 godtas.",
+  "grense": [
+   {
+    "svar": "250 000",
+    "forventet": "uavklart",
+    "grunn": "Avrunding til to gjeldende siffer; utenfor toleransen.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "1p-h25-d2-3b": {
+  "riktige": [
+   "4790896",
+   "4 790 896",
+   "4 800 000",
+   "4,8·10^6",
+   "ca. 4 800 000 personer",
+   "4 790 000",
+   "4,79·10^6"
+  ],
+  "feil": [
+   "229963",
+   "11038",
+   "479 090"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranse 1 %. Løsningsteksten svarer «omtrent 4,8 millioner personer» – elever skriver ofte det, men SPEC har ikke ord=true.",
+  "grense": [
+   {
+    "svar": "4,8 millioner",
+    "forventet": "riktig",
+    "grunn": "Offisiell svarform i løsningen; krever ord-multiplikator.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "4,79 millioner personer",
+    "forventet": "riktig",
+    "grunn": "Som over.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "1p-h25-d2-4": {
+  "riktige": [
+   "31,18",
+   "31,2",
+   "31,18 kr",
+   "31,18 kroner",
+   "ca. 31 kr",
+   "31",
+   "31.18"
+  ],
+  "feil": [
+   "42,47",
+   "3,07",
+   "14"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranse ±0,5."
+ },
+ "1p-h25-d2-5": {
+  "riktige": [
+   "29,9",
+   "29,9 %",
+   "29,87 %",
+   "30 %",
+   "30 prosent",
+   "29,87",
+   "ca. 30 %"
+  ],
+  "feil": [
+   "23 %",
+   "77 %",
+   "19"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranse ±0,5 %: «30 %» godtas."
+ },
+ "1p-h25-d2-6b": {
+  "riktige": [
+   "40000",
+   "40 000 km",
+   "40 003",
+   "40003,2 km",
+   "ca. 40 000 km",
+   "4·10^4 km",
+   "4,0*10^4 km"
+  ],
+  "feil": [
+   "20002",
+   "111,12",
+   "360"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranse ±100."
+ },
+ "1p-h25-d2-6c": {
+  "riktige": [
+   "0,97",
+   "0,97 %",
+   "0,972 %",
+   "0,98 %",
+   "ca. 0,97 prosent",
+   "0,972"
+  ],
+  "feil": [
+   "9,7 %",
+   "3,5",
+   "0,0097 %"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranse ±0,01 prosentpoeng, så «1 %» faller utenfor.",
+  "grense": [
+   {
+    "svar": "1 %",
+    "forventet": "uavklart",
+    "grunn": "Heltallsavrunding; utenfor toleransen.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "0,00972",
+    "forventet": "uavklart",
+    "grunn": "Andel som desimaltall, ikke prosent.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "1p-h25-d2-7c": {
+  "riktige": [
+   "5,09",
+   "5,09 m²",
+   "5,1",
+   "5,093",
+   "5,09 m^2",
+   "Arealet er 5,09 m²",
+   "5,1 m2"
+  ],
+  "feil": [
+   "4,7",
+   "0,39",
+   "5,5"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranse ±0,03."
+ },
+ "1p-v25-d1-1": {
+  "riktige": [
+   "50",
+   "50 %",
+   "50 prosent",
+   "50 % dyrere",
+   "Sjokoladeplaten er 50 % dyrere",
+   "50,0 %"
+  ],
+  "feil": [
+   "33,3 %",
+   "20 %",
+   "33 %"
+  ],
+  "formkrav": false,
+  "merknad": "",
+  "grense": [
+   {
+    "svar": "0,5",
+    "forventet": "uavklart",
+    "grunn": "Forholdstall i stedet for prosent.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "1,5",
+    "forventet": "uavklart",
+    "grunn": "Vekstfaktor.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "1p-v25-d1-5": {
+  "riktige": [
+   "5,307·10^12",
+   "5,307*10^12",
+   "5 307 000 000 000",
+   "5307000000000",
+   "5,307E12",
+   "5,307 · 10^{12}",
+   "5307·10^9"
+  ],
+  "feil": [
+   "5,3·10^12",
+   "5,307·10^11",
+   "5,307·10^9"
+  ],
+  "formkrav": false,
+  "merknad": "Relativ toleranse 1e-6: avrundinger som 5,31·10^12 avvises.",
+  "grense": [
+   {
+    "svar": "5,307 billioner",
+    "forventet": "riktig",
+    "grunn": "Norsk «billion» = 10^12; ikke dekket av parseren.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "1p-v25-d2-1d": {
+  "riktige": [
+   "5500",
+   "5499",
+   "5 499",
+   "5499,2",
+   "ca. 5500",
+   "5 500 tilfeller",
+   "5450"
+  ],
+  "feil": [
+   "4583",
+   "6599"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranse ±60 (5439–5559).",
+  "grense": [
+   {
+    "svar": "5 400",
+    "forventet": "uavklart",
+    "grunn": "Avrunding til hundre; utenfor toleransen (diff ≈ 99).",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "1p-v25-d2-2a": {
+  "riktige": [
+   "82,5",
+   "82,5 km",
+   "82.5 km",
+   "82,5 kilometer",
+   "Hver deltaker har gått 82,5 km",
+   "82,50"
+  ],
+  "feil": [
+   "825",
+   "8,25",
+   "132"
+  ],
+  "formkrav": false,
+  "merknad": "Eksakt nøkkel uten toleranse.",
+  "grense": [
+   {
+    "svar": "83 km",
+    "forventet": "uavklart",
+    "grunn": "Avrundet svar; eksakt nøkkel uten toleranse.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "1p-v25-d2-2b": {
+  "riktige": [
+   "39759",
+   "39 759 km",
+   "39 800",
+   "39800 km",
+   "40 000",
+   "39 759,04",
+   "ca. 39 800 km"
+  ],
+  "feil": [
+   "3976",
+   "3 300 000",
+   "83"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranse ±300."
+ },
+ "1p-v25-d2-4": {
+  "riktige": [
+   "48,96",
+   "49",
+   "49 kr",
+   "48,96 kroner",
+   "ca. 49 kroner",
+   "48.96"
+  ],
+  "feil": [
+   "33,29",
+   "1175",
+   "24,79"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranse ±0,5."
+ },
+ "1p-v25-d2-5": {
+  "riktige": [
+   "468,28 kr/m² og 525,26 kr/m²",
+   "468,28 og 525,26",
+   "468 kr og 525 kr",
+   "468,28; 525,26",
+   "468,3 kr og 525,3 kr"
+  ],
+  "feil": [
+   "525,26 og 468,28",
+   "46,83 og 52,53",
+   "468,28"
+  ],
+  "formkrav": false,
+  "merknad": "Fast rekkefølge, toleranse ±1."
+ },
+ "1p-v25-d2-6c": {
+  "riktige": [
+   "5,2 cm og 258 cm²",
+   "5,23 og 258,0",
+   "r = 5,23 cm, O = 258 cm²",
+   "5,2; 258",
+   "5,23 cm og 258,02 cm²",
+   "radius 5,2 cm og overflate 258 cm²"
+  ],
+  "feil": [
+   "258 og 5,2",
+   "5 cm og 258 cm²",
+   "5,23"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranse ±0,1; rekkefølge: radius, overflate."
+ },
+ "1p-h24-d1-2a": {
+  "riktige": [
+   "2·10^16",
+   "2*10^16",
+   "2 · 10^{16}",
+   "2×10^16",
+   "2·10¹⁶",
+   "2E16",
+   "2\\cdot10^{16}"
+  ],
+  "feil": [
+   "2·10^15",
+   "2·10^17",
+   "20·10^16"
+  ],
+  "formkrav": true,
+  "merknad": "Standardform kreves (SELV – ingen autosjekk). formfeil = riktig verdi, men ikke standardform.",
+  "formfeil": [
+   "20 000 000 000 000 000",
+   "20·10^15",
+   "0,2·10^17"
+  ]
+ },
+ "1p-h24-d1-2b": {
+  "riktige": [
+   "1,4 kg - 2,7 kg",
+   "mellom 1,4 og 2,7 kg",
+   "1,4–2,7 kg",
+   "fra 1,4 kg til 2,7 kg",
+   "1,4 til 2,7",
+   "1.4-2.7 kg"
+  ],
+  "feil": [
+   "1,4 kg",
+   "0,2-0,3 kg",
+   "1,4 og 2,9 kg"
+  ],
+  "formkrav": false,
+  "merknad": "Intervall med toleranse ±0,05 på hver grense.",
+  "grense": [
+   {
+    "svar": "2 kg",
+    "forventet": "uavklart",
+    "grunn": "Midtverdien (løsningen nevner «omtrent 2 kg») – én verdi i stedet for intervall.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "1 400 000 mg – 2 700 000 mg",
+    "forventet": "uavklart",
+    "grunn": "Samme intervall i mg.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "1p-h24-d2-1c": {
+  "riktige": [
+   "2022",
+   "år 2022",
+   "i 2022",
+   "Det var i 2022",
+   "2022."
+  ],
+  "feil": [
+   "2021",
+   "2023",
+   "11,6"
+  ],
+  "formkrav": false,
+  "merknad": ""
+ },
+ "1p-h24-d2-2": {
+  "riktige": [
+   "62,5",
+   "62,5 mL",
+   "62.5 ml",
+   "62,5 milliliter",
+   "Pasienten skal ha 62,5 mL i hver dose",
+   "62,50"
+  ],
+  "feil": [
+   "375",
+   "187,5",
+   "6,25"
+  ],
+  "formkrav": false,
+  "merknad": ""
+ },
+ "1p-h24-d2-4a": {
+  "riktige": [
+   "2",
+   "2 min",
+   "2,0 minutter",
+   "2,01",
+   "ca. 2 minutter",
+   "2,0",
+   "2 minutter lengre"
+  ],
+  "feil": [
+   "0,0019",
+   "18,62",
+   "20"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranse ±0,1 (1,9 faller akkurat utenfor).",
+  "grense": [
+   {
+    "svar": "1,9 min",
+    "forventet": "uavklart",
+    "grunn": "Utenfor toleransen.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "1p-h24-d2-4b": {
+  "riktige": [
+   "40 min og 20 min",
+   "40 og 20",
+   "20 og 40",
+   "40 minutter og 20 minutter",
+   "40 min, 20 min",
+   "den ene brukte 40 min og den andre 20 min"
+  ],
+  "feil": [
+   "20 og 10",
+   "27 og 54",
+   "40 og 10"
+  ],
+  "formkrav": false,
+  "merknad": "SPEC har ikke fast rekkefølge, så «20 og 40» godtas."
+ },
+ "1p-h24-d2-6a": {
+  "riktige": [
+   "444 000 kr, 804 000 kr og 924 000 kr",
+   "444000, 804000, 924000",
+   "A: 444 000, B: 804 000, C: 924 000",
+   "444 000; 804 000; 924 000",
+   "A 444000 kr, B 804000 kr, C 924000 kr",
+   "444 000 kroner, 804 000 kroner og 924 000 kroner"
+  ],
+  "feil": [
+   "384 000, 756 000 og 900 000",
+   "444000, 924000, 804000",
+   "444 000 og 804 000"
+  ],
+  "formkrav": false,
+  "merknad": "Fast rekkefølge (A, B, C)."
+ },
+ "1p-h24-d2-7a": {
+  "riktige": [
+   "1632536",
+   "1 632 536",
+   "1 632 536 personer",
+   "1 632 500",
+   "1 630 000",
+   "ca. 1 632 500 personer"
+  ],
+  "feil": [
+   "2709314",
+   "163 253",
+   "1632"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranse 0,5 % (±8163).",
+  "grense": [
+   {
+    "svar": "1,63 millioner",
+    "forventet": "riktig",
+    "grunn": "Ordform; kjent fra løsningen, men SPEC har ikke ord=true.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "1,6 millioner",
+    "forventet": "uavklart",
+    "grunn": "Utenfor toleransen.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "1p-v24-d1-1": {
+  "riktige": [
+   "9 milliarder",
+   "9 000 000 000",
+   "9·10^9",
+   "9*10^9",
+   "9 mrd",
+   "9000 millioner",
+   "9,0 milliarder",
+   "9E9"
+  ],
+  "feil": [
+   "9 millioner",
+   "900 millioner",
+   "90 milliarder"
+  ],
+  "formkrav": false,
+  "merknad": "Oppgaven har ord=true. fh er bare «9» (i milliarder), mens SPEC-verdien er 9e9.",
+  "grense": [
+   {
+    "svar": "9",
+    "forventet": "uavklart",
+    "grunn": "Kun «9» (fh viser 9), men verdien er 9 milliarder.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "1p-v24-d1-4b": {
+  "riktige": [
+   "90",
+   "90 km/h",
+   "90 km/t",
+   "Bilen kjører i 90 km/h",
+   "90 kilometer i timen",
+   "90,0 km/h"
+  ],
+  "feil": [
+   "9",
+   "81",
+   "45"
+  ],
+  "formkrav": false,
+  "merknad": ""
+ },
+ "1p-v24-d2-1b": {
+  "riktige": [
+   "284 bagetter og 4459 kr",
+   "284 og 4459",
+   "284 bagetter, 4459 kroner",
+   "284; 4 459,34",
+   "284 og 4 459 kr",
+   "Det må produseres 284 bagetter og overskuddet blir 4459 kroner"
+  ],
+  "feil": [
+   "4459 og 284",
+   "300 og 4459",
+   "284"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranse ±1 på begge; antall bagetter må være heltall.",
+  "grense": [
+   {
+    "svar": "283,56 bagetter og 4459,36 kr",
+    "forventet": "feil",
+    "grunn": "Rått GeoGebra-resultat; antall må avrundes til heltall, men ligger innen toleransen 1.",
+    "parser_godtar": true
+   }
+  ]
+ },
+ "1p-v24-d2-3a": {
+  "riktige": [
+   "1,04·10^11 liter",
+   "1,04*10^11 L",
+   "1,041·10^11",
+   "1,041 · 10^{11} liter",
+   "1,04E11 liter",
+   "1,0411·10^11",
+   "1,04·10¹¹ L"
+  ],
+  "feil": [
+   "1,04·10^10",
+   "1,04·10^12",
+   "2,85·10^8"
+  ],
+  "formkrav": true,
+  "merknad": "Standardform kreves (SELV). fh er bare «1,04» – mangler ·10^11. Toleranse rel. 0,5 %.",
+  "formfeil": [
+   "104 106 277 470 liter",
+   "104 000 000 000 liter",
+   "10,4·10^10"
+  ]
+ },
+ "1p-v24-d2-3b": {
+  "riktige": [
+   "6,5",
+   "6,5 %",
+   "6,47 %",
+   "6,5 prosent",
+   "6,468 %",
+   "økte med 6,5 %",
+   "ca. 6,5 %"
+  ],
+  "feil": [
+   "6,1 %",
+   "0,109",
+   "10,9 %"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranse ±0,1.",
+  "grense": [
+   {
+    "svar": "6 %",
+    "forventet": "uavklart",
+    "grunn": "Heltallsavrunding; utenfor toleransen.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "1,065",
+    "forventet": "uavklart",
+    "grunn": "Vekstfaktor.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "1p-v24-d2-4a": {
+  "riktige": [
+   "55,24",
+   "55,2",
+   "55,24 s",
+   "55,2 sekunder",
+   "55,24 sek",
+   "Rundetiden var 55,24 sekunder"
+  ],
+  "feil": [
+   "207,14",
+   "69,05",
+   "3,75"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranse ±0,1.",
+  "grense": [
+   {
+    "svar": "55 s",
+    "forventet": "uavklart",
+    "grunn": "Heltallsavrunding; utenfor toleransen.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "1p-h23-d1-1": {
+  "riktige": [
+   "2,1",
+   "2,1 L",
+   "2,1 liter",
+   "2.1 liter",
+   "2,10 liter",
+   "Tobias bør drikke 2,1 liter"
+  ],
+  "feil": [
+   "2100",
+   "21",
+   "0,21"
+  ],
+  "formkrav": false,
+  "merknad": "",
+  "grense": [
+   {
+    "svar": "2100 mL",
+    "forventet": "uavklart",
+    "grunn": "Samme mengde i mL.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "1p-h23-d1-2b": {
+  "riktige": [
+   "10",
+   "10 %",
+   "10 prosent",
+   "10,0 %",
+   "Økningen tilsvarer 10 %"
+  ],
+  "feil": [
+   "8",
+   "8 %",
+   "9,1 %"
+  ],
+  "formkrav": false,
+  "merknad": "",
+  "grense": [
+   {
+    "svar": "0,1",
+    "forventet": "uavklart",
+    "grunn": "Andel i stedet for prosent.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "1p-h23-d1-5": {
+  "riktige": [
+   "337120",
+   "337 120",
+   "337 120 kr",
+   "337120 kroner",
+   "490000*0,8*0,86",
+   "490 000 · 0,80 · 0,86"
+  ],
+  "feil": [
+   "490000*0,8*0,14",
+   "490000*0,66",
+   "490000"
+  ],
+  "formkrav": false,
+  "merknad": "Oppgaven ber om et regnestykke; SPEC sjekker verdien 337120. Et regnestykke som evalueres til 337120 godtas.",
+  "grense": [
+   {
+    "svar": "490000·0,80·0,86 = 337120",
+    "forventet": "riktig",
+    "grunn": "Regnestykke + svar (flere tall) i samme felt.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "1p-h23-d2-2": {
+  "riktige": [
+   "-12",
+   "−12 %",
+   "12 % mindre",
+   "12 %",
+   "reduksjon på 12 %",
+   "nedgang 12 %",
+   "arealet minker med 12 %",
+   "-12 prosent"
+  ],
+  "feil": [
+   "-10 %",
+   "10 %",
+   "-30 %"
+  ],
+  "formkrav": false,
+  "merknad": "SPEC: -12 (alt. 12 med enhet «% mindre»). Positivt tall uten retningsord godtas også.",
+  "grense": [
+   {
+    "svar": "12 % økning",
+    "forventet": "feil",
+    "grunn": "Riktig størrelse, feil retning; tallet alene matcher alternativet 12.",
+    "parser_godtar": true
+   },
+   {
+    "svar": "88 %",
+    "forventet": "uavklart",
+    "grunn": "Nytt areal er 88 % av det gamle – vekstfaktoren som prosent.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "1p-h23-d2-3a": {
+  "riktige": [
+   "15,9",
+   "16",
+   "16 pølser",
+   "15,85",
+   "ca. 16 pølser",
+   "15,9 pølser per sekund",
+   "15,854"
+  ],
+  "feil": [
+   "158,5",
+   "1,59",
+   "31 536 000"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranse ±0,5."
+ },
+ "1p-h23-d2-3b": {
+  "riktige": [
+   "2,6",
+   "2,6 %",
+   "2,6 prosent",
+   "2,60 %",
+   "Vi spiser 2,6 % av pølsene"
+  ],
+  "feil": [
+   "26",
+   "2,5 %",
+   "0,26"
+  ],
+  "formkrav": false,
+  "merknad": "",
+  "grense": [
+   {
+    "svar": "0,026",
+    "forventet": "uavklart",
+    "grunn": "Andel som desimaltall.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "13/500",
+    "forventet": "uavklart",
+    "grunn": "Brøk = 0,026 (andel).",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "1p-h23-d2-3c": {
+  "riktige": [
+   "20",
+   "20 cm",
+   "20,0 cm",
+   "0,2 m",
+   "0,20 m",
+   "ca. 20 cm",
+   "20,04 cm",
+   "0,2004 m"
+  ],
+  "feil": [
+   "2 cm",
+   "200 cm",
+   "2"
+  ],
+  "formkrav": false,
+  "merknad": "Alternativ: 0,2004 m ±0,005.",
+  "grense": [
+   {
+    "svar": "20 m",
+    "forventet": "feil",
+    "grunn": "Riktig tall, feil enhet; tallet alene matcher cm-verdien.",
+    "parser_godtar": true
+   },
+   {
+    "svar": "0,2 cm",
+    "forventet": "feil",
+    "grunn": "Feil enhet.",
+    "parser_godtar": true
+   }
+  ]
+ },
+ "1p-h23-d2-6a": {
+  "riktige": [
+   "569,5",
+   "569,5 cm",
+   "570 cm",
+   "569,53 cm",
+   "5,7 m",
+   "5,70 m",
+   "5,695 m",
+   "ca. 570 cm"
+  ],
+  "feil": [
+   "521,7",
+   "612,6",
+   "1000"
+  ],
+  "formkrav": false,
+  "merknad": "Alternativ i meter: 5,695 ±0,02.",
+  "grense": [
+   {
+    "svar": "569,5 m",
+    "forventet": "feil",
+    "grunn": "Riktig tall, feil enhet.",
+    "parser_godtar": true
+   }
+  ]
+ },
+ "1p-h23-d2-6c": {
+  "riktige": [
+   "0,5",
+   "0,5 %",
+   "0,52 %",
+   "0,51",
+   "0,515 %",
+   "0,5 prosent",
+   "ca. 0,5 %"
+  ],
+  "feil": [
+   "5,1 %",
+   "999,97",
+   "5"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranse ±0,05.",
+  "grense": [
+   {
+    "svar": "0,0051",
+    "forventet": "uavklart",
+    "grunn": "Andel som desimaltall.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "1p-h23-d2-7a": {
+  "riktige": [
+   "15,865",
+   "15,865 cm",
+   "15,866",
+   "15,8654 cm",
+   "15.865 cm"
+  ],
+  "feil": [
+   "15,71",
+   "31,73",
+   "5"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranse ±0,002 – svært stram: standard avrunding til to desimaler (15,87) avvises.",
+  "grense": [
+   {
+    "svar": "15,87",
+    "forventet": "uavklart",
+    "grunn": "Avrundet til 2 desimaler; utenfor toleransen.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "15,9",
+    "forventet": "uavklart",
+    "grunn": "Avrundet til 1 desimal.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "1p-v23-d1-2": {
+  "riktige": [
+   "2·10^16",
+   "2*10^16",
+   "2 · 10^{16}",
+   "2×10^16",
+   "2·10¹⁶",
+   "2E16"
+  ],
+  "feil": [
+   "2·10^15",
+   "2·10^17",
+   "20·10^16"
+  ],
+  "formkrav": true,
+  "merknad": "Standardform kreves (SELV – ingen autosjekk).",
+  "formfeil": [
+   "20 000 000 000 000 000",
+   "20·10^15"
+  ]
+ },
+ "1p-v23-d2-1a": {
+  "riktige": [
+   "96",
+   "96 døgn",
+   "ca. 96 dager",
+   "94 døgn",
+   "98 dager",
+   "96,2 døgn"
+  ],
+  "feil": [
+   "3,13",
+   "5,77 og 8,91",
+   "150"
+  ],
+  "formkrav": false,
+  "merknad": "Fasit er ett tall 96,16 ± 3; fh lister mellomresultater 5,77 / 8,91 – elever som svarer med dem får 0.",
+  "grense": [
+   {
+    "svar": "3,1 måneder",
+    "forventet": "uavklart",
+    "grunn": "Annen enhet.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "93",
+    "forventet": "uavklart",
+    "grunn": "Rett utenfor toleransen (96,16−3 = 93,16).",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "1p-v23-d2-3a": {
+  "riktige": [
+   "600",
+   "600 m²",
+   "600 m^2",
+   "A = 600 m2",
+   "Arealet er 600 m²"
+  ],
+  "feil": [
+   "1200",
+   "60",
+   "800"
+  ],
+  "formkrav": false,
+  "merknad": ""
+ },
+ "1p-v23-d2-5c": {
+  "riktige": [
+   "960",
+   "960 stk",
+   "960 drops",
+   "Kari trenger 960 Non Stop",
+   "960,0"
+  ],
+  "feil": [
+   "96",
+   "860",
+   "1920"
+  ],
+  "formkrav": false,
+  "merknad": ""
+ },
+ "1p-v23-d2-5d": {
+  "riktige": [
+   "29",
+   "N = 29",
+   "29 K-er",
+   "Hun kan lage 29 K-er",
+   "29 stk"
+  ],
+  "feil": [
+   "30",
+   "28",
+   "31"
+  ],
+  "formkrav": false,
+  "merknad": ""
+ },
+ "1p-h22-d1-1a": {
+  "riktige": [
+   "7500",
+   "7 500 kr",
+   "7500 kroner",
+   "7 500",
+   "Familien betaler 7500 kroner",
+   "7500,00 kr"
+  ],
+  "feil": [
+   "75000",
+   "750",
+   "7,5"
+  ],
+  "formkrav": false,
+  "merknad": ""
+ },
+ "1p-h22-d1-1b": {
+  "riktige": [
+   "0,05",
+   "0,05 prosentpoeng",
+   "0,05 pp",
+   "0,05 %",
+   "0,05 prosent",
+   "0.05 pp",
+   "Endringen er 0,05 prosentpoeng"
+  ],
+  "feil": [
+   "0,5",
+   "5",
+   "0,35"
+  ],
+  "formkrav": false,
+  "merknad": "",
+  "grense": [
+   {
+    "svar": "0,5 promille",
+    "forventet": "uavklart",
+    "grunn": "Samme endring i promille, ikke prosentpoeng.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "0,5 ‰",
+    "forventet": "uavklart",
+    "grunn": "Samme.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "1p-h22-d2-1a": {
+  "riktige": [
+   "38",
+   "38 °C",
+   "38°C",
+   "38 grader",
+   "38 C",
+   "38,0 °C"
+  ],
+  "feil": [
+   "3,5",
+   "34,5 °C",
+   "41"
+  ],
+  "formkrav": false,
+  "merknad": ""
+ },
+ "1p-h22-d2-1b": {
+  "riktige": [
+   "5,3",
+   "5,3 timer",
+   "5,30 t",
+   "5,296",
+   "5,3 h",
+   "ca. 5,3 timer",
+   "5,29"
+  ],
+  "feil": [
+   "20",
+   "6 timer",
+   "4,3"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranse ±0,05.",
+  "grense": [
+   {
+    "svar": "5 timer og 18 minutter",
+    "forventet": "riktig",
+    "grunn": "Samme tid som 5,3 timer, i timer og minutter.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "5 timer",
+    "forventet": "uavklart",
+    "grunn": "Avrundet; utenfor toleransen.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "1p-h22-d2-2": {
+  "riktige": [
+   "30 og 10",
+   "30 leiligheter har to rom og 10 har tre",
+   "30 to-roms og 10 tre-roms",
+   "30, 10",
+   "30; 10",
+   "30 med to rom og 10 med tre rom"
+  ],
+  "feil": [
+   "10 og 30",
+   "25 og 15",
+   "20 og 20"
+  ],
+  "formkrav": false,
+  "merknad": "Fast rekkefølge: to-roms først, deretter tre-roms."
+ },
+ "1p-v22-d1-1a": {
+  "riktige": [
+   "0,2",
+   "0,2 prosentpoeng",
+   "0,2 pp",
+   "0.2 pp",
+   "0,20 prosentpoeng",
+   "Renten steg med 0,2 prosentpoeng"
+  ],
+  "feil": [
+   "10",
+   "2,2",
+   "0,02"
+  ],
+  "formkrav": false,
+  "merknad": "",
+  "grense": [
+   {
+    "svar": "0,2 %",
+    "forventet": "uavklart",
+    "grunn": "Elever skriver ofte % for prosentpoeng.",
+    "parser_godtar": true
+   }
+  ]
+ },
+ "1p-v22-d1-1b": {
+  "riktige": [
+   "10",
+   "10 %",
+   "10 prosent",
+   "10,0 %",
+   "Renten steg med 10 %"
+  ],
+  "feil": [
+   "0,2",
+   "0,2 %",
+   "20 %"
+  ],
+  "formkrav": false,
+  "merknad": ""
+ },
+ "1p-v22-d1-4a": {
+  "riktige": [
+   "1000",
+   "1000 cm³",
+   "1 000 cm3",
+   "1000 cm^3",
+   "V(5) = 1000",
+   "Esken får volum 1000 cm³"
+  ],
+  "feil": [
+   "100",
+   "10 000",
+   "500"
+  ],
+  "formkrav": false,
+  "merknad": ""
+ },
+ "1p-v22-d2-1c": {
+  "riktige": [
+   "11,7",
+   "11,7 min",
+   "11,72 minutter",
+   "11,7 minutter",
+   "ca. 11,7 minutter",
+   "11,716",
+   "11.7"
+  ],
+  "feil": [
+   "68,3",
+   "20 min",
+   "5,9"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranse ±0,05; 68,3 er den andre løsningen utenfor definisjonsmengden.",
+  "grense": [
+   {
+    "svar": "12",
+    "forventet": "uavklart",
+    "grunn": "Avrundet til hele minutter; utenfor toleransen.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "1p-v22-d2-4a": {
+  "riktige": [
+   "9,124",
+   "9,124 g",
+   "9,12 g",
+   "9,1 g",
+   "9,124 gram",
+   "ca. 9,1 gram"
+  ],
+  "feil": [
+   "912,4",
+   "0,9124",
+   "91,24"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranse ±0,05.",
+  "grense": [
+   {
+    "svar": "10 mL veier 9,124 g",
+    "forventet": "riktig",
+    "grunn": "Svar i setning med to tall (10 og 9,124).",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "1p-v22-d2-4b": {
+  "riktige": [
+   "6,1",
+   "6,1 dL",
+   "6,10 dL",
+   "6,100 dl",
+   "ca. 6,1 desiliter",
+   "6,10"
+  ],
+  "feil": [
+   "61",
+   "556,6",
+   "0,061"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranse ±0,05.",
+  "grense": [
+   {
+    "svar": "0,61 L",
+    "forventet": "uavklart",
+    "grunn": "Samme mengde i liter.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "1p-v22-d2-5": {
+  "riktige": [
+   "68719476736",
+   "68 719 476 736",
+   "2^36",
+   "6,87·10^10",
+   "6,872·10^10",
+   "68 700 000 000",
+   "6,9·10^10"
+  ],
+  "feil": [
+   "4294967296",
+   "1,37·10^11",
+   "720"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranse 1 %.",
+  "grense": [
+   {
+    "svar": "69 milliarder",
+    "forventet": "riktig",
+    "grunn": "Ordform (≈6,9·10^10, innen toleransen); SPEC har ikke ord=true.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "68,7 milliarder",
+    "forventet": "riktig",
+    "grunn": "Som over.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "1p-h21-d1-1": {
+  "riktige": [
+   "25",
+   "25 elever",
+   "Det er 25 elever i klassen",
+   "25 stk",
+   "25,0"
+  ],
+  "feil": [
+   "9",
+   "90",
+   "75"
+  ],
+  "formkrav": false,
+  "merknad": ""
+ },
+ "1p-h21-d1-3a": {
+  "riktige": [
+   "5",
+   "5 timer",
+   "5 t",
+   "5 h",
+   "t = 5",
+   "Det tar 5 timer",
+   "5,0 timer"
+  ],
+  "feil": [
+   "45",
+   "6",
+   "61"
+  ],
+  "formkrav": false,
+  "merknad": ""
+ },
+ "1p-h21-d1-4": {
+  "riktige": [
+   "21",
+   "21 min",
+   "21 minutter",
+   "Audun bruker 21 minutter",
+   "21,0 min"
+  ],
+  "feil": [
+   "20,57",
+   "12",
+   "9"
+  ],
+  "formkrav": false,
+  "merknad": "",
+  "grense": [
+   {
+    "svar": "0,35 timer",
+    "forventet": "uavklart",
+    "grunn": "Samme tid i timer.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "1p-h21-d2-2a": {
+  "riktige": [
+   "142,6",
+   "142,6 kcal",
+   "142.6 kcal",
+   "142,60 kcal",
+   "Energiinnholdet er 142,6 kcal"
+  ],
+  "feil": [
+   "143",
+   "22,9",
+   "91,8"
+  ],
+  "formkrav": false,
+  "merknad": "Eksakt nøkkel uten toleranse: «143» (avrundet) avvises.",
+  "grense": [
+   {
+    "svar": "100 g kokt egg inneholder 142,6 kcal",
+    "forventet": "riktig",
+    "grunn": "Svar i setning med to tall.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "1p-h21-d2-2b": {
+  "riktige": [
+   "5,2",
+   "5,2 %",
+   "5,23 %",
+   "5,3 %",
+   "5,23",
+   "5,2 prosent",
+   "ca. 5,2 %"
+  ],
+  "feil": [
+   "156,86 kcal",
+   "5,9 %",
+   "10,5 %"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranse ±0,1.",
+  "grense": [
+   {
+    "svar": "5 %",
+    "forventet": "uavklart",
+    "grunn": "Heltallsavrunding; utenfor toleransen.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "1p-h21-d2-5": {
+  "riktige": [
+   "14,3",
+   "14,3 %",
+   "14,29 %",
+   "14,3 prosent",
+   "14,2857 %",
+   "14,29",
+   "ca. 14,3 %"
+  ],
+  "feil": [
+   "15 %",
+   "50 %",
+   "5 %"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranse ±0,1.",
+  "grense": [
+   {
+    "svar": "14 %",
+    "forventet": "uavklart",
+    "grunn": "Heltallsavrunding; utenfor toleransen.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "P7-d1-3": {
+  "riktige": [
+   "0,2 L; 3,5 L; 14 glass",
+   "0,2\n3,5 liter\n14 glass",
+   "a) 0,2 liter; b) 3,5 L; c) 14",
+   "a) 0,20 L b) 3,5 c) 14 stk",
+   "0,2 L, 3,5 liter og 14 glass",
+   "0,2; 3,5 L; 14",
+   "0,2 L, 3,5 L, 14 glass",
+   "0,2 L, 3,5 L og 14 glass"
+  ],
+  "feil": [
+   "0,2 L; 3,5 L; 15 glass",
+   "0,23 L; 3,5 L; 14 glass",
+   "0,2; 3; 14",
+   "2 L; 3,5 L; 14 glass",
+   "3,5; 0,2; 14",
+   "0,2 L; 3,5 L"
+  ],
+  "formkrav": false,
+  "merknad": "Fast rekkefølge: 0,2 L; 3,5 L; 14 glass. Enhetene er ikke i SPEC; parseren ignorerer ord som «L» og «glass» bare hvis de ikke blir lest som tall.",
+  "grense": [
+   {
+    "svar": "2 dL; 3,5 L; 14 glass",
+    "forventet": "riktig",
+    "grunn": "2 dL = 0,2 L, men parseren er enhetsagnostisk og leser 2.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "0,2 L, 3,5 L, 14,0 glass",
+    "forventet": "riktig",
+    "grunn": "Allerede ok hvis tallene stemmer.",
+    "parser_godtar": true
+   },
+   {
+    "svar": "0,2 L, 3,5 L, 14 glass",
+    "forventet": "riktig",
+    "grunn": "Oppgitt som avvist i MatteBOTs opprinnelige gjennomgang (gammel bundle).",
+    "parser_godtar": true
+   }
+  ]
+ },
+ "P7-d1-4": {
+  "riktige": [
+   "2 prosentpoeng og 25 %; 72; 300",
+   "2 pp og 25 %\n72\n300",
+   "a) 2 og 25; b) 72; c) 300",
+   "a) 2 prosentpoeng, 25 prosent b) 72 c) 300",
+   "2; 25; 72; 300",
+   "2 prosentpoeng; 25 %; 72; 300",
+   "a) 2 pp b) 25 % c) 72 d) 300"
+  ],
+  "feil": [
+   "2; 25; 72; 301",
+   "2; 20; 72; 300",
+   "2; 25; 70; 300",
+   "2; 25; 72; 30",
+   "25; 2; 72; 300",
+   "2 pp; 25 %; 72"
+  ],
+  "formkrav": false,
+  "merknad": "Fast rekkefølge: 2 prosentpoeng, 25 %, 72, 300. Fire verdier fordelt på delsvar. Oppgaveteksten for P7-d1-4 ble ikke lest; delsvarene er avledet fra SPEC.",
+  "grense": [
+   {
+    "svar": "2 pp og 25 %; 72; 300",
+    "forventet": "riktig",
+    "grunn": "Prosentpoeng (pp) etterfulgt av «og» – avhenger av om parseren fjerner «pp».",
+    "parser_godtar": true
+   },
+   {
+    "svar": "2 prosentpoeng, 25 %, 72 og 300",
+    "forventet": "riktig",
+    "grunn": "Alt som én liste med komma/og.",
+    "parser_godtar": true
+   }
+  ]
+ },
+ "P7-d2-1": {
+  "riktige": [
+   "10 686 kr; 21,7 %; år 6",
+   "10686\n21,67 %\ni år 6",
+   "a) 10686 kroner; b) 21.7 prosent; c) år 6",
+   "a) 10 700 kr b) 21,7 % c) 6",
+   "10 686 kr, 21,7 og 6 år",
+   "10686; 21,67 %; i år 6",
+   "ca. 10 686 kr, ca. 21,7 %, i år 6"
+  ],
+  "feil": [
+   "10 686 kr; 20 %; år 6",
+   "10 686 kr; 21,7 %; år 5",
+   "11 400 kr; 21,7 %; år 6",
+   "10 686 kr; 21,7 %; år 7",
+   "9 500 kr; 21,7 %; år 6",
+   "10 686 kr; 21,7 %"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranse 1 % (rel.). Svar «10 700 kr» godtas (diff 0,13 %). «21,7» vs 21,665: diff 0,16 %.",
+  "grense": [
+   {
+    "svar": "10 686 kr, 21,7 %, år 6",
+    "forventet": "riktig",
+    "grunn": "Opprinnelig oppgitt som avvist i MatteBOTs gjennomgang (gammel bundle).",
+    "parser_godtar": true
+   },
+   {
+    "svar": "10 686 kr; 21,7 %; i løpet av år 6",
+    "forventet": "riktig",
+    "grunn": "Ordform.",
+    "parser_godtar": true
+   }
+  ]
+ },
+ "P7-d2-4": {
+  "riktige": [
+   "4,5 L; 898 kr; 10 %",
+   "4,5\n898 kroner\n10 %",
+   "a) 4,5 liter; b) 898,0 kr; c) 10",
+   "a) 4,50 L b) 898 kr c) 10 prosent",
+   "4,5 L, 898 og 10 %",
+   "4,5; 898 kroner; 10"
+  ],
+  "feil": [
+   "4,5; 898; 11",
+   "4,5; 449; 10",
+   "5; 898; 10",
+   "4,5; 898; 20",
+   "45; 898; 10",
+   "4,5; 898"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranse 0,5 % (rel.): 4,5 L / 898 kr / 10 %.",
+  "grense": [
+   {
+    "svar": "4,5 L; 898 kr; 0,1",
+    "forventet": "uavklart",
+    "grunn": "Desimalform av 10 %.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "1.OP2": {
+  "riktige": [
+   "-8; 59; -6",
+   "−8, 59, −6",
+   "-8, 59 og -6",
+   "−8\n59\n−6",
+   "a) -8; b) 59; c) -6",
+   "a) −8 b) 59 c) −6"
+  ],
+  "feil": [
+   "8; 59; -6",
+   "-8; 59; 6",
+   "-8; 5; -6",
+   "-8, 59"
+  ],
+  "formkrav": true,
+  "merknad": "SPEC har selvvurder (ingen autosjekk). Fortegnsfeil er de typiske feilene (negativ base).",
+  "formfeil": [
+   "-8; 59; -12/2",
+   "-8; 59; -6/1"
+  ]
+ },
+ "1.OP5": {
+  "riktige": [
+   "5/6; 2/3; 3/10",
+   "5/6, 2/3, 3/10",
+   "5/6, 2/3 og 3/10",
+   "5/6\n2/3\n3/10",
+   "a) 5/6; b) 2/3; c) 3/10",
+   "\\frac{5}{6}, \\frac{2}{3}, \\frac{3}{10}"
+  ],
+  "feil": [
+   "5/6; 2/3; 3/5",
+   "1/6; 2/3; 3/10",
+   "5/6; 2/3"
+  ],
+  "formkrav": true,
+  "merknad": "SPEC har selvvurder; fh er brøker. SPEC-toleransen (±0,005) gjør at avrundede desimaltall (0,83; 0,67) også er numerisk innenfor – de er listet som formfeil siden oppgaven (regn ut brøkene) forventer brøk.",
+  "formfeil": [
+   "0,83; 0,67; 0,3",
+   "0,8333; 0,6667; 0,3"
+  ]
+ },
+ "1.OP6": {
+  "riktige": [
+   "a^3; 4x^4; 1/y",
+   "a³\n4x⁴\n\\frac{1}{y}",
+   "a) a^3; b) 4x^4; c) 1/y",
+   "a) a³ b) 4*x^4 c) y^-1",
+   "a^3, 4x⁴, y⁻¹",
+   "a³; 4x^4; \\frac{1}{y}"
+  ],
+  "feil": [
+   "a^7; 4x^4; 1/y",
+   "a^3; 4x^3; 1/y",
+   "a^3; 4x^4; y",
+   "a^3; 8x^3; 1/y"
+  ],
+  "formkrav": true,
+  "merknad": "Oppgaven ber om forenkling; ufullstendig forenklede, men like uttrykk er listet som formfeil.",
+  "formfeil": [
+   "a^5*a^-2; 4x^4; 1/y",
+   "a^3; 8x^3/(2/x); 1/y"
+  ]
+ },
+ "1.OP7": {
+  "riktige": [
+   "5√2; 6; 5√7",
+   "5*√2\n6\n5√7",
+   "a) 5\\sqrt{2}; b) 6; c) 5\\sqrt{7}",
+   "5sqrt(2), 6, 5*sqrt(7)",
+   "5√2, 6 og 5√7",
+   "5*√2; 6; 5\\sqrt{7}"
+  ],
+  "feil": [
+   "5√2; 36; 5√7",
+   "25√2; 6; 5√7",
+   "5√2; 6; 7√7",
+   "√50; 6"
+  ],
+  "formkrav": true,
+  "merknad": "«Skriv så enkelt som mulig»: eksakte, forenklede røtter forventes. SPEC sjekker numerisk (rel. 0,2 %), så desimaltall og uforenklede røtter er verdi-riktige, men formfeil.",
+  "formfeil": [
+   "7,07; 6; 13,23",
+   "√50; 6; √175",
+   "5√2; √36; 5√7",
+   "5√2; 6; 3√7+2√7"
+  ],
+  "grense": [
+   {
+    "svar": "a) 5√2 b) 6 c) 5√7",
+    "forventet": "riktig",
+    "grunn": "Bokstavmerking uten skilletegn (kun mellomrom) feiler når delsvarene inneholder √; «a) 2300 m b) …» uten √ fungerer.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "2.OP1": {
+  "riktige": [
+   "7x-2y; a-11; x+7y",
+   "7x − 2y\na-11\n7y+x",
+   "a) -2y+7x; b) -11+a; c) x+7y",
+   "a) 7x-2y b) a-11 c) 7y+x",
+   "7x − 2y, -11+a, x+7y",
+   "-2y+7x; a-11; 7y+x"
+  ],
+  "feil": [
+   "7x+2y; a-11; x+7y",
+   "7x-2y; a-5; x+7y",
+   "7x-2y; a-11; x+5y",
+   "7x-2y; 7a-11; x+7y"
+  ],
+  "formkrav": true,
+  "merknad": "Trekk sammen: ikke-sammentrukne, men like uttrykk er formfeil. a-5 er typisk fortegnsfeil.",
+  "formfeil": [
+   "5x+2x-3y+y; a-11; x+7y",
+   "7x-2y; 4a-8-3a-3; x+7y"
+  ]
+ },
+ "2.OP2": {
+  "riktige": [
+   "6x+1; x^2+3x-10; x^2-4x+3",
+   "1+6x\n-10+3x+x^2\nx^2-4x+3",
+   "a) 6x+1; b) x^2+3x-10; c) x²−4x+3",
+   "a) 1+6x b) x²+3x−10 c) 3-4x+x^2",
+   "6x+1, -10+3x+x^2, x^2-4x+3",
+   "1+6x; x^2+3x-10; x²−4x+3"
+  ],
+  "feil": [
+   "6x-1; x^2+3x-10; x^2-4x+3",
+   "6x+1; x^2-3x-10; x^2-4x+3",
+   "6x+1; x^2+3x+10; x^2-4x+3",
+   "6x+1; x^2+3x-10; x^2-6x+3"
+  ],
+  "formkrav": true,
+  "merknad": "Oppgaven ber om å multiplisere ut; uutregnede produkter er formfeil.",
+  "formfeil": [
+   "3(2x-1)+4; x^2+3x-10; x^2-4x+3",
+   "6x+1; (x+5)(x-2); x^2-4x+3"
+  ]
+ },
+ "2.OP3": {
+  "riktige": [
+   "x^2+8x+16; a^2-6a+9; 4b^2-25",
+   "x²+8x+16\n9-6a+a^2\n4b^2-25",
+   "a) 16+8x+x^2; b) a^2-6a+9; c) 4b²−25",
+   "a) x^2+8x+16 b) a²−6a+9 c) -25+4b^2",
+   "x²+8x+16, 9-6a+a^2, 4b^2-25",
+   "16+8x+x^2; a^2-6a+9; 4b²−25"
+  ],
+  "feil": [
+   "x^2+16; a^2-6a+9; 4b^2-25",
+   "x^2+8x+16; a^2+9; 4b^2-25",
+   "x^2+8x+16; a^2-6a+9; 4b^2+25",
+   "x^2+4x+16; a^2-6a+9; 4b^2-25"
+  ],
+  "formkrav": true,
+  "merknad": "Kvadratsetninger: «x^2+16» (glemt midtledd) er den typiske feilen.",
+  "formfeil": [
+   "(x+4)^2; a^2-6a+9; 4b^2-25",
+   "x^2+8x+16; (a-3)^2; (2b)^2-5^2"
+  ]
+ },
+ "2.OP4": {
+  "riktige": [
+   "47; 14+6√5; 6-2x√3",
+   "47\n14+6*sqrt(5)\n-2x√3+6",
+   "a) 47; b) 14+6\\sqrt{5}; c) 6-2x√3",
+   "a) 47 b) 14+6√5 c) 6-2√3x",
+   "47, 6√5+14, 6-2*sqrt(3)*x",
+   "47; 14+6*sqrt(5); -2x√3+6"
+  ],
+  "feil": [
+   "45; 14+6√5; 6-2x√3",
+   "47; 14+3√5; 6-2x√3",
+   "47; 14+6√5; -6-2x√3",
+   "47; 14+6√5; 6+2x√3",
+   "47; 14+6√5; 6"
+  ],
+  "formkrav": true,
+  "merknad": "Eksakt svar med røtter. fh «6-2x√3» skrives også «6-2√3x»; begge er likeverdige.",
+  "formfeil": [
+   "7^2-2; 14+6√5; 6-2x√3",
+   "47; (√5+3)^2; 6-2x√3",
+   "47; 14+6√5; x^2-2x√3+3-(x^2-3)"
+  ],
+  "grense": [
+   {
+    "svar": "47; 14+6√5; 6-2x\\sqrt{3}",
+    "forventet": "riktig",
+    "grunn": "LaTeX \\sqrt{3} rett etter en variabel (x\\sqrt{3}) tolkes ikke; 2\\sqrt{3}x og 2x√3 fungerer.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "2.OP5": {
+  "riktige": [
+   "2496; 3721; 9999",
+   "2496, 3721, 9999",
+   "2496, 3721 og 9999",
+   "2496\n3721\n9999",
+   "a) 2496; b) 3721; c) 9999",
+   "2 496; 3 721; 9 999"
+  ],
+  "feil": [
+   "2500; 3721; 9999",
+   "2496; 3601; 9999",
+   "2496; 3721; 9901",
+   "2496; 3721"
+  ],
+  "formkrav": true,
+  "merknad": "Hvis oppgaven krever bruk av kvadratsetninger, er rene tall (uten vist metode) ikke autosjekkbare; SPEC har selvvurder.",
+  "formfeil": [
+   "2500-4; 3721; 9999",
+   "50^2-2^2; 60^2+120+1; 100^2-1"
+  ]
+ },
+ "2.OP9": {
+  "riktige": [
+   "b=A/l; 4; t=s/v",
+   "b = A/l\nb = 4\nt=\\frac{s}{v}",
+   "a) A/l; b) 4; c) t=s/v",
+   "a) b=\\frac{A}{l} b) b=4 c) t = s/v",
+   "b=A/l, b = 4, s/v",
+   "b = A/l; 4; t=\\frac{s}{v}"
+  ],
+  "feil": [
+   "b=A*l; 4; t=s/v",
+   "b=l/A; 4; t=s/v",
+   "b=A/l; 576; t=s/v",
+   "b=A/l; 4; t=s*v",
+   "b=A/l; 4; t=v/s"
+  ],
+  "formkrav": false,
+  "merknad": "Isoler/omform: SPEC sjekker uttrykk-ekvivalens; b=A/l og b=A·l⁻¹ er like. Rekkefølge a, b, c."
+ },
+ "3.OP1": {
+  "riktige": [
+   "x=8, x=9, x=15",
+   "8; x=9; 15",
+   "a) x=8 b) 9 c) x=15",
+   "8, x=9 og 15",
+   "x=8\n9\nx=15",
+   "8, x=9, 15"
+  ],
+  "feil": [
+   "x=7, x=9, x=15",
+   "x=8, x=-9, x=15",
+   "x=8, x=9, x=-15",
+   "x=8, x=9, x=5"
+  ],
+  "formkrav": false,
+  "merknad": "Rekkefølge a, b, c er fast."
+ },
+ "3.OP3": {
+  "riktige": [
+   "r=C/(2π); r=5",
+   "r=C/(2*pi)\nr = 5",
+   "a) r=\\frac{C}{2\\pi}; b) r=5",
+   "a) C/(2π) b) 5",
+   "r=C/(2π), r = 5"
+  ],
+  "feil": [
+   "r=2πC; r=5",
+   "r=C/π; r=5",
+   "r=2π/C; r=5",
+   "r=C/(2π); r=10",
+   "r=C/(2π); r=5π"
+  ],
+  "formkrav": true,
+  "merknad": "Oppgave b ber om eksakt svar; 5 er eksakt.",
+  "formfeil": [
+   "r=C/(2π); r=10π/(2π)",
+   "r=C/(2π); r=5,0"
+  ],
+  "grense": [
+   {
+    "svar": "r=C/2π",
+    "forventet": "uavklart",
+    "grunn": "Mange skriver C/2π og mener C/(2π); bokstavelig tolket er det (C/2)·π – en parser må velge.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "r=C/(2π); r=10π/2π",
+    "forventet": "uavklart",
+    "grunn": "Samme ambiguitet i b).",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "3.OP4": {
+  "riktige": [
+   "x=-3 eller x=3; x=2 eller x=5; x=0 eller x=4",
+   "x=3 eller x=-3\nx = 2 og x = 5\n0 og 4",
+   "a) x = −3 og x = 3; b) 2 og 5; c) x=0 eller x=4",
+   "a) -3 og 3 b) x=2 eller x=5 c) x = 0 og x = 4",
+   "x=-3 eller x=3; x=5 eller x=2; x=4 eller x=0",
+   "x=3 eller x=-3; x = 2 og x = 5; 0 og 4"
+  ],
+  "feil": [
+   "x=3; x=2 eller x=5; x=0 eller x=4",
+   "x=-3 eller x=3; x=-2 eller x=-5; x=0 eller x=4",
+   "x=-3 eller x=3; x=2 eller x=5; x=4",
+   "x=-3 eller x=3; x=2 eller x=5; x=2"
+  ],
+  "formkrav": false,
+  "merknad": "Hvert delsvar er en uordnet løsningsmengde (rekkefølgen innen en bokstav spiller ingen rolle).",
+  "grense": [
+   {
+    "svar": "x=±3; x=2 eller x=5; x=0 eller x=4",
+    "forventet": "riktig",
+    "grunn": "Skrivemåten ±3 for x=−3 og x=3 er svært vanlig.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "a) x=±3 b) x=2 eller x=5 c) x=0 eller x=4",
+    "forventet": "riktig",
+    "grunn": "Som over, med bokstavmerking.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "3.OP5": {
+  "riktige": [
+   "x=3+√5 eller x=3−√5; x=3 eller x=-1/2",
+   "x=3−√5 eller x=3+√5\nx=3 og x=-0,5",
+   "a) x=3+sqrt(5) og x=3-sqrt(5); b) x=3 og x=-\\frac{1}{2}",
+   "a) x=3+\\sqrt{5} eller x=3-\\sqrt{5} b) x=3 eller x=-1/2",
+   "x=3+√5 eller x=3−√5; x=-1/2 eller x=3",
+   "x=3−√5 eller x=3+√5; x=3 og x=-0,5"
+  ],
+  "feil": [
+   "x=3+√5 eller x=3+√5; x=3 eller x=-1/2",
+   "x=-3+√5 eller x=-3−√5; x=3 eller x=-1/2",
+   "x=3+√5 eller x=3−√5; x=3 eller x=1/2",
+   "x=3+√5 eller x=3−√5; x=3",
+   "x=6+√5 eller x=6−√5; x=3 eller x=-1/2"
+  ],
+  "formkrav": true,
+  "merknad": "«Oppgi eksakt svar»: desimaltall (0,764 / 5,236) ligger innenfor SPEC-toleransen (rel. 0,2 %) men er formfeil.",
+  "formfeil": [
+   "x=5,236 eller x=0,764; x=3 eller x=-1/2"
+  ],
+  "grense": [
+   {
+    "svar": "x=3±√5; x=3 eller x=-1/2",
+    "forventet": "riktig",
+    "grunn": "±-skrivemåte for de to røttene.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "x=0,76 eller x=5,24; x=3 eller x=-0,5",
+    "forventet": "uavklart",
+    "grunn": "Avrunding til to desimaler ligger utenfor SPEC-toleransen (rel. 0,2 %), men oppgaven ber om eksakt svar.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "3.OP6": {
+  "riktige": [
+   "k=4; x=2",
+   "4, x = 2",
+   "a) k = 4 b) x=2",
+   "k=4\n2",
+   "4 og x = 2",
+   "k = 4; x=2"
+  ],
+  "feil": [
+   "k=2, x=4",
+   "k=-4, x=2",
+   "k=4, x=-2",
+   "k=4, x=4",
+   "k=16; x=2"
+  ],
+  "formkrav": false,
+  "merknad": ""
+ },
+ "3.OP7": {
+  "riktige": [
+   "x=5/2; x=6 eller x=-6",
+   "x=2,5\nx = 6 og x = −6",
+   "a) x=2.5; b) 6 og -6",
+   "a) 5/2 b) x=6 eller x=-6",
+   "x = 2,5; x=-6 eller x=6",
+   "x=5/2; x = 6 og x = −6"
+  ],
+  "feil": [
+   "x=5/2; x=6",
+   "x=-5/2; x=6 eller x=-6",
+   "x=2; x=6 eller x=-6",
+   "x=5/2; x=36 eller x=-36",
+   "x=5/2; x=-6"
+  ],
+  "formkrav": false,
+  "merknad": "Falske løsninger: begge x=6 og x=-6 er gyldige (ingen gir nevner 0). x=0 skal ikke være med.",
+  "grense": [
+   {
+    "svar": "x=2,5; x=±6",
+    "forventet": "riktig",
+    "grunn": "±6 er svært vanlig skrivemåte.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "x=5/2; x=6, x=-6",
+    "forventet": "riktig",
+    "grunn": "Komma som skille mellom løsningene.",
+    "parser_godtar": true
+   }
+  ]
+ },
+ "3.OP9": {
+  "riktige": [
+   "320 g og 9 personer",
+   "320; 9 stk",
+   "a) 320 gram b) 9 personer",
+   "320 g, 9",
+   "320\n9 stk",
+   "320 gram og 9 personer"
+  ],
+  "feil": [
+   "300 g og 9 personer",
+   "320 g og 8 personer",
+   "9 og 320",
+   "320; 10",
+   "125 g og 9"
+  ],
+  "formkrav": false,
+  "merknad": "Rekkefølge a) 320 g, b) 9 personer er fast."
+ },
+ "4.OP2": {
+  "riktige": [
+   "y=-2x+3; y=0,5x-1; (8/5, -1/5)",
+   "y = −2x + 3\ny = 0.5x − 1\nx=8/5, y=-1/5",
+   "a) -2x+3; b) y=\\frac{1}{2}x-1; c) (8/5;-1/5)",
+   "a) y=3-2x b) y=0,5x-1 c) (8/5, -1/5)",
+   "y=-2x+3, y=x/2-1, (1,6; -0,2)",
+   "y = −2x + 3; y = 0.5x − 1; (1.6; -0.2)"
+  ],
+  "feil": [
+   "y=2x+3; y=0,5x-1; (8/5, -1/5)",
+   "y=-2x+3; y=-0,5x-1; (8/5, -1/5)",
+   "y=-2x+3; y=0,5x-1; (8/5, 1/5)",
+   "y=-2x+3; y=0,5x-1; (1,6; 0,2)",
+   "y=-2x+3; y=2x-1; (4, 3)"
+  ],
+  "formkrav": false,
+  "merknad": "Linja og den vinkelrette har stigningstall −2 og 1/2. Skjæringspunktet (8/5, −1/5) = (1,6; −0,2).",
+  "grense": [
+   {
+    "svar": "y=-2x+3; y=1/2x-1; (8/5, -1/5)",
+    "forventet": "uavklart",
+    "grunn": "«1/2x» kan tolkes som (1/2)·x eller 1/(2x); elever mener nesten alltid (1/2)·x.",
+    "parser_godtar": true
+   },
+   {
+    "svar": "y=-2x+3; y=0,5x-1; (1,6, -0,2)",
+    "forventet": "uavklart",
+    "grunn": "Desimalkomma i koordinatpar uten mellomrom/semikolon er tvetydig (to eller fire tall?).",
+    "parser_godtar": true
+   }
+  ]
+ },
+ "4.OP3": {
+  "riktige": [
+   "f(x)=2x^2-8x+5; x=2-√6/2 eller x=2+√6/2",
+   "2x^2-8x+5\nx=2-\\frac{\\sqrt{6}}{2} og x=2+\\frac{\\sqrt{6}}{2}",
+   "a) f(x) = 2x² − 8x + 5; b) x=2-sqrt(6)/2 og x=2+sqrt(6)/2",
+   "a) y=2x^2-8x+5 b) x=2-√6/2 eller x=2+√6/2",
+   "5-8x+2x^2; x=2+√6/2 og x=2-√6/2"
+  ],
+  "feil": [
+   "f(x)=2x^2-8x-3; x=2-√6/2 eller x=2+√6/2",
+   "f(x)=x^2-4x+5; x=2-√6/2 eller x=2+√6/2",
+   "f(x)=2x^2-8x+5; x=2-√6 eller x=2+√6",
+   "f(x)=2x^2-8x+5; x=0 eller x=4",
+   "f(x)=2x^2-8x+5; x=2+√6/2"
+  ],
+  "formkrav": true,
+  "merknad": "a) skal være på formen ax²+bx+c – toppunktsform 2(x−2)²−3 er verdi-lik, men formfeil. b) «finn eksakt»: 0,775 / 3,225 er formfeil.",
+  "formfeil": [
+   "f(x)=2(x-2)^2-3; x=2-√6/2 eller x=2+√6/2",
+   "f(x)=2x^2-8x+5; x=0,775 eller x=3,225",
+   "f(x)=2x^2-8x+5; x=2-√(3/2) eller x=2+√(3/2)"
+  ],
+  "grense": [
+   {
+    "svar": "f(x)=2x^2-8x+5; x=2±√6/2",
+    "forventet": "riktig",
+    "grunn": "±-skrivemåte.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "4.OP6": {
+  "riktige": [
+   "3(x-3)(x+1); (-1,10) og (3,-22); y=-9x+5",
+   "f'(x)=3(x-3)(x+1)\ntoppunkt (-1,10) og bunnpunkt (3,-22)\ny=5-9x",
+   "a) 3(x+1)(x-3); b) (−1, 10) og (3, −22); c) y=-9x+5",
+   "a) f'(x) = 3(x − 3)(x + 1) b) (-1,10) og (3,-22) c) y = −9x + 5",
+   "3(x-3)(x+1); (-1,10), (3,-22); -9x+5"
+  ],
+  "feil": [
+   "3(x-3)(x-1); (-1,10) og (3,-22); y=-9x+5",
+   "3(x-3)(x+1); (1,-10) og (3,-22); y=-9x+5",
+   "3(x-3)(x+1); (-1,10) og (3,22); y=-9x+5",
+   "3(x-3)(x+1); (-1,10) og (3,-22); y=-9x-5",
+   "3(x-3)(x+1); (-1,10) og (3,-22); y=9x+5",
+   "3(x-3)(x+1); (-1,10); y=-9x+5"
+  ],
+  "formkrav": true,
+  "merknad": "f'(x) skal faktoriseres: 3x²−6x−9 og 3(x²−2x−3) er verdi-like, men ikke ferdig faktorisert (formfeil).",
+  "formfeil": [
+   "3x^2-6x-9; (-1,10) og (3,-22); y=-9x+5",
+   "3(x^2-2x-3); (-1,10) og (3,-22); y=-9x+5",
+   "(3x+3)(x-3); (-1,10) og (3,-22); y=-9x+5"
+  ]
+ },
+ "4.OP7": {
+  "riktige": [
+   "924 g; 41 cm; 34 %",
+   "a) 924 b) 41,06 cm c) ca. 34 %",
+   "923,6 g, ca. 41 cm, 34 %",
+   "ca. 924 g, 41 cm og 34",
+   "924 g\n41\n33,7 %",
+   "924; 41,06 cm; ca. 34 %"
+  ],
+  "feil": [
+   "92,4 g; 41 cm; 34 %",
+   "924 g; 410 cm; 34 %",
+   "924 g; 41 cm; 3,4 %",
+   "924 g; 41 cm; 10 %",
+   "960 g; 41 cm; 34 %"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranser: ±1 (g), ±0,5 (cm), ±0,5 (prosentpoeng). Rekkefølge a, b, c.",
+  "grense": [
+   {
+    "svar": "924 g; 41 cm; 1,34",
+    "forventet": "uavklart",
+    "grunn": "Vekstfaktor i stedet for prosent.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "4.OP8": {
+  "riktige": [
+   "138 mg; 3,5 timer; 12,7 timer",
+   "a) 138 b) 3,49 t c) ca. 12,7 timer",
+   "137,8 mg, ca. 3,5 timer, 12,7 timer",
+   "ca. 138 mg, 3,5 timer og 12,7",
+   "138 mg\n3,5\n12,73 t",
+   "138; 3,49 t; ca. 12,7 timer"
+  ],
+  "feil": [
+   "250 mg; 3,5 timer; 12,7 timer",
+   "138 mg; 7 timer; 12,7 timer",
+   "138 mg; 3,5 timer; 0,08 timer",
+   "138; 3,5; 15",
+   "13,8 mg; 3,5; 12,7"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranser ±1 / ±0,1 / ±0,1. Halveringstid 3,49 timer."
+ },
+ "5.OP2": {
+  "riktige": [
+   "(4,3); (3,1) og (-2,6)",
+   "(4, 3)\nx=3, y=1 og x=-2, y=6",
+   "a) x=4, y=3; b) (3, 1) og (−2, 6)",
+   "a) (4,3) b) (3,1), (-2,6)",
+   "(4, 3)\n(-2,6) og (3,1)"
+  ],
+  "feil": [
+   "(4,3); (3,1)",
+   "(3,4); (3,1) og (-2,6)",
+   "(4,3); (3,1) og (2,6)",
+   "(4,3); (3,1) og (-2,-6)",
+   "(4,3); (1,3) og (6,-2)"
+  ],
+  "formkrav": false,
+  "merknad": "Likningssett b) har to løsninger; begge må oppgis. a) skal være (p,q) = (4,3).",
+  "grense": [
+   {
+    "svar": "p=4 og q=3; (3,1) og (-2,6)",
+    "forventet": "riktig",
+    "grunn": "Variabelnavn p, q (oppgaven bruker p og q); parseren godtar kun x=/y=-form eller koordinatpar.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "(p,q)=(4,3); (3,1) og (-2,6)",
+    "forventet": "riktig",
+    "grunn": "Som over.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "(4;3); (3;1) og (-2;6)",
+    "forventet": "riktig",
+    "grunn": "Semikolon inne i koordinatpar kolliderer med semikolon som delsvarskille.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "5.OP6": {
+  "riktige": [
+   "190 kr og 50 kr",
+   "190; 50",
+   "190, 50",
+   "voksen 190 kr, barn 50 kr",
+   "190 kroner og 50 kroner",
+   "en voksenbillett koster 190 kr og en barnebillett 50 kr",
+   "v=190 og b=50"
+  ],
+  "feil": [
+   "50 og 190",
+   "215 og 0",
+   "180 og 70",
+   "190",
+   "200 og 30"
+  ],
+  "formkrav": false,
+  "merknad": "Fast rekkefølge: voksen, så barn."
+ },
+ "5.OP8": {
+  "riktige": [
+   "4",
+   "k=4",
+   "k = 4",
+   "k er 4",
+   "4,0",
+   "k=4 (linjene er parallelle)"
+  ],
+  "feil": [
+   "-4",
+   "2",
+   "k=-4",
+   "k=2",
+   "k=8"
+  ],
+  "formkrav": false,
+  "merknad": "Oppgaven ber også om regning/begrunnelse; autosjekk kan bare sjekke selve verdien.",
+  "grense": [
+   {
+    "svar": "k≠4",
+    "forventet": "feil",
+    "grunn": "Motsatt: for k≠4 finnes én løsning.",
+    "parser_godtar": true
+   },
+   {
+    "svar": "k=4 (ingen løsning)",
+    "forventet": "riktig",
+    "grunn": "Svar + forklaring i parentes.",
+    "parser_godtar": true
+   }
+  ]
+ },
+ "6.OP1": {
+  "riktige": [
+   "K(x)=20x+150; 9",
+   "K(x) = 20x + 150\nx=9",
+   "a) 20x+150; b) 9",
+   "a) 150+20x b) 9 GB",
+   "K(x)=20x+150, x=9",
+   "K(x) = 20x + 150; 9"
+  ],
+  "feil": [
+   "K(x)=150x+20; 9",
+   "K(x)=20x+150; 16,5",
+   "K(x)=170x; 9",
+   "K(x)=20x+150; 3",
+   "K(x)=20x-150; 9"
+  ],
+  "formkrav": false,
+  "merknad": ""
+ },
+ "6.OP2": {
+  "riktige": [
+   "B(x)=8000*1,05^x; 8820",
+   "8000*1.05^x\n8 820 kr",
+   "a) B(x) = 8000 · 1,05^x; b) 8820 kroner",
+   "a) 8000·1,05^x b) 8820",
+   "y=8000*1,05^x, 8820 kr",
+   "B(x)=8000*1,05^x; 8 820 kr"
+  ],
+  "feil": [
+   "B(x)=8000*1,5^x; 8820",
+   "B(x)=8000+400x; 8800",
+   "B(x)=8000*1,05^x; 8800",
+   "B(x)=8000*1,05*x; 8820",
+   "B(x)=8000*1,05^x; 8400"
+  ],
+  "formkrav": false,
+  "merknad": "",
+  "grense": [
+   {
+    "svar": "B(x)=8000·(1+0,05)^x; 8820",
+    "forventet": "riktig",
+    "grunn": "Skrevet med vekstfaktor som sum – likeverdig.",
+    "parser_godtar": true
+   }
+  ]
+ },
+ "6.OP3": {
+  "riktige": [
+   "20 enheter; 300 000 kr",
+   "20\n300 000 kroner",
+   "a) x=20; b) 300 000",
+   "a) 20 stk b) 300 000 kr",
+   "20 enheter, 300000",
+   "20; 300",
+   "20 enheter; 300 (tusen kr)"
+  ],
+  "feil": [
+   "40; 300000",
+   "20; 3000",
+   "10; 300000",
+   "20; 300 000 000",
+   "20"
+  ],
+  "formkrav": false,
+  "merknad": "Overskuddet er oppgitt i tusen kroner: både 300 000 kr og (alternativ) 300 godtas.",
+  "grense": [
+   {
+    "svar": "20 enheter; 300 tusen kr",
+    "forventet": "riktig",
+    "grunn": "Ordform «tusen»; SPEC har ikke ord=true på dette punktet (alternativet 300 godtar kun tallet 300).",
+    "parser_godtar": true
+   }
+  ]
+ },
+ "6.OP4": {
+  "riktige": [
+   "y=3x+5; y=5*2^x",
+   "3x+5\ny = 5 · 2^x",
+   "a) y = 5 + 3x; b) 5*2**x",
+   "a) f(x)=3x+5 b) y=5*2^x",
+   "y=3x+5, 5·2^x",
+   "3x+5; y = 5 · 2^x",
+   "y=3x+5 og y=5*2^x"
+  ],
+  "feil": [
+   "y=5x+3; y=5*2^x",
+   "y=3x+5; y=2*5^x",
+   "y=3x+5; y=5+2x",
+   "y=3x+5; y=5x^2",
+   "y=3x+5; y=5*3^x"
+  ],
+  "formkrav": false,
+  "merknad": "a) lineær, b) eksponentiell. «y=5·2^x» må kunne skrives uten parentes."
+ },
+ "7.OP1": {
+  "riktige": [
+   "2√5",
+   "2*√5",
+   "2*sqrt(5)",
+   "2\\sqrt{5}",
+   "c = 2√5",
+   "2√(5)"
+  ],
+  "feil": [
+   "6",
+   "√12",
+   "2√3",
+   "2√10",
+   "4"
+  ],
+  "formkrav": true,
+  "merknad": "«Finn eksakt og forenklet»: 2√5. √20 og 4,47 er verdi-lik, men ikke forenklet/eksakt (SPEC sjekker numerisk, rel. 0,2 %).",
+  "formfeil": [
+   "√20",
+   "4,47",
+   "4,472",
+   "20^(1/2)",
+   "sqrt(20)"
+  ],
+  "grense": [
+   {
+    "svar": "c=√20=2√5",
+    "forventet": "riktig",
+    "grunn": "Mellomregning + svar i samme felt.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "2√5 ≈ 4,47",
+    "forventet": "riktig",
+    "grunn": "Eksakt svar + desimaltilnærming (to tall).",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "7.OP2": {
+  "riktige": [
+   "15",
+   "15 m",
+   "15,0 m",
+   "h = 15 m",
+   "Masten er 15 m høy"
+  ],
+  "feil": [
+   "26,7 m",
+   "0,75",
+   "1,35 m",
+   "20,25"
+  ],
+  "formkrav": false,
+  "merknad": ""
+ },
+ "7.OP3": {
+  "riktige": [
+   "1/2; -√2/2; 60° og 120°",
+   "0,5\n-sqrt(2)/2\n120 grader og 60 grader",
+   "a) 1/2; b) -\\frac{\\sqrt{2}}{2}; c) v=60, v=120",
+   "0,5; -√2/2; 60° og 120°",
+   "1/2\n−√2/2\nv=60° eller v=120°",
+   "a) 0,5; b) -sqrt(2)/2; c) 60 og 120"
+  ],
+  "feil": [
+   "√3/2; -√2/2; 60° og 120°",
+   "1/2; √2/2; 60° og 120°",
+   "-1/2; -√2/2; 60° og 120°",
+   "1/2; -√2/2; 30° og 150°",
+   "1/2; -√2/2; 60°"
+  ],
+  "formkrav": true,
+  "merknad": "Eksakte verdier ønskes (selvvurder). Delsvar c) har to vinkler; rekkefølge fri.",
+  "formfeil": [
+   "1/2; -0,707; 60° og 120°",
+   "1/2; -0,7071; 60 og 120"
+  ],
+  "grense": [
+   {
+    "svar": "1/2; -1/√2; 60° og 120°",
+    "forventet": "riktig",
+    "grunn": "-1/√2 er eksakt og lik −√2/2, men ikke rasjonalisert nevner.",
+    "parser_godtar": true
+   },
+   {
+    "svar": "1/2; -0,71; 60° og 120°",
+    "forventet": "uavklart",
+    "grunn": "Avrundet desimal; utenfor toleransen (rel. 0,2 %).",
+    "parser_godtar": false
+   },
+   {
+    "svar": "sin150°=1/2; -√2/2; 60 og 120",
+    "forventet": "riktig",
+    "grunn": "Ledd med «sin150°=» foran verdien.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "1/2, -√2/2, 60° og 120°",
+    "forventet": "riktig",
+    "grunn": "Komma mellom delsvar der siste delsvar har to vinkler (kolliderer med komma-delingen).",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "7.OP4": {
+  "riktige": [
+   "12",
+   "12 cm^2",
+   "T = 12",
+   "Arealet er 12",
+   "12,0",
+   "12 areal"
+  ],
+  "feil": [
+   "24",
+   "20,8",
+   "6",
+   "48"
+  ],
+  "formkrav": false,
+  "merknad": "",
+  "grense": [
+   {
+    "svar": "12 cm²",
+    "forventet": "riktig",
+    "grunn": "Enhet kvadrat; enhet står ikke i SPEC men er harmløs.",
+    "parser_godtar": true
+   }
+  ]
+ },
+ "7.OP5": {
+  "riktige": [
+   "60",
+   "60°",
+   "60 grader",
+   "v = 60°",
+   "Vinkelen er 60 grader",
+   "60,0°"
+  ],
+  "feil": [
+   "30",
+   "120",
+   "0,5"
+  ],
+  "formkrav": false,
+  "merknad": ""
+ },
+ "7.OP6": {
+  "riktige": [
+   "27,8",
+   "27,8 m",
+   "27,78 m",
+   "27.8 m",
+   "ca. 27,8 meter",
+   "27,7"
+  ],
+  "feil": [
+   "26,1",
+   "35,2",
+   "30"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranse ±0,1: 27,7 godtas, 28 ikke.",
+  "grense": [
+   {
+    "svar": "28 m",
+    "forventet": "uavklart",
+    "grunn": "Heltallsavrunding; utenfor toleransen.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "7.OP8": {
+  "riktige": [
+   "115,3 m; 2255 m²; 29,3°",
+   "a) 115,3 b) 2255,3 m^2 c) 29,2°",
+   "115,25 m, ca. 2255 m2, 29,3°",
+   "115,2 m, 2255 m² og 29,3",
+   "115,3 m\n2255\n29,29 grader"
+  ],
+  "feil": [
+   "100 m; 2255 m²; 29,3°",
+   "115,3 m; 4510 m²; 29,3°",
+   "115,3 m; 2255 m²; 110°",
+   "115,3 m; 2255 m²; 150,7°",
+   "115,3 m; 1127 m²; 29,3°"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranser ±0,2 m, ±1 m², ±0,2°. Minste vinkel (ikke 110°).",
+  "grense": [
+   {
+    "svar": "115 m; 2255 m²; 29°",
+    "forventet": "uavklart",
+    "grunn": "Heltallsavrunding; 115 (diff 0,25) og 29 (diff 0,29) er utenfor toleransene ±0,2.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "P1.OP1": {
+  "riktige": [
+   "-13; -8; 7; 14",
+   "−13\n-8\n7\n14",
+   "a) -13; b) −8; c) 7; d) 14",
+   "−13, -8, 7, 14",
+   "-13, −8, 7 og 14",
+   "−13; -8; 7; 14",
+   "a) -13 b) -8 c) 7 d) 14"
+  ],
+  "feil": [
+   "-1; -8; 7; 14",
+   "13; -8; 7; 14",
+   "-13; 8; 7; 14",
+   "-13; -8; 70; 14",
+   "-13; -8; 7; 28",
+   "-13; -8; 7"
+  ],
+  "formkrav": true,
+  "merknad": "Regn ut: kun ferdig utregnede tall er riktig form. Typiske feil: −7+3·(−2) = −1 (parentes først), (−2)³ = 8, 4,2:0,6 = 70.",
+  "formfeil": [
+   "-7-6; -8; 7; 14",
+   "-13; -8; 42/6; 14",
+   "-13; -2*2*2; 7; 2*7"
+  ]
+ },
+ "P1.OP2": {
+  "riktige": [
+   "4a^2; 9; 125",
+   "4a²\n9\n125",
+   "a) 4*a^2; b) 9; c) 125",
+   "a) 4·a^2 b) 9 c) 125",
+   "4a^2, 9, 125",
+   "4a²; 9; 125"
+  ],
+  "feil": [
+   "4a^6; 9; 125",
+   "2a^2; 9; 125",
+   "4a^2; 27; 125",
+   "4a^2; 9; 37,5",
+   "4a^2; 9; 625",
+   "4a^2; 9"
+  ],
+  "formkrav": true,
+  "merknad": "«Skriv så enkelt som mulig»: potenser/brøker som ikke er regnet ut er formfeil. 25^(3/2) = 125 (ikke 37,5).",
+  "formfeil": [
+   "4a^2; 3^2; 125",
+   "4a^2; 9; 5^3",
+   "4a^6*a^-4; 9; 125",
+   "4a^2; 3^5/3^3; 125"
+  ]
+ },
+ "P1.OP4": {
+  "riktige": [
+   "86400; 3,63·10^8",
+   "86400 s\n3,63·10^8 m^3",
+   "a) 86 400 s; b) 3,63×10⁸ m³",
+   "a) 8,64·10^4 s b) 3,63 \\cdot 10^{8}",
+   "86400, 3,63·10^8",
+   "86400 s; 3,63*10^8 m³",
+   "86 400 s; 3,63E8 m³"
+  ],
+  "feil": [
+   "1440; 3,63·10^8",
+   "86400; 3,63·10^7",
+   "86400; 3,63·10^9",
+   "8640; 3,63·10^8",
+   "86400; 3,63·10^3",
+   "86400"
+  ],
+  "formkrav": true,
+  "merknad": "Standardform med to desimaler: 3,63·10^8. 362 880 000 og 36,3·10^7 er verdi-like (SPEC-toleranse rel. 0,2 %) men ikke standardform; 3,6288·10^8 har for mange desimaler. Elven fører 4,2·10³ m³/s; 3,63·10^8 er avrundet (362 880 000 eksakt), så 3,63·10^8 er ikke eksakt lik.",
+  "formfeil": [
+   "86400; 362 880 000 m³",
+   "86400; 363 000 000",
+   "86400; 36,3·10^7",
+   "86400; 3,6288·10^8",
+   "86400; 3,63·10^8*1"
+  ],
+  "grense": [
+   {
+    "svar": "86400; 3,63*10^8 m^3",
+    "forventet": "riktig",
+    "grunn": "Allerede dekket; viser at m^3 tolkes.",
+    "parser_godtar": true
+   },
+   {
+    "svar": "a) 86 400 s b) 3,63·10^8 m³",
+    "forventet": "riktig",
+    "grunn": "Bokstavmerking.",
+    "parser_godtar": true
+   }
+  ]
+ },
+ "P1.OP5": {
+  "riktige": [
+   "0,93 m; 6,4 m³; 1,14 m",
+   "0,93\n6,4 m^3\nca. 1,14 m",
+   "a) 0,928 m; b) 6,40 m³; c) 1,14 m",
+   "a) ca. 0,93 m b) 6,4 m³ c) 1,14",
+   "0,93 m, 6,4 og 1,145 m",
+   "0,93; 6,4 m^3; ca. 1,14 m"
+  ],
+  "feil": [
+   "0,27; 6,4; 1,14",
+   "0,93; 3,2; 1,14",
+   "0,93; 6,4; 11,45",
+   "0,93; 6,4; 1,5",
+   "0,8; 6,4; 1,14",
+   "0,93; 1,6; 1,14",
+   "0,93; 6,4"
+  ],
+  "formkrav": false,
+  "merknad": "Toleranser ±0,01. 1,145 (uavrundet) ligger innenfor (diff 0,0053). b) 6,4 er eksakt (8·0,8)."
+ },
+ "P2.OP1": {
+  "riktige": [
+   "2300 m; 0,45 kg; 15 dL; 48 min; 500 dm²",
+   "2300\n0,450 kg\n15 desiliter\n48 min\n500",
+   "a) 2 300 m; b) 0.45 kg; c) 15 dL; d) 48; e) 500 dm^2",
+   "a) 2300 meter b) 0,45 kg c) 15 d) 48 minutter e) 500 dm2",
+   "2300 m, 0,45, 15 dl, 48 minutt og 500 dm²",
+   "2300; 0,450 kg; 15 desiliter; 48 min; 500"
+  ],
+  "feil": [
+   "230 m; 0,45 kg; 15 dL; 48 min; 500 dm²",
+   "2300; 4,5; 15; 48; 500",
+   "2300; 0,45; 1,5; 48; 500",
+   "2300; 0,45; 15; 80; 500",
+   "2300; 0,45; 15; 48; 50",
+   "2300; 0,45; 15; 48"
+  ],
+  "formkrav": false,
+  "merknad": "Parseren er enhetsagnostisk; enhetsfeil (f.eks. «0,45 g») kan slippe gjennom hvis tallet stemmer.",
+  "grense": [
+   {
+    "svar": "2,3 km; 450 g; 1,5 L; 0,8 h; 5 m²",
+    "forventet": "feil",
+    "grunn": "Ikke omgjort (samme størrelser i feil enhet); uenhetlig parser leser 2,3 / 450 / 1,5 / 0,8 / 5 – feil verdier.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "2300 m; 0,45 kg; 15 dL; 48 min; 500 dm²",
+    "forventet": "riktig",
+    "grunn": "Med enheter (som i SPEC).",
+    "parser_godtar": true
+   }
+  ]
+ },
+ "P2.OP5": {
+  "riktige": [
+   "0,06 m³ og 60 dm³; 55,2 kg; 55,2 L",
+   "0,06 og 60\n55,2 kg\n55,2 L",
+   "a) 0,06 m³, 60 dm³; b) 55,2; c) 55,2 liter",
+   "a) 0,06 m³ og 60 dm³ b) 55,2 kg c) 55,2",
+   "0,06 m³ og 60 dm³; 55,2; 55,2 L",
+   "0,06 og 60\n55,2 kg\n55,2 liter"
+  ],
+  "feil": [
+   "0,06 og 60; 5,52 kg; 55,2 L",
+   "0,6 og 600; 55,2 kg; 55,2 L",
+   "0,06 og 60; 55,2 kg; 5,52 L",
+   "0,06 og 60; 55,2",
+   "0,06 og 6; 55,2 kg; 55,2 L"
+  ],
+  "formkrav": false,
+  "merknad": "Delsvar a) har to verdier (m³ og dm³). Massen 55,2 kg og 55,2 L (1,0 kg/dm³).",
+  "grense": [
+   {
+    "svar": "0,06 m³ = 60 dm³; 55,2 kg; 55,2 L",
+    "forventet": "riktig",
+    "grunn": "Likhetstegn mellom de to enhetene avvises.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "a) 0,06 m³ = 60 dm³ b) 55,2 kg c) 55,2 L",
+    "forventet": "riktig",
+    "grunn": "Som over.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "60 dm³ og 0,06 m³; 55,2 kg; 55,2 L",
+    "forventet": "uavklart",
+    "grunn": "Delsvar a) har rekkefolge:fast (m³ først, så dm³); byttet rekkefølge avvises. Enhetene gjør rekkefølgen entydig for en menneskelig leser.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "P3.OP1": {
+  "riktige": [
+   "27; 25 %; 0,65",
+   "27\n25 prosent\n0.65",
+   "a) 27; b) 25 %; c) 0,65",
+   "27, 25, 0.65",
+   "27, 25 prosent og 0,65",
+   "27; 25 %; 0.65",
+   "a) 27 b) 25 % c) 0,65"
+  ],
+  "feil": [
+   "18; 25; 0,65",
+   "27; 4; 0,65",
+   "27; 25; 65",
+   "27; 25; 65 %",
+   "27; 2,5; 0,65",
+   "27; 25"
+  ],
+  "formkrav": false,
+  "merknad": "«65 %» som svar på «skriv som desimaltall» godtas ikke (parseren leser 65)."
+ },
+ "P3.OP2": {
+  "riktige": [
+   "360 kr; 400 kr",
+   "360\n400 kroner",
+   "a) 360 kroner; b) 400 kr",
+   "a) 360 kr b) 400",
+   "360 og 400 kroner",
+   "360 kroner; 400 kr"
+  ],
+  "feil": [
+   "340 kr og 400 kr",
+   "360 og 396",
+   "400 og 360",
+   "360 og 484",
+   "90 og 400",
+   "360"
+  ],
+  "formkrav": false,
+  "merknad": ""
+ },
+ "P3.OP4": {
+  "riktige": [
+   "0,85; -15 %; 11560 kWh",
+   "0,85\n-15\n11560 kWh",
+   "0,85, -15 %, 11 560 kWh",
+   "0,85, −15 % og 11560",
+   "0,85; -15; 11560 kWh"
+  ],
+  "feil": [
+   "0,85; +15 %; 11560",
+   "0,85; -15 %; 15640",
+   "1,15; -15 %; 11560",
+   "0,85; 15 %; 11560",
+   "0,85; -15 %"
+  ],
+  "formkrav": false,
+  "merknad": "«15 %» uten fortegn/ord godtas ikke (nedgang:true) – i praksis krever parseren «-15 %». Elever skriver ofte «15 % nedgang».",
+  "grense": [
+   {
+    "svar": "0,85; 15 % nedgang; 11560",
+    "forventet": "riktig",
+    "grunn": "«15 % nedgang» (ord i stedet for minustegn) avvises av nedgang:true.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "0,85; nedgang på 15 %; 11 560 kWh",
+    "forventet": "riktig",
+    "grunn": "Som over.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "0,85; minus 15 %; 11560",
+    "forventet": "riktig",
+    "grunn": "Ordet «minus» tolkes ikke.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "a) 0,85 og -15 % b) 11 560 kWh",
+    "forventet": "riktig",
+    "grunn": "Allerede godtatt.",
+    "parser_godtar": true
+   }
+  ]
+ },
+ "P4.OP1": {
+  "riktige": [
+   "2; 4; -2",
+   "f(3)=2\n4\nx = −2",
+   "a) 2; b) x=4; c) -2",
+   "f(3)=2, 4, −2",
+   "2, x=4 og x=-2",
+   "f(3)=2; 4; x = −2",
+   "a) 2 b) 4 c) -2"
+  ],
+  "feil": [
+   "2; 4; 2",
+   "-14; 4; -2",
+   "2; -4; -2",
+   "14; 4; -2",
+   "2; 4; 10",
+   "2; 4"
+  ],
+  "formkrav": false,
+  "merknad": "c) er x = −2 (ikke 2)."
+ },
+ "P4.OP3": {
+  "riktige": [
+   "P(x)=250x+300; 3300; 8",
+   "250x+300\n3 300 kr\n8",
+   "a) P(x) = 300 + 250x; b) 3300; c) 8 måneder",
+   "a) 250*x+300 b) 3300 kr c) x=8",
+   "P(x)=250x+300, 3 300 kr, 8",
+   "250x+300; 3300; 8 måneder"
+  ],
+  "feil": [
+   "P(x)=300x+250; 3300; 8",
+   "P(x)=250x; 3000; 9",
+   "P(x)=250x+300; 3000; 8",
+   "P(x)=250x+300; 3300; 9",
+   "P(x)=250x+300; 3300; 9,2",
+   "P(x)=550x; 3300; 8"
+  ],
+  "formkrav": false,
+  "merknad": "",
+  "grense": [
+   {
+    "svar": "P(x)=250x+300; 3300 kr; 8 mnd",
+    "forventet": "riktig",
+    "grunn": "Forkortelse «mnd»; enhetsrester kan forstyrre.",
+    "parser_godtar": true
+   }
+  ]
+ },
+ "P4.OP4": {
+  "riktige": [
+   "12 %; 50 400 kr; 251 872 kr; 5,8 år",
+   "12\n50 400 kroner\n251872,05 kr\n5,8 år",
+   "a) 12 prosent; b) 50 400 kr; c) 251 872 kr; d) 5,8",
+   "a) 12 % b) 50400 c) 251872 d) 5,80 år",
+   "12, 50 400 kroner, ca. 251 900 kr og ca. 5,8 år",
+   "12 prosent; 50 400 kr; 251872,05 kr; 5,8 år"
+  ],
+  "feil": [
+   "88 %; 50 400 kr; 251 872 kr; 5,8 år",
+   "12 %; 5 040 kr; 251 872 kr; 5,8 år",
+   "12 %; 50 400 kr; 286 000 kr; 5,8 år",
+   "12 %; 50 400 kr; 251 872 kr; 7 år",
+   "12 %; 50 400 kr; 251 872 kr; 8 år",
+   "12 %; 50 400 kr; 251 872 kr"
+  ],
+  "formkrav": false,
+  "merknad": "Fh nevner ikke a) (12 %) – fh er 50400, 251872, 5,8; SPEC har 4 delsvar inkludert 12.",
+  "grense": [
+   {
+    "svar": "12 %; 50 400 kr; 251 872 kr; 6 år",
+    "forventet": "uavklart",
+    "grunn": "Heltallsavrunding av 5,8; ligger utenfor toleransen ±0,05, men «6. året» er en rimelig tolkning.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "12 %; 50 400 kr; 251 872 kr; i løpet av det 6. året",
+    "forventet": "uavklart",
+    "grunn": "Ordform; parseren ser to tall.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "P4.OP5": {
+  "riktige": [
+   "21,5 m etter 2 s; 4,07 s; 15 m/s",
+   "21,5 m og 2 s\nca. 4,07 s\n15",
+   "a) 21,5 m, 2 s; b) 4,07 s; c) 15 m/s",
+   "a) (2; 21,5) b) 4,07 c) 15",
+   "Toppunkt (2, 21,5); ca. 4,07 s; 15 m/s"
+  ],
+  "feil": [
+   "20 m etter 2 s; 4,07 s; 15 m/s",
+   "21,5 m etter 2 s; 4,7 s; 15 m/s",
+   "21,5 m etter 2 s; 4,07 s; 16,5 m/s",
+   "21,5 m etter 1 s; 4,07 s; 15 m/s",
+   "21,5 m etter 2 s; 4,07 s"
+  ],
+  "formkrav": false,
+  "merknad": "Toppunktet kan skrives som (2, 21,5) (alternativ i SPEC) eller «21,5 m etter 2 s»; verdiene har fast rekkefølge 21,5 deretter 2.",
+  "grense": [
+   {
+    "svar": "2 s og 21,5 m; 4,07 s; 15 m/s",
+    "forventet": "uavklart",
+    "grunn": "Rekkefølgen (tid, høyde) er byttet; SPEC krever (høyde, tid) eller punktet (2; 21,5).",
+    "parser_godtar": false
+   },
+   {
+    "svar": "(2,21,5); 4,07; 15",
+    "forventet": "uavklart",
+    "grunn": "Komma som både koordinatskille og desimaltegn.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "21,5; 2; 4,07; 15",
+    "forventet": "uavklart",
+    "grunn": "Alt som flat liste av fire tall.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "P5.OP2": {
+  "riktige": [
+   "f(x)=3x+6; 21 cm; 162 cm",
+   "3x+6\n21,0 cm\n162 cm",
+   "a) f(x) = 6 + 3x; b) 21 cm; c) 162",
+   "a) y=3x+6 b) 21 c) 162,0 cm",
+   "f(x)=3x+6, 21,0 cm, 162 cm",
+   "3x+6; 21 cm; 162"
+  ],
+  "feil": [
+   "f(x)=3x+12; 21; 162",
+   "f(x)=3x+6; 15; 162",
+   "f(x)=3x+6; 21; 156",
+   "f(x)=6x+3; 21; 162",
+   "f(x)=3x+6; 21",
+   "f(x)=3x; 15; 156"
+  ],
+  "formkrav": false,
+  "merknad": "Oppgave b/c ber også om vurdering (interpolasjon/ekstrapolasjon, gyldighetsområde) som autosjekk ikke dekker.",
+  "grense": [
+   {
+    "svar": "f(x)=3x+6; 21 cm, interpolasjon; 162 cm, urimelig",
+    "forventet": "riktig",
+    "grunn": "Svar med ord (interpolasjon/urimelig) – delsvarene har tekst i tillegg til tall.",
+    "parser_godtar": true
+   }
+  ]
+ },
+ "P6.OP2": {
+  "riktige": [
+   "y=4x/3; y=18/x",
+   "y=(4/3)x\ny=\\frac{18}{x}",
+   "a) y=\\frac{4}{3}x; b) y=18x^-1",
+   "a) y=4/3*x b) y=18·x^(-1)",
+   "y=4/3·x, y=18/x",
+   "4x/3; 18/x"
+  ],
+  "feil": [
+   "y=3x/4; y=18/x",
+   "y=4x/3; y=18x",
+   "y=4x/3; y=x/18",
+   "y=4x/3+1; y=18/x",
+   "y=4x/3; y=18+x",
+   "y=4x/3"
+  ],
+  "formkrav": false,
+  "merknad": "Tabell A proporsjonal (y=4/3·x), tabell B omvendt proporsjonal (y=18/x). Svaret «proporsjonal»/«omvendt proporsjonal» alene sjekkes ikke.",
+  "grense": [
+   {
+    "svar": "y=4/3x; y=18/x",
+    "forventet": "uavklart",
+    "grunn": "«4/3x» kan tolkes som (4/3)·x eller 4/(3x).",
+    "parser_godtar": true
+   },
+   {
+    "svar": "y=1,333x; y=18/x",
+    "forventet": "uavklart",
+    "grunn": "Avrundet desimaltall (1,333 ≈ 4/3) gir ikke eksakt likhet.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "A: y=4x/3 B: y=18/x",
+    "forventet": "riktig",
+    "grunn": "A:/B:-merking.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "P6.OP4": {
+  "riktige": [
+   "P=8400/x; 70 kr; 56 elever",
+   "8400/x\n70 kroner\n56 elever",
+   "a) P(x)=8400/x; b) 70 kr; c) 56",
+   "a) P=\\frac{8400}{x} b) 70 c) 56 stk",
+   "P = 8400/x, 70 kroner, 56 elever",
+   "P=8400/x; 70 kr; 56"
+  ],
+  "feil": [
+   "P=8400x; 70; 56",
+   "P=8400/x; 7; 56",
+   "P=8400/x; 70; 5,6",
+   "P=8400/x; 70; 112",
+   "P=x/8400; 70; 56",
+   "P=8400/x; 70"
+  ],
+  "formkrav": false,
+  "merknad": "Prisen per elev skal være ≤150: 8400/x ≤ 150 ⇒ x ≥ 56.",
+  "grense": [
+   {
+    "svar": "P = 8400:x; 70; 56",
+    "forventet": "riktig",
+    "grunn": "Kolon som divisjonstegn (norsk skrivemåte) tolkes ikke.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "P=8400/x; 70 kr; x ≥ 56",
+    "forventet": "riktig",
+    "grunn": "Svar som ulikhet x ≥ 56 (godtas).",
+    "parser_godtar": true
+   },
+   {
+    "svar": "P=8400/x; 70 kr; 57 elever",
+    "forventet": "feil",
+    "grunn": "57 oppfyller kravet, men minimum er 56 (spørsmålet er «hvor mange må komme»).",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "P6.OP5": {
+  "riktige": [
+   "B_n=n^2+n+2; 20; 26",
+   "n^2+n+2\nFigur 20\n26",
+   "a) B(n)=n²+n+2; b) 20; c) figur 26",
+   "a) B_n = n² + n + 2 b) figur 20 c) Figur 26",
+   "B_n=n^2+n+2, Figur 20, 26",
+   "n^2+n+2; 20; figur 26"
+  ],
+  "feil": [
+   "n^2+n+2; 21; 26",
+   "n^2+3; 20; 26",
+   "n^2+n+2; 20; 27",
+   "n^2+n+2; 20; 26,9",
+   "n^2+n+2; 20; 750",
+   "n^2+n; 20; 26"
+  ],
+  "formkrav": false,
+  "merknad": "c): 26,9 er løsningen av likningen, men største hele figur er 26. n=27 trenger 758 brikker (>750)."
+ },
+ "v25-d1-2": {
+  "riktige": [
+   "-2<x<6",
+   "−2 < x < 6",
+   "x>-2 og x<6",
+   "6>x>-2",
+   "x er mellom -2 og 6",
+   "x ∈ <-2, 6>",
+   "x∈(-2, 6)"
+  ],
+  "feil": [
+   "x<-2 eller x>6",
+   "-6<x<2",
+   "x<-2 og x>6",
+   "2<x<6",
+   "-2≤x≤6",
+   "x>-2"
+  ],
+  "formkrav": false,
+  "merknad": "x²−4x−12<0 ⇒ (x+2)(x−6)<0 ⇒ −2<x<6 (strengt intervall).",
+  "grense": [
+   {
+    "svar": "x∈(-2,6)",
+    "forventet": "riktig",
+    "grunn": "Intervallnotasjon uten mellomrom: «-2,6» kan leses som desimaltallet −2,6.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "x<6 og x>-2",
+    "forventet": "riktig",
+    "grunn": "Samme intervall med grensene i omvendt rekkefølge.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "x∈⟨-2,6⟩",
+    "forventet": "riktig",
+    "grunn": "Norsk intervallnotasjon med vinkelhake.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "-2≤x≤6",
+    "forventet": "feil",
+    "grunn": "Lukket intervall; ulikheten er streng (endepunktene gir 0, ikke <0).",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "h25-d1-1": {
+  "riktige": [
+   "-5<x<1",
+   "−5 < x < 1",
+   "x>-5 og x<1",
+   "1>x>-5",
+   "x er mellom -5 og 1",
+   "x ∈ <-5, 1>",
+   "x∈(-5, 1)"
+  ],
+  "feil": [
+   "x<-5 eller x>1",
+   "-1<x<5",
+   "x<-5 og x>1",
+   "-5≤x≤1",
+   "5<x<1",
+   "x<1"
+  ],
+  "formkrav": false,
+  "merknad": "x²+4x−5<0 ⇒ (x+5)(x−1)<0 ⇒ −5<x<1 (strengt intervall).",
+  "grense": [
+   {
+    "svar": "x∈(-5,1)",
+    "forventet": "riktig",
+    "grunn": "Intervallnotasjon uten mellomrom: «-5,1» kan leses som desimaltallet −5,1.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "x<1 og x>-5",
+    "forventet": "riktig",
+    "grunn": "Samme intervall med grensene i omvendt rekkefølge.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "-5≤x≤1",
+    "forventet": "feil",
+    "grunn": "Lukket intervall; ulikheten er streng.",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "v26-d1-1": {
+  "riktige": [
+   "-6≤x≤-1",
+   "−6 ≤ x ≤ −1",
+   "x≥-6 og x≤-1",
+   "x>=-6 og x<=-1",
+   "x ∈ [-6, -1]",
+   "[-6, -1]",
+   "-1≥x≥-6"
+  ],
+  "feil": [
+   "x≤-6 eller x≥-1",
+   "-6<x<-1",
+   "-1≤x≤6",
+   "x≥-6",
+   "x∈[-1,6]"
+  ],
+  "formkrav": false,
+  "merknad": "x²+7x+6≤0 ⇒ (x+1)(x+6)≤0 ⇒ −6≤x≤−1 (lukket intervall: ulikheten er ≤). Strengt «−6<x<−1» er feil (mister endepunktene).",
+  "grense": [
+   {
+    "svar": "x∈[-6,-1]",
+    "forventet": "riktig",
+    "grunn": "Lukket intervall uten mellomrom: «-6,-1» kan leses annerledes.",
+    "parser_godtar": true
+   },
+   {
+    "svar": "x≤-1 og x≥-6",
+    "forventet": "riktig",
+    "grunn": "Samme intervall med grensene i omvendt rekkefølge.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "-6≤x<-1",
+    "forventet": "feil",
+    "grunn": "Blandet intervall (venstre lukket, høyre åpen); −1 må også være med.",
+    "parser_godtar": true
+   },
+   {
+    "svar": "-6<x<-1",
+    "forventet": "feil",
+    "grunn": "Strengt intervall; endepunktene −6 og −1 hører med (≤).",
+    "parser_godtar": false
+   }
+  ]
+ },
+ "v26-d1-2b": {
+  "riktige": [
+   "(-3,-5) og (2,0)",
+   "(2,0) og (-3,-5)",
+   "(-3,-5); (2,0)",
+   "(-3, -5), (2, 0)",
+   "(−3,−5) og (2,0)",
+   "x=-3, y=-5 og x=2, y=0",
+   "A(-3,-5) og B(2,0)",
+   "(-3,-5)\n(2,0)",
+   "a) (-3,-5) b) (2,0)"
+  ],
+  "feil": [
+   "(-3,-5)",
+   "(3,5) og (2,0)",
+   "(-3,-5) og (0,2)",
+   "(-3,5) og (2,0)",
+   "(-2,0) og (3,-5)",
+   "(-3,-5) og (2,0) og (0,4)"
+  ],
+  "formkrav": false,
+  "merknad": "Grafisk løsning av y=−x²+4 og x−y=2: skjæringspunktene (−3,−5) og (2,0). Begge punkter må oppgis; ett punkt er feil.",
+  "grense": [
+   {
+    "svar": "(-3;-5) og (2;0)",
+    "forventet": "riktig",
+    "grunn": "Semikolon som koordinatskille.",
+    "parser_godtar": true
+   }
+  ]
+ },
+ "v24-d1-4": {
+  "riktige": [
+   "2",
+   "v=2",
+   "Verdien er 2",
+   "Programmet skriver ut 2",
+   "2,0",
+   "10/5",
+   "2 (gjennomsnittlig vekstfart)",
+   "Det skrives ut 2, som er gjennomsnittlig vekstfart"
+  ],
+  "feil": [
+   "17",
+   "7",
+   "1",
+   "3",
+   "2,5",
+   "10"
+  ],
+  "formkrav": false,
+  "merknad": "f(0)=7, f(5)=17 ⇒ v=(17−7)/5=2: gjennomsnittlig vekstfart på [0,5]. Fh står som «v=\\dfrac{17-7}{5}=2»; elever som skriver hele utregningen «v=(17-7)/5=2» kan få avvisning (flere tall).",
+  "grense": [
+   {
+    "svar": "v=(17-7)/5=2",
+    "forventet": "riktig",
+    "grunn": "Utregning med mellomledd og svar til slutt.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "Det skrives ut 2. Det er gjennomsnittlig vekstfart på [0,5].",
+    "forventet": "riktig",
+    "grunn": "Forklarende setning med intervallet [0,5] – flere tall.",
+    "parser_godtar": false
+   },
+   {
+    "svar": "2 – den gjennomsnittlige endringen til f på [0,5]",
+    "forventet": "riktig",
+    "grunn": "Svar med forklaring (flere tall).",
+    "parser_godtar": false
+   }
+  ]
+ }
+}

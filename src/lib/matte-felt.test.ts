@@ -1,6 +1,7 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
 import { latexTilSvartekst, svartekstTilLatex } from "./matte-felt.ts";
 import { sjekkSluttsvar } from "./svar-sjekk.ts";
 import { SLUTTSVAR } from "../data/eksamen-svar.ts";
@@ -153,12 +154,43 @@ describe("svartekstTilLatex (gammel tekst → felt) og tilbake", () => {
   }
 });
 
+/** LaTeX-kommandoer skrevet som tekst skal beholde backslash og kommandonavn gjennom feltet. */
+describe("rundtur beholder LaTeX-kommandoer i lagret tekst", () => {
+  const LATEX_TEKST = [
+    "\\frac{9+6\\sqrt{3}}{4}",
+    "\\frac{5}{6}, \\frac{2}{3}, \\frac{3}{10}",
+    "2\\cdot10^16",
+    "3,63 \\cdot 10^8",
+    "r=\\frac{C}{2\\pi}",
+    "-\\frac{\\sqrt{2}}{2}",
+    "y=\\frac{1}{2}x-1",
+    "5 \\times 3",
+    "x \\le 3",
+  ];
+  for (const t of LATEX_TEKST) {
+    it(`bevarer ${t}`, () => {
+      assert.equal(latexTilSvartekst(svartekstTilLatex(t)).replace(/\s+/g, ""), t.replace(/\s+/g, ""));
+    });
+  }
+  it("eksponent i {…} og enkelt backslash", () => {
+    assert.equal(latexTilSvartekst(svartekstTilLatex("10^{12}")), "10^12");
+    assert.equal(latexTilSvartekst(svartekstTilLatex("a\\b")), "a\\b");
+  });
+});
+
 /**
  * Sjekker: samme svar godtas/avvises av den eksisterende parseren før og etter
  * rundturen svartekst → felt → svartekst. Testbanken er elevvarianter.json fra
- * 1p-bibliotek (hoppes over hvis filen ikke finnes på maskinen).
+ * 1p-bibliotek. Rekkefølge: $ELEVVARIANTER, så kopien i repoet (src/lib/testdata).
+ * Finnes ingen av dem, logges en tydelig skip-melding (ingen stille hopp over).
  */
-const BANK = process.env.ELEVVARIANTER ?? "/workspace/1p-bibliotek/review/elevvarianter.json";
+const REPO_KOPI = fileURLToPath(new URL("./testdata/elevvarianter.json", import.meta.url));
+const BANK = [process.env.ELEVVARIANTER, REPO_KOPI].find((p) => p && existsSync(p));
+if (BANK) console.log(`[matte-felt.test] elevvarianter-bank: ${BANK}`);
+else
+  console.warn(
+    `[matte-felt.test] SKIP: fant ikke elevvarianter.json (prøvde $ELEVVARIANTER=${process.env.ELEVVARIANTER ?? "(ikke satt)"} og ${REPO_KOPI}). Rundturstesten mot testbanken kjøres ikke.`,
+  );
 
 describe("sjekkSluttsvar er upåvirket av adapteren", () => {
   it("gjenkjenner de samme svarene (eksempler)", () => {
@@ -172,8 +204,8 @@ describe("sjekkSluttsvar er upåvirket av adapteren", () => {
     }
   });
 
-  it("elevvarianter.json: alle riktige/feil svar får samme dom etter rundtur", { skip: !existsSync(BANK) }, () => {
-    const bank = JSON.parse(readFileSync(BANK, "utf8")) as Record<string, { riktige: string[]; feil: string[] }>;
+  it("elevvarianter.json: alle riktige/feil svar får samme dom etter rundtur", { skip: BANK ? false : "elevvarianter.json mangler (se advarsel over)" }, () => {
+    const bank = JSON.parse(readFileSync(BANK as string, "utf8")) as Record<string, { riktige: string[]; feil: string[] }>;
     let antall = 0;
     const avvik: string[] = [];
     for (const [id, v] of Object.entries(bank)) {
