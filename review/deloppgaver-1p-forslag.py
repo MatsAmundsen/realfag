@@ -23,7 +23,7 @@ import sys
 
 sys.path.insert(0, os.environ.get("SPEC_DIR", "/workspace/1p-bibliotek/src"))
 import spec_svar as _S  # bare som verktøykasse; SPEC/EKSKLUDERT i spec_svar røres ikke (oppføringer fjernes igjen under)
-from spec_svar import (T, U, L, P, O, UL, S, R, sqrt, pi, sp, KR, PROS, deg, x, y, a, b, c, n, t, s)  # noqa: F401
+from spec_svar import (T, U, L, P, O, UL, S, V, R, sqrt, pi, sp, KR, PROS, deg, x, y, a, b, c, n, t, s)  # noqa: F401
 
 FORSLAG = {}   # nøkkel -> oppføring (rekkefølge = rekkefølge i filen)
 
@@ -171,3 +171,40 @@ ES("1p-v24-d2-6b", S(U("1000*0.88^x"), U("1000*0.5^(x/5.5)")), ["1000*0,88^{x}",
 E("1p-v24-d2-6c", T(4.25, abs=0.4), ["4,2"], enhet=["km"],
   usikker="Fasiten oppgir 4,2–4,3 km (avrundede koeffisienter) og 4,3–4,4 km (uten avrunding); 'rundt 4 km' godtas.")
 TX("1p-v24-d2-7", ["1842", "1058"], "åpen oppgave: eget løsningsforslag med begrunnelse")
+
+# =========================================================================== eksamen h2023 (1P)
+ES("1p-h23-d1-2a", V("ja"), ["Ja"], "ja/nei med begrunnelse; valg-sjekken godtar bare selve ordet «ja»")
+ES("1p-h23-d1-31", V("sann"), ["sann"], "sann/usann; valg-sjekken godtar bare selve ordet «sann»")
+ES("1p-h23-d1-32", V("usann"), ["usann"], "sann/usann; valg-sjekken godtar bare selve ordet «usann»")
+TX("1p-h23-d1-4a", ["6", "2\\le x\\le 14"], "forklaring og gyldighetsområde", sym=["ulikhet"])
+TX("1p-h23-d1-4b", ["ikke proporsjonal"], "nei med argumentasjon", sym=["ulikhet"])
+ES("1p-h23-d2-1a", U("66360*0.9714^x"), ["66360*0,9714^{x}"], "åpen oppgave: andre godt begrunnede modeller kan gi poeng; a og b avhenger av avrunding", usikker="Åpen oppgave: regresjonen gir a ≈ 66 360 og b ≈ 0,9714; andre modeller kan godtas.")
+ES("1p-h23-d2-1b", T(3700, rel=0.03), ["3700"], "vurdering av gyldighetsområdet er med i poenget", enhet=["personer", "fiskere"])
+ES("1p-h23-d2-1c", T(-477, abs=5), ["-477"], "praktisk tolkning av stigningstallet er med i poenget", enhet=["personer per år", "personer/år"])
+TX("1p-h23-d2-4", ["240", "12"], "åpen oppgave: egne antakelser og vurdering")
+ES("1p-h23-d2-5", P((3, 3)), ["(3,3)"], "tre ganger så mye: tabell, funksjon og graf kreves i tillegg til punktet; P(3, 3) og arealet 18")
+ES("1p-h23-d2-6b", T(22), ["22"], "program skal lages i tillegg til svaret", enhet=["linjestykker"])
+TX("1p-h23-d2-7b", ["2\\pi r"], "undersøkelse (utregning er svaret)", sym=["pi"])
+ES("1p-h23-d2-8", V("B"), ["bane B"], "valg av bane fra figur; valg-sjekken godtar bare bokstaven «B»")
+
+# =========================================================================== eksamen v2023 (1P)
+TX("1p-v23-d1-1", ["ulike"], "ja/nei med begrunnelse")
+TX("1p-v23-d1-3a", ["20x"], "åpent eksempel, begrunnelse og graf")
+TX("1p-v23-d1-3b", ["120"], "åpent eksempel, begrunnelse og graf")
+E("1p-v23-d1-4a", U("7x+72"), ["7x+72"])
+E("1p-v23-d1-4b", T(205), ["205"], enhet=["cm"])
+TX("1p-v23-d1-4c", ["4\\le x\\le 10"], "vurdering av gyldighetsområde", sym=["ulikhet"])
+ES("1p-v23-d2-1b", T(5.04), ["5,04"], "praktisk tolkning av stigningstallet er med i poenget (enheten «°C per måned» avvises av enhetssjekken; bare «°C» eller «grader» godtas)",
+   enhet=["°C", "grader"], sym=["grader"])
+TX("1p-v23-d2-3b", ["800"], "systematisk oversikt (tabell) og argumentasjon")
+ES("1p-v23-d2-3c", U("x*(80-2x)"), ["x(80-2x)"], "funksjonsuttrykk og graf; «vis at» er også med i poenget")
+ES("1p-v23-d2-4a", V("D"), ["D"], "valg av sekk fra figur med begrunnelse; valg-sjekken godtar bare bokstaven")
+TX("1p-v23-d2-4b", ["A", "C"], "to sekker (A og C) fra figur med begrunnelse")
+ES("1p-v23-d2-4c", V("C"), ["C"], "valg av sekk med begrunnelse; valg-sjekken godtar bare bokstaven")
+TX("1p-v23-d2-4d", ["A", "F"], "to sekker (A og F) fra figur med begrunnelse")
+ES("1p-v23-d2-5a", T(22, 26, fast=True, ord=True), ["22", "26"], "mønsteret skal også beskrives (4n + 6)",
+   format="Skriv antallet i K₄ og K₅ i den rekkefølgen, skilt med komma eller «og».")
+TX("1p-v23-d2-5b", ["nonstop_figur+4"], "programlinjer (kode)")
+ES("1p-v23-d2-6a", U("17396*1.248^x"), ["17396"], "regresjon i GeoGebra; a og b avhenger av avrunding")
+TX("1p-v23-d2-6b", ["17400", "25"], "tolkning av a og b (forklaring)")
+ES("1p-v23-d2-6c", T(7.5, enhet=PROS), ["7,5"], "vurdering mot modellen er med i poenget")
