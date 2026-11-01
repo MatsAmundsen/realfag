@@ -3,7 +3,7 @@ import { MatteFelt } from "./MatteFelt";
 import { Symbolrad } from "./Symbolrad";
 import { KatexHtml } from "./KatexHtml";
 import { forhandsvis, type Sluttsvar } from "@/lib/svar-sjekk";
-import { symbolerFor, type Spesialtegn } from "@/lib/symbolrad";
+import { kursorEtter, symbolerFor, type Spesialtegn } from "@/lib/symbolrad";
 import { formaterPoeng, POENGANDEL, type EnhetsResultat, type Resultat, type Vurdering } from "@/lib/prove-poeng";
 
 const PLASSHOLDER: Record<string, string> = {
@@ -121,7 +121,7 @@ export function ProveSvar({
     const til = el ? el.selectionEnd : value.length;
     const ny = value.slice(0, fra) + s.tekst + value.slice(til);
     onChange(ny);
-    const pos = fra + s.tekst.length;
+    const pos = kursorEtter(s, fra);
     requestAnimationFrame(() => {
       el?.focus();
       el?.setSelectionRange(pos, pos);

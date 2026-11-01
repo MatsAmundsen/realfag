@@ -101,8 +101,14 @@ test("poeng: hver oppgave gir 1 p i alt, uansett antall deler", () => {
   }
 });
 
-test("fasit per del: tall-oppdelte deler godtar sin egen verdi, og serie-deler er gyldige spec", () => {
-  let tallDeler = 0;
+test("fasit per del: egne del-oppføringer brukes, tall-oppdelte deler godtar sin egen verdi, og alle del-fasiter er gyldige spec", () => {
+  // Antall deler som får fasit fra en tall-liste på oppgaven kan være 0: når hver del har sin egen oppføring (<oppgave><bokstav>),
+  // trengs ikke delingen av oppgavefasiten. Den veien dekkes syntetisk i src/lib/deloppgaver.test.ts («tall med ett tall per del deles»).
+  for (const x of alle) {
+    for (const en of x.e.enheter) {
+      if (m.SLUTTSVAR[en.id]) assert.deepEqual(en.fasit, m.SLUTTSVAR[en.id], `${en.id}: egen oppføring skal brukes som den er`);
+    }
+  }
   for (const x of alle) {
     if (!x.e.harDeler) continue;
     const task = m.SLUTTSVAR[x.o.id];
@@ -111,10 +117,8 @@ test("fasit per del: tall-oppdelte deler godtar sin egen verdi, og serie-deler e
       if (m.SLUTTSVAR[en.id]) return; // egen oppføring har prioritet
       assert.equal(en.fasit?.svar.type, "tall", en.id);
       assert.deepEqual(en.fasit.svar.verdier, [task.svar.verdier[i]], en.id);
-      tallDeler++;
     });
   }
-  assert.ok(tallDeler >= 1, `tall-delte deler: ${tallDeler}`);
   for (const x of alle) for (const en of x.e.enheter) if (en.fasit) assert.ok(typeof m.svartype(en.fasit) === "string", en.id);
 });
 
