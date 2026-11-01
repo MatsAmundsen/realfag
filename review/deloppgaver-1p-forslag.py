@@ -212,7 +212,7 @@ TX("1p-h22-d1-3a", ["\\sqrt{x}"], "åpent: eget uttrykk med forklaring", sym=["r
 ES("1p-h22-d1-3b", T(4, 20, 1.5, fast=True, ord=True), ["f(16) = 4"], "f(−25) skal begrunnes som ikke mulig; tallene 4, 20 og 3/2",
    format="Skriv f(16), f(400) og f(9/4) i den rekkefølgen, skilt med komma eller «og».", sym=["rot"],
    usikker="Avhenger av hvilket uttrykk eleven valgte i a); fasiten antar f(x) = √x.")
-ES("1p-h22-d1-4a", T(3.79), ["3,79"], "praktisk tolkning av stigningstallet er med i poenget", enhet=["liter per gallon", "liter per us gallon", "liter/gallon", "L/gallon"])
+ES("1p-h22-d1-4a", T(3.79), ["3,79"], "praktisk tolkning av stigningstallet er med i poenget", enhet=["liter per gallon", "liter/gallon", "L/gallon"])
 ES("1p-h22-d1-4b", T(1.6e10, rel=0.04), ["1,6\\cdot 10^{10}"], "formkrav: svaret skal gis på standardform", enhet=["liter", "L"])
 ES("1p-h22-d2-1c", T(-3.68, abs=0.1), ["-3,7"], "praktisk tolkning av stigningstallet er med i poenget (enheten «°C per time» avvises av enhetssjekken)", enhet=["°C", "grader"], sym=["grader"])
 ES("1p-h22-d2-1d", T(4.485, abs=0.05), ["4,5"], "undersøkelse: «nei» med begrunnelse; tallet 4,5 °C er med i begrunnelsen", enhet=["°C", "grader"], sym=["grader"])

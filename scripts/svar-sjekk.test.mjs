@@ -276,3 +276,12 @@ test("fase 4b: svake økningsord teller bare rett ved prosenttallet (B-7)", () =
     "flere enn 12 %", "12 % flere", "12 % økning", "økning på 12 %", "+12 %", "12 % nedgang over tid, men økning etterpå",
   ]) assert.equal(ok(s, n), false, s);
 });
+
+test("valg: «Svar: B», «Svaret er ja» og «Alternativ C» er samme valg som bokstaven eller ordet", () => {
+  const b = { svar: { type: "valg", valg: "B" } };
+  const ja = { svar: { type: "valg", valg: "ja" } };
+  for (const s of ["B", "b)", "Svar: B", "Svaret er B", "Alternativ B", "alternativ b."]) assert.equal(ok(s, b), true, s);
+  for (const s of ["Ja", "Svar: ja", "Svaret er Ja."]) assert.equal(ok(s, ja), true, s);
+  for (const s of ["A", "Svar: A", "Alternativ C", "Svar", ""]) assert.equal(ok(s, b), false, s);
+  for (const s of ["Svar: nei", "Nei"]) assert.equal(ok(s, ja), false, s);
+});

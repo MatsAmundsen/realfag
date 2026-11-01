@@ -264,7 +264,7 @@ export const SLUTTSVAR: Record<string, Sluttsvar> = {
   "1p-v23-d2-6c": {"svar": {"type": "tall", "verdier": [7.5], "tol": {"rel": 0.002}}, "enhet": ["%", "prosent"], "selvvurder": true},
   "1p-h22-d1-3a": {"svar": {"type": "fri"}, "selvvurder": true, "symboler": ["rot"]},
   "1p-h22-d1-3b": {"svar": {"type": "tall", "verdier": [4, 20, 1.5], "rekkefolge": "fast", "ord": true, "tol": {"rel": 0.002}}, "format": "Skriv f(16), f(400) og f(9/4) i den rekkefølgen, skilt med komma eller «og».", "selvvurder": true, "symboler": ["rot"]},
-  "1p-h22-d1-4a": {"svar": {"type": "tall", "verdier": [3.79], "tol": {"rel": 0.002}}, "enhet": ["liter per gallon", "liter per us gallon", "liter/gallon", "L/gallon"], "selvvurder": true},
+  "1p-h22-d1-4a": {"svar": {"type": "tall", "verdier": [3.79], "tol": {"rel": 0.002}}, "enhet": ["liter per gallon", "liter/gallon", "L/gallon"], "selvvurder": true},
   "1p-h22-d1-4b": {"svar": {"type": "tall", "verdier": [16000000000], "tol": {"rel": 0.04}}, "enhet": ["liter", "L"], "selvvurder": true},
   "1p-h22-d2-1c": {"svar": {"type": "tall", "verdier": [-3.68], "tol": {"abs": 0.1}}, "enhet": ["°C", "grader"], "selvvurder": true, "symboler": ["grader"]},
   "1p-h22-d2-1d": {"svar": {"type": "tall", "verdier": [4.485], "tol": {"abs": 0.05}}, "enhet": ["°C", "grader"], "selvvurder": true, "symboler": ["grader"]},
