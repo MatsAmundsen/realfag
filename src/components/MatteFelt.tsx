@@ -200,11 +200,23 @@ export function MatteFelt({
     const ved_blur = () => {
       harFokus.current = false;
     };
+    // MathLive flytter det egentlige tastaturfokuset til feltet først 60 ms etter klikket (setTimeout i onFocus).
+    // Tegn som kommer i mellomtiden (rask skriving rett etter klikk, eller automatiske tester) går til elementet
+    // som hadde fokus før, og er tapt: «x=1, x=6» ble til «1, x=6». Vi flytter derfor tastaturfokuset med en gang
+    // trykket starter. MathLive tar selv over resten (markørplassering, onFocus) når fokushendelsen kommer.
+    const ved_peker = (e: Event) => {
+      const p = e as PointerEvent;
+      if (mf.readOnly || mf.disabled || (p.button !== undefined && p.button !== 0)) return;
+      const sink = mf.shadowRoot?.querySelector<HTMLElement>(".ML__keyboard-sink");
+      if (!sink || mf.shadowRoot?.activeElement === sink) return;
+      sink.focus({ preventScroll: true });
+    };
     mf.addEventListener("input", ved_input);
     mf.addEventListener("keydown", ved_tast, true);
     mf.addEventListener("beforeinput", ved_foran, true);
     mf.addEventListener("focusin", ved_fokus);
     mf.addEventListener("focusout", ved_blur);
+    mf.addEventListener("pointerdown", ved_peker, true);
     // Eleven rakk å klikke i tekstfeltet før MathLive var lastet: ta over fokuset.
     if (harFokus.current) mf.focus();
     onKlarRef.current?.(true);
@@ -215,6 +227,7 @@ export function MatteFelt({
       mf.removeEventListener("beforeinput", ved_foran, true);
       mf.removeEventListener("focusin", ved_fokus);
       mf.removeEventListener("focusout", ved_blur);
+      mf.removeEventListener("pointerdown", ved_peker, true);
       stoppRens?.();
       mf.remove();
       felt.current = null;
