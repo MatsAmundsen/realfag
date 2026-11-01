@@ -6,6 +6,7 @@ import { ExamFigure } from "./figures";
 import { ModeToggle } from "./ModeToggle";
 import { PoengOppsummering, ProveResultat, ProveSvar } from "./ProveFelt";
 import { SLUTTSVAR } from "@/data/eksamen-svar";
+import { fasitEllerFri } from "@/lib/deloppgaver";
 import { beregnPoeng, poengPerEnhet, type PoengEnhet, type Resultat, type Vurdering } from "@/lib/prove-poeng";
 import { formatKlokke, useProveUtkast } from "@/lib/prove-utkast";
 import { useDialogFelle, useFokusEtterVisning } from "@/lib/fokus";
@@ -45,10 +46,9 @@ function poengEnheter(exam: Exam): PoengEnhet[] {
 
 /** Sluttsvarfelt (prøvemodus, før levering) og resultat (etter levering) for én enhet. */
 function sluttsvarFor(svar: Svar, id: string) {
-  const fasit = SLUTTSVAR[id];
-  if (!fasit) return undefined;
   return {
-    fasit,
+    /** Enheter uten oppføring i SLUTTSVAR får et fritt felt (egenvurdering etter levering). */
+    fasit: fasitEllerFri(SLUTTSVAR[id]),
     value: svar.answers[SLUTTSVAR_NOKKEL(id)] || "",
     onChange: (v: string) => svar.setAnswer(SLUTTSVAR_NOKKEL(id), v),
   };
@@ -61,7 +61,7 @@ function ResultatFor({ svar, id }: { svar: Svar; id: string }) {
     <ProveResultat
       id={id}
       gitt={svar.answers[SLUTTSVAR_NOKKEL(id)] || ""}
-      fasit={SLUTTSVAR[id]}
+      fasit={fasitEllerFri(SLUTTSVAR[id])}
       res={res}
       vurdering={svar.poeng.vurdering[id]}
       onVurder={(v) => svar.poeng!.onVurder(id, v)}
@@ -167,6 +167,8 @@ function DelOppgave({
           onChange={(v) => svar.setAnswer(part.id, v)}
           onDone={(v) => svar.setFerdig(part.id, v)}
           sluttsvar={sluttsvarFor(svar, part.id)}
+          oppgavetekst={part.text}
+          delnavn={`del ${part.label})`}
           skjult={svar.skjult}
         />
       )}
@@ -230,6 +232,7 @@ function TaskBlock({
               onChange={(v) => svar.setAnswer(task.id, v)}
               onDone={(v) => svar.setFerdig(task.id, v)}
               sluttsvar={sluttsvarFor(svar, task.id)}
+              oppgavetekst={task.text}
               skjult={svar.skjult}
             />
           )}

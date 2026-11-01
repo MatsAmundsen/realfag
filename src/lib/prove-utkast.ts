@@ -35,6 +35,8 @@ export function useProveUtkast(storageKey: string) {
 
   const setAnswer = useCallback((id: string, v: string) => setDraft((d) => ({ ...d, answers: { ...d.answers, [id]: v } })), []);
   const setFerdig = useCallback((id: string, v: boolean) => setDraft((d) => ({ ...d, ferdig: { ...d.ferdig, [id]: v } })), []);
+  /** Bytter hele utkastet i én operasjon (brukes til å flytte et gammelt utkast over til deloppgavenes nøkler). */
+  const erstatt = useCallback((answers: Record<string, string>, ferdig: Record<string, boolean>) => setDraft({ answers, ferdig }), []);
   const clear = useCallback(() => {
     setDraft({ answers: {}, ferdig: {} });
     try {
@@ -44,7 +46,7 @@ export function useProveUtkast(storageKey: string) {
     }
   }, [full]);
 
-  return { answers: draft.answers, ferdig: draft.ferdig, setAnswer, setFerdig, clear, ready };
+  return { answers: draft.answers, ferdig: draft.ferdig, setAnswer, setFerdig, erstatt, clear, ready };
 }
 
 export function formatKlokke(sec: number) {
