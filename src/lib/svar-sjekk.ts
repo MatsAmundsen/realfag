@@ -284,6 +284,9 @@ const GENERISKE_ENHETER = [
 /** Enkeltbokstavsenheter (m, g, L, s …). Bare i ord-modus, der svaret er en setning, og aldri x, y, e eller π. */
 const ENKELTBOKSTAV_ENHETER = "mglLsthJWNCK";
 
+/** Innledning foran et valg: «Svar: B», «Svaret er B», «Alternativ B». */
+const VALG_PREFIKS = /^(?:svaret\s+er|svar|alternativ)(?:\s*:\s*|\s+)/i;
+
 /** Fjerner en godkjent enhet bakerst (etter tall eller parentes). */
 function fjernEnhet(s: string, enheter?: string[]): { rest: string; enhet?: string } {
   if (!enheter || enheter.length === 0) enheter = GENERISKE_ENHETER;
@@ -1743,7 +1746,8 @@ function sjekkSpec(input: string, spec: SvarSpec, enhet?: string[]): boolean {
         const piler = lesPiler(input);
         return piler.length > 0 && piler.every((p) => p === spec.valg);
       }
-      return normaliser(input).replace(/[.)\s]/g, "").toLowerCase() === spec.valg.toLowerCase();
+      // «Svar: B», «Svaret er ja» og «Alternativ C» er samme valg som «B», «ja» og «C».
+      return normaliser(input).replace(VALG_PREFIKS, "").replace(/[.)\s]/g, "").toLowerCase() === spec.valg.toLowerCase();
     }
     case "relasjon": {
       const gitt = lesRelasjoner(input);
@@ -2001,7 +2005,7 @@ export function forhandsvis(input: string, spec: SvarSpec, enhet?: string[]): Fo
     const piler = lesPiler(input);
     return piler.length ? { ok: true, latex: piler.map((p) => (p === "⇒" ? "\\Rightarrow" : "\\Leftrightarrow")).join(",\\quad ") } : { ok: false };
   }
-  if (spec.type === "valg") return { ok: true, latex: `\\text{${s.replace(/[^A-Za-z0-9æøåÆØÅ]/g, "")}}` };
+  if (spec.type === "valg") return { ok: true, latex: `\\text{${s.replace(VALG_PREFIKS, "").replace(/[^A-Za-z0-9æøåÆØÅ]/g, "")}}` };
   if (spec.type === "intervall") {
     const begge = tolkBegge(input);
     if (spec.begge || (begge && !tolkIntervaller(input))) {
