@@ -196,3 +196,71 @@ test("fase 3: avrunding i lister, fast og fri rekkefølge, og med enhet", () => 
   assert.equal(ok("5123 g", e), true);
   assert.equal(ok("5 kg", e), false);
 });
+
+test("fase 3b: heltall-posisjoner krever eksakt likhet (1p-v24-d2-1b)", () => {
+  const b = { svar: { type: "tall", verdier: [284, 4459.34], heltall: [0], rekkefolge: "fast", tol: { abs: 1 } }, enhet: ["bagetter", "kr", "kroner"] };
+  for (const s of ["284 og 4459", "284 og 4459,34", "284 bagetter og 4459 kr", "(284, 4459)", "284, 4459"]) assert.equal(ok(s, b), true, s);
+  for (const s of ["283 og 4459", "285 og 4459", "283 og 4459,33", "283,56 og 4459", "284,4 og 4459"]) assert.equal(ok(s, b), false, s);
+});
+
+test("fase 3b: etterfølgende nuller gir ikke grovere avrunding enn eleven skrev (B-1)", () => {
+  const tt = (verdi, ekstra = {}) => ({ svar: { type: "tall", verdier: [verdi], ...ekstra } });
+  const dager = { svar: { type: "tall", verdier: [96.164077971], tol: { abs: 3 } }, enhet: ["døgn", "dager"] };
+  assert.equal(ok("100", dager), false); // 3,84 fra nøkkelen: utenfor toleransen, og «100» er ikke 96,16 avrundet
+  assert.equal(ok("96", dager), true);
+  assert.equal(ok("99", dager), true); // toleransen
+  const smal = tt(96.164077971);
+  assert.equal(ok("100", smal), false);
+  assert.equal(ok("96", smal), true);
+  assert.equal(ok("96,2", smal), true);
+  assert.equal(ok("100", tt(99.7)), true); // helt tall, avvik under en halv enhet
+  assert.equal(ok("100", tt(100.4)), true);
+  assert.equal(ok("100", tt(100.6)), false);
+  assert.equal(ok("200", tt(176.5)), false);
+  assert.equal(ok("180", tt(176.5)), true);
+  assert.equal(ok("140", tt(142.6)), true);
+  assert.equal(ok("143", tt(142.6)), true);
+  assert.equal(ok("250 000", tt(247865.961046)), true);
+  assert.equal(ok("250000", tt(247865.961046)), true);
+  assert.equal(ok("200 000", tt(247865.961046)), false); // ett ledende siffer: ikke en avrunding
+  assert.equal(ok("1 600 000", tt(1632000)), true);
+});
+
+test("fase 3b: økningsord og + avvises for en nedgang (B-3)", () => {
+  const n = { svar: { type: "tall", verdier: [-12] }, alternativer: [{ type: "tall", verdier: [12], ikkeOkning: true }], enhet: ["%", "% mindre", "prosent"] };
+  for (const s of ["-12 %", "12 % mindre", "12 % nedgang", "12 %", "12 % reduksjon", "ikke en økning, 12 % reduksjon"]) assert.equal(ok(s, n), true, s);
+  for (const s of ["+12 %", "12 % økning", "12 % større", "12 % mer", "12 % høyere", "12 % over", "økning på 12 %", "pluss 12 %"]) assert.equal(ok(s, n), false, s);
+});
+
+test("fase 3b: ulikhetsord og tegn tolkes konsekvent (B-4, P6.OP4)", () => {
+  const p = { svar: { type: "serie", deler: [{ type: "uttrykk", uttrykk: "8400/x" }, { type: "tall", verdier: [70] }, { type: "tall", verdier: [56], ulikhet: "≥" }] }, enhet: ["kr", "kroner", "elever"] };
+  const med = (d) => `8400/x; 70; ${d}`;
+  for (const d of ["56", "x ≥ 56", "x>=56", "minst 56", "minst 56 elever", "mer enn eller lik 56", "flere enn 55", "mer enn 55", "x > 55", "x > 55,5", "x er minst 56"]) assert.equal(ok(med(d), p), true, d);
+  for (const d of ["høyst 56", "maks 56", "maksimalt 56", "x ≤ 56", "mer enn 56", "flere enn 56", "x > 56", "x < 57", "færre enn 57", "mindre enn 56", "x > 54"]) assert.equal(ok(med(d), p), false, d);
+});
+
+test("fase 3b: «2,6» er alltid desimaltallet, aldri en liste (B-5)", () => {
+  const to = { svar: { type: "tall", verdier: [2, 6] } };
+  for (const s of ["2 og 6", "2, 6", "6, 2", "2; 6", "2,6,6"]) assert.equal(ok(s, to), true, s); // «2,6,6» har to komma: liste
+  for (const s of ["2,6", "x=2,6", "2,6 og 6", "(2,6)"]) assert.equal(ok(s, to), false, s);
+  assert.equal(ok("1,6,-2", tall3), true); // minst to komma: reservelesningen gjelder fortsatt
+  assert.equal(ok("1,5", { svar: { type: "tall", verdier: [1.5] } }), true);
+  const likn = { svar: { type: "likning", losninger: { x: [-2, 1, 8] } } };
+  assert.equal(ok("-2,1,8", likn), true);
+  assert.equal(ok("1,8", likn), false);
+});
+
+test("fase 3b: kJ/MJ, \\lor, «ganger 10^», liste i parentes og «a til b» (B-6)", () => {
+  const j = { svar: { type: "tall", verdier: [18828000], tol: { rel: 0.005 } }, enhet: ["J"] };
+  for (const s of ["18 828 000 J", "18828 kJ", "18,828 MJ", "18,8 MJ", "19 MJ"]) assert.equal(ok(s, j), true, s);
+  for (const s of ["18828 J", "18,8 kJ", "188 MJ"]) assert.equal(ok(s, j), false, s);
+  const m = { svar: { type: "tall", verdier: [4000000000] } };
+  for (const s of ["4 ganger 10^9", "4 ganger 10^{9}", "4·10^9", "4 milliarder"]) assert.equal(ok(s, m), true, s);
+  assert.equal(ok("4 ganger 10^8", m), false);
+  const l = { svar: { type: "likning", losninger: { x: [-2, 1, 8] } } };
+  assert.equal(ok("x = -2 \\lor x = 1 \\lor x = 8", l), true);
+  const u = { svar: { type: "ulikhet", fra: -2, til: 6 } };
+  for (const s of ["-2 til 6", "−2 til 6", "fra -2 til 6", "mellom -2 og 6", "-2 < x < 6"]) assert.equal(ok(s, u), true, s);
+  for (const s of ["-2 til 5", "-3 til 6", "2 til 6"]) assert.equal(ok(s, u), false, s);
+  assert.equal(ok("-6 til -1", { svar: { type: "ulikhet", fra: -6, til: -1, lukket: true } }), true);
+});

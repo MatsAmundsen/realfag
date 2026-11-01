@@ -23,7 +23,7 @@ export type SvarSpec =
       ulikhet?: "≥" | "≤";
       /** Tallet er størrelsen på en reduksjon: «12 % økning» avvises (retningen er feil), men «12 %» og «12 % mindre» godtas. */
       ikkeOkning?: boolean;
-      /** Plasseringene (0, 1 …) i `verdier` som må være oppgitt som heltall, for eksempel et antall (bare med rekkefolge «fast»): «283,56 bagetter» er ikke et antall. */
+      /** Plasseringene (0, 1 …) i `verdier` som er et antall (bare med rekkefolge «fast»): svaret må være lik nøkkelen eksakt, `tol` gjelder bare de andre plasseringene. «283,56» og «283» er feil for 284. */
       heltall?: number[];
       /**
        * Slår av avrundingsregelen (se `riktigAvrundet`). Brukes når oppgaven krever et bestemt antall desimaler, gjeldende siffer
@@ -104,6 +104,7 @@ export function fjernLatex(input: string): string {
     .replace(/\\(?:ge|geq|geqslant)(?![A-Za-z])/g, "≥")
     .replace(/\\(?:ne|neq)(?![A-Za-z])/g, "≠")
     .replace(/\\pm(?![A-Za-z])/g, "±")
+    .replace(/\\(?:lor|vee)(?![A-Za-z])/g, "∨")
     .replace(/\\in(?![A-Za-z])/g, "∈")
     .replace(/\\infty(?![A-Za-z])/g, "∞")
     .replace(/\\[{}]/g, (m) => m[1])
@@ -125,6 +126,7 @@ export function normaliser(input: string): string {
     )
     .replace(/\s*[′´’ʹ‘`']/g, "'") // «f '(x)» er f'(x)
     .replace(/π/g, "pi")
+    .replace(/(\d)\s*(?:ganger|gange)\s*(?=10\s*\^)/gi, "$1*") // «4 ganger 10^9» er 4·10^9
     .replace(/(^|[\s(;,=])minus\s+(?=[\d(])/gi, "$1-") // «minus 15 %» er −15 %
     .trim()
     .replace(/\s*\r?\n\s*/g, "; ") // linjeskift mellom delsvar er listeskille
@@ -146,7 +148,8 @@ function desimalkomma(s: string): string {
  * Kommaregelen (felles for alle svartyper): et komma mellom to sifre uten mellomrom er desimalkomma («1,5» er 1,5).
  * Alle andre komma er listeskille: «1, 6» (mellomrom etter), «x=1,x=6» (bokstav etter), «1 ,6» (mellomrom før),
  * «1,-2» (minus etter). Er det flere tall i fasiten enn i den første lesingen, leses også «1,6,-2» med alle komma som
- * listeskille (se listeLesning). Antall elementer i fasit er altså hint, og mellomrom etter kommaet avgjør alltid.
+ * listeskille (se listeLesning), men bare når svaret har minst to komma: «2,6» alene er aldri en liste (tvetydig, avvises når fasit er to tall).
+ * Antall elementer i fasit er altså hint, og mellomrom etter kommaet avgjør alltid.
  */
 const LISTESKILLE = /\s*(?:;|\n|&|\bog\b|\beller\b|∨|(?<!\d),|,(?!\d))\s*/i;
 
@@ -161,6 +164,8 @@ export function delOpp(s: string): string[] {
 /** Alle komma mellom sifre blir listeskille: «1,6,-2» og «1,5,2» leses som tre tall. Brukes bare som andre forsøk. */
 function listeLesning(input: string): string | null {
   const s = normaliser(input);
+  // Ett enkelt «2,6» er alltid desimaltallet 2,6: reservelesningen krever minst to komma i svaret («1,6,-2»).
+  if ((s.match(/,/g) ?? []).length < 2) return null;
   const ut = s.replace(/(\d),(?=\d)/g, "$1; ");
   return ut === s ? null : ut;
 }
@@ -628,7 +633,7 @@ const ENHETSORD: Record<string, string> = {
   grader: "°", grad: "°", kvadratmeter: "m2", kubikkmeter: "m3",
 };
 const ENHETER_KJENT = new Set([
-  ...Object.values(ENHETSORD), "m", "g", "l", "s", "kj", "mj", "kcal", "wh", "kwh", "kw", "mol", "hz", "°c", "°f", "ha", "daa", "dekar", "mil", "tommer", "fot",
+  ...Object.values(ENHETSORD), "m", "g", "l", "s", "j", "kj", "mj", "kcal", "wh", "kwh", "kw", "mol", "hz", "°c", "°f", "ha", "daa", "dekar", "mil", "tommer", "fot",
   "mph", "pa", "bar", "mb", "kb", "gb", "tb", "mb/s", "°k",
 ]);
 
@@ -650,6 +655,7 @@ const ENHETSDIM: Record<string, [string, number]> = {
   mm: ["lengde", 1e-3], cm: ["lengde", 1e-2], dm: ["lengde", 0.1], m: ["lengde", 1], km: ["lengde", 1000],
   ml: ["volum", 1e-3], cl: ["volum", 1e-2], dl: ["volum", 0.1], l: ["volum", 1], cm3: ["volum", 1e-3], dm3: ["volum", 1], m3: ["volum", 1000],
   mm2: ["areal", 1e-6], cm2: ["areal", 1e-4], dm2: ["areal", 1e-2], m2: ["areal", 1], km2: ["areal", 1e6],
+  j: ["energi", 1], kj: ["energi", 1e3], mj: ["energi", 1e6],
   s: ["tid", 1], min: ["tid", 60], h: ["tid", 3600], døgn: ["tid", 86400], uke: ["tid", 604800],
   øre: ["penger", 0.01], kr: ["penger", 1],
 };
@@ -851,7 +857,8 @@ type Presisjon = { pos: number[]; faktor: number };
 /**
  * Leser presisjonen fra et tall slik eleven skrev det: «15,87» → 2 desimaler (4 siffer), «177» → hele tall, «180» → tiere (2 siffer)
  * eller hele tall, «1,04·10^11» → hundre millioner … Gjelder bare rene tall og tall på standardform; uttrykk som 2√3 gir null.
- * Færre enn 2 gjeldende siffer (som «200») gir null: for grovt til å regnes som et svar.
+ * Færre enn 2 gjeldende siffer (som «200») gir null: for grovt til å regnes som et svar. Et heltall med bare ett ledende siffer
+ * og etterfølgende nuller («100», «200», «20 000») regnes som helt tall, ikke som avrundet til hundrer eller tusener: «100» er ikke 96,16 avrundet.
  */
 function presisjonFra(tekst: string, faktor: number): Presisjon | null {
   const t = tekst.trim().replace(/(?<=\d)\s+(?=\d{3}(?!\d))/g, "");
@@ -866,8 +873,11 @@ function presisjonFra(tekst: string, faktor: number): Presisjon | null {
   if (des.length > 0) {
     if (sifre.length >= 2) pos.push(des.length - eksp);
   } else {
+    // Etterfølgende nuller i et heltall er bare en avrunding (til tiere, hundrer …) når de ledende sifrene alene er minst to («180», «250 000»).
+    // «100», «200» og «20 000» har ett ledende siffer: nullene er da selv gjeldende siffer, og tallet er bare et helt tall (avvik under en halv enhet).
     const nuller = (sifre.match(/0*$/) ?? [""])[0].length;
-    for (let p = 0; p <= nuller; p++) if (sifre.length - p >= 2) pos.push(-p - eksp);
+    const ledende = sifre.length - nuller;
+    for (let p = 0; p <= (ledende >= 2 ? nuller : 0); p++) if (sifre.length - p >= 2) pos.push(-p - eksp);
   }
   return pos.length > 0 ? { pos, faktor } : null;
 }
@@ -1019,6 +1029,7 @@ function heltallsListe(input: string): string | null {
   const s = normaliser(input);
   const m = /^(?:([A-Za-zα-ω][A-Za-z0-9_]*)\s*=\s*)?(-?\d+(?:\s*,\s*-?\d+|\s+-?\d+)+)$/.exec(s);
   if (!m) return null;
+  if (/^-?\d+,-?\d+$/.test(m[2])) return null; // «2,6» er desimaltallet 2,6, aldri en liste
   const deler = m[2].split(/\s*,\s*|\s+/);
   return deler.map((d) => (m[1] ? `${m[1]}=${d}` : d)).join("; ");
 }
@@ -1062,7 +1073,8 @@ function tolkOmrade(input: string, enhet?: string[]): number[] | null {
   return ut;
 }
 
-type Ulikhet = { lo: number; hi: number; loLukket: boolean; hiLukket: boolean };
+/** `ubestemt`: «-2 til 3» sier ikke om endepunktene er med, så begge lesemåter godtas. */
+type Ulikhet = { lo: number; hi: number; loLukket: boolean; hiLukket: boolean; ubestemt?: boolean };
 
 /** Løsningsmengde: «-2 < x < 3», «x>-2 og x<3», «(-2, 3)», «<-2, 3>» eller «x ∈ ⟨-2, 3⟩». */
 function tolkUlikhet(input: string): Ulikhet | null {
@@ -1073,6 +1085,13 @@ function tolkUlikhet(input: string): Ulikhet | null {
     const lo = tallVerdi(mellom[1].trim());
     const hi = tallVerdi(mellom[2].trim());
     return lo === null || hi === null ? null : { lo, hi, loLukket: false, hiLukket: false };
+  }
+  // «-2 til 3» og «fra -2 til 3»: et intervall uten at åpen eller lukket er sagt.
+  const til = /^(?:x\s+(?:er\s+)?)?(?:fra\s+)?(-?\d[^<>≤≥=]*?|-?\(.+?\)|-?sqrt\(.+?\)|-?pi)\s+til\s+(.+)$/i.exec(n0);
+  if (til) {
+    const lo = tallVerdi(til[1].trim());
+    const hi = tallVerdi(til[2].trim());
+    return lo === null || hi === null ? null : { lo, hi, loLukket: false, hiLukket: false, ubestemt: true };
   }
   let s = fjernLedendeOrd(n0).replace(/≤|⩽/g, "<=").replace(/≥|⩾/g, ">=").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
   s = s.replace(/^\s*x\s*(?:∈|\bi\b|\bin\b)\s*/i, "").replace(/\s+/g, " ").trim();
@@ -1258,6 +1277,19 @@ function likhetskjede(input: string): string | null {
   return v.every((x) => Math.abs(x - sist) <= 0.02 * Math.max(1, Math.abs(sist))) ? sider[sider.length - 1] : null;
 }
 
+/** Ord som sier at tallet er en økning («12 % økning», «12 % større», «+12 %»). Brukes av `ikkeOkning`. */
+const OKNINGSORD = "økning|økningen|økte|øker|økt|stigning|stiger|steg|oppgang|vekst|større|mer|høyere|over|flere|pluss";
+/** Selve økningssubstantivene: «ikke en økning» (nektelse av økningen, ikke av tallet) fjernes før nektelsestesten og før ikkeOkning. */
+const IKKE_OKNING = new RegExp("\\bikke\\s+(?:en\\s+|noen\\s+)?(?:økning|økningen|økt|stigning|oppgang|vekst)(?![A-Za-zÆØÅæøå])\\s*,?", "gi");
+
+/** Ulikhetsord foran et tall («høyst 56», «mer enn 55») og tegnet de betyr. Lengste uttrykk først. */
+const ULIKHETSORD: [RegExp, "≤" | "≥" | "<" | ">"][] = [
+  [/^(?:(?:færre|mindre|lavere)\s+enn\s+eller\s+lik|ikke\s+(?:mer|flere|større|høyere)\s+enn|høyst|maks(?:imalt|imum)?|inntil|opptil)\s+/i, "≤"],
+  [/^(?:(?:mer|flere|større|høyere)\s+enn\s+eller\s+lik|ikke\s+(?:færre|mindre|lavere)\s+enn|minst|minimum|minimalt)\s+/i, "≥"],
+  [/^(?:færre|mindre|lavere|under)\s+(?:enn\s+)?/i, "<"],
+  [/^(?:mer|flere|større|høyere|over)\s+(?:enn\s+)?/i, ">"],
+];
+
 function sjekkSpec(input: string, spec: SvarSpec, enhet?: string[]): boolean {
   switch (spec.type) {
     case "serie": {
@@ -1270,8 +1302,8 @@ function sjekkSpec(input: string, spec: SvarSpec, enhet?: string[]): boolean {
         if (spec.rekkefolge === "fast") {
           return (
             gitt.length === spec.verdier.length &&
-            gitt.every((_, i) => lik(i, spec.verdier[i])) &&
-            (spec.heltall ?? []).every((i) => Math.abs(gitt[i] - Math.round(gitt[i])) < 1e-9)
+            // Posisjoner i `heltall` (et antall der naboverdiene er feil svar) krever eksakt likhet: toleransen gjelder bare de andre.
+            gitt.every((_, i) => ((spec.heltall ?? []).includes(i) ? Math.abs(gitt[i] - spec.verdier[i]) < 1e-9 : lik(i, spec.verdier[i])))
           );
         }
         const idx: number[] = [];
@@ -1288,14 +1320,46 @@ function sjekkSpec(input: string, spec: SvarSpec, enhet?: string[]): boolean {
         }
         return true;
       };
-      if (spec.ikkeOkning && /(?:^|[^A-Za-zÆØÅæøå])(?:økning|økningen|økte|øker|økt|stigning|stiger|steg|oppgang|vekst)(?![A-Za-zÆØÅæøå])/i.test(normaliser(input))) return false;
+      if (spec.ikkeOkning) {
+        // «ikke en økning, 12 % reduksjon» er en nedgang: nektelsen foran økningsordet fjernes først (også for selve tolkningen).
+        const uten = normaliser(input).replace(IKKE_OKNING, " ").trim();
+        if (new RegExp(`(?:^|[^A-Za-zÆØÅæøå])(?:${OKNINGSORD})(?![A-Za-zÆØÅæøå])|(?<![\\w)])\\+\\s*[\\d.,]`, "i").test(uten)) return false;
+        if (uten) input = uten;
+      }
       if (spec.ulikhet) {
-        // «x ≥ 56» / «x>=56» for «minst 56»: tegnet må stemme med oppgaven, ellers er det ikke svaret.
-        const u = /^\s*(?:[A-Za-z]\s*)?(≥|≤|>=|<=|⩾|⩽)\s*(.+)$/.exec(normaliser(input));
-        if (u) {
-          const tegn = u[1] === "≥" || u[1] === ">=" || u[1] === "⩾" ? "≥" : "≤";
-          return tegn === spec.ulikhet && sjekkSpec(u[2], { ...spec, ulikhet: undefined }, enhet);
+        // «x ≥ 56» / «høyst 56» / «flere enn 55» for «minst 56»: tegnet (eller ordet) må stemme med oppgaven, ellers er det ikke svaret.
+        // Strengt større enn / mindre enn er det samme som ≥ / ≤ bare når nøkkelen er et heltall (et antall): «> 55» er «≥ 56».
+        const n = normaliser(input).replace(/^\s*[A-Za-z]\s+er\s+(?=\S)/i, ""); // «x er høyst 56»
+        let tegn: "≤" | "≥" | "<" | ">" | null = null;
+        let rest = "";
+        const sym = /^\s*(?:[A-Za-z]\s*)?(≥|≤|>=|<=|⩾|⩽|>|<)\s*(.+)$/.exec(n);
+        if (sym) {
+          tegn = sym[1] === "≥" || sym[1] === ">=" || sym[1] === "⩾" ? "≥" : sym[1] === "≤" || sym[1] === "<=" || sym[1] === "⩽" ? "≤" : (sym[1] as "<" | ">");
+          rest = sym[2];
+        } else {
+          for (const [re, tg] of ULIKHETSORD) {
+            const mo = re.exec(n);
+            if (mo) {
+              tegn = tg;
+              rest = n.slice(mo[0].length);
+              break;
+            }
+          }
         }
+        if (tegn) {
+          if (tegn === "≥" || tegn === "≤") return tegn === spec.ulikhet && sjekkSpec(rest, { ...spec, ulikhet: undefined }, enhet);
+          const v = spec.verdier[0];
+          const g = tolkTall(rest, enhet, spec.ord, spec.nedgang);
+          if (spec.verdier.length !== 1 || !Number.isInteger(v) || !g || g.length !== 1) return false;
+          if (tegn === ">") return spec.ulikhet === "≥" && Math.floor(g[0] + 1e-9) + 1 === v;
+          return spec.ulikhet === "≤" && Math.ceil(g[0] - 1e-9) - 1 === v;
+        }
+      }
+      if (spec.verdier.length >= 2 && (spec.rekkefolge !== "fast" || spec.heltall)) {
+        // «(284, 4459)»: en liste i parentes er den samme listen. Ikke for fast rekkefølge uten heltall: der er (a, b) et koordinatpar
+        // (P4.OP5: «(21,5; 2)» er ikke punktet (2; 21,5)), og punktet har sin egen alternativ-nøkkel.
+        const pm = /^\s*\(([^()]*)\)\s*$/.exec(normaliser(input));
+        if (pm && /;|,\s+|\bog\b/i.test(pm[1])) return sjekkSpec(pm[1], spec, enhet);
       }
       const pres0: (Presisjon | null)[] = [];
       const gitt = tolkTall(input, enhet, spec.ord, spec.nedgang, pres0);
@@ -1329,7 +1393,7 @@ function sjekkSpec(input: string, spec: SvarSpec, enhet?: string[]): boolean {
       const u = tolkUlikhet(input);
       if (!u) return false;
       const lukket = Boolean(spec.lukket);
-      return erNær(u.lo, spec.fra) && erNær(u.hi, spec.til) && u.loLukket === lukket && u.hiLukket === lukket;
+      return erNær(u.lo, spec.fra) && erNær(u.hi, spec.til) && (u.ubestemt || (u.loLukket === lukket && u.hiLukket === lukket));
     }
     case "uttrykk": {
       if (sjekkUttrykk(input, spec, enhet)) return true;
@@ -1465,7 +1529,7 @@ export function svartype(fasit: Sluttsvar | undefined): Svartype {
 export function sjekkSluttsvar(input: string, fasit: Sluttsvar): boolean {
   if (!input || !input.trim()) return false;
   // «k≠4» og «k er ikke 4» er det motsatte av «k=4».
-  if (/≠|!=|<>|\b(?:ikke|aldri|forskjellig|ulik)\b/i.test(normaliser(input))) return false;
+  if (/≠|!=|<>|\b(?:ikke|aldri|forskjellig|ulik)\b/i.test(normaliser(input).replace(IKKE_OKNING, " "))) return false;
   const alle = [fasit.svar, ...(fasit.alternativer || [])];
   return alle.some((s) => sjekkSpec(input, s, (s as Alternativ).enhet ?? fasit.enhet));
 }

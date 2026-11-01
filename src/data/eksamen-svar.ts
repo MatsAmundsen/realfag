@@ -101,7 +101,7 @@ export const SLUTTSVAR: Record<string, Sluttsvar> = {
   "1p-v24-d2-4a": {"svar": {"type": "tall", "verdier": [55.2373333333], "tol": {"abs": 0.1}}, "enhet": ["s", "sekunder", "sek"]},
   "1p-h23-d1-1": {"svar": {"type": "tall", "verdier": [2.1]}, "enhet": ["L", "liter"]},
   "1p-h23-d1-2b": {"svar": {"type": "tall", "verdier": [10]}, "enhet": ["%", "prosent"]},
-  "1p-h23-d1-5": {"svar": {"type": "tall", "verdier": [337120]}, "enhet": ["kr", "kroner"]},
+  "1p-h23-d1-5": {"svar": {"type": "tall", "verdier": [337120]}, "enhet": ["kr", "kroner"], "selvvurder": true},
   "1p-h23-d2-2": {"svar": {"type": "tall", "verdier": [-12]}, "alternativer": [{"type": "tall", "verdier": [12], "ikkeOkning": true}], "enhet": ["%", "% mindre", "prosent"]},
   "1p-h23-d2-3a": {"svar": {"type": "tall", "verdier": [15.8548959919], "tol": {"abs": 0.5}}, "enhet": ["pølser"]},
   "1p-h23-d2-3b": {"svar": {"type": "tall", "verdier": [2.6], "tol": {"abs": 0.05}}, "enhet": ["%", "prosent"]},
