@@ -341,6 +341,23 @@ function utenYtterparentes(ch: N[]): N[] {
   return ch;
 }
 
+const ERHALE = (n: N): boolean =>
+  (n.t === "c" && /^[\s,;]$/.test(n.v)) ||
+  (n.t === "cmd" && /^[;,: ]$/.test(n.v)) || (n.t === "grp" && n.ch.length > 0 && n.ch.every(ERHALE));
+
+/**
+ * Komma/semikolon/mellomrom helt på slutten av en brøk, potens eller rot hører til listen rundt,
+ * ikke til nevneren: «1/2, x=3» skrives i MathLive med «,» inni nevneren til eleven hopper ut.
+ */
+function skillHale(ch: N[]): { kropp: N[]; hale: string } {
+  let i = ch.length;
+  while (i > 0 && ERHALE(ch[i - 1])) i--;
+  const hale = ser(ch.slice(i))
+    .replace(/\s+/g, " ")
+    .trimEnd();
+  return { kropp: ch.slice(0, i), hale: hale && !/^\s*$/.test(hale) ? hale : "" };
+}
+
 function ser(ch: N[]): string {
   let ut = "";
   for (const n of ch) {
@@ -383,8 +400,9 @@ function ser(ch: N[]): string {
           ut += "'";
           break;
         }
-        const e = ser(utenYtterparentes(n.a)).trim();
-        ut += "^" + (/^(\d+|[A-Za-z])$/.test(e) ? e : `(${e})`);
+        const { kropp, hale } = skillHale(n.a);
+        const e = ser(utenYtterparentes(kropp)).trim();
+        ut += "^" + (/^(\d+|[A-Za-z])$/.test(e) ? e : `(${e})`) + hale;
         break;
       }
       case "sub": {
@@ -394,17 +412,19 @@ function ser(ch: N[]): string {
       }
       case "frac": {
         const t = ser(utenYtterparentes(n.n)).trim();
-        const nv = ser(utenYtterparentes(n.d)).trim();
-        ut += `${iParentes(t)}/${iParentes(nv)}`;
+        const { kropp, hale } = skillHale(n.d);
+        const nv = ser(utenYtterparentes(kropp)).trim();
+        ut += `${iParentes(t)}/${iParentes(nv)}${hale}`;
         break;
       }
       case "sqrt": {
-        const a = ser(utenYtterparentes(n.a)).trim();
+        const { kropp, hale } = skillHale(n.a);
+        const a = ser(utenYtterparentes(kropp)).trim();
         if (n.idx) {
           const i = ser(n.idx).trim();
-          ut += `(${a})^(1/${iParentes(i)})`;
+          ut += `(${a})^(1/${iParentes(i)})${hale}`;
         } else {
-          ut += `sqrt(${a})`;
+          ut += `sqrt(${a})${hale}`;
         }
         break;
       }
