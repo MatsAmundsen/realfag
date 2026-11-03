@@ -512,7 +512,7 @@ export const KAP4_QUIZ: Record<string, QuizQuestion[]> = {
       "$f(t+T)=a b^{t+T}=a b^t b^T=f(t)\\cdot b^T$. Halvering krever $b^T=1/2$.",
     ),
     q(
-      "En verdi faller fra $12000$ til $10800$ på ett år. Etter fem slike år til er verdien nærmest",
+      "En verdi faller fra $12000$ til $10800$ på ett år. Etter fem slike år i alt (regnet fra $12000$) er verdien nærmest",
       [
         "$6000$",
         "$9000$",
