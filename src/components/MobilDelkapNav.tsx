@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ChevronDown } from "lucide-react";
-import { useEffect, useId, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { fagsok as fagsok1T } from "@/data/content";
 import { fagsok1P } from "@/data/1p";
 import { countSubchapter, isOvingDelkap } from "@/lib/progress";
@@ -19,8 +19,18 @@ export function MobilDelkapNav({ kapId, subId, fag = "1T" }: { kapId: string; su
   const [open, setOpen] = useState(false);
   const listId = useId();
 
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  const valgtViaLenke = useRef(false);
+
   // Lukk listen når du har valgt et delkapittel eller byttet kapittel.
-  useEffect(() => setOpen(false), [kapId, subId]);
+  // Er det valgt via en lenke i denne menyen, flyttes fokus til knappen (lenken forsvinner/skjules, og fokus ville ellers havne på body).
+  useEffect(() => {
+    setOpen(false);
+    if (valgtViaLenke.current) {
+      valgtViaLenke.current = false;
+      toggleRef.current?.focus();
+    }
+  }, [kapId, subId]);
 
   if (!kap || kap.delkapitler.length === 0) return null;
   const current = kap.delkapitler.find((d) => d.id === subId);
@@ -28,8 +38,22 @@ export function MobilDelkapNav({ kapId, subId, fag = "1T" }: { kapId: string; su
   const ove = kap.delkapitler.find((d) => isOvingDelkap(d));
 
   return (
-    <nav className="mobile-subnav" aria-label="Delkapitler i dette kapittelet">
+    <nav
+      className="mobile-subnav"
+      aria-label="Delkapitler i dette kapittelet"
+      onClick={(e) => {
+        if ((e.target as HTMLElement).closest("a")) valgtViaLenke.current = true;
+      }}
+      onKeyDown={(e) => {
+        if (e.key === "Escape" && open) {
+          e.stopPropagation();
+          setOpen(false);
+          toggleRef.current?.focus();
+        }
+      }}
+    >
       <button
+        ref={toggleRef}
         type="button"
         className="mobile-subnav-toggle"
         aria-expanded={open}
