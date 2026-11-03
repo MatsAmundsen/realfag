@@ -112,7 +112,7 @@
   {
     "sporsmal": "En elev skal isolere $x$ i formelen $y = a x + b$. Eleven skriver: $x = \\frac{y}{a} - b$. Hva er feil med dette?",
     "alternativer": [
-      "Eleven delte på $a$ før hen flyttet over $b$",
+      "Eleven delte bare $y$ på $a$, ikke hele høyresiden",
       "Eleven byttet ikke fortegn på $b$",
       "Man kan ikke ha to ukjente i samme formel",
       "Det er ikke noe feil, svaret er riktig"

@@ -218,3 +218,90 @@ describe("tekst → LaTeX → tekst for de nye tegnene", () => {
     }
   });
 });
+
+describe("kap. 3–4 retting: intervall med egen variabel (4.OP1c, verdimengde)", () => {
+  const f: Sluttsvar = {
+    svar: { type: "intervall", deler: [{ fra: -9, til: 7, fraLukket: true, tilLukket: true }], variabel: ["y", "f(x)"] },
+    symboler: ["intervall", "ulikhet"],
+  };
+  it("godtar y og f(x), parentes og ulikhet, V_f", () => {
+    alle(
+      f,
+      ["[-9,7]", "[-9, 7]", "[-9;7]", "-9≤y≤7", "-9<=y<=7", "y∈[-9,7]", "y ∈ [−9, 7]", "f(x)∈[-9,7]", "-9≤f(x)≤7", "V_f = [-9,7]", "V_f=[−9,7]"],
+      [],
+    );
+  });
+  it("avviser feil variabel (x og andre bokstaver) og feil intervall", () => {
+    alle(f, [], ["-9≤x≤7", "x∈[-9,7]", "t∈[-9,7]", "-9≤z≤7", "(-9,7)", "-9<y<7", "[-8,7]", "[-9,7)", "y≥-9"]);
+  });
+  it("uten variabel i spec er x fortsatt variabelen (ingen endring for øvrige oppgaver)", () => {
+    const g = iv([{ fra: -9, til: 7, fraLukket: true, tilLukket: true }]);
+    alle(g, ["-9≤x≤7", "x∈[-9,7]", "[-9,7]"], ["(-9,7)"]);
+  });
+  it("⟨ ⟩ skrevet med andre vinkelparenteser (3.OP8a/b)", () => {
+    const begge = iv([{ fra: null, til: 4 }], true);
+    alle(begge, ["x<4, x∈\u3008←,4\u3009", "x<4, x∈\u2039←,4\u203a", "x<4, x∈⟨←,4⟩"], ["x<4", "x<4, x∈\u30084,→\u3009"]);
+  });
+});
+
+describe("kap. 3–4 retting: mengdeskrivemåter og «v» som eller (3.OP4)", () => {
+  const f: Sluttsvar = { svar: { type: "tall", verdier: [-3, 3] }, format: "Skriv alle svarene, skilt med komma eller «og»." };
+  it("godtar {…}, «v» og «∨» som eller", () => {
+    alle(f, ["-3 og 3", "{-3, 3}", "{−3, 3}", "{-3,3}", "{-3; 3}", "x ∈ {-3, 3}", "L={-3, 3}", "x=-3 v x=3", "x=3 v x=-3", "-3 v 3", "x = -3 ∨ x = 3"], ["{3}", "{-3}", "{-3, 9}", "x=-3 v x=9", "3"]);
+  });
+  it("«v» som variabel deles ikke, og {3,5} er fortsatt 3,5 for ett tall", () => {
+    alle({ svar: { type: "tall", verdier: [4] } }, ["4"], ["v", "4 v 5"]);
+    alle({ svar: { type: "tall", verdier: [3.5] } }, ["3,5", "{3,5}"], ["{3, 5}", "3 og 5"]);
+    alle({ svar: { type: "uttrykk", uttrykk: "v+1" } } as Sluttsvar, ["v+1", "1+v"], ["v-1"]);
+  });
+});
+
+describe("kap. 3–4 retting: D_r og V_r (4.OP5c)", () => {
+  const f: Sluttsvar = {
+    svar: { type: "serie", deler: [{ type: "mengde", grunn: "R", utenom: [3] }, { type: "mengde", grunn: "R", utenom: [2] }] },
+  };
+  it("godtar ≠ og forening av åpne intervaller", () => {
+    alle(
+      f,
+      ["ℝ∖{3}; ℝ∖{2}", "x≠3; y≠2", "x ≠ 3 og y ≠ 2", "D_r=ℝ∖{3}; V_r=ℝ∖{2}", "D_r: x≠3; V_r: y≠2", "(-∞,3)∪(3,∞); (-∞,2)∪(2,∞)", "(−∞, 3) U (3, ∞); (−∞, 2) U (2, ∞)", "x∈(-∞,3)∪(3,∞); y∈(-∞,2)∪(2,∞)"],
+      ["x≠2; y≠3", "ℝ∖{2}; ℝ∖{3}", "(-∞,3)∪(3,∞)", "(-∞,3); (-∞,2)", "(-∞,2)∪(3,∞); (-∞,2)∪(2,∞)"],
+    );
+  });
+});
+
+describe("kap. 3–4 retting: toleranser og enheter (4.OP5a, 4.OP7a, 4.OP8a, 4.OP9a, 4.OP9c, 4.OP10c)", () => {
+  it("4.OP8a: 137,84 mg – 138 godtas, 140 og 137 avvises", () => {
+    const f: Sluttsvar = { svar: { type: "tall", verdier: [137.842], ingenAvrunding: true, tol: { abs: 0.5 } }, enhet: ["mg"] };
+    alle(f, ["138", "137,8", "137,84", "138 mg", "137,842"], ["140", "137", "139", "250"]);
+  });
+  it("4.OP7a: 923,56 g – 924 godtas, 920 avvises", () => {
+    const f: Sluttsvar = { svar: { type: "tall", verdier: [923.558095716], ingenAvrunding: true, tol: { abs: 1 } }, enhet: ["g"] };
+    alle(f, ["924", "924 g", "923,6", "924,2", "923"], ["920", "900", "930"]);
+  });
+  it("4.OP9c: 10,47 år (2030) – 10 og 11 avvises, «i løpet av 2030» godtas", () => {
+    const f: Sluttsvar = {
+      svar: { type: "tall", verdier: [10.4698484308], ingenAvrunding: true, tol: { abs: 0.1 } },
+      alternativer: [{ type: "tall", verdier: [2030], ingenAvrunding: true }],
+      enhet: ["år"],
+    };
+    alle(f, ["10,5", "10,47", "10,5 år", "2030", "i løpet av 2030"], ["10", "11", "2000", "2031", "20"]);
+  });
+  it("4.OP9a: «% per år» og «prosent per år» godtas som enhet, 0,05 gjør det ikke", () => {
+    const f: Sluttsvar = { svar: { type: "tall", verdier: [1.05, 5], tol: { abs: 0.006 } }, enhet: ["%", "% per år", "prosent", "prosent per år"] };
+    alle(f, ["1,05 og 5 %", "1,05 og 5 % per år", "1,05 og 5 prosent per år", "b=1,05; 5 % per år", "1,05 og 5 %/år"], ["1,05 og 0,05", "1,05", "1,5 og 50"]);
+  });
+  it("4.OP10c: «(6, 38)» godtas som alternativ, (38, 6) avvises", () => {
+    const f: Sluttsvar = {
+      svar: { type: "tall", verdier: [6, 38], rekkefolge: "fast", ord: true },
+      alternativer: [{ type: "punkt", punkter: [[6, 38]] }],
+      enhet: ["timer", "kunder"],
+    };
+    alle(f, ["6 og 38", "6, 38", "(6, 38)", "(6; 38)", "6 timer og 38 kunder"], ["38 og 6", "(38, 6)", "6", "(6, 36)"]);
+  });
+  it("4.OP5a: (0; -1,33) godtas innenfor ±0,005, -1,3 og -1,4 avvises", () => {
+    const f: Sluttsvar = {
+      svar: { type: "serie", deler: [{ type: "tall", verdier: [-2] }, { type: "punkt", punkter: [[0, -1.33333333333]], tol: { abs: 0.005 } }] },
+    };
+    alle(f, ["-2; (0, -4/3)", "-2; (0; -1,33)", "-2; (0, -1.33)", "-2; (0; -1,333)"], ["-2; (0; -1,3)", "-2; (0; -1,4)", "2; (0, 4/3)", "-2; (-4/3, 0)"]);
+  });
+});

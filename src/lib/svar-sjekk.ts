@@ -46,8 +46,10 @@ export type SvarSpec =
    * «x > 3», «x < −5 eller x > 1». `null` i `fra` betyr −∞ og `null` i `til` betyr ∞ (alltid åpen ende). Rekkefølgen på `deler` er fri.
    * Godtar ⟨a,b⟩, (a,b), <a,b>, ]a,b[ og [a,b] som skrevemåte, «x ∈» foran, ←/→/∞/«uendelig», {x | …}, ∪, «eller» og ∨.
    * `begge`: oppgaven ber om svaret både med ulikhetstegn og som intervall («x < 4, x ∈ ⟨←, 4⟩»); begge formene kreves, og begge må stemme.
+   * `variabel`: variabelen intervallet gjelder (f.eks. ["y", "f(x)"] for en verdimengde). Uten `variabel` er det x. Med `variabel` leses de oppgitte navnene
+   * som variabelen («-9 ≤ y ≤ 7», «f(x) ∈ [-9, 7]»), og en annen variabel, også x, avvises. «V_f =» foran er valgfritt.
    */
-  | { type: "intervall"; deler: { fra: number | null; til: number | null; fraLukket?: boolean; tilLukket?: boolean }[]; begge?: boolean }
+  | { type: "intervall"; deler: { fra: number | null; til: number | null; fraLukket?: boolean; tilLukket?: boolean }[]; begge?: boolean; variabel?: string[] }
   /**
    * Mengde av tall: enten en liste i vilkårlig rekkefølge (`elementer`: «{1, 2, 3}», «1, 2, 3»), eller en tallmengde uten noen verdier
    * (`grunn` og `utenom`: «ℝ∖{3}», «ℝ \ {3}», «ℝ uten 3», «ℝ minus {3}», «x ∈ ℝ, x ≠ 3», «{x ∈ ℝ | x ≠ 3}»). «D_f =» foran er valgfritt.
@@ -198,9 +200,9 @@ function desimalkomma(s: string): string {
  * listeskille (se listeLesning), men bare når svaret har minst to komma: «2,6» alene er aldri en liste (tvetydig, avvises når fasit er to tall).
  * Antall elementer i fasit er altså hint, og mellomrom etter kommaet avgjør alltid.
  */
-const LISTESKILLE = /\s*(?:;|\n|&|\bog\b|\beller\b|∨|(?<!\d),|,(?!\d))\s*/i;
+const LISTESKILLE = /\s*(?:;|\n|&|\bog\b|\beller\b|∨|(?<=\S\s)v(?=\s+[^\s=<>≈≤≥*/^])|(?<!\d),|,(?!\d))\s*/i;
 
-/** Deler et svar i flere deler: «;», linjeskift, «og», «eller», «∨», «&» og komma som ikke er desimalkomma. */
+/** Deler et svar i flere deler: «;», linjeskift, «og», «eller», «∨», «v» (omgitt av mellomrom: «x=-3 v x=3»), «&» og komma som ikke er desimalkomma. */
 export function delOpp(s: string): string[] {
   return s
     .split(LISTESKILLE)
@@ -224,8 +226,8 @@ function listeLesning(input: string): string | null {
 export function fjernLedendeOrd(s: string): string {
   let ut = s;
   for (let i = 0; i < 6; i++) {
-    // «k er 4», «b blir 150», «i 2022», «på 15 %»: en variabel med er/blir, eller en kort preposisjon foran tallet.
-    const kort = /^\s*(?:[A-Za-z]\s+(?:er|blir)|i|på)\s+(?=[-+\d(√.])/i.exec(ut);
+    // «k er 4», «b blir 150», «i 2022», «i løpet av 2030», «på 15 %»: en variabel med er/blir, eller en kort preposisjon foran tallet.
+    const kort = /^\s*(?:[A-Za-z]\s+(?:er|blir)|i\s+løpet\s+av|i|på)\s+(?=[-+\d(√.])/i.exec(ut);
     if (kort) {
       ut = ut.slice(kort[0].length);
       continue;
@@ -688,7 +690,7 @@ const ENHETER_KJENT = new Set([
 ]);
 
 function enhetKanon(u: string): string {
-  const s = normaliser(u).toLowerCase().replace(/\s+/g, "").replace(/[.,]+$/, "").replace(/\^/g, "");
+  const s = normaliser(u).toLowerCase().replace(/\s+(?:per|pr\.?)\s+(?=\S)/g, "/").replace(/\s+/g, "").replace(/[.,]+$/, "").replace(/\^/g, "");
   return s.split("/").map((seg) => ENHETSORD[seg] ?? seg).join("/");
 }
 
@@ -1307,7 +1309,10 @@ const FORENING = /\s*(?:∪|∨|\beller\b|(?<=[)\]⟩>])\s*U\s*(?=[([\]⟨<]))\s
 
 /** Teksten klar for intervalltolking: «Svar:», «L =», «x ∈», «{x | …}» og ≤ ≥ som <= >= er ryddet bort. */
 function intervallTekst(input: string): string {
-  let s = normaliser(input).replace(/≤|⩽/g, "<=").replace(/≥|⩾/g, ">=").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+  let s = normaliser(input)
+    .replace(/[\u3008\u2329\u2039]/g, "⟨") // 〈 ‹ er vinkelparentes
+    .replace(/[\u3009\u232a\u203a]/g, "⟩")
+    .replace(/≤|⩽/g, "<=").replace(/≥|⩾/g, ">=").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
   s = fjernLedendeOrd(s);
   s = s.replace(/^\s*[A-Za-zÆØÅα-ω][A-Za-z0-9_]*(?:\s*\([^()]*\))?\s*[=:]\s*(?![<>=])/, "");
   s = s.replace(/^\{\s*x\s*(?:∈\s*R\s*)?(?:\||:)\s*(.+?)\s*\}$/, "$1");
@@ -1386,7 +1391,31 @@ function ivFraSpec(spec: Extract<SvarSpec, { type: "intervall" }>): Iv[] {
   );
 }
 
-function sjekkIntervall(input: string, spec: Extract<SvarSpec, { type: "intervall" }>): boolean {
+/**
+ * Bytter de godkjente variabelnavnene («y», «f(x)») med x, slik at resten av tolkingen (som leser x) fungerer.
+ * Er x selv (eller en annen variabel) brukt som variabel, er svaret en verdimengde med feil variabel: gir null.
+ */
+function medVariabel(input: string, variabler: string[]): string | null {
+  const MERKE = "\u0001";
+  const ordGrense = "(?<![A-Za-zÆØÅæøåα-ω0-9_])";
+  const ordSlutt = "(?![A-Za-zÆØÅæøåα-ω0-9_])";
+  let s = normaliser(input);
+  for (const v of [...variabler].sort((a, b) => b.length - a.length)) {
+    s = s.replace(new RegExp(`${ordGrense}${escRegex(normaliser(v))}${ordSlutt}`, "g"), MERKE);
+  }
+  if (new RegExp(`${ordGrense}x${ordSlutt}`).test(s)) return null;
+  // «t ∈ [-9, 7]»: en annen enkeltbokstav-variabel foran intervallet er heller ikke en av de tillatte (L, D og V er mengdenavn).
+  if (/^\s*(?:svar\s*:?\s*)?(?![LDVldv]\s*(?:∈|=|\\in\b))[A-Za-zα-ω]\s*(?:∈|=|\\in\b)/i.test(s)) return null;
+  return s.replace(new RegExp(MERKE, "g"), "x");
+}
+
+function sjekkIntervall(input0: string, spec: Extract<SvarSpec, { type: "intervall" }>): boolean {
+  let input = input0;
+  if (spec.variabel?.length) {
+    const byttet = medVariabel(input0, spec.variabel);
+    if (byttet === null) return false;
+    input = byttet;
+  }
   const fasit = ivFraSpec(spec);
   const begge = tolkBegge(input);
   if (spec.begge) return begge !== null && begge.every((x) => sammeIv(x.iv, fasit));
@@ -1416,7 +1445,7 @@ function tolkMengde(input: string): MengdeSvar | null {
   const utenomFra = (cond: string): number[] | null => {
     const v: number[] = [];
     for (const d of delOpp(cond)) {
-      const m = /^x\s*(?:≠|!=)\s*(.+)$/i.exec(d);
+      const m = /^[a-z]\s*(?:≠|!=)\s*(.+)$/i.exec(d);
       const t = m ? tallVerdi(m[1]) : null;
       if (t === null) return null;
       v.push(t);
@@ -1424,21 +1453,21 @@ function tolkMengde(input: string): MengdeSvar | null {
     return v.length ? v : null;
   };
   // {x ∈ ℝ | x ≠ 3}, {x | x ≠ 3}
-  const sb = /^\{\s*x\s*(?:∈\s*([NZQR])\s*)?(?:\||:)\s*(.+?)\s*\}$/.exec(s);
+  const sb = /^\{\s*[a-z]\s*(?:∈\s*([NZQR])\s*)?(?:\||:)\s*(.+?)\s*\}$/.exec(s);
   if (sb) {
     const u = utenomFra(sb[2]);
     return u ? { grunn: sb[1] ?? "R", utenom: u } : null;
   }
-  const g = /^(?:x\s*∈\s*)?([NZQR])$/.exec(s);
+  const g = /^(?:[a-z]\s*∈\s*)?([NZQR])$/.exec(s);
   if (g) return { grunn: g[1], utenom: [] };
   // ℝ∖{3}, ℝ - {3}, x ∈ ℝ∖{3}
-  const d = /^(?:x\s*∈\s*)?([NZQR])\s*[∖-]\s*(.+)$/.exec(s);
+  const d = /^(?:[a-z]\s*∈\s*)?([NZQR])\s*[∖-]\s*(.+)$/.exec(s);
   if (d) {
     const u = tallListe(d[2]);
     return u ? { grunn: d[1], utenom: u } : null;
   }
   // x ∈ ℝ, x ≠ 3 / x ∈ ℝ og x ≠ 3
-  const k = /^(?:x\s*∈\s*)?([NZQR])\s*(?:,|;|&|\bog\b|\bmed\b)\s*(.+)$/i.exec(s);
+  const k = /^(?:[a-z]\s*∈\s*)?([NZQR])\s*(?:,|;|&|\bog\b|\bmed\b)\s*(.+)$/i.exec(s);
   if (k) {
     const u = utenomFra(k[2]);
     return u ? { grunn: k[1], utenom: u } : null;
@@ -1451,7 +1480,16 @@ function tolkMengde(input: string): MengdeSvar | null {
 
 function sjekkMengde(input: string, spec: Extract<SvarSpec, { type: "mengde" }>): boolean {
   const g = tolkMengde(input);
-  if (!g) return false;
+  if (!g) {
+    // ℝ∖{3} kan også skrives som en forening av åpne intervaller: «(-∞, 3) ∪ (3, ∞)» (x, y, z eller t som variabel).
+    if (!spec.elementer && (spec.grunn ?? "R") === "R" && spec.utenom?.length) {
+      const pkt = [...new Set(dedup(spec.utenom, spec.tol))].sort((a, b) => a - b);
+      const fasit: Iv[] = pkt.concat(Infinity).map((hi, i) => ({ lo: i === 0 ? -Infinity : pkt[i - 1], hi, loL: false, hiL: false }));
+      const gitt = tolkIntervaller(input.replace(/^(\s*(?:[A-Za-z][A-Za-z0-9_]*\s*=\s*)?)[yzt](\s*∈)/i, "$1x$2"));
+      return gitt !== null && sammeIv(gitt, fasit);
+    }
+    return false;
+  }
   if (spec.elementer) {
     return g.elementer !== undefined && sammeMengde(dedup(g.elementer, spec.tol), dedup(spec.elementer, spec.tol), spec.tol);
   }
@@ -1673,6 +1711,15 @@ function sjekkSpec(input: string, spec: SvarSpec, enhet?: string[]): boolean {
           if (spec.verdier.length !== 1 || !Number.isInteger(v) || !g || g.length !== 1) return false;
           if (tegn === ">") return spec.ulikhet === "≥" && Math.floor(g[0] + 1e-9) + 1 === v;
           return spec.ulikhet === "≤" && Math.ceil(g[0] - 1e-9) - 1 === v;
+        }
+      }
+      if (spec.rekkefolge !== "fast" || spec.verdier.length < 2) {
+        // «{-3, 3}», «x ∈ {-3, 3}»: mengdeklammer rundt løsningene er samme liste. Inni klammene er også «{-3,3}» (komma uten mellomrom) en liste.
+        const bm = /^\s*(?:[A-Za-zÆØÅ][A-Za-z0-9_]*\s*(?:=|∈)\s*)?\{([^{}]*)\}\s*$/.exec(normaliser(input));
+        if (bm) {
+          if (sjekkSpec(bm[1], spec, enhet)) return true;
+          const liste = bm[1].replace(/(\d),(?=\d)/g, "$1; ");
+          return liste !== bm[1] && sjekkSpec(liste, spec, enhet);
         }
       }
       if (spec.verdier.length >= 2 && (spec.rekkefolge !== "fast" || spec.heltall)) {

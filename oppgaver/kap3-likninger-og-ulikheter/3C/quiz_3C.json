@@ -143,7 +143,7 @@
     "forklaring": "Når man deler på $x$, antar man at $x$ ikke er $0$. Men $x=0$ er en løsning på likningen. Derfor må man faktorisere til $x(x-1) = 0$."
   },
   {
-    "sporsmal": "Hva er felles faktor i uttrykket $4x^2 - 8x$?",
+    "sporsmal": "Hva er største felles faktor i uttrykket $4x^2 - 8x$?",
     "alternativer": [
       "$4$",
       "$x$",
@@ -151,6 +151,6 @@
       "$2x$"
     ],
     "riktigSvar": 2,
-    "forklaring": "Begge leddene kan deles på $4$, og begge har minst én $x$. Derfor er fellesfaktoren $4x$. Uttrykket kan skrives som $4x(x - 2)$."
+    "forklaring": "Begge leddene kan deles på $4$, og begge har minst én $x$. Derfor er den største fellesfaktoren $4x$. Uttrykket kan skrives som $4x(x - 2)$."
   }
 ]

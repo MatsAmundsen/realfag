@@ -366,13 +366,13 @@ export const MORE23: Record<string, Oppgave[]> = {
     ),
     o(
       "3.46",
-      "Tekstoppgaver som gir andregrad.<br><br><strong>a)</strong> Produktet av to påfølgende heltall er $72$. Finn tallene.<br><br><strong>b)</strong> Et kvadrat har sider som er $4$ lengre enn sidene i et annet kvadrat. Differansen mellom arealene er $72$. Finn sidene.<br><br><strong>c)</strong> En rettvinklet trekant har kateter $x$ og $x+7$ og hypotenus $13$. Finn $x$ (Pythagoras).<br><br><strong>d)</strong> Hvorfor forkaster vi negative sider i b)–c)?<br><br><strong>e)</strong> Sett prøve på c).",
+      "Tekstoppgaver som gir andregrad.<br><br><strong>a)</strong> Produktet av to påfølgende heltall er $72$. Finn tallene.<br><br><strong>b)</strong> Et kvadrat har sider som er $4$ lengre enn sidene i et annet kvadrat. Differansen mellom arealene er $72$. Finn sidene.<br><br><strong>c)</strong> En rettvinklet trekant har kateter $x$ og $x+7$ og hypotenus $13$. Finn $x$ (Pythagoras).<br><br><strong>d)</strong> Hvorfor forkaster vi negative sider i c)?<br><br><strong>e)</strong> Sett prøve på c).",
       "Påfølgende heltall: $n$ og $n+1$. Pythagoras: $x^2+(x+7)^2=13^2$.",
       [
         "<strong>a)</strong> $n(n+1)=72$, $n^2+n-72=0$, $(n+9)(n-8)=0$. $n=8$ (eller $-9$ og $-8$).<br><strong>Svar:</strong> $8$ og $9$ (eller $-9$ og $-8$)",
         "<strong>b)</strong> $(s+4)^2-s^2=72$, $8s+16=72$, $s=7$. Sider $7$ og $11$.<br><strong>Svar:</strong> $7$ og $11$",
         "<strong>c)</strong> $x^2+(x+7)^2=169$, $2x^2+14x+49=169$, $x^2+7x-60=0$, $(x+12)(x-5)=0$, $x=5$.<br><strong>Svar:</strong> $x=5$",
-        "<strong>d)</strong> I b) og c) er de ukjente lengder, og en lengde kan ikke være negativ. (I a) er $-9$ og $-8$ en gyldig løsning, fordi heltall kan være negative.)<br><strong>Svar:</strong> en lengde må være $>0$",
+        "<strong>d)</strong> I c) gir likningen også $x=-12$, men $x$ er en lengde, og en lengde kan ikke være negativ. (I a) er $-9$ og $-8$ en gyldig løsning, fordi heltall kan være negative.)<br><strong>Svar:</strong> en lengde må være $>0$",
         "<strong>e)</strong> $5^2+12^2=25+144=169=13^2$.<br><strong>Svar:</strong> stemmer",
       ],
     ),
