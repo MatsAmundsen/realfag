@@ -5261,3 +5261,72 @@ header.navbar[data-fag="1P"] .nav-btn.fag-switch,
 :is([data-fag="1P"], [data-fag="1T"]) .prove-del-head .part-letter { margin-right: 0.35rem; }
 :is([data-fag="1P"], [data-fag="1T"]) .prove-del .prove-svar { margin-top: 0; }
 :is([data-fag="1P"], [data-fag="1T"]) .prove-del .prove-resultat { margin-top: 0.5rem; }
+
+/* ---- Mobil: delkapitler og øveprøve (sidemenyen er skjult under 900 px) ---- */
+.mobile-subnav { display: none; }
+@media (max-width: 900px) {
+    .mobile-subnav {
+        display: block;
+        margin: 0 0 1rem;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        background: var(--bg-elevated);
+    }
+    .mobile-subnav-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        width: 100%;
+        min-height: 48px;
+        padding: 0.5rem 0.85rem;
+        background: none;
+        border: 0;
+        border-radius: var(--radius-sm);
+        color: var(--text-main);
+        text-align: left;
+        cursor: pointer;
+    }
+    .mobile-subnav-toggle:focus-visible,
+    .mobile-subnav-ove:focus-visible,
+    .mobile-subnav-list a:focus-visible { outline: 3px solid var(--primary-light); outline-offset: 2px; }
+    .mobile-subnav-label { display: flex; flex-direction: column; min-width: 0; gap: 0.1rem; }
+    .mobile-subnav-kicker { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-muted); }
+    .mobile-subnav-current { font-size: 0.95rem; font-weight: 700; line-height: 1.3; overflow-wrap: anywhere; }
+    .mobile-subnav-chevron { flex-shrink: 0; transition: transform 0.2s; }
+    .mobile-subnav-chevron.is-open { transform: rotate(180deg); }
+    .mobile-subnav-ove {
+        display: flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 0.5rem 0.85rem;
+        border-top: 1px solid var(--border);
+        font-size: 0.88rem;
+        font-weight: 700;
+        color: var(--accent);
+        text-decoration: none;
+    }
+    .mobile-subnav-list { border-top: 1px solid var(--border); padding: 0.4rem; }
+    .mobile-subnav-list[hidden] { display: none; }
+    .mobile-subnav-list .subchapter-btn { min-height: 44px; margin-bottom: 0.1rem; font-size: 0.9rem; }
+    .mobile-subnav-list .subchapter-btn.active { background: var(--primary-subtle); }
+    /* kontrast ≥ 4,5:1 i begge temaer (egne farger, ikke --text-muted) */
+    .mobile-subnav .mobile-subnav-kicker,
+    .mobile-subnav .subchapter-btn-meta { color: #94a3b8; }
+    .mobile-subnav .subchapter-btn-meta.is-complete { color: var(--accent); }
+    [data-theme="light"] .mobile-subnav .mobile-subnav-kicker,
+    [data-theme="light"] .mobile-subnav .subchapter-btn-meta { color: #475569; }
+    [data-theme="light"] .mobile-subnav .subchapter-btn-meta.is-complete,
+    [data-theme="light"] .mobile-subnav .mobile-subnav-ove,
+    [data-theme="light"] .mobile-subnav .subchapter-btn.is-oveprove .subchapter-btn-title { color: #047857; }
+    [data-theme="light"] .mobile-subnav .subchapter-btn.active .subchapter-btn-title { color: #4338ca; }
+    [data-fag="1P"] .mobile-subnav .mobile-subnav-kicker,
+    [data-fag="1P"] .mobile-subnav .subchapter-btn-meta { color: var(--p1-muted); }
+    [data-fag="1P"] .mobile-subnav .mobile-subnav-ove,
+    [data-fag="1P"] .mobile-subnav .subchapter-btn-meta.is-complete,
+    [data-fag="1P"] .mobile-subnav .subchapter-btn.is-oveprove .subchapter-btn-title { color: var(--p1-ink); }
+    [data-theme="light"] [data-fag="1P"] .mobile-subnav .subchapter-btn.active .subchapter-btn-title { color: #4338ca; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .mobile-subnav-chevron { transition: none; }
+}

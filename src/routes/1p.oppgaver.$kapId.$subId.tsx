@@ -3,6 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { CircleHelp, FileDown } from "lucide-react";
 import { CHAPTER_META_1P as CHAPTER_META, fagsok1P as fagsok, findKap1P as findKap, findSub1P as findSub, videosForSub1P as videosForSub, NIVAARK_BY_SUB_1P } from "@/data/1p";
 import { ChapterSidebar } from "@/components/ChapterSidebar";
+import { MobilDelkapNav } from "@/components/MobilDelkapNav";
 import { TopicVideoInvite } from "@/components/TopicVideoInvite";
 import { TaskCard } from "@/components/TaskCard";
 import { OveprovRunner } from "@/components/OveprovRunner";
@@ -125,6 +126,7 @@ function SubchapterPage1P() {
             );
           })}
         </div>
+        <MobilDelkapNav kapId={kapId} subId={subId} fag="1P" />
         <div className="sub-progress-strip">
           <div>
             <p className="crumb">
